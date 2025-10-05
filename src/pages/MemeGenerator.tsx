@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { ArrowLeft, Download, Shuffle } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
-import logoImage from "@/assets/onetap_logo.png";
+import logoImage from "@/assets/onetap_new_logo.png";
 
 interface Accessory {
   emoji: string;

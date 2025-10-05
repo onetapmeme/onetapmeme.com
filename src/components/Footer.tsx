@@ -1,6 +1,6 @@
 import { Twitter, Send, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/onetap_logo.png";
+import logo from "@/assets/onetap_new_logo.png";
 
 const Footer = () => {
   const socialLinks = [

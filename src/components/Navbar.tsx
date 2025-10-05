@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/onetap_logo.png";
+import logo from "@/assets/onetap_new_logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

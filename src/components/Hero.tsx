@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Crosshair, Zap, TrendingUp } from "lucide-react";
-import logo from "@/assets/onetap_logo.png";
+import logo from "@/assets/onetap_new_logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { useNavigate } from "react-router-dom";
 
@@ -67,9 +67,9 @@ const Hero = () => {
               <Zap className="w-5 h-5" />
               Buy $ONETAP
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={() => navigate("/meme")}>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto">
               <TrendingUp className="w-5 h-5" />
-              Meme Generator
+              View Chart
             </Button>
           </div>
 
