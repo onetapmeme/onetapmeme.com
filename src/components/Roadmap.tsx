@@ -63,9 +63,9 @@ const Roadmap = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
-        return "border-primary shadow-glow-cyan";
+        return "border-primary shadow-glow-primary";
       case "current":
-        return "border-secondary shadow-glow-orange";
+        return "border-secondary shadow-glow-gold";
       default:
         return "border-muted";
     }

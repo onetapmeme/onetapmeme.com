@@ -8,54 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* CS:GO inspired dark theme - deep navy background */
-    --background: 215 45% 8%;
-    --foreground: 200 15% 95%;
+    /* CS2 Modern Interface - Ultra dark with sharp contrast */
+    --background: 216 28% 7%;
+    --foreground: 210 20% 98%;
 
-    /* Cards with slight elevation */
-    --card: 215 40% 12%;
-    --card-foreground: 200 15% 95%;
+    /* Cards - darker with subtle border */
+    --card: 217 25% 10%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 215 40% 12%;
-    --popover-foreground: 200 15% 95%;
+    --popover: 217 25% 10%;
+    --popover-foreground: 210 20% 98%;
 
-    /* Cyan primary - CS:GO skin inspired */
-    --primary: 195 100% 50%;
-    --primary-foreground: 215 45% 8%;
+    /* Electric blue primary - CS2 accent */
+    --primary: 199 89% 48%;
+    --primary-foreground: 210 20% 98%;
 
-    /* Orange secondary - headshot/fire accent */
-    --secondary: 14 100% 60%;
-    --secondary-foreground: 215 45% 8%;
+    /* Gold/yellow secondary - kill feed, MVP */
+    --secondary: 43 96% 56%;
+    --secondary-foreground: 217 25% 10%;
 
-    /* Muted darker tones */
-    --muted: 215 35% 18%;
-    --muted-foreground: 200 10% 65%;
+    /* Muted - deeper grays */
+    --muted: 217 20% 15%;
+    --muted-foreground: 215 10% 60%;
 
-    /* Accent blue glow */
-    --accent: 210 100% 55%;
-    --accent-foreground: 215 45% 8%;
+    /* Accent - brighter blue for highlights */
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 20% 98%;
 
-    /* Destructive red */
-    --destructive: 0 85% 58%;
-    --destructive-foreground: 200 15% 95%;
+    /* Destructive - bright red for alerts */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 215 30% 20%;
-    --input: 215 30% 20%;
-    --ring: 195 100% 50%;
+    --border: 217 19% 18%;
+    --input: 217 19% 18%;
+    --ring: 199 89% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    /* Custom gradients for effects */
-    --gradient-hero: linear-gradient(135deg, hsl(215 45% 8%) 0%, hsl(215 40% 12%) 50%, hsl(195 100% 15%) 100%);
-    --gradient-accent: linear-gradient(90deg, hsl(195 100% 50%) 0%, hsl(210 100% 55%) 100%);
-    --gradient-fire: linear-gradient(135deg, hsl(14 100% 60%) 0%, hsl(25 100% 55%) 100%);
+    /* CS2 Modern gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(216 28% 7%) 0%, hsl(217 25% 10%) 40%, hsl(199 89% 12%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(210 100% 60%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%) 0%, hsl(38 92% 50%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(217 25% 10%) 0%, hsl(217 20% 8%) 100%);
     
-    /* Glow effects */
-    --glow-cyan: 0 0 20px hsl(195 100% 50% / 0.5), 0 0 40px hsl(195 100% 50% / 0.3);
-    --glow-orange: 0 0 20px hsl(14 100% 60% / 0.5), 0 0 40px hsl(14 100% 60% / 0.3);
+    /* Sharp glow effects - CS2 style */
+    --glow-primary: 0 0 24px hsl(199 89% 48% / 0.6), 0 0 48px hsl(199 89% 48% / 0.3), 0 0 72px hsl(199 89% 48% / 0.15);
+    --glow-gold: 0 0 24px hsl(43 96% 56% / 0.6), 0 0 48px hsl(43 96% 56% / 0.3);
+    --glow-subtle: 0 4px 24px hsl(199 89% 48% / 0.12);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 

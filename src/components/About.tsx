@@ -49,7 +49,7 @@ const About = () => {
           {features.map((feature, i) => (
             <Card
               key={i}
-              className="p-6 bg-card border-2 border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-glow-cyan group animate-pixel-fade"
+              className="p-6 bg-card border-2 border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-glow-primary group animate-pixel-fade"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <feature.icon className="w-12 h-12 text-primary mb-4 group-hover:animate-pulse-glow" />

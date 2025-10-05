@@ -42,21 +42,21 @@ const Hero = () => {
             <img 
               src={logo} 
               alt="OneTap Logo" 
-              className="w-48 h-48 md:w-64 md:h-64 animate-float drop-shadow-[0_0_30px_rgba(0,212,255,0.6)]"
+              className="w-48 h-48 md:w-64 md:h-64 animate-float drop-shadow-[0_0_40px_rgba(22,163,224,0.8)]"
             />
           </div>
 
           {/* Title */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-accent bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(22,163,224,0.5)]">
             $ONETAP
           </h1>
 
           {/* Tagline */}
           <p className="text-xl md:text-2xl lg:text-3xl text-foreground mb-4 font-bold tracking-wide">
-            The Ultimate Gaming Memecoin
+            ONE SHOT, ONE OPPORTUNITY
           </p>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Pixelated nostalgia meets modern crypto. Join the revolution where every trade is a headshot.
+            The ultimate CS-inspired memecoin. Fair launch, locked liquidity, 100% community-driven.
           </p>
 
           {/* CTA Buttons */}
@@ -80,7 +80,7 @@ const Hero = () => {
             ].map((stat, i) => (
               <div
                 key={i}
-                className="bg-card border-2 border-primary/30 rounded-lg p-6 backdrop-blur-sm hover:border-primary transition-all duration-300 animate-pixel-fade"
+                className="bg-card border-2 border-primary/30 rounded-lg p-6 backdrop-blur-sm hover:border-primary hover:shadow-glow-primary transition-all duration-300 animate-pixel-fade"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />

@@ -68,7 +68,7 @@ const Footer = () => {
                   key={social.label}
                   variant="outline"
                   size="icon"
-                  className="hover:shadow-glow-cyan"
+                  className="hover:shadow-glow-primary"
                   asChild
                 >
                   <a href={social.href} aria-label={social.label}>
