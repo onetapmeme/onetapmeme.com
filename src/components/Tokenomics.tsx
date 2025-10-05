@@ -41,7 +41,7 @@ const Tokenomics = () => {
   ];
 
   return (
-    <section id="tokenomics" className="py-12 md:py-20 px-4 bg-card/30">
+    <section id="tokenomics" className="py-20 md:py-32 px-4 bg-gradient-to-br from-card/50 via-secondary/5 to-card/50">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 md:mb-16 animate-pixel-fade">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-gold bg-clip-text text-transparent">
