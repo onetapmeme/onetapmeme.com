@@ -5,9 +5,13 @@ import { Download, Shuffle, Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 import logoImage from "@/assets/onetap_new_logo.png";
+import zeldaSword from "@/assets/meme-accessories/zelda-sword.png";
+import marioMushroom from "@/assets/meme-accessories/mario-mushroom.png";
+import gtaCash from "@/assets/meme-accessories/gta-cash.png";
+import gtaMuscle from "@/assets/meme-accessories/gta-muscle.png";
 
 interface Accessory {
-  emoji: string;
+  image: string;
   name: string;
   position: { x: number; y: number };
   size: number;
@@ -20,16 +24,16 @@ interface Background {
 }
 
 const accessories: Accessory[] = [
-  { emoji: "🗡️", name: "Master Sword", position: { x: 20, y: 20 }, size: 60 },
-  { emoji: "🍄", name: "Mario Mushroom", position: { x: 80, y: 30 }, size: 50 },
-  { emoji: "💰", name: "GTA Cash", position: { x: 70, y: 70 }, size: 55 },
-  { emoji: "🔫", name: "CS:GO Knife", position: { x: 30, y: 75 }, size: 50, rotation: -15 },
-  { emoji: "🎮", name: "Controller", position: { x: 50, y: 15 }, size: 45 },
-  { emoji: "👾", name: "Space Invader", position: { x: 15, y: 60 }, size: 40 },
-  { emoji: "🏆", name: "Trophy", position: { x: 85, y: 80 }, size: 50 },
-  { emoji: "⚡", name: "Lightning", position: { x: 40, y: 40 }, size: 55 },
-  { emoji: "💎", name: "Diamond", position: { x: 60, y: 85 }, size: 45 },
-  { emoji: "🚀", name: "Rocket", position: { x: 25, y: 35 }, size: 50, rotation: 45 },
+  { image: zeldaSword, name: "Master Sword", position: { x: 20, y: 20 }, size: 120, rotation: -15 },
+  { image: marioMushroom, name: "Mario Mushroom", position: { x: 80, y: 30 }, size: 80 },
+  { image: gtaCash, name: "GTA Cash", position: { x: 70, y: 70 }, size: 100, rotation: 10 },
+  { image: gtaMuscle, name: "GTA Muscle", position: { x: 30, y: 75 }, size: 90 },
+  { image: zeldaSword, name: "Master Sword 2", position: { x: 50, y: 15 }, size: 110, rotation: 45 },
+  { image: marioMushroom, name: "Mushroom 2", position: { x: 15, y: 60 }, size: 70, rotation: -20 },
+  { image: gtaCash, name: "Cash Stack", position: { x: 85, y: 80 }, size: 95 },
+  { image: gtaMuscle, name: "Muscle 2", position: { x: 40, y: 40 }, size: 85, rotation: 15 },
+  { image: zeldaSword, name: "Zelda Shield", position: { x: 60, y: 85 }, size: 100 },
+  { image: marioMushroom, name: "Power Up", position: { x: 25, y: 35 }, size: 75, rotation: 30 },
 ];
 
 const backgrounds: Background[] = [
@@ -124,19 +128,21 @@ const MemeSection = () => {
               {selectedAccessories.map((accessoryIndex) => {
                 const accessory = accessories[accessoryIndex];
                 return (
-                  <div
+                  <img
                     key={accessoryIndex}
-                    className="absolute text-4xl drop-shadow-lg animate-float"
+                    src={accessory.image}
+                    alt={accessory.name}
+                    className="absolute drop-shadow-2xl animate-float pointer-events-none"
                     style={{
                       left: `${accessory.position.x}%`,
                       top: `${accessory.position.y}%`,
                       transform: `translate(-50%, -50%) rotate(${accessory.rotation || 0}deg)`,
-                      fontSize: `${accessory.size}px`,
+                      width: `${accessory.size}px`,
+                      height: `${accessory.size}px`,
+                      objectFit: "contain",
                       animationDelay: `${accessoryIndex * 0.2}s`,
                     }}
-                  >
-                    {accessory.emoji}
-                  </div>
+                  />
                 );
               })}
             </div>
@@ -178,20 +184,24 @@ const MemeSection = () => {
 
             {/* Accessory Selection */}
             <Card className="p-4 md:p-6 bg-card/50 backdrop-blur-sm border-primary/30">
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground">Accessoires</h3>
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground">Accessoires Gaming</h3>
               <div className="grid grid-cols-5 gap-2 md:gap-3">
                 {accessories.map((accessory, index) => (
                   <button
                     key={index}
                     onClick={() => toggleAccessory(index)}
-                    className={`text-2xl md:text-4xl aspect-square flex items-center justify-center rounded-lg transition-all duration-300 ${
+                    className={`aspect-square flex items-center justify-center rounded-lg transition-all duration-300 p-2 ${
                       selectedAccessories.includes(index)
                         ? "bg-primary/20 ring-2 ring-primary scale-110"
                         : "bg-background/50 hover:bg-background/80 hover:scale-105"
                     }`}
                     title={accessory.name}
                   >
-                    {accessory.emoji}
+                    <img 
+                      src={accessory.image} 
+                      alt={accessory.name}
+                      className="w-full h-full object-contain"
+                    />
                   </button>
                 ))}
               </div>
