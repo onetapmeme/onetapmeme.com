@@ -6,11 +6,14 @@ import { Download, Shuffle, Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 import logoImage from "@/assets/onetap_new_logo.png";
-import zeldaSword from "@/assets/meme-accessories/zelda-sword.png";
-import marioMushroom from "@/assets/meme-accessories/mario-mushroom.png";
-import marioMushroom2 from "@/assets/meme-accessories/mario-mushroom-2.png";
-import gtaCash from "@/assets/meme-accessories/gta-cash.png";
-import gtaMuscle from "@/assets/meme-accessories/gta-muscle.png";
+import csgoAwp from "@/assets/meme-accessories/csgo-awp.png";
+import csgoKarambit from "@/assets/meme-accessories/csgo-karambit.png";
+import csgoUmp from "@/assets/meme-accessories/csgo-ump.png";
+import csgoAk47Pink from "@/assets/meme-accessories/csgo-ak47-pink.png";
+import csgoTerrorist from "@/assets/meme-accessories/csgo-terrorist.png";
+import csgoAk47Gold from "@/assets/meme-accessories/csgo-ak47-gold.png";
+import csgoMp7 from "@/assets/meme-accessories/csgo-mp7.png";
+import csgoLogo from "@/assets/meme-accessories/csgo-logo.png";
 
 interface Accessory {
   image: string;
@@ -26,11 +29,14 @@ interface Background {
 }
 
 const accessories: Accessory[] = [
-  { image: zeldaSword, name: "Master Sword", position: { x: 20, y: 20 }, size: 100, rotation: -15 },
-  { image: marioMushroom, name: "Mario Mushroom", position: { x: 80, y: 30 }, size: 80 },
-  { image: marioMushroom2, name: "Power Mushroom", position: { x: 15, y: 60 }, size: 70, rotation: -20 },
-  { image: gtaCash, name: "GTA Cash", position: { x: 70, y: 70 }, size: 90, rotation: 10 },
-  { image: gtaMuscle, name: "GTA Muscle", position: { x: 30, y: 75 }, size: 85 },
+  { image: csgoAwp, name: "AWP Sniper", position: { x: 25, y: 20 }, size: 140, rotation: -25 },
+  { image: csgoKarambit, name: "Karambit", position: { x: 75, y: 25 }, size: 90, rotation: 15 },
+  { image: csgoUmp, name: "UMP-45", position: { x: 20, y: 70 }, size: 120, rotation: -10 },
+  { image: csgoAk47Pink, name: "AK-47 Pink", position: { x: 70, y: 75 }, size: 130, rotation: 20 },
+  { image: csgoTerrorist, name: "Terrorist", position: { x: 15, y: 50 }, size: 110 },
+  { image: csgoAk47Gold, name: "AK-47 Gold", position: { x: 80, y: 60 }, size: 125, rotation: -15 },
+  { image: csgoMp7, name: "MP7", position: { x: 50, y: 30 }, size: 100 },
+  { image: csgoLogo, name: "CS:GO Logo", position: { x: 50, y: 80 }, size: 95 },
 ];
 
 const backgrounds: Background[] = [
