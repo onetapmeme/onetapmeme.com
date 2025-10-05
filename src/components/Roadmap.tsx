@@ -1,53 +1,9 @@
 import { CheckCircle2, Circle, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 const Roadmap = () => {
-  const phases = [
-    {
-      phase: "Phase 1",
-      title: "Launch",
-      status: "completed",
-      items: [
-        "Token Creation",
-        "Website Launch",
-        "Social Media Setup",
-        "Community Building",
-      ],
-    },
-    {
-      phase: "Phase 2",
-      title: "Growth",
-      status: "current",
-      items: [
-        "CoinGecko Listing",
-        "CoinMarketCap Listing",
-        "1000+ Holders",
-        "Marketing Campaign",
-      ],
-    },
-    {
-      phase: "Phase 3",
-      title: "Expansion",
-      status: "upcoming",
-      items: [
-        "CEX Listings",
-        "Partnership Announcements",
-        "Community Events",
-        "Merchandise Store",
-      ],
-    },
-    {
-      phase: "Phase 4",
-      title: "Domination",
-      status: "upcoming",
-      items: [
-        "Major Exchange Listings",
-        "Global Marketing",
-        "10,000+ Holders",
-        "To The Moon! 🚀",
-      ],
-    },
-  ];
+  const { t } = useTranslation();
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -76,15 +32,20 @@ const Roadmap = () => {
       <div className="container mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
-            Roadmap
+            {t('roadmap.title')}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-            Our journey to becoming the #1 gaming memecoin
+            {t('roadmap.subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
-          {phases.map((phase, i) => (
+          {[
+            { phase: "Phase 1", title: t('roadmap.phase1'), status: "completed", items: t('roadmap.phase1Items', { returnObjects: true }) as string[] },
+            { phase: "Phase 2", title: t('roadmap.phase2'), status: "current", items: t('roadmap.phase2Items', { returnObjects: true }) as string[] },
+            { phase: "Phase 3", title: t('roadmap.phase3'), status: "upcoming", items: t('roadmap.phase3Items', { returnObjects: true }) as string[] },
+            { phase: "Phase 4", title: t('roadmap.phase4'), status: "upcoming", items: t('roadmap.phase4Items', { returnObjects: true }) as string[] },
+          ].map((phase, i) => (
             <Card
               key={i}
               className={`p-4 md:p-6 bg-card border-2 transition-all duration-300 hover:scale-105 animate-pixel-fade ${getStatusColor(phase.status)}`}

@@ -3,9 +3,11 @@ import { Crosshair, Zap, TrendingUp } from "lucide-react";
 import logo from "@/assets/onetap_new_logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -50,26 +52,26 @@ const Hero = () => {
 
           {/* Title */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(22,163,224,0.5)] px-4">
-            $ONETAP
+            {t('hero.title')}
           </h1>
 
           {/* Tagline */}
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground mb-3 md:mb-4 font-bold tracking-wide px-4">
-            ONE SHOT, ONE OPPORTUNITY
+            {t('hero.subtitle')}
           </p>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto px-4">
-            The ultimate CS-inspired memecoin. Fair launch, locked liquidity, 100% community-driven.
+            {t('hero.description')}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-10 md:mb-16 px-4">
             <Button variant="hero" size="lg" className="w-full sm:w-auto text-base md:text-lg">
               <Zap className="w-4 h-4 md:w-5 md:h-5" />
-              Buy $ONETAP
+              {t('hero.cta')}
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto text-base md:text-lg">
               <TrendingUp className="w-4 h-4 md:w-5 md:h-5" />
-              View Chart
+              {t('tokenomics.chart')}
             </Button>
           </div>
 

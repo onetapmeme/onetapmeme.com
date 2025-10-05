@@ -1,8 +1,11 @@
 import { Twitter, Send, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/onetap_new_logo.png";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
   const socialLinks = [
     { icon: Twitter, label: "Twitter", href: "#" },
     { icon: Send, label: "Telegram", href: "#" },
@@ -18,21 +21,26 @@ const Footer = () => {
             <img src={logo} alt="OneTap Logo" className="w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4" />
             <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">$ONETAP</h3>
             <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
-              The ultimate gaming memecoin. Pixelated dreams, crypto reality.
+              {t('footer.tagline')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="text-center">
-            <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">Quick Links</h4>
+            <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">{t('footer.quickLinks')}</h4>
             <nav className="flex flex-col gap-2">
-              {["About", "Tokenomics", "Roadmap"].map((link) => (
+              {[
+                { label: t('nav.about'), href: "#about" },
+                { label: t('nav.tokenomics'), href: "#tokenomics" },
+                { label: t('nav.community'), href: "#community" },
+                { label: t('nav.roadmap'), href: "#roadmap" },
+              ].map((link) => (
                 <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
+                  key={link.href}
+                  href={link.href}
                   className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </nav>
@@ -40,13 +48,13 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div className="text-center">
-            <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">Legal</h4>
+            <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">{t('footer.legal')}</h4>
             <nav className="flex flex-col gap-2">
               {[
-                { label: "Disclaimer", path: "/disclaimer" },
-                { label: "Non-Affiliation", path: "/non-affiliation" },
-                { label: "Privacy Policy", path: "/privacy" },
-                { label: "Terms of Use", path: "/terms" },
+                { label: t('footer.disclaimer'), path: "/disclaimer" },
+                { label: t('footer.nonAffiliation'), path: "/non-affiliation" },
+                { label: t('footer.privacy'), path: "/privacy" },
+                { label: t('footer.terms'), path: "/terms" },
               ].map((link) => (
                 <a
                   key={link.path}
@@ -62,7 +70,7 @@ const Footer = () => {
 
           {/* Social */}
           <div className="text-center md:text-right">
-            <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">Join the Community</h4>
+            <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">{t('community.title')}</h4>
             <div className="flex gap-2 md:gap-3 justify-center md:justify-end">
               {socialLinks.map((social) => (
                 <Button
@@ -84,12 +92,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border pt-6 md:pt-8 text-center">
           <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
-            © 2025 $ONETAP. All rights reserved.
+            © 2025 $ONETAP. {t('footer.rights')}
           </p>
           <p className="text-xs text-muted-foreground/80 italic px-4 max-w-3xl mx-auto leading-relaxed">
-            Disclaimer: $ONETAP is not affiliated with Valve Corporation or Counter-Strike. 
-            This is an independent community-driven memecoin project. Cryptocurrency trading 
-            involves risk. Always do your own research.
+            {t('footer.disclaimerText')}
           </p>
         </div>
       </div>

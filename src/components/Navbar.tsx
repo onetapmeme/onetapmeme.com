@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/onetap_new_logo.png";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -16,9 +18,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Tokenomics", href: "#tokenomics" },
-    { label: "Roadmap", href: "#roadmap" },
+    { label: t('nav.about'), href: "#about" },
+    { label: t('nav.tokenomics'), href: "#tokenomics" },
+    { label: t('nav.community'), href: "#community" },
+    { label: t('nav.roadmap'), href: "#roadmap" },
+    { label: t('nav.memes'), href: "#memes" },
   ];
 
   return (
@@ -49,7 +53,7 @@ const Navbar = () => {
               </a>
             ))}
             <Button variant="hero" size="sm">
-              Buy Now
+              {t('hero.cta')}
             </Button>
           </div>
 
@@ -78,7 +82,7 @@ const Navbar = () => {
               ))}
               <div className="px-4">
                 <Button variant="hero" size="sm" className="w-full">
-                  Buy Now
+                  {t('hero.cta')}
                 </Button>
               </div>
             </div>
