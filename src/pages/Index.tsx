@@ -8,6 +8,7 @@ import MemeSection from "@/components/MemeSection";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import SectionDivider from "@/components/SectionDivider";
 
 const Index = () => {
   return (
@@ -15,10 +16,15 @@ const Index = () => {
       <LanguageSwitcher />
       <Navbar />
       <Hero />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <Tokenomics />
+      <SectionDivider />
       <Community />
+      <SectionDivider />
       <Roadmap />
+      <SectionDivider />
       <MemeSection />
       <Footer />
       <CookieBanner />

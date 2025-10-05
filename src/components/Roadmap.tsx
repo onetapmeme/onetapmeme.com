@@ -1,4 +1,4 @@
-import { CheckCircle2, Circle, Clock } from "lucide-react";
+import { CheckCircle2, Circle, Clock, Target } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 
@@ -28,9 +28,10 @@ const Roadmap = () => {
   };
 
   return (
-    <section id="roadmap" className="py-20 md:py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background">
+    <section id="roadmap" className="py-20 md:py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background section-slide-up">
       <div className="container mx-auto">
         <div className="text-center mb-12 md:mb-16">
+          <Target className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
             {t('roadmap.title')}
           </h2>

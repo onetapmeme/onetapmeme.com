@@ -93,10 +93,10 @@ const MemeSection = () => {
   };
 
   return (
-    <section id="memes" className="py-20 md:py-32 px-4 bg-gradient-to-b from-card/30 via-accent/5 to-card/30">
+    <section id="memes" className="py-20 md:py-32 px-4 bg-gradient-to-b from-card/30 via-accent/5 to-card/30 section-slide-up">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
-          <ImageIcon className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary" />
+          <ImageIcon className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary icon-float icon-glow" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
             {t('memes.title')}
           </h2>

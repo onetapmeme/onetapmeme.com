@@ -58,10 +58,10 @@ const Community = () => {
   ];
 
   return (
-    <section id="community" className="py-20 md:py-32 px-4 bg-gradient-to-br from-muted/30 via-background to-muted/30">
+    <section id="community" className="py-20 md:py-32 px-4 bg-gradient-to-br from-muted/30 via-background to-muted/30 section-slide-up">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
-          <Users className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary" />
+          <Users className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary icon-float icon-glow" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
             {t('community.title')}
           </h2>
@@ -74,10 +74,10 @@ const Community = () => {
           {socialLinks.map((social, index) => (
             <Card
               key={index}
-              className="p-4 md:p-6 bg-card/50 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-glow-primary group animate-pixel-fade"
+              className="p-4 md:p-6 bg-card/50 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-glow-primary group animate-pixel-fade pixel-border"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className={`w-12 h-12 md:w-14 md:h-14 ${social.bgColor} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+              <div className={`w-12 h-12 md:w-14 md:h-14 ${social.bgColor} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform icon-glow`}>
                 <social.icon className={`w-6 h-6 md:w-7 md:h-7 ${social.color}`} />
               </div>
               <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">{social.name}</h3>
