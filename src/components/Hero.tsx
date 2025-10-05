@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Crosshair, Zap, TrendingUp } from "lucide-react";
 import logo from "@/assets/onetap_logo.png";
 import heroBg from "@/assets/hero-bg.png";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -65,9 +67,9 @@ const Hero = () => {
               <Zap className="w-5 h-5" />
               Buy $ONETAP
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={() => navigate("/meme")}>
               <TrendingUp className="w-5 h-5" />
-              View Chart
+              Meme Generator
             </Button>
           </div>
 
