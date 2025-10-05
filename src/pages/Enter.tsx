@@ -1,12 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import logoImage from "@/assets/onetap_new_logo.png";
 import { Shield, Zap, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Enter = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [showPrivacy, setShowPrivacy] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
   const [ripples, setRipples] = useState<{
@@ -55,44 +58,46 @@ const Enter = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      <LanguageSwitcher />
+      
       {/* Privacy Notice Modal - Shows First */}
       {showPrivacy && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-background/98 backdrop-blur-lg animate-fade-in">
           <Card className="max-w-2xl w-full p-6 md:p-8 border-2 border-primary/30 bg-gradient-card shadow-glow-primary animate-scale-in">
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-6 h-6 md:w-8 md:h-8 text-primary animate-pulse" />
-              <h2 className="text-xl md:text-2xl font-bold text-foreground">Privacy & Disclaimer</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-foreground">{t('enter.privacy')}</h2>
             </div>
             
             <div className="space-y-4 text-sm text-muted-foreground mb-8 max-h-[50vh] md:max-h-[60vh] overflow-y-auto scrollbar-thin">
               <p className="text-foreground font-semibold text-base">
-                ⚠️ IMPORTANT: Please read carefully
+                {t('enter.important')}
               </p>
               
               <div className="space-y-3 border-l-2 border-primary/50 pl-4">
                 <p>
-                  <strong className="text-foreground">Investment Risk:</strong> $ONETAP is a memecoin with NO intrinsic value. You may lose all invested capital.
+                  <strong className="text-foreground">{t('enter.risk')}</strong> {t('enter.riskText')}
                 </p>
                 
                 <p>
-                  <strong className="text-foreground">No Affiliation:</strong> This project is NOT affiliated with Valve Corporation, Counter-Strike, or related trademarks.
+                  <strong className="text-foreground">{t('enter.noAffiliation')}</strong> {t('enter.noAffiliationText')}
                 </p>
                 
                 <p>
-                  <strong className="text-foreground">Privacy:</strong> This website does NOT collect personal data or use tracking cookies.
+                  <strong className="text-foreground">{t('enter.privacy2')}</strong> {t('enter.privacyText')}
                 </p>
                 
                 <p>
-                  <strong className="text-foreground">No Guarantees:</strong> The project provides NO financial advice. DYOR.
+                  <strong className="text-foreground">{t('enter.noGuarantees')}</strong> {t('enter.noGuaranteesText')}
                 </p>
                 
                 <p>
-                  <strong className="text-foreground">Legal:</strong> By continuing, you confirm you are legally permitted to access cryptocurrency projects.
+                  <strong className="text-foreground">{t('enter.legal')}</strong> {t('enter.legalText')}
                 </p>
               </div>
               
               <p className="text-xs text-muted-foreground/80 pt-4">
-                For complete info, see our <a href="/disclaimer" className="text-primary hover:underline">Disclaimer</a>, <a href="/non-affiliation" className="text-primary hover:underline">Non-Affiliation</a>, and <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
+                {t('enter.moreInfo')} <a href="/disclaimer" className="text-primary hover:underline">{t('enter.disclaimer')}</a>, <a href="/non-affiliation" className="text-primary hover:underline">{t('enter.nonAffiliation')}</a>, {t('enter.privacyPolicy')} <a href="/privacy" className="text-primary hover:underline">{t('enter.privacyPolicy')}</a>.
               </p>
             </div>
             
@@ -100,7 +105,7 @@ const Enter = () => {
               onClick={handleAcceptPrivacy}
               className="w-full bg-gradient-accent hover:shadow-glow-primary transition-all text-base md:text-lg font-bold py-5 md:py-6"
             >
-              I UNDERSTAND - ENTER SITE
+              {t('enter.understand')}
             </Button>
           </Card>
         </div>
@@ -143,43 +148,30 @@ const Enter = () => {
           {/* Title with Glitch Effect */}
           <div className="text-center mb-6 md:mb-8">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-3 bg-gradient-accent bg-clip-text text-transparent animate-text-glow relative">
-              $ONETAP
+              {t('enter.title')}
               <div className="absolute inset-0 bg-gradient-accent bg-clip-text text-transparent opacity-50 blur-sm">
-                $ONETAP
+                {t('enter.title')}
               </div>
             </h1>
             <p className="text-base md:text-xl font-bold text-foreground/90 tracking-widest">
-              ONE SHOT, ONE OPPORTUNITY
+              {t('enter.subtitle')}
             </p>
           </div>
 
-          {/* Interactive Tap Zone */}
-          <div className="relative group/tap">
-            <div className="absolute inset-0 bg-gradient-accent blur-xl opacity-50 group-hover/tap:opacity-70 transition-opacity rounded-full"></div>
-            <div className={`relative px-8 md:px-12 py-6 md:py-8 border-2 border-primary/50 rounded-xl backdrop-blur-sm bg-card/30 transition-all duration-300 group-hover/tap:border-primary group-hover/tap:shadow-glow-primary ${
-              !showPrivacy ? 'animate-tap-pulse' : ''
+          {/* Interactive Tap Zone - More Professional */}
+          <div className="relative group/tap mt-12">
+            <div className="absolute inset-0 bg-gradient-accent blur-2xl opacity-40 group-hover/tap:opacity-60 transition-all duration-500 rounded-2xl"></div>
+            <div className={`relative px-12 md:px-16 py-8 md:py-12 border-2 border-primary/60 rounded-2xl backdrop-blur-md bg-card/40 transition-all duration-500 group-hover/tap:border-primary group-hover/tap:shadow-[0_0_60px_rgba(22,163,224,0.4)] group-hover/tap:scale-105 ${
+              !showPrivacy ? 'animate-tap-pulse shadow-[0_0_40px_rgba(22,163,224,0.3)]' : ''
             }`}>
-              <div className="flex items-center gap-4">
-                <Target className={`w-8 h-8 md:w-10 md:h-10 text-primary ${!showPrivacy ? 'animate-spin-slow' : ''}`} />
-                <span className="text-2xl md:text-4xl font-black text-foreground tracking-wider">
-                  TAP TO ENTER
+              <div className="flex items-center justify-center gap-6">
+                <Target className={`w-10 h-10 md:w-12 md:h-12 text-primary ${!showPrivacy ? 'animate-spin-slow' : ''}`} />
+                <span className="text-3xl md:text-5xl font-black text-foreground tracking-widest bg-gradient-accent bg-clip-text text-transparent">
+                  {t('enter.tap')}
                 </span>
-                <Zap className={`w-8 h-8 md:w-10 md:h-10 text-secondary ${!showPrivacy ? 'animate-pulse' : ''}`} />
+                <Zap className={`w-10 h-10 md:w-12 md:h-12 text-secondary ${!showPrivacy ? 'animate-pulse' : ''}`} />
               </div>
             </div>
-          </div>
-
-          {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-8 md:mt-12 max-w-2xl">
-            {['Fair Launch', 'Locked Liquidity', 'Community Driven'].map((feature, i) => (
-              <div 
-                key={feature}
-                className="px-4 md:px-6 py-2 md:py-3 bg-primary/10 border border-primary/30 rounded-full backdrop-blur-sm animate-fade-in-up text-sm md:text-base"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <span className="font-semibold text-foreground">{feature}</span>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -219,7 +211,7 @@ const Enter = () => {
         {/* Bottom Hint */}
         <div className="absolute bottom-4 md:bottom-8 left-0 right-0 text-center z-10">
           <p className="text-xs md:text-sm text-muted-foreground/60 font-mono animate-pulse px-4">
-            🎮 Sound On for Best Experience
+            {t('enter.sound')}
           </p>
         </div>
       </div>

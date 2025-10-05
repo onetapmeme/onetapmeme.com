@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Download, Shuffle, Image as ImageIcon } from "lucide-react";
@@ -7,6 +8,7 @@ import html2canvas from "html2canvas";
 import logoImage from "@/assets/onetap_new_logo.png";
 import zeldaSword from "@/assets/meme-accessories/zelda-sword.png";
 import marioMushroom from "@/assets/meme-accessories/mario-mushroom.png";
+import marioMushroom2 from "@/assets/meme-accessories/mario-mushroom-2.png";
 import gtaCash from "@/assets/meme-accessories/gta-cash.png";
 import gtaMuscle from "@/assets/meme-accessories/gta-muscle.png";
 
@@ -24,34 +26,30 @@ interface Background {
 }
 
 const accessories: Accessory[] = [
-  { image: zeldaSword, name: "Master Sword", position: { x: 20, y: 20 }, size: 120, rotation: -15 },
+  { image: zeldaSword, name: "Master Sword", position: { x: 20, y: 20 }, size: 100, rotation: -15 },
   { image: marioMushroom, name: "Mario Mushroom", position: { x: 80, y: 30 }, size: 80 },
-  { image: gtaCash, name: "GTA Cash", position: { x: 70, y: 70 }, size: 100, rotation: 10 },
-  { image: gtaMuscle, name: "GTA Muscle", position: { x: 30, y: 75 }, size: 90 },
-  { image: zeldaSword, name: "Master Sword 2", position: { x: 50, y: 15 }, size: 110, rotation: 45 },
-  { image: marioMushroom, name: "Mushroom 2", position: { x: 15, y: 60 }, size: 70, rotation: -20 },
-  { image: gtaCash, name: "Cash Stack", position: { x: 85, y: 80 }, size: 95 },
-  { image: gtaMuscle, name: "Muscle 2", position: { x: 40, y: 40 }, size: 85, rotation: 15 },
-  { image: zeldaSword, name: "Zelda Shield", position: { x: 60, y: 85 }, size: 100 },
-  { image: marioMushroom, name: "Power Up", position: { x: 25, y: 35 }, size: 75, rotation: 30 },
+  { image: marioMushroom2, name: "Power Mushroom", position: { x: 15, y: 60 }, size: 70, rotation: -20 },
+  { image: gtaCash, name: "GTA Cash", position: { x: 70, y: 70 }, size: 90, rotation: 10 },
+  { image: gtaMuscle, name: "GTA Muscle", position: { x: 30, y: 75 }, size: 85 },
 ];
 
 const backgrounds: Background[] = [
-  { name: "CS:GO Dust II", gradient: "linear-gradient(135deg, #D4A574 0%, #8B6F47 100%)" },
-  { name: "Zelda Hyrule", gradient: "linear-gradient(135deg, #4A8B3C 0%, #2C5F2D 100%)" },
-  { name: "GTA Vice City", gradient: "linear-gradient(135deg, #FF6B9D 0%, #C06C84 100%)" },
-  { name: "Fortnite Storm", gradient: "linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%)" },
-  { name: "Minecraft Grass", gradient: "linear-gradient(135deg, #7EC850 0%, #629632 100%)" },
-  { name: "Portal Aperture", gradient: "linear-gradient(135deg, #FFFFFF 0%, #E5E5E5 100%)" },
+  { name: "Dust II", gradient: "linear-gradient(135deg, #D4A574 0%, #8B6F47 50%, #5C4A3A 100%)" },
+  { name: "Inferno", gradient: "linear-gradient(135deg, #E8B17B 0%, #C8955F 50%, #8B5A2B 100%)" },
+  { name: "Mirage", gradient: "linear-gradient(135deg, #E6D5B8 0%, #B89968 50%, #8B7355 100%)" },
+  { name: "Nuke", gradient: "linear-gradient(135deg, #7A8B99 0%, #4A5F6D 50%, #2C3E50 100%)" },
+  { name: "Vertigo", gradient: "linear-gradient(135deg, #5A6C7D 0%, #34495E 50%, #2C3E50 100%)" },
+  { name: "Cache", gradient: "linear-gradient(135deg, #CCCCCC 0%, #999999 50%, #666666 100%)" },
 ];
 
 const MemeSection = () => {
+  const { t } = useTranslation();
   const [selectedAccessories, setSelectedAccessories] = useState<number[]>([]);
   const [selectedBackground, setSelectedBackground] = useState<number>(0);
   const memeRef = useRef<HTMLDivElement>(null);
 
   const randomizeMeme = () => {
-    const randomAccessoryCount = Math.floor(Math.random() * 4) + 2;
+    const randomAccessoryCount = Math.floor(Math.random() * 3) + 2;
     const randomAccessories: number[] = [];
     while (randomAccessories.length < randomAccessoryCount) {
       const randomIndex = Math.floor(Math.random() * accessories.length);
@@ -61,7 +59,7 @@ const MemeSection = () => {
     }
     setSelectedAccessories(randomAccessories);
     setSelectedBackground(Math.floor(Math.random() * backgrounds.length));
-    toast.success("Meme randomisé !");
+    toast.success(t('memes.randomized'));
   };
 
   const downloadMeme = async () => {
@@ -81,10 +79,10 @@ const MemeSection = () => {
       link.href = canvas.toDataURL("image/png", 1.0);
       link.click();
 
-      toast.success("Meme téléchargé avec succès !");
+      toast.success(t('memes.downloaded'));
     } catch (error) {
       console.error("Download error:", error);
-      toast.error("Erreur lors du téléchargement");
+      toast.error(t('memes.downloadError'));
     }
   };
 
@@ -100,10 +98,10 @@ const MemeSection = () => {
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
           <ImageIcon className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
-            Générateur de Memes $ONETAP
+            {t('memes.title')}
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Créez vos propres memes personnalisés avec le logo $ONETAP et partagez-les avec la communauté !
+            {t('memes.subtitle')}
           </p>
         </div>
 
@@ -151,11 +149,11 @@ const MemeSection = () => {
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-4 md:mt-6">
               <Button onClick={randomizeMeme} variant="outline" className="flex-1 text-sm md:text-base">
                 <Shuffle className="w-4 h-4 mr-2" />
-                Randomiser
+                {t('memes.randomize')}
               </Button>
               <Button onClick={downloadMeme} variant="hero" className="flex-1 text-sm md:text-base">
                 <Download className="w-4 h-4 mr-2" />
-                Télécharger
+                {t('memes.download')}
               </Button>
             </div>
           </Card>
@@ -164,7 +162,7 @@ const MemeSection = () => {
           <div className="space-y-4 md:space-y-6">
             {/* Background Selection */}
             <Card className="p-4 md:p-6 bg-card/50 backdrop-blur-sm border-primary/30">
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground">Arrière-plans</h3>
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground">{t('memes.backgrounds')}</h3>
               <div className="grid grid-cols-3 gap-2 md:gap-3">
                 {backgrounds.map((bg, index) => (
                   <button
@@ -184,7 +182,7 @@ const MemeSection = () => {
 
             {/* Accessory Selection */}
             <Card className="p-4 md:p-6 bg-card/50 backdrop-blur-sm border-primary/30">
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground">Accessoires Gaming</h3>
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground">{t('memes.accessories')}</h3>
               <div className="grid grid-cols-5 gap-2 md:gap-3">
                 {accessories.map((accessory, index) => (
                   <button
