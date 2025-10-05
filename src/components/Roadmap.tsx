@@ -1,9 +1,11 @@
 import { CheckCircle2, Circle, Clock, Target } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Roadmap = () => {
   const { t } = useTranslation();
+  const { ref, isRevealed } = useScrollReveal();
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -28,7 +30,11 @@ const Roadmap = () => {
   };
 
   return (
-    <section id="roadmap" className="py-20 md:py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background section-slide-up">
+    <section 
+      id="roadmap" 
+      ref={ref}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background section-slide-left reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+    >
       <div className="container mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <Target className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />

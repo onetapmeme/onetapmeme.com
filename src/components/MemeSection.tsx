@@ -11,6 +11,7 @@ import csgoAwpDragon from "@/assets/meme-accessories/csgo-awp-dragon.png";
 import csgoKarambitRainbow from "@/assets/meme-accessories/csgo-karambit-rainbow.png";
 import csgoAwpAsiimov from "@/assets/meme-accessories/csgo-awp-asiimov.png";
 import csgoKarambitFade from "@/assets/meme-accessories/csgo-karambit-fade.png";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface Accessory {
   image: string;
@@ -47,6 +48,7 @@ const MemeSection = () => {
   const [selectedAccessories, setSelectedAccessories] = useState<number[]>([]);
   const [selectedBackground, setSelectedBackground] = useState<number>(0);
   const memeRef = useRef<HTMLDivElement>(null);
+  const { ref, isRevealed } = useScrollReveal();
 
   const randomizeMeme = () => {
     const randomAccessoryCount = Math.floor(Math.random() * 3) + 2;
@@ -93,7 +95,11 @@ const MemeSection = () => {
   };
 
   return (
-    <section id="memes" className="py-20 md:py-32 px-4 bg-gradient-to-b from-card/30 via-accent/5 to-card/30 section-slide-up">
+    <section 
+      id="memes" 
+      ref={ref}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-card/30 via-accent/5 to-card/30 section-slide-right reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
           <ImageIcon className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary icon-float icon-glow" />

@@ -2,9 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { MessageCircle, Twitter, Hash, Github, BookOpen, Users } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Community = () => {
   const { t } = useTranslation();
+  const { ref, isRevealed } = useScrollReveal();
 
   const socialLinks = [
     {
@@ -58,7 +60,11 @@ const Community = () => {
   ];
 
   return (
-    <section id="community" className="py-20 md:py-32 px-4 bg-gradient-to-br from-muted/30 via-background to-muted/30 section-slide-up">
+    <section 
+      id="community" 
+      ref={ref}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-br from-muted/30 via-background to-muted/30 section-scale-in reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
           <Users className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary icon-float icon-glow" />

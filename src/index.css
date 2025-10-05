@@ -73,6 +73,22 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
   
+  /* Parallax sections */
+  .parallax-slow {
+    transform: translateY(var(--scroll-offset-slow, 0));
+    transition: transform 0.1s ease-out;
+  }
+  
+  .parallax-medium {
+    transform: translateY(var(--scroll-offset-medium, 0));
+    transition: transform 0.1s ease-out;
+  }
+  
+  .parallax-fast {
+    transform: translateY(var(--scroll-offset-fast, 0));
+    transition: transform 0.1s ease-out;
+  }
+  
   /* Icon animations */
   .icon-float {
     animation: iconFloat 3s ease-in-out infinite;
@@ -92,16 +108,25 @@ All colors MUST be HSL.
     animation: iconPulse 2s ease-in-out infinite;
   }
   
-  /* Section transitions */
-  .section-fade-in {
-    animation: sectionFadeIn 0.8s ease-out forwards;
+  /* Section slide effects with scale */
+  .section-slide-left {
+    animation: slideInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+  
+  .section-slide-right {
+    animation: slideInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
   }
   
   .section-slide-up {
-    animation: sectionSlideUp 0.8s ease-out forwards;
+    animation: slideInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
-    transform: translateY(30px);
+  }
+  
+  .section-scale-in {
+    animation: scaleIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
   
   /* Pixel effects */
@@ -122,6 +147,18 @@ All colors MUST be HSL.
   
   .pixel-border:hover::before {
     opacity: 0.3;
+  }
+  
+  /* Reveal on scroll */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -145,23 +182,47 @@ All colors MUST be HSL.
   }
 }
 
-@keyframes sectionFadeIn {
+@keyframes slideInLeft {
   from {
     opacity: 0;
+    transform: translateX(-100px) scale(0.95);
   }
   to {
     opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
-@keyframes sectionSlideUp {
+@keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateX(100px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(80px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

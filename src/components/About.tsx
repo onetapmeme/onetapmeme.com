@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Shield, Users, Rocket, Lock, Target, TrendingUp } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const About = () => {
   const { t } = useTranslation();
+  const { ref, isRevealed } = useScrollReveal();
 
   const features = [
     {
@@ -29,7 +31,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-32 px-4 bg-gradient-to-b from-background via-muted/20 to-background section-slide-up">
+    <section 
+      id="about" 
+      ref={ref}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-background via-muted/20 to-background section-slide-left reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 md:mb-16 animate-pixel-fade">
           <Shield className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />

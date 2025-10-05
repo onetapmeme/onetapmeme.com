@@ -3,9 +3,11 @@ import { PieChart, Lock, Flame, Users, Copy, ExternalLink, Shield, TrendingDown,
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Tokenomics = () => {
   const { t } = useTranslation();
+  const { ref, isRevealed } = useScrollReveal();
 
   const distribution = [
     { label: t('tokenomics.fairLaunch'), percentage: 100, icon: Users, color: "text-primary" },
@@ -41,7 +43,11 @@ const Tokenomics = () => {
   ];
 
   return (
-    <section id="tokenomics" className="py-20 md:py-32 px-4 bg-gradient-to-br from-card/50 via-secondary/5 to-card/50 section-slide-up">
+    <section 
+      id="tokenomics" 
+      ref={ref}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-br from-card/50 via-secondary/5 to-card/50 section-slide-right reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 md:mb-16 animate-pixel-fade">
           <Coins className="w-16 h-16 mx-auto mb-6 text-secondary icon-float icon-glow" />
