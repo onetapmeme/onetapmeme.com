@@ -2,7 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Enter from "./pages/Enter";
 import Index from "./pages/Index";
 import Disclaimer from "./pages/Disclaimer";
 import NonAffiliation from "./pages/NonAffiliation";
@@ -19,7 +20,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Enter />} />
+          <Route path="/home" element={<Index />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/non-affiliation" element={<NonAffiliation />} />
           <Route path="/privacy" element={<Privacy />} />

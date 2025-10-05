@@ -30,7 +30,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="/home" className="flex items-center gap-3 group">
             <img src={logo} alt="OneTap" className="w-12 h-12 group-hover:animate-pulse-glow transition-all" />
             <span className="text-2xl font-bold bg-gradient-accent bg-clip-text text-transparent">
               $ONETAP
