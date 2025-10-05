@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Tokenomics from "@/components/Tokenomics";
 import Roadmap from "@/components/Roadmap";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <Tokenomics />
       <Roadmap />
       <Footer />
+      <CookieBanner />
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="bg-card border-t-2 border-primary/30 py-12 px-4">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo & Description */}
           <div className="flex flex-col items-center md:items-start">
             <img src={logo} alt="OneTap Logo" className="w-20 h-20 mb-4" />
@@ -33,6 +33,27 @@ const Footer = () => {
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {link}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Legal Links */}
+          <div className="text-center md:col-span-3 lg:col-span-1">
+            <h4 className="text-lg font-bold mb-4 text-foreground">Legal</h4>
+            <nav className="flex flex-col gap-2">
+              {[
+                { label: "Disclaimer", path: "/disclaimer" },
+                { label: "Non-Affiliation", path: "/non-affiliation" },
+                { label: "Privacy", path: "/privacy" },
+                { label: "Terms of Use", path: "/terms" },
+              ].map((link) => (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  {link.label}
                 </a>
               ))}
             </nav>

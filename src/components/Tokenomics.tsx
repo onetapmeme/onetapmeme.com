@@ -3,9 +3,7 @@ import { Card } from "@/components/ui/card";
 
 const Tokenomics = () => {
   const distribution = [
-    { label: "Liquidity Pool", percentage: 80, icon: PieChart, color: "text-primary" },
-    { label: "Marketing", percentage: 10, icon: Flame, color: "text-secondary" },
-    { label: "Community Rewards", percentage: 10, icon: Users, color: "text-accent" },
+    { label: "Fair Launch", percentage: 100, icon: Users, color: "text-primary" },
   ];
 
   return (
@@ -28,8 +26,19 @@ const Tokenomics = () => {
                 <Lock className="w-8 h-8 text-primary" />
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">Total Supply</h3>
-                  <p className="text-3xl font-bold text-primary">1,000,000,000</p>
+                  <p className="text-3xl font-bold text-primary">100,000,000</p>
                 </div>
+              </div>
+            </Card>
+
+            <Card className="p-6 bg-card border-2 border-primary/30">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-2">Network</h3>
+                <p className="text-2xl font-bold text-primary">Base</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Symbol</h3>
+                <p className="text-2xl font-bold text-primary">$ONETAP</p>
               </div>
             </Card>
 
@@ -40,12 +49,22 @@ const Tokenomics = () => {
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Buy Tax:</span>
-                  <span className="text-xl font-bold text-primary">0%</span>
+                  <span className="text-muted-foreground">Transaction Tax:</span>
+                  <span className="text-xl font-bold text-secondary">3%</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Sell Tax:</span>
-                  <span className="text-xl font-bold text-primary">0%</span>
+                <div className="text-sm text-muted-foreground space-y-1 mt-3 pt-3 border-t border-border">
+                  <div className="flex justify-between">
+                    <span>• Development</span>
+                    <span>1%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>• Marketing</span>
+                    <span>1%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>• Liquidity Pool</span>
+                    <span>1%</span>
+                  </div>
                 </div>
               </div>
             </Card>
@@ -53,7 +72,7 @@ const Tokenomics = () => {
             <div className="p-4 bg-muted/30 border border-border rounded-lg">
               <p className="text-sm text-muted-foreground">
                 <Lock className="w-4 h-4 inline mr-2" />
-                Liquidity is locked for 1 year. Contract is renounced. No team tokens.
+                100% Fair Launch. Liquidity locked for 3 months. ERC20 standard.
               </p>
             </div>
           </div>
