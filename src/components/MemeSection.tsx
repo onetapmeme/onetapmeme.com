@@ -6,14 +6,6 @@ import { Download, Shuffle, Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 import logoImage from "@/assets/onetap_new_logo.png";
-import csgoAwp from "@/assets/meme-accessories/csgo-awp.png";
-import csgoKarambit from "@/assets/meme-accessories/csgo-karambit.png";
-import csgoUmp from "@/assets/meme-accessories/csgo-ump.png";
-import csgoAk47Pink from "@/assets/meme-accessories/csgo-ak47-pink.png";
-import csgoTerrorist from "@/assets/meme-accessories/csgo-terrorist.png";
-import csgoAk47Gold from "@/assets/meme-accessories/csgo-ak47-gold.png";
-import csgoMp7 from "@/assets/meme-accessories/csgo-mp7.png";
-import csgoLogo from "@/assets/meme-accessories/csgo-logo.png";
 import csgoM4a1 from "@/assets/meme-accessories/csgo-m4a1.png";
 import csgoAwpDragon from "@/assets/meme-accessories/csgo-awp-dragon.png";
 import csgoKarambitRainbow from "@/assets/meme-accessories/csgo-karambit-rainbow.png";
@@ -34,14 +26,6 @@ interface Background {
 }
 
 const accessories: Accessory[] = [
-  { image: csgoAwp, name: "AWP Graffiti", position: { x: 25, y: 20 }, size: 140, rotation: -25 },
-  { image: csgoKarambit, name: "Karambit Emerald", position: { x: 75, y: 25 }, size: 90, rotation: 15 },
-  { image: csgoUmp, name: "UMP-45 Primal", position: { x: 20, y: 70 }, size: 120, rotation: -10 },
-  { image: csgoAk47Pink, name: "AK-47 Neon", position: { x: 70, y: 75 }, size: 130, rotation: 20 },
-  { image: csgoTerrorist, name: "Terrorist", position: { x: 15, y: 50 }, size: 110 },
-  { image: csgoAk47Gold, name: "AK-47 Gold", position: { x: 80, y: 60 }, size: 125, rotation: -15 },
-  { image: csgoMp7, name: "MP7 Skulls", position: { x: 50, y: 30 }, size: 100 },
-  { image: csgoLogo, name: "CS:GO Logo", position: { x: 50, y: 80 }, size: 95 },
   { image: csgoM4a1, name: "M4A1 Shadow", position: { x: 30, y: 35 }, size: 120, rotation: -20 },
   { image: csgoAwpDragon, name: "AWP Dragon Lore", position: { x: 65, y: 40 }, size: 145, rotation: 10 },
   { image: csgoKarambitRainbow, name: "Karambit Doppler", position: { x: 85, y: 70 }, size: 85, rotation: -30 },
