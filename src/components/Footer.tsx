@@ -45,13 +45,14 @@ const Footer = () => {
               {[
                 { label: "Disclaimer", path: "/disclaimer" },
                 { label: "Non-Affiliation", path: "/non-affiliation" },
-                { label: "Privacy", path: "/privacy" },
+                { label: "Privacy Policy", path: "/privacy" },
                 { label: "Terms of Use", path: "/terms" },
               ].map((link) => (
                 <a
                   key={link.path}
                   href={link.path}
-                  className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors truncate px-2"
+                  title={link.label}
                 >
                   {link.label}
                 </a>
@@ -85,7 +86,7 @@ const Footer = () => {
           <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
             © 2025 $ONETAP. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground italic px-2">
+          <p className="text-xs text-muted-foreground/80 italic px-4 max-w-3xl mx-auto leading-relaxed">
             Disclaimer: $ONETAP is not affiliated with Valve Corporation or Counter-Strike. 
             This is an independent community-driven memecoin project. Cryptocurrency trading 
             involves risk. Always do your own research.

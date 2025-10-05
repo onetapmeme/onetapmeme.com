@@ -37,10 +37,10 @@ const About = () => {
             with the excitement of modern cryptocurrency. This is not just a token - it's a movement.
           </p>
           <div className="mt-6 p-4 bg-muted/30 border border-border rounded-lg max-w-2xl mx-auto">
-            <p className="text-sm text-muted-foreground italic">
-              <Shield className="w-4 h-4 inline mr-2" />
-              Disclaimer: $ONETAP is not affiliated with Valve Corporation or Counter-Strike. 
-              This is an independent community project inspired by gaming culture.
+            <p className="text-xs md:text-sm text-muted-foreground italic flex items-start gap-2">
+              <Shield className="w-4 h-4 flex-shrink-0 mt-0.5" />
+              <span>Disclaimer: $ONETAP is not affiliated with Valve Corporation or Counter-Strike. 
+              This is an independent community project inspired by gaming culture.</span>
             </p>
           </div>
         </div>

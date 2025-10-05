@@ -44,20 +44,20 @@ const Hero = () => {
             <img 
               src={logo} 
               alt="OneTap Logo" 
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 animate-float drop-shadow-[0_0_40px_rgba(22,163,224,0.8)]"
+              className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 animate-float drop-shadow-[0_0_35px_rgba(22,163,224,0.7)]"
             />
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 md:mb-6 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(22,163,224,0.5)] px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(22,163,224,0.5)] px-4">
             $ONETAP
           </h1>
 
           {/* Tagline */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground mb-3 md:mb-4 font-bold tracking-wide px-4">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground mb-3 md:mb-4 font-bold tracking-wide px-4">
             ONE SHOT, ONE OPPORTUNITY
           </p>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto px-4">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto px-4">
             The ultimate CS-inspired memecoin. Fair launch, locked liquidity, 100% community-driven.
           </p>
 

@@ -131,24 +131,24 @@ const Enter = () => {
         {/* Central Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
           {/* Logo with Glow Effect */}
-          <div className="relative mb-8 md:mb-12 animate-scale-pulse">
+          <div className="relative mb-6 md:mb-8 animate-scale-pulse">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
             <img 
               src={logoImage} 
               alt="OneTap Logo" 
-              className="relative w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-contain drop-shadow-[0_0_60px_rgba(22,163,224,0.9)] transition-transform duration-300 group-hover:scale-110"
+              className="relative w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain drop-shadow-[0_0_40px_rgba(22,163,224,0.8)] transition-transform duration-300 group-hover:scale-110"
             />
           </div>
 
           {/* Title with Glitch Effect */}
-          <div className="text-center mb-8 md:mb-12">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-accent bg-clip-text text-transparent animate-text-glow relative">
+          <div className="text-center mb-6 md:mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-3 bg-gradient-accent bg-clip-text text-transparent animate-text-glow relative">
               $ONETAP
               <div className="absolute inset-0 bg-gradient-accent bg-clip-text text-transparent opacity-50 blur-sm">
                 $ONETAP
               </div>
             </h1>
-            <p className="text-lg md:text-2xl font-bold text-foreground/90 tracking-widest">
+            <p className="text-base md:text-xl font-bold text-foreground/90 tracking-widest">
               ONE SHOT, ONE OPPORTUNITY
             </p>
           </div>

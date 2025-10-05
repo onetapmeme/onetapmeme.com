@@ -66,16 +66,20 @@ const MemeSection = () => {
     try {
       const canvas = await html2canvas(memeRef.current, {
         backgroundColor: null,
-        scale: 2,
+        scale: 3,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
       });
 
       const link = document.createElement("a");
-      link.download = "onetap-meme.png";
-      link.href = canvas.toDataURL();
+      link.download = `onetap-meme-${Date.now()}.png`;
+      link.href = canvas.toDataURL("image/png", 1.0);
       link.click();
 
-      toast.success("Meme téléchargé !");
+      toast.success("Meme téléchargé avec succès !");
     } catch (error) {
+      console.error("Download error:", error);
       toast.error("Erreur lors du téléchargement");
     }
   };
