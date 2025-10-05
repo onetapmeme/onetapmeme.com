@@ -72,32 +72,32 @@ const Roadmap = () => {
   };
 
   return (
-    <section id="roadmap" className="py-20 px-4">
+    <section id="roadmap" className="py-12 md:py-20 px-4">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
             Roadmap
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Our journey to becoming the #1 gaming memecoin
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
           {phases.map((phase, i) => (
             <Card
               key={i}
-              className={`p-6 bg-card border-2 transition-all duration-300 hover:scale-105 animate-pixel-fade ${getStatusColor(phase.status)}`}
+              className={`p-4 md:p-6 bg-card border-2 transition-all duration-300 hover:scale-105 animate-pixel-fade ${getStatusColor(phase.status)}`}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-mono text-muted-foreground">{phase.phase}</span>
+              <div className="flex items-center justify-between mb-3 md:mb-4">
+                <span className="text-xs md:text-sm font-mono text-muted-foreground">{phase.phase}</span>
                 {getStatusIcon(phase.status)}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-foreground">{phase.title}</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-foreground">{phase.title}</h3>
               <ul className="space-y-2">
                 {phase.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-2 text-muted-foreground">
+                  <li key={j} className="flex items-start gap-2 text-sm md:text-base text-muted-foreground">
                     <span className="text-primary mt-1">▸</span>
                     <span>{item}</span>
                   </li>

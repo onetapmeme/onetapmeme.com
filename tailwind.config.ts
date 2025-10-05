@@ -93,6 +93,36 @@ export default {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-pulse": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
+        "text-glow": {
+          "0%, 100%": { textShadow: "0 0 20px hsl(199 89% 48% / 0.5)" },
+          "50%": { textShadow: "0 0 40px hsl(199 89% 48% / 0.8), 0 0 60px hsl(199 89% 48% / 0.4)" },
+        },
+        "tap-pulse": {
+          "0%, 100%": { transform: "scale(1)", boxShadow: "0 0 20px hsl(199 89% 48% / 0.3)" },
+          "50%": { transform: "scale(1.03)", boxShadow: "0 0 40px hsl(199 89% 48% / 0.6)" },
+        },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "explosive-flash": {
+          "0%": { opacity: "1", filter: "brightness(1)" },
+          "20%": { opacity: "1", filter: "brightness(3) saturate(2)" },
+          "50%": { opacity: "0.9", filter: "brightness(4) saturate(3) blur(2px)" },
+          "100%": { opacity: "0", filter: "brightness(5) saturate(4) blur(10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -101,7 +131,14 @@ export default {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "pixel-fade": "pixel-fade 0.5s ease-out",
         "fade-out": "fade-out 0.5s ease-out",
+        "fade-in": "fade-in 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
+        "scale-pulse": "scale-pulse 2s ease-in-out infinite",
+        "text-glow": "text-glow 2s ease-in-out infinite",
+        "tap-pulse": "tap-pulse 1.5s ease-in-out infinite",
+        "spin-slow": "spin-slow 3s linear infinite",
+        "fade-in-up": "fade-in-up 0.6s ease-out",
+        "explosive-flash": "explosive-flash 0.8s ease-out forwards",
       },
     },
   },

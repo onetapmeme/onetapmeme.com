@@ -7,52 +7,52 @@ const Tokenomics = () => {
   ];
 
   return (
-    <section id="tokenomics" className="py-20 px-4 bg-card/30">
+    <section id="tokenomics" className="py-12 md:py-20 px-4 bg-card/30">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-gold bg-clip-text text-transparent">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-gold bg-clip-text text-transparent">
             Tokenomics
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Simple, transparent, and designed for sustainable growth
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
           {/* Token Info */}
-          <div className="space-y-6">
-            <Card className="p-6 bg-card border-2 border-primary/30">
-              <div className="flex items-center gap-4 mb-4">
-                <Lock className="w-8 h-8 text-primary" />
+          <div className="space-y-4 md:space-y-6">
+            <Card className="p-4 md:p-6 bg-card border-2 border-primary/30">
+              <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+                <Lock className="w-6 h-6 md:w-8 md:h-8 text-primary" />
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground">Total Supply</h3>
-                  <p className="text-3xl font-bold text-primary">100,000,000</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground">Total Supply</h3>
+                  <p className="text-2xl md:text-3xl font-bold text-primary">100,000,000</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 bg-card border-2 border-primary/30">
-              <div className="mb-4">
-                <h3 className="text-xl font-bold text-foreground mb-2">Network</h3>
-                <p className="text-2xl font-bold text-primary">Base</p>
+            <Card className="p-4 md:p-6 bg-card border-2 border-primary/30">
+              <div className="mb-3 md:mb-4">
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">Network</h3>
+                <p className="text-xl md:text-2xl font-bold text-primary">Base</p>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-foreground mb-2">Symbol</h3>
-                <p className="text-2xl font-bold text-primary">$ONETAP</p>
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">Symbol</h3>
+                <p className="text-xl md:text-2xl font-bold text-primary">$ONETAP</p>
               </div>
             </Card>
 
-            <Card className="p-6 bg-card border-2 border-secondary/30">
-              <h3 className="text-xl font-bold mb-4 text-foreground flex items-center gap-2">
-                <Flame className="w-6 h-6 text-secondary" />
+            <Card className="p-4 md:p-6 bg-card border-2 border-secondary/30">
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground flex items-center gap-2">
+                <Flame className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
                 Tax Structure
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Transaction Tax:</span>
-                  <span className="text-xl font-bold text-secondary">3%</span>
+                  <span className="text-sm md:text-base text-muted-foreground">Transaction Tax:</span>
+                  <span className="text-lg md:text-xl font-bold text-secondary">3%</span>
                 </div>
-                <div className="text-sm text-muted-foreground space-y-1 mt-3 pt-3 border-t border-border">
+                <div className="text-xs md:text-sm text-muted-foreground space-y-1 mt-3 pt-3 border-t border-border">
                   <div className="flex justify-between">
                     <span>• Development</span>
                     <span>1%</span>
@@ -69,30 +69,30 @@ const Tokenomics = () => {
               </div>
             </Card>
 
-            <div className="p-4 bg-muted/30 border border-border rounded-lg">
-              <p className="text-sm text-muted-foreground">
-                <Lock className="w-4 h-4 inline mr-2" />
+            <div className="p-3 md:p-4 bg-muted/30 border border-border rounded-lg">
+              <p className="text-xs md:text-sm text-muted-foreground">
+                <Lock className="w-3 h-3 md:w-4 md:h-4 inline mr-2" />
                 100% Fair Launch. Liquidity locked for 3 months. ERC20 standard.
               </p>
             </div>
           </div>
 
           {/* Distribution */}
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             {distribution.map((item, i) => (
               <Card
                 key={i}
-                className="p-6 bg-card border-2 border-primary/20 hover:border-primary transition-all duration-300 animate-pixel-fade"
+                className="p-4 md:p-6 bg-card border-2 border-primary/20 hover:border-primary transition-all duration-300 animate-pixel-fade"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <item.icon className={`w-8 h-8 ${item.color}`} />
-                    <span className="text-lg font-bold text-foreground">{item.label}</span>
+                <div className="flex items-center justify-between mb-2 md:mb-3">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <item.icon className={`w-6 h-6 md:w-8 md:h-8 ${item.color}`} />
+                    <span className="text-base md:text-lg font-bold text-foreground">{item.label}</span>
                   </div>
-                  <span className="text-2xl font-bold text-primary">{item.percentage}%</span>
+                  <span className="text-xl md:text-2xl font-bold text-primary">{item.percentage}%</span>
                 </div>
-                <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
+                <div className="w-full bg-muted rounded-full h-2 md:h-3 overflow-hidden">
                   <div
                     className="h-full bg-gradient-accent rounded-full transition-all duration-1000"
                     style={{ width: `${item.percentage}%` }}
