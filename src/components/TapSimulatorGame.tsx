@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Trophy, Sparkles, TrendingUp, LogIn, Save, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
@@ -39,6 +40,20 @@ const ranks: Rank[] = [
   { name: "SUPREME MASTER FIRST CLASS", nameFr: "MAÎTRE SUPRÊME PREMIÈRE CLASSE", threshold: 50000, color: "text-red-600", drop: { name: "Supreme Dragon Lore", icon: "🐉", rarity: "Mythic" } },
   { name: "THE GLOBAL ELITE", nameFr: "ÉLITE MONDIALE", threshold: 100000, color: "text-purple-500", drop: { name: "OneTap Memecoin NFT", icon: "💎", rarity: "Legendary+" } }
 ];
+
+// Validation schemas for security
+const progressSchema = z.object({
+  xp: z.number().int().min(0).max(10000000),
+  clicks: z.number().int().min(0).max(100000000),
+  current_rank_index: z.number().int().min(0).max(ranks.length - 1)
+});
+
+const dropSchema = z.object({
+  drop_name: z.string().min(1).max(200),
+  drop_icon: z.string().min(1).max(10),
+  drop_rarity: z.string().min(1).max(50),
+  rank_name: z.string().min(1).max(100)
+});
 
 // Color tiers after Global Elite
 const getColorTier = (xp: number) => {
@@ -131,13 +146,28 @@ const TapSimulatorGame = () => {
     
     setSaving(true);
     try {
+      // Validate progress data before saving
+      const validation = progressSchema.safeParse({
+        xp,
+        clicks,
+        current_rank_index: currentRankIndex
+      });
+
+      if (!validation.success) {
+        console.error('Invalid progress data:', validation.error);
+        toast({
+          title: "Validation failed",
+          description: "Unable to save progress due to invalid data",
+          variant: "destructive",
+        });
+        return;
+      }
+
       const { error } = await supabase
         .from('player_progress')
         .upsert({
           user_id: user.id,
-          xp,
-          clicks,
-          current_rank_index: currentRankIndex,
+          ...validation.data,
           updated_at: new Date().toISOString()
         }, {
           onConflict: 'user_id'
@@ -160,14 +190,27 @@ const TapSimulatorGame = () => {
     if (!user) return;
     
     try {
+      // Validate drop data before saving
+      const validation = dropSchema.safeParse({
+        drop_name: drop.name,
+        drop_icon: drop.icon,
+        drop_rarity: drop.rarity,
+        rank_name: rankName
+      });
+
+      if (!validation.success) {
+        console.error('Invalid drop data:', validation.error);
+        return;
+      }
+
       const { error } = await supabase
         .from('player_inventory')
         .insert({
           user_id: user.id,
-          drop_name: drop.name,
-          drop_icon: drop.icon,
-          drop_rarity: drop.rarity,
-          rank_name: rankName
+          drop_name: validation.data.drop_name,
+          drop_icon: validation.data.drop_icon,
+          drop_rarity: validation.data.drop_rarity,
+          rank_name: validation.data.rank_name
         });
 
       if (error) throw error;
