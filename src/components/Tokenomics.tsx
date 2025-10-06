@@ -110,6 +110,50 @@ const Tokenomics = () => {
               </div>
             </Card>
 
+            <Card className="p-4 md:p-6 bg-card border-2 border-green-500/30">
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground flex items-center gap-2">
+                <Lock className="w-5 h-5 md:w-6 md:h-6 text-green-500" />
+                Security & Transparency
+              </h3>
+              <div className="space-y-3 text-xs md:text-sm">
+                <div className="flex items-start gap-2">
+                  <span className="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <p className="font-semibold text-foreground">LP Locked 3 Months</p>
+                    <p className="text-muted-foreground">Liquidity pool secured until {new Date(Date.now() + 90*24*60*60*1000).toLocaleDateString()}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <p className="font-semibold text-foreground">Contract Verified</p>
+                    <p className="text-muted-foreground">Publicly auditable on BaseScan</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <p className="font-semibold text-foreground">Multi-Sig Wallet</p>
+                    <p className="text-muted-foreground">2/3 signatures required for dev/marketing funds</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <p className="font-semibold text-foreground">Timelock Protection</p>
+                    <p className="text-muted-foreground">Reserved tokens locked with transparent release schedule</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <p className="font-semibold text-foreground">Renounced Functions</p>
+                    <p className="text-muted-foreground">No mint, no blacklist, taxes immutable</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
             {/* Contract Address */}
             <Card className="p-4 md:p-6 bg-card border-2 border-primary/30">
               <h3 className="text-base md:text-lg font-bold text-foreground mb-3">{t('tokenomics.contract')}</h3>

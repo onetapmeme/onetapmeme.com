@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { MessageCircle, Twitter, Hash, Github, BookOpen, Users } from 'lucide-react';
+import { MessageCircle, Twitter, Hash, Github, BookOpen, Users, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -74,6 +74,52 @@ const Community = () => {
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             {t('community.subtitle')}
           </p>
+        </div>
+
+        {/* Community Roles & XP System */}
+        <div className="mb-12 max-w-4xl mx-auto">
+          <Card className="p-6 md:p-8 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-2 border-primary/30">
+            <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Join the Onetappers</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-gradient-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-foreground mb-1">Commanders</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Community moderators and information relays. Help newcomers and maintain a positive environment.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-gradient-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl">🎨</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-foreground mb-1">Snipers</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Creative content creators. Design memes, graphics, and visual content to spread the word.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-card/50 rounded-lg p-4 border border-primary/20">
+              <div className="flex items-center gap-3 mb-2">
+                <TrendingUp className="w-5 h-5 text-secondary" />
+                <h4 className="font-bold text-foreground">XP & Rewards System</h4>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3">
+                Earn XP by participating in the community, creating content, and engaging with other members. 
+                Level up to unlock exclusive drops and future airdrops!
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-primary/20 text-primary text-xs font-semibold rounded-full">Telegram Bot Integration</span>
+                <span className="px-3 py-1 bg-secondary/20 text-secondary text-xs font-semibold rounded-full">Leaderboards</span>
+                <span className="px-3 py-1 bg-accent/20 text-accent text-xs font-semibold rounded-full">Exclusive Airdrops</span>
+              </div>
+            </div>
+          </Card>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

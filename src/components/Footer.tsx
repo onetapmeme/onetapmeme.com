@@ -55,6 +55,7 @@ const Footer = () => {
                 { label: t('footer.nonAffiliation'), path: "/non-affiliation" },
                 { label: t('footer.privacy'), path: "/privacy" },
                 { label: t('footer.terms'), path: "/terms" },
+                { label: t('footer.legalNotice'), path: "/legal-notice" },
               ].map((link) => (
                 <a
                   key={link.path}
