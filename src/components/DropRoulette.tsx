@@ -20,6 +20,28 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
   const [showDrop, setShowDrop] = useState(false);
   const musicMainRef = useRef<HTMLAudioElement | null>(null);
   const musicEpicRef = useRef<HTMLAudioElement | null>(null);
+
+  // Helper: fade out audio smoothly
+  const fadeOutAudio = (audio: HTMLAudioElement, duration = 300) => {
+    return new Promise<void>((resolve) => {
+      const startVol = audio.volume;
+      const start = performance.now();
+      const step = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        audio.volume = startVol * (1 - progress);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+          audio.volume = startVol; // reset for next time
+          resolve();
+        }
+      };
+      requestAnimationFrame(step);
+    });
+  };
   
   // Générer une liste d'items aléatoires pour l'effet de roulette
   const generateRouletteItems = () => {
@@ -115,18 +137,18 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
         setTimeout(() => {
           setIsSpinning(false);
           
-          // Arrêter le son principal et jouer le son épique
-          if (musicMainRef.current) {
-            musicMainRef.current.pause();
-            musicMainRef.current.currentTime = 0;
-          }
-          
-          musicEpicRef.current = new Audio('/sounds/music_epic.wav');
-          musicEpicRef.current.volume = 0.7;
-          musicEpicRef.current.play().catch(console.error);
-          
-          // Afficher l'animation de drop après un court délai
-          setTimeout(() => setShowDrop(true), 300);
+          // Fade-out en douceur de la musique principale puis lancement de l'epic
+          const doAudio = async () => {
+            if (musicMainRef.current) {
+              try { await fadeOutAudio(musicMainRef.current, 300); } catch {}
+            }
+            musicEpicRef.current = new Audio('/sounds/music_epic.wav');
+            musicEpicRef.current.volume = 0.7;
+            musicEpicRef.current.play().catch(console.error);
+            // Afficher l'animation de drop après un court délai
+            setTimeout(() => setShowDrop(true), 300);
+          };
+          doAudio();
         }, 200);
       }
     };
@@ -242,7 +264,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
               <div className="mb-8">
                 <div 
                   className={`text-7xl mb-5 transition-all duration-700 ${
-                    showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+                    showDrop ? 'animate-enter' : 'opacity-0 scale-50'
                   }`}
                 >
                   {drop.icon.includes('.png') ? '🎁' : drop.icon}
@@ -250,14 +272,14 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
                 
                 <div 
                   className={`text-white font-black text-4xl mb-4 transition-all duration-700 delay-150 ${
-                    showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+                    showDrop ? 'animate-enter' : 'opacity-0 scale-50'
                   }`}
                 >
                   {drop.name}
                 </div>
                 
                 <div className={`inline-block px-8 py-3 rounded-full bg-gradient-to-r ${getRarityColor(drop.rarity)} text-white font-bold text-lg shadow-[0_0_30px_rgba(255,215,0,0.5)] transition-all duration-700 delay-300 ${
-                  showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+                  showDrop ? 'animate-enter' : 'opacity-0 scale-50'
                 }`}>
                   ✨ {drop.rarity} ✨
                 </div>

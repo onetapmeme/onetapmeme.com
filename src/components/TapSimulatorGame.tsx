@@ -235,7 +235,6 @@ const TapSimulatorGame = () => {
       setCurrentRankIndex(newRankIndex);
       setNewDrop(nextRank.drop);
       setShowDrop(true);
-      setTimeout(() => setShowDrop(false), 3000);
       
       // Save drop to inventory if user is logged in
       if (user) {
@@ -331,12 +330,13 @@ const TapSimulatorGame = () => {
       <Button
         onClick={handleClick}
         size="lg"
+        disabled={showDrop}
         className={`w-full h-24 text-2xl font-bold bg-gradient-accent hover:shadow-glow-primary transition-all relative overflow-hidden ${
           clickAnimation ? 'scale-95' : 'scale-100'
         }`}
       >
         <Sparkles className="w-6 h-6 absolute top-2 left-2 animate-pulse" />
-        <span>TAP TO EARN</span>
+        <span>{showDrop ? 'DROP IN PROGRESS...' : 'TAP TO EARN'}</span>
         <TrendingUp className="w-6 h-6 absolute bottom-2 right-2 animate-bounce" />
       </Button>
 
