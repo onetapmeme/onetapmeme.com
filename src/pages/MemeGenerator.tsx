@@ -6,6 +6,7 @@ import { ArrowLeft, Download, Shuffle } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 import logoImage from "@/assets/onetap_new_logo.png";
+import TapSimulatorGame from "@/components/TapSimulatorGame";
 
 interface Accessory {
   emoji: string;
@@ -230,6 +231,11 @@ const MemeGenerator = () => {
               </ul>
             </Card>
           </div>
+        </div>
+
+        {/* Tap to Earn Game */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <TapSimulatorGame />
         </div>
       </div>
     </div>

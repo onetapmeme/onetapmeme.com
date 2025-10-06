@@ -29,7 +29,7 @@ const Community = () => {
       icon: Instagram,
       name: 'Instagram',
       description: 'Check out our visual content and stories',
-      url: 'https://instagram.com/onetapmeme',
+      url: 'https://www.instagram.com/onetapmeme',
       color: 'text-[#E4405F]',
       bgColor: 'bg-[#E4405F]/10',
     },
@@ -43,19 +43,11 @@ const Community = () => {
     },
     {
       icon: MessageCircle,
-      name: t('community.telegram'),
-      description: t('community.telegramText'),
-      url: 'https://t.me/onetap_official',
-      color: 'text-[#0088cc]',
-      bgColor: 'bg-[#0088cc]/10',
-    },
-    {
-      icon: Hash,
-      name: t('community.discord'),
-      description: t('community.discordText'),
-      url: 'https://discord.gg/onetap',
-      color: 'text-[#5865F2]',
-      bgColor: 'bg-[#5865F2]/10',
+      name: 'Reddit',
+      description: 'Join our Reddit community for discussions',
+      url: 'https://www.reddit.com/user/ManySingle7170',
+      color: 'text-[#FF4500]',
+      bgColor: 'bg-[#FF4500]/10',
     },
   ];
 

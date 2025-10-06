@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logoImage from "@/assets/onetap_new_logo.png";
 import tap2enterBg from "@/assets/tap2enter.png";
-import { Shield, ArrowRight } from "lucide-react";
+import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import TapSimulatorGame from "@/components/TapSimulatorGame";
 
 const Enter = () => {
   const navigate = useNavigate();
@@ -130,33 +129,24 @@ const Enter = () => {
           </div>
 
           {/* Title */}
-          <div className="text-center mb-4">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-2 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(22,163,224,0.6)]">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(22,163,224,0.6)]">
               {t('enter.title')}
             </h1>
-            <p className="text-sm md:text-lg font-bold text-foreground/90 tracking-wider">
+            <p className="text-sm md:text-lg font-bold text-foreground/90 tracking-wider mb-8">
               {t('enter.subtitle')}
             </p>
+
+            {/* Single Tap to Click Button */}
+            <Button
+              onClick={handleClick}
+              disabled={showPrivacy}
+              size="lg"
+              className="text-2xl md:text-4xl font-black py-8 px-12 rounded-2xl bg-gradient-accent hover:shadow-glow-primary transition-all hover:scale-105 animate-pulse"
+            >
+              TAP TO CLICK
+            </Button>
           </div>
-        </div>
-
-        {/* Tap Simulator Game */}
-        <div className="relative z-20 px-4 pb-6">
-          <TapSimulatorGame />
-        </div>
-
-        {/* Bottom Enter Button - More Professional */}
-        <div className="relative z-20 px-4 pb-8">
-          <Button
-            onClick={handleClick}
-            disabled={showPrivacy}
-            variant="outline"
-            size="lg"
-            className="w-full max-w-md mx-auto block border-2 border-primary/60 hover:border-primary hover:bg-primary/10 transition-all group"
-          >
-            <span className="text-base font-semibold">Continue to Site</span>
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
         </div>
 
         {/* Floating Particles */}
