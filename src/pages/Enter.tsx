@@ -7,24 +7,22 @@ import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-
 const Enter = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const {
+    t
+  } = useTranslation();
   const [showPrivacy, setShowPrivacy] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
   useEffect(() => {
     // Preload audio
     audioRef.current = new Audio("/sounds/explosion.wav");
     audioRef.current.preload = "auto";
   }, []);
-
   const handleAcceptPrivacy = () => {
     setShowPrivacy(false);
   };
-
   const handleClick = () => {
     if (isClicked || showPrivacy) return;
     setIsClicked(true);
@@ -40,14 +38,11 @@ const Enter = () => {
       navigate("/home");
     }, 800);
   };
-
-  return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+  return <div className="min-h-screen bg-background relative overflow-hidden">
       <LanguageSwitcher />
       
       {/* Privacy Notice Modal - Shows First */}
-      {showPrivacy && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-background/98 backdrop-blur-lg animate-fade-in">
+      {showPrivacy && <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-background/98 backdrop-blur-lg animate-fade-in">
           <Card className="max-w-2xl w-full p-6 md:p-8 border-2 border-primary/30 bg-gradient-card shadow-glow-primary animate-scale-in">
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-6 h-6 md:w-8 md:h-8 text-primary animate-pulse" />
@@ -86,46 +81,32 @@ const Enter = () => {
               </p>
             </div>
             
-            <Button 
-              onClick={handleAcceptPrivacy}
-              className="w-full bg-gradient-accent hover:shadow-glow-primary transition-all text-base md:text-lg font-bold py-5 md:py-6"
-            >
+            <Button onClick={handleAcceptPrivacy} className="w-full bg-gradient-accent hover:shadow-glow-primary transition-all text-base md:text-lg font-bold py-5 md:py-6">
               {t('enter.understand')}
             </Button>
           </Card>
-        </div>
-      )}
+        </div>}
 
       {/* Main Enter Screen */}
-      <div 
-        className={`min-h-screen relative transition-all duration-700 ${
-          isClicked ? "animate-explosive-flash" : ""
-        } ${showPrivacy ? "pointer-events-none opacity-30 blur-sm scale-95" : ""}`}
-      >
+      <div className={`min-h-screen relative transition-all duration-700 ${isClicked ? "animate-explosive-flash" : ""} ${showPrivacy ? "pointer-events-none opacity-30 blur-sm scale-95" : ""}`}>
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <img 
-            src={tap2enterBg} 
-            alt="Tap2Enter Background" 
-            className="w-full h-full object-cover opacity-50"
-          />
+          <img src={tap2enterBg} alt="Tap2Enter Background" className="w-full h-full object-cover opacity-50" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/90"></div>
         </div>
 
         {/* Animated Corner Accents */}
         <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 border-t-4 border-l-4 border-primary/30 animate-pulse z-10"></div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 border-b-4 border-r-4 border-primary/30 animate-pulse z-10" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 border-b-4 border-r-4 border-primary/30 animate-pulse z-10" style={{
+        animationDelay: '0.5s'
+      }}></div>
 
         {/* Central Content - Logo & Title */}
         <div className="relative z-20 flex flex-col items-center justify-center min-h-[50vh] px-4 pt-20 pb-4">
           {/* Logo with Glow Effect */}
           <div className="relative mb-6 animate-scale-pulse">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
-            <img 
-              src={logoImage} 
-              alt="OneTap Logo" 
-              className="relative w-32 h-32 md:w-44 md:h-44 object-contain drop-shadow-[0_0_40px_rgba(22,163,224,0.8)]"
-            />
+            <img src={logoImage} alt="OneTap Logo" className="relative w-32 h-32 md:w-44 md:h-44 object-contain drop-shadow-[0_0_40px_rgba(22,163,224,0.8)]" />
           </div>
 
           {/* Title */}
@@ -138,31 +119,18 @@ const Enter = () => {
             </p>
 
             {/* Single Tap to Click Button */}
-            <Button
-              onClick={handleClick}
-              disabled={showPrivacy}
-              size="lg"
-              className="text-2xl md:text-4xl font-black py-8 px-12 rounded-2xl bg-gradient-accent hover:shadow-glow-primary transition-all hover:scale-105 animate-pulse"
-            >
-              TAP TO CLICK
-            </Button>
+            <Button onClick={handleClick} disabled={showPrivacy} size="lg" className="text-2xl bg-gradient-accent hover:shadow-glow-primary transition-all hover:scale-105 animate-pulse py-[3px] mx-0 px-[22px] md:text-sm text-slate-100 text-left rounded font-bold">TAP TO ENTER</Button>
           </div>
         </div>
 
         {/* Floating Particles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-          {[...Array(15)].map((_, i) => (
-            <div 
-              key={i}
-              className="absolute w-1 h-1 bg-primary rounded-full animate-float opacity-20"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
-            />
-          ))}
+          {[...Array(15)].map((_, i) => <div key={i} className="absolute w-1 h-1 bg-primary rounded-full animate-float opacity-20" style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 3}s`,
+          animationDuration: `${2 + Math.random() * 3}s`
+        }} />)}
         </div>
 
         {/* Bottom Hint */}
@@ -172,8 +140,6 @@ const Enter = () => {
           </p>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Enter;
