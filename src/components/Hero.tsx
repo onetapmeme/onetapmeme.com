@@ -108,12 +108,12 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              background: 'linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 25%, hsl(var(--primary)) 50%, hsl(var(--accent)) 75%, hsl(var(--primary)) 100%)',
-              backgroundSize: '200% 100%',
+              background: 'linear-gradient(90deg, hsl(199, 89%, 48%) 0%, hsl(280, 70%, 60%) 20%, hsl(199, 89%, 48%) 40%, hsl(280, 70%, 60%) 60%, hsl(199, 89%, 48%) 80%, hsl(280, 70%, 60%) 100%)',
+              backgroundSize: '300% 100%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              animation: 'gradient-flow 4s linear infinite',
+              animation: 'gradient-flow 12s linear infinite',
             }}
           >
             {t('hero.title')}
