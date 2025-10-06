@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { Shield, Users, Rocket, Lock, Target, TrendingUp } from "lucide-react";
+import { Shield, Users, Rocket, Lock, Target } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 
 const About = () => {
   const { t } = useTranslation();
-  const { ref, isRevealed } = useScrollReveal();
+  const { ref, isVisible } = useScrollAnimation();
 
   const features = [
     {
@@ -34,70 +35,96 @@ const About = () => {
     <section 
       id="about" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-background via-muted/20 to-background section-slide-left reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className="py-24 md:py-40 px-4 relative overflow-hidden"
+      style={{ background: 'var(--gradient-section)' }}
     >
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 md:mb-16 animate-pixel-fade">
-          <Shield className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
+      {/* Ambient glow */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px]" />
+      </div>
+
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <motion.div 
+          className="text-center mb-20 md:mb-28"
+          initial={{ opacity: 0, y: 60 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={isVisible ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Shield className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-8 text-primary" 
+              style={{ filter: 'drop-shadow(0 0 40px currentColor)' }} 
+            />
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+            style={{ backgroundSize: '200%', animation: 'shimmer 3s linear infinite' }}>
             {t('about.title')}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 px-4">
+          <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
             {t('about.subtitle')}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Story Section */}
-        <div className="mb-12 md:mb-16 max-w-4xl mx-auto">
-          <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-2 border-primary/30">
-            <div className="space-y-4 text-muted-foreground">
-              <p className="text-base md:text-lg leading-relaxed">
+        {/* Story Section - Split Layout */}
+        <motion.div 
+          className="mb-20 md:mb-28 max-w-5xl mx-auto"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
+          <Card className="glass-effect p-8 md:p-12 rounded-3xl border-primary/20 hover:border-primary/40 transition-all duration-500">
+            <div className="space-y-6 text-muted-foreground">
+              <p className="text-lg md:text-xl leading-relaxed">
                 {t('about.story')}
               </p>
-              <p className="text-base md:text-lg leading-relaxed">
+              <p className="text-lg md:text-xl leading-relaxed">
                 {t('about.story2')}
               </p>
             </div>
           </Card>
-        </div>
+        </motion.div>
 
-        {/* Mission & Vision */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12 md:mb-16">
-          <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-2 border-secondary/30 hover:border-secondary/50 transition-all group pixel-border">
-            <TrendingUp className="w-10 h-10 md:w-12 md:h-12 text-secondary mb-4 icon-float icon-glow" />
-            <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground">{t('about.mission')}</h3>
-            <p className="text-muted-foreground leading-relaxed">{t('about.missionText')}</p>
-          </Card>
-          
-          <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-2 border-primary/30 hover:border-primary/50 transition-all group pixel-border">
-            <Rocket className="w-10 h-10 md:w-12 md:h-12 text-primary mb-4 icon-float icon-glow" />
-            <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground">{t('about.vision')}</h3>
-            <p className="text-muted-foreground leading-relaxed">{t('about.visionText')}</p>
-          </Card>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+        {/* Features Grid - Premium Cards */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          initial={{ opacity: 0 }}
+          animate={isVisible ? { opacity: 1 } : {}}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
           {features.map((feature, i) => (
-            <Card
+            <motion.div
               key={i}
-              className="p-5 md:p-6 bg-card border-2 border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-glow-primary group animate-pixel-fade pixel-border"
-              style={{ animationDelay: `${i * 0.1}s` }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.7 + i * 0.1 }}
             >
-              <feature.icon className="w-10 h-10 md:w-12 md:h-12 text-primary mb-4 icon-glow group-hover:icon-pulse-slow transition-transform" />
-              <h3 className="text-lg md:text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
-            </Card>
+              <Card className="glass-effect p-6 md:p-8 rounded-2xl border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 group h-full">
+                <feature.icon className="w-12 h-12 md:w-14 md:h-14 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" 
+                  style={{ filter: 'drop-shadow(0 0 20px currentColor)' }} 
+                />
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground">{feature.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Disclaimer */}
-        <div className="mt-8 p-4 bg-muted/30 border border-border rounded-lg max-w-3xl mx-auto">
-          <p className="text-xs md:text-sm text-muted-foreground italic flex items-start gap-2">
-            <Shield className="w-4 h-4 flex-shrink-0 mt-0.5" />
+        <motion.div 
+          className="mt-16 p-6 glass-effect rounded-2xl border-muted/20 max-w-3xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={isVisible ? { opacity: 1 } : {}}
+          transition={{ duration: 1, delay: 1.2 }}
+        >
+          <p className="text-sm md:text-base text-muted-foreground italic flex items-start gap-3">
+            <Shield className="w-5 h-5 flex-shrink-0 mt-0.5 text-primary" />
             <span>{t('about.disclaimerNote')}</span>
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
