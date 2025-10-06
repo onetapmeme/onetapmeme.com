@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logoImage from "@/assets/onetap_new_logo.png";
 import tap2enterBg from "@/assets/tap2enter.png";
+import tap2enterMobile from "@/assets/tap2enter-mobile.png";
 import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -103,7 +104,19 @@ const Enter = () => {
       >
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <img src={tap2enterBg} alt="Tap2Enter Background" className="w-full h-full object-cover opacity-50" />
+          {/* Desktop background */}
+          <img 
+            src={tap2enterBg} 
+            alt="Tap2Enter Background" 
+            className="hidden md:block w-full h-full object-cover object-center opacity-50" 
+            style={{ objectPosition: 'center', transform: 'scale(0.85)' }}
+          />
+          {/* Mobile/Tablet background */}
+          <img 
+            src={tap2enterMobile} 
+            alt="Tap2Enter Background" 
+            className="md:hidden w-full h-full object-cover object-center opacity-50" 
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/90"></div>
         </div>
 
