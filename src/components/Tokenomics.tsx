@@ -23,19 +23,19 @@ const Tokenomics = () => {
       icon: Shield,
       title: t('tokenomics.antiWhale'),
       description: t('tokenomics.antiWhaleText'),
-      color: "text-green-500"
+      color: "text-primary"
     },
     {
       icon: TrendingDown,
       title: t('tokenomics.burnMechanism'),
       description: t('tokenomics.burnMechanismText'),
-      color: "text-orange-500"
+      color: "text-accent"
     },
     {
       icon: Coins,
       title: t('tokenomics.rewards'),
       description: t('tokenomics.rewardsText'),
-      color: "text-yellow-500"
+      color: "text-primary"
     }
   ];
 
@@ -43,15 +43,28 @@ const Tokenomics = () => {
     <section 
       id="tokenomics" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 bg-gradient-to-br from-card/50 via-secondary/5 to-card/50 section-slide-right reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-20 md:py-32 px-4 relative overflow-hidden section-slide-right reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      style={{
+        background: 'radial-gradient(ellipse at top, hsl(220, 30%, 12%) 0%, hsl(220, 25%, 6%) 50%, hsl(220, 25%, 6%) 100%)'
+      }}
     >
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 md:mb-16 animate-pixel-fade">
-          <Coins className="w-16 h-16 mx-auto mb-6 text-secondary icon-float icon-glow" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-gold bg-clip-text text-transparent">
+          <Coins className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
+          <h2 
+            className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6"
+            style={{
+              background: 'linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 25%, hsl(var(--primary)) 50%, hsl(var(--accent)) 75%, hsl(var(--primary)) 100%)',
+              backgroundSize: '200% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'gradient-flow 4s linear infinite',
+            }}
+          >
             {t('tokenomics.title')}
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto px-4">
+          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto px-4 leading-relaxed">
             {t('tokenomics.subtitle')}
           </p>
         </div>
@@ -59,90 +72,90 @@ const Tokenomics = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start max-w-6xl mx-auto mb-12">
           {/* Token Info */}
           <div className="space-y-4 md:space-y-6">
-            <Card className="p-4 md:p-6 bg-card border-2 border-primary/30">
-              <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-                <Lock className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+            <Card className="p-6 md:p-8 glass-effect border-2 border-primary/30 hover:border-primary/50 transition-all duration-500 group">
+              <div className="flex items-center gap-3 md:gap-4">
+                <Lock className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-foreground">{t('tokenomics.totalSupply')}</h3>
-                  <p className="text-2xl md:text-3xl font-bold text-primary">100,000,000</p>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{t('tokenomics.totalSupply')}</h3>
+                  <p className="text-3xl md:text-4xl font-bold text-primary">100,000,000</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-4 md:p-6 bg-card border-2 border-primary/30">
-              <div className="mb-3 md:mb-4">
-                <h3 className="text-base md:text-lg font-bold text-foreground mb-2">{t('tokenomics.network')}</h3>
-                <p className="text-xl md:text-2xl font-bold text-primary">Base</p>
+            <Card className="p-6 md:p-8 glass-effect border-2 border-primary/30 hover:border-primary/50 transition-all duration-500">
+              <div className="mb-4 md:mb-6">
+                <h3 className="text-base md:text-lg font-bold text-muted-foreground mb-2">{t('tokenomics.network')}</h3>
+                <p className="text-2xl md:text-3xl font-bold text-primary">Base</p>
               </div>
               <div>
-                <h3 className="text-base md:text-lg font-bold text-foreground mb-2">{t('tokenomics.symbol')}</h3>
-                <p className="text-xl md:text-2xl font-bold text-primary">$ONETAP</p>
+                <h3 className="text-base md:text-lg font-bold text-muted-foreground mb-2">{t('tokenomics.symbol')}</h3>
+                <p className="text-2xl md:text-3xl font-bold text-primary">$ONETAP</p>
               </div>
             </Card>
 
-            <Card className="p-4 md:p-6 bg-card border-2 border-secondary/30">
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground flex items-center gap-2">
-                <Flame className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
+            <Card className="p-6 md:p-8 glass-effect border-2 border-accent/30 hover:border-accent/50 transition-all duration-500">
+              <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-foreground flex items-center gap-2">
+                <Flame className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                 {t('tokenomics.tax')}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-sm md:text-base text-muted-foreground">{t('tokenomics.transactionTax')}</span>
-                  <span className="text-lg md:text-xl font-bold text-secondary">3%</span>
+                  <span className="text-2xl md:text-3xl font-bold text-accent">3%</span>
                 </div>
-                <div className="text-xs md:text-sm text-muted-foreground space-y-1 mt-3 pt-3 border-t border-border">
-                  <div className="flex justify-between">
+                <div className="text-xs md:text-sm text-muted-foreground space-y-2 mt-4 pt-4 border-t border-border">
+                  <div className="flex justify-between items-center">
                     <span>{t('tokenomics.development')}</span>
-                    <span>1%</span>
+                    <span className="text-base font-semibold text-foreground">1%</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span>{t('tokenomics.marketing')}</span>
-                    <span>1%</span>
+                    <span className="text-base font-semibold text-foreground">1%</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span>{t('tokenomics.liquidity')}</span>
-                    <span>1%</span>
+                    <span className="text-base font-semibold text-foreground">1%</span>
                   </div>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-4 md:p-6 bg-card border-2 border-green-500/30">
+            <Card className="p-4 md:p-6 glass-effect border-2 border-primary/30 hover:border-primary/50 transition-all duration-500">
               <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground flex items-center gap-2">
-                <Lock className="w-5 h-5 md:w-6 md:h-6 text-green-500" />
+                <Lock className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                 Security & Transparency
               </h3>
               <div className="space-y-3 text-xs md:text-sm">
                 <div className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">✓</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <div>
                     <p className="font-semibold text-foreground">LP Locked 3 Months</p>
                     <p className="text-muted-foreground">Liquidity pool secured until {new Date(Date.now() + 90*24*60*60*1000).toLocaleDateString()}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">✓</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <div>
                     <p className="font-semibold text-foreground">Contract Verified</p>
                     <p className="text-muted-foreground">Publicly auditable on BaseScan</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">✓</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <div>
                     <p className="font-semibold text-foreground">Multi-Sig Wallet</p>
                     <p className="text-muted-foreground">2/3 signatures required for dev/marketing funds</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">✓</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <div>
                     <p className="font-semibold text-foreground">Timelock Protection</p>
                     <p className="text-muted-foreground">Reserved tokens locked with transparent release schedule</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">✓</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <div>
                     <p className="font-semibold text-foreground">Renounced Functions</p>
                     <p className="text-muted-foreground">No mint, no blacklist, taxes immutable</p>
@@ -152,17 +165,17 @@ const Tokenomics = () => {
             </Card>
 
             {/* Contract Address */}
-            <Card className="p-4 md:p-6 bg-card border-2 border-primary/30">
-              <h3 className="text-base md:text-lg font-bold text-foreground mb-3">{t('tokenomics.contract')}</h3>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <div className="flex-1 bg-muted/50 px-3 py-2 rounded-lg overflow-hidden">
+            <Card className="p-6 md:p-8 glass-effect border-2 border-primary/30 hover:border-primary/50 transition-all duration-500">
+              <h3 className="text-base md:text-lg font-bold text-foreground mb-4">{t('tokenomics.contract')}</h3>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex-1 bg-muted/50 px-4 py-3 rounded-lg overflow-hidden">
                   <code className="text-xs md:text-sm text-foreground truncate block">{contractAddress}</code>
                 </div>
                 <Button
                   onClick={copyContract}
                   variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2"
+                  size="lg"
+                  className="flex items-center gap-2 hover:bg-primary/10 transition-all duration-300"
                 >
                   <Copy className="w-4 h-4" />
                   {t('tokenomics.copyContract')}
@@ -171,10 +184,14 @@ const Tokenomics = () => {
               <Button
                 asChild
                 variant="default"
-                className="w-full mt-3 bg-gradient-accent"
+                size="lg"
+                className="w-full mt-4 text-lg py-6 rounded-full shadow-[0_0_30px_rgba(22,163,224,0.3)] hover:shadow-[0_0_50px_rgba(22,163,224,0.5)] transition-all duration-500"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))'
+                }}
               >
                 <a href={dexScreenerUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-5 h-5" />
                   {t('tokenomics.chart')}
                 </a>
               </Button>
@@ -193,15 +210,15 @@ const Tokenomics = () => {
             <TokenomicsChart />
 
             {/* Advanced Features */}
-            <Card className="p-5 md:p-6 bg-card/50 backdrop-blur-sm border-2 border-primary/30">
-              <h3 className="text-lg md:text-xl font-bold mb-4 text-foreground">{t('tokenomics.features')}</h3>
-              <div className="space-y-4">
+            <Card className="p-6 md:p-8 glass-effect border-2 border-primary/30 hover:border-primary/50 transition-all duration-500">
+              <h3 className="text-lg md:text-xl font-bold mb-6 text-foreground">{t('tokenomics.features')}</h3>
+              <div className="space-y-5">
                 {advancedFeatures.map((feature, i) => (
-                  <div key={i} className="flex gap-3">
-                    <feature.icon className={`w-6 h-6 ${feature.color} flex-shrink-0 mt-0.5`} />
+                  <div key={i} className="flex gap-4 group hover:translate-x-2 transition-transform duration-300">
+                    <feature.icon className={`w-7 h-7 ${feature.color} flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300`} />
                     <div>
-                      <h4 className="font-bold text-sm md:text-base text-foreground mb-1">{feature.title}</h4>
-                      <p className="text-xs md:text-sm text-muted-foreground">{feature.description}</p>
+                      <h4 className="font-bold text-sm md:text-base text-foreground mb-1.5">{feature.title}</h4>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 ))}
