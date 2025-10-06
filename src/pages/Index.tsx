@@ -9,10 +9,12 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SectionDivider from "@/components/SectionDivider";
+import PrivacyDisclaimerModal from "@/components/PrivacyDisclaimerModal";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <PrivacyDisclaimerModal />
       <LanguageSwitcher />
       <Navbar />
       <Hero />

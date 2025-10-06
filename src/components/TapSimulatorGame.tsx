@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import { Trophy, Sparkles, TrendingUp } from "lucide-react";
+import { Trophy, Sparkles, TrendingUp, LogIn, Save } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface Rank {
   name: string;
+  nameFr: string;
   threshold: number;
   color: string;
   drop: {
@@ -16,64 +20,141 @@ interface Rank {
 }
 
 const ranks: Rank[] = [
-  { 
-    name: "Silver I", 
-    threshold: 0, 
-    color: "text-gray-400",
-    drop: { name: "$ONETAP Coin", icon: "🪙", rarity: "Common" }
-  },
-  { 
-    name: "Silver Elite", 
-    threshold: 5000, 
-    color: "text-gray-300",
-    drop: { name: "Silver Karambit", icon: "🔪", rarity: "Uncommon" }
-  },
-  { 
-    name: "Gold Nova", 
-    threshold: 10000, 
-    color: "text-yellow-500",
-    drop: { name: "Gold AWP", icon: "🎯", rarity: "Rare" }
-  },
-  { 
-    name: "Master Guardian", 
-    threshold: 20000, 
-    color: "text-yellow-400",
-    drop: { name: "Guardian M4A1-S", icon: "🔫", rarity: "Epic" }
-  },
-  { 
-    name: "Legendary Eagle", 
-    threshold: 30000, 
-    color: "text-orange-500",
-    drop: { name: "Eagle AK-47", icon: "⚡", rarity: "Legendary" }
-  },
-  { 
-    name: "Supreme", 
-    threshold: 50000, 
-    color: "text-red-500",
-    drop: { name: "Supreme Dragon Lore", icon: "🐉", rarity: "Mythic" }
-  },
-  { 
-    name: "Global Elite", 
-    threshold: 100000, 
-    color: "text-purple-500",
-    drop: { name: "OneTap Memecoin NFT", icon: "💎", rarity: "Legendary+" }
-  }
+  { name: "SILVER 1", nameFr: "ARGENT 1", threshold: 0, color: "text-gray-400", drop: { name: "$ONETAP Starter", icon: "🪙", rarity: "Common" } },
+  { name: "SILVER 2", nameFr: "ARGENT 2", threshold: 1000, color: "text-gray-400", drop: { name: "Silver Box", icon: "📦", rarity: "Common" } },
+  { name: "SILVER 3", nameFr: "ARGENT 3", threshold: 2000, color: "text-gray-400", drop: { name: "Silver Coin", icon: "🥈", rarity: "Common" } },
+  { name: "SILVER 4", nameFr: "ARGENT 4", threshold: 3000, color: "text-gray-400", drop: { name: "Silver Case", icon: "💼", rarity: "Common" } },
+  { name: "SILVER ELITE", nameFr: "ARGENT ÉLITE", threshold: 5000, color: "text-gray-300", drop: { name: "Silver Karambit", icon: "🔪", rarity: "Uncommon" } },
+  { name: "SILVER ELITE MASTER", nameFr: "MAÎTRE ARGENT ÉLITE", threshold: 7000, color: "text-gray-200", drop: { name: "Elite Badge", icon: "🎖️", rarity: "Uncommon" } },
+  { name: "GOLD NOVA 1", nameFr: "NOVA D'OR 1", threshold: 10000, color: "text-yellow-600", drop: { name: "Gold AWP", icon: "🎯", rarity: "Rare" } },
+  { name: "GOLD NOVA 2", nameFr: "NOVA D'OR 2", threshold: 12000, color: "text-yellow-600", drop: { name: "Gold M4A4", icon: "🔫", rarity: "Rare" } },
+  { name: "GOLD NOVA 3", nameFr: "NOVA D'OR 3", threshold: 14000, color: "text-yellow-500", drop: { name: "Gold AK-47", icon: "⚔️", rarity: "Rare" } },
+  { name: "GOLD NOVA MASTER", nameFr: "MAÎTRE NOVA D'OR", threshold: 17000, color: "text-yellow-400", drop: { name: "Nova Crown", icon: "👑", rarity: "Epic" } },
+  { name: "MASTER GUARDIAN 1", nameFr: "MAÎTRE GARDIEN 1", threshold: 20000, color: "text-yellow-300", drop: { name: "Guardian M4A1-S", icon: "🛡️", rarity: "Epic" } },
+  { name: "MASTER GUARDIAN 2", nameFr: "MAÎTRE GARDIEN 2", threshold: 23000, color: "text-yellow-300", drop: { name: "Guardian Shield", icon: "🔰", rarity: "Epic" } },
+  { name: "MASTER GUARDIAN ELITE", nameFr: "MAÎTRE GARDIEN ÉLITE", threshold: 26000, color: "text-orange-400", drop: { name: "Elite AWP Dragon", icon: "🐲", rarity: "Epic" } },
+  { name: "DISTINGUISHED MASTER GUARDIAN", nameFr: "MAÎTRE GARDIEN DISTINGUÉ", threshold: 30000, color: "text-orange-500", drop: { name: "Distinguished Knife", icon: "🗡️", rarity: "Legendary" } },
+  { name: "LEGENDARY EAGLE", nameFr: "AIGLE LÉGENDAIRE", threshold: 35000, color: "text-orange-600", drop: { name: "Eagle AK-47 Fire", icon: "⚡", rarity: "Legendary" } },
+  { name: "LEGENDARY EAGLE MASTER", nameFr: "MAÎTRE AIGLE LÉGENDAIRE", threshold: 40000, color: "text-red-500", drop: { name: "Master Eagle Wings", icon: "🦅", rarity: "Legendary" } },
+  { name: "SUPREME MASTER FIRST CLASS", nameFr: "MAÎTRE SUPRÊME PREMIÈRE CLASSE", threshold: 50000, color: "text-red-600", drop: { name: "Supreme Dragon Lore", icon: "🐉", rarity: "Mythic" } },
+  { name: "THE GLOBAL ELITE", nameFr: "ÉLITE MONDIALE", threshold: 100000, color: "text-purple-500", drop: { name: "OneTap Memecoin NFT", icon: "💎", rarity: "Legendary+" } }
 ];
 
+// Color tiers after Global Elite
+const getColorTier = (xp: number) => {
+  if (xp >= 30000) return { name: "GOLD TIER", color: "text-yellow-400", emoji: "🏆" };
+  if (xp >= 25000) return { name: "RED TIER", color: "text-red-500", emoji: "🔴" };
+  if (xp >= 20000) return { name: "PINK TIER", color: "text-pink-500", emoji: "💗" };
+  if (xp >= 15000) return { name: "PURPLE TIER", color: "text-purple-500", emoji: "🟣" };
+  if (xp >= 10000) return { name: "BLUE TIER", color: "text-blue-500", emoji: "🔵" };
+  if (xp >= 5000) return { name: "LIGHT BLUE TIER", color: "text-cyan-400", emoji: "💠" };
+  return { name: "GREY TIER", color: "text-gray-400", emoji: "⚪" };
+};
+
 const TapSimulatorGame = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { toast } = useToast();
   const [xp, setXp] = useState(0);
   const [currentRankIndex, setCurrentRankIndex] = useState(0);
   const [clicks, setClicks] = useState(0);
   const [showDrop, setShowDrop] = useState(false);
   const [newDrop, setNewDrop] = useState<Rank["drop"] | null>(null);
   const [clickAnimation, setClickAnimation] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [saving, setSaving] = useState(false);
 
   const currentRank = ranks[currentRankIndex];
   const nextRank = ranks[currentRankIndex + 1];
+  const colorTier = currentRankIndex === ranks.length - 1 ? getColorTier(xp - currentRank.threshold) : null;
+  
   const progress = nextRank 
     ? ((xp - currentRank.threshold) / (nextRank.threshold - currentRank.threshold)) * 100 
     : 100;
+
+  // Load user session and progress
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        loadProgress(session.user.id);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        loadProgress(session.user.id);
+      } else {
+        // Reset progress if logged out
+        setXp(0);
+        setClicks(0);
+        setCurrentRankIndex(0);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Auto-save progress when user is logged in
+  useEffect(() => {
+    if (user && xp > 0) {
+      const saveTimeout = setTimeout(() => {
+        saveProgress();
+      }, 2000); // Auto-save after 2 seconds of inactivity
+
+      return () => clearTimeout(saveTimeout);
+    }
+  }, [user, xp, clicks, currentRankIndex]);
+
+  const loadProgress = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('player_progress')
+        .select('*')
+        .eq('user_id', userId)
+        .maybeSingle();
+
+      if (error) throw error;
+
+      if (data) {
+        setXp(data.xp);
+        setClicks(data.clicks);
+        setCurrentRankIndex(data.current_rank_index);
+      }
+    } catch (error: any) {
+      console.error('Error loading progress:', error);
+    }
+  };
+
+  const saveProgress = async () => {
+    if (!user) return;
+    
+    setSaving(true);
+    try {
+      const { error } = await supabase
+        .from('player_progress')
+        .upsert({
+          user_id: user.id,
+          xp,
+          clicks,
+          current_rank_index: currentRankIndex,
+          updated_at: new Date().toISOString()
+        }, {
+          onConflict: 'user_id'
+        });
+
+      if (error) throw error;
+    } catch (error: any) {
+      console.error('Error saving progress:', error);
+      toast({
+        title: "Save failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setSaving(false);
+    }
+  };
 
   useEffect(() => {
     if (nextRank && xp >= nextRank.threshold) {
@@ -92,17 +173,57 @@ const TapSimulatorGame = () => {
     setTimeout(() => setClickAnimation(false), 100);
   };
 
+  const displayRankName = i18n.language === 'fr' ? currentRank.nameFr : currentRank.name;
+  const nextRankName = nextRank ? (i18n.language === 'fr' ? nextRank.nameFr : nextRank.name) : null;
+
   return (
     <div className="w-full max-w-md mx-auto">
+      {/* Auth Status & Save */}
+      {!user && (
+        <div className="bg-card/40 backdrop-blur-md border-2 border-yellow-500/50 rounded-xl p-3 mb-4 text-center">
+          <p className="text-xs text-muted-foreground mb-2">⚠️ Progress not saved - Sign in to save your rank!</p>
+          <Link to="/auth">
+            <Button size="sm" variant="outline" className="w-full">
+              <LogIn className="w-4 h-4 mr-2" />
+              Sign In to Save Progress
+            </Button>
+          </Link>
+        </div>
+      )}
+
+      {user && (
+        <div className="flex items-center justify-between bg-card/40 backdrop-blur-md border-2 border-green-500/30 rounded-xl p-3 mb-4">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span className="text-xs text-muted-foreground">Signed in</span>
+          </div>
+          {saving && (
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <Save className="w-3 h-3 animate-pulse" />
+              Saving...
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Rank & Progress */}
       <div className="bg-card/40 backdrop-blur-md border-2 border-primary/30 rounded-xl p-4 mb-4">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <Trophy className={`w-5 h-5 ${currentRank.color}`} />
-            <span className={`font-bold ${currentRank.color}`}>{currentRank.name}</span>
+            <span className={`font-bold text-sm ${currentRank.color}`}>{displayRankName}</span>
           </div>
           <span className="text-xs text-muted-foreground">{clicks} clicks</span>
         </div>
+
+        {/* Color Tier Display (after Global Elite) */}
+        {colorTier && (
+          <div className="mb-2 text-center">
+            <span className={`text-xs font-bold ${colorTier.color}`}>
+              {colorTier.emoji} {colorTier.name}
+            </span>
+          </div>
+        )}
         
         <div className="space-y-1">
           <div className="flex justify-between text-xs text-muted-foreground">
@@ -114,7 +235,7 @@ const TapSimulatorGame = () => {
 
         {nextRank && (
           <div className="mt-2 text-xs text-center text-muted-foreground">
-            Next: <span className={nextRank.color}>{nextRank.name}</span>
+            Next: <span className={nextRank.color}>{nextRankName}</span>
           </div>
         )}
       </div>

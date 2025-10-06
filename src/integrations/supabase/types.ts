@@ -14,7 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      player_progress: {
+        Row: {
+          clicks: number
+          created_at: string
+          current_rank_index: number
+          id: string
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        Insert: {
+          clicks?: number
+          created_at?: string
+          current_rank_index?: number
+          id?: string
+          updated_at?: string
+          user_id: string
+          xp?: number
+        }
+        Update: {
+          clicks?: number
+          created_at?: string
+          current_rank_index?: number
+          id?: string
+          updated_at?: string
+          user_id?: string
+          xp?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
