@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Sparkles, X } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -17,6 +17,9 @@ interface DropRouletteProps {
 const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
   const [isSpinning, setIsSpinning] = useState(true);
   const [spinOffset, setSpinOffset] = useState(0);
+  const [showDrop, setShowDrop] = useState(false);
+  const musicMainRef = useRef<HTMLAudioElement | null>(null);
+  const musicEpicRef = useRef<HTMLAudioElement | null>(null);
   
   // Générer une liste d'items aléatoires pour l'effet de roulette
   const generateRouletteItems = () => {
@@ -69,6 +72,11 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
   };
 
   useEffect(() => {
+    // Jouer le son principal pendant la roulette
+    musicMainRef.current = new Audio('/sounds/music_main.wav');
+    musicMainRef.current.volume = 0.6;
+    musicMainRef.current.play().catch(console.error);
+
     // Animation de la roulette
     let currentOffset = 0;
     const targetOffset = 25 * 120; // Position du vrai drop (25 * hauteur d'item)
@@ -89,11 +97,49 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
         requestAnimationFrame(animate);
       } else {
         setIsSpinning(false);
+        
+        // Arrêter le son principal et jouer le son épique
+        if (musicMainRef.current) {
+          musicMainRef.current.pause();
+          musicMainRef.current.currentTime = 0;
+        }
+        
+        musicEpicRef.current = new Audio('/sounds/music_epic.wav');
+        musicEpicRef.current.volume = 0.7;
+        musicEpicRef.current.play().catch(console.error);
+        
+        // Afficher l'animation de drop
+        setTimeout(() => setShowDrop(true), 100);
       }
     };
 
     animate();
+
+    // Cleanup
+    return () => {
+      if (musicMainRef.current) {
+        musicMainRef.current.pause();
+        musicMainRef.current.currentTime = 0;
+      }
+      if (musicEpicRef.current) {
+        musicEpicRef.current.pause();
+        musicEpicRef.current.currentTime = 0;
+      }
+    };
   }, []);
+
+  const handleClose = () => {
+    // Arrêter tous les sons
+    if (musicMainRef.current) {
+      musicMainRef.current.pause();
+      musicMainRef.current.currentTime = 0;
+    }
+    if (musicEpicRef.current) {
+      musicEpicRef.current.pause();
+      musicEpicRef.current.currentTime = 0;
+    }
+    onClose();
+  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md animate-fade-in">
@@ -101,7 +147,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
         {/* Close button */}
         {!isSpinning && (
           <Button
-            onClick={onClose}
+            onClick={handleClose}
             size="icon"
             variant="ghost"
             className="absolute -top-12 right-0 text-white hover:bg-white/10"
@@ -167,15 +213,21 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
               <div className="text-yellow-400 font-bold text-lg mb-1 animate-pulse">
                 🎉 CONGRATULATIONS! 🎉
               </div>
-              <div className="text-white font-black text-2xl mb-2">
+              <div 
+                className={`text-white font-black text-2xl mb-2 transition-all duration-500 ${
+                  showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+                }`}
+              >
                 {drop.name}
               </div>
-              <div className={`inline-block px-4 py-1 rounded-full bg-gradient-to-r ${getRarityColor(drop.rarity)} text-white font-bold text-sm`}>
+              <div className={`inline-block px-4 py-1 rounded-full bg-gradient-to-r ${getRarityColor(drop.rarity)} text-white font-bold text-sm transition-all duration-500 ${
+                showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+              }`}>
                 {drop.rarity}
               </div>
               <div className="mt-4">
                 <Button
-                  onClick={onClose}
+                  onClick={handleClose}
                   size="lg"
                   className="bg-gradient-primary hover:shadow-glow-primary font-black"
                 >

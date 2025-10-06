@@ -147,6 +147,12 @@ export default {
           "50%": { opacity: "0.9", filter: "brightness(4) saturate(3) blur(2px)" },
           "100%": { opacity: "0", filter: "brightness(5) saturate(4) blur(10px)" },
         },
+        "drop-bounce": {
+          "0%": { opacity: "0", transform: "scale(0.3) translateY(-100px)" },
+          "50%": { transform: "scale(1.1) translateY(0)" },
+          "70%": { transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1) translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -167,6 +173,7 @@ export default {
         "spin-slow": "spin-slow 3s linear infinite",
         "fade-in-up": "fade-in-up 0.6s ease-out",
         "explosive-flash": "explosive-flash 0.8s ease-out forwards",
+        "drop-bounce": "drop-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
       },
     },
   },
