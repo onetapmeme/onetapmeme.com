@@ -77,39 +77,57 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
     musicMainRef.current.volume = 0.6;
     musicMainRef.current.play().catch(console.error);
 
-    // Animation de la roulette
-    let currentOffset = 0;
+    // Animation de la roulette avec ralentissement progressif
+    let animationFrame: number;
     const targetOffset = 25 * 120; // Position du vrai drop (25 * hauteur d'item)
-    const duration = 7000; // 7 secondes pour plus de suspense
+    const spinDuration = 6000; // 6 secondes de spin rapide
+    const slowdownDuration = 2000; // 2 secondes de ralentissement
+    const totalDuration = spinDuration + slowdownDuration;
     const startTime = Date.now();
 
     const animate = () => {
       const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+      const progress = Math.min(elapsed / totalDuration, 1);
       
-      // Easing cubic out pour ralentir progressivement
-      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-      currentOffset = easeOutCubic * targetOffset;
+      let currentOffset: number;
+      
+      if (elapsed < spinDuration) {
+        // Phase rapide avec easing quadratic
+        const spinProgress = elapsed / spinDuration;
+        const easeOutQuad = 1 - Math.pow(1 - spinProgress, 2);
+        currentOffset = easeOutQuad * (targetOffset * 0.85);
+      } else {
+        // Phase de ralentissement progressif avec easing quintic
+        const slowProgress = (elapsed - spinDuration) / slowdownDuration;
+        const easeOutQuint = 1 - Math.pow(1 - slowProgress, 5);
+        const remainingDistance = targetOffset * 0.15;
+        currentOffset = (targetOffset * 0.85) + (easeOutQuint * remainingDistance);
+      }
       
       setSpinOffset(currentOffset);
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        animationFrame = requestAnimationFrame(animate);
       } else {
-        setIsSpinning(false);
+        // Animation terminée - ajustement final doux
+        setSpinOffset(targetOffset);
         
-        // Arrêter le son principal et jouer le son épique
-        if (musicMainRef.current) {
-          musicMainRef.current.pause();
-          musicMainRef.current.currentTime = 0;
-        }
-        
-        musicEpicRef.current = new Audio('/sounds/music_epic.wav');
-        musicEpicRef.current.volume = 0.7;
-        musicEpicRef.current.play().catch(console.error);
-        
-        // Afficher l'animation de drop
-        setTimeout(() => setShowDrop(true), 100);
+        setTimeout(() => {
+          setIsSpinning(false);
+          
+          // Arrêter le son principal et jouer le son épique
+          if (musicMainRef.current) {
+            musicMainRef.current.pause();
+            musicMainRef.current.currentTime = 0;
+          }
+          
+          musicEpicRef.current = new Audio('/sounds/music_epic.wav');
+          musicEpicRef.current.volume = 0.7;
+          musicEpicRef.current.play().catch(console.error);
+          
+          // Afficher l'animation de drop après un court délai
+          setTimeout(() => setShowDrop(true), 300);
+        }, 200);
       }
     };
 
@@ -117,6 +135,9 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
 
     // Cleanup
     return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
       if (musicMainRef.current) {
         musicMainRef.current.pause();
         musicMainRef.current.currentTime = 0;
@@ -169,10 +190,12 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
 
           {/* Roulette viewport */}
           <div className="relative h-[360px] overflow-hidden">
-            {/* Selection indicator */}
-            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[120px] border-y-4 border-yellow-400 bg-yellow-400/10 pointer-events-none z-10">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent animate-pulse" />
-            </div>
+            {/* Selection indicator - visible seulement pendant le spin */}
+            {isSpinning && (
+              <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[120px] border-y-4 border-yellow-400 bg-yellow-400/10 pointer-events-none z-10">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent animate-pulse" />
+              </div>
+            )}
 
             {/* Top gradient fade */}
             <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-[5] pointer-events-none" />
@@ -182,10 +205,10 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
 
             {/* Roulette items */}
             <div
-              className="flex flex-col items-center py-[120px] transition-transform"
+              className={`flex flex-col items-center py-[120px] ${!isSpinning ? 'transition-transform duration-300 ease-out' : ''}`}
               style={{
                 transform: `translateY(-${spinOffset}px)`,
-                transitionDuration: '0ms'
+                transitionDuration: isSpinning ? '0ms' : '300ms'
               }}
             >
               {rouletteItems.map((item, index) => (
@@ -209,16 +232,16 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
 
           {/* Drop reveal section */}
           {!isSpinning && (
-            <div className="bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-xl text-center py-8 border-t-4 border-primary/50">
-              <div className="text-yellow-400 font-bold text-xl mb-4 animate-pulse flex items-center justify-center gap-2">
+            <div className="bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-xl text-center py-8 border-t-4 border-primary/50 animate-fade-in">
+              <div className="text-yellow-400 font-bold text-xl mb-6 animate-pulse flex items-center justify-center gap-2">
                 <Sparkles className="w-6 h-6" />
-                FÉLICITATIONS!
+                🎉 FÉLICITATIONS! 🎉
                 <Sparkles className="w-6 h-6" />
               </div>
               
-              <div className="mb-6">
+              <div className="mb-8">
                 <div 
-                  className={`text-6xl mb-4 transition-all duration-500 ${
+                  className={`text-7xl mb-5 transition-all duration-700 ${
                     showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
                   }`}
                 >
@@ -226,29 +249,29 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
                 </div>
                 
                 <div 
-                  className={`text-white font-black text-3xl mb-3 transition-all duration-500 delay-100 ${
+                  className={`text-white font-black text-4xl mb-4 transition-all duration-700 delay-150 ${
                     showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
                   }`}
                 >
                   {drop.name}
                 </div>
                 
-                <div className={`inline-block px-6 py-2 rounded-full bg-gradient-to-r ${getRarityColor(drop.rarity)} text-white font-bold text-base shadow-lg transition-all duration-500 delay-200 ${
+                <div className={`inline-block px-8 py-3 rounded-full bg-gradient-to-r ${getRarityColor(drop.rarity)} text-white font-bold text-lg shadow-[0_0_30px_rgba(255,215,0,0.5)] transition-all duration-700 delay-300 ${
                   showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
                 }`}>
                   ✨ {drop.rarity} ✨
                 </div>
               </div>
               
-              <div className={`mt-6 transition-all duration-500 delay-300 ${
-                showDrop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              <div className={`mt-8 transition-all duration-700 delay-500 ${
+                showDrop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 <Button
                   onClick={handleClose}
                   size="lg"
-                  className="bg-gradient-primary hover:shadow-glow-primary font-black text-lg px-8 py-6"
+                  className="bg-gradient-primary hover:shadow-glow-primary font-black text-xl px-12 py-7 shadow-[0_0_40px_rgba(33,150,243,0.4)] hover:shadow-[0_0_60px_rgba(33,150,243,0.6)] transition-all duration-300"
                 >
-                  OBTENIR LE LOT
+                  🎁 OBTENIR LE LOT 🎁
                 </Button>
               </div>
             </div>
