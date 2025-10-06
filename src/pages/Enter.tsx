@@ -23,8 +23,15 @@ const Enter = () => {
   const handleAcceptPrivacy = () => {
     setShowPrivacy(false);
   };
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
     if (isClicked || showPrivacy) return;
+    
+    // Check if the click is on the language switcher
+    const target = e.target as HTMLElement;
+    if (target.closest('button[class*="language"]') || target.closest('.language-switcher')) {
+      return;
+    }
+    
     setIsClicked(true);
 
     // Play explosion sound
@@ -39,7 +46,9 @@ const Enter = () => {
     }, 800);
   };
   return <div className="min-h-screen bg-background relative overflow-hidden">
-      <LanguageSwitcher />
+      <div className="language-switcher">
+        <LanguageSwitcher />
+      </div>
       
       {/* Privacy Notice Modal - Shows First */}
       {showPrivacy && <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-background/98 backdrop-blur-lg animate-fade-in">
@@ -87,8 +96,11 @@ const Enter = () => {
           </Card>
         </div>}
 
-      {/* Main Enter Screen */}
-      <div className={`min-h-screen relative transition-all duration-700 ${isClicked ? "animate-explosive-flash" : ""} ${showPrivacy ? "pointer-events-none opacity-30 blur-sm scale-95" : ""}`}>
+      {/* Main Enter Screen - Clickable everywhere */}
+      <div 
+        onClick={handleClick}
+        className={`min-h-screen relative transition-all duration-700 cursor-pointer ${isClicked ? "animate-explosive-flash" : ""} ${showPrivacy ? "pointer-events-none opacity-30 blur-sm scale-95" : ""}`}
+      >
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img src={tap2enterBg} alt="Tap2Enter Background" className="w-full h-full object-cover opacity-50" />
@@ -102,7 +114,7 @@ const Enter = () => {
       }}></div>
 
         {/* Central Content - Logo & Title */}
-        <div className="relative z-20 flex flex-col items-center justify-center min-h-[50vh] px-4 pt-20 pb-4">
+        <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 pt-20 pb-32">
           {/* Logo with Glow Effect */}
           <div className="relative mb-6 animate-scale-pulse">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
@@ -110,17 +122,25 @@ const Enter = () => {
           </div>
 
           {/* Title */}
-          <div className="text-center mb-8">
+          <div className="text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(22,163,224,0.6)]">
               {t('enter.title')}
             </h1>
-            <p className="text-sm md:text-lg font-bold text-foreground/90 tracking-wider mb-8">
+            <p className="text-sm md:text-lg font-bold text-foreground/90 tracking-wider">
               {t('enter.subtitle')}
             </p>
-
-            {/* Single Tap to Click Button */}
-            <Button onClick={handleClick} disabled={showPrivacy} size="lg" className="text-2xl bg-gradient-accent hover:shadow-glow-primary transition-all hover:scale-105 animate-pulse py-[3px] mx-0 px-[22px] md:text-sm text-slate-100 text-left rounded font-bold">TAP TO ENTER</Button>
           </div>
+        </div>
+        
+        {/* Tap to Enter Button - Fixed at Bottom */}
+        <div className="fixed bottom-8 left-0 right-0 z-30 flex justify-center px-4">
+          <Button 
+            disabled={showPrivacy} 
+            size="lg" 
+            className="text-xl md:text-2xl bg-gradient-accent hover:shadow-glow-primary transition-all hover:scale-105 animate-pulse py-6 px-12 rounded-full font-bold"
+          >
+            TAP TO ENTER
+          </Button>
         </div>
 
         {/* Floating Particles */}
@@ -133,12 +153,6 @@ const Enter = () => {
         }} />)}
         </div>
 
-        {/* Bottom Hint */}
-        <div className="absolute bottom-2 left-0 right-0 text-center z-20">
-          <p className="text-xs text-muted-foreground/60 font-mono animate-pulse px-4">
-            {t('enter.sound')}
-          </p>
-        </div>
       </div>
     </div>;
 };
