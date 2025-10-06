@@ -2,23 +2,19 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logoImage from "@/assets/onetap_new_logo.png";
-import { Shield, Zap, Target } from "lucide-react";
+import tap2enterBg from "@/assets/tap2enter.png";
+import { Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import TapSimulatorGame from "@/components/TapSimulatorGame";
 
 const Enter = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [showPrivacy, setShowPrivacy] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
-  const [ripples, setRipples] = useState<{
-    x: number;
-    y: number;
-    id: number;
-  }[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const rippleIdRef = useRef(0);
 
   useEffect(() => {
     // Preload audio
@@ -30,18 +26,8 @@ const Enter = () => {
     setShowPrivacy(false);
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClick = () => {
     if (isClicked || showPrivacy) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    // Add ripple effect
-    setRipples(prev => [...prev, {
-      x,
-      y,
-      id: rippleIdRef.current++
-    }]);
     setIsClicked(true);
 
     // Play explosion sound
@@ -111,93 +97,74 @@ const Enter = () => {
         </div>
       )}
 
-      {/* Main Tap to Enter Screen */}
+      {/* Main Enter Screen */}
       <div 
-        onClick={handleClick} 
-        className={`min-h-screen relative cursor-pointer group transition-all duration-700 ${
+        className={`min-h-screen relative transition-all duration-700 ${
           isClicked ? "animate-explosive-flash" : ""
         } ${showPrivacy ? "pointer-events-none opacity-30 blur-sm scale-95" : ""}`}
       >
-        {/* Dynamic Grid Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5">
-          <div className="absolute inset-0 opacity-20" style={{
-            backgroundImage: `
-              linear-gradient(rgba(22, 163, 224, 0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(22, 163, 224, 0.05) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px'
-          }}></div>
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src={tap2enterBg} 
+            alt="Tap2Enter Background" 
+            className="w-full h-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/90"></div>
         </div>
 
         {/* Animated Corner Accents */}
-        <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 border-t-4 border-l-4 border-primary/30 animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 border-b-4 border-r-4 border-primary/30 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 border-t-4 border-l-4 border-primary/30 animate-pulse z-10"></div>
+        <div className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 border-b-4 border-r-4 border-primary/30 animate-pulse z-10" style={{ animationDelay: '0.5s' }}></div>
 
-        {/* Central Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
+        {/* Central Content - Logo & Title */}
+        <div className="relative z-20 flex flex-col items-center justify-center min-h-[50vh] px-4 pt-20 pb-4">
           {/* Logo with Glow Effect */}
-          <div className="relative mb-6 md:mb-8 animate-scale-pulse">
+          <div className="relative mb-6 animate-scale-pulse">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
             <img 
               src={logoImage} 
               alt="OneTap Logo" 
-              className="relative w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain drop-shadow-[0_0_40px_rgba(22,163,224,0.8)] transition-transform duration-300 group-hover:scale-110"
+              className="relative w-32 h-32 md:w-44 md:h-44 object-contain drop-shadow-[0_0_40px_rgba(22,163,224,0.8)]"
             />
           </div>
 
-          {/* Title with Glitch Effect */}
-          <div className="text-center mb-6 md:mb-8">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-3 bg-gradient-accent bg-clip-text text-transparent animate-text-glow relative">
+          {/* Title */}
+          <div className="text-center mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-2 bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(22,163,224,0.6)]">
               {t('enter.title')}
-              <div className="absolute inset-0 bg-gradient-accent bg-clip-text text-transparent opacity-50 blur-sm">
-                {t('enter.title')}
-              </div>
             </h1>
-            <p className="text-base md:text-xl font-bold text-foreground/90 tracking-widest">
+            <p className="text-sm md:text-lg font-bold text-foreground/90 tracking-wider">
               {t('enter.subtitle')}
             </p>
           </div>
-
-          {/* Interactive Tap Zone - More Professional */}
-          <div className="relative group/tap mt-12">
-            <div className="absolute inset-0 bg-gradient-accent blur-2xl opacity-40 group-hover/tap:opacity-60 transition-all duration-500 rounded-2xl"></div>
-            <div className={`relative px-12 md:px-16 py-8 md:py-12 border-2 border-primary/60 rounded-2xl backdrop-blur-md bg-card/40 transition-all duration-500 group-hover/tap:border-primary group-hover/tap:shadow-[0_0_60px_rgba(22,163,224,0.4)] group-hover/tap:scale-105 ${
-              !showPrivacy ? 'animate-tap-pulse shadow-[0_0_40px_rgba(22,163,224,0.3)]' : ''
-            }`}>
-              <div className="flex items-center justify-center gap-6">
-                <Target className={`w-10 h-10 md:w-12 md:h-12 text-primary ${!showPrivacy ? 'animate-spin-slow' : ''}`} />
-                <span className="text-3xl md:text-5xl font-black text-foreground tracking-widest bg-gradient-accent bg-clip-text text-transparent">
-                  {t('enter.tap')}
-                </span>
-                <Zap className={`w-10 h-10 md:w-12 md:h-12 text-secondary ${!showPrivacy ? 'animate-pulse' : ''}`} />
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Click Ripples */}
-        {ripples.map(ripple => (
-          <div 
-            key={ripple.id}
-            className="absolute pointer-events-none z-50"
-            style={{
-              left: ripple.x,
-              top: ripple.y,
-              transform: "translate(-50%, -50%)"
-            }}
+        {/* Tap Simulator Game */}
+        <div className="relative z-20 px-4 pb-6">
+          <TapSimulatorGame />
+        </div>
+
+        {/* Bottom Enter Button - More Professional */}
+        <div className="relative z-20 px-4 pb-8">
+          <Button
+            onClick={handleClick}
+            disabled={showPrivacy}
+            variant="outline"
+            size="lg"
+            className="w-full max-w-md mx-auto block border-2 border-primary/60 hover:border-primary hover:bg-primary/10 transition-all group"
           >
-            <div className="w-4 h-4 bg-secondary rounded-full animate-[ping_0.8s_ease-out] opacity-90"></div>
-            <div className="w-8 h-8 bg-primary rounded-full animate-[ping_1s_ease-out] opacity-75 absolute top-0 left-0 -translate-x-1/4 -translate-y-1/4"></div>
-            <div className="w-12 h-12 bg-primary/50 rounded-full animate-[ping_1.2s_ease-out] opacity-50 absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
-          </div>
-        ))}
+            <span className="text-base font-semibold">Continue to Site</span>
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
 
         {/* Floating Particles */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+          {[...Array(15)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-1 h-1 bg-primary rounded-full animate-float opacity-30"
+              className="absolute w-1 h-1 bg-primary rounded-full animate-float opacity-20"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -209,8 +176,8 @@ const Enter = () => {
         </div>
 
         {/* Bottom Hint */}
-        <div className="absolute bottom-4 md:bottom-8 left-0 right-0 text-center z-10">
-          <p className="text-xs md:text-sm text-muted-foreground/60 font-mono animate-pulse px-4">
+        <div className="absolute bottom-2 left-0 right-0 text-center z-20">
+          <p className="text-xs text-muted-foreground/60 font-mono animate-pulse px-4">
             {t('enter.sound')}
           </p>
         </div>
