@@ -34,15 +34,7 @@ const Roadmap = () => {
       id="roadmap" 
       ref={ref}
       className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
-      style={{
-        background: 'radial-gradient(ellipse at top, hsl(220, 30%, 10%) 0%, hsl(220, 25%, 6%) 50%, hsl(220, 25%, 6%) 100%)'
-      }}
     >
-      {/* Ambient glow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] animate-pulse" 
-          style={{ animationDuration: '8s' }} />
-      </div>
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <Target className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />

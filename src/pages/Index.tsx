@@ -9,26 +9,39 @@ import TapToEarnSection from "@/components/TapToEarnSection";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import SectionTransition from "@/components/SectionTransition";
+import SectionWrapper from "@/components/SectionWrapper";
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <LanguageSwitcher />
       <Navbar />
       <Hero />
-      <SectionTransition variant="primary" />
-      <About />
-      <SectionTransition variant="accent" />
-      <Tokenomics />
-      <SectionTransition variant="primary" />
-      <Community />
-      <SectionTransition variant="accent" />
-      <Roadmap />
-      <SectionTransition variant="primary" />
-      <MemeSection />
-      <SectionTransition variant="accent" />
-      <TapToEarnSection />
-      <SectionTransition variant="subtle" />
+      
+      <SectionWrapper variant="primary">
+        <About />
+      </SectionWrapper>
+      
+      <SectionWrapper variant="accent">
+        <Tokenomics />
+      </SectionWrapper>
+      
+      <SectionWrapper variant="primary">
+        <Community />
+      </SectionWrapper>
+      
+      <SectionWrapper variant="accent">
+        <Roadmap />
+      </SectionWrapper>
+      
+      <SectionWrapper variant="primary">
+        <MemeSection />
+      </SectionWrapper>
+      
+      <SectionWrapper variant="accent">
+        <TapToEarnSection />
+      </SectionWrapper>
+      
       <Footer />
       <CookieBanner />
     </div>

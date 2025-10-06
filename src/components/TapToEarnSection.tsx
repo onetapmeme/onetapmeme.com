@@ -53,17 +53,7 @@ const TapToEarnSection = () => {
       id="tap-to-earn"
       ref={ref}
       className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
-      style={{
-        background: 'radial-gradient(ellipse at center, hsl(220, 30%, 10%) 0%, hsl(220, 25%, 6%) 50%, hsl(220, 25%, 4%) 100%)'
-      }}
     >
-      {/* Ambient Glow Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] animate-pulse" 
-          style={{ animationDuration: '8s' }} />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] animate-pulse" 
-          style={{ animationDuration: '10s', animationDelay: '2s' }} />
-      </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Header */}

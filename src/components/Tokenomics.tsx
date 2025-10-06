@@ -44,15 +44,7 @@ const Tokenomics = () => {
       id="tokenomics" 
       ref={ref}
       className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
-      style={{
-        background: 'radial-gradient(ellipse at bottom, hsl(220, 30%, 8%) 0%, hsl(220, 25%, 6%) 50%, hsl(220, 25%, 6%) 100%)'
-      }}
     >
-      {/* Ambient glow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse" 
-          style={{ animationDuration: '10s' }} />
-      </div>
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-12 md:mb-16 animate-pixel-fade">
           <Coins className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
