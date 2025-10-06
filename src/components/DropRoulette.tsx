@@ -80,7 +80,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
     // Animation de la roulette
     let currentOffset = 0;
     const targetOffset = 25 * 120; // Position du vrai drop (25 * hauteur d'item)
-    const duration = 4000; // 4 secondes
+    const duration = 7000; // 7 secondes pour plus de suspense
     const startTime = Date.now();
 
     const animate = () => {
@@ -207,31 +207,48 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
             </div>
           </div>
 
-          {/* Bottom section */}
+          {/* Drop reveal section */}
           {!isSpinning && (
-            <div className="bg-gradient-accent text-center py-6 border-t-4 border-primary/50 animate-fade-in">
-              <div className="text-yellow-400 font-bold text-lg mb-1 animate-pulse">
-                🎉 CONGRATULATIONS! 🎉
+            <div className="bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-xl text-center py-8 border-t-4 border-primary/50">
+              <div className="text-yellow-400 font-bold text-xl mb-4 animate-pulse flex items-center justify-center gap-2">
+                <Sparkles className="w-6 h-6" />
+                FÉLICITATIONS!
+                <Sparkles className="w-6 h-6" />
               </div>
-              <div 
-                className={`text-white font-black text-2xl mb-2 transition-all duration-500 ${
+              
+              <div className="mb-6">
+                <div 
+                  className={`text-6xl mb-4 transition-all duration-500 ${
+                    showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+                  }`}
+                >
+                  {drop.icon.includes('.png') ? '🎁' : drop.icon}
+                </div>
+                
+                <div 
+                  className={`text-white font-black text-3xl mb-3 transition-all duration-500 delay-100 ${
+                    showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+                  }`}
+                >
+                  {drop.name}
+                </div>
+                
+                <div className={`inline-block px-6 py-2 rounded-full bg-gradient-to-r ${getRarityColor(drop.rarity)} text-white font-bold text-base shadow-lg transition-all duration-500 delay-200 ${
                   showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
-                }`}
-              >
-                {drop.name}
+                }`}>
+                  ✨ {drop.rarity} ✨
+                </div>
               </div>
-              <div className={`inline-block px-4 py-1 rounded-full bg-gradient-to-r ${getRarityColor(drop.rarity)} text-white font-bold text-sm transition-all duration-500 ${
-                showDrop ? 'animate-drop-bounce' : 'opacity-0 scale-50'
+              
+              <div className={`mt-6 transition-all duration-500 delay-300 ${
+                showDrop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
-                {drop.rarity}
-              </div>
-              <div className="mt-4">
                 <Button
                   onClick={handleClose}
                   size="lg"
-                  className="bg-gradient-primary hover:shadow-glow-primary font-black"
+                  className="bg-gradient-primary hover:shadow-glow-primary font-black text-lg px-8 py-6"
                 >
-                  COLLECT REWARD
+                  OBTENIR LE LOT
                 </Button>
               </div>
             </div>
