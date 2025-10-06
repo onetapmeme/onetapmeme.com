@@ -3,6 +3,7 @@ import { MessageCircle, Twitter, Hash, Instagram, Youtube, Music, Users, Trendin
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import ParticleEffect from "@/components/ParticleEffect";
 
 const Community = () => {
   const { t } = useTranslation();
@@ -55,9 +56,10 @@ const Community = () => {
     <section 
       id="community" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 bg-gradient-to-br from-muted/30 via-background to-muted/30 section-scale-in reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-br from-muted/30 via-background to-muted/30 section-scale-in reveal-on-scroll ${isRevealed ? 'revealed' : ''} relative overflow-hidden`}
     >
-      <div className="container mx-auto max-w-6xl">
+      <ParticleEffect color="hsl(210, 100%, 55%)" count={28} speed={0.22} />
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
           <Users className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary icon-float icon-glow" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">

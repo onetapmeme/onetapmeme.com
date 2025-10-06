@@ -3,6 +3,7 @@ import { Shield, Users, Rocket, Lock, Target } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "framer-motion";
+import ParticleEffect from "@/components/ParticleEffect";
 
 const About = () => {
   const { t } = useTranslation();
@@ -38,6 +39,7 @@ const About = () => {
       className="py-24 md:py-40 px-4 relative overflow-hidden"
       style={{ background: 'var(--gradient-section)' }}
     >
+      <ParticleEffect color="hsl(210, 100%, 55%)" count={35} speed={0.25} />
       {/* Ambient glow */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />

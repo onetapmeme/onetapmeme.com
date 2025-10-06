@@ -12,6 +12,8 @@ import csgoKarambitRainbow from "@/assets/meme-accessories/csgo-karambit-rainbow
 import csgoAwpAsiimov from "@/assets/meme-accessories/csgo-awp-asiimov.png";
 import csgoKarambitFade from "@/assets/meme-accessories/csgo-karambit-fade.png";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import ParticleEffect from "@/components/ParticleEffect";
+import TapSimulatorGame from "@/components/TapSimulatorGame";
 
 interface Accessory {
   image: string;
@@ -98,9 +100,10 @@ const MemeSection = () => {
     <section 
       id="memes" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-card/30 via-accent/5 to-card/30 section-slide-right reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-card/30 via-accent/5 to-card/30 section-slide-right reveal-on-scroll ${isRevealed ? 'revealed' : ''} relative overflow-hidden`}
     >
-      <div className="container mx-auto max-w-6xl">
+      <ParticleEffect color="hsl(25, 100%, 55%)" count={32} speed={0.28} />
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
           <ImageIcon className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-primary icon-float icon-glow" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
@@ -211,6 +214,11 @@ const MemeSection = () => {
               </div>
             </Card>
           </div>
+        </div>
+
+        {/* Tap to Earn Game */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <TapSimulatorGame />
         </div>
       </div>
     </section>

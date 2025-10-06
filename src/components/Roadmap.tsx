@@ -2,6 +2,7 @@ import { CheckCircle2, Circle, Clock, Target } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import ParticleEffect from "@/components/ParticleEffect";
 
 const Roadmap = () => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const Roadmap = () => {
       case "completed":
         return "border-primary shadow-glow-primary";
       case "current":
-        return "border-secondary shadow-glow-gold";
+        return "border-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.5)] bg-yellow-500/5";
       default:
         return "border-muted";
     }
@@ -33,9 +34,10 @@ const Roadmap = () => {
     <section 
       id="roadmap" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background section-slide-left reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background section-slide-left reveal-on-scroll ${isRevealed ? 'revealed' : ''} relative overflow-hidden`}
     >
-      <div className="container mx-auto">
+      <ParticleEffect color="hsl(25, 100%, 55%)" count={25} speed={0.2} />
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <Target className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">

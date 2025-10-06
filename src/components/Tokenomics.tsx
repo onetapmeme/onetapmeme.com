@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import TokenomicsChart from "@/components/TokenomicsChart";
+import ParticleEffect from "@/components/ParticleEffect";
 
 const Tokenomics = () => {
   const { t } = useTranslation();
@@ -48,7 +49,8 @@ const Tokenomics = () => {
         background: 'radial-gradient(ellipse at top, hsl(220, 30%, 12%) 0%, hsl(220, 25%, 6%) 50%, hsl(220, 25%, 6%) 100%)'
       }}
     >
-      <div className="container mx-auto max-w-6xl">
+      <ParticleEffect color="hsl(25, 100%, 55%)" count={30} speed={0.2} />
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-12 md:mb-16 animate-pixel-fade">
           <Coins className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
           <h2 
