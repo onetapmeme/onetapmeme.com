@@ -14,32 +14,32 @@ All colors MUST be HSL.
     --card-foreground: 0 0% 98%;
     --popover: 220 25% 8%;
     --popover-foreground: 0 0% 98%;
-    --primary: 199 89% 48%;
+    --primary: 210 100% 55%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 15% 20%;
     --secondary-foreground: 0 0% 98%;
     --muted: 220 15% 25%;
     --muted-foreground: 0 0% 70%;
-    --accent: 280 70% 60%;
+    --accent: 25 100% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 220 15% 18%;
     --input: 220 15% 18%;
-    --ring: 199 89% 48%;
+    --ring: 210 100% 55%;
     --radius: 0.75rem;
     
     /* Apple-style gradients */
     --gradient-hero: linear-gradient(180deg, hsl(220, 25%, 6%) 0%, hsl(220, 30%, 10%) 50%, hsl(220, 25%, 6%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(199, 89%, 48%) 0%, hsl(280, 70%, 60%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45, 100%, 55%) 0%, hsl(35, 100%, 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(220, 25%, 8%) 0%, hsl(220, 25%, 12%) 100%);
     --gradient-section: radial-gradient(ellipse at top, hsl(220, 30%, 12%) 0%, hsl(220, 25%, 6%) 50%);
     
     /* Premium glow effects */
-    --glow-primary: 0 0 80px hsla(199, 89%, 48%, 0.3);
-    --glow-accent: 0 0 100px hsla(280, 70%, 60%, 0.25);
-    --glow-subtle: 0 8px 32px hsla(199, 89%, 48%, 0.15);
+    --glow-primary: 0 0 80px hsla(210, 100%, 55%, 0.3);
+    --glow-accent: 0 0 100px hsla(25, 100%, 55%, 0.25);
+    --glow-subtle: 0 8px 32px hsla(210, 100%, 55%, 0.15);
     
     /* Apple-like timing functions */
     --transition-base: 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -199,7 +199,7 @@ All colors MUST be HSL.
     background-position: 0% 50%;
   }
   100% {
-    background-position: 200% 50%;
+    background-position: 300% 50%;
   }
 }
 

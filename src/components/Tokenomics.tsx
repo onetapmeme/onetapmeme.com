@@ -54,12 +54,12 @@ const Tokenomics = () => {
           <h2 
             className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6"
             style={{
-              background: 'linear-gradient(90deg, hsl(199, 89%, 48%) 0%, hsl(280, 70%, 60%) 20%, hsl(199, 89%, 48%) 40%, hsl(280, 70%, 60%) 60%, hsl(199, 89%, 48%) 80%, hsl(280, 70%, 60%) 100%)',
+              background: 'linear-gradient(90deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 16.66%, hsl(210, 100%, 55%) 33.33%, hsl(25, 100%, 55%) 50%, hsl(210, 100%, 55%) 66.66%, hsl(25, 100%, 55%) 83.33%, hsl(210, 100%, 55%) 100%)',
               backgroundSize: '300% 100%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              animation: 'gradient-flow 12s linear infinite',
+              animation: 'gradient-flow 10s linear infinite',
             }}
           >
             {t('tokenomics.title')}
@@ -185,12 +185,24 @@ const Tokenomics = () => {
                 asChild
                 variant="default"
                 size="lg"
-                className="w-full mt-4 text-lg py-6 rounded-full shadow-[0_0_30px_rgba(22,163,224,0.3)] hover:shadow-[0_0_50px_rgba(22,163,224,0.5)] transition-all duration-500"
+                className="w-full mt-4 text-lg py-6 rounded-full transition-all duration-500"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))'
+                  background: 'linear-gradient(135deg, hsl(210, 100%, 55%), hsl(25, 100%, 55%))',
+                  boxShadow: '0 0 30px hsla(210, 100%, 55%, 0.3)',
                 }}
               >
-                <a href={dexScreenerUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                <a 
+                  href={dexScreenerUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center justify-center gap-2"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.parentElement!.style.boxShadow = '0 0 50px hsla(210, 100%, 55%, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.parentElement!.style.boxShadow = '0 0 30px hsla(210, 100%, 55%, 0.3)';
+                  }}
+                >
                   <ExternalLink className="w-5 h-5" />
                   {t('tokenomics.chart')}
                 </a>
