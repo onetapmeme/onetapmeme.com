@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import DropRoulette from "./DropRoulette";
 
 interface Rank {
   name: string;
@@ -339,16 +340,12 @@ const TapSimulatorGame = () => {
         <TrendingUp className="w-6 h-6 absolute bottom-2 right-2 animate-bounce" />
       </Button>
 
-      {/* Drop Notification */}
+      {/* Drop Roulette */}
       {showDrop && newDrop && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 animate-scale-in">
-          <div className="bg-gradient-to-br from-primary via-secondary to-accent p-6 rounded-2xl border-4 border-yellow-400 shadow-[0_0_50px_rgba(255,215,0,0.8)] text-center">
-            <div className="text-6xl mb-2 animate-bounce">{newDrop.icon}</div>
-            <div className="text-yellow-400 font-bold text-sm mb-1">{newDrop.rarity}</div>
-            <div className="text-white font-black text-xl">{newDrop.name}</div>
-            <div className="text-white/80 text-xs mt-2">RANK UP!</div>
-          </div>
-        </div>
+        <DropRoulette 
+          drop={newDrop}
+          onClose={() => setShowDrop(false)}
+        />
       )}
     </div>
   );
