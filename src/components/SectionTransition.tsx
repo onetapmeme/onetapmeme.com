@@ -3,72 +3,78 @@ interface SectionTransitionProps {
 }
 
 const SectionTransition = ({ variant = 'primary' }: SectionTransitionProps) => {
-  const getGradient = () => {
+  const getColors = () => {
     switch (variant) {
       case 'primary':
-        return 'radial-gradient(ellipse at center, hsl(210, 100%, 55%) 0%, transparent 70%)';
+        return {
+          color1: 'hsla(210, 100%, 55%, 0.15)',
+          color2: 'hsla(210, 100%, 65%, 0.08)',
+          glow: 'hsla(210, 100%, 55%, 0.2)'
+        };
       case 'accent':
-        return 'radial-gradient(ellipse at center, hsl(25, 100%, 55%) 0%, transparent 70%)';
+        return {
+          color1: 'hsla(25, 100%, 55%, 0.15)',
+          color2: 'hsla(25, 100%, 65%, 0.08)',
+          glow: 'hsla(25, 100%, 55%, 0.2)'
+        };
       case 'subtle':
-        return 'radial-gradient(ellipse at center, hsl(220, 30%, 12%) 0%, transparent 70%)';
+        return {
+          color1: 'hsla(220, 30%, 20%, 0.1)',
+          color2: 'hsla(220, 30%, 25%, 0.05)',
+          glow: 'hsla(220, 30%, 20%, 0.15)'
+        };
     }
   };
 
+  const colors = getColors();
+
   return (
-    <div className="relative h-48 overflow-hidden">
-      {/* Main gradient glow */}
+    <div className="relative h-64 overflow-hidden">
+      {/* Smooth flowing gradient waves - Layer 1 */}
       <div 
-        className="absolute inset-0 opacity-20"
-        style={{ background: getGradient() }}
+        className="absolute inset-0 opacity-100"
+        style={{
+          background: `
+            radial-gradient(ellipse 120% 80% at 50% 0%, ${colors.color1} 0%, transparent 50%),
+            radial-gradient(ellipse 100% 60% at 20% 50%, ${colors.color2} 0%, transparent 50%),
+            radial-gradient(ellipse 100% 60% at 80% 50%, ${colors.color2} 0%, transparent 50%)
+          `,
+          animation: 'flow-wave 8s ease-in-out infinite'
+        }}
       />
-      
-      {/* Animated light beam */}
-      <div className="absolute top-0 left-0 right-0 h-px">
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: `linear-gradient(90deg, 
-              transparent 0%, 
-              ${variant === 'accent' ? 'hsl(25, 100%, 55%)' : 'hsl(210, 100%, 55%)'} 50%, 
-              transparent 100%)`
-          }}
-        />
-        <div 
-          className="absolute inset-0 opacity-50 animate-pulse"
-          style={{
-            background: `linear-gradient(90deg, 
-              transparent 0%, 
-              ${variant === 'accent' ? 'hsl(25, 100%, 55%)' : 'hsl(210, 100%, 55%)'} 50%, 
-              transparent 100%)`,
-            animationDuration: '3s'
-          }}
-        />
-      </div>
 
-      {/* Floating light orbs */}
-      <div className="absolute inset-0 flex items-center justify-center gap-12">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="w-3 h-3 rounded-full animate-pulse"
-            style={{
-              background: variant === 'accent' 
-                ? `radial-gradient(circle, hsl(25, 100%, 55%) 0%, transparent 70%)`
-                : `radial-gradient(circle, hsl(210, 100%, 55%) 0%, transparent 70%)`,
-              animationDelay: `${i * 0.3}s`,
-              animationDuration: '2s',
-              opacity: 0.4 - i * 0.05,
-              boxShadow: variant === 'accent'
-                ? '0 0 30px hsl(25, 100%, 55%)'
-                : '0 0 30px hsl(210, 100%, 55%)'
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Bottom gradient fade */}
+      {/* Smooth flowing gradient waves - Layer 2 */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-24"
+        className="absolute inset-0 opacity-100"
+        style={{
+          background: `
+            radial-gradient(ellipse 100% 70% at 50% 30%, ${colors.glow} 0%, transparent 60%),
+            radial-gradient(ellipse 80% 50% at 30% 60%, ${colors.color2} 0%, transparent 50%)
+          `,
+          animation: 'flow-wave-reverse 10s ease-in-out infinite'
+        }}
+      />
+
+      {/* Gentle pulsing glow */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse 60% 40% at 50% 20%, ${colors.glow} 0%, transparent 70%)`,
+          animation: 'gentle-pulse 6s ease-in-out infinite'
+        }}
+      />
+
+      {/* Smooth top fade */}
+      <div 
+        className="absolute top-0 left-0 right-0 h-32"
+        style={{
+          background: 'linear-gradient(180deg, hsl(220, 25%, 6%) 0%, transparent 100%)'
+        }}
+      />
+
+      {/* Smooth bottom fade */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32"
         style={{
           background: 'linear-gradient(180deg, transparent 0%, hsl(220, 25%, 6%) 100%)'
         }}
