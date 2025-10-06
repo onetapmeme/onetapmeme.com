@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Enter from "./pages/Enter";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
 import Disclaimer from "./pages/Disclaimer";
 import NonAffiliation from "./pages/NonAffiliation";
 import Privacy from "./pages/Privacy";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/" element={<Enter />} />
           <Route path="/home" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/non-affiliation" element={<NonAffiliation />} />
           <Route path="/privacy" element={<Privacy />} />

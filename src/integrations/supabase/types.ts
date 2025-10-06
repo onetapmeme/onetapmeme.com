@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      player_inventory: {
+        Row: {
+          collected_at: string
+          drop_icon: string
+          drop_name: string
+          drop_rarity: string
+          id: string
+          is_equipped: boolean
+          rank_name: string
+          user_id: string
+        }
+        Insert: {
+          collected_at?: string
+          drop_icon: string
+          drop_name: string
+          drop_rarity: string
+          id?: string
+          is_equipped?: boolean
+          rank_name: string
+          user_id: string
+        }
+        Update: {
+          collected_at?: string
+          drop_icon?: string
+          drop_name?: string
+          drop_rarity?: string
+          id?: string
+          is_equipped?: boolean
+          rank_name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       player_progress: {
         Row: {
           clicks: number

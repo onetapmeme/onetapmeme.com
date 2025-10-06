@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Trophy, Sparkles, TrendingUp, LogIn, Save } from "lucide-react";
+import { Trophy, Sparkles, TrendingUp, LogIn, Save, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -156,12 +156,43 @@ const TapSimulatorGame = () => {
     }
   };
 
+  const saveDrop = async (drop: Rank["drop"], rankName: string) => {
+    if (!user) return;
+    
+    try {
+      const { error } = await supabase
+        .from('player_inventory')
+        .insert({
+          user_id: user.id,
+          drop_name: drop.name,
+          drop_icon: drop.icon,
+          drop_rarity: drop.rarity,
+          rank_name: rankName
+        });
+
+      if (error) throw error;
+      
+      toast({
+        title: "New Drop!",
+        description: `${drop.icon} ${drop.name} added to your inventory!`,
+      });
+    } catch (error: any) {
+      console.error('Error saving drop:', error);
+    }
+  };
+
   useEffect(() => {
     if (nextRank && xp >= nextRank.threshold) {
-      setCurrentRankIndex(prev => prev + 1);
+      const newRankIndex = currentRankIndex + 1;
+      setCurrentRankIndex(newRankIndex);
       setNewDrop(nextRank.drop);
       setShowDrop(true);
       setTimeout(() => setShowDrop(false), 3000);
+      
+      // Save drop to inventory if user is logged in
+      if (user) {
+        saveDrop(nextRank.drop, nextRank.name);
+      }
     }
   }, [xp, nextRank]);
 
@@ -197,12 +228,20 @@ const TapSimulatorGame = () => {
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
             <span className="text-xs text-muted-foreground">Signed in</span>
           </div>
-          {saving && (
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Save className="w-3 h-3 animate-pulse" />
-              Saving...
-            </div>
-          )}
+          <div className="flex items-center gap-2">
+            {saving && (
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <Save className="w-3 h-3 animate-pulse" />
+                Saving...
+              </div>
+            )}
+            <Link to="/profile">
+              <Button size="sm" variant="outline">
+                <User className="w-3 h-3 mr-1" />
+                Profile
+              </Button>
+            </Link>
+          </div>
         </div>
       )}
 
