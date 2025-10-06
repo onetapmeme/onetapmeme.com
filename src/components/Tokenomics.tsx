@@ -4,14 +4,11 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import TokenomicsChart from "@/components/TokenomicsChart";
 
 const Tokenomics = () => {
   const { t } = useTranslation();
   const { ref, isRevealed } = useScrollReveal();
-
-  const distribution = [
-    { label: t('tokenomics.fairLaunch'), percentage: 100, icon: Users, color: "text-primary" },
-  ];
 
   const contractAddress = "0x0000000000000000000000000000000000000000";
   const dexScreenerUrl = "https://dexscreener.com/base/onetap";
@@ -193,27 +190,7 @@ const Tokenomics = () => {
 
           {/* Distribution */}
           <div className="space-y-4 md:space-y-6">
-            {distribution.map((item, i) => (
-              <Card
-                key={i}
-                className="p-4 md:p-6 bg-card border-2 border-primary/20 hover:border-primary transition-all duration-300 animate-pixel-fade"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="flex items-center justify-between mb-2 md:mb-3">
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <item.icon className={`w-6 h-6 md:w-8 md:h-8 ${item.color}`} />
-                    <span className="text-base md:text-lg font-bold text-foreground">{item.label}</span>
-                  </div>
-                  <span className="text-xl md:text-2xl font-bold text-primary">{item.percentage}%</span>
-                </div>
-                <div className="w-full bg-muted rounded-full h-2 md:h-3 overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-accent rounded-full transition-all duration-1000"
-                    style={{ width: `${item.percentage}%` }}
-                  ></div>
-                </div>
-              </Card>
-            ))}
+            <TokenomicsChart />
 
             {/* Advanced Features */}
             <Card className="p-5 md:p-6 bg-card/50 backdrop-blur-sm border-2 border-primary/30">

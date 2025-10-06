@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Crosshair, Zap, TrendingUp } from "lucide-react";
+import { Crosshair, Zap, TrendingUp, Volume2 } from "lucide-react";
 import logo from "@/assets/onetap_new_logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import AudioControls from "@/components/AudioControls";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -40,6 +41,11 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
+        {/* Audio Controls - Top Right */}
+        <div className="absolute top-4 right-4 z-20">
+          <AudioControls />
+        </div>
+
         <div className="animate-pixel-fade">
           {/* Logo */}
           <div className="flex justify-center mb-6 md:mb-8">
