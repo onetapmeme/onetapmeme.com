@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { MessageCircle, Twitter, Hash, Github, BookOpen, Users, TrendingUp } from 'lucide-react';
+import { MessageCircle, Twitter, Hash, Instagram, Youtube, Music, Users, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -10,6 +10,38 @@ const Community = () => {
 
   const socialLinks = [
     {
+      icon: Twitter,
+      name: 'Twitter/X',
+      description: 'Follow us for the latest updates and memes',
+      url: 'https://x.com/OneTapMeme',
+      color: 'text-[#1DA1F2]',
+      bgColor: 'bg-[#1DA1F2]/10',
+    },
+    {
+      icon: Music,
+      name: 'TikTok',
+      description: 'Watch our gaming content and viral memes',
+      url: 'https://tiktok.com/@onetap_meme',
+      color: 'text-[#000000]',
+      bgColor: 'bg-[#000000]/10',
+    },
+    {
+      icon: Instagram,
+      name: 'Instagram',
+      description: 'Check out our visual content and stories',
+      url: 'https://instagram.com/onetapmeme',
+      color: 'text-[#E4405F]',
+      bgColor: 'bg-[#E4405F]/10',
+    },
+    {
+      icon: Youtube,
+      name: 'YouTube',
+      description: 'Subscribe for gaming videos and tutorials',
+      url: 'https://www.youtube.com/@OneTapMeme',
+      color: 'text-[#FF0000]',
+      bgColor: 'bg-[#FF0000]/10',
+    },
+    {
       icon: MessageCircle,
       name: t('community.telegram'),
       description: t('community.telegramText'),
@@ -18,44 +50,12 @@ const Community = () => {
       bgColor: 'bg-[#0088cc]/10',
     },
     {
-      icon: Twitter,
-      name: t('community.twitter'),
-      description: t('community.twitterText'),
-      url: 'https://twitter.com/onetap_coin',
-      color: 'text-[#1DA1F2]',
-      bgColor: 'bg-[#1DA1F2]/10',
-    },
-    {
       icon: Hash,
       name: t('community.discord'),
       description: t('community.discordText'),
       url: 'https://discord.gg/onetap',
       color: 'text-[#5865F2]',
       bgColor: 'bg-[#5865F2]/10',
-    },
-    {
-      icon: Github,
-      name: t('community.github'),
-      description: t('community.githubText'),
-      url: 'https://github.com/onetap-coin',
-      color: 'text-foreground',
-      bgColor: 'bg-foreground/10',
-    },
-    {
-      icon: BookOpen,
-      name: t('community.medium'),
-      description: t('community.mediumText'),
-      url: 'https://medium.com/@onetap',
-      color: 'text-foreground',
-      bgColor: 'bg-foreground/10',
-    },
-    {
-      icon: Users,
-      name: t('community.reddit'),
-      description: t('community.redditText'),
-      url: 'https://reddit.com/r/onetap',
-      color: 'text-[#FF4500]',
-      bgColor: 'bg-[#FF4500]/10',
     },
   ];
 

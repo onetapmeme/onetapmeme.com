@@ -17,28 +17,29 @@ interface Rank {
     name: string;
     icon: string;
     rarity: string;
+    type: 'accessory' | 'background';
   };
 }
 
 const ranks: Rank[] = [
-  { name: "SILVER 1", nameFr: "ARGENT 1", threshold: 0, color: "text-gray-400", drop: { name: "$ONETAP Starter", icon: "🪙", rarity: "Common" } },
-  { name: "SILVER 2", nameFr: "ARGENT 2", threshold: 1000, color: "text-gray-400", drop: { name: "Silver Box", icon: "📦", rarity: "Common" } },
-  { name: "SILVER 3", nameFr: "ARGENT 3", threshold: 2000, color: "text-gray-400", drop: { name: "Silver Coin", icon: "🥈", rarity: "Common" } },
-  { name: "SILVER 4", nameFr: "ARGENT 4", threshold: 3000, color: "text-gray-400", drop: { name: "Silver Case", icon: "💼", rarity: "Common" } },
-  { name: "SILVER ELITE", nameFr: "ARGENT ÉLITE", threshold: 5000, color: "text-gray-300", drop: { name: "Silver Karambit", icon: "🔪", rarity: "Uncommon" } },
-  { name: "SILVER ELITE MASTER", nameFr: "MAÎTRE ARGENT ÉLITE", threshold: 7000, color: "text-gray-200", drop: { name: "Elite Badge", icon: "🎖️", rarity: "Uncommon" } },
-  { name: "GOLD NOVA 1", nameFr: "NOVA D'OR 1", threshold: 10000, color: "text-yellow-600", drop: { name: "Gold AWP", icon: "🎯", rarity: "Rare" } },
-  { name: "GOLD NOVA 2", nameFr: "NOVA D'OR 2", threshold: 12000, color: "text-yellow-600", drop: { name: "Gold M4A4", icon: "🔫", rarity: "Rare" } },
-  { name: "GOLD NOVA 3", nameFr: "NOVA D'OR 3", threshold: 14000, color: "text-yellow-500", drop: { name: "Gold AK-47", icon: "⚔️", rarity: "Rare" } },
-  { name: "GOLD NOVA MASTER", nameFr: "MAÎTRE NOVA D'OR", threshold: 17000, color: "text-yellow-400", drop: { name: "Nova Crown", icon: "👑", rarity: "Epic" } },
-  { name: "MASTER GUARDIAN 1", nameFr: "MAÎTRE GARDIEN 1", threshold: 20000, color: "text-yellow-300", drop: { name: "Guardian M4A1-S", icon: "🛡️", rarity: "Epic" } },
-  { name: "MASTER GUARDIAN 2", nameFr: "MAÎTRE GARDIEN 2", threshold: 23000, color: "text-yellow-300", drop: { name: "Guardian Shield", icon: "🔰", rarity: "Epic" } },
-  { name: "MASTER GUARDIAN ELITE", nameFr: "MAÎTRE GARDIEN ÉLITE", threshold: 26000, color: "text-orange-400", drop: { name: "Elite AWP Dragon", icon: "🐲", rarity: "Epic" } },
-  { name: "DISTINGUISHED MASTER GUARDIAN", nameFr: "MAÎTRE GARDIEN DISTINGUÉ", threshold: 30000, color: "text-orange-500", drop: { name: "Distinguished Knife", icon: "🗡️", rarity: "Legendary" } },
-  { name: "LEGENDARY EAGLE", nameFr: "AIGLE LÉGENDAIRE", threshold: 35000, color: "text-orange-600", drop: { name: "Eagle AK-47 Fire", icon: "⚡", rarity: "Legendary" } },
-  { name: "LEGENDARY EAGLE MASTER", nameFr: "MAÎTRE AIGLE LÉGENDAIRE", threshold: 40000, color: "text-red-500", drop: { name: "Master Eagle Wings", icon: "🦅", rarity: "Legendary" } },
-  { name: "SUPREME MASTER FIRST CLASS", nameFr: "MAÎTRE SUPRÊME PREMIÈRE CLASSE", threshold: 50000, color: "text-red-600", drop: { name: "Supreme Dragon Lore", icon: "🐉", rarity: "Mythic" } },
-  { name: "THE GLOBAL ELITE", nameFr: "ÉLITE MONDIALE", threshold: 100000, color: "text-purple-500", drop: { name: "OneTap Memecoin NFT", icon: "💎", rarity: "Legendary+" } }
+  { name: "SILVER I", nameFr: "ARGENT I", threshold: 0, color: "text-gray-400", drop: { name: "MP7 Skull", icon: "csgo-mp7.png", rarity: "Common", type: "accessory" } },
+  { name: "SILVER II", nameFr: "ARGENT II", threshold: 500, color: "text-gray-400", drop: { name: "UMP Blaze", icon: "csgo-ump.png", rarity: "Common", type: "accessory" } },
+  { name: "SILVER III", nameFr: "ARGENT III", threshold: 1000, color: "text-gray-400", drop: { name: "M4A1 Hyper Beast", icon: "csgo-m4a1.png", rarity: "Uncommon", type: "accessory" } },
+  { name: "SILVER IV", nameFr: "ARGENT IV", threshold: 1500, color: "text-gray-400", drop: { name: "Dust II Background", icon: "dust2", rarity: "Uncommon", type: "background" } },
+  { name: "SILVER ELITE", nameFr: "ARGENT ÉLITE", threshold: 2000, color: "text-gray-300", drop: { name: "AWP Dragon Lore", icon: "csgo-awp-dragon.png", rarity: "Rare", type: "accessory" } },
+  { name: "SILVER ELITE MASTER", nameFr: "MAÎTRE ARGENT ÉLITE", threshold: 3000, color: "text-gray-300", drop: { name: "Nuke Background", icon: "nuke", rarity: "Rare", type: "background" } },
+  { name: "GOLD NOVA I", nameFr: "NOVA OR I", threshold: 5000, color: "text-yellow-400", drop: { name: "Karambit Vanilla", icon: "csgo-karambit.png", rarity: "Epic", type: "accessory" } },
+  { name: "GOLD NOVA II", nameFr: "NOVA OR II", threshold: 7000, color: "text-yellow-400", drop: { name: "AK-47 Gold", icon: "csgo-ak47-gold.png", rarity: "Epic", type: "accessory" } },
+  { name: "GOLD NOVA III", nameFr: "NOVA OR III", threshold: 10000, color: "text-yellow-400", drop: { name: "Vice City Background", icon: "vice", rarity: "Epic", type: "background" } },
+  { name: "GOLD NOVA MASTER", nameFr: "MAÎTRE NOVA OR", threshold: 13000, color: "text-yellow-500", drop: { name: "AWP Asiimov", icon: "csgo-awp-asiimov.png", rarity: "Epic", type: "accessory" } },
+  { name: "MASTER GUARDIAN I", nameFr: "MAÎTRE GARDIEN I", threshold: 16000, color: "text-orange-400", drop: { name: "Karambit Fade", icon: "csgo-karambit-fade.png", rarity: "Legendary", type: "accessory" } },
+  { name: "MASTER GUARDIAN II", nameFr: "MAÎTRE GARDIEN II", threshold: 20000, color: "text-orange-400", drop: { name: "Hyrule Background", icon: "hyrule", rarity: "Legendary", type: "background" } },
+  { name: "MASTER GUARDIAN ELITE", nameFr: "MAÎTRE GARDIEN ÉLITE", threshold: 25000, color: "text-orange-500", drop: { name: "AK-47 Pink DDPAT", icon: "csgo-ak47-pink.png", rarity: "Legendary", type: "accessory" } },
+  { name: "DISTINGUISHED MASTER GUARDIAN", nameFr: "MAÎTRE GARDIEN DISTINGUÉ", threshold: 30000, color: "text-orange-600", drop: { name: "Karambit Doppler", icon: "csgo-karambit-rainbow.png", rarity: "Legendary+", type: "accessory" } },
+  { name: "LEGENDARY EAGLE", nameFr: "AIGLE LÉGENDAIRE", threshold: 40000, color: "text-blue-400", drop: { name: "Mario World Background", icon: "mario", rarity: "Legendary+", type: "background" } },
+  { name: "LEGENDARY EAGLE MASTER", nameFr: "MAÎTRE AIGLE LÉGENDAIRE", threshold: 55000, color: "text-blue-500", drop: { name: "AWP Fade", icon: "csgo-awp.png", rarity: "Mythic", type: "accessory" } },
+  { name: "SUPREME MASTER FIRST CLASS", nameFr: "MAÎTRE SUPRÊME PREMIÈRE CLASSE", threshold: 70000, color: "text-purple-400", drop: { name: "Terrorist Elite", icon: "csgo-terrorist.png", rarity: "Mythic", type: "accessory" } },
+  { name: "THE GLOBAL ELITE", nameFr: "ÉLITE MONDIALE", threshold: 100000, color: "text-purple-500", drop: { name: "CS:GO Logo Badge", icon: "csgo-logo.png", rarity: "Mythic", type: "accessory" } }
 ];
 
 // Validation schemas for security
@@ -50,9 +51,10 @@ const progressSchema = z.object({
 
 const dropSchema = z.object({
   drop_name: z.string().min(1).max(200),
-  drop_icon: z.string().min(1).max(10),
+  drop_icon: z.string().min(1).max(200),
   drop_rarity: z.string().min(1).max(50),
-  rank_name: z.string().min(1).max(100)
+  rank_name: z.string().min(1).max(100),
+  drop_type: z.enum(['accessory', 'background'])
 });
 
 // Color tiers after Global Elite
@@ -195,7 +197,8 @@ const TapSimulatorGame = () => {
         drop_name: drop.name,
         drop_icon: drop.icon,
         drop_rarity: drop.rarity,
-        rank_name: rankName
+        rank_name: rankName,
+        drop_type: drop.type
       });
 
       if (!validation.success) {
@@ -210,7 +213,8 @@ const TapSimulatorGame = () => {
           drop_name: validation.data.drop_name,
           drop_icon: validation.data.drop_icon,
           drop_rarity: validation.data.drop_rarity,
-          rank_name: validation.data.rank_name
+          rank_name: validation.data.rank_name,
+          drop_type: validation.data.drop_type
         });
 
       if (error) throw error;
