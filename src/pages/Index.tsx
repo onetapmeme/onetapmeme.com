@@ -5,26 +5,30 @@ import Tokenomics from "@/components/Tokenomics";
 import Community from "@/components/Community";
 import Roadmap from "@/components/Roadmap";
 import MemeSection from "@/components/MemeSection";
+import TapToEarnSection from "@/components/TapToEarnSection";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import SectionDivider from "@/components/SectionDivider";
+import SectionTransition from "@/components/SectionTransition";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <LanguageSwitcher />
       <Navbar />
       <Hero />
-      <SectionDivider />
+      <SectionTransition variant="primary" />
       <About />
-      <SectionDivider />
+      <SectionTransition variant="accent" />
       <Tokenomics />
-      <SectionDivider />
+      <SectionTransition variant="primary" />
       <Community />
-      <SectionDivider />
+      <SectionTransition variant="accent" />
       <Roadmap />
-      <SectionDivider />
+      <SectionTransition variant="primary" />
       <MemeSection />
+      <SectionTransition variant="accent" />
+      <TapToEarnSection />
+      <SectionTransition variant="subtle" />
       <Footer />
       <CookieBanner />
     </div>

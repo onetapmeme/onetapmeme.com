@@ -1,0 +1,216 @@
+import { useTranslation } from "react-i18next";
+import { Trophy, Sparkles, Gift, Zap, Crown, Star } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import TapSimulatorGame from "@/components/TapSimulatorGame";
+
+const TapToEarnSection = () => {
+  const { t } = useTranslation();
+  const { ref, isRevealed } = useScrollReveal();
+
+  const rarityTiers = [
+    { name: "Common", color: "from-gray-400 to-gray-500", textColor: "text-gray-400", emoji: "⚪", description: "Basic items and backgrounds" },
+    { name: "Uncommon", color: "from-green-400 to-green-500", textColor: "text-green-400", emoji: "🟢", description: "Standard quality drops" },
+    { name: "Rare", color: "from-blue-400 to-blue-500", textColor: "text-blue-400", emoji: "🔵", description: "Notable skins and maps" },
+    { name: "Epic", color: "from-purple-400 to-purple-500", textColor: "text-purple-400", emoji: "🟣", description: "Premium weapons and backgrounds" },
+    { name: "Legendary", color: "from-yellow-400 to-orange-500", textColor: "text-yellow-400", emoji: "🟡", description: "Exceptional legendary items" },
+    { name: "Mythic", color: "from-red-400 to-pink-500", textColor: "text-red-400", emoji: "🔴", description: "Ultimate prestige rewards" },
+  ];
+
+  const features = [
+    {
+      icon: Sparkles,
+      title: "Earn XP",
+      description: "Tap to accumulate XP and climb through CS:GO inspired ranks",
+      gradient: "from-blue-500/20 to-cyan-500/20",
+      iconColor: "text-blue-400"
+    },
+    {
+      icon: Trophy,
+      title: "Rank Up",
+      description: "Progress from Silver I to The Global Elite and beyond",
+      gradient: "from-yellow-500/20 to-orange-500/20",
+      iconColor: "text-yellow-400"
+    },
+    {
+      icon: Gift,
+      title: "Unlock Drops",
+      description: "Earn exclusive weapons, skins, and backgrounds at each rank",
+      gradient: "from-purple-500/20 to-pink-500/20",
+      iconColor: "text-purple-400"
+    },
+    {
+      icon: Crown,
+      title: "Build Inventory",
+      description: "Collect rare items for the meme generator and showcase your collection",
+      gradient: "from-orange-500/20 to-red-500/20",
+      iconColor: "text-orange-400"
+    }
+  ];
+
+  return (
+    <section
+      id="tap-to-earn"
+      ref={ref}
+      className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      style={{
+        background: 'radial-gradient(ellipse at center, hsl(220, 30%, 10%) 0%, hsl(220, 25%, 6%) 50%, hsl(220, 25%, 4%) 100%)'
+      }}
+    >
+      {/* Ambient Glow Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] animate-pulse" 
+          style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] animate-pulse" 
+          style={{ animationDuration: '10s', animationDelay: '2s' }} />
+      </div>
+
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <div className="inline-block mb-6">
+            <Zap className="w-16 h-16 md:w-20 md:h-20 text-primary icon-float icon-glow" />
+          </div>
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            style={{
+              background: 'linear-gradient(90deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 25%, hsl(210, 100%, 65%) 50%, hsl(25, 100%, 55%) 75%, hsl(210, 100%, 55%) 100%)',
+              backgroundSize: '300% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'gradient-flow 8s linear infinite',
+            }}
+          >
+            TAP TO EARN
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
+            Click to earn XP, climb ranks, and unlock exclusive CS:GO inspired drops. 
+            Build your collection of legendary weapons and backgrounds for the meme generator.
+          </p>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 md:mb-20">
+          {features.map((feature, index) => (
+            <Card
+              key={index}
+              className={`p-6 glass-effect border-primary/20 hover:border-primary/40 transition-all duration-500 group relative overflow-hidden`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className="relative z-10">
+                <feature.icon className={`w-10 h-10 ${feature.iconColor} mb-4 group-hover:scale-110 transition-transform duration-300`} 
+                  style={{ filter: 'drop-shadow(0 0 20px currentColor)' }} />
+                <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Game Section */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto mb-16">
+          {/* Left: Game */}
+          <div className="flex justify-center">
+            <TapSimulatorGame />
+          </div>
+
+          {/* Right: Rarity Explanation */}
+          <div className="space-y-6">
+            <Card className="p-6 md:p-8 glass-effect border-primary/30">
+              <div className="flex items-center gap-3 mb-6">
+                <Star className="w-8 h-8 text-yellow-400" style={{ filter: 'drop-shadow(0 0 20px currentColor)' }} />
+                <h3 className="text-2xl font-bold text-foreground">Rarity Tiers</h3>
+              </div>
+              <div className="space-y-4">
+                {rarityTiers.map((tier, index) => (
+                  <div 
+                    key={index}
+                    className="flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 group"
+                  >
+                    <div className={`text-3xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                      {tier.emoji}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className={`font-bold ${tier.textColor}`}>{tier.name}</h4>
+                        <div className={`h-1 w-12 rounded-full bg-gradient-to-r ${tier.color}`} />
+                      </div>
+                      <p className="text-xs text-muted-foreground">{tier.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card className="p-6 glass-effect border-accent/30">
+              <h3 className="text-xl font-bold mb-4 text-foreground flex items-center gap-2">
+                <Gift className="w-6 h-6 text-accent" />
+                How It Works
+              </h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
+                  <span><strong className="text-foreground">Click</strong> the TAP TO EARN button to gain XP</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
+                  <span><strong className="text-foreground">Rank up</strong> through 18 CS:GO inspired ranks</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
+                  <span><strong className="text-foreground">Unlock drops</strong> at each rank - weapons, skins, and backgrounds</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
+                  <span><strong className="text-foreground">Sign in</strong> to save your progress and build your inventory</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
+                  <span><strong className="text-foreground">Use drops</strong> in the meme generator to create unique content</span>
+                </li>
+              </ul>
+            </Card>
+          </div>
+        </div>
+
+        {/* Legendary Drops Showcase */}
+        <Card className="p-8 md:p-12 glass-effect border-2 border-primary/30 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+          <div className="relative z-10">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
+                Legendary Drops
+              </h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Reach the highest ranks to unlock these prestigious items
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { name: "AWP Dragon Lore", rank: "Silver Elite", emoji: "🐉" },
+                { name: "Karambit Fade", rank: "Master Guardian I", emoji: "🔪" },
+                { name: "Karambit Doppler", rank: "DMG", emoji: "💎" },
+                { name: "CS:GO Elite Badge", rank: "Global Elite", emoji: "🏆" }
+              ].map((drop, index) => (
+                <div 
+                  key={index}
+                  className="p-6 rounded-xl bg-gradient-to-br from-card/80 to-card/40 border border-primary/20 hover:border-yellow-500/50 transition-all duration-300 hover:scale-105 group text-center"
+                >
+                  <div className="text-5xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                    {drop.emoji}
+                  </div>
+                  <h4 className="font-bold text-sm text-foreground mb-1">{drop.name}</h4>
+                  <p className="text-xs text-yellow-400">{drop.rank}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+      </div>
+    </section>
+  );
+};
+
+export default TapToEarnSection;

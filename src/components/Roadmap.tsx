@@ -2,7 +2,6 @@ import { CheckCircle2, Circle, Clock, Target } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import ParticleEffect from "@/components/ParticleEffect";
 
 const Roadmap = () => {
   const { t } = useTranslation();
@@ -34,9 +33,16 @@ const Roadmap = () => {
     <section 
       id="roadmap" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background section-slide-left reveal-on-scroll ${isRevealed ? 'revealed' : ''} relative overflow-hidden`}
+      className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      style={{
+        background: 'radial-gradient(ellipse at top, hsl(220, 30%, 10%) 0%, hsl(220, 25%, 6%) 50%, hsl(220, 25%, 6%) 100%)'
+      }}
     >
-      <ParticleEffect color="hsl(25, 100%, 55%)" count={25} speed={0.2} />
+      {/* Ambient glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] animate-pulse" 
+          style={{ animationDuration: '8s' }} />
+      </div>
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <Target className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
