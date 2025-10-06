@@ -1,19 +1,39 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, Download, Shuffle } from "lucide-react";
+import { ArrowLeft, Download, Shuffle, Package } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 import logoImage from "@/assets/onetap_new_logo.png";
 import TapSimulatorGame from "@/components/TapSimulatorGame";
+import { supabase } from "@/integrations/supabase/client";
+
+// Import gaming accessories assets
+import csgoAK47Gold from "@/assets/meme-accessories/csgo-ak47-gold.png";
+import csgoAK47Pink from "@/assets/meme-accessories/csgo-ak47-pink.png";
+import csgoAWPAsiimov from "@/assets/meme-accessories/csgo-awp-asiimov.png";
+import csgoAWPDragon from "@/assets/meme-accessories/csgo-awp-dragon.png";
+import csgoAWP from "@/assets/meme-accessories/csgo-awp.png";
+import csgoKarambitFade from "@/assets/meme-accessories/csgo-karambit-fade.png";
+import csgoKarambitRainbow from "@/assets/meme-accessories/csgo-karambit-rainbow.png";
+import csgoKarambit from "@/assets/meme-accessories/csgo-karambit.png";
+import csgoLogo from "@/assets/meme-accessories/csgo-logo.png";
+import csgoM4A1 from "@/assets/meme-accessories/csgo-m4a1.png";
+import csgoMP7 from "@/assets/meme-accessories/csgo-mp7.png";
+import csgoTerrorist from "@/assets/meme-accessories/csgo-terrorist.png";
+import csgoUMP from "@/assets/meme-accessories/csgo-ump.png";
 
 interface Accessory {
-  emoji: string;
+  emoji?: string;
+  image?: string;
   name: string;
   position: { x: number; y: number };
   size: number;
   rotation?: number;
+  isUnlocked?: boolean;
+  rarity?: string;
 }
 
 interface Background {
@@ -48,21 +68,93 @@ const backgrounds: Background[] = [
   { name: "Retrowave", gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%)" },
 ];
 
+// Asset mapping for drops
+const assetMap: Record<string, string> = {
+  "csgo-ak47-gold.png": csgoAK47Gold,
+  "csgo-ak47-pink.png": csgoAK47Pink,
+  "csgo-awp-asiimov.png": csgoAWPAsiimov,
+  "csgo-awp-dragon.png": csgoAWPDragon,
+  "csgo-awp.png": csgoAWP,
+  "csgo-karambit-fade.png": csgoKarambitFade,
+  "csgo-karambit-rainbow.png": csgoKarambitRainbow,
+  "csgo-karambit.png": csgoKarambit,
+  "csgo-logo.png": csgoLogo,
+  "csgo-m4a1.png": csgoM4A1,
+  "csgo-mp7.png": csgoMP7,
+  "csgo-terrorist.png": csgoTerrorist,
+  "csgo-ump.png": csgoUMP,
+};
+
 const MemeGenerator = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const memeRef = useRef<HTMLDivElement>(null);
   const [selectedAccessories, setSelectedAccessories] = useState<number[]>([]);
   const [selectedBackground, setSelectedBackground] = useState(0);
+  const [allAccessories, setAllAccessories] = useState<Accessory[]>(accessories);
+  const [user, setUser] = useState<any>(null);
+
+  // Load user and inventory
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        loadInventory(session.user.id);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        loadInventory(session.user.id);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const loadInventory = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('player_inventory')
+        .select('*')
+        .eq('user_id', userId);
+
+      if (error) throw error;
+
+      if (data && data.length > 0) {
+        // Convert inventory drops to accessories
+        const unlockedAccessories: Accessory[] = data.map((item) => {
+          const asset = assetMap[item.drop_icon];
+          return {
+            name: item.drop_name,
+            image: asset,
+            emoji: asset ? undefined : "🎁",
+            position: { x: 50, y: 50 },
+            size: 80,
+            isUnlocked: true,
+            rarity: item.drop_rarity,
+          };
+        });
+
+        // Merge with default accessories
+        setAllAccessories([...accessories, ...unlockedAccessories]);
+        toast.success(`${unlockedAccessories.length} ${t('memes.dropsLoaded')}`);
+      }
+    } catch (error: any) {
+      console.error('Error loading inventory:', error);
+    }
+  };
 
   const randomizeMeme = () => {
     const numAccessories = Math.floor(Math.random() * 4) + 2;
     const randomAccessories = Array.from(
       { length: numAccessories },
-      () => Math.floor(Math.random() * accessories.length)
+      () => Math.floor(Math.random() * allAccessories.length)
     );
     setSelectedAccessories(randomAccessories);
     setSelectedBackground(Math.floor(Math.random() * backgrounds.length));
-    toast.success("Meme randomized! 🎲");
+    toast.success(t('memes.randomized'));
   };
 
   const downloadMeme = async () => {
@@ -79,9 +171,9 @@ const MemeGenerator = () => {
       link.href = canvas.toDataURL();
       link.click();
 
-      toast.success("Meme downloaded! 🎉");
+      toast.success(t('memes.downloaded'));
     } catch (error) {
-      toast.error("Failed to download meme");
+      toast.error(t('memes.downloadError'));
       console.error(error);
     }
   };
@@ -95,16 +187,22 @@ const MemeGenerator = () => {
           className="mb-6"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Home
+          {t('memes.backHome')}
         </Button>
 
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-gold bg-clip-text text-transparent">
-            RANDOM TAP MEME
+            {t('memes.title')}
           </h1>
           <p className="text-muted-foreground text-lg">
-            Generate unique $ONETAP memes with gaming references
+            {t('memes.subtitle')}
           </p>
+          {user && (
+            <p className="text-sm text-primary mt-2">
+              <Package className="inline w-4 h-4 mr-1" />
+              {t('memes.inventoryConnected')}
+            </p>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -126,20 +224,29 @@ const MemeGenerator = () => {
 
               {/* Accessories */}
               {selectedAccessories.map((accessoryIndex, i) => {
-                const accessory = accessories[accessoryIndex];
+                const accessory = allAccessories[accessoryIndex];
                 return (
                   <div
                     key={i}
-                    className="absolute text-6xl drop-shadow-lg animate-float"
+                    className="absolute drop-shadow-lg animate-float"
                     style={{
                       left: `${accessory.position.x}%`,
                       top: `${accessory.position.y}%`,
-                      fontSize: `${accessory.size}px`,
+                      width: `${accessory.size}px`,
+                      height: `${accessory.size}px`,
                       transform: `translate(-50%, -50%) rotate(${accessory.rotation || 0}deg)`,
                       animationDelay: `${i * 0.2}s`,
                     }}
                   >
-                    {accessory.emoji}
+                    {accessory.image ? (
+                      <img 
+                        src={accessory.image} 
+                        alt={accessory.name}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <span className="text-6xl">{accessory.emoji}</span>
+                    )}
                   </div>
                 );
               })}
@@ -153,7 +260,7 @@ const MemeGenerator = () => {
                 variant="default"
               >
                 <Shuffle className="mr-2 h-4 w-4" />
-                Randomize
+                {t('memes.randomize')}
               </Button>
               <Button
                 onClick={downloadMeme}
@@ -161,7 +268,7 @@ const MemeGenerator = () => {
                 variant="secondary"
               >
                 <Download className="mr-2 h-4 w-4" />
-                Download
+                {t('memes.download')}
               </Button>
             </div>
           </Card>
@@ -170,7 +277,7 @@ const MemeGenerator = () => {
           <div className="space-y-6">
             {/* Background Selection */}
             <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
-              <h3 className="text-xl font-bold mb-4 text-primary">Backgrounds</h3>
+              <h3 className="text-xl font-bold mb-4 text-primary">{t('memes.backgrounds')}</h3>
               <div className="grid grid-cols-2 gap-3">
                 {backgrounds.map((bg, index) => (
                   <button
@@ -193,9 +300,9 @@ const MemeGenerator = () => {
 
             {/* Accessories Selection */}
             <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
-              <h3 className="text-xl font-bold mb-4 text-primary">Accessories</h3>
-              <div className="grid grid-cols-4 gap-3 max-h-96 overflow-y-auto">
-                {accessories.map((accessory, index) => (
+              <h3 className="text-xl font-bold mb-4 text-primary">{t('memes.accessories')}</h3>
+              <div className="grid grid-cols-4 gap-3 max-h-96 overflow-y-auto scrollbar-thin">
+                {allAccessories.map((accessory, index) => (
                   <button
                     key={index}
                     onClick={() => {
@@ -207,14 +314,25 @@ const MemeGenerator = () => {
                         setSelectedAccessories([...selectedAccessories, index]);
                       }
                     }}
-                    className={`aspect-square rounded-lg flex items-center justify-center text-4xl transition-all duration-300 ${
+                    className={`aspect-square rounded-lg flex items-center justify-center transition-all duration-300 relative ${
                       selectedAccessories.includes(index)
                         ? "bg-primary/20 ring-2 ring-primary scale-110"
                         : "bg-muted/50 hover:bg-muted"
                     }`}
                     title={accessory.name}
                   >
-                    {accessory.emoji}
+                    {accessory.image ? (
+                      <img 
+                        src={accessory.image} 
+                        alt={accessory.name}
+                        className="w-full h-full object-contain p-2"
+                      />
+                    ) : (
+                      <span className="text-4xl">{accessory.emoji}</span>
+                    )}
+                    {accessory.isUnlocked && (
+                      <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background" title={t('memes.unlocked')} />
+                    )}
                   </button>
                 ))}
               </div>
@@ -222,12 +340,12 @@ const MemeGenerator = () => {
 
             {/* Instructions */}
             <Card className="p-6 bg-card/50 backdrop-blur border-primary/20">
-              <h3 className="text-xl font-bold mb-3 text-primary">How to use</h3>
+              <h3 className="text-xl font-bold mb-3 text-primary">{t('memes.howToUse')}</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Click "Randomize" for a random meme</li>
-                <li>• Select backgrounds and accessories manually</li>
-                <li>• Click "Download" to save your meme</li>
-                <li>• Share on social media with #ONETAP</li>
+                <li>• {t('memes.instruction1')}</li>
+                <li>• {t('memes.instruction2')}</li>
+                <li>• {t('memes.instruction3')}</li>
+                <li>• {t('memes.instruction4')}</li>
               </ul>
             </Card>
           </div>
