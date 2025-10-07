@@ -15,5 +15,3 @@ This project is protected by:
 **⚠️ WARNING:** Unauthorized cloning, forking for commercial use, or creation of derivative tokens is strictly prohibited and may result in legal action.
 
 ---
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
