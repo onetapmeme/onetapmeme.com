@@ -156,16 +156,16 @@
   "community": {
     "title": "Rejoignez Notre Communauté",
     "subtitle": "Connectez-vous avec d'autres gamers et passionnés de crypto. Faites partie de la révolution !",
-    "telegram": "Telegram",
-    "telegramText": "Rejoignez notre hub communautaire principal pour des mises à jour et discussions en temps réel",
     "twitter": "Twitter/X",
     "twitterText": "Suivez-nous pour les annonces, memes et moments forts de la communauté",
+    "tiktok": "TikTok",
+    "tiktokText": "Regardez notre contenu gaming et nos memes viraux",
+    "instagram": "Instagram",
+    "instagramText": "Découvrez notre contenu visuel et nos stories",
+    "youtube": "YouTube",
+    "youtubeText": "Abonnez-vous pour des vidéos gaming et tutoriels",
     "discord": "Discord",
-    "discordText": "Connectez-vous avec la communauté, participez aux événements et obtenez du support",
-    "github": "GitHub",
-    "githubText": "Consultez notre code open-source et contribuez au projet",
-    "medium": "Medium",
-    "mediumText": "Lisez nos derniers articles, mises à jour et insights de développement",
+    "discordText": "Rejoignez notre serveur Discord pour discuter en temps réel",
     "reddit": "Reddit",
     "redditText": "Rejoignez les discussions, partagez des memes et restez à jour avec la communauté"
   },
@@ -181,6 +181,7 @@
     "legalNotice": "Mentions Légales",
     "legalShield": "Protégé par ONETAP Legal Shield v1.0",
     "disclaimerText": "$ONETAP est un memecoin sans valeur intrinsèque et SANS attente de retour financier. Investissez uniquement ce que vous pouvez vous permettre de perdre. Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée.",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "contact": "Contact"
   }
 }

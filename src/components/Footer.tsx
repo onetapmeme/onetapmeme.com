@@ -1,4 +1,4 @@
-import { Twitter, Send, MessageCircle } from "lucide-react";
+import { Twitter, Send, MessageCircle, Instagram, Youtube, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/onetap_new_logo.png";
 import { useTranslation } from "react-i18next";
@@ -7,9 +7,12 @@ const Footer = () => {
   const { t } = useTranslation();
   
   const socialLinks = [
-    { icon: Twitter, label: "Twitter", href: "#" },
-    { icon: Send, label: "Telegram", href: "#" },
-    { icon: MessageCircle, label: "Discord", href: "#" },
+    { icon: Twitter, label: "Twitter/X", href: "https://x.com/OneTapMeme" },
+    { icon: Music, label: "TikTok", href: "https://tiktok.com/@onetap_meme" },
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/onetapmeme" },
+    { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@OneTapMeme" },
+    { icon: MessageCircle, label: "Discord", href: "https://discord.com/channels/1219285086156099644" },
+    { icon: MessageCircle, label: "Reddit", href: "https://www.reddit.com/user/ManySingle7170" },
   ];
 
   return (
@@ -101,6 +104,9 @@ const Footer = () => {
           </p>
           <p className="text-xs text-muted-foreground/80 italic px-4 max-w-3xl mx-auto leading-relaxed">
             {t('footer.disclaimerText')}
+          </p>
+          <p className="text-xs text-muted-foreground mt-4">
+            {t('footer.contact')}: <a href="mailto:contactonetapmeme@gmail.com" className="text-primary hover:underline">contactonetapmeme@gmail.com</a>
           </p>
         </div>
       </div>

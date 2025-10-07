@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { MessageCircle, Twitter, Hash, Instagram, Youtube, Music, Users, TrendingUp } from 'lucide-react';
+import { SiDiscord } from 'react-icons/si';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -40,6 +41,14 @@ const Community = () => {
       url: 'https://www.youtube.com/@OneTapMeme',
       color: 'text-[#FF0000]',
       bgColor: 'bg-[#FF0000]/10',
+    },
+    {
+      icon: MessageCircle,
+      name: 'Discord',
+      description: 'Join our Discord server for real-time chat',
+      url: 'https://discord.com/channels/1219285086156099644',
+      color: 'text-[#5865F2]',
+      bgColor: 'bg-[#5865F2]/10',
     },
     {
       icon: MessageCircle,
