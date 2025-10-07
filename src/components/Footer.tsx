@@ -51,6 +51,7 @@ const Footer = () => {
             <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">{t('footer.legal')}</h4>
             <nav className="flex flex-col gap-2">
               {[
+                { label: t('footer.ownership'), path: "/ownership" },
                 { label: t('footer.disclaimer'), path: "/disclaimer" },
                 { label: t('footer.nonAffiliation'), path: "/non-affiliation" },
                 { label: t('footer.privacy'), path: "/privacy" },
@@ -91,9 +92,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border pt-6 md:pt-8 text-center">
-          <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
+        <div className="border-t border-border pt-6 md:pt-8 text-center space-y-3">
+          <p className="text-xs md:text-sm text-muted-foreground mb-2">
             © 2025 $ONETAP. {t('footer.rights')}
+          </p>
+          <p className="text-xs font-semibold text-primary/80 mb-2">
+            {t('footer.legalShield')}
           </p>
           <p className="text-xs text-muted-foreground/80 italic px-4 max-w-3xl mx-auto leading-relaxed">
             {t('footer.disclaimerText')}

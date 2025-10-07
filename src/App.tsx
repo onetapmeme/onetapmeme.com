@@ -12,6 +12,7 @@ import NonAffiliation from "./pages/NonAffiliation";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import LegalNotice from "./pages/LegalNotice";
+import Ownership from "./pages/Ownership";
 import NotFound from "./pages/NotFound";
 import MemeGenerator from "./pages/MemeGenerator";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/home" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/ownership" element={<Ownership />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/non-affiliation" element={<NonAffiliation />} />
           <Route path="/privacy" element={<Privacy />} />
