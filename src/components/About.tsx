@@ -83,29 +83,32 @@ const About = () => {
         </motion.div>
 
         {/* Features Grid - Premium Cards */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
-          {features.map((feature, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.7 + i * 0.1 }}
-            >
-              <Card className="glass-effect p-6 md:p-8 rounded-2xl border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 group h-full">
-                <feature.icon className="w-12 h-12 md:w-14 md:h-14 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" 
-                  style={{ filter: 'drop-shadow(0 0 20px currentColor)' }} 
-                />
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground">{feature.title}</h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="overflow-hidden">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
+            {features.map((feature, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.7 + i * 0.1, ease: "easeOut" }}
+                className="h-full"
+              >
+                <Card className="glass-effect p-6 md:p-8 rounded-2xl border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 group h-full">
+                  <feature.icon className="w-12 h-12 md:w-14 md:h-14 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" 
+                    style={{ filter: 'drop-shadow(0 0 20px currentColor)' }} 
+                  />
+                  <h3 className="text-xl md:text-2xl font-bold mb-4 text-foreground">{feature.title}</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
 
         {/* Disclaimer */}
         <motion.div 
