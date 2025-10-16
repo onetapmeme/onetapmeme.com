@@ -46,12 +46,11 @@ const Roadmap = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
           {[
-            { phase: "Phase 1", title: t('roadmap.phase1'), status: "completed", items: t('roadmap.phase1Items', { returnObjects: true }) as string[] },
-            { phase: "Phase 2", title: t('roadmap.phase2'), status: "current", items: t('roadmap.phase2Items', { returnObjects: true }) as string[] },
-            { phase: "Phase 3", title: t('roadmap.phase3'), status: "upcoming", items: t('roadmap.phase3Items', { returnObjects: true }) as string[] },
-            { phase: "Phase 4", title: t('roadmap.phase4'), status: "upcoming", items: t('roadmap.phase4Items', { returnObjects: true }) as string[] },
+    { phase: "Phase 1", title: t('roadmap.phase1'), status: "completed", items: t('roadmap.phase1Items', { returnObjects: true }) as string[] },
+    { phase: "Phase 2", title: t('roadmap.phase2'), status: "current", items: t('roadmap.phase2Items', { returnObjects: true }) as string[] },
+    { phase: "Phase 3", title: t('roadmap.phase3'), status: "upcoming", items: t('roadmap.phase3Items', { returnObjects: true }) as string[] },
           ].map((phase, i) => (
             <Card
               key={i}

@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "about": "Acerca de",
+    "tokenomics": "Tokenomics",
+    "roadmap": "Hoja de Ruta",
+    "memes": "Memes",
+    "community": "Comunidad"
+  },
+  "hero": {
+    "title": "$ONETAP",
+    "subtitle": "El Memecoin de Gaming Definitivo",
+    "description": "La nostalgia pixelada se encuentra con el crypto moderno. Únete a la revolución del gaming donde cada trade es un headshot.",
+    "cta": "Consigue $ONETAP"
+  },
+  "enter": {
+    "title": "¡BIENVENIDO A $ONETAP!",
+    "subtitle": "Presiona para entrar",
+    "disclaimer": "⚠️ ADVERTENCIA DE MEMECOIN",
+    "risk1": "Este es un memecoin especulativo sin valor intrínseco.",
+    "risk2": "Podría perder todo su valor en cualquier momento.",
+    "risk3": "Invierte solo lo que puedas permitirte perder.",
+    "acknowledge": "Entiendo los riesgos",
+    "footer": "No afiliado con Valve Corporation o Counter-Strike. Solo para entretenimiento."
+  },
+  "about": {
+    "title": "Acerca de $ONETAP",
+    "subtitle": "Donde cada tap cuenta, cada holder es un soldado",
+    "story": "Nacido del amor por Counter-Strike y la cultura de los memes, $ONETAP es más que una moneda - es un movimiento. Creado por gamers, para gamers, con una visión clara: llevar la energía competitiva de CS al mundo crypto.",
+    "story2": "Sin VC. Sin pre-ventas privadas. Solo comunidad pura.",
+    "communityDriven": "Impulsado por la Comunidad",
+    "communityDrivenText": "Cada decisión es votada por los holders. Tu voz importa.",
+    "liquidityLocked": "Liquidez Bloqueada",
+    "liquidityLockedText": "LP bloqueado por 6 meses. Transparencia total, sin rug-pulls.",
+    "fairLaunch": "Lanzamiento Equilibrado",
+    "fairLaunchText": "Distribución justa diseñada para el crecimiento comunitario a largo plazo.",
+    "toTheMoon": "A la Luna",
+    "toTheMoonText": "HODL fuerte, tap más fuerte. Juntos, hacemos historia.",
+    "disclaimerNote": "Recuerda: Los memecoins son altamente especulativos. Nunca inviertas más de lo que puedas permitirte perder."
+  },
+  "tokenomics": {
+    "title": "Tokenomics",
+    "subtitle": "Distribución transparente, crecimiento sostenible",
+    "supply": "Suministro Total",
+    "network": "Red",
+    "symbol": "Símbolo",
+    "tax": "Impuesto",
+    "development": "Desarrollo",
+    "marketing": "Marketing",
+    "liquidity": "Liquidez",
+    "security": "Seguridad",
+    "lpLocked": "LP Bloqueado 6 meses",
+    "verified": "Contrato Verificado",
+    "multiSig": "Multi-Sig Activo",
+    "timelock": "Timelock Habilitado",
+    "renounced": "Funciones Renunciadas",
+    "distribution": "Distribución del Token",
+    "chart": "Ver Gráfico",
+    "advanced": "Características Avanzadas",
+    "antiWhale": "Protección Anti-Ballena",
+    "antiWhaleDesc": "Límites máximos de transacción y billetera para distribución justa",
+    "autoBurn": "Quemado Automático",
+    "autoBurnDesc": "Suministro deflacionario a través de quemas periódicas automáticas",
+    "rewardSystem": "Sistema de Recompensas",
+    "rewardSystemDesc": "Los holders ganan recompensas por mantener a largo plazo",
+    "transparent": "Transparencia Total",
+    "transparentDesc": "Billeteras públicas, actualizaciones regulares, sin sorpresas"
+  },
+  "roadmap": {
+    "title": "Hoja de Ruta",
+    "subtitle": "El viaje hacia la gloria",
+    "phase1": "Lanzamiento Hype",
+    "phase1Items": [
+      "Configuración inicial",
+      "Impulso viral",
+      "Primeros holders"
+    ],
+    "phase2": "Quema Inicial (Actual)",
+    "phase2Items": [
+      "Trading activo",
+      "Mecanismo de quema",
+      "Expansión de listados"
+    ],
+    "phase3": "Juegos y Drops Comunitarios",
+    "phase3Items": [
+      "Telegram gamificado",
+      "Sistema de drops",
+      "Torneos comunitarios"
+    ],
+    "phase4": "Adopción Masiva",
+    "phase4Items": [
+      "Listados principales",
+      "Asociaciones estratégicas",
+      "Expansión del ecosistema"
+    ]
+  },
+  "memes": {
+    "title": "Generador de Memes",
+    "subtitle": "Crea tu propio meme de CT pixelado",
+    "weapon": "Arma",
+    "style": "Estilo",
+    "randomize": "Aleatorizar",
+    "download": "Descargar Meme",
+    "share": "Compartir en Twitter"
+  },
+  "tapToEarn": {
+    "title": "Tap Para Ganar XP",
+    "subtitle": "Cada tap te acerca a drops legendarios",
+    "signIn": "Inicia sesión para empezar a tapear",
+    "rank": "Rango",
+    "xp": "XP",
+    "clicks": "Clics",
+    "tapButton": "¡TAP!",
+    "rankUp": "¡SUBIDA DE RANGO!",
+    "newRank": "Nuevo Rango",
+    "dropReceived": "¡DROP RECIBIDO!",
+    "commonDrop": "Drop Común",
+    "rareDrop": "Drop Raro",
+    "epicDrop": "Drop Épico",
+    "legendaryDrop": "Drop Legendario"
+  },
+  "community": {
+    "title": "Únete a la Comunidad",
+    "subtitle": "Únete a nuestra comunidad para desarrollar el futuro de $ONETAP",
+    "twitter": "Twitter/X",
+    "twitterDesc": "Sigue para actualizaciones, memes y anuncios",
+    "telegram": "Telegram",
+    "telegramDesc": "Chat con la comunidad 24/7",
+    "discord": "Discord",
+    "discordDesc": "Únete a nuestro servidor para eventos y drops",
+    "reddit": "Reddit",
+    "redditDesc": "Discusiones de la comunidad y AMAs",
+    "tiktok": "TikTok",
+    "tiktokDesc": "Contenido viral y gaming clips",
+    "instagram": "Instagram",
+    "instagramDesc": "Contenido visual y actualizaciones diarias",
+    "youtube": "YouTube",
+    "youtubeDesc": "Tutoriales, gameplays y anuncios del proyecto"
+  },
+  "footer": {
+    "tagline": "El memecoin de gaming donde cada trade es un headshot.",
+    "quickLinks": "Enlaces Rápidos",
+    "legal": "Legal",
+    "disclaimer": "Non-Affiliation",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "ownership": "Propiedad",
+    "legalNotice": "Aviso Legal",
+    "disclaimerText": "$ONETAP es un memecoin comunitario. No hay promesas de retornos financieros. No afiliado con Valve Corporation o Counter-Strike.",
+    "rights": "Todos los derechos reservados.",
+    "protected": "Protegido bajo ONETAP Legal Shield v1.0",
+    "contact": "Contacto"
+  },
+  "liveStats": {
+    "title": "$ONETAP ESTADÍSTICAS EN VIVO",
+    "subtitle": "Datos de mercado en tiempo real • Actualiza cada 30s",
+    "marketCap": "Cap. de Mercado",
+    "holders": "Holders",
+    "liquidity": "Liquidez",
+    "volume24h": "Volumen 24h",
+    "notice": "📊 Integración de datos en vivo próximamente después del lanzamiento del token"
+  },
+  "rewards": {
+    "title": "Sistema de Recompensas",
+    "subtitle": "¡Tapea, gana XP, sube de rango y desbloquea drops exclusivos!",
+    "goldDrop": "Drops de Oro",
+    "goldDropDesc": "Drops legendarios raros con skins y accesorios exclusivos inspirados en CS:GO. El premio definitivo para tapeadores dedicados.",
+    "memeDrop": "Drops de Memes",
+    "memeDropDesc": "Memes épicos creados por la comunidad y accesorios personalizados. Muestra tu estilo y creatividad con objetos únicos.",
+    "communityDrop": "Drops Comunitarios",
+    "communityDropDesc": "Recompensas regulares para miembros activos de la comunidad. Participa, involúcrate y gana objetos exclusivos.",
+    "eventDrop": "Drops de Evento",
+    "eventDropDesc": "Drops especiales de tiempo limitado durante torneos y eventos comunitarios. ¡Esté allí o piérdalo!",
+    "devNotice": "🎮 Los módulos Tap-to-Earn y Meme están actualmente en desarrollo.",
+    "devNoticeDesc": "¡Únete a nuestra comunidad para ser el primero en saber cuándo se lanzan estas funciones!"
+  }
+}

@@ -21,8 +21,8 @@ const About = () => {
     },
     {
       icon: Target,
-      title: t('about.fairLaunch'),
-      description: t('about.fairLaunchText'),
+      title: t('about.equilibratedLaunch') || 'Equilibrated Launch',
+      description: t('about.equilibratedLaunchText') || 'Balanced distribution designed for community, liquidity, and long-term growth.',
     },
     {
       icon: Rocket,

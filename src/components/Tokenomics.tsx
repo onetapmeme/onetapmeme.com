@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import TokenomicsChart from "@/components/TokenomicsChart";
+import TokenDistribution from "@/components/TokenDistribution";
 
 const Tokenomics = () => {
   const { t } = useTranslation();
@@ -126,8 +126,8 @@ const Tokenomics = () => {
                 <div className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">✓</span>
                   <div>
-                    <p className="font-semibold text-foreground">LP Locked 3 Months</p>
-                    <p className="text-muted-foreground">Liquidity pool secured until {new Date(Date.now() + 90*24*60*60*1000).toLocaleDateString()}</p>
+                    <p className="font-semibold text-foreground">LP Locked 6 Months</p>
+                    <p className="text-muted-foreground">Liquidity pool secured until {new Date(Date.now() + 180*24*60*60*1000).toLocaleDateString()}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
@@ -216,7 +216,7 @@ const Tokenomics = () => {
 
           {/* Distribution */}
           <div className="space-y-4 md:space-y-6">
-            <TokenomicsChart />
+            <TokenDistribution />
 
             {/* Advanced Features */}
             <Card className="p-6 md:p-8 glass-effect border-2 border-primary/30 hover:border-primary/50 transition-all duration-500">
