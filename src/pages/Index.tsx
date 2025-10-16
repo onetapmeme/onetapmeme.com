@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SectionWrapper from "@/components/SectionWrapper";
-import BenCharacter from "@/components/BenCharacter";
+import BenController from "@/components/ben/BenController";
 import LoadingScreen from "@/components/LoadingScreen";
 import LiveStats from "@/components/LiveStats";
 import RewardSystem from "@/components/RewardSystem";
@@ -32,7 +32,7 @@ const Index = () => {
     <>
       <LoadingScreen isLoading={isLoading} />
       <div className="min-h-screen bg-background">
-        <BenCharacter />
+        <BenController />
         <LanguageSwitcher />
         <Navbar />
         <Hero />
