@@ -2,32 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import v7.0 Design System */
+@import './styles/v7-design-system.css';
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 220 25% 6%;
+    /* v7.0 Premium Colors - Finary inspired */
+    --background: 220 25% 8%;
     --foreground: 0 0% 98%;
-    --card: 220 25% 8%;
+    --card: 220 20% 12%;
     --card-foreground: 0 0% 98%;
-    --popover: 220 25% 8%;
+    --popover: 220 18% 16%;
     --popover-foreground: 0 0% 98%;
-    --primary: 210 100% 55%;
+    --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 15% 20%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 220 15% 25%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 25 100% 55%;
+    --muted: 220 8% 45%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 25 95% 53%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 210 100% 55%;
-    --radius: 0.75rem;
+    --border: 220 15% 25%;
+    --input: 220 15% 30%;
+    --ring: 199 89% 48%;
+    --radius: 0.5rem;
     
     /* Apple-style gradients */
     --gradient-hero: linear-gradient(180deg, hsl(220, 25%, 6%) 0%, hsl(220, 30%, 10%) 50%, hsl(220, 25%, 6%) 100%);
