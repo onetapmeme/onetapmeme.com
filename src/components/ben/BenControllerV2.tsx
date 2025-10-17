@@ -19,6 +19,8 @@ const SPRITE_POSITIONS = {
 };
 
 const SPRITE_SIZE = 128; // Each sprite is 128x128px in the sheet
+const CIRCLE_SIZE_DESKTOP = 96; // w-24 h-24
+const CIRCLE_SIZE_MOBILE = 64; // w-16 h-16
 
 interface BenPosition {
   bottom: string;
@@ -43,6 +45,7 @@ const BenControllerV2 = () => {
   const { i18n } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const [currentSection, setCurrentSection] = useState('hero');
+  const currentSectionRef = useRef('hero');
   const [showDialogue, setShowDialogue] = useState(false);
   const [dialogueText, setDialogueText] = useState('');
   const [showMenu, setShowMenu] = useState(false);
@@ -51,6 +54,7 @@ const BenControllerV2 = () => {
   const [isSpawning, setIsSpawning] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const dialogueTimeoutRef = useRef<NodeJS.Timeout>();
+  const lastSectionChangeRef = useRef<number>(0);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -72,31 +76,42 @@ const BenControllerV2 = () => {
       setTimeout(() => setCurrentSprite('neutral'), 2000);
     }, 1500);
 
-    // Scroll tracking
-    const handleScroll = () => {
-      const sections = Object.keys(sectionPositions);
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+    // Section tracking with IntersectionObserver
+    const sections = Object.keys(sectionPositions);
+    const observers: IntersectionObserver[] = [];
 
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            if (currentSection !== sectionId) {
-              setCurrentSection(sectionId);
-              showDialogForSection(sectionId);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (entry.isIntersecting && sections.includes(id)) {
+            if (currentSectionRef.current !== id) {
+              currentSectionRef.current = id;
+              setCurrentSection(id);
+              showDialogForSection(id);
             }
-            break;
           }
-        }
-      }
-    };
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+
+    return () => {
+      io.disconnect();
+      observers.forEach((o) => o.disconnect());
+    };
   }, [currentSection]);
 
   const showDialogForSection = (section: string) => {
+    const now = Date.now();
+    if (now - lastSectionChangeRef.current < 800) return;
+    lastSectionChangeRef.current = now;
+
     const dialogue = getBenDialogue(i18n.language, section);
     const position = sectionPositions[section];
     if (dialogue && position) {
@@ -138,8 +153,8 @@ const BenControllerV2 = () => {
             className="w-full h-full"
             style={{
               backgroundImage: `url(${benSpritesheet})`,
-              backgroundSize: '300%',
-              backgroundPosition: `${SPRITE_POSITIONS[currentSprite].x * -50}% ${SPRITE_POSITIONS[currentSprite].y * -50}%`,
+              backgroundSize: `${SPRITE_SIZE * 3}px ${SPRITE_SIZE * 3}px`,
+              backgroundPosition: `-${SPRITE_POSITIONS[currentSprite].x * SPRITE_SIZE + (SPRITE_SIZE - CIRCLE_SIZE_MOBILE) / 2}px -${SPRITE_POSITIONS[currentSprite].y * SPRITE_SIZE + (SPRITE_SIZE - CIRCLE_SIZE_MOBILE) / 2}px`,
               backgroundRepeat: 'no-repeat',
               imageRendering: 'pixelated',
             }}
@@ -155,7 +170,6 @@ const BenControllerV2 = () => {
   return (
     <AnimatePresence>
       <motion.div
-        key={currentSection}
         initial={isSpawning ? { scale: 0, opacity: 0, y: 100 } : { opacity: 1 }}
         animate={{
           scale: 1,
@@ -231,8 +245,8 @@ const BenControllerV2 = () => {
               className="w-full h-full"
               style={{
                 backgroundImage: `url(${benSpritesheet})`,
-                backgroundSize: '300%',
-                backgroundPosition: `${SPRITE_POSITIONS[currentSprite].x * -50}% ${SPRITE_POSITIONS[currentSprite].y * -50}%`,
+                backgroundSize: `${SPRITE_SIZE * 3}px ${SPRITE_SIZE * 3}px`,
+                backgroundPosition: `-${SPRITE_POSITIONS[currentSprite].x * SPRITE_SIZE + (SPRITE_SIZE - CIRCLE_SIZE_DESKTOP) / 2}px -${SPRITE_POSITIONS[currentSprite].y * SPRITE_SIZE + (SPRITE_SIZE - CIRCLE_SIZE_DESKTOP) / 2}px`,
                 backgroundRepeat: 'no-repeat',
                 imageRendering: 'pixelated',
               }}

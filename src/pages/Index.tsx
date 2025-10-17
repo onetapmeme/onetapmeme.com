@@ -20,39 +20,57 @@ const Index = () => {
       <BenControllerV2 />
       <LanguageSwitcher />
       <Navbar />
-      <Hero />
+      <div id="hero">
+        <Hero />
+      </div>
       
-      <SectionWrapper variant="primary">
-        <About />
-      </SectionWrapper>
+      <div id="about">
+        <SectionWrapper variant="primary">
+          <About />
+        </SectionWrapper>
+      </div>
 
-      <SectionWrapper variant="accent">
-        <Tokenomics />
-      </SectionWrapper>
+      <div id="tokenomics">
+        <SectionWrapper variant="accent">
+          <Tokenomics />
+        </SectionWrapper>
+      </div>
 
-      <SectionWrapper variant="primary">
-        <LiveStats />
-      </SectionWrapper>
+      <div id="live-stats">
+        <SectionWrapper variant="primary">
+          <LiveStats />
+        </SectionWrapper>
+      </div>
       
-      <SectionWrapper variant="accent">
-        <Roadmap />
-      </SectionWrapper>
+      <div id="roadmap">
+        <SectionWrapper variant="accent">
+          <Roadmap />
+        </SectionWrapper>
+      </div>
       
-      <SectionWrapper variant="primary">
-        <Community />
-      </SectionWrapper>
+      <div id="community">
+        <SectionWrapper variant="primary">
+          <Community />
+        </SectionWrapper>
+      </div>
 
-      <SectionWrapper variant="accent">
-        <TapToEarnSection />
-      </SectionWrapper>
+      <div id="tap-to-earn">
+        <SectionWrapper variant="accent">
+          <TapToEarnSection />
+        </SectionWrapper>
+      </div>
 
-      <SectionWrapper variant="primary">
-        <RewardSystem />
-      </SectionWrapper>
+      <div id="rewards">
+        <SectionWrapper variant="primary">
+          <RewardSystem />
+        </SectionWrapper>
+      </div>
       
-      <SectionWrapper variant="accent">
-        <MemeSection />
-      </SectionWrapper>
+      <div id="memes">
+        <SectionWrapper variant="accent">
+          <MemeSection />
+        </SectionWrapper>
+      </div>
       
       <Footer />
       <CookieBanner />
