@@ -23,7 +23,7 @@ i18n
       ru: { translation: ru },
       zh: { translation: zh }
     },
-    lng: getBrowserLanguage(),
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false
