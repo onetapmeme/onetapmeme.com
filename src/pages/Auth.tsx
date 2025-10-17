@@ -9,6 +9,44 @@ import { useToast } from "@/hooks/use-toast";
 import { Shield, Mail, Lock, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoImage from "@/assets/onetap_new_logo.png";
+import { z } from "zod";
+
+// Input validation schema
+const authSchema = z.object({
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  password: z.string()
+    .min(8, "Password must be at least 8 characters")
+    .max(128, "Password must be less than 128 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number")
+});
+
+// Map Supabase errors to user-friendly messages
+const getAuthErrorMessage = (error: any): string => {
+  const errorMessage = error?.message || "";
+  
+  const errorMap: Record<string, string> = {
+    "User already registered": "This email is already in use",
+    "Invalid login credentials": "Invalid email or password",
+    "Email not confirmed": "Please verify your email address",
+    "Password should be at least 6 characters": "Password must be at least 8 characters",
+    "Unable to validate email address: invalid format": "Invalid email address",
+    "Signup requires a valid password": "Please enter a valid password",
+    "Email rate limit exceeded": "Too many attempts. Please try again later",
+    "Invalid email or password": "Invalid email or password"
+  };
+  
+  // Check for exact matches
+  for (const [key, value] of Object.entries(errorMap)) {
+    if (errorMessage.includes(key)) {
+      return value;
+    }
+  }
+  
+  // Default generic message for unexpected errors
+  return "Authentication failed. Please try again.";
+};
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -37,6 +75,21 @@ const Auth = () => {
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate inputs before submission
+    try {
+      authSchema.parse({ email, password });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+    
     setLoading(true);
 
     try {
@@ -72,7 +125,7 @@ const Auth = () => {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: getAuthErrorMessage(error),
         variant: "destructive",
       });
     } finally {
@@ -94,7 +147,7 @@ const Auth = () => {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: getAuthErrorMessage(error),
         variant: "destructive",
       });
       setLoading(false);
