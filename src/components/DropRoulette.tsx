@@ -63,7 +63,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
       { name: "Mario World", icon: "🍄", rarity: "Legendary+" },
       { name: "AWP Fade", icon: "🌟", rarity: "Mythic" },
       { name: "Terrorist Elite", icon: "💀", rarity: "Mythic" },
-      { name: "CS:GO Logo", icon: "🎖️", rarity: "Mythic" },
+      { name: "Elite Badge", icon: "🎖️", rarity: "Mythic" },
     ];
 
     // Créer une liste de 30 items aléatoires, avec le drop gagné à la fin

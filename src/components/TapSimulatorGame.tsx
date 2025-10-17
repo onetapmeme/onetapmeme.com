@@ -40,7 +40,7 @@ const ranks: Rank[] = [
   { name: "LEGENDARY EAGLE", nameFr: "AIGLE LÉGENDAIRE", threshold: 40000, color: "text-blue-400", drop: { name: "Mario World Background", icon: "mario", rarity: "Legendary+", type: "background" } },
   { name: "LEGENDARY EAGLE MASTER", nameFr: "MAÎTRE AIGLE LÉGENDAIRE", threshold: 55000, color: "text-blue-500", drop: { name: "AWP Fade", icon: "csgo-awp.png", rarity: "Mythic", type: "accessory" } },
   { name: "SUPREME MASTER FIRST CLASS", nameFr: "MAÎTRE SUPRÊME PREMIÈRE CLASSE", threshold: 70000, color: "text-purple-400", drop: { name: "Terrorist Elite", icon: "csgo-terrorist.png", rarity: "Mythic", type: "accessory" } },
-  { name: "THE GLOBAL ELITE", nameFr: "ÉLITE MONDIALE", threshold: 100000, color: "text-purple-500", drop: { name: "CS:GO Logo Badge", icon: "csgo-logo.png", rarity: "Mythic", type: "accessory" } }
+  { name: "THE GLOBAL ELITE", nameFr: "ÉLITE MONDIALE", threshold: 100000, color: "text-purple-500", drop: { name: "Elite Badge", icon: "csgo-logo.png", rarity: "Mythic", type: "accessory" } }
 ];
 
 // Validation schemas for security

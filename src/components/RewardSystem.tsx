@@ -12,7 +12,7 @@ const RewardSystem = () => {
     {
       icon: Trophy,
       name: t('rewards.goldDrop') || 'Gold Drops',
-      description: t('rewards.goldDropDesc') || 'Rare legendary drops with exclusive CS:GO inspired skins and accessories. The ultimate prize for dedicated tappers.',
+      description: t('rewards.goldDropDesc') || 'Rare legendary drops with exclusive inspired skins and accessories. The ultimate prize for dedicated tappers.',
       rarity: 'Legendary',
       color: 'from-yellow-500 to-orange-500',
       glow: 'shadow-[0_0_40px_rgba(234,179,8,0.5)]',

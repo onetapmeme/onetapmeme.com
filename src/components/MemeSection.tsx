@@ -106,9 +106,14 @@ const MemeSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
             {t('memes.title')}
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            {t('memes.subtitle')}
-          </p>
+          <div className="max-w-2xl mx-auto px-4 space-y-2">
+            <p className="text-base md:text-lg text-muted-foreground">
+              {t('memes.subtitle')}
+            </p>
+            <p className="text-sm text-accent/80 font-semibold">
+              🚧 Currently in development - Coming soon!
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">

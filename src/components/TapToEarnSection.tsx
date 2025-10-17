@@ -9,12 +9,12 @@ const TapToEarnSection = () => {
   const { ref, isRevealed } = useScrollReveal();
 
   const rarityTiers = [
-    { name: "Common", color: "from-gray-400 to-gray-500", textColor: "text-gray-400", emoji: "⚪", description: "Basic items and backgrounds" },
-    { name: "Uncommon", color: "from-green-400 to-green-500", textColor: "text-green-400", emoji: "🟢", description: "Standard quality drops" },
-    { name: "Rare", color: "from-blue-400 to-blue-500", textColor: "text-blue-400", emoji: "🔵", description: "Notable skins and maps" },
-    { name: "Epic", color: "from-purple-400 to-purple-500", textColor: "text-purple-400", emoji: "🟣", description: "Premium weapons and backgrounds" },
-    { name: "Legendary", color: "from-yellow-400 to-orange-500", textColor: "text-yellow-400", emoji: "🟡", description: "Exceptional legendary items" },
-    { name: "Mythic", color: "from-red-400 to-pink-500", textColor: "text-red-400", emoji: "🔴", description: "Ultimate prestige rewards" },
+    { name: "Common", color: "from-gray-400 to-gray-500", textColor: "text-gray-400", emoji: "⚪", description: "Basic items and backgrounds", rate: "60.0%" },
+    { name: "Uncommon", color: "from-green-400 to-green-500", textColor: "text-green-400", emoji: "🟢", description: "Standard quality drops", rate: "25.0%" },
+    { name: "Rare", color: "from-blue-400 to-blue-500", textColor: "text-blue-400", emoji: "🔵", description: "Notable skins and maps", rate: "10.0%" },
+    { name: "Epic", color: "from-purple-400 to-purple-500", textColor: "text-purple-400", emoji: "🟣", description: "Premium weapons and backgrounds", rate: "3.0%" },
+    { name: "Legendary", color: "from-yellow-400 to-orange-500", textColor: "text-yellow-400", emoji: "🟡", description: "Exceptional legendary items", rate: "1.6%" },
+    { name: "Mythic", color: "from-red-400 to-pink-500", textColor: "text-red-400", emoji: "🔴", description: "Ultimate prestige rewards", rate: "0.4%" },
   ];
 
   const features = [
@@ -35,7 +35,7 @@ const TapToEarnSection = () => {
     {
       icon: Gift,
       title: "Unlock Drops",
-      description: "Earn exclusive weapons, skins, and backgrounds at each rank",
+      description: "Earn exclusive items, skins, and backgrounds at each rank",
       gradient: "from-purple-500/20 to-pink-500/20",
       iconColor: "text-purple-400"
     },
@@ -74,10 +74,15 @@ const TapToEarnSection = () => {
           >
             TAP TO EARN
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-            Click to earn XP, climb ranks, and unlock exclusive CS:GO inspired drops. 
-            Build your collection of legendary weapons and backgrounds for the meme generator.
-          </p>
+          <div className="max-w-3xl mx-auto px-4 space-y-3">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Click to earn XP, climb ranks, and unlock exclusive drops. 
+              Build your collection of legendary items and backgrounds for the meme generator.
+            </p>
+            <p className="text-sm md:text-base text-accent/80 font-semibold">
+              🚧 Currently in development - Coming soon!
+            </p>
+          </div>
         </div>
 
         {/* Features Grid */}
@@ -123,9 +128,12 @@ const TapToEarnSection = () => {
                       {tier.emoji}
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className={`font-bold ${tier.textColor}`}>{tier.name}</h4>
-                        <div className={`h-1 w-12 rounded-full bg-gradient-to-r ${tier.color}`} />
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <div className="flex items-center gap-2">
+                          <h4 className={`font-bold ${tier.textColor}`}>{tier.name}</h4>
+                          <div className={`h-1 w-12 rounded-full bg-gradient-to-r ${tier.color}`} />
+                        </div>
+                        <span className="text-xs font-mono text-muted-foreground">{tier.rate}</span>
                       </div>
                       <p className="text-xs text-muted-foreground">{tier.description}</p>
                     </div>
@@ -146,11 +154,11 @@ const TapToEarnSection = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
-                  <span><strong className="text-foreground">Rank up</strong> through 18 CS:GO inspired ranks</span>
+                  <span><strong className="text-foreground">Rank up</strong> through 18 competitive ranks</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
-                  <span><strong className="text-foreground">Unlock drops</strong> at each rank - weapons, skins, and backgrounds</span>
+                  <span><strong className="text-foreground">Unlock drops</strong> at each rank - items, skins, and backgrounds</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5 flex-shrink-0">▸</span>
@@ -182,7 +190,7 @@ const TapToEarnSection = () => {
                 { name: "AWP Dragon Lore", rank: "Silver Elite", emoji: "🐉" },
                 { name: "Karambit Fade", rank: "Master Guardian I", emoji: "🔪" },
                 { name: "Karambit Doppler", rank: "DMG", emoji: "💎" },
-                { name: "CS:GO Elite Badge", rank: "Global Elite", emoji: "🏆" }
+                { name: "Elite Badge", rank: "Global Elite", emoji: "🏆" }
               ].map((drop, index) => (
                 <div 
                   key={index}

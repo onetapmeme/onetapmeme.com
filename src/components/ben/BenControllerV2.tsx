@@ -24,18 +24,19 @@ interface BenPosition {
   bottom: string;
   right: string;
   section: string;
+  sprite: keyof typeof SPRITE_POSITIONS;
 }
 
 const sectionPositions: Record<string, BenPosition> = {
-  hero: { bottom: '20px', right: '20px', section: 'hero' },
-  about: { bottom: '20px', right: '20px', section: 'about' },
-  tokenomics: { bottom: '20px', right: '20px', section: 'tokenomics' },
-  'live-stats': { bottom: '20px', right: '20px', section: 'live-stats' },
-  roadmap: { bottom: '20px', right: '20px', section: 'roadmap' },
-  rewards: { bottom: '20px', right: '20px', section: 'rewards' },
-  community: { bottom: '20px', right: '20px', section: 'community' },
-  memes: { bottom: '20px', right: '20px', section: 'memes' },
-  'tap-to-earn': { bottom: '20px', right: '20px', section: 'tap-to-earn' },
+  hero: { bottom: '20px', right: '20px', section: 'hero', sprite: 'celebrating' },
+  about: { bottom: '20px', right: '20px', section: 'about', sprite: 'talking' },
+  tokenomics: { bottom: '20px', right: '20px', section: 'tokenomics', sprite: 'pointing' },
+  'live-stats': { bottom: '20px', right: '20px', section: 'live-stats', sprite: 'explaining' },
+  roadmap: { bottom: '20px', right: '20px', section: 'roadmap', sprite: 'thinking' },
+  community: { bottom: '20px', right: '20px', section: 'community', sprite: 'winking' },
+  'tap-to-earn': { bottom: '20px', right: '20px', section: 'tap-to-earn', sprite: 'shooting' },
+  rewards: { bottom: '20px', right: '20px', section: 'rewards', sprite: 'smiling' },
+  memes: { bottom: '20px', right: '20px', section: 'memes', sprite: 'celebrating' },
 };
 
 const BenControllerV2 = () => {
@@ -97,8 +98,9 @@ const BenControllerV2 = () => {
 
   const showDialogForSection = (section: string) => {
     const dialogue = getBenDialogue(i18n.language, section);
-    if (dialogue) {
-      setCurrentSprite(section === 'hero' ? 'celebrating' : section === 'tokenomics' ? 'pointing' : section === 'live-stats' ? 'explaining' : section === 'community' ? 'winking' : 'talking');
+    const position = sectionPositions[section];
+    if (dialogue && position) {
+      setCurrentSprite(position.sprite);
       setDialogueText(dialogue.text);
       setShowDialogue(true);
 
@@ -129,16 +131,20 @@ const BenControllerV2 = () => {
         className="fixed bottom-4 right-4 z-50"
       >
         <div
-          className="w-16 h-16 rounded-full border-2 border-primary/50 bg-card/90 backdrop-blur-sm shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+          className="w-16 h-16 rounded-full border-2 border-primary/50 bg-card/90 backdrop-blur-sm shadow-lg cursor-pointer hover:scale-110 transition-transform overflow-hidden"
           onClick={() => setShowMenu(!showMenu)}
-          style={{
-            backgroundImage: `url(${benSpritesheet})`,
-            backgroundSize: '384px 384px',
-            backgroundPosition: `-${SPRITE_POSITIONS[currentSprite].x * 128}px -${SPRITE_POSITIONS[currentSprite].y * 128}px`,
-            backgroundRepeat: 'no-repeat',
-            imageRendering: 'pixelated',
-          }}
-        />
+        >
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: `url(${benSpritesheet})`,
+              backgroundSize: '300%',
+              backgroundPosition: `${SPRITE_POSITIONS[currentSprite].x * -50}% ${SPRITE_POSITIONS[currentSprite].y * -50}%`,
+              backgroundRepeat: 'no-repeat',
+              imageRendering: 'pixelated',
+            }}
+          />
+        </div>
       </motion.div>
     );
   }
@@ -168,20 +174,32 @@ const BenControllerV2 = () => {
         className="fixed z-50 group"
         style={{ bottom: position.bottom, right: position.right }}
       >
+        {/* Circle spawn animation */}
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ 
+            duration: 0.6, 
+            ease: [0.16, 1, 0.3, 1],
+            delay: isSpawning ? 0.3 : 0 
+          }}
+          className="absolute inset-0 rounded-full border-2 border-primary/30 bg-gradient-to-br from-primary/10 to-transparent"
+        />
+        
         {/* Spawn particles effect */}
         {isSpawning && (
           <div className="absolute inset-0 pointer-events-none">
-            {[...Array(12)].map((_, i) => (
+            {[...Array(16)].map((_, i) => (
               <motion.div
                 key={i}
                 initial={{ scale: 0, x: 0, y: 0, opacity: 1 }}
                 animate={{
                   scale: [0, 1.5, 0],
-                  x: Math.cos((i * Math.PI * 2) / 12) * 80,
-                  y: Math.sin((i * Math.PI * 2) / 12) * 80,
+                  x: Math.cos((i * Math.PI * 2) / 16) * 80,
+                  y: Math.sin((i * Math.PI * 2) / 16) * 80,
                   opacity: [1, 0.5, 0],
                 }}
-                transition={{ duration: 1.2, delay: i * 0.05 }}
+                transition={{ duration: 1.2, delay: i * 0.04 }}
                 className="absolute w-2 h-2 bg-primary rounded-full"
                 style={{ left: '50%', top: '50%' }}
               />
@@ -208,16 +226,18 @@ const BenControllerV2 = () => {
           <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse" />
           
           {/* Sprite */}
-          <div
-            className="relative w-24 h-24 rounded-full border-2 border-primary/50 bg-card/90 backdrop-blur-sm shadow-2xl"
-            style={{
-              backgroundImage: `url(${benSpritesheet})`,
-              backgroundSize: '384px 384px',
-              backgroundPosition: `-${SPRITE_POSITIONS[currentSprite].x * 128}px -${SPRITE_POSITIONS[currentSprite].y * 128}px`,
-              backgroundRepeat: 'no-repeat',
-              imageRendering: 'pixelated',
-            }}
-          />
+          <div className="relative w-24 h-24 rounded-full border-2 border-primary/50 bg-card/90 backdrop-blur-sm shadow-2xl overflow-hidden">
+            <div
+              className="w-full h-full"
+              style={{
+                backgroundImage: `url(${benSpritesheet})`,
+                backgroundSize: '300%',
+                backgroundPosition: `${SPRITE_POSITIONS[currentSprite].x * -50}% ${SPRITE_POSITIONS[currentSprite].y * -50}%`,
+                backgroundRepeat: 'no-repeat',
+                imageRendering: 'pixelated',
+              }}
+            />
+          </div>
         </motion.div>
 
         {/* Dialogue bubble */}
