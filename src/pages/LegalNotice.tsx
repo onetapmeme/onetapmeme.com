@@ -59,11 +59,11 @@ const LegalNotice = () => {
               <div className="space-y-3 text-foreground/80">
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">Email:</span>
-                  <span>contact@onetap.xyz</span>
+                  <span>contactonetapmeme@gmail.com</span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">Community Support:</span>
-                  <span>Available via Telegram and Discord</span>
+                  <span>Available via Discord and Reddit</span>
                 </div>
               </div>
             </div>
@@ -76,15 +76,23 @@ const LegalNotice = () => {
               <div className="space-y-3 text-foreground/80">
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">Hosting Provider:</span>
-                  <span>GitHub Pages (Microsoft Corporation)</span>
+                  <span>IONOS by 1&1 (with DDoS Protection)</span>
+                </div>
+                <div className="flex flex-col md:flex-row gap-2">
+                  <span className="font-bold min-w-[180px]">Domain Registrar:</span>
+                  <span>IONOS SE</span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">Domain:</span>
-                  <span>onetap.xyz</span>
+                  <span>onetapmeme.com</span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">SSL Certificate:</span>
-                  <span>Provided by hosting service</span>
+                  <span>Sectigo Public Server Authentication (DV)</span>
+                </div>
+                <div className="flex flex-col md:flex-row gap-2">
+                  <span className="font-bold min-w-[180px]">Security:</span>
+                  <span>DDoS Protection & SSL/TLS Encryption</span>
                 </div>
               </div>
             </div>
