@@ -58,7 +58,7 @@ All references to Counter-Strike, CS:GO, CS2, or related gaming culture are pure
 ## DIGITAL SIGNATURE
 
 **Signed digitally by:** Hugo  
-**GitHub Repository:** https://github.com/[your-username]/onetap  
+**Official Website:** https://onetapmeme.com  
 **Timestamp:** 2025-01-07  
 **Commit Hash:** [To be filled after GitHub commit]  
 **Blockchain Timestamp:** [To be filled after Base verification]

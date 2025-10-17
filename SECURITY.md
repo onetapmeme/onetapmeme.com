@@ -77,8 +77,8 @@ All of the following are proprietary to the $ONETAP project:
 
 **Found a vulnerability or scam?** Please report it:
 
-- 🔒 **Security vulnerabilities:** Open a [GitHub Security Advisory](https://github.com/[your-username]/onetap/security/advisories/new)
-- 🚨 **Scams/Fraud:** Email: [your-security-email@domain.com]
+- 🔒 **Security vulnerabilities:** Email: contactonetapmeme@gmail.com
+- 🚨 **Scams/Fraud:** Email: contactonetapmeme@gmail.com
 - 📢 **Community issues:** Contact moderators on official Discord/Telegram
 
 ---
@@ -156,11 +156,13 @@ See [LICENSE](./LICENSE) for full terms.
 
 **⚠️ Only trust links from these official sources:**
 
-- **Website:** [To be filled]
-- **GitHub:** https://github.com/[your-username]/onetap
-- **Twitter/X:** [To be filled]
-- **Telegram:** [To be filled]
-- **Discord:** [To be filled]
+- **Website:** https://onetapmeme.com
+- **Twitter/X:** https://x.com/OneTapMeme
+- **TikTok:** https://tiktok.com/@onetap_meme
+- **Instagram:** https://www.instagram.com/onetapmeme
+- **YouTube:** https://www.youtube.com/@OneTapMeme
+- **Discord:** https://discord.com/channels/1219285086156099644
+- **Reddit:** https://www.reddit.com/user/ManySingle7170
 
 **Beware of phishing attempts and fake accounts.**
 
@@ -169,9 +171,9 @@ See [LICENSE](./LICENSE) for full terms.
 ## 📞 Contact Information
 
 **Project Owner:** Hugo  
-**Official Repository:** https://github.com/[your-username]/onetap  
-**Security Contact:** [your-email@domain.com]  
-**Legal Inquiries:** [your-email@domain.com]
+**Official Website:** https://onetapmeme.com  
+**Security Contact:** contactonetapmeme@gmail.com  
+**Legal Inquiries:** contactonetapmeme@gmail.com
 
 ---
 

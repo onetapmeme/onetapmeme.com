@@ -119,7 +119,7 @@ const Ownership = () => {
                 <p><strong>Signed by:</strong> Hugo</p>
                 <p className="flex items-center gap-2">
                   <Github className="w-4 h-4" />
-                  <strong>Repository:</strong> github.com/[your-username]/onetap
+                  <strong>Website:</strong> onetapmeme.com
                 </p>
                 <p><strong>Timestamp:</strong> 2025-01-07</p>
                 <p><strong>Document Hash:</strong> [Generated on commit]</p>
@@ -144,7 +144,7 @@ const Ownership = () => {
               <h3 className="font-bold">License</h3>
               <p className="text-sm text-muted-foreground">View the ONETAP Community License 1.0</p>
               <a 
-                href="https://github.com/[your-username]/onetap/blob/main/LICENSE" 
+                href="https://onetapmeme.com/terms" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:underline text-sm"
@@ -158,7 +158,7 @@ const Ownership = () => {
               <h3 className="font-bold">Security Audit</h3>
               <p className="text-sm text-muted-foreground">Token transparency and security report</p>
               <a 
-                href="https://github.com/[your-username]/onetap/blob/main/legal/AUDIT.md" 
+                href="https://onetapmeme.com/disclaimer" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:underline text-sm"
@@ -172,7 +172,7 @@ const Ownership = () => {
               <h3 className="font-bold">Source Code</h3>
               <p className="text-sm text-muted-foreground">Open-source repository on GitHub</p>
               <a 
-                href="https://github.com/[your-username]/onetap" 
+                href="https://github.com/Hugo-SEQUIER/onetap-token" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:underline text-sm"

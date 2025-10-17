@@ -5,6 +5,10 @@
 
 ---
 
+## 🌐 Official Website
+
+**Live Site:** [https://onetapmeme.com](https://onetapmeme.com)
+
 ## ⚖️ Legal Protection
 
 This project is protected by:
@@ -13,5 +17,9 @@ This project is protected by:
 - [Security & Transparency Audit](./legal/AUDIT.md)
 
 **⚠️ WARNING:** Unauthorized cloning, forking for commercial use, or creation of derivative tokens is strictly prohibited and may result in legal action.
+
+## 🔐 Security
+
+This repository follows industry-best security practices. For security concerns, please review our [Security Policy](./SECURITY.md).
 
 ---

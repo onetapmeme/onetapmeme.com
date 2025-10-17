@@ -131,11 +131,13 @@ This project complies with:
 
 ## 🌐 Official Links
 
-- **Website:** [To be filled]
-- **GitHub:** https://github.com/[your-username]/onetap
-- **Twitter:** [To be filled]
-- **Telegram:** [To be filled]
-- **Discord:** [To be filled]
+- **Website:** https://onetapmeme.com
+- **Twitter/X:** https://x.com/OneTapMeme
+- **TikTok:** https://tiktok.com/@onetap_meme
+- **Instagram:** https://www.instagram.com/onetapmeme
+- **YouTube:** https://www.youtube.com/@OneTapMeme
+- **Discord:** https://discord.com/channels/1219285086156099644
+- **Reddit:** https://www.reddit.com/user/ManySingle7170
 
 **⚠️ Only trust links from official sources. Beware of phishing attempts.**
 

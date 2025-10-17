@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { MessageCircle, Twitter, Hash, Instagram, Youtube, Music, Users, TrendingUp } from 'lucide-react';
+import { MessageCircle, Twitter, Hash, Instagram, Youtube, Music, Users, TrendingUp, Github } from 'lucide-react';
 import { SiDiscord } from 'react-icons/si';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -57,6 +57,14 @@ const Community = () => {
       url: 'https://www.reddit.com/user/ManySingle7170',
       color: 'text-[#FF4500]',
       bgColor: 'bg-[#FF4500]/10',
+    },
+    {
+      icon: Github,
+      name: 'GitHub',
+      description: 'View our open-source code and contribute',
+      url: 'https://github.com/Hugo-SEQUIER/onetap-token',
+      color: 'text-[#181717]',
+      bgColor: 'bg-[#181717]/10',
     },
   ];
 
