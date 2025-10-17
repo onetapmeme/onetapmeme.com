@@ -39,6 +39,7 @@ const sectionPositions: Record<string, BenPosition> = {
   'tap-to-earn': { bottom: '20px', right: '20px', section: 'tap-to-earn', sprite: 'shooting' },
   rewards: { bottom: '20px', right: '20px', section: 'rewards', sprite: 'smiling' },
   memes: { bottom: '20px', right: '20px', section: 'memes', sprite: 'celebrating' },
+  footer: { bottom: '20px', right: '20px', section: 'footer', sprite: 'neutral' },
 };
 
 const BenControllerV2 = () => {
@@ -55,6 +56,7 @@ const BenControllerV2 = () => {
   const [isMobile, setIsMobile] = useState(false);
   const dialogueTimeoutRef = useRef<NodeJS.Timeout>();
   const lastSectionChangeRef = useRef<number>(0);
+  const heroShownRef = useRef(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -110,11 +112,19 @@ const BenControllerV2 = () => {
   const showDialogForSection = (section: string) => {
     const now = Date.now();
     if (now - lastSectionChangeRef.current < 800) return;
+    
+    // Skip hero section if already shown
+    if (section === 'hero' && heroShownRef.current) return;
+    
     lastSectionChangeRef.current = now;
 
     const dialogue = getBenDialogue(i18n.language, section);
     const position = sectionPositions[section];
     if (dialogue && position) {
+      if (section === 'hero') {
+        heroShownRef.current = true;
+      }
+      
       setCurrentSprite(position.sprite);
       setDialogueText(dialogue.text);
       setShowDialogue(true);
@@ -123,7 +133,7 @@ const BenControllerV2 = () => {
       dialogueTimeoutRef.current = setTimeout(() => {
         setShowDialogue(false);
         setCurrentSprite('neutral');
-      }, dialogue.duration || 5000);
+      }, dialogue.duration || 7000);
     }
   };
 

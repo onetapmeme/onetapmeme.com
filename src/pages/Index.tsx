@@ -72,7 +72,9 @@ const Index = () => {
         </SectionWrapper>
       </div>
       
-      <Footer />
+      <div id="footer">
+        <Footer />
+      </div>
       <CookieBanner />
     </div>
   );

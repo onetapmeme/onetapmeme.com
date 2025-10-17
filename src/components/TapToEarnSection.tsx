@@ -21,7 +21,7 @@ const TapToEarnSection = () => {
     {
       icon: Sparkles,
       title: "Earn XP",
-      description: "Tap to accumulate XP and climb through CS:GO inspired ranks",
+      description: "Tap to accumulate XP and climb through competitive ranks",
       gradient: "from-blue-500/20 to-cyan-500/20",
       iconColor: "text-blue-400"
     },
