@@ -11,8 +11,8 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SectionWrapper from "@/components/SectionWrapper";
-import BenController from "@/components/ben/BenController";
-import LoadingScreen from "@/components/LoadingScreen";
+import BenControllerV2 from "@/components/ben/BenControllerV2";
+import LoadingScreenV2 from "@/components/LoadingScreenV2";
 import LiveStats from "@/components/LiveStats";
 import RewardSystem from "@/components/RewardSystem";
 
@@ -30,48 +30,50 @@ const Index = () => {
 
   return (
     <>
-      <LoadingScreen isLoading={isLoading} />
-      <div className="min-h-screen bg-background">
-        <BenController />
-        <LanguageSwitcher />
-        <Navbar />
-        <Hero />
-        
-        <SectionWrapper variant="primary">
-          <About />
-        </SectionWrapper>
+      <LoadingScreenV2 isLoading={isLoading} />
+      {!isLoading && (
+        <div className="min-h-screen bg-background">
+          <BenControllerV2 />
+          <LanguageSwitcher />
+          <Navbar />
+          <Hero />
+          
+          <SectionWrapper variant="primary">
+            <About />
+          </SectionWrapper>
 
-        <SectionWrapper variant="accent">
-          <LiveStats />
-        </SectionWrapper>
-        
-        <SectionWrapper variant="primary">
-          <Tokenomics />
-        </SectionWrapper>
-        
-        <SectionWrapper variant="accent">
-          <Roadmap />
-        </SectionWrapper>
+          <SectionWrapper variant="accent">
+            <LiveStats />
+          </SectionWrapper>
+          
+          <SectionWrapper variant="primary">
+            <Tokenomics />
+          </SectionWrapper>
+          
+          <SectionWrapper variant="accent">
+            <Roadmap />
+          </SectionWrapper>
 
-        <SectionWrapper variant="primary">
-          <RewardSystem />
-        </SectionWrapper>
-        
-        <SectionWrapper variant="accent">
-          <Community />
-        </SectionWrapper>
-        
-        <SectionWrapper variant="primary">
-          <MemeSection />
-        </SectionWrapper>
-        
-        <SectionWrapper variant="accent">
-          <TapToEarnSection />
-        </SectionWrapper>
-        
-        <Footer />
-        <CookieBanner />
-      </div>
+          <SectionWrapper variant="primary">
+            <RewardSystem />
+          </SectionWrapper>
+          
+          <SectionWrapper variant="accent">
+            <Community />
+          </SectionWrapper>
+          
+          <SectionWrapper variant="primary">
+            <MemeSection />
+          </SectionWrapper>
+          
+          <SectionWrapper variant="accent">
+            <TapToEarnSection />
+          </SectionWrapper>
+          
+          <Footer />
+          <CookieBanner />
+        </div>
+      )}
     </>
   );
 };

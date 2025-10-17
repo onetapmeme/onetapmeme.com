@@ -82,38 +82,34 @@
   "roadmap": {
     "title": "Roadmap",
     "subtitle": "Our journey to revolutionize gaming crypto",
-    "phase1": "Phase 1: Launch",
+    "phase1": "Phase 1: Hype Launch",
     "phase1Items": [
-      "Fair Launch on Base Network",
-      "Website & Social Media Launch",
-      "Community Building",
-      "Initial Marketing Campaign",
-      "CoinGecko & CMC Listings"
+      "Initial awareness building",
+      "Narrative setup",
+      "Community warmup"
     ],
-    "phase2": "Phase 2: Growth",
+    "phase2": "Phase 2: The Real Phase 1",
     "phase2Items": [
-      "Major CEX Listings",
-      "Influencer Partnerships",
-      "Gaming Community Outreach",
-      "Meme Contests & Giveaways",
-      "First Merchandise Drop"
+      "Initial burn",
+      "LP lock",
+      "Organic listings",
+      "Marketing push"
     ],
-    "phase3": "Phase 3: Expansion",
+    "phase3": "Phase 3: Community Games & Drops",
     "phase3Items": [
-      "Esports Sponsorships",
-      "Gaming Platform Integration",
-      "NFT Collection Launch",
-      "Play-to-Earn Game Development",
-      "Global Marketing Campaign"
-    ],
-    "phase4": "Phase 4: Revolution",
-    "phase4Items": [
-      "Major Exchange Listings",
-      "Metaverse Integration",
-      "DAO Governance Launch",
-      "Gaming Tournaments Platform",
-      "Mainstream Adoption"
+      "Launch Tap-to-Earn",
+      "Meme gamification features",
+      "Community rewards"
     ]
+  },
+  "liveStats": {
+    "title": "$ONETAP LIVE STATS",
+    "subtitle": "Real-time market data • Updates every 30s",
+    "marketCap": "Market Cap",
+    "holders": "Holders",
+    "liquidity": "Liquidity",
+    "volume24h": "24h Volume",
+    "notice": "📊 Live data integration coming soon after token launch"
   },
   "memes": {
     "title": "$ONETAP Meme Generator",

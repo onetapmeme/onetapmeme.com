@@ -6,6 +6,13 @@ import es from './locales/es.json';
 import ru from './locales/ru.json';
 import zh from './locales/zh.json';
 
+// Get browser language or default to 'en'
+const getBrowserLanguage = () => {
+  const browserLang = navigator.language.split('-')[0];
+  const supportedLangs = ['en', 'fr', 'es', 'ru', 'zh'];
+  return supportedLangs.includes(browserLang) ? browserLang : 'en';
+};
+
 i18n
   .use(initReactI18next)
   .init({
@@ -16,7 +23,7 @@ i18n
       ru: { translation: ru },
       zh: { translation: zh }
     },
-    lng: 'en',
+    lng: getBrowserLanguage(),
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false

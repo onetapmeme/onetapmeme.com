@@ -68,29 +68,24 @@
   "roadmap": {
     "title": "Hoja de Ruta",
     "subtitle": "El viaje hacia la gloria",
-    "phase1": "Lanzamiento Hype",
+    "phase1": "Fase 1: Lanzamiento Hype",
     "phase1Items": [
-      "Configuración inicial",
-      "Impulso viral",
-      "Primeros holders"
+      "Construcción de conciencia inicial",
+      "Configuración narrativa",
+      "Calentamiento comunitario"
     ],
-    "phase2": "Quema Inicial (Actual)",
+    "phase2": "Fase 2: La Verdadera Fase 1",
     "phase2Items": [
-      "Trading activo",
-      "Mecanismo de quema",
-      "Expansión de listados"
+      "Quema inicial",
+      "Bloqueo de LP",
+      "Listados orgánicos",
+      "Impulso de marketing"
     ],
-    "phase3": "Juegos y Drops Comunitarios",
+    "phase3": "Fase 3: Juegos y Drops Comunitarios",
     "phase3Items": [
-      "Telegram gamificado",
-      "Sistema de drops",
-      "Torneos comunitarios"
-    ],
-    "phase4": "Adopción Masiva",
-    "phase4Items": [
-      "Listados principales",
-      "Asociaciones estratégicas",
-      "Expansión del ecosistema"
+      "Lanzar Tap-to-Earn",
+      "Características de gamificación de memes",
+      "Recompensas comunitarias"
     ]
   },
   "memes": {

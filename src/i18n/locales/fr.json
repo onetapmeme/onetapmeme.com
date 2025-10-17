@@ -82,37 +82,24 @@
   "roadmap": {
     "title": "Feuille de Route",
     "subtitle": "Notre parcours pour révolutionner le crypto gaming",
-    "phase1": "Phase 1: Lancement",
+    "phase1": "Phase 1: Lancement Hype",
     "phase1Items": [
-      "Lancement Équitable sur Base Network",
-      "Lancement du Site & Réseaux Sociaux",
-      "Construction de la Communauté",
-      "Campagne Marketing Initiale",
-      "Listings CoinGecko & CMC"
+      "Construction initiale de la notoriété",
+      "Mise en place du récit",
+      "Échauffement de la communauté"
     ],
-    "phase2": "Phase 2: Croissance",
+    "phase2": "Phase 2: La Vraie Phase 1",
     "phase2Items": [
-      "Listings CEX Majeurs",
-      "Partenariats avec Influenceurs",
-      "Outreach Communauté Gaming",
-      "Concours de Memes & Giveaways",
-      "Premier Drop de Merchandising"
+      "Burn initial",
+      "Verrouillage LP",
+      "Listings organiques",
+      "Poussée marketing"
     ],
-    "phase3": "Phase 3: Expansion",
+    "phase3": "Phase 3: Jeux et Drops Communautaires",
     "phase3Items": [
-      "Sponsorships Esports",
-      "Intégration Plateformes Gaming",
-      "Lancement Collection NFT",
-      "Développement Jeu Play-to-Earn",
-      "Campagne Marketing Mondiale"
-    ],
-    "phase4": "Phase 4: Révolution",
-    "phase4Items": [
-      "Listings Exchange Majeurs",
-      "Intégration Metaverse",
-      "Lancement Gouvernance DAO",
-      "Plateforme Tournois Gaming",
-      "Adoption Mainstream"
+      "Lancer Tap-to-Earn",
+      "Fonctionnalités de gamification meme",
+      "Récompenses communautaires"
     ]
   },
   "memes": {
