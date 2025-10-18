@@ -1,33 +1,52 @@
 import { useTranslation } from 'react-i18next';
-import { Music, ExternalLink, Play } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Music, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback, useEffect, useState } from 'react';
 
 const MediaSection = () => {
   const { t } = useTranslation();
   const { ref, isRevealed } = useScrollReveal();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'center',
+    skipSnaps: false,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
 
   const tiktokVideos = [
     {
-      id: "1",
-      title: t('media.video1.title'),
-      thumbnail: "https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=400&h=600&fit=crop",
-      url: "https://tiktok.com/@onetap_meme"
-    },
-    {
-      id: "2",
-      title: t('media.video2.title'),
-      thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=600&fit=crop",
-      url: "https://tiktok.com/@onetap_meme"
-    },
-    {
-      id: "3",
-      title: t('media.video3.title'),
-      thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=600&fit=crop",
-      url: "https://tiktok.com/@onetap_meme"
+      id: "7561510017367624982",
+      embedUrl: "https://www.tiktok.com/embed/7561510017367624982",
+      url: "https://www.tiktok.com/@onetap_meme/video/7561510017367624982"
     }
+    // Future videos will be added here
   ];
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
 
   return (
     <section 
@@ -56,42 +75,66 @@ const MediaSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8">
-          {tiktokVideos.map((video, index) => (
-            <Card 
-              key={video.id}
-              className="group relative overflow-hidden glass-effect border-2 border-primary/30 hover:border-primary/50 transition-all duration-500"
-              style={{
-                animationDelay: `${index * 0.1}s`
-              }}
-            >
-              <a 
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative"
-              >
-                <div className="aspect-[9/16] relative overflow-hidden">
-                  <img 
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-primary/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Play className="w-8 h-8 text-white" fill="white" />
-                    </div>
+        <div className="relative max-w-2xl mx-auto mb-8">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {tiktokVideos.map((video) => (
+                <div 
+                  key={video.id}
+                  className="flex-[0_0_100%] min-w-0 px-4"
+                >
+                  <div className="relative glass-effect border-2 border-primary/30 rounded-lg overflow-hidden aspect-[9/16] max-h-[600px] mx-auto">
+                    <iframe
+                      src={video.embedUrl}
+                      className="w-full h-full"
+                      allowFullScreen
+                      scrolling="no"
+                      allow="encrypted-media;"
+                      title="TikTok video player"
+                    />
                   </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
-                    {video.title}
-                    <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                  </h3>
-                </div>
-              </a>
-            </Card>
-          ))}
+              ))}
+            </div>
+          </div>
+
+          {tiktokVideos.length > 1 && (
+            <>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+                onClick={scrollPrev}
+                disabled={!canScrollPrev}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+                onClick={scrollNext}
+                disabled={!canScrollNext}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+
+              <div className="flex justify-center gap-2 mt-6">
+                {tiktokVideos.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === selectedIndex 
+                        ? 'bg-primary w-8' 
+                        : 'bg-primary/30 hover:bg-primary/50'
+                    }`}
+                    onClick={() => emblaApi?.scrollTo(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="text-center">

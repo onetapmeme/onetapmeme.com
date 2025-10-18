@@ -169,5 +169,19 @@
     "eventDropDesc": "Drops especiales de tiempo limitado durante torneos y eventos comunitarios. ¡Está presente o piérdelo!",
     "devNotice": "🎮 Los módulos Tap-to-Earn y Meme están actualmente en desarrollo.",
     "devNoticeDesc": "¡Únete a nuestra comunidad para ser el primero en saber cuándo se lanzan estas funcionalidades!"
+  },
+  "media": {
+    "title": "Contenido Gaming & Momentos Virales",
+    "subtitle": "Mira nuestras mejores jugadas, fallos épicos y destacados de la comunidad. ¡Síguenos en TikTok para contenido gaming diario!",
+    "viewMore": "Ver Más en TikTok",
+    "video1": {
+      "title": "Momentos Gaming Épicos"
+    },
+    "video2": {
+      "title": "Destacados de la Comunidad"
+    },
+    "video3": {
+      "title": "Detrás de Escena"
+    }
   }
 }
