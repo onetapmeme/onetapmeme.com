@@ -54,8 +54,7 @@ const dropSchema = z.object({
   drop_name: z.string().min(1).max(200),
   drop_icon: z.string().min(1).max(200),
   drop_rarity: z.string().min(1).max(50),
-  rank_name: z.string().min(1).max(100),
-  drop_type: z.enum(['accessory', 'background'])
+  rank_name: z.string().min(1).max(100)
 });
 
 // Color tiers after Global Elite
@@ -80,6 +79,7 @@ const TapSimulatorGame = () => {
   const [clickAnimation, setClickAnimation] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [saving, setSaving] = useState(false);
+  const [lastClickTime, setLastClickTime] = useState(0);
 
   const currentRank = ranks[currentRankIndex];
   const nextRank = ranks[currentRankIndex + 1];
@@ -118,7 +118,7 @@ const TapSimulatorGame = () => {
     if (user && xp > 0) {
       const saveTimeout = setTimeout(() => {
         saveProgress();
-      }, 2000); // Auto-save after 2 seconds of inactivity
+      }, 5000); // Auto-save after 5 seconds of inactivity (reduced DB load)
 
       return () => clearTimeout(saveTimeout);
     }
@@ -198,8 +198,7 @@ const TapSimulatorGame = () => {
         drop_name: drop.name,
         drop_icon: drop.icon,
         drop_rarity: drop.rarity,
-        rank_name: rankName,
-        drop_type: drop.type
+        rank_name: rankName
       });
 
       if (!validation.success) {
@@ -214,8 +213,7 @@ const TapSimulatorGame = () => {
           drop_name: validation.data.drop_name,
           drop_icon: validation.data.drop_icon,
           drop_rarity: validation.data.drop_rarity,
-          rank_name: validation.data.rank_name,
-          drop_type: validation.data.drop_type
+          rank_name: validation.data.rank_name
         });
 
       if (error) throw error;
@@ -244,6 +242,13 @@ const TapSimulatorGame = () => {
   }, [xp, nextRank]);
 
   const handleClick = () => {
+    // Rate limiting: max 10 clicks per second (100ms between clicks)
+    const now = Date.now();
+    if (now - lastClickTime < 100) {
+      return; // Silently ignore clicks that are too fast
+    }
+    setLastClickTime(now);
+    
     const xpGain = Math.floor(Math.random() * 50) + 10;
     setXp(prev => prev + xpGain);
     setClicks(prev => prev + 1);
