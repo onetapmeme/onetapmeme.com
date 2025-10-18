@@ -17,13 +17,28 @@ const MediaSection = () => {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
-  const tiktokVideos = [
+  const videos = [
+    {
+      id: "local-1",
+      type: "local" as const,
+      videoUrl: "/videos/1.mp4"
+    },
+    {
+      id: "local-2",
+      type: "local" as const,
+      videoUrl: "/videos/2.mp4"
+    },
+    {
+      id: "local-3",
+      type: "local" as const,
+      videoUrl: "/videos/3.mp4"
+    },
     {
       id: "7561510017367624982",
+      type: "tiktok" as const,
       embedUrl: "https://www.tiktok.com/embed/7561510017367624982",
       url: "https://www.tiktok.com/@onetap_meme/video/7561510017367624982"
     }
-    // Future videos will be added here
   ];
 
   const scrollPrev = useCallback(() => {
@@ -78,27 +93,37 @@ const MediaSection = () => {
         <div className="relative max-w-2xl mx-auto mb-8">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
-              {tiktokVideos.map((video) => (
+              {videos.map((video) => (
                 <div 
                   key={video.id}
                   className="flex-[0_0_100%] min-w-0 px-4"
                 >
-                  <div className="relative glass-effect border-2 border-primary/30 rounded-lg overflow-hidden aspect-[9/16] max-h-[600px] mx-auto">
-                    <iframe
-                      src={video.embedUrl}
-                      className="w-full h-full"
-                      allowFullScreen
-                      scrolling="no"
-                      allow="encrypted-media;"
-                      title="TikTok video player"
-                    />
+                  <div className="relative glass-effect border-2 border-primary/30 rounded-lg overflow-hidden aspect-[9/16] max-h-[600px] mx-auto group">
+                    {video.type === "local" ? (
+                      <video
+                        src={video.videoUrl}
+                        className="w-full h-full object-cover"
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
+                    ) : (
+                      <iframe
+                        src={video.embedUrl}
+                        className="w-full h-full"
+                        allowFullScreen
+                        scrolling="no"
+                        allow="encrypted-media;"
+                        title="TikTok video player"
+                      />
+                    )}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {tiktokVideos.length > 1 && (
+          {videos.length > 1 && (
             <>
               <Button
                 variant="outline"
@@ -120,7 +145,7 @@ const MediaSection = () => {
               </Button>
 
               <div className="flex justify-center gap-2 mt-6">
-                {tiktokVideos.map((_, index) => (
+                {videos.map((_, index) => (
                   <button
                     key={index}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${

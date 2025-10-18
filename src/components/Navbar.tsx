@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/onetap_new_logo.png";
 import { useTranslation } from "react-i18next";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -62,7 +63,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -78,6 +79,7 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
+            <ThemeToggle />
             <Button 
               variant="hero"
               size="sm"
@@ -88,7 +90,8 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="hover:bg-primary/10">
