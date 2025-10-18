@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { MessageCircle, Twitter, Hash, Instagram, Youtube, Music, Users, TrendingUp, Github } from 'lucide-react';
+import { Twitter, Hash, Instagram, Youtube, Music, Users, TrendingUp, Github, Zap } from 'lucide-react';
 import { SiDiscord } from 'react-icons/si';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,60 +11,60 @@ const Community = () => {
 
   const socialLinks = [
     {
-      icon: Twitter,
-      name: 'Twitter/X',
-      description: 'Follow us for the latest updates and memes',
-      url: 'https://x.com/OneTapMeme',
-      color: 'text-[#1DA1F2]',
-      bgColor: 'bg-[#1DA1F2]/10',
-    },
-    {
-      icon: Music,
-      name: 'TikTok',
-      description: 'Watch our gaming content and viral memes',
-      url: 'https://tiktok.com/@onetap_meme',
-      color: 'text-[#000000]',
-      bgColor: 'bg-[#000000]/10',
-    },
-    {
-      icon: Instagram,
-      name: 'Instagram',
-      description: 'Check out our visual content and stories',
-      url: 'https://www.instagram.com/onetapmeme',
-      color: 'text-[#E4405F]',
-      bgColor: 'bg-[#E4405F]/10',
-    },
-    {
-      icon: Youtube,
-      name: 'YouTube',
-      description: 'Subscribe for gaming videos and tutorials',
-      url: 'https://www.youtube.com/@OneTapMeme',
-      color: 'text-[#FF0000]',
-      bgColor: 'bg-[#FF0000]/10',
-    },
-    {
-      icon: MessageCircle,
-      name: 'Discord',
-      description: 'Join our Discord server for real-time chat',
+      icon: SiDiscord,
+      name: t('community.discord'),
+      description: t('community.discordText'),
       url: 'https://discord.com/channels/1219285086156099644',
       color: 'text-[#5865F2]',
       bgColor: 'bg-[#5865F2]/10',
     },
     {
-      icon: MessageCircle,
-      name: 'Reddit',
-      description: 'Join our Reddit community for discussions',
+      icon: Github,
+      name: t('community.github'),
+      description: t('community.githubText'),
+      url: 'https://github.com/Hugo-SEQUIER/onetap-token',
+      color: 'text-[#181717]',
+      bgColor: 'bg-[#181717]/10',
+    },
+    {
+      icon: Instagram,
+      name: t('community.instagram'),
+      description: t('community.instagramText'),
+      url: 'https://www.instagram.com/onetapmeme',
+      color: 'text-[#E4405F]',
+      bgColor: 'bg-[#E4405F]/10',
+    },
+    {
+      icon: Hash,
+      name: t('community.reddit'),
+      description: t('community.redditText'),
       url: 'https://www.reddit.com/user/ManySingle7170',
       color: 'text-[#FF4500]',
       bgColor: 'bg-[#FF4500]/10',
     },
     {
-      icon: Github,
-      name: 'GitHub',
-      description: 'View our open-source code and contribute',
-      url: 'https://github.com/Hugo-SEQUIER/onetap-token',
-      color: 'text-[#181717]',
-      bgColor: 'bg-[#181717]/10',
+      icon: Music,
+      name: t('community.tiktok'),
+      description: t('community.tiktokText'),
+      url: 'https://tiktok.com/@onetap_meme',
+      color: 'text-[#000000]',
+      bgColor: 'bg-[#000000]/10',
+    },
+    {
+      icon: Twitter,
+      name: t('community.twitter'),
+      description: t('community.twitterText'),
+      url: 'https://x.com/OneTapMeme',
+      color: 'text-[#1DA1F2]',
+      bgColor: 'bg-[#1DA1F2]/10',
+    },
+    {
+      icon: Youtube,
+      name: t('community.youtube'),
+      description: t('community.youtubeText'),
+      url: 'https://www.youtube.com/@OneTapMeme',
+      color: 'text-[#FF0000]',
+      bgColor: 'bg-[#FF0000]/10',
     },
   ];
 
@@ -91,8 +91,8 @@ const Community = () => {
             <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Join the Onetappers</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div className="flex gap-4">
-                <div className="w-12 h-12 bg-gradient-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">🎯</span>
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30">
+                  <Users className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-foreground mb-1">Commanders</h4>
@@ -102,8 +102,8 @@ const Community = () => {
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="w-12 h-12 bg-gradient-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl">🎨</span>
+                <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/30">
+                  <Zap className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-foreground mb-1">Snipers</h4>

@@ -144,18 +144,20 @@
   "community": {
     "title": "Rejoignez Notre Communauté",
     "subtitle": "Connectez-vous avec d'autres gamers et passionnés de crypto. Faites partie de la révolution !",
-    "twitter": "Twitter/X",
-    "twitterText": "Suivez-nous pour les annonces, memes et moments forts de la communauté",
+    "discord": "Discord",
+    "discordText": "Rejoignez notre serveur Discord pour discuter en temps réel et des événements exclusifs",
+    "github": "GitHub",
+    "githubText": "Consultez notre code open-source et contribuez au projet",
+    "instagram": "Instagram",
+    "instagramText": "Découvrez notre contenu visuel et nos stories quotidiennes",
+    "reddit": "Reddit",
+    "redditText": "Rejoignez les discussions, partagez des memes et restez informé avec la communauté",
     "tiktok": "TikTok",
     "tiktokText": "Regardez notre contenu gaming et nos memes viraux",
-    "instagram": "Instagram",
-    "instagramText": "Découvrez notre contenu visuel et nos stories",
+    "twitter": "Twitter/X",
+    "twitterText": "Suivez-nous pour les annonces, memes et actualités de la communauté",
     "youtube": "YouTube",
-    "youtubeText": "Abonnez-vous pour des vidéos gaming et tutoriels",
-    "discord": "Discord",
-    "discordText": "Rejoignez notre serveur Discord pour discuter en temps réel",
-    "reddit": "Reddit",
-    "redditText": "Rejoignez les discussions, partagez des memes et restez à jour avec la communauté"
+    "youtubeText": "Abonnez-vous pour des vidéos gaming et des tutoriels"
   },
   "footer": {
     "tagline": "Le memecoin gaming ultime sur le réseau Base",
@@ -171,5 +173,19 @@
     "disclaimerText": "$ONETAP est un memecoin sans valeur intrinsèque et SANS attente de retour financier. Investissez uniquement ce que vous pouvez vous permettre de perdre. Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée.",
     "rights": "Tous droits réservés.",
     "contact": "Contact"
+  },
+  "rewards": {
+    "title": "Système de Récompenses",
+    "subtitle": "Tapez, gagnez de l'XP, montez en niveau et débloquez des drops légendaires exclusifs !",
+    "goldDrop": "Drops Dorés",
+    "goldDropDesc": "Drops légendaires rares avec des skins et accessoires exclusifs inspirés de CS:GO. Le prix ultime pour les tappers dévoués.",
+    "memeDrop": "Drops de Memes",
+    "memeDropDesc": "Memes épiques créés par la communauté et accessoires personnalisés. Affichez votre style et créativité avec des objets uniques.",
+    "communityDrop": "Drops Communautaires",
+    "communityDropDesc": "Récompenses régulières pour les membres actifs de la communauté. Participez, engagez-vous et gagnez des objets exclusifs.",
+    "eventDrop": "Drops d'Événement",
+    "eventDropDesc": "Drops spéciaux à durée limitée pendant les tournois et événements communautaires. Soyez présent ou manquez-le !",
+    "devNotice": "🎮 Les modules Tap-to-Earn et Meme sont actuellement en développement.",
+    "devNoticeDesc": "Rejoignez notre communauté pour être les premiers informés du lancement de ces fonctionnalités !"
   }
 }

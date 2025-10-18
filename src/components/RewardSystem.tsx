@@ -11,32 +11,32 @@ const RewardSystem = () => {
   const rewardTypes = [
     {
       icon: Trophy,
-      name: t('rewards.goldDrop') || 'Gold Drops',
-      description: t('rewards.goldDropDesc') || 'Rare legendary drops with exclusive inspired skins and accessories. The ultimate prize for dedicated tappers.',
+      name: t('rewards.goldDrop'),
+      description: t('rewards.goldDropDesc'),
       rarity: 'Legendary',
       color: 'from-yellow-500 to-orange-500',
       glow: 'shadow-[0_0_40px_rgba(234,179,8,0.5)]',
     },
     {
       icon: Sparkles,
-      name: t('rewards.memeDrop') || 'Meme Drops',
-      description: t('rewards.memeDropDesc') || 'Epic community-created memes and custom accessories. Show off your style and creativity with unique items.',
+      name: t('rewards.memeDrop'),
+      description: t('rewards.memeDropDesc'),
       rarity: 'Epic',
       color: 'from-purple-500 to-pink-500',
       glow: 'shadow-[0_0_40px_rgba(168,85,247,0.5)]',
     },
     {
       icon: Gift,
-      name: t('rewards.communityDrop') || 'Community Drops',
-      description: t('rewards.communityDropDesc') || 'Regular rewards for active community members. Participate, engage, and earn exclusive items.',
+      name: t('rewards.communityDrop'),
+      description: t('rewards.communityDropDesc'),
       rarity: 'Rare',
       color: 'from-blue-500 to-cyan-500',
       glow: 'shadow-[0_0_40px_rgba(59,130,246,0.5)]',
     },
     {
       icon: Zap,
-      name: t('rewards.eventDrop') || 'Event Drops',
-      description: t('rewards.eventDropDesc') || 'Special time-limited drops during tournaments and community events. Be there or miss out!',
+      name: t('rewards.eventDrop'),
+      description: t('rewards.eventDropDesc'),
       rarity: 'Limited',
       color: 'from-green-500 to-emerald-500',
       glow: 'shadow-[0_0_40px_rgba(34,197,94,0.5)]',
@@ -58,11 +58,15 @@ const RewardSystem = () => {
         >
           <Trophy className="w-16 h-16 mx-auto mb-6 text-primary" style={{ filter: 'drop-shadow(0 0 30px currentColor)' }} />
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-            {t('rewards.title') || 'Reward System'}
+            {t('rewards.title')}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('rewards.subtitle') || 'Tap, earn XP, climb ranks, and unlock exclusive drops! Every tap brings you closer to legendary rewards.'}
+            {t('rewards.subtitle')}
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold text-primary">Currently in Development</span>
+          </div>
         </motion.div>
 
         <motion.div
@@ -105,10 +109,10 @@ const RewardSystem = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
-          <Sparkles className="w-8 h-8 mx-auto mb-4 text-accent" />
+          <Sparkles className="w-8 h-8 mx-auto mb-4 text-accent animate-pulse" />
           <p className="text-muted-foreground">
-            <strong className="text-foreground">{t('rewards.devNotice') || '🎮 Tap-to-Earn and Meme modules are currently under development.'}</strong><br />
-            {t('rewards.devNoticeDesc') || 'Join our community to be the first to know when these features launch!'}
+            <strong className="text-foreground">{t('rewards.devNotice')}</strong><br />
+            {t('rewards.devNoticeDesc')}
           </p>
         </motion.div>
       </div>

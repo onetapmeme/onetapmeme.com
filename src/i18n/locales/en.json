@@ -152,18 +152,20 @@
   "community": {
     "title": "Join Our Community",
     "subtitle": "Connect with fellow gamers and crypto enthusiasts. Be part of the revolution!",
-    "twitter": "Twitter/X",
-    "twitterText": "Follow us for announcements, memes, and community highlights",
+    "discord": "Discord",
+    "discordText": "Join our Discord server for real-time chat and exclusive events",
+    "github": "GitHub",
+    "githubText": "View our open-source code and contribute to the project",
+    "instagram": "Instagram",
+    "instagramText": "Check out our visual content and daily stories",
+    "reddit": "Reddit",
+    "redditText": "Join discussions, share memes and stay updated with the community",
     "tiktok": "TikTok",
     "tiktokText": "Watch our gaming content and viral memes",
-    "instagram": "Instagram",
-    "instagramText": "Check out our visual content and stories",
+    "twitter": "Twitter/X",
+    "twitterText": "Follow us for announcements, memes, and community highlights",
     "youtube": "YouTube",
-    "youtubeText": "Subscribe for gaming videos and tutorials",
-    "discord": "Discord",
-    "discordText": "Join our Discord server for real-time chat",
-    "reddit": "Reddit",
-    "redditText": "Join discussions, share memes and stay updated with the community"
+    "youtubeText": "Subscribe for gaming videos and tutorials"
   },
   "footer": {
     "tagline": "The ultimate gaming memecoin on Base network",
@@ -179,5 +181,19 @@
     "disclaimerText": "$ONETAP is a memecoin with NO intrinsic value and NO expectation of financial return. Invest only what you can afford to lose. This project is NOT affiliated with Valve Corporation, Counter-Strike, or any related trademarks.",
     "rights": "All rights reserved.",
     "contact": "Contact"
+  },
+  "rewards": {
+    "title": "Reward System",
+    "subtitle": "Tap, earn XP, level up, and unlock exclusive legendary drops!",
+    "goldDrop": "Gold Drops",
+    "goldDropDesc": "Rare legendary drops with exclusive CS:GO-inspired skins and accessories. The ultimate prize for dedicated tappers.",
+    "memeDrop": "Meme Drops",
+    "memeDropDesc": "Epic community-created memes and custom accessories. Show off your style and creativity with unique items.",
+    "communityDrop": "Community Drops",
+    "communityDropDesc": "Regular rewards for active community members. Participate, engage, and earn exclusive items.",
+    "eventDrop": "Event Drops",
+    "eventDropDesc": "Special time-limited drops during tournaments and community events. Be there or miss out!",
+    "devNotice": "🎮 Tap-to-Earn and Meme modules are currently under development.",
+    "devNoticeDesc": "Join our community to be the first to know when these features launch!"
   }
 }
