@@ -55,27 +55,21 @@ const Index = () => {
         </SectionWrapper>
       </div>
 
-      <div id="tap-to-earn">
+      <div id="media">
         <SectionWrapper variant="accent">
+          <MediaSection />
+        </SectionWrapper>
+      </div>
+
+      <div id="tap-to-earn">
+        <SectionWrapper variant="primary">
           <TapToEarnSection />
         </SectionWrapper>
       </div>
 
       <div id="rewards">
-        <SectionWrapper variant="primary">
-          <RewardSystem />
-        </SectionWrapper>
-      </div>
-      
-      <div id="memes">
         <SectionWrapper variant="accent">
-          <MemeSection />
-        </SectionWrapper>
-      </div>
-
-      <div id="media">
-        <SectionWrapper variant="primary">
-          <MediaSection />
+          <RewardSystem />
         </SectionWrapper>
       </div>
       

@@ -3,9 +3,10 @@
     "about": "关于",
     "tokenomics": "代币经济",
     "roadmap": "路线图",
+    "memes": "表情包",
     "community": "社区",
-    "tapToEarn": "点击赚取",
-    "memes": "表情包"
+    "media": "媒体",
+    "rewards": "奖励"
   },
   "hero": {
     "title": "$ONETAP",
@@ -171,8 +172,8 @@
     "devNoticeDesc": "加入我们的社区，第一时间了解这些功能的推出！"
   },
   "media": {
-    "title": "游戏内容与病毒时刻",
-    "subtitle": "观看我们最佳游戏时刻、史诗级失败和社区精彩集锦。在TikTok上关注我们，获取每日游戏内容！",
+    "title": "我们在TikTok上很活跃！",
+    "subtitle": "关注我们获取每日游戏内容和社区精彩集锦。",
     "viewMore": "在TikTok上查看更多",
     "video1": {
       "title": "史诗游戏时刻"

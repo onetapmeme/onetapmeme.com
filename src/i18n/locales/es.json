@@ -3,9 +3,10 @@
     "about": "Acerca de",
     "tokenomics": "Tokenomics",
     "roadmap": "Hoja de Ruta",
+    "memes": "Memes",
     "community": "Comunidad",
-    "tapToEarn": "Tap to Earn",
-    "memes": "Memes"
+    "media": "Medios",
+    "rewards": "Recompensas"
   },
   "hero": {
     "title": "$ONETAP",
@@ -171,8 +172,8 @@
     "devNoticeDesc": "¡Únete a nuestra comunidad para ser el primero en saber cuándo se lanzan estas funcionalidades!"
   },
   "media": {
-    "title": "Contenido Gaming & Momentos Virales",
-    "subtitle": "Mira nuestras mejores jugadas, fallos épicos y destacados de la comunidad. ¡Síguenos en TikTok para contenido gaming diario!",
+    "title": "¡Somos activos en TikTok!",
+    "subtitle": "Síguenos para contenido gaming diario y destacados de la comunidad.",
     "viewMore": "Ver Más en TikTok",
     "video1": {
       "title": "Momentos Gaming Épicos"

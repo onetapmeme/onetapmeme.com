@@ -27,17 +27,6 @@ const MediaSection = () => {
       id: "local-2",
       type: "local" as const,
       videoUrl: "/videos/2.mp4"
-    },
-    {
-      id: "local-3",
-      type: "local" as const,
-      videoUrl: "/videos/3.mp4"
-    },
-    {
-      id: "7561510017367624982",
-      type: "tiktok" as const,
-      embedUrl: "https://www.tiktok.com/embed/7561510017367624982",
-      url: "https://www.tiktok.com/@onetap_meme/video/7561510017367624982"
     }
   ];
 
@@ -99,24 +88,13 @@ const MediaSection = () => {
                   className="flex-[0_0_100%] min-w-0 px-4"
                 >
                   <div className="relative glass-effect border-2 border-primary/30 rounded-lg overflow-hidden aspect-[9/16] max-h-[600px] mx-auto group">
-                    {video.type === "local" ? (
-                      <video
-                        src={video.videoUrl}
-                        className="w-full h-full object-cover"
-                        controls
-                        playsInline
-                        preload="metadata"
-                      />
-                    ) : (
-                      <iframe
-                        src={video.embedUrl}
-                        className="w-full h-full"
-                        allowFullScreen
-                        scrolling="no"
-                        allow="encrypted-media;"
-                        title="TikTok video player"
-                      />
-                    )}
+                    <video
+                      src={video.videoUrl}
+                      className="w-full h-full object-cover"
+                      controls
+                      playsInline
+                      preload="metadata"
+                    />
                   </div>
                 </div>
               ))}
