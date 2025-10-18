@@ -88,7 +88,7 @@ const LegalNotice = () => {
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">SSL Certificate:</span>
-                  <span>Sectigo Public Server Authentication (DV)</span>
+                  <span>Sectigo Wildcard (*.onetapmeme.com) - SSL Starter Wildcard</span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">Security:</span>
