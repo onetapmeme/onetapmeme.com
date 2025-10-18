@@ -1,0 +1,51 @@
+{
+  "name": "$ONETAP - The Ultimate Gaming Memecoin",
+  "short_name": "$ONETAP",
+  "description": "$ONETAP combines Counter-Strike nostalgia with modern crypto. Join the revolution where every trade is a headshot.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1419",
+  "theme_color": "#2196F3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "games", "entertainment"],
+  "shortcuts": [
+    {
+      "name": "Buy $ONETAP",
+      "short_name": "Buy",
+      "description": "Buy $ONETAP tokens",
+      "url": "/#tokenomics",
+      "icons": [
+        {
+          "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Community",
+      "short_name": "Community",
+      "description": "Join the community",
+      "url": "/#community",
+      "icons": [
+        {
+          "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

@@ -13,6 +13,7 @@ import SectionWrapper from "@/components/SectionWrapper";
 import BenControllerV2 from "@/components/ben/BenControllerV2";
 import LiveStats from "@/components/LiveStats";
 import RewardSystem from "@/components/RewardSystem";
+import MediaSection from "@/components/MediaSection";
 
 const Index = () => {
   return (
@@ -69,6 +70,12 @@ const Index = () => {
       <div id="memes">
         <SectionWrapper variant="accent">
           <MemeSection />
+        </SectionWrapper>
+      </div>
+
+      <div id="media">
+        <SectionWrapper variant="primary">
+          <MediaSection />
         </SectionWrapper>
       </div>
       

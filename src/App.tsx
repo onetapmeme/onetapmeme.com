@@ -13,6 +13,8 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import LegalNotice from "./pages/LegalNotice";
 import Ownership from "./pages/Ownership";
+import Token from "./pages/Token";
+import Lore from "./pages/Lore";
 import NotFound from "./pages/NotFound";
 import MemeGenerator from "./pages/MemeGenerator";
 
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/legal-notice" element={<LegalNotice />} />
+          <Route path="/token" element={<Token />} />
+          <Route path="/lore" element={<Lore />} />
           <Route path="/meme" element={<MemeGenerator />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

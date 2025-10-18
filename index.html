@@ -2,10 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>$ONETAP - The Ultimate Gaming Memecoin</title>
     <meta name="description" content="$ONETAP combines Counter-Strike nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.">
     <meta name="author" content="OneTap Team" />
+    <meta name="keywords" content="onetap, memecoin, crypto, base, gaming, counter-strike, blockchain, cryptocurrency, defi" />
+    <meta name="theme-color" content="#2196F3" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="$ONETAP" />
 
     
     
@@ -19,15 +24,35 @@
     <link rel="canonical" href="https://onetapmeme.com" />
     <meta property="og:url" content="https://onetapmeme.com" />
     
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png" />
   
-  
-  
-  <meta property="og:title" content="$ONETAP - The Ultimate Gaming Memecoin">
-  <meta name="twitter:title" content="$ONETAP - The Ultimate Gaming Memecoin">
-  <meta property="og:description" content="$ONETAP combines Counter-Strike nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.">
-  <meta name="twitter:description" content="$ONETAP combines Counter-Strike nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.">
-  <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png">
-</head>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="$ONETAP - The Ultimate Gaming Memecoin">
+    <meta property="og:description" content="$ONETAP combines Counter-Strike nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.">
+    <meta property="og:site_name" content="$ONETAP" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:title" content="$ONETAP - The Ultimate Gaming Memecoin">
+    <meta name="twitter:description" content="$ONETAP combines Counter-Strike nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.">
+    <meta name="twitter:creator" content="@OneTapMeme" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png">
+    
+    <!-- Register Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('SW registered:', registration))
+            .catch(error => console.log('SW registration failed:', error));
+        });
+      }
+    </script>
+  </head>
 
   <body>
     <div id="root"></div>

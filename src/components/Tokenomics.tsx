@@ -10,7 +10,7 @@ const Tokenomics = () => {
   const { t } = useTranslation();
   const { ref, isRevealed } = useScrollReveal();
 
-  const contractAddress = "0x0000000000000000000000000000000000000000";
+  const contractAddress = "0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8";
   const dexScreenerUrl = "https://dexscreener.com/base/onetap";
 
   const copyContract = () => {
