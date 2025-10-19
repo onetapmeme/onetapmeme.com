@@ -9,10 +9,10 @@
     "rewards": "Recompensas"
   },
   "hero": {
-    "title": "$ONETAP",
+    "title": "$1TAP",
     "subtitle": "El Memecoin de Gaming Definitivo",
     "description": "La nostalgia pixelada se encuentra con el crypto moderno. Únete a la revolución del gaming donde cada trade es un headshot.",
-    "cta": "Consigue $ONETAP"
+    "cta": "Consigue $1TAP"
   },
   "enter": {
     "title": "¡BIENVENIDO A $ONETAP!",
@@ -161,7 +161,7 @@
     "title": "Sistema de Recompensas",
     "subtitle": "¡Tapea, gana XP, sube de nivel y desbloquea drops legendarios exclusivos!",
     "goldDrop": "Drops Dorados",
-    "goldDropDesc": "Drops legendarios raros con skins y accesorios exclusivos inspirados en CS:GO. El premio definitivo para los tappers dedicados.",
+    "goldDropDesc": "Drops legendarios raros con skins y accesorios exclusivos inspirados en el gaming. El premio definitivo para los tappers dedicados.",
     "memeDrop": "Drops de Memes",
     "memeDropDesc": "Memes épicos creados por la comunidad y accesorios personalizados. Demuestra tu estilo y creatividad con objetos únicos.",
     "communityDrop": "Drops Comunitarios",

@@ -9,13 +9,13 @@
     "rewards": "Récompenses"
   },
   "hero": {
-    "title": "$ONETAP",
+    "title": "$1TAP",
     "subtitle": "Le Premier Memecoin Gaming sur Base",
     "description": "Rejoignez la révolution où la culture gaming rencontre la cryptomonnaie. Créé pour les gamers, propulsé par la communauté.",
-    "cta": "Obtenir $ONETAP"
+    "cta": "Obtenir $1TAP"
   },
   "enter": {
-    "title": "$ONETAP",
+    "title": "$1TAP",
     "subtitle": "UN TIR, UNE OPPORTUNITÉ",
     "tap": "APPUYEZ POUR ENTRER",
     "sound": "🎮 Son Activé pour la Meilleure Expérience",
@@ -38,7 +38,7 @@
     "understand": "JE COMPRENDS - ENTRER SUR LE SITE"
   },
   "about": {
-    "title": "À Propos de $ONETAP",
+    "title": "À propos de OneTap",
     "subtitle": "La Légende Derrière le Token",
     "story": "$ONETAP est né de la passion des gamers qui ont vécu l'âge d'or de Counter-Strike. Vous vous souvenez de ces tirs légendaires à l'AWP ? La montée d'adrénaline quand vous réussissiez ce headshot parfait ? C'est cet esprit que nous avons capturé dans ce memecoin.",
     "story2": "Nous ne sommes pas juste un autre projet crypto - nous sommes une communauté de gamers, développeurs et passionnés de crypto unis par la nostalgie et la conviction que la culture gaming mérite sa place dans la révolution blockchain.",
@@ -61,7 +61,7 @@
     "subtitle": "Simple, transparent et conçu pour une croissance durable avec des mécanismes déflationnistes révolutionnaires",
     "totalSupply": "Supply Totale",
     "network": "Réseau",
-    "symbol": "Symbole",
+    "symbol": "Symbole : $1TAP",
     "tax": "Structure de Taxe",
     "transactionTax": "Taxe de Transaction:",
     "development": "• Développement & Infrastructure",
@@ -161,7 +161,7 @@
     "youtubeText": "Abonnez-vous pour des vidéos gaming et des tutoriels"
   },
   "footer": {
-    "tagline": "Le memecoin gaming ultime sur le réseau Base",
+    "tagline": "OneTap - Le memecoin gaming ultime sur le réseau Base",
     "quickLinks": "Liens Rapides",
     "legal": "Légal",
     "ownership": "Certificat de Propriété",
@@ -171,7 +171,7 @@
     "nonAffiliation": "Non-Affiliation",
     "legalNotice": "Mentions Légales",
     "legalShield": "Protégé par ONETAP Legal Shield v1.0",
-    "disclaimerText": "$ONETAP est un memecoin sans valeur intrinsèque et SANS attente de retour financier. Investissez uniquement ce que vous pouvez vous permettre de perdre. Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée.",
+    "disclaimerText": "OneTap ($1TAP) est un memecoin sans valeur intrinsèque et SANS attente de retour financier. Investissez uniquement ce que vous pouvez vous permettre de perdre. Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée.",
     "rights": "Tous droits réservés.",
     "contact": "Contact"
   },
@@ -179,7 +179,7 @@
     "title": "Système de Récompenses",
     "subtitle": "Tapez, gagnez de l'XP, montez en niveau et débloquez des drops légendaires exclusifs !",
     "goldDrop": "Drops Dorés",
-    "goldDropDesc": "Drops légendaires rares avec des skins et accessoires exclusifs inspirés de CS:GO. Le prix ultime pour les tappers dévoués.",
+    "goldDropDesc": "Drops légendaires rares avec des skins et accessoires exclusifs inspirés du gaming. Le prix ultime pour les tappers dévoués.",
     "memeDrop": "Drops de Memes",
     "memeDropDesc": "Memes épiques créés par la communauté et accessoires personnalisés. Affichez votre style et créativité avec des objets uniques.",
     "communityDrop": "Drops Communautaires",

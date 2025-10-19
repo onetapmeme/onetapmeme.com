@@ -1,10 +1,11 @@
+import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { Lock, Users, Droplet, TrendingUp, Wallet, Coins } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const data = [
-  { name: "Community / Circulation", value: 70, color: "hsl(210, 100%, 55%)", desc: "Public & airdrops" },
+  { name: "Community / Circulation", value: 70, color: "hsl(210, 100%, 55%)", desc: "Public" },
   { name: "Liquidity Pool", value: 10, color: "hsl(25, 100%, 55%)", desc: "Locked 6 months" },
   { name: "Marketing & Partnerships", value: 8, color: "hsl(280, 100%, 60%)", desc: "6-month vesting" },
   { name: "Team / Founder", value: 5, color: "hsl(340, 100%, 60%)", desc: "Public wallet visible" },
@@ -17,7 +18,7 @@ const distributionDetails = [
     label: "Community / Circulation",
     percentage: 70,
     tokens: "70M",
-    description: "Public & airdrops",
+    description: "Public",
     color: "text-[hsl(210,100%,55%)]"
   },
   {
@@ -56,6 +57,7 @@ const distributionDetails = [
 
 const TokenomicsChart = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   
   return (
     <Card ref={ref} className="p-6 bg-card/50 backdrop-blur-sm border-2 border-primary/30">
@@ -70,7 +72,7 @@ const TokenomicsChart = () => {
               cx="50%"
               cy="50%"
               labelLine={false}
-              label={({ name, value }) => `${value}%`}
+              label={({ value }) => `${value}%`}
               innerRadius={60}
               outerRadius={100}
               fill="#8884d8"
@@ -79,15 +81,19 @@ const TokenomicsChart = () => {
               animationDuration={1500}
               animationEasing="ease-out"
               isAnimationActive={isVisible}
+              onMouseEnter={(_, index) => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               {data.map((entry, index) => (
                 <Cell 
                   key={`cell-${index}`} 
                   fill={entry.color}
-                  className="hover:opacity-80 transition-all duration-300 cursor-pointer"
+                  className="transition-all duration-300 cursor-pointer"
                   style={{
                     filter: isVisible ? 'drop-shadow(0 0 8px currentColor)' : 'none',
                     transformOrigin: 'center',
+                    opacity: hoveredIndex === null ? 1 : hoveredIndex === index ? 1 : 0.5,
+                    transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
                   }}
                 />
               ))}
@@ -95,10 +101,11 @@ const TokenomicsChart = () => {
             <Tooltip 
               contentStyle={{
                 backgroundColor: "hsl(var(--card))",
-                border: "1px solid hsl(var(--border))",
-                borderRadius: "0.5rem",
+                border: "2px solid hsl(var(--primary))",
+                borderRadius: "0.75rem",
                 color: "hsl(var(--foreground))",
-                padding: "12px"
+                padding: "12px",
+                boxShadow: "0 0 20px hsla(var(--primary), 0.3)"
               }}
               formatter={(value: number, name: string, props: any) => [
                 `${value}% (${(value * 1000000).toLocaleString()} tokens)`,
@@ -144,11 +151,7 @@ const TokenomicsChart = () => {
           <span className="text-sm font-semibold">Liquidity Locked</span>
         </div>
         <p className="text-xs text-muted-foreground">
-          LP tokens locked for 6 months until {new Date(Date.now() + 180*24*60*60*1000).toLocaleDateString('en-US', { 
-            month: 'long', 
-            day: 'numeric', 
-            year: 'numeric' 
-          })}
+          LP tokens locked for 6 months until May 1, 2026
         </p>
       </div>
     </Card>

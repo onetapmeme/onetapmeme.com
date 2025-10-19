@@ -9,10 +9,10 @@
     "rewards": "奖励"
   },
   "hero": {
-    "title": "$ONETAP",
+    "title": "$1TAP",
     "subtitle": "终极游戏模因币",
     "description": "像素怀旧遇上现代加密货币。加入游戏革命，每笔交易都是爆头。",
-    "cta": "获取 $ONETAP"
+    "cta": "获取 $1TAP"
   },
   "enter": {
     "title": "欢迎来到 $ONETAP！",
@@ -161,7 +161,7 @@
     "title": "奖励系统",
     "subtitle": "点击、赚取经验值、升级并解锁独家传奇空投！",
     "goldDrop": "黄金空投",
-    "goldDropDesc": "罕见的传奇空投，包含CS:GO风格的独家皮肤和配件。献给专注点击者的终极奖励。",
+    "goldDropDesc": "罕见的传奇空投，包含游戏风格的独家皮肤和配件。献给专注点击者的终极奖励。",
     "memeDrop": "表情包空投",
     "memeDropDesc": "社区创作的史诗表情包和自定义配件。用独特物品展示您的风格和创造力。",
     "communityDrop": "社区空投",

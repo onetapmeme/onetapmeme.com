@@ -32,8 +32,9 @@ const Navbar = () => {
     { name: t('nav.about'), href: "#about", onClick: () => scrollToSection('about') },
     { name: t('nav.tokenomics'), href: "#tokenomics", onClick: () => scrollToSection('tokenomics') },
     { name: t('nav.roadmap'), href: "#roadmap", onClick: () => scrollToSection('roadmap') },
+    { name: t('nav.media'), href: "#media", onClick: () => scrollToSection('media') },
+    { name: t('nav.rewards'), href: "#rewards", onClick: () => scrollToSection('rewards') },
     { name: t('nav.community'), href: "#community", onClick: () => scrollToSection('community') },
-    { name: t('nav.tapToEarn'), href: "#tap-to-earn", onClick: () => scrollToSection('tap-to-earn') },
     { name: t('nav.memes'), href: "#memes", onClick: () => scrollToSection('memes') },
   ];
 
