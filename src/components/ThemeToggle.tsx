@@ -1,32 +1,15 @@
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    // Check localStorage first, then system preference
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initialTheme = savedTheme || systemTheme;
-    
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-  };
+  const { theme, setTheme } = useTheme();
 
   return (
     <Button
       variant="ghost"
       size="icon"
-      onClick={toggleTheme}
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="hover:bg-primary/10 transition-all duration-300"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
