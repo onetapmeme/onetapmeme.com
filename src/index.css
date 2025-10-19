@@ -114,6 +114,11 @@ All colors MUST be HSL.
     border: 1px solid hsla(0, 0%, 100%, 0.1);
   }
 
+  .light .glass-effect {
+    background: hsla(0, 0%, 100%, 0.7);
+    border: 1px solid hsla(220, 15%, 85%, 0.5);
+  }
+
   /* Icon animations - refined */
   .icon-float {
     animation: float 4s ease-in-out infinite;
