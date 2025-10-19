@@ -1,4 +1,6 @@
 import React from "react";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -23,9 +25,8 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-        {/* Toast providers temporarily disabled to resolve runtime hook error */}
-        {/* <Toaster /> */}
-        {/* <Sonner /> */}
+        <Toaster />
+        <Sonner />
         <Routes>
           <Route path="/" element={<Enter />} />
           <Route path="/home" element={<Index />} />

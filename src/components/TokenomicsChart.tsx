@@ -60,7 +60,7 @@ const TokenomicsChart = () => {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   
   return (
-    <Card ref={ref} className="p-6 bg-card/50 backdrop-blur-sm border-2 border-primary/30">
+    <Card ref={ref} className="p-6 bg-card border-2 border-primary/30 dark:bg-card/50 dark:backdrop-blur-sm light:bg-white light:border-primary/50 light:shadow-xl">
       <h3 className="text-xl font-bold mb-6 text-center text-foreground">Token Allocation Breakdown</h3>
       
       {/* Animated Donut Chart */}
@@ -105,7 +105,7 @@ const TokenomicsChart = () => {
                 borderRadius: "0.75rem",
                 color: "hsl(var(--foreground))",
                 padding: "12px",
-                boxShadow: "0 0 20px hsla(var(--primary), 0.3)"
+                boxShadow: "0 4px 20px hsla(var(--primary), 0.2)"
               }}
               formatter={(value: number, name: string, props: any) => [
                 `${value}% (${(value * 1000000).toLocaleString()} tokens)`,
@@ -121,7 +121,7 @@ const TokenomicsChart = () => {
         {distributionDetails.map((item, index) => (
           <div 
             key={index}
-            className="flex items-start gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-300 animate-fade-in"
+            className="flex items-start gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 dark:bg-muted/30 light:bg-muted/20 light:hover:bg-muted/30 transition-all duration-300 animate-fade-in"
             style={{ animationDelay: `${0.3 + index * 0.1}s` }}
           >
             <div 
