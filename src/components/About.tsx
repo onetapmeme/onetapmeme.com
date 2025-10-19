@@ -50,8 +50,11 @@ const About = () => {
             animate={isVisible ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Shield className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-8 text-primary" 
-              style={{ filter: 'drop-shadow(0 0 40px currentColor)' }} 
+            <Shield className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-8" 
+              style={{ 
+                color: 'hsl(210, 100%, 55%)',
+                filter: 'drop-shadow(0 0 40px hsl(210, 100%, 55%))' 
+              }} 
             />
           </motion.div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
