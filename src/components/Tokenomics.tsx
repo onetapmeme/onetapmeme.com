@@ -133,7 +133,7 @@ const Tokenomics = () => {
                   <span className="text-primary mt-0.5">✓</span>
                   <div>
                     <p className="font-semibold text-foreground">LP Locked 6 Months</p>
-                    <p className="text-muted-foreground">Liquidity pool secured until May 1, 2026</p>
+                    <p className="text-muted-foreground">Liquidity pool secured until {new Date(Date.now() + 180*24*60*60*1000).toLocaleDateString()}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">

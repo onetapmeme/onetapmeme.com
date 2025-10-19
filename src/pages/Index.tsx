@@ -22,13 +22,11 @@ const Index = () => {
       <LanguageSwitcher />
       <Navbar />
       <div id="hero">
-        <SectionWrapper variant="primary">
-          <Hero />
-        </SectionWrapper>
+        <Hero />
       </div>
       
       <div id="about">
-        <SectionWrapper variant="accent">
+        <SectionWrapper variant="primary">
           <About />
         </SectionWrapper>
       </div>
