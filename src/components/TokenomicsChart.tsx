@@ -100,12 +100,12 @@ const TokenomicsChart = () => {
             </Pie>
             <Tooltip 
               contentStyle={{
-                backgroundColor: "white",
-                border: "2px solid hsl(210, 100%, 55%)",
+                backgroundColor: "hsl(var(--card))",
+                border: "2px solid hsl(var(--primary))",
                 borderRadius: "0.75rem",
-                color: "black",
+                color: "hsl(var(--foreground))",
                 padding: "12px",
-                boxShadow: "0 4px 20px hsla(210, 100%, 55%, 0.3)"
+                boxShadow: "0 4px 20px hsla(var(--primary), 0.2)"
               }}
               formatter={(value: number, name: string, props: any) => [
                 `${value}% (${(value * 1000000).toLocaleString()} tokens)`,
