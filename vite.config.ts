@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === "development" && componentTagger(),
     mode === 'production' && VitePWA({
+      injectRegister: null,
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'sounds/*.wav'],
       manifest: {
