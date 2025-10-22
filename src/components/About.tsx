@@ -35,12 +35,13 @@ const About = () => {
     <section 
       id="about" 
       ref={ref}
-      className="py-24 md:py-40 px-4 relative overflow-hidden"
+      className="py-24 md:py-40 px-4 relative overflow-hidden bg-background"
     >
-      {/* Blue halo background effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] opacity-40" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[100px] opacity-30" />
+      {/* Strong blue halo background effect - covering entire section */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-primary/25 rounded-full blur-[150px] opacity-50" />
+        <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-primary/20 rounded-full blur-[120px] opacity-40" />
+        <div className="absolute bottom-0 right-1/3 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[130px] opacity-35" />
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -62,7 +63,7 @@ const About = () => {
               }} 
             />
           </motion.div>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent"
             style={{ backgroundSize: '200%', animation: 'shimmer 3s linear infinite' }}>
             {t('about.title')}
           </h2>
