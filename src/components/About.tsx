@@ -37,6 +37,11 @@ const About = () => {
       ref={ref}
       className="py-24 md:py-40 px-4 relative overflow-hidden"
     >
+      {/* Blue halo background effect */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] opacity-40" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[100px] opacity-30" />
+      </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div 
