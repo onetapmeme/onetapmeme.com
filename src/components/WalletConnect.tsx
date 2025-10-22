@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Wallet, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
+import { supabase } from "@/integrations/supabase/client";
 
 // EIP-1193 Ethereum Provider type
 declare global {
@@ -16,16 +17,39 @@ declare global {
   }
 }
 
+interface ContractConfig {
+  address: string;
+  symbol: string;
+  decimals: number;
+  chainId: string;
+  chainName: string;
+  blockExplorer: string;
+  rpcUrl: string;
+  logoUrl: string;
+}
+
 const WalletConnect = () => {
   const { t } = useTranslation();
   const [account, setAccount] = useState<string | null>(null);
   const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [contractConfig, setContractConfig] = useState<ContractConfig | null>(null);
 
   const BASE_CHAIN_ID = '0x2105'; // Base Mainnet (8453 in decimal)
-  const CONTRACT_ADDRESS = '0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8';
 
   useEffect(() => {
+    const initializeConfig = async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke('get-contract-config');
+        if (error) throw error;
+        setContractConfig(data);
+      } catch (error) {
+        console.error('Failed to fetch contract config:', error);
+        toast.error('Failed to load contract configuration');
+      }
+    };
+
+    initializeConfig();
     checkConnection();
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', handleAccountsChanged);
@@ -149,7 +173,7 @@ const WalletConnect = () => {
   };
 
   const addTokenToWallet = async () => {
-    if (!window.ethereum || !account) {
+    if (!window.ethereum || !account || !contractConfig) {
       toast.error(t('wallet.connectFirst'));
       return;
     }
@@ -161,10 +185,10 @@ const WalletConnect = () => {
           {
             type: 'ERC20',
             options: {
-              address: CONTRACT_ADDRESS,
-              symbol: 'ONETAP',
-              decimals: 18,
-              image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png',
+              address: contractConfig.address,
+              symbol: contractConfig.symbol,
+              decimals: contractConfig.decimals,
+              image: contractConfig.logoUrl,
             },
           }
         ],
