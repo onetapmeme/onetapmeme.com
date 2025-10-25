@@ -35,11 +35,17 @@ const About = () => {
     <section 
       id="about" 
       ref={ref}
-      className="py-24 md:py-40 px-4 relative overflow-hidden bg-background"
+      className="py-24 md:py-40 px-4 relative overflow-hidden"
+      style={{ background: 'transparent' }}
     >
-      {/* Strong blue halo background effect - covering entire section */}
+      {/* Blue halo background effect - seamless continuation from Hero */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-primary/25 rounded-full blur-[150px] opacity-50" />
+        {/* Top halos to blend with Hero section */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-primary/22 rounded-full blur-[150px] opacity-60" />
+        <div className="absolute -top-20 left-1/3 w-[800px] h-[500px] bg-primary/17 rounded-full blur-[130px] opacity-50" />
+        <div className="absolute -top-24 right-1/3 w-[900px] h-[550px] bg-primary/20 rounded-full blur-[140px] opacity-55" />
+        
+        {/* Middle and bottom halos for section coverage */}
         <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-primary/20 rounded-full blur-[120px] opacity-40" />
         <div className="absolute bottom-0 right-1/3 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[130px] opacity-35" />
       </div>

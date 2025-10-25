@@ -36,6 +36,13 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background"></div>
       </motion.div>
 
+      {/* Blue halo at bottom for smooth transition to About section */}
+      <div className="absolute bottom-0 left-0 right-0 h-[400px] pointer-events-none overflow-hidden">
+        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-primary/20 rounded-full blur-[150px] opacity-60" />
+        <div className="absolute -bottom-20 left-1/3 w-[800px] h-[500px] bg-primary/15 rounded-full blur-[130px] opacity-50" />
+        <div className="absolute -bottom-24 right-1/3 w-[900px] h-[550px] bg-primary/18 rounded-full blur-[140px] opacity-55" />
+      </div>
+
       {/* Premium Particle Effects */}
       <div className="absolute inset-0 z-0">
         {[...Array(30)].map((_, i) => (
