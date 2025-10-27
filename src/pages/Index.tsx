@@ -28,7 +28,7 @@ const Index = () => {
       </div>
       
       <div id="about">
-        <SectionWrapper variant="accent">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <About />
         </SectionWrapper>
       </div>
