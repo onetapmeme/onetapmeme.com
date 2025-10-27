@@ -37,10 +37,10 @@ const Hero = () => {
       </motion.div>
 
       {/* Blue halo at bottom for smooth transition to About section */}
-      <div className="absolute bottom-0 left-0 right-0 h-[400px] pointer-events-none overflow-hidden">
-        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-primary/20 rounded-full blur-[150px] opacity-60" />
-        <div className="absolute -bottom-20 left-1/3 w-[800px] h-[500px] bg-primary/15 rounded-full blur-[130px] opacity-50" />
-        <div className="absolute -bottom-24 right-1/3 w-[900px] h-[550px] bg-primary/18 rounded-full blur-[140px] opacity-55" />
+      <div className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none overflow-hidden">
+        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[1400px] h-[700px] bg-primary/28 rounded-full blur-[160px] opacity-70" />
+        <div className="absolute -bottom-20 left-1/3 w-[1000px] h-[600px] bg-primary/24 rounded-full blur-[140px] opacity-65" />
+        <div className="absolute -bottom-24 right-1/3 w-[1100px] h-[650px] bg-primary/26 rounded-full blur-[150px] opacity-68" />
       </div>
 
       {/* Premium Particle Effects */}
@@ -115,7 +115,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              background: 'linear-gradient(90deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 16.66%, hsl(210, 100%, 55%) 33.33%, hsl(25, 100%, 55%) 50%, hsl(210, 100%, 55%) 66.66%, hsl(25, 100%, 55%) 83.33%, hsl(210, 100%, 55%) 100%)',
+              background: 'linear-gradient(90deg, hsl(210, 100%, 60%) 0%, hsl(210, 100%, 55%) 16.66%, hsl(210, 100%, 50%) 33.33%, hsl(210, 100%, 55%) 50%, hsl(210, 100%, 60%) 66.66%, hsl(210, 100%, 55%) 83.33%, hsl(210, 100%, 50%) 100%)',
               backgroundSize: '300% 100%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -157,14 +157,14 @@ const Hero = () => {
               size="lg" 
               className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full transition-all duration-500"
               style={{
-                background: 'linear-gradient(135deg, hsl(210, 100%, 55%), hsl(25, 100%, 55%))',
-                boxShadow: '0 0 40px hsla(210, 100%, 55%, 0.3)',
+                background: 'linear-gradient(135deg, hsl(210, 100%, 60%), hsl(210, 100%, 50%))',
+                boxShadow: '0 0 40px hsla(210, 100%, 55%, 0.4)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 60px hsla(210, 100%, 55%, 0.5)';
+                e.currentTarget.style.boxShadow = '0 0 70px hsla(210, 100%, 55%, 0.6)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 40px hsla(210, 100%, 55%, 0.3)';
+                e.currentTarget.style.boxShadow = '0 0 40px hsla(210, 100%, 55%, 0.4)';
               }}
             >
               <Zap className="w-5 h-5 md:w-6 md:h-6" />

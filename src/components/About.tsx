@@ -40,10 +40,10 @@ const About = () => {
     >
       {/* Blue halo background effect - seamless continuation from Hero */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Top halos to blend with Hero section */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-primary/22 rounded-full blur-[150px] opacity-60" />
-        <div className="absolute -top-20 left-1/3 w-[800px] h-[500px] bg-primary/17 rounded-full blur-[130px] opacity-50" />
-        <div className="absolute -top-24 right-1/3 w-[900px] h-[550px] bg-primary/20 rounded-full blur-[140px] opacity-55" />
+        {/* Top halos to blend with Hero section - intensified */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[1400px] h-[700px] bg-primary/28 rounded-full blur-[160px] opacity-70" />
+        <div className="absolute -top-20 left-1/3 w-[1000px] h-[600px] bg-primary/24 rounded-full blur-[140px] opacity-65" />
+        <div className="absolute -top-24 right-1/3 w-[1100px] h-[650px] bg-primary/26 rounded-full blur-[150px] opacity-68" />
         
         {/* Middle and bottom halos for section coverage */}
         <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-primary/20 rounded-full blur-[120px] opacity-40" />
