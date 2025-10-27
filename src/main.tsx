@@ -19,7 +19,35 @@ if (isLovablePreview) {
 } else if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   // Manual PWA registration only on non-preview domains
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js').then((registration) => {
+      // Auto-reload when a new SW takes control to avoid stale UI
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+      });
+
+      // Force activate updated SW ASAP
+      const maybeSkipWaiting = () => {
+        if (registration.waiting) {
+          registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+        }
+      };
+
+      registration.addEventListener('updatefound', () => {
+        const newSW = registration.installing;
+        if (!newSW) return;
+        newSW.addEventListener('statechange', () => {
+          if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+            maybeSkipWaiting();
+          }
+        });
+      });
+
+      // Also try on load in case SW is already waiting
+      maybeSkipWaiting();
+    }).catch(() => {});
   });
 }
 
