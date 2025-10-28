@@ -33,14 +33,16 @@ const Hero = () => {
           y: parallaxOffset,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background/20"></div>
       </motion.div>
 
       {/* Blue halo at bottom for smooth transition to About section */}
-      <div className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none overflow-hidden">
-        <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[1400px] h-[700px] bg-primary/28 rounded-full blur-[160px] opacity-70" />
-        <div className="absolute -bottom-20 left-1/3 w-[1000px] h-[600px] bg-primary/24 rounded-full blur-[140px] opacity-65" />
-        <div className="absolute -bottom-24 right-1/3 w-[1100px] h-[650px] bg-primary/26 rounded-full blur-[150px] opacity-68" />
+      <div className="absolute bottom-0 left-0 right-0 h-[800px] pointer-events-none overflow-hidden z-[1]">
+        <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[1800px] h-[900px] bg-primary/35 rounded-full blur-[200px] opacity-80" />
+        <div className="absolute -bottom-32 left-1/3 w-[1400px] h-[800px] bg-primary/30 rounded-full blur-[180px] opacity-75" />
+        <div className="absolute -bottom-36 right-1/3 w-[1500px] h-[850px] bg-primary/32 rounded-full blur-[190px] opacity-78" />
+        <div className="absolute -bottom-20 left-1/4 w-[1200px] h-[700px] bg-primary/25 rounded-full blur-[160px] opacity-70" />
+        <div className="absolute -bottom-28 right-1/4 w-[1300px] h-[750px] bg-primary/28 rounded-full blur-[170px] opacity-72" />
       </div>
 
       {/* Premium Particle Effects */}
