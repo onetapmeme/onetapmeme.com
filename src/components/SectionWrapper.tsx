@@ -42,22 +42,25 @@ const SectionWrapper = ({ children, variant = 'primary', blendFrom, className = 
 
   return (
     <div className={`relative ${className}`}>
+      {/* Smooth gradient blend between sections - Extended and softened */}
       <div 
         className="absolute top-0 left-0 right-0 pointer-events-none"
         style={{ 
-          height: '800px',
+          height: '1200px',
           background: `
             linear-gradient(
               180deg,
               ${prevColors.from} 0%,
-              ${prevColors.to} 20%,
-              ${colors.from} 55%,
-              ${colors.to} 75%,
+              ${prevColors.to} 15%,
+              ${prevColors.from} 30%,
+              ${colors.from} 50%,
+              ${colors.to} 65%,
+              ${colors.from} 80%,
               transparent 100%
             )
           `,
-          filter: 'blur(120px)',
-          opacity: 0.8,
+          filter: 'blur(180px)',
+          opacity: 0.6,
           animation: 'vertical-wave-down 20s ease-in-out infinite'
         }}
       />

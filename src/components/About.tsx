@@ -69,8 +69,17 @@ const About = () => {
               }} 
             />
           </motion.div>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent"
-            style={{ backgroundSize: '200%', animation: 'shimmer 3s linear infinite' }}>
+          <h2 
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+            style={{
+              background: 'linear-gradient(90deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 16.66%, hsl(210, 100%, 55%) 33.33%, hsl(25, 100%, 55%) 50%, hsl(210, 100%, 55%) 66.66%, hsl(25, 100%, 55%) 83.33%, hsl(210, 100%, 55%) 100%)',
+              backgroundSize: '300% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'gradient-flow 10s linear infinite',
+            }}
+          >
             {t('about.title')}
           </h2>
           <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">

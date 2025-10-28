@@ -79,7 +79,17 @@ const LiveStats = () => {
           transition={{ duration: 0.8 }}
         >
           <Activity className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-6 text-primary animate-pulse" />
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          <h2 
+            className="text-3xl md:text-5xl font-bold mb-4"
+            style={{
+              background: 'linear-gradient(90deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 16.66%, hsl(210, 100%, 55%) 33.33%, hsl(25, 100%, 55%) 50%, hsl(210, 100%, 55%) 66.66%, hsl(25, 100%, 55%) 83.33%, hsl(210, 100%, 55%) 100%)',
+              backgroundSize: '300% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'gradient-flow 10s linear infinite',
+            }}
+          >
             {t('liveStats.title') || '$ONETAP LIVE STATS'}
           </h2>
           <p className="text-lg text-muted-foreground">

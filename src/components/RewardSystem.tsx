@@ -57,7 +57,17 @@ const RewardSystem = () => {
           transition={{ duration: 0.8 }}
         >
           <Trophy className="w-16 h-16 mx-auto mb-6 text-primary" style={{ filter: 'drop-shadow(0 0 30px currentColor)' }} />
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          <h2 
+            className="text-4xl md:text-6xl font-bold mb-6"
+            style={{
+              background: 'linear-gradient(90deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 16.66%, hsl(210, 100%, 55%) 33.33%, hsl(25, 100%, 55%) 50%, hsl(210, 100%, 55%) 66.66%, hsl(25, 100%, 55%) 83.33%, hsl(210, 100%, 55%) 100%)',
+              backgroundSize: '300% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'gradient-flow 10s linear infinite',
+            }}
+          >
             {t('rewards.title')}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
