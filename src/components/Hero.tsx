@@ -115,7 +115,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              background: 'linear-gradient(90deg, hsl(210, 100%, 60%) 0%, hsl(210, 100%, 55%) 16.66%, hsl(210, 100%, 50%) 33.33%, hsl(210, 100%, 55%) 50%, hsl(210, 100%, 60%) 66.66%, hsl(210, 100%, 55%) 83.33%, hsl(210, 100%, 50%) 100%)',
+              background: 'linear-gradient(90deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 16.66%, hsl(210, 100%, 55%) 33.33%, hsl(25, 100%, 55%) 50%, hsl(210, 100%, 55%) 66.66%, hsl(25, 100%, 55%) 83.33%, hsl(210, 100%, 55%) 100%)',
               backgroundSize: '300% 100%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
