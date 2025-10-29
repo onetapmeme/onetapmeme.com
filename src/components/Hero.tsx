@@ -36,20 +36,20 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/70 to-transparent"></div>
       </motion.div>
 
-      {/* Blue halo for smooth transition - starts higher and more intense */}
+      {/* Orange halo for smooth transition - starts higher and more intense */}
       <div className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none overflow-hidden z-[1]">
         {/* Main central halo - covers the full height */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[2000px] h-[1200px] bg-primary/45 rounded-full blur-[250px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[2200px] h-[1400px] bg-primary/40 rounded-full blur-[280px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[2000px] h-[1200px] bg-accent/45 rounded-full blur-[250px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[2200px] h-[1400px] bg-accent/40 rounded-full blur-[280px]" />
         
         {/* Bottom intense halos for seamless blend */}
-        <div className="absolute -bottom-60 left-1/2 -translate-x-1/2 w-[2400px] h-[1200px] bg-primary/50 rounded-full blur-[300px]" />
-        <div className="absolute -bottom-40 left-1/3 w-[1800px] h-[1000px] bg-primary/45 rounded-full blur-[250px]" />
-        <div className="absolute -bottom-50 right-1/3 w-[2000px] h-[1100px] bg-primary/48 rounded-full blur-[270px]" />
+        <div className="absolute -bottom-60 left-1/2 -translate-x-1/2 w-[2400px] h-[1200px] bg-accent/50 rounded-full blur-[300px]" />
+        <div className="absolute -bottom-40 left-1/3 w-[1800px] h-[1000px] bg-accent/45 rounded-full blur-[250px]" />
+        <div className="absolute -bottom-50 right-1/3 w-[2000px] h-[1100px] bg-accent/48 rounded-full blur-[270px]" />
         
         {/* Side halos for uniform coverage */}
-        <div className="absolute top-2/3 left-0 w-[1400px] h-[900px] bg-primary/35 rounded-full blur-[220px]" />
-        <div className="absolute top-2/3 right-0 w-[1400px] h-[900px] bg-primary/35 rounded-full blur-[220px]" />
+        <div className="absolute top-2/3 left-0 w-[1400px] h-[900px] bg-accent/35 rounded-full blur-[220px]" />
+        <div className="absolute top-2/3 right-0 w-[1400px] h-[900px] bg-accent/35 rounded-full blur-[220px]" />
       </div>
 
       {/* Premium Particle Effects */}
