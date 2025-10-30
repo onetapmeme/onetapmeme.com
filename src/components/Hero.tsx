@@ -217,6 +217,46 @@ const Hero = () => {
         </motion.div>
       </div>
 
+      {/* Transition Overlay - Solution 2: Dedicated gradient overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-[450px] pointer-events-none overflow-hidden z-[2]">
+        {/* Main gradient overlay */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-primary/35 via-primary/25 to-primary/15" 
+          style={{ filter: 'blur(200px)' }} 
+        />
+        
+        {/* Radial halos for uniform blending */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2600px] h-[500px] bg-primary/40 rounded-full blur-[320px]" />
+        <div className="absolute top-20 left-1/3 w-[2000px] h-[450px] bg-primary/35 rounded-full blur-[280px]" />
+        <div className="absolute top-20 right-1/3 w-[2000px] h-[450px] bg-primary/35 rounded-full blur-[280px]" />
+      </div>
+
+      {/* Transition Particles - Solution 4: Additional particles in transition zone */}
+      <div className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none overflow-hidden z-[3]">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`transition-particle-${i}`}
+            className="absolute w-1 h-1 bg-primary rounded-full"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: [0.15, 0.5, 0.15],
+              scale: [1, 2, 1],
+              y: [0, -40, 0],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${30 + Math.random() * 70}%`,
+              filter: 'blur(1.5px)',
+            }}
+          />
+        ))}
+      </div>
+
       {/* Apple-style Scroll Indicator */}
       <motion.div 
         className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
