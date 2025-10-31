@@ -218,11 +218,11 @@ const Hero = () => {
       </div>
 
       {/* Transition Overlay - Solution 2: Dedicated gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-[450px] pointer-events-none overflow-hidden z-[2]">
+      <div className="absolute bottom-0 left-0 right-0 h-[520px] pointer-events-none overflow-hidden z-[2]">
         {/* Main gradient overlay */}
         <div 
-          className="absolute inset-0 bg-gradient-to-b from-primary/35 via-primary/25 to-primary/15" 
-          style={{ filter: 'blur(200px)' }} 
+          className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/18 to-transparent" 
+          style={{ filter: 'blur(160px)' }} 
         />
         
         {/* Radial halos for uniform blending */}
@@ -239,7 +239,7 @@ const Hero = () => {
             className="absolute w-1 h-1 bg-primary rounded-full"
             initial={{ opacity: 0, scale: 0 }}
             animate={{
-              opacity: [0.15, 0.5, 0.15],
+              opacity: [0.1, 0.4, 0.1],
               scale: [1, 2, 1],
               y: [0, -40, 0],
             }}

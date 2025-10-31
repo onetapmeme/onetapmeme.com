@@ -34,43 +34,43 @@ const Index = () => {
       </div>
 
       <div id="tokenomics">
-        <SectionWrapper variant="accent">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <Tokenomics />
         </SectionWrapper>
       </div>
 
       <div id="live-stats">
-        <SectionWrapper variant="primary">
+        <SectionWrapper variant="primary" blendFrom="accent">
           <LiveStats />
         </SectionWrapper>
       </div>
       
       <div id="roadmap">
-        <SectionWrapper variant="accent">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <Roadmap />
         </SectionWrapper>
       </div>
       
       <div id="community">
-        <SectionWrapper variant="primary">
+        <SectionWrapper variant="primary" blendFrom="accent">
           <Community />
         </SectionWrapper>
       </div>
 
       <div id="media">
-        <SectionWrapper variant="accent">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <MediaSection />
         </SectionWrapper>
       </div>
 
       <div id="tap-to-earn">
-        <SectionWrapper variant="primary">
+        <SectionWrapper variant="primary" blendFrom="accent">
           <TapToEarnSection />
         </SectionWrapper>
       </div>
 
       <div id="rewards">
-        <SectionWrapper variant="accent">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <RewardSystem />
         </SectionWrapper>
       </div>
