@@ -59,8 +59,8 @@ const SectionWrapper = ({ children, variant = 'primary', blendFrom, className = 
               transparent 100%
             )
           `,
-          filter: 'blur(180px)',
-          opacity: 0.6,
+          filter: 'blur(200px)',
+          opacity: 0.7,
           animation: 'vertical-wave-down 20s ease-in-out infinite'
         }}
       />
