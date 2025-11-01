@@ -33,7 +33,7 @@ const Hero = () => {
           y: parallaxOffset,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/75 to-background/30"></div>
       </motion.div>
 
       {/* Blue halo for smooth transition - same color as About section */}
@@ -43,9 +43,9 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[2200px] h-[1400px] bg-primary/40 rounded-full blur-[280px]" />
         
         {/* Bottom intense halos for seamless blend */}
-        <div className="absolute -bottom-60 left-1/2 -translate-x-1/2 w-[2400px] h-[1200px] bg-primary/50 rounded-full blur-[300px]" />
-        <div className="absolute -bottom-40 left-1/3 w-[1800px] h-[1000px] bg-primary/45 rounded-full blur-[250px]" />
-        <div className="absolute -bottom-50 right-1/3 w-[2000px] h-[1100px] bg-primary/48 rounded-full blur-[270px]" />
+        <div className="absolute -bottom-60 left-1/2 -translate-x-1/2 w-[2400px] h-[1200px] bg-primary/26 rounded-full blur-[300px]" />
+        <div className="absolute -bottom-40 left-1/3 w-[1800px] h-[1000px] bg-primary/22 rounded-full blur-[250px]" />
+        <div className="absolute -bottom-50 right-1/3 w-[2000px] h-[1100px] bg-primary/24 rounded-full blur-[270px]" />
         
         {/* Side halos for uniform coverage */}
         <div className="absolute top-2/3 left-0 w-[1400px] h-[900px] bg-primary/35 rounded-full blur-[220px]" />
@@ -221,7 +221,7 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 right-0 h-[520px] pointer-events-none overflow-hidden z-[2]">
         {/* Main gradient overlay */}
         <div 
-          className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/18 to-transparent" 
+          className="absolute inset-0 bg-gradient-to-b from-primary/24 via-primary/14 to-background/10" 
           style={{ filter: 'blur(160px)' }} 
         />
         

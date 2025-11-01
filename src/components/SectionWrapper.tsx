@@ -56,7 +56,7 @@ const SectionWrapper = ({ children, variant = 'primary', blendFrom, className = 
               ${colors.from} 50%,
               ${colors.to} 65%,
               ${colors.from} 80%,
-              transparent 100%
+              hsla(220, 25%, 6%, 0.06) 100%
             )
           `,
           filter: 'blur(200px)',
@@ -116,7 +116,7 @@ const SectionWrapper = ({ children, variant = 'primary', blendFrom, className = 
               0deg,
               ${colors.from} 0%,
               ${colors.to} 20%,
-              transparent 100%
+              hsla(220, 25%, 6%, 0.06) 100%
             )
           `,
           filter: 'blur(100px)',

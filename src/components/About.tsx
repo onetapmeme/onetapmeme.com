@@ -38,16 +38,21 @@ const About = () => {
       className="py-24 md:py-40 px-4 relative overflow-hidden"
       style={{ background: 'transparent' }}
     >
+      {/* Subtle dark underlay */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'linear-gradient(180deg, hsla(220, 25%, 6%, 0.06) 0%, transparent 60%)',
+      }} />
+
       {/* Blue halo background effect - seamless continuation from Hero */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Top halos to blend with Hero section - intensified */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[1400px] h-[700px] bg-primary/28 rounded-full blur-[160px] opacity-70" />
-        <div className="absolute -top-20 left-1/3 w-[1000px] h-[600px] bg-primary/24 rounded-full blur-[140px] opacity-65" />
-        <div className="absolute -top-24 right-1/3 w-[1100px] h-[650px] bg-primary/26 rounded-full blur-[150px] opacity-68" />
+        {/* Top halos to blend with Hero section - softened */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[700px] bg-primary/18 rounded-full blur-[200px] opacity-45" />
+        <div className="absolute -top-40 left-1/3 w-[1000px] h-[600px] bg-primary/14 rounded-full blur-[200px] opacity-40" />
+        <div className="absolute -top-44 right-1/3 w-[1100px] h-[650px] bg-primary/16 rounded-full blur-[220px] opacity-42" />
         
         {/* Middle and bottom halos for section coverage */}
-        <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-primary/20 rounded-full blur-[120px] opacity-40" />
-        <div className="absolute bottom-0 right-1/3 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[130px] opacity-35" />
+        <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-primary/16 rounded-full blur-[120px] opacity-40" />
+        <div className="absolute bottom-0 right-1/3 w-[800px] h-[800px] bg-primary/12 rounded-full blur-[130px] opacity-35" />
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
