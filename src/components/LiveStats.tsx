@@ -15,6 +15,40 @@ const LiveStats = () => {
     volume24h: 'Coming Soon',
   });
 
+  // TradingView widget setup
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://s3.tradingview.com/tv.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      if (window.TradingView) {
+        new window.TradingView.widget({
+          autosize: true,
+          symbol: "BASE:ONETAP",
+          interval: "D",
+          timezone: "Etc/UTC",
+          theme: "dark",
+          style: "1",
+          locale: "en",
+          toolbar_bg: "#f1f3f6",
+          enable_publishing: false,
+          container_id: "tradingview_chart",
+          hide_top_toolbar: false,
+          hide_legend: false,
+          save_image: false,
+        });
+      }
+    };
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
   // Placeholder for future API integration
   useEffect(() => {
     const updateStats = () => {
@@ -131,12 +165,27 @@ const LiveStats = () => {
           ))}
         </motion.div>
 
+        {/* TradingView Chart */}
+        <motion.div
+          className="mt-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <Card className="glass-effect p-6 rounded-2xl border-primary/20">
+            <h3 className="text-xl font-bold mb-4 text-center">
+              {t('liveStats.priceChart') || 'Live Price Chart'}
+            </h3>
+            <div id="tradingview_chart" style={{ height: '500px' }}></div>
+          </Card>
+        </motion.div>
+
         {/* Coming Soon Notice */}
         <motion.div
           className="mt-8 text-center"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
           <p className="text-sm text-muted-foreground italic">
             {t('liveStats.notice') || '📊 Live data integration coming soon after token launch'}
