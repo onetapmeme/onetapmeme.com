@@ -18,6 +18,9 @@ import Token from "./pages/Token";
 import Lore from "./pages/Lore";
 import NotFound from "./pages/NotFound";
 import MemeGenerator from "./pages/MemeGenerator";
+import FAQ from "./pages/FAQ";
+import Team from "./pages/Team";
+import Whitepaper from "./pages/Whitepaper";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +44,9 @@ const App = () => (
           <Route path="/token" element={<Token />} />
           <Route path="/lore" element={<Lore />} />
           <Route path="/meme" element={<MemeGenerator />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/whitepaper" element={<Whitepaper />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

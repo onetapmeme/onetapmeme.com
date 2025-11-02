@@ -22,7 +22,7 @@ const Hero = () => {
   const parallaxOffset = scrollY * 0.5;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-x-hidden">
+    <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 pb-16 md:pb-20">
       {/* Cinematic Background */}
       <motion.div 
         className="absolute inset-0 z-0"

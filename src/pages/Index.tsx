@@ -27,8 +27,8 @@ const Index = () => {
         </SectionWrapper>
       </div>
       
-      <div id="about">
-        <SectionWrapper variant="primary" blendFrom="primary" className="-mt-24 pt-24 md:-mt-28 md:pt-28 relative">
+      <div id="about" className="scroll-mt-20">
+        <SectionWrapper variant="primary" blendFrom="primary">
           <About />
         </SectionWrapper>
       </div>

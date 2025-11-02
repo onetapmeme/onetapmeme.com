@@ -83,16 +83,42 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Apple-style smooth scroll */
+  /* Ultra-smooth scroll with momentum */
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+  }
+  
+  /* Mobile viewport optimization */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      min-height: -webkit-fill-available;
+    }
+  }
+  
+  /* Tablet & Mobile responsive containers */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Touch-friendly spacing */
+  @media (max-width: 768px) {
+    section {
+      @apply py-12;
+    }
   }
 
   /* Cinematic parallax */
