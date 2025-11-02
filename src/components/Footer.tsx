@@ -2,6 +2,7 @@ import { Twitter, Send, MessageCircle, Instagram, Youtube, Music } from "lucide-
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/onetap_new_logo.png";
 import { useTranslation } from "react-i18next";
+import Newsletter from "./Newsletter";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -92,6 +93,11 @@ const Footer = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Newsletter Section */}
+        <div className="border-t border-border pt-10 pb-6">
+          <Newsletter />
         </div>
 
         {/* Bottom Bar */}
