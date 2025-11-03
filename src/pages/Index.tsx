@@ -15,6 +15,8 @@ import LiveStats from "@/components/LiveStats";
 import RewardSystem from "@/components/RewardSystem";
 import MediaSection from "@/components/MediaSection";
 import SocialProof from "@/components/SocialProof";
+import SwapWidget from "@/components/SwapWidget";
+import VideoShowcase from "@/components/VideoShowcase";
 
 const Index = () => {
   return (
@@ -67,6 +69,18 @@ const Index = () => {
       <div id="social-proof">
         <SectionWrapper variant="primary" blendFrom="accent">
           <SocialProof />
+        </SectionWrapper>
+      </div>
+
+      <div id="swap">
+        <SectionWrapper variant="accent" blendFrom="primary">
+          <SwapWidget />
+        </SectionWrapper>
+      </div>
+
+      <div id="videos">
+        <SectionWrapper variant="primary" blendFrom="accent">
+          <VideoShowcase />
         </SectionWrapper>
       </div>
 

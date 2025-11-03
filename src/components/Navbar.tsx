@@ -31,9 +31,9 @@ const Navbar = () => {
   const navItems = [
     { name: t('nav.about'), href: "#about", onClick: () => scrollToSection('about') },
     { name: t('nav.tokenomics'), href: "#tokenomics", onClick: () => scrollToSection('tokenomics') },
-    { name: t('nav.roadmap'), href: "#roadmap", onClick: () => scrollToSection('roadmap') },
     { name: "Dashboard", href: "/dashboard", isExternal: true },
-    { name: t('nav.community'), href: "#community", onClick: () => scrollToSection('community') },
+    { name: "Blog", href: "/blog", isExternal: true },
+    { name: "Security", href: "/security", isExternal: true },
   ];
 
   return (

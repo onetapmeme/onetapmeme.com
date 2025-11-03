@@ -14,6 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          author_avatar_url: string | null
+          author_name: string
+          category: string
+          content: string
+          cover_image_url: string | null
+          created_at: string
+          excerpt: string
+          id: string
+          published: boolean | null
+          published_at: string | null
+          slug: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+          views: number | null
+        }
+        Insert: {
+          author_avatar_url?: string | null
+          author_name: string
+          category: string
+          content: string
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt: string
+          id?: string
+          published?: boolean | null
+          published_at?: string | null
+          slug: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          views?: number | null
+        }
+        Update: {
+          author_avatar_url?: string | null
+          author_name?: string
+          category?: string
+          content?: string
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt?: string
+          id?: string
+          published?: boolean | null
+          published_at?: string | null
+          slug?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          views?: number | null
+        }
+        Relationships: []
+      }
+      partnerships: {
+        Row: {
+          announcement_date: string | null
+          created_at: string
+          id: string
+          is_active: boolean | null
+          partner_description: string | null
+          partner_logo_url: string
+          partner_name: string
+          website_url: string | null
+        }
+        Insert: {
+          announcement_date?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          partner_description?: string | null
+          partner_logo_url: string
+          partner_name: string
+          website_url?: string | null
+        }
+        Update: {
+          announcement_date?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          partner_description?: string | null
+          partner_logo_url?: string
+          partner_name?: string
+          website_url?: string | null
+        }
+        Relationships: []
+      }
       player_inventory: {
         Row: {
           collected_at: string

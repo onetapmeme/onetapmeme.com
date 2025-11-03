@@ -22,6 +22,8 @@ import FAQ from "./pages/FAQ";
 import Team from "./pages/Team";
 import Whitepaper from "./pages/Whitepaper";
 import Dashboard from "./pages/Dashboard";
+import Security from "./pages/Security";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +51,8 @@ const App = () => (
           <Route path="/team" element={<Team />} />
           <Route path="/whitepaper" element={<Whitepaper />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/security" element={<Security />} />
+          <Route path="/blog" element={<Blog />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
