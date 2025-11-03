@@ -14,6 +14,7 @@ import BenControllerV2 from "@/components/ben/BenControllerV2";
 import LiveStats from "@/components/LiveStats";
 import RewardSystem from "@/components/RewardSystem";
 import MediaSection from "@/components/MediaSection";
+import SocialProof from "@/components/SocialProof";
 
 const Index = () => {
   return (
@@ -60,6 +61,12 @@ const Index = () => {
       <div id="media">
         <SectionWrapper variant="accent" blendFrom="primary">
           <MediaSection />
+        </SectionWrapper>
+      </div>
+
+      <div id="social-proof">
+        <SectionWrapper variant="primary" blendFrom="accent">
+          <SocialProof />
         </SectionWrapper>
       </div>
 

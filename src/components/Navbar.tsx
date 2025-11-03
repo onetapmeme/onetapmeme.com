@@ -32,10 +32,8 @@ const Navbar = () => {
     { name: t('nav.about'), href: "#about", onClick: () => scrollToSection('about') },
     { name: t('nav.tokenomics'), href: "#tokenomics", onClick: () => scrollToSection('tokenomics') },
     { name: t('nav.roadmap'), href: "#roadmap", onClick: () => scrollToSection('roadmap') },
-    { name: t('nav.media'), href: "#media", onClick: () => scrollToSection('media') },
-    { name: t('nav.rewards'), href: "#rewards", onClick: () => scrollToSection('rewards') },
+    { name: "Dashboard", href: "/dashboard", isExternal: true },
     { name: t('nav.community'), href: "#community", onClick: () => scrollToSection('community') },
-    { name: t('nav.memes'), href: "#memes", onClick: () => scrollToSection('memes') },
   ];
 
   return (
@@ -66,19 +64,29 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-4">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (item.onClick) {
-                    item.onClick();
-                  }
-                }}
-                className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 font-medium"
-              >
-                {item.name}
-              </a>
+              item.isExternal ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 font-medium"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.onClick) {
+                      item.onClick();
+                    }
+                  }}
+                  className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 font-medium"
+                >
+                  {item.name}
+                </a>
+              )
             ))}
             <ThemeToggle />
             <Button 
@@ -102,20 +110,31 @@ const Navbar = () => {
               <SheetContent className="bg-background/95 backdrop-blur-xl border-primary/20">
                 <div className="flex flex-col gap-4 mt-8">
                   {navItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIsMobileMenuOpen(false);
-                        if (item.onClick) {
-                          item.onClick();
-                        }
-                      }}
-                    >
-                      {item.name}
-                    </a>
+                    item.isExternal ? (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsMobileMenuOpen(false);
+                          if (item.onClick) {
+                            item.onClick();
+                          }
+                        }}
+                      >
+                        {item.name}
+                      </a>
+                    )
                   ))}
                   <Button 
                     variant="hero"

@@ -21,6 +21,7 @@ import MemeGenerator from "./pages/MemeGenerator";
 import FAQ from "./pages/FAQ";
 import Team from "./pages/Team";
 import Whitepaper from "./pages/Whitepaper";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/team" element={<Team />} />
           <Route path="/whitepaper" element={<Whitepaper />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
