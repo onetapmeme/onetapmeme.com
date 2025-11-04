@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <footer className="bg-card border-t-2 border-primary/30 py-8 md:py-12 px-4">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-6 md:mb-8">
           {/* Logo & Description */}
           <div className="flex flex-col items-center md:items-start">
             <img src={logo} alt="OneTap Logo" className="w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4" />
@@ -67,6 +67,28 @@ const Footer = () => {
                   href={link.path}
                   className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors truncate px-2"
                   title={link.label}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Resources */}
+          <div className="text-center">
+            <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">Resources</h4>
+            <nav className="flex flex-col gap-2">
+              {[
+                { label: "Blog", path: "/blog" },
+                { label: "Security", path: "/security" },
+                { label: "FAQ", path: "/faq" },
+                { label: "Team", path: "/team" },
+                { label: "Whitepaper", path: "/whitepaper" },
+              ].map((link) => (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   {link.label}
                 </a>
