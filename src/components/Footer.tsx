@@ -81,6 +81,8 @@ const Footer = () => {
               {[
                 { label: "Blog", path: "/blog" },
                 { label: "Security", path: "/security" },
+                { label: "Leaderboard", path: "/leaderboard" },
+                { label: "Achievements", path: "/achievements" },
                 { label: "FAQ", path: "/faq" },
                 { label: "Team", path: "/team" },
                 { label: "Whitepaper", path: "/whitepaper" },

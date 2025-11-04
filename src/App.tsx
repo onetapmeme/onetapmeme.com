@@ -24,6 +24,8 @@ import Whitepaper from "./pages/Whitepaper";
 import Dashboard from "./pages/Dashboard";
 import Security from "./pages/Security";
 import Blog from "./pages/Blog";
+import Leaderboard from "./pages/Leaderboard";
+import Achievements from "./pages/Achievements";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,8 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/security" element={<Security />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/achievements" element={<Achievements />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

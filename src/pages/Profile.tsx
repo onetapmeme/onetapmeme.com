@@ -5,8 +5,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Package, Sparkles, LogOut } from "lucide-react";
+import { ArrowLeft, Package, Sparkles, LogOut, Trophy, Target, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import RankProgress from "@/components/RankProgress";
 
 interface InventoryItem {
   id: string;
@@ -25,6 +26,8 @@ const Profile = () => {
   const [user, setUser] = useState<any>(null);
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [playerProgress, setPlayerProgress] = useState<any>(null);
+  const [achievementsCount, setAchievementsCount] = useState(0);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -34,6 +37,8 @@ const Profile = () => {
       }
       setUser(session.user);
       loadInventory(session.user.id);
+      loadPlayerProgress(session.user.id);
+      loadAchievements(session.user.id);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
@@ -66,6 +71,35 @@ const Profile = () => {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadPlayerProgress = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('player_progress')
+        .select('*')
+        .eq('user_id', userId)
+        .single();
+
+      if (error && error.code !== 'PGRST116') throw error;
+      setPlayerProgress(data);
+    } catch (error: any) {
+      console.error('Error loading progress:', error);
+    }
+  };
+
+  const loadAchievements = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('user_achievements')
+        .select('id')
+        .eq('user_id', userId);
+
+      if (error) throw error;
+      setAchievementsCount(data?.length || 0);
+    } catch (error: any) {
+      console.error('Error loading achievements:', error);
     }
   };
 
@@ -142,11 +176,11 @@ const Profile = () => {
 
         {/* Profile Info */}
         <Card className="bg-card/40 backdrop-blur-md border-2 border-primary/30 p-6 mb-6">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 rounded-full bg-gradient-accent flex items-center justify-center">
               <Sparkles className="w-8 h-8 text-white" />
             </div>
-            <div>
+            <div className="flex-1">
               <h1 className="text-2xl font-bold text-foreground">
                 {user?.email || "Player"}
               </h1>
@@ -155,7 +189,48 @@ const Profile = () => {
               </p>
             </div>
           </div>
+
+          <div className="grid grid-cols-3 gap-4 pt-4 border-t">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1 mb-1">
+                <Zap className="w-4 h-4 text-primary" />
+                <span className="text-2xl font-bold text-primary">
+                  {playerProgress?.xp?.toLocaleString() || 0}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">Total XP</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1 mb-1">
+                <Target className="w-4 h-4 text-green-500" />
+                <span className="text-2xl font-bold text-green-500">
+                  {playerProgress?.clicks?.toLocaleString() || 0}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">Total Clicks</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1 mb-1">
+                <Trophy className="w-4 h-4 text-yellow-500" />
+                <span className="text-2xl font-bold text-yellow-500">
+                  {achievementsCount}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">Achievements</p>
+            </div>
+          </div>
         </Card>
+
+        {/* Rank Progress */}
+        {playerProgress && (
+          <div className="mb-6">
+            <RankProgress 
+              userId={user?.id}
+              currentXP={playerProgress.xp}
+              currentRankIndex={playerProgress.current_rank_index}
+            />
+          </div>
+        )}
 
         {/* Inventory */}
         <Card className="bg-card/40 backdrop-blur-md border-2 border-primary/30 p-6">
