@@ -56,11 +56,12 @@ const Roadmap = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
           {[
-    { phase: "Phase 1", title: t('roadmap.phase1'), status: "completed", items: t('roadmap.phase1Items', { returnObjects: true }) as string[] },
-    { phase: "Phase 2", title: t('roadmap.phase2'), status: "current", items: t('roadmap.phase2Items', { returnObjects: true }) as string[] },
-    { phase: "Phase 3", title: t('roadmap.phase3'), status: "upcoming", items: t('roadmap.phase3Items', { returnObjects: true }) as string[] },
+    { phase: "Phase 1", title: t('roadmap.phase1'), status: "completed", items: t('roadmap.phase1Items', { returnObjects: true }) as string[], progress: 100 },
+    { phase: "Phase 2", title: t('roadmap.phase2'), status: "current", items: t('roadmap.phase2Items', { returnObjects: true }) as string[], progress: 65 },
+    { phase: "Phase 3", title: t('roadmap.phase3'), status: "upcoming", items: t('roadmap.phase3Items', { returnObjects: true }) as string[], progress: 0 },
+    { phase: "Phase 4", title: t('roadmap.phase4'), status: "upcoming", items: t('roadmap.phase4Items', { returnObjects: true }) as string[], progress: 0 },
           ].map((phase, i) => (
             <Card
               key={i}
@@ -72,6 +73,23 @@ const Roadmap = () => {
                 {getStatusIcon(phase.status)}
               </div>
               <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-foreground">{phase.title}</h3>
+              
+              {/* Progress bar for current phase */}
+              {phase.status === "current" && (
+                <div className="mb-4">
+                  <div className="flex justify-between text-xs text-muted-foreground mb-1">
+                    <span>Progress</span>
+                    <span>{phase.progress}%</span>
+                  </div>
+                  <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
+                      style={{ width: `${phase.progress}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
               <ul className="space-y-2">
                 {phase.items.map((item, j) => (
                   <li key={j} className="flex items-start gap-2 text-sm md:text-base text-muted-foreground">

@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Crosshair, Zap, TrendingUp } from "lucide-react";
+import { Crosshair, Zap, TrendingUp, Shield, Lock, Flame, ArrowRight } from "lucide-react";
 import logo from "@/assets/onetap_new_logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import AudioControls from "@/components/AudioControls";
+import LiveHolderCount from "@/components/LiveHolderCount";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -20,6 +21,20 @@ const Hero = () => {
   }, []);
 
   const parallaxOffset = scrollY * 0.5;
+
+  const handleGetStarted = () => {
+    navigate('/home#swap');
+    setTimeout(() => {
+      document.getElementById('swap')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleLearnMore = () => {
+    navigate('/home#about');
+    setTimeout(() => {
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
 
   return (
     <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 pb-16 md:pb-20">
@@ -81,6 +96,16 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
+          {/* Holder Count Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center mb-6"
+          >
+            <LiveHolderCount />
+          </motion.div>
+
           {/* Logo - Cinematic Entrance */}
           <motion.div 
             className="flex justify-center mb-8 md:mb-12"
@@ -91,7 +116,7 @@ const Hero = () => {
             <motion.img 
               src={logo} 
               alt="OneTap Logo" 
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64"
+              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56"
               animate={{
                 y: [0, -15, 0],
                 filter: [
@@ -145,6 +170,27 @@ const Hero = () => {
             {t('hero.description')}
           </motion.p>
 
+          {/* Trust Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-3 mb-8 md:mb-10 px-4"
+          >
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30">
+              <Shield className="w-4 h-4 text-green-500" />
+              <span className="text-xs font-semibold text-green-500">{t('hero.contractVerified')}</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30">
+              <Lock className="w-4 h-4 text-blue-500" />
+              <span className="text-xs font-semibold text-blue-500">{t('hero.lpLocked')}</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30">
+              <Flame className="w-4 h-4 text-orange-500" />
+              <span className="text-xs font-semibold text-orange-500">{t('hero.dailyBurn')}</span>
+            </div>
+          </motion.div>
+
           {/* CTA Buttons - Premium Style */}
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-16 md:mb-20 px-4"
@@ -153,9 +199,9 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.9 }}
           >
             <Button 
-              variant="hero" 
+              onClick={handleGetStarted}
               size="lg" 
-              className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full transition-all duration-500"
+              className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full transition-all duration-500 group"
               style={{
                 background: 'linear-gradient(135deg, hsl(210, 100%, 60%), hsl(210, 100%, 50%))',
                 boxShadow: '0 0 40px hsla(210, 100%, 55%, 0.4)',
@@ -167,16 +213,18 @@ const Hero = () => {
                 e.currentTarget.style.boxShadow = '0 0 40px hsla(210, 100%, 55%, 0.4)';
               }}
             >
-              <Zap className="w-5 h-5 md:w-6 md:h-6" />
+              <Zap className="w-5 h-5 md:w-6 md:h-6 mr-2" />
               {t('hero.cta')}
+              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
+              onClick={handleLearnMore}
               variant="outline" 
               size="lg" 
               className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full glass-effect hover:bg-primary/10 transition-all duration-500"
             >
-              <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />
-              {t('tokenomics.chart')}
+              <TrendingUp className="w-5 h-5 md:w-6 md:h-6 mr-2" />
+              {t('hero.learnMore')}
             </Button>
           </motion.div>
 

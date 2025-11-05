@@ -17,6 +17,9 @@ import MediaSection from "@/components/MediaSection";
 import SocialProof from "@/components/SocialProof";
 import SwapWidget from "@/components/SwapWidget";
 import VideoShowcase from "@/components/VideoShowcase";
+import WhyOneTap from "@/components/WhyOneTap";
+import AirdropCalendar from "@/components/AirdropCalendar";
+import StickyBuyButton from "@/components/StickyBuyButton";
 
 const Index = () => {
   return (
@@ -30,8 +33,14 @@ const Index = () => {
         </SectionWrapper>
       </div>
       
+      <div id="why-onetap">
+        <SectionWrapper variant="accent" blendFrom="primary">
+          <WhyOneTap />
+        </SectionWrapper>
+      </div>
+
       <div id="about" className="scroll-mt-20">
-        <SectionWrapper variant="primary" blendFrom="primary">
+        <SectionWrapper variant="primary" blendFrom="accent">
           <About />
         </SectionWrapper>
       </div>
@@ -95,11 +104,18 @@ const Index = () => {
           <RewardSystem />
         </SectionWrapper>
       </div>
+
+      <div id="airdrops">
+        <SectionWrapper variant="primary" blendFrom="accent">
+          <AirdropCalendar />
+        </SectionWrapper>
+      </div>
       
       <div id="footer">
         <Footer />
       </div>
       <CookieBanner />
+      <StickyBuyButton />
     </div>
   );
 };

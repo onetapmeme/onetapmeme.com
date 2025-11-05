@@ -1,7 +1,10 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { Card } from "@/components/ui/card";
+import { Music2, Video, Image as ImageIcon, Newspaper } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
 import { Music, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -16,6 +19,13 @@ const MediaSection = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const mediaLogos = [
+    { name: "CoinTelegraph", opacity: 0.3 },
+    { name: "CoinMarketCap", opacity: 0.3 },
+    { name: "DexScreener", opacity: 0.3 },
+    { name: "Base", opacity: 0.3 },
+  ];
 
   const videos = [
     {
@@ -161,6 +171,42 @@ const MediaSection = () => {
             </a>
           </Button>
         </div>
+
+        {/* As Seen On Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isRevealed ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-16"
+        >
+          <div className="text-center mb-8">
+            <Newspaper className="w-12 h-12 mx-auto mb-4 text-primary opacity-70" />
+            <h3 className="text-2xl md:text-3xl font-bold text-muted-foreground">
+              {t('media.asSeenOn')}
+            </h3>
+          </div>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {mediaLogos.map((logo, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isRevealed ? { opacity: logo.opacity, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                whileHover={{ opacity: 0.6, scale: 1.05 }}
+                className="text-center"
+              >
+                <p className="text-xl md:text-2xl font-bold text-muted-foreground transition-all duration-300">
+                  {logo.name}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm text-muted-foreground mt-6 italic">
+            {t('media.comingSoon')}
+          </p>
+        </motion.div>
       </div>
     </section>
   );
