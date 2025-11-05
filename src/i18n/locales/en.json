@@ -10,91 +10,97 @@
   },
   "hero": {
     "title": "$1TAP",
-    "subtitle": "The First Gaming Memecoin on Base",
-    "description": "Join the revolution where gaming culture meets cryptocurrency. Built for gamers, powered by the community.",
-    "cta": "Get $1TAP"
+    "subtitle": "The Ultimate Gaming Memecoin",
+    "description": "Pixel nostalgia meets modern crypto. Join the gaming revolution where every transaction is a headshot.",
+    "cta": "Get $1TAP",
+    "contractVerified": "✅ Contract Verified",
+    "lpLocked": "🔒 LP Locked 6mo",
+    "dailyBurn": "🔥 1% Burned Daily",
+    "learnMore": "Learn More"
   },
   "enter": {
-    "title": "$1TAP",
-    "subtitle": "ONE SHOT, ONE OPPORTUNITY",
-    "tap": "TAP TO ENTER",
-    "sound": "🎮 Sound On for Best Experience",
-    "privacy": "Privacy & Disclaimer",
-    "important": "⚠️ IMPORTANT: Please read carefully",
-    "risk": "Investment Risk:",
-    "riskText": "$ONETAP is a memecoin with NO intrinsic value. You may lose all invested capital.",
-    "noAffiliation": "No Affiliation:",
-    "noAffiliationText": "This project is NOT affiliated with Valve Corporation, Counter-Strike, or related trademarks.",
-    "privacy2": "Privacy:",
-    "privacyText": "This website does NOT collect personal data or use tracking cookies.",
-    "noGuarantees": "No Guarantees:",
-    "noGuaranteesText": "The project provides NO financial advice. DYOR.",
-    "legal": "Legal:",
-    "legalText": "By continuing, you confirm you are legally permitted to access cryptocurrency projects.",
-    "moreInfo": "For complete info, see our",
-    "disclaimer": "Disclaimer",
-    "nonAffiliation": "Non-Affiliation",
-    "privacyPolicy": "Privacy Policy",
-    "understand": "I UNDERSTAND - ENTER SITE"
+    "title": "Welcome to $ONETAP!",
+    "subtitle": "Tap to Enter",
+    "disclaimer": "⚠️ Memecoin Warning",
+    "risk1": "This is a speculative memecoin with no intrinsic value.",
+    "risk2": "It can lose all value at any time.",
+    "risk3": "Only invest what you can afford to lose.",
+    "acknowledge": "I understand the risks",
+    "footer": "Not affiliated with Valve Corporation or Counter-Strike. Entertainment purposes only."
   },
   "about": {
-    "title": "About OneTap",
-    "subtitle": "The Legend Behind the Token",
-    "story": "$ONETAP was born from the passion of gamers who lived through the golden age of competitive FPS gaming. Remember those legendary precision shots? The rush of adrenaline when you landed that perfect headshot? That's the spirit we've captured in this memecoin.",
-    "story2": "We're not just another crypto project - we're a community of gamers, developers, and crypto enthusiasts united by nostalgia and the belief that gaming culture deserves its place in the blockchain revolution.",
-    "mission": "Our Mission",
-    "missionText": "To create the ultimate gaming memecoin that bridges the gap between traditional gaming communities and the decentralized finance world. We're building more than a token - we're building a movement.",
-    "vision": "Our Vision",
-    "visionText": "To become the go-to cryptocurrency for gamers worldwide, with partnerships across esports, gaming platforms, and DeFi protocols. We envision a future where $ONETAP is accepted in gaming stores, tournaments, and metaverse platforms.",
-    "communityDriven": "Community Driven",
-    "communityDrivenText": "Built by gamers, for gamers. Every holder has a voice in our journey through DAO governance.",
+    "title": "About $ONETAP",
+    "subtitle": "Every click counts, every holder is a warrior",
+    "story": "Born from a love of Counter-Strike and meme culture, $ONETAP is more than just a coin—it's a movement. Built by gamers for gamers, with a clear vision: bring the competitive energy of CS into the crypto world.",
+    "story2": "No VCs. No private presales. Just pure community.",
+    "communityDriven": "Community-Driven",
+    "communityDrivenText": "Every decision is voted on by holders. Your voice matters.",
     "liquidityLocked": "Liquidity Locked",
-    "liquidityLockedText": "100% liquidity locked for 3 months. Your investment is secured with transparent smart contracts.",
+    "liquidityLockedText": "LP locked for 6 months. Full transparency, no rug pulls.",
     "fairLaunch": "Fair Launch",
-    "fairLaunchText": "No presale, no team tokens, no VCs. Everyone starts on equal ground, just like a competitive match.",
+    "fairLaunchText": "Fair distribution designed for long-term community growth.",
     "toTheMoon": "To The Moon",
-    "toTheMoonText": "Aggressive marketing strategy, esports partnerships, and influencer collaborations to reach new heights.",
-    "disclaimerNote": "Disclaimer: $ONETAP is not affiliated with Valve Corporation or Counter-Strike. This is an independent community project inspired by gaming culture."
+    "toTheMoonText": "Diamond hands, stronger taps. We're making history together.",
+    "disclaimerNote": "Remember: Memecoins are highly speculative. Never invest more than you can afford to lose."
+  },
+  "whyOneTap": {
+    "title": "Why $ONETAP?",
+    "subtitle": "The only memecoin built by gamers, for gamers",
+    "gamers": {
+      "title": "Built by Gamers, for Gamers",
+      "description": "Community-driven from day one. No VCs, no whales. Just pure CS:GO culture transformed into a movement."
+    },
+    "secure": {
+      "title": "100% Secure & Transparent",
+      "description": "LP locked for 6 months, contract audited, and fully verified. No rug pulls, just headshots."
+    },
+    "utility": {
+      "title": "Real Utility = Real Value",
+      "description": "Tap-to-Earn, exclusive NFT drops, and future CS:GO integrations. This is more than just a meme."
+    }
   },
   "tokenomics": {
     "title": "Tokenomics",
-    "subtitle": "Simple, transparent, and designed for sustainable growth with revolutionary deflationary mechanisms",
-    "totalSupply": "Total Supply",
+    "subtitle": "Transparent distribution, sustainable growth",
+    "supply": "Total Supply",
     "network": "Network",
-    "symbol": "Symbol: $1TAP",
-    "tax": "Tax Structure",
-    "transactionTax": "Transaction Tax:",
-    "development": "• Development & Infrastructure",
-    "marketing": "• Marketing & Partnerships",
-    "liquidity": "• Liquidity Pool Enhancement",
-    "note": "100% Fair Launch. Liquidity locked for 3 months. ERC20 standard on Base network.",
-    "fairLaunch": "Fair Launch",
-    "contract": "Contract Address",
+    "symbol": "Symbol",
+    "tax": "Tax",
+    "development": "Development",
+    "marketing": "Marketing",
+    "liquidity": "Liquidity",
+    "security": "Security",
+    "lpLocked": "LP Locked 6 Months",
+    "verified": "Contract Verified",
+    "multiSig": "Multi-Sig Enabled",
+    "timelock": "Timelock Enabled",
+    "renounced": "Functions Renounced",
+    "distribution": "Token Distribution",
     "chart": "View Chart",
-    "copyContract": "Copy Contract",
-    "contractCopied": "Contract address copied!",
-    "features": "Advanced Features",
+    "advanced": "Advanced Features",
     "antiWhale": "Anti-Whale Protection",
-    "antiWhaleText": "Maximum transaction limit of 2% of total supply to prevent dumps",
-    "burnMechanism": "Burn Mechanism",
-    "burnMechanismText": "1% of each transaction is permanently burned, increasing scarcity over time",
-    "rewards": "Holder Rewards",
-    "rewardsText": "Automatic reflections to holders - earn passive income just by holding"
+    "antiWhaleDesc": "Max transaction and wallet limits for fair distribution",
+    "autoBurn": "Auto-Burn",
+    "autoBurnDesc": "Deflationary supply through periodic automatic burns",
+    "rewardSystem": "Reward System",
+    "rewardSystemDesc": "Holders earn rewards for long-term holding",
+    "transparent": "Fully Transparent",
+    "transparentDesc": "Public wallets, regular updates, no surprises"
   },
   "roadmap": {
     "title": "Roadmap",
-    "subtitle": "Our journey to revolutionize gaming crypto",
-    "phase1": "Phase 1: Hype Launch",
+    "subtitle": "The Path to Glory",
+    "phase1": "Phase 1: Hype Ignition",
     "phase1Items": [
       "Initial awareness building",
-      "Narrative setup",
-      "Community warmup"
+      "Narrative seeding",
+      "Community warming up"
     ],
     "phase2": "Phase 2: The Real Phase 1",
     "phase2Items": [
       "Initial burn",
-      "LP lock",
-      "Organic listings",
+      "LP lockup",
+      "Organic listing",
       "Marketing push"
     ],
     "phase3": "Phase 3: Community Games & Drops",
@@ -133,80 +139,106 @@
     "backHome": "Back to Home",
     "dropsLoaded": "drops loaded from inventory",
     "inventoryConnected": "Your inventory is connected",
-    "unlocked": "Unlocked",
-    "howToUse": "How to use",
-    "instruction1": "Click \"Randomize\" for a random meme",
-    "instruction2": "Select backgrounds and accessories manually",
-    "instruction3": "Click \"Download\" to save your meme",
-    "instruction4": "Share on social media with #ONETAP"
+    "unlocked": "Unlocked from inventory",
+    "howToUse": "How to Use",
+    "instruction1": "Select a background theme from CS:GO, GTA, or retro styles",
+    "instruction2": "Click accessories to add them to your meme",
+    "instruction3": "Hit 'Randomize' for instant inspiration",
+    "instruction4": "Download and share your creation on social media!"
   },
-  "tapToEarn": {
-    "title": "TAP TO EARN XP",
-    "subtitle": "Tap to level up and unlock exclusive drops!",
-    "signIn": "Sign in to save your progress",
-    "signedIn": "Signed in",
-    "saving": "Saving...",
-    "profile": "Profile",
-    "rank": "Rank",
-    "clicks": "clicks",
-    "nextRank": "Next",
-    "tapButton": "TAP TO EARN",
-    "dropInProgress": "DROP IN PROGRESS...",
-    "congratulations": "CONGRATULATIONS!",
-    "obtainDrop": "OBTAIN DROP",
-    "rankUp": "RANK UP DROP!",
-    "newDrop": "New Drop!",
-    "addedToInventory": "added to your inventory!"
+  "manifesto": {
+    "title": "The OneTapper Manifesto",
+    "subtitle": "Our code. Our rules. Our community.",
+    "backHome": "Back to Home",
+    "preamble": "We, the OneTappers, united by our love of gaming and distrust of traditional finance, declare these truths to be self-evident: that all gamers are created equal, that we are endowed with certain unalienable rights, and that among these are Life, Liberty, and the pursuit of Headshots.",
+    "principle1": {
+      "title": "We Are Gamers First",
+      "description": "This isn't about getting rich quick. It's about building something real for the community we love. Finance bros, turn back now."
+    },
+    "principle2": {
+      "title": "No Whales, Only OneTappers",
+      "description": "We reject pump-and-dump schemes. We reject manipulation. Everyone here has an equal shot at success."
+    },
+    "principle3": {
+      "title": "HODL Like a Pro Player",
+      "description": "Great plays require patience. Diamond hands beat paper every time. Trust the process."
+    },
+    "principle4": {
+      "title": "Memes Are Our Language",
+      "description": "We don't take ourselves too seriously, but we take our community seriously. Culture first, profits second."
+    },
+    "principle5": {
+      "title": "Transparency > Hype",
+      "description": "No hidden agendas. No secret allocations. What you see is what you get. Always."
+    },
+    "signTitle": "Join the Movement",
+    "emailPlaceholder": "your@email.com",
+    "signButton": "Sign the Manifesto",
+    "thankYou": "Welcome to the Crew!",
+    "welcomeMessage": "You're now officially a OneTapper. Check your email for exclusive updates.",
+    "footerNote": "By signing, you're joining a community that values transparency, gaming culture, and fair play above all else."
   },
-  "community": {
-    "title": "Join Our Community",
-    "subtitle": "Connect with fellow gamers and crypto enthusiasts. Be part of the revolution!",
-    "discord": "Discord",
-    "discordText": "Join our Discord server for real-time chat and exclusive events",
-    "github": "GitHub",
-    "githubText": "View our open-source code and contribute to the project",
-    "instagram": "Instagram",
-    "instagramText": "Check out our visual content and daily stories",
-    "reddit": "Reddit",
-    "redditText": "Join discussions, share memes and stay updated with the community",
-    "tiktok": "TikTok",
-    "tiktokText": "Watch our gaming content and viral memes",
-    "twitter": "Twitter/X",
-    "twitterText": "Follow us for announcements, memes, and community highlights",
-    "youtube": "YouTube",
-    "youtubeText": "Subscribe for gaming videos and tutorials"
+  "integrations": {
+    "title": "CS:GO Integrations",
+    "subtitle": "Where gaming meets blockchain. See how $ONETAP is revolutionizing the CS:GO ecosystem.",
+    "backHome": "Back to Home",
+    "twitch": {
+      "title": "Twitch Tip Widget",
+      "description": "Enable viewers to tip streamers directly in $ONETAP during epic plays.",
+      "feature1": "Real-time $ONETAP tips during streams",
+      "feature2": "Automatic conversion & distribution",
+      "feature3": "Viewer leaderboard integration"
+    },
+    "discord": {
+      "title": "Discord MVP Bot",
+      "description": "Reward your best players automatically after each community match.",
+      "feature1": "Auto-distribute $ONETAP to match MVPs",
+      "feature2": "Track player stats & rankings",
+      "feature3": "Custom reward pools per server"
+    },
+    "nft": {
+      "title": "NFT Skins Showcase",
+      "description": "Exclusive OneTap AWP skin - only for $ONETAP holders.",
+      "feature1": "Limited edition 3D weapon skins",
+      "feature2": "Holder-exclusive designs",
+      "feature3": "Future CS2 integration planned"
+    },
+    "cta": {
+      "title": "Want Early Access?",
+      "description": "These integrations are in development. Join our Discord to get notified when they launch.",
+      "discord": "Join Discord",
+      "github": "View on GitHub"
+    }
   },
-  "footer": {
-    "tagline": "OneTap - The ultimate gaming memecoin on Base network",
-    "quickLinks": "Quick Links",
-    "legal": "Legal",
-    "ownership": "Ownership Certificate",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy",
-    "disclaimer": "Disclaimer",
-    "nonAffiliation": "Non-Affiliation",
-    "legalNotice": "Legal Notice",
-    "legalShield": "Protected under ONETAP Legal Shield v1.0",
-    "disclaimerText": "OneTap ($1TAP) is a memecoin with NO intrinsic value and NO expectation of financial return. Invest only what you can afford to lose. This project is NOT affiliated with Valve Corporation, Counter-Strike, or any related trademarks.",
-    "rights": "All rights reserved.",
-    "contact": "Contact"
-  },
-  "rewards": {
-    "title": "Reward System",
-    "subtitle": "Tap, earn XP, level up, and unlock exclusive legendary drops!",
-    "goldDrop": "Gold Drops",
-    "goldDropDesc": "Rare legendary drops with exclusive gaming-inspired skins and accessories. The ultimate prize for dedicated tappers.",
-    "memeDrop": "Meme Drops",
-    "memeDropDesc": "Epic community-created memes and custom accessories. Show off your style and creativity with unique items.",
-    "communityDrop": "Community Drops",
-    "communityDropDesc": "Regular rewards for active community members. Participate, engage, and earn exclusive items.",
-    "eventDrop": "Event Drops",
-    "eventDropDesc": "Special time-limited drops during tournaments and community events. Be there or miss out!",
-    "devNotice": "🎮 Tap-to-Earn and Meme modules are currently under development.",
-    "devNoticeDesc": "Join our community to be the first to know when these features launch!"
+  "airdrops": {
+    "title": "Gamified Airdrops",
+    "subtitle": "Earn $ONETAP by playing, creating, and engaging with the community",
+    "weekly": {
+      "title": "Weekly Tapper Lottery",
+      "description": "Top 100 clickers each week share the prize pool",
+      "schedule": "Every Monday at 00:00 UTC"
+    },
+    "meme": {
+      "title": "Meme Contest",
+      "description": "Create the best meme, win big",
+      "schedule": "Weekly winners announced Fridays"
+    },
+    "referral": {
+      "title": "Referral Blast",
+      "description": "Invite friends, earn multipliers on all drops",
+      "schedule": "Ongoing"
+    },
+    "tournament": {
+      "title": "Tournament Drops",
+      "description": "Participate in community CS:GO tournaments",
+      "schedule": "Monthly events"
+    },
+    "note": "Connect your wallet to participate in airdrops. All drops are distributed automatically based on your activity."
   },
   "media": {
-    "title": "We're Active on TikTok!",
+    "asSeenOn": "As Seen On",
+    "comingSoon": "Media coverage coming soon...",
+    "title": "We're active on TikTok!",
     "subtitle": "Follow us for daily gaming content and community highlights.",
     "viewMore": "View More on TikTok",
     "video1": {
@@ -218,5 +250,68 @@
     "video3": {
       "title": "Behind the Scenes"
     }
+  },
+  "tapToEarn": {
+    "title": "Tap to Earn XP",
+    "subtitle": "Every tap brings you closer to legendary drops",
+    "signIn": "Sign in to start tapping",
+    "rank": "Rank",
+    "xp": "XP",
+    "clicks": "Clicks",
+    "tapButton": "TAP!",
+    "rankUp": "Rank Up!",
+    "newRank": "New Rank",
+    "dropReceived": "Drop Received!",
+    "commonDrop": "Common Drop",
+    "rareDrop": "Rare Drop",
+    "epicDrop": "Epic Drop",
+    "legendaryDrop": "Legendary Drop"
+  },
+  "community": {
+    "title": "Join Our Community",
+    "subtitle": "Connect with fellow gamers and crypto enthusiasts. Be part of the revolution!",
+    "discord": "Discord",
+    "discordText": "Join our Discord server for real-time chat and exclusive events",
+    "github": "GitHub",
+    "githubText": "Check out our open-source code and contribute to the project",
+    "instagram": "Instagram",
+    "instagramText": "Check out our visual content and daily stories",
+    "reddit": "Reddit",
+    "redditText": "Engage in discussions, share memes, and stay synced with the community",
+    "tiktok": "TikTok",
+    "tiktokText": "Watch our gaming content and viral memes",
+    "twitter": "Twitter/X",
+    "twitterText": "Follow us for announcements, memes, and community news",
+    "youtube": "YouTube",
+    "youtubeText": "Subscribe for gaming videos and tutorials"
+  },
+  "footer": {
+    "tagline": "The ultimate gaming memecoin on Base Network",
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "disclaimer": "Disclaimer",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "ownership": "Certificate of Ownership",
+    "nonAffiliation": "Non-Affiliation Statement",
+    "legalNotice": "Legal Notice",
+    "legalShield": "Protected by ONETAP Legal Shield v1.0",
+    "disclaimerText": "$ONETAP is a memecoin with no intrinsic value and no expectation of financial return. Only invest what you can afford to lose. This project is not affiliated with Valve Corporation, Counter-Strike, or related trademarks.",
+    "rights": "All rights reserved.",
+    "contact": "Contact"
+  },
+  "rewards": {
+    "title": "Reward System",
+    "subtitle": "Tap, earn XP, level up, and unlock exclusive legendary drops!",
+    "goldDrop": "Gold Drop",
+    "goldDropDesc": "Rare legendary drops containing exclusive gaming-themed skins and accessories. The ultimate reward for dedicated tappers.",
+    "memeDrop": "Meme Drop",
+    "memeDropDesc": "Community-created epic memes and custom accessories. Show off your style and creativity with unique items.",
+    "communityDrop": "Community Drop",
+    "communityDropDesc": "Regular rewards for active community members. Engage, interact, and earn exclusive items.",
+    "eventDrop": "Event Drop",
+    "eventDropDesc": "Special limited-time drops during tournaments and community events. Be there or miss out!",
+    "devNotice": "🎮 Tap-to-Earn and Meme modules are currently under development.",
+    "devNoticeDesc": "Join our community to be the first to know when these features launch!"
   }
 }

@@ -31,11 +31,11 @@ const Navbar = () => {
   const navItems = [
     { name: t('nav.about'), href: "#about", onClick: () => scrollToSection('about') },
     { name: t('nav.tokenomics'), href: "#tokenomics", onClick: () => scrollToSection('tokenomics') },
+    { name: "Manifesto", href: "/manifesto", isExternal: true },
+    { name: "Integrations", href: "/integrations", isExternal: true },
     { name: "Dashboard", href: "/dashboard", isExternal: true },
     { name: "Leaderboard", href: "/leaderboard", isExternal: true },
-    { name: "Achievements", href: "/achievements", isExternal: true },
     { name: "Blog", href: "/blog", isExternal: true },
-    { name: "Security", href: "/security", isExternal: true },
   ];
 
   return (

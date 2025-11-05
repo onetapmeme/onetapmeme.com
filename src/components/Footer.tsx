@@ -79,12 +79,13 @@ const Footer = () => {
             <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">Resources</h4>
             <nav className="flex flex-col gap-2">
               {[
+                { label: "Manifesto", path: "/manifesto" },
+                { label: "Integrations", path: "/integrations" },
                 { label: "Blog", path: "/blog" },
                 { label: "Security", path: "/security" },
                 { label: "Leaderboard", path: "/leaderboard" },
                 { label: "Achievements", path: "/achievements" },
                 { label: "FAQ", path: "/faq" },
-                { label: "Team", path: "/team" },
                 { label: "Whitepaper", path: "/whitepaper" },
               ].map((link) => (
                 <a

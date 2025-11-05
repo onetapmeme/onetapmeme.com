@@ -203,6 +203,11 @@ const MemeGenerator = () => {
               {t('memes.inventoryConnected')}
             </p>
           )}
+          <div className="flex gap-2 justify-center mt-4">
+            <Button variant="outline" size="sm" onClick={() => window.open('https://x.com/intent/tweet?text=Check%20out%20my%20%24ONETAP%20meme!%20%23ONETAP%20%23CSGOMemes', '_blank')}>
+              Share to X
+            </Button>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
