@@ -19,19 +19,19 @@ const FAQ = () => {
       questions: [
         {
           q: t('faq.general.q1') || 'What is $ONETAP?',
-          a: t('faq.general.a1') || '$ONETAP is a community-driven meme coin on the Base network, inspired by CS:GO culture. It combines gaming nostalgia with DeFi innovation, offering a tap-to-earn game, NFT drops, and a vibrant ecosystem.'
+          a: t('faq.general.a1') || '$ONETAP is a community-driven meme coin on the Base network, inspired by competitive gaming culture. It combines gaming nostalgia with DeFi innovation, offering a tap-to-earn game, NFT drops, and a vibrant ecosystem.'
         },
         {
           q: t('faq.general.q2') || 'Why Base network?',
           a: t('faq.general.a2') || 'Base offers lightning-fast transactions, minimal fees, and Coinbase integration. Perfect for gaming features and mass adoption without the high costs of Ethereum mainnet.'
         },
         {
-          q: t('faq.general.q3') || 'Is this affiliated with Valve or CS:GO?',
-          a: t('faq.general.a3') || 'No. $ONETAP is an independent community project inspired by CS:GO culture. We are not affiliated with, endorsed by, or connected to Valve Corporation or Counter-Strike in any official capacity.'
+          q: t('faq.general.q3') || 'Is this affiliated with Valve or popular FPS games?',
+          a: t('faq.general.a3') || 'No. $ONETAP is an independent community project inspired by competitive gaming culture. We are not affiliated with, endorsed by, or connected to any game developers or publishers in any official capacity.'
         },
         {
           q: t('faq.general.q4') || 'What makes $ONETAP different from other meme coins?',
-          a: t('faq.general.a4') || 'Unique CS:GO theme, interactive tap-to-earn game, NFT drop roulette system, locked liquidity for 6 months, and real utility beyond speculation. Plus, our community is built by gamers, for gamers.'
+          a: t('faq.general.a4') || 'Unique gaming theme, interactive tap-to-earn game, NFT drop roulette system, locked liquidity for 6 months, and real utility beyond speculation. Plus, our community is built by gamers, for gamers.'
         }
       ]
     },
@@ -111,7 +111,7 @@ const FAQ = () => {
         },
         {
           q: t('faq.features.q2') || 'What are Drop Roulettes?',
-          a: t('faq.features.a2') || 'CS:GO-style loot system. Spin to win: Common skins (60%), Rare weapons (25%), Epic items (10%), Legendary prizes (5%). Trade or hold as NFTs. Marketplace coming Phase 2.'
+          a: t('faq.features.a2') || 'Gaming-style loot system. Spin to win: Common skins (60%), Rare weapons (25%), Epic items (10%), Legendary prizes (5%). Trade or hold as NFTs. Marketplace coming Phase 2.'
         },
         {
           q: t('faq.features.q3') || 'When will staking launch?',
@@ -123,7 +123,7 @@ const FAQ = () => {
         },
         {
           q: t('faq.features.q5') || 'What is the Steam integration?',
-          a: t('faq.features.a5') || 'Phase 4 innovation: Track real CS:GO kills, earn $ONETAP rewards for performance. Beta with 100 users first. Partnership discussions ongoing with Faceit/ESEA.'
+          a: t('faq.features.a5') || 'Phase 4 innovation: Track real competitive gaming performance, earn $ONETAP rewards for achievements. Beta with 100 users first. Partnership discussions ongoing with major platforms.'
         }
       ]
     },

@@ -1,4 +1,4 @@
-// CS:GO Meme Templates - Pre-made configurations
+// Gaming Meme Templates - Pre-made configurations
 
 export interface MemeTemplate {
   id: string;

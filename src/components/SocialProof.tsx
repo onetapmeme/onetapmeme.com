@@ -33,7 +33,7 @@ const SocialProof = () => {
     {
       name: 'CryptoGamer',
       role: 'Early Holder',
-      text: 'Best gaming memecoin I\'ve found. The CS:GO theme is pure nostalgia!',
+      text: 'Best gaming memecoin I\'ve found. The competitive gaming theme is pure nostalgia!',
       rating: 5,
     },
     {

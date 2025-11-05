@@ -44,7 +44,7 @@
   "about": {
     "title": "À propos de $ONETAP",
     "subtitle": "Chaque clic compte, chaque détenteur est un guerrier",
-    "story": "Né d'un amour pour Counter-Strike et la culture meme, $ONETAP est plus qu'une simple pièce—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive de CS dans le monde crypto.",
+    "story": "Né d'un amour pour les FPS tactiques et la culture meme, $ONETAP est plus qu'une simple pièce—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive du gaming tactique dans le monde crypto.",
     "story2": "Pas de VCs. Pas de préventes privées. Juste une communauté pure.",
     "communityDriven": "Piloté par la Communauté",
     "communityDrivenText": "Chaque décision est votée par les détenteurs. Votre voix compte.",
@@ -61,7 +61,7 @@
     "subtitle": "Le seul memecoin créé par des gamers, pour des gamers",
     "gamers": {
       "title": "Créé par des Gamers, pour des Gamers",
-      "description": "Piloté par la communauté depuis le premier jour. Pas de VCs, pas de baleines. Juste la pure culture CS:GO transformée en mouvement."
+      "description": "Piloté par la communauté depuis le premier jour. Pas de VCs, pas de baleines. Juste la pure culture gaming compétitif transformée en mouvement."
     },
     "secure": {
       "title": "100% Sécurisé & Transparent",
@@ -69,7 +69,7 @@
     },
     "utility": {
       "title": "Utilité Réelle = Valeur Réelle",
-      "description": "Tap-to-Earn, drops NFT exclusifs, et futures intégrations CS:GO. C'est plus qu'un simple meme."
+      "description": "Tap-to-Earn, drops NFT exclusifs, et futures intégrations en jeu. C'est plus qu'un simple meme."
     }
   },
   "tokenomics": {
@@ -122,7 +122,7 @@
       "Fonctionnalités de gamification meme",
       "Récompenses communautaires"
     ],
-    "phase4": "Phase 4: Écosystème CS:GO",
+    "phase4": "Phase 4: Écosystème Gaming",
     "phase4Items": [
       "Intégration tips pour streamers",
       "Prize pools de tournois",
@@ -163,8 +163,8 @@
     "footerNote": "En signant, vous rejoignez une communauté qui valorise la transparence, la culture gaming et le fair-play avant tout."
   },
   "integrations": {
-    "title": "Intégrations CS:GO",
-    "subtitle": "Où le gaming rencontre la blockchain. Découvrez comment $ONETAP révolutionne l'écosystème CS:GO.",
+    "title": "Intégrations Gaming",
+    "subtitle": "Où le gaming rencontre la blockchain. Découvrez comment $ONETAP révolutionne l'écosystème gaming.",
     "backHome": "Retour à l'Accueil",
     "twitch": {
       "title": "Widget de Tips Twitch",
@@ -185,7 +185,7 @@
       "description": "Skin AWP OneTap exclusif - uniquement pour les holders $ONETAP.",
       "feature1": "Skins d'armes 3D en édition limitée",
       "feature2": "Designs exclusifs pour holders",
-      "feature3": "Intégration CS2 future prévue"
+      "feature3": "Intégrations de jeux futures prévues"
     },
     "cta": {
       "title": "Accès Anticipé ?",
@@ -214,7 +214,7 @@
     },
     "tournament": {
       "title": "Drops de Tournois",
-      "description": "Participez aux tournois CS:GO communautaires",
+      "description": "Participez aux tournois gaming compétitifs communautaires",
       "schedule": "Événements mensuels"
     },
     "note": "Connectez votre wallet pour participer aux airdrops. Tous les drops sont distribués automatiquement selon votre activité."

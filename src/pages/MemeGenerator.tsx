@@ -47,7 +47,7 @@ const accessories: Accessory[] = [
   { emoji: "👑", name: "Zelda Crown", position: { x: 40, y: 10 }, size: 55 },
   { emoji: "💎", name: "Minecraft Diamond", position: { x: 75, y: 60 }, size: 45 },
   { emoji: "🎮", name: "Controller", position: { x: 20, y: 70 }, size: 50 },
-  { emoji: "⚔️", name: "CS:GO Knife", position: { x: 80, y: 40 }, size: 55, rotation: 45 },
+  { emoji: "⚔️", name: "Tactical Knife", position: { x: 80, y: 40 }, size: 55, rotation: 45 },
   { emoji: "💰", name: "GTA Cash", position: { x: 10, y: 50 }, size: 50 },
   { emoji: "🏎️", name: "GTA Car", position: { x: 65, y: 75 }, size: 60 },
   { emoji: "🔫", name: "Golden Gun", position: { x: 25, y: 15 }, size: 50, rotation: -30 },
@@ -60,8 +60,8 @@ const accessories: Accessory[] = [
 ];
 
 const backgrounds: Background[] = [
-  { name: "CS:GO Dust II", gradient: "linear-gradient(135deg, #d4a574 0%, #8b6f47 100%)" },
-  { name: "CS:GO Nuke", gradient: "linear-gradient(135deg, #4a5568 0%, #2d3748 100%)" },
+  { name: "Desert Map", gradient: "linear-gradient(135deg, #d4a574 0%, #8b6f47 100%)" },
+  { name: "Industrial Zone", gradient: "linear-gradient(135deg, #4a5568 0%, #2d3748 100%)" },
   { name: "GTA Vice", gradient: "linear-gradient(135deg, #ff0080 0%, #7928ca 50%, #ff0080 100%)" },
   { name: "Zelda Hyrule", gradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)" },
   { name: "Mario World", gradient: "linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)" },

@@ -10,7 +10,7 @@
     "subtitle": "The only memecoin built by gamers, for gamers",
     "gamers": {
       "title": "Built by Gamers, for Gamers",
-      "description": "Community-driven from day one. No VCs, no whales. Just pure CS:GO culture transformed into a movement."
+      "description": "Community-driven from day one. No VCs, no whales. Just pure competitive gaming culture transformed into a movement."
     },
     "secure": {
       "title": "100% Secure & Transparent",
@@ -18,13 +18,13 @@
     },
     "utility": {
       "title": "Real Utility = Real Value",
-      "description": "Tap-to-Earn, exclusive NFT drops, and future CS:GO integrations. This is more than just a meme."
+      "description": "Tap-to-Earn, exclusive NFT drops, and future in-game integrations. This is more than just a meme."
     }
   },
   "roadmap": {
-    "phase4": "CS:GO Ecosystem Integration",
+    "phase4": "Gaming Ecosystem Integration",
     "phase4Items": [
-      "Partner with CS:GO servers",
+      "Partner with gaming servers",
       "Streamer tip system",
       "Exclusive NFT skins for holders",
       "Community tournaments with $ONETAP prizes"
@@ -67,8 +67,8 @@
     "footerNote": "By signing, you're joining a community that values transparency, gaming culture, and fair play above all else."
   },
   "integrations": {
-    "title": "CS:GO Integrations",
-    "subtitle": "Where gaming meets blockchain. See how $ONETAP is revolutionizing the CS:GO ecosystem.",
+    "title": "Gaming Integrations",
+    "subtitle": "Where gaming meets blockchain. See how $ONETAP is revolutionizing the gaming ecosystem.",
     "backHome": "Back to Home",
     "twitch": {
       "title": "Twitch Tip Widget",
@@ -89,7 +89,7 @@
       "description": "Exclusive OneTap AWP skin - only for $ONETAP holders.",
       "feature1": "Limited edition 3D weapon skins",
       "feature2": "Holder-exclusive designs",
-      "feature3": "Future CS2 integration planned"
+      "feature3": "Future game integrations planned"
     },
     "cta": {
       "title": "Want Early Access?",
@@ -118,7 +118,7 @@
     },
     "tournament": {
       "title": "Tournament Drops",
-      "description": "Participate in community CS:GO tournaments",
+      "description": "Participate in community competitive gaming tournaments",
       "schedule": "Monthly events"
     },
     "note": "Connect your wallet to participate in airdrops. All drops are distributed automatically based on your activity."

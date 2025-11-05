@@ -54,7 +54,7 @@ const Whitepaper = () => {
             <Card className="glass-effect p-8 rounded-2xl border-primary/20">
               <h2 className="text-3xl font-bold mb-6">Executive Summary</h2>
               <p className="text-muted-foreground mb-4">
-                $ONETAP is a community-driven cryptocurrency project built on Base network, combining gaming culture with decentralized finance. Inspired by Counter-Strike: Global Offensive (CS:GO), we create an ecosystem where meme culture meets real utility.
+                $ONETAP is a community-driven cryptocurrency project built on Base network, combining gaming culture with decentralized finance. Inspired by competitive tactical FPS gaming, we create an ecosystem where meme culture meets real utility.
               </p>
               <p className="text-muted-foreground">
                 Our mission is to build the most engaging meme coin experience through innovative tap-to-earn mechanics, NFT drop systems, and community governance. With zero taxes, locked liquidity, and transparent operations, $ONETAP represents a fair launch approach to cryptocurrency.
@@ -196,7 +196,7 @@ const Whitepaper = () => {
                 <div>
                   <h3 className="text-xl font-bold mb-3 text-primary">Q4 2025 - Innovation</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>🔄 Steam/CS:GO integration (beta)</li>
+                    <li>🔄 Gaming platform integration (beta)</li>
                     <li>🔄 DAO governance launch</li>
                     <li>🔄 Launchpad for gaming tokens</li>
                     <li>🔄 Merchandise store</li>

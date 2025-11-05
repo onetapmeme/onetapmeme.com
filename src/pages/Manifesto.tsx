@@ -65,7 +65,7 @@ const Manifesto = () => {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* CS:GO Vintage Background */}
+      {/* Gaming Vintage Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(22,163,224,0.08),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,107,0,0.08),transparent_50%)]" />
@@ -96,7 +96,7 @@ const Manifesto = () => {
         </motion.div>
 
         <div className="max-w-5xl mx-auto">
-          {/* Vintage Header with CS:GO Style */}
+          {/* Vintage Header with Gaming Style */}
           <motion.div 
             className="text-center mb-16 relative"
             initial={{ opacity: 0, y: 30 }}
@@ -164,7 +164,7 @@ const Manifesto = () => {
             </Card>
           </motion.div>
 
-          {/* Core Principles - CS:GO Tactical Style */}
+          {/* Core Principles - Tactical Gaming Style */}
           <div className="space-y-6 mb-16">
             <motion.h2 
               className="text-3xl md:text-4xl font-orbitron font-bold text-center mb-10 text-primary"

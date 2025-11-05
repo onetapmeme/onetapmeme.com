@@ -13,7 +13,7 @@ const Team = () => {
       name: 'OneTap_OG',
       role: t('team.roles.founder') || 'Founder & Vision',
       icon: Shield,
-      bio: t('team.bios.founder') || 'CS:GO veteran since 1.6. Built $ONETAP from a meme dream into reality. Previously led gaming communities with 50K+ members. Believes in community ownership and fair launches.',
+      bio: t('team.bios.founder') || 'FPS gaming veteran since early days. Built $ONETAP from a meme dream into reality. Previously led gaming communities with 50K+ members. Believes in community ownership and fair launches.',
       color: 'text-yellow-400'
     },
     {

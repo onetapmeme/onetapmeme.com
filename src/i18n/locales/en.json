@@ -44,7 +44,7 @@
   "about": {
     "title": "About $ONETAP",
     "subtitle": "Every click counts, every holder is a warrior",
-    "story": "Born from a love of Counter-Strike and meme culture, $ONETAP is more than just a coin—it's a movement. Built by gamers for gamers, with a clear vision: bring the competitive energy of CS into the crypto world.",
+    "story": "Born from a love of tactical FPS games and meme culture, $ONETAP is more than just a coin—it's a movement. Built by gamers for gamers, with a clear vision: bring the competitive energy of tactical gaming into the crypto world.",
     "story2": "No VCs. No private presales. Just pure community.",
     "communityDriven": "Community-Driven",
     "communityDrivenText": "Every decision is voted on by holders. Your voice matters.",
@@ -61,7 +61,7 @@
     "subtitle": "The only memecoin built by gamers, for gamers",
     "gamers": {
       "title": "Built by Gamers, for Gamers",
-      "description": "Community-driven from day one. No VCs, no whales. Just pure CS:GO culture transformed into a movement."
+      "description": "Community-driven from day one. No VCs, no whales. Just pure competitive gaming culture transformed into a movement."
     },
     "secure": {
       "title": "100% Secure & Transparent",
@@ -69,7 +69,7 @@
     },
     "utility": {
       "title": "Real Utility = Real Value",
-      "description": "Tap-to-Earn, exclusive NFT drops, and future CS:GO integrations. This is more than just a meme."
+      "description": "Tap-to-Earn, exclusive NFT drops, and future in-game integrations. This is more than just a meme."
     }
   },
   "tokenomics": {
@@ -122,7 +122,7 @@
       "Meme gamification features",
       "Community rewards"
     ],
-    "phase4": "Phase 4: CS:GO Ecosystem",
+    "phase4": "Phase 4: Gaming Ecosystem",
     "phase4Items": [
       "Streamer tip integration",
       "Tournament prize pools",
@@ -154,7 +154,7 @@
     "inventoryConnected": "Your inventory is connected",
     "unlocked": "Unlocked from inventory",
     "howToUse": "How to Use",
-    "instruction1": "Select a background theme from CS:GO, GTA, or retro styles",
+    "instruction1": "Select a background theme from tactical shooters, GTA, or retro styles",
     "instruction2": "Click accessories to add them to your meme",
     "instruction3": "Hit 'Randomize' for instant inspiration",
     "instruction4": "Download and share your creation on social media!"
@@ -192,8 +192,8 @@
     "footerNote": "By signing, you're joining a community that values transparency, gaming culture, and fair play above all else."
   },
   "integrations": {
-    "title": "CS:GO Integrations",
-    "subtitle": "Where gaming meets blockchain. See how $ONETAP is revolutionizing the CS:GO ecosystem.",
+    "title": "Gaming Integrations",
+    "subtitle": "Where gaming meets blockchain. See how $ONETAP is revolutionizing the gaming ecosystem.",
     "backHome": "Back to Home",
     "twitch": {
       "title": "Twitch Tip Widget",
@@ -214,7 +214,7 @@
       "description": "Exclusive OneTap AWP skin - only for $ONETAP holders.",
       "feature1": "Limited edition 3D weapon skins",
       "feature2": "Holder-exclusive designs",
-      "feature3": "Future CS2 integration planned"
+      "feature3": "Future game integrations planned"
     },
     "cta": {
       "title": "Want Early Access?",
@@ -243,7 +243,7 @@
     },
     "tournament": {
       "title": "Tournament Drops",
-      "description": "Participate in community CS:GO tournaments",
+      "description": "Participate in community competitive gaming tournaments",
       "schedule": "Monthly events"
     },
     "note": "Connect your wallet to participate in airdrops. All drops are distributed automatically based on your activity."

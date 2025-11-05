@@ -30,7 +30,7 @@ const Hero = () => {
     }, 100);
   };
   return <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 pb-16 md:pb-20">
-      {/* CS:GO Video Background */}
+      {/* Gaming Video Background */}
       <div className="absolute inset-0 z-0">
         <video autoPlay loop muted playsInline className="w-full h-full object-cover hidden md:block" poster={heroBg}>
           <source src="/videos/1.mp4" type="video/mp4" />
@@ -144,7 +144,7 @@ const Hero = () => {
             {t('hero.title')}
           </motion.h1>
 
-          {/* Tagline - Viral CS:GO */}
+          {/* Tagline - Viral Gaming */}
           
           <motion.p className="text-lg sm:text-xl md:text-2xl text-primary mb-4 md:mb-6 font-semibold tracking-tight px-4" initial={{
           opacity: 0,
