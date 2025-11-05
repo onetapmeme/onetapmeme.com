@@ -112,21 +112,6 @@ const TokenDistribution = () => {
           </div>
         </div>
       </Card>
-
-      {/* Burn Mechanism Notice */}
-      <Card className="glass-effect p-6 border-2 border-accent/30 bg-accent/5">
-        <div className="flex items-center gap-3">
-          <Coins className="w-6 h-6 text-accent flex-shrink-0" />
-          <div>
-            <h4 className="font-bold text-foreground mb-1">
-              Deflationary Burn Mechanism
-            </h4>
-            <p className="text-sm text-muted-foreground">
-              1% of each transaction is permanently burned, increasing scarcity over time
-            </p>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 };
