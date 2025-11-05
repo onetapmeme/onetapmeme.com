@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Tokenomics from "@/components/Tokenomics";
 import Community from "@/components/Community";
-import Roadmap from "@/components/Roadmap";
+import RoadmapTimeline from "@/components/RoadmapTimeline";
 import MemeSection from "@/components/MemeSection";
 import TapToEarnSection from "@/components/TapToEarnSection";
 import Footer from "@/components/Footer";
@@ -59,7 +59,7 @@ const Index = () => {
       
       <div id="roadmap">
         <SectionWrapper variant="accent" blendFrom="primary">
-          <Roadmap />
+          <RoadmapTimeline />
         </SectionWrapper>
       </div>
       

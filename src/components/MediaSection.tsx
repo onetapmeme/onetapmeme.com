@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Card } from "@/components/ui/card";
-import { Music2, Video, Image as ImageIcon, Newspaper } from "lucide-react";
+import { Music2, Video, Image as ImageIcon, Newspaper, TrendingUp } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { motion } from "framer-motion";
 import { Music, ChevronLeft, ChevronRight } from "lucide-react";
@@ -21,10 +21,30 @@ const MediaSection = () => {
   const [canScrollNext, setCanScrollNext] = useState(false);
 
   const mediaLogos = [
-    { name: "CoinTelegraph", opacity: 0.3 },
-    { name: "CoinMarketCap", opacity: 0.3 },
-    { name: "DexScreener", opacity: 0.3 },
-    { name: "Base", opacity: 0.3 },
+    { 
+      name: "CoinTelegraph", 
+      url: "https://cointelegraph.com",
+      icon: Newspaper,
+      color: "text-[#00D4AA]"
+    },
+    { 
+      name: "CoinMarketCap", 
+      url: "https://coinmarketcap.com",
+      icon: TrendingUp,
+      color: "text-[#3861FB]"
+    },
+    { 
+      name: "DexScreener", 
+      url: "https://dexscreener.com",
+      icon: Video,
+      color: "text-[#00C48F]"
+    },
+    { 
+      name: "Base Network", 
+      url: "https://base.org",
+      icon: ImageIcon,
+      color: "text-[#0052FF]"
+    },
   ];
 
   const videos = [
@@ -186,20 +206,24 @@ const MediaSection = () => {
             </h3>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {mediaLogos.map((logo, index) => (
-              <motion.div
+              <motion.a
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isRevealed ? { opacity: logo.opacity, scale: 1 } : {}}
+                href={logo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isRevealed ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                whileHover={{ opacity: 0.6, scale: 1.05 }}
-                className="text-center"
+                whileHover={{ scale: 1.08, y: -5 }}
+                className="glass-effect rounded-xl p-6 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 group"
               >
-                <p className="text-xl md:text-2xl font-bold text-muted-foreground transition-all duration-300">
+                <logo.icon className={`w-12 h-12 mx-auto mb-3 ${logo.color} opacity-40 group-hover:opacity-70 transition-opacity duration-300`} />
+                <p className="text-sm md:text-base font-semibold text-muted-foreground text-center group-hover:text-foreground transition-colors duration-300">
                   {logo.name}
                 </p>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
 

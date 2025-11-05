@@ -8,20 +8,10 @@ import AudioControls from "@/components/AudioControls";
 import LiveHolderCount from "@/components/LiveHolderCount";
 import LiveMarketCap from "@/components/LiveMarketCap";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const Hero = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const parallaxOffset = scrollY * 0.5;
 
   const handleGetStarted = () => {
     navigate('/home#swap');
@@ -39,18 +29,28 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 pb-16 md:pb-20">
-      {/* Cinematic Background */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          y: parallaxOffset,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/75 to-background/30"></div>
-      </motion.div>
+      {/* CS:GO Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover hidden md:block"
+          poster={heroBg}
+        >
+          <source src="/videos/1.mp4" type="video/mp4" />
+        </video>
+        <div 
+          className="absolute inset-0 md:hidden"
+          style={{
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background/40"></div>
+      </div>
 
       {/* Subtle background matching About section */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">

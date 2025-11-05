@@ -58,31 +58,54 @@ const distributionDetails = [
 const TokenomicsChart = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
   
   return (
-    <Card ref={ref} className="p-6 bg-card border-2 border-primary/30 dark:bg-card/50 dark:backdrop-blur-sm light:bg-white light:border-primary/50 light:shadow-xl">
-      <h3 className="text-xl font-bold mb-6 text-center text-foreground">Token Allocation Breakdown</h3>
+    <Card ref={ref} className="p-6 bg-card border-2 border-primary/30 hover:border-primary/40 transition-all duration-500 dark:bg-card/50 dark:backdrop-blur-sm light:bg-white light:border-primary/50 light:shadow-xl">
+      <h3 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        Token Allocation Breakdown
+      </h3>
       
-      {/* Animated Donut Chart */}
-      <div className="mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-        <ResponsiveContainer width="100%" height={300}>
+      {/* Interactive Donut Chart */}
+      <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <ResponsiveContainer width="100%" height={350}>
           <PieChart>
             <Pie
               data={data}
               cx="50%"
               cy="50%"
               labelLine={false}
-              label={({ value }) => `${value}%`}
-              innerRadius={60}
-              outerRadius={100}
+              label={({ value, index }) => {
+                if (activeIndex !== null && activeIndex !== index) return null;
+                return (
+                  <text 
+                    x="50%" 
+                    y="50%" 
+                    textAnchor="middle" 
+                    dominantBaseline="middle"
+                    className="fill-foreground font-bold text-3xl"
+                  >
+                    {`${value}%`}
+                  </text>
+                );
+              }}
+              innerRadius={70}
+              outerRadius={120}
               fill="#8884d8"
               dataKey="value"
               animationBegin={0}
               animationDuration={1500}
               animationEasing="ease-out"
               isAnimationActive={isVisible}
-              onMouseEnter={(_, index) => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              onMouseEnter={(_, index) => {
+                setHoveredIndex(index);
+                setActiveIndex(index);
+              }}
+              onMouseLeave={() => {
+                setHoveredIndex(null);
+                setActiveIndex(null);
+              }}
+              onClick={(_, index) => setActiveIndex(activeIndex === index ? null : index)}
             >
               {data.map((entry, index) => (
                 <Cell 
@@ -90,22 +113,23 @@ const TokenomicsChart = () => {
                   fill={entry.color}
                   className="transition-all duration-300 cursor-pointer"
                   style={{
-                    filter: isVisible ? 'drop-shadow(0 0 8px currentColor)' : 'none',
+                    filter: isVisible ? 'drop-shadow(0 0 12px currentColor)' : 'none',
                     transformOrigin: 'center',
-                    opacity: hoveredIndex === null ? 1 : hoveredIndex === index ? 1 : 0.5,
-                    transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
+                    opacity: hoveredIndex === null && activeIndex === null ? 1 : 
+                             (hoveredIndex === index || activeIndex === index) ? 1 : 0.4,
+                    transform: (hoveredIndex === index || activeIndex === index) ? 'scale(1.1)' : 'scale(1)',
                   }}
                 />
               ))}
             </Pie>
             <Tooltip 
               contentStyle={{
-                backgroundColor: "white",
-                border: "2px solid hsl(210, 100%, 55%)",
+                backgroundColor: "hsl(var(--card))",
+                border: "2px solid hsl(var(--primary))",
                 borderRadius: "0.75rem",
-                color: "black",
+                color: "hsl(var(--foreground))",
                 padding: "12px",
-                boxShadow: "0 4px 20px hsla(210, 100%, 55%, 0.3)"
+                boxShadow: "0 8px 32px hsla(210, 100%, 55%, 0.4)"
               }}
               formatter={(value: number, name: string, props: any) => [
                 `${value}% (${(value * 1000000).toLocaleString()} tokens)`,
