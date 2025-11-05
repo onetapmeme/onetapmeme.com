@@ -91,7 +91,7 @@ const Roadmap = () => {
               )}
 
               <ul className="space-y-2">
-                {phase.items.map((item, j) => (
+                {Array.isArray(phase.items) && phase.items.map((item, j) => (
                   <li key={j} className="flex items-start gap-2 text-sm md:text-base text-muted-foreground">
                     <span className="text-primary mt-1">▸</span>
                     <span>{item}</span>
