@@ -59,6 +59,10 @@ export default {
         'glow-gold': 'var(--glow-gold)',
         'glow-subtle': 'var(--glow-subtle)',
       },
+      fontFamily: {
+        'rajdhani': ['Rajdhani', 'sans-serif'],
+        'orbitron': ['Orbitron', 'sans-serif'],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
