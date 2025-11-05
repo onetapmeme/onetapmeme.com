@@ -11,7 +11,7 @@
   "hero": {
     "title": "$1TAP",
     "subtitle": "Le Memecoin Gaming Ultime",
-    "description": "La nostalgie du pixel rencontre la crypto moderne. Rejoignez la révolution gaming où chaque transaction est un headshot.",
+    "description": "La nostalgie du pixel rencontre la crypto moderne. Rejoins la révolution gaming où chaque transaction est un one-tap.",
     "cta": "Obtenir $1TAP",
     "contractVerified": "✅ Contrat Vérifié",
     "lpLocked": "🔒 LP Verrouillé 6 mois",
@@ -20,250 +20,256 @@
   },
   "enter": {
     "title": "Bienvenue sur $1TAP !",
-    "subtitle": "Appuyez pour Entrer",
+    "subtitle": "Appuie pour Entrer",
     "privacy": "Avis de Confidentialité et Risques",
-    "important": "IMPORTANT - Veuillez Lire Attentivement",
+    "important": "IMPORTANT - Lis Attentivement",
     "risk": "⚠️ Investissement à Haut Risque :",
-    "riskText": "$1TAP est un memecoin sans valeur intrinsèque ni attente de rendement financier. La valeur peut fluctuer considérablement ou tomber à zéro. N'investissez jamais plus que ce que vous pouvez vous permettre de perdre.",
+    "riskText": "$1TAP est un memecoin sans valeur intrinsèque ni attente de rendement. La valeur peut fluctuer brutalement ou tomber à zéro. N'investis jamais plus que ce que tu peux te permettre de perdre.",
     "noAffiliation": "🚫 Aucune Affiliation :",
-    "noAffiliationText": "Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée. C'est un memecoin communautaire à des fins de divertissement.",
+    "noAffiliationText": "Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée. C'est un memecoin communautaire pour le divertissement.",
     "privacy2": "🔒 Confidentialité :",
-    "privacyText": "En utilisant ce site, vous acceptez nos pratiques de collecte de données décrites dans notre Politique de Confidentialité. Nous collectons les adresses de portefeuille et les données d'utilisation.",
+    "privacyText": "En utilisant ce site, tu acceptes nos pratiques de collecte de données. Nous collectons les adresses wallet et les données d'utilisation.",
     "noGuarantees": "📉 Aucune Garantie :",
-    "noGuaranteesText": "Les performances passées ne garantissent pas les résultats futurs. Il n'y a aucune garantie de profit ou d'utilité. Ce token peut avoir une liquidité nulle à tout moment.",
+    "noGuaranteesText": "Les performances passées ne garantissent pas les résultats futurs. Aucune garantie de profit ou d'utilité. Ce token peut perdre toute liquidité à tout moment.",
     "legal": "⚖️ Conformité Légale :",
-    "legalText": "Vous confirmez que vous n'êtes pas citoyen américain et que vous accédez à ce site depuis une juridiction où cela est légal. Vous acceptez tous les risques et responsabilités légales.",
-    "moreInfo": "Pour plus d'informations, veuillez lire notre",
+    "legalText": "Tu confirmes que tu n'es pas citoyen américain et que tu accèdes à ce site depuis une juridiction où c'est légal. Tu acceptes tous les risques et responsabilités.",
+    "moreInfo": "Pour plus d'infos, lis notre",
     "disclaimer": "Avertissement",
     "nonAffiliation": "Déclaration de Non-Affiliation",
     "privacyPolicy": "Politique de Confidentialité",
     "understand": "Je Comprends et Accepte les Risques",
     "acknowledge": "Je comprends les risques",
-    "footer": "Non affilié à Valve Corporation ou Counter-Strike. À des fins de divertissement uniquement."
+    "footer": "Non affilié à Valve Corporation ou Counter-Strike. Divertissement uniquement."
   },
   "about": {
     "title": "À propos de $1TAP",
-    "subtitle": "Chaque clic compte, chaque détenteur est un guerrier",
-    "story": "Né d'un amour pour les FPS tactiques et la culture meme, $1TAP est plus qu'une simple pièce—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive du gaming tactique dans le monde crypto.",
-    "story2": "Pas de VCs. Pas de préventes privées. Juste une communauté pure.",
+    "subtitle": "Chaque clic compte, chaque holder est un guerrier",
+    "story": "Né d'un amour pour les FPS tactiques et la culture meme, $1TAP est plus qu'une pièce—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive du gaming tactique dans la crypto.",
+    "story2": "Pas de VCs. Pas de préventes. Que de la communauté pure.",
     "communityDriven": "Piloté par la Communauté",
-    "communityDrivenText": "Chaque décision est votée par les détenteurs. Votre voix compte.",
+    "communityDrivenText": "Chaque décision est votée par les holders. Ta voix compte.",
     "liquidityLocked": "Liquidité Verrouillée",
-    "liquidityLockedText": "LP verrouillé pendant 6 mois. Transparence totale, pas de rug pull.",
+    "liquidityLockedText": "LP verrouillé 6 mois. Transparence totale, pas d'arnaques.",
     "fairLaunch": "Lancement Équitable",
-    "fairLaunchText": "Distribution équitable conçue pour la croissance communautaire à long terme.",
-    "toTheMoon": "Vers La Lune",
-    "toTheMoonText": "Mains de diamant, clics plus forts. Nous faisons l'histoire ensemble.",
-    "disclaimerNote": "N'oubliez pas : les memecoins sont hautement spéculatifs. N'investissez jamais plus que ce que vous pouvez vous permettre de perdre."
+    "fairLaunchText": "Distribution équilibrée pour une croissance communautaire à long terme.",
+    "toTheMoon": "Direction la Lune",
+    "toTheMoonText": "Mains de diamant, clics plus forts. On écrit l'histoire ensemble.",
+    "disclaimerNote": "Rappel : les memecoins sont hautement spéculatifs. N'investis jamais plus que ce que tu peux perdre."
   },
   "whyOneTap": {
     "title": "Pourquoi $1TAP ?",
     "subtitle": "Le seul memecoin créé par des gamers, pour des gamers",
     "gamers": {
       "title": "Créé par des Gamers, pour des Gamers",
-      "description": "Piloté par la communauté depuis le premier jour. Pas de VCs, pas de baleines. Juste la pure culture gaming compétitif transformée en mouvement."
+      "description": "Communautaire depuis le jour 1. Pas de VCs, pas de baleines. Juste la pure culture gaming compétitif transformée en mouvement."
     },
     "secure": {
       "title": "100% Sécurisé & Transparent",
-      "description": "LP verrouillé 6 mois, contrat audité et entièrement vérifié. Pas de rug pull, que des headshots."
+      "description": "LP verrouillé 6 mois, contrat audité et vérifié. Pas d'arnaques, que des one-taps."
     },
     "utility": {
       "title": "Utilité Réelle = Valeur Réelle",
-      "description": "Tap-to-Earn, drops NFT exclusifs, et futures intégrations en jeu. C'est plus qu'un simple meme."
+      "description": "Tap-to-Earn, drops NFT exclusifs, et futures intégrations in-game. C'est plus qu'un simple meme."
     }
   },
   "tokenomics": {
     "title": "Tokenomics",
     "subtitle": "Distribution transparente, croissance durable",
-    "supply": "Offre Totale",
+    "totalSupply": "Offre Totale",
     "network": "Réseau",
     "symbol": "Symbole",
     "tax": "Taxe",
+    "transactionTax": "Taxe de Transaction",
     "development": "Développement",
     "marketing": "Marketing",
     "liquidity": "Liquidité",
-    "security": "Sécurité",
-    "lpLocked": "LP Verrouillé 6 Mois",
-    "verified": "Contrat Vérifié",
-    "multiSig": "Multi-Sig Activé",
-    "timelock": "Timelock Activé",
-    "renounced": "Fonctions Renoncées",
-    "distribution": "Distribution des Tokens",
+    "contract": "Adresse du Contrat",
+    "copyContract": "Copier",
+    "contractCopied": "Adresse copiée !",
     "chart": "Voir le Graphique",
-    "advanced": "Fonctionnalités Avancées",
+    "note": "Liquidité verrouillée pour 6 mois. Distribution transparente, pas de surprises.",
+    "features": "Fonctionnalités Avancées",
     "antiWhale": "Protection Anti-Baleine",
-    "antiWhaleDesc": "Limites de transaction et de portefeuille max pour une distribution équitable",
-    "autoBurn": "Auto-Burn",
-    "autoBurnDesc": "Offre déflationniste par brûlages automatiques périodiques",
-    "rewardSystem": "Système de Récompenses",
-    "rewardSystemDesc": "Les détenteurs gagnent des récompenses pour la détention à long terme",
-    "transparent": "Totalement Transparent",
-    "transparentDesc": "Portefeuilles publics, mises à jour régulières, aucune surprise"
+    "antiWhaleText": "Limites de transaction pour une distribution équitable",
+    "burnMechanism": "Mécanisme de Burn",
+    "burnMechanismText": "Offre déflationniste par brûlages automatiques",
+    "rewards": "Récompenses Holders",
+    "rewardsText": "Les holders long-terme gagnent des récompenses"
   },
   "roadmap": {
     "title": "Feuille de Route",
     "subtitle": "Le Chemin vers la Gloire",
     "phase1": "Phase 1: Ignition du Hype",
     "phase1Items": [
-      "Construction de la notoriété initiale",
+      "Construction de la notoriété",
       "Semis narratif",
-      "Échauffement de la communauté"
+      "Échauffement communauté"
     ],
     "phase2": "Phase 2: La Vraie Phase 1",
     "phase2Items": [
-      "Brûlage initial",
+      "Burn initial",
       "Verrouillage LP",
-      "Listage organique",
+      "Listing organique",
       "Poussée marketing"
     ],
-    "phase3": "Phase 3: Jeux et Drops Communautaires",
+    "phase3": "Phase 3: Jeux & Drops Communautaires",
     "phase3Items": [
       "Lancer Tap-to-Earn",
-      "Fonctionnalités de gamification meme",
+      "Gamification des memes",
       "Récompenses communautaires"
     ],
     "phase4": "Phase 4: Écosystème Gaming",
     "phase4Items": [
-      "Intégration tips pour streamers",
-      "Prize pools de tournois",
+      "Tips pour streamers",
+      "Prize pools tournois",
       "Skins NFT pour holders",
       "Partenariats esports"
     ]
   },
+  "liveStats": {
+    "title": "STATS LIVE $1TAP",
+    "subtitle": "Données en temps réel • Mise à jour toutes les 30s",
+    "marketCap": "Market Cap",
+    "holders": "Holders",
+    "liquidity": "Liquidité",
+    "volume24h": "Volume 24h",
+    "priceChart": "Graphique de Prix Live",
+    "notice": "📊 Intégration des données live après le lancement"
+  },
+  "memes": {
+    "title": "Générateur de Memes $1TAP",
+    "subtitle": "Crée tes propres memes personnalisés avec le logo $1TAP et partage-les avec la commu !",
+    "randomize": "Randomiser",
+    "download": "Télécharger",
+    "backgrounds": "Arrière-plans",
+    "accessories": "Accessoires Gaming",
+    "randomized": "Meme randomisé !",
+    "downloaded": "Meme téléchargé !",
+    "downloadError": "Erreur de téléchargement",
+    "backHome": "Retour Accueil",
+    "dropsLoaded": "drops chargés depuis l'inventaire",
+    "inventoryConnected": "Ton inventaire est connecté",
+    "unlocked": "Débloqué depuis l'inventaire",
+    "howToUse": "Comment Utiliser",
+    "instruction1": "Sélectionne un thème (tactical shooters, GTA, rétro)",
+    "instruction2": "Clique sur les accessoires pour les ajouter",
+    "instruction3": "Appuie sur 'Randomiser' pour l'inspiration",
+    "instruction4": "Télécharge et partage ta création sur les réseaux !"
+  },
   "manifesto": {
     "title": "Le Manifeste 1Tapper",
     "subtitle": "Notre code. Nos règles. Notre communauté.",
-    "backHome": "Retour à l'Accueil",
-    "preamble": "Nous, les 1Tappers, unis par notre amour du gaming et notre méfiance envers la finance traditionnelle, déclarons ces vérités évidentes : tous les gamers sont égaux, dotés de droits inaliénables, parmi lesquels la Vie, la Liberté et la poursuite des Headshots.",
+    "backHome": "Retour Accueil",
+    "preamble": "Nous, les 1Tappers, unis par notre amour du gaming et notre méfiance de la finance tradi, déclarons : tous les gamers sont égaux, dotés de droits inaliénables, dont la Vie, la Liberté et la poursuite des Headshots.",
     "principle1": {
-      "title": "Nous Sommes des Gamers Avant Tout",
-      "description": "Il ne s'agit pas de devenir riche rapidement. Il s'agit de construire quelque chose de réel pour la communauté que nous aimons."
+      "title": "Gamers Avant Tout",
+      "description": "Pas question de s'enrichir vite. On construit du solide pour la commu qu'on aime. Finance bros, passez votre chemin."
     },
     "principle2": {
-      "title": "Pas de Baleines, Seulement des 1Tappers",
-      "description": "Nous rejetons les pump-and-dump. Nous rejetons la manipulation. Tout le monde a les mêmes chances de réussir ici."
+      "title": "Pas de Baleines, Que des 1Tappers",
+      "description": "On rejette les pump-and-dump et la manipulation. Tout le monde a sa chance ici."
     },
     "principle3": {
       "title": "HODL Comme un Pro Player",
-      "description": "Les grands coups nécessitent de la patience. Les mains diamant battent le papier à chaque fois."
+      "description": "Les grands plays demandent de la patience. Les mains diamant battent le papier à chaque fois. Fais confiance au process."
     },
     "principle4": {
       "title": "Les Memes Sont Notre Langage",
-      "description": "Nous ne nous prenons pas trop au sérieux, mais nous prenons notre communauté au sérieux. Culture d'abord, profits ensuite."
+      "description": "On se prend pas trop au sérieux, mais notre commu, oui. Culture first, profits second."
     },
     "principle5": {
       "title": "Transparence > Hype",
-      "description": "Pas d'agendas cachés. Pas d'allocations secrètes. Ce que vous voyez est ce que vous obtenez. Toujours."
+      "description": "Pas d'agenda caché. Pas d'allocations secrètes. Ce que tu vois = ce que tu obtiens. Toujours."
     },
-    "signTitle": "Rejoindre le Mouvement",
-    "emailPlaceholder": "votre@email.com",
+    "signTitle": "Rejoins le Mouvement",
+    "emailPlaceholder": "ton@email.com",
     "signButton": "Signer le Manifeste",
     "thankYou": "Bienvenue dans l'Équipe !",
-    "welcomeMessage": "Vous êtes maintenant officiellement un 1Tapper. Vérifiez votre email pour les mises à jour exclusives.",
-    "footerNote": "En signant, vous rejoignez une communauté qui valorise la transparence, la culture gaming et le fair-play avant tout."
+    "welcomeMessage": "T'es officiellement un 1Tapper maintenant. Check tes emails pour les updates exclusives.",
+    "footerNote": "En signant, tu rejoins une commu qui valorise la transparence, la culture gaming et le fair-play avant tout."
   },
   "integrations": {
     "title": "Intégrations Gaming",
-    "subtitle": "Où le gaming rencontre la blockchain. Découvrez comment $1TAP révolutionne l'écosystème gaming.",
-    "backHome": "Retour à l'Accueil",
+    "subtitle": "Quand le gaming rencontre la blockchain. Découvre comment $1TAP révolutionne l'écosystème gaming.",
+    "backHome": "Retour Accueil",
     "twitch": {
-      "title": "Widget de Tips Twitch",
-      "description": "Permettez aux viewers de donner des tips en $1TAP directement aux streamers pendant les actions épiques.",
+      "title": "Widget Tips Twitch",
+      "description": "Permets aux viewers de donner des tips $1TAP aux streamers pendant les actions épiques.",
       "feature1": "Tips $1TAP en temps réel pendant les streams",
-      "feature2": "Conversion & distribution automatiques",
-      "feature3": "Intégration du classement des viewers"
+      "feature2": "Conversion & distribution auto",
+      "feature3": "Leaderboard des viewers"
     },
     "discord": {
       "title": "Bot Discord MVP",
-      "description": "Récompensez automatiquement vos meilleurs joueurs après chaque match communautaire.",
+      "description": "Récompense auto tes meilleurs joueurs après chaque match commu.",
       "feature1": "Distribution auto de $1TAP aux MVPs",
-      "feature2": "Suivi des stats & classements des joueurs",
-      "feature3": "Pools de récompenses personnalisés par serveur"
+      "feature2": "Tracking des stats & classements",
+      "feature3": "Pools de récompenses custom par serveur"
     },
     "nft": {
       "title": "Showcase Skins NFT",
-      "description": "Skin AWP 1Tap exclusif - uniquement pour les holders $1TAP.",
-      "feature1": "Skins d'armes 3D en édition limitée",
-      "feature2": "Designs exclusifs pour holders",
-      "feature3": "Intégrations de jeux futures prévues"
+      "description": "Skin AWP 1Tap exclusif - uniquement pour holders $1TAP.",
+      "feature1": "Skins d'armes 3D édition limitée",
+      "feature2": "Designs exclusifs holders",
+      "feature3": "Intégrations in-game futures prévues"
     },
     "cta": {
       "title": "Accès Anticipé ?",
-      "description": "Ces intégrations sont en développement. Rejoignez notre Discord pour être notifié lors de leur lancement.",
+      "description": "Ces intégrations sont en dev. Rejoins notre Discord pour être notifié du lancement.",
       "discord": "Rejoindre Discord",
       "github": "Voir sur GitHub"
     }
   },
   "airdrops": {
     "title": "Airdrops Gamifiés",
-    "subtitle": "Gagnez des $1TAP en jouant, créant et vous engageant avec la communauté",
+    "subtitle": "Gagne des $1TAP en jouant, créant et t'engageant avec la commu",
     "weekly": {
       "title": "Loterie Hebdo des Tappers",
-      "description": "Les 100 meilleurs cliqueurs chaque semaine partagent le prize pool",
+      "description": "Top 100 cliqueurs chaque semaine partagent le prize pool",
       "schedule": "Chaque lundi à 00:00 UTC"
     },
     "meme": {
       "title": "Concours de Memes",
-      "description": "Créez le meilleur meme, gagnez gros",
+      "description": "Crée le meilleur meme, gagne gros",
       "schedule": "Gagnants hebdo annoncés les vendredis"
     },
     "referral": {
       "title": "Blast de Parrainage",
-      "description": "Invitez des amis, gagnez des multiplicateurs sur tous les drops",
+      "description": "Invite des amis, gagne des multiplicateurs sur tous les drops",
       "schedule": "En continu"
     },
     "tournament": {
       "title": "Drops de Tournois",
-      "description": "Participez aux tournois gaming compétitifs communautaires",
+      "description": "Participe aux tournois gaming compétitifs commu",
       "schedule": "Événements mensuels"
     },
-    "note": "Connectez votre wallet pour participer aux airdrops. Tous les drops sont distribués automatiquement selon votre activité."
+    "note": "Connecte ton wallet pour participer aux airdrops. Tous les drops sont distribués auto selon ton activité."
   },
   "media": {
     "asSeenOn": "Vu Dans",
-    "comingSoon": "Couverture média bientôt disponible...",
-    "title": "Nous sommes actifs sur TikTok !",
-    "subtitle": "Suivez-nous pour du contenu gaming quotidien et des moments forts de la communauté.",
+    "comingSoon": "Couverture média bientôt...",
+    "title": "On est actifs sur TikTok !",
+    "subtitle": "Follow-nous pour du contenu gaming quotidien et des highlights commu.",
     "viewMore": "Voir Plus sur TikTok",
     "video1": {
       "title": "Moments de Jeu Épiques"
     },
     "video2": {
-      "title": "Moments Forts de la Communauté"
+      "title": "Highlights Communauté"
     },
     "video3": {
       "title": "Dans les Coulisses"
     }
   },
-  "memes": {
-    "title": "Générateur de Memes $1TAP",
-    "subtitle": "Créez vos propres memes personnalisés avec le logo $1TAP et partagez-les avec la communauté !",
-    "randomize": "Randomiser",
-    "download": "Télécharger",
-    "backgrounds": "Arrière-plans",
-    "accessories": "Accessoires Gaming",
-    "randomized": "Meme randomisé !",
-    "downloaded": "Meme téléchargé avec succès !",
-    "downloadError": "Erreur lors du téléchargement du meme",
-    "backHome": "Retour à l'Accueil",
-    "dropsLoaded": "drops chargés depuis l'inventaire",
-    "inventoryConnected": "Votre inventaire est connecté",
-    "unlocked": "Débloqué depuis l'inventaire",
-    "howToUse": "Comment Utiliser",
-    "instruction1": "Sélectionnez un thème d'arrière-plan de CS:GO, GTA, ou styles rétro",
-    "instruction2": "Cliquez sur les accessoires pour les ajouter à votre meme",
-    "instruction3": "Appuyez sur 'Randomiser' pour une inspiration instantanée",
-    "instruction4": "Téléchargez et partagez votre création sur les réseaux sociaux !"
-  },
   "tapToEarn": {
-    "title": "Cliquez pour Gagner de l'XP",
-    "subtitle": "Chaque clic vous rapproche de drops légendaires",
-    "signIn": "Connectez-vous pour commencer à cliquer",
+    "title": "Clique pour Gagner de l'XP",
+    "subtitle": "Chaque clic te rapproche des drops légendaires",
+    "signIn": "Connecte-toi pour commencer à cliquer",
     "rank": "Rang",
     "xp": "XP",
     "clicks": "Clics",
-    "tapButton": "CLIQUEZ !",
-    "rankUp": "Montée en Rang !",
+    "tapButton": "CLIQUE !",
+    "rankUp": "Montée de Rang !",
     "newRank": "Nouveau Rang",
     "dropReceived": "Drop Reçu !",
     "commonDrop": "Drop Commun",
@@ -272,22 +278,22 @@
     "legendaryDrop": "Drop Légendaire"
   },
   "community": {
-    "title": "Rejoignez Notre Communauté",
-    "subtitle": "Connectez-vous avec d'autres gamers et passionnés de crypto. Faites partie de la révolution !",
+    "title": "Rejoins Notre Communauté",
+    "subtitle": "Connecte-toi avec d'autres gamers et crypto enthusiasts. Fais partie de la révolution !",
     "discord": "Discord",
-    "discordText": "Rejoignez notre serveur Discord pour des discussions en temps réel et des événements exclusifs",
+    "discordText": "Rejoins notre serveur Discord pour des discussions real-time et events exclusifs",
     "github": "GitHub",
-    "githubText": "Consultez notre code open-source et contribuez au projet",
+    "githubText": "Check notre code open-source et contribue au projet",
     "instagram": "Instagram",
-    "instagramText": "Découvrez notre contenu visuel et nos stories quotidiennes",
+    "instagramText": "Découvre notre contenu visuel et stories quotidiennes",
     "reddit": "Reddit",
-    "redditText": "Participez aux discussions, partagez des memes et restez synchronisé avec la communauté",
+    "redditText": "Participe aux discussions, partage des memes et reste synchro avec la commu",
     "tiktok": "TikTok",
-    "tiktokText": "Regardez notre contenu gaming et nos memes viraux",
+    "tiktokText": "Regarde notre contenu gaming et memes viraux",
     "twitter": "Twitter/X",
-    "twitterText": "Suivez-nous pour les annonces, les memes et les actualités de la communauté",
+    "twitterText": "Follow-nous pour les annonces, memes et news commu",
     "youtube": "YouTube",
-    "youtubeText": "Abonnez-vous pour des vidéos gaming et des tutoriels"
+    "youtubeText": "Abonne-toi pour des vidéos gaming et tutoriels"
   },
   "footer": {
     "tagline": "Le memecoin gaming ultime sur Base Network",
@@ -300,22 +306,22 @@
     "nonAffiliation": "Déclaration de Non-Affiliation",
     "legalNotice": "Avis Juridique",
     "legalShield": "Protégé par 1TAP Legal Shield v1.0",
-    "disclaimerText": "$1TAP est un memecoin sans valeur intrinsèque et sans attente de retour financier. N'investissez que ce que vous pouvez vous permettre de perdre. Ce projet n'est pas affilié à Valve Corporation, Counter-Strike ou aux marques associées.",
+    "disclaimerText": "$1TAP est un memecoin sans valeur intrinsèque ni attente de retour. N'investis que ce que tu peux perdre. Non affilié à Valve Corporation, Counter-Strike ou marques associées.",
     "rights": "Tous droits réservés.",
     "contact": "Contact"
   },
   "rewards": {
     "title": "Système de Récompenses",
-    "subtitle": "Cliquez, gagnez de l'XP, montez de niveau et débloquez des drops légendaires exclusifs !",
+    "subtitle": "Clique, gagne de l'XP, level up et débloque des drops légendaires exclusifs !",
     "goldDrop": "Drop Or",
-    "goldDropDesc": "Drops légendaires rares contenant des skins et accessoires exclusifs sur le thème du gaming. La récompense ultime pour les cliqueurs dévoués.",
+    "goldDropDesc": "Drops légendaires rares avec skins et accessoires gaming exclusifs. La récompense ultime pour les cliqueurs dévoués.",
     "memeDrop": "Drop Meme",
-    "memeDropDesc": "Memes épiques créés par la communauté et accessoires personnalisés. Montrez votre style et votre créativité avec des objets uniques.",
+    "memeDropDesc": "Memes épiques créés par la commu et accessoires custom. Montre ton style avec des items uniques.",
     "communityDrop": "Drop Communauté",
-    "communityDropDesc": "Récompenses régulières pour les membres actifs de la communauté. Engagez-vous, interagissez et gagnez des objets exclusifs.",
+    "communityDropDesc": "Récompenses régulières pour les membres actifs. Engage-toi, interagis et gagne des items exclusifs.",
     "eventDrop": "Drop Événement",
-    "eventDropDesc": "Drops spéciaux à durée limitée lors de tournois et d'événements communautaires. Soyez présent ou ratez l'occasion !",
-    "devNotice": "🎮 Les modules Tap-to-Earn et Meme sont actuellement en développement.",
-    "devNoticeDesc": "Rejoignez notre communauté pour être le premier informé du lancement de ces fonctionnalités !"
+    "eventDropDesc": "Drops spéciaux durée limitée lors de tournois et events commu. Sois présent ou rate l'occasion !",
+    "devNotice": "🎮 Les modules Tap-to-Earn et Meme sont en développement.",
+    "devNoticeDesc": "Rejoins notre commu pour être le premier informé du lancement !"
   }
 }

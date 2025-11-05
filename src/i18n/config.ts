@@ -13,6 +13,17 @@ const getBrowserLanguage = () => {
   return supportedLangs.includes(browserLang) ? browserLang : 'en';
 };
 
+// Get saved language preference or detect browser language
+const getInitialLanguage = () => {
+  // First check localStorage for user preference
+  const savedLang = localStorage.getItem('1tap-language');
+  if (savedLang && ['en', 'fr', 'es', 'ru', 'zh'].includes(savedLang)) {
+    return savedLang;
+  }
+  // Fallback to browser detection
+  return getBrowserLanguage();
+};
+
 i18n
   .use(initReactI18next)
   .init({
@@ -23,11 +34,18 @@ i18n
       ru: { translation: ru },
       zh: { translation: zh }
     },
-    lng: 'en',
+    lng: getInitialLanguage(),
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     }
   });
+
+// Save language preference whenever it changes
+i18n.on('languageChanged', (lng) => {
+  localStorage.setItem('1tap-language', lng);
+  // Update HTML lang attribute for SEO
+  document.documentElement.lang = lng;
+});
 
 export default i18n;
