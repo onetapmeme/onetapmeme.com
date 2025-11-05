@@ -58,7 +58,7 @@ const Navbar = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <img src={logo} alt="OneTap" className="w-10 h-10 group-hover:animate-pulse-glow transition-all" />
+            <img src={logo} alt="1Tap" className="w-10 h-10 group-hover:animate-pulse-glow transition-all" />
             <span className="text-xl font-bold bg-gradient-accent bg-clip-text text-transparent hidden sm:block">
               $1TAP
             </span>

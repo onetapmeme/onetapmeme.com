@@ -37,7 +37,7 @@ const SocialProof = () => {
       rating: 5,
     },
     {
-      name: 'OneTapTrader',
+      name: '1TapTrader',
       role: 'Community Member',
       text: 'Transparent team, locked liquidity, and a solid roadmap. This is the one.',
       rating: 5,

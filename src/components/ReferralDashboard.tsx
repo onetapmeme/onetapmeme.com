@@ -97,7 +97,7 @@ const ReferralDashboard = () => {
   };
 
   const shareOnTwitter = () => {
-    const text = `Join me on $ONETAP! 🎮💰 Use my referral code: ${referralCode}`;
+    const text = `Join me on $1TAP! 🎮💰 Use my referral code: ${referralCode}`;
     const url = getReferralLink();
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
@@ -106,7 +106,7 @@ const ReferralDashboard = () => {
   };
 
   const shareOnTelegram = () => {
-    const text = `Join me on $ONETAP! Use my referral code: ${referralCode}`;
+    const text = `Join me on $1TAP! Use my referral code: ${referralCode}`;
     const url = getReferralLink();
     window.open(
       `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
@@ -157,7 +157,7 @@ const ReferralDashboard = () => {
             Referral Dashboard
           </h2>
           <p className="text-lg text-muted-foreground">
-            Earn rewards by inviting friends to $ONETAP
+            Earn rewards by inviting friends to $1TAP
           </p>
         </motion.div>
 

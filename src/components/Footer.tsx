@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-6 md:mb-8">
           {/* Logo & Description */}
           <div className="flex flex-col items-center md:items-start">
-            <img src={logo} alt="OneTap Logo" className="w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4" />
+            <img src={logo} alt="1Tap Logo" className="w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4" />
             <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">$1TAP</h3>
             <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
               {t('footer.tagline')}

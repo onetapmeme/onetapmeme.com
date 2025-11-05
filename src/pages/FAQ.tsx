@@ -18,8 +18,8 @@ const FAQ = () => {
       category: t('faq.categories.general') || 'General',
       questions: [
         {
-          q: t('faq.general.q1') || 'What is $ONETAP?',
-          a: t('faq.general.a1') || '$ONETAP is a community-driven meme coin on the Base network, inspired by competitive gaming culture. It combines gaming nostalgia with DeFi innovation, offering a tap-to-earn game, NFT drops, and a vibrant ecosystem.'
+          q: t('faq.general.q1') || 'What is $1TAP?',
+          a: t('faq.general.a1') || '$1TAP is a community-driven meme coin on the Base network, inspired by competitive gaming culture. It combines gaming nostalgia with DeFi innovation, offering a tap-to-earn game, NFT drops, and a vibrant ecosystem.'
         },
         {
           q: t('faq.general.q2') || 'Why Base network?',
@@ -27,10 +27,10 @@ const FAQ = () => {
         },
         {
           q: t('faq.general.q3') || 'Is this affiliated with Valve or popular FPS games?',
-          a: t('faq.general.a3') || 'No. $ONETAP is an independent community project inspired by competitive gaming culture. We are not affiliated with, endorsed by, or connected to any game developers or publishers in any official capacity.'
+          a: t('faq.general.a3') || 'No. $1TAP is an independent community project inspired by competitive gaming culture. We are not affiliated with, endorsed by, or connected to any game developers or publishers in any official capacity.'
         },
         {
-          q: t('faq.general.q4') || 'What makes $ONETAP different from other meme coins?',
+          q: t('faq.general.q4') || 'What makes $1TAP different from other meme coins?',
           a: t('faq.general.a4') || 'Unique gaming theme, interactive tap-to-earn game, NFT drop roulette system, locked liquidity for 6 months, and real utility beyond speculation. Plus, our community is built by gamers, for gamers.'
         }
       ]
@@ -39,8 +39,8 @@ const FAQ = () => {
       category: t('faq.categories.buying') || 'How to Buy',
       questions: [
         {
-          q: t('faq.buying.q1') || 'How do I buy $ONETAP?',
-          a: t('faq.buying.a1') || '1. Get a Web3 wallet (MetaMask, Coinbase Wallet)\n2. Add Base network to your wallet\n3. Buy ETH and bridge to Base\n4. Swap ETH for $ONETAP on Uniswap or our integrated DEX widget\n5. Add $ONETAP contract address to see your tokens'
+          q: t('faq.buying.q1') || 'How do I buy $1TAP?',
+          a: t('faq.buying.a1') || '1. Get a Web3 wallet (MetaMask, Coinbase Wallet)\n2. Add Base network to your wallet\n3. Buy ETH and bridge to Base\n4. Swap ETH for $1TAP on Uniswap or our integrated DEX widget\n5. Add $1TAP contract address to see your tokens'
         },
         {
           q: t('faq.buying.q2') || 'What is the contract address?',
@@ -52,7 +52,7 @@ const FAQ = () => {
         },
         {
           q: t('faq.buying.q4') || 'Can I buy with a credit card?',
-          a: t('faq.buying.a4') || 'You can use on-ramp services like Moonpay or Coinbase to buy ETH with a card, then bridge to Base and swap for $ONETAP. Direct fiat-to-$ONETAP coming in Phase 2.'
+          a: t('faq.buying.a4') || 'You can use on-ramp services like Moonpay or Coinbase to buy ETH with a card, then bridge to Base and swap for $1TAP. Direct fiat-to-$1TAP coming in Phase 2.'
         }
       ]
     },
@@ -61,7 +61,7 @@ const FAQ = () => {
       questions: [
         {
           q: t('faq.tokenomics.q1') || 'What is the total supply?',
-          a: t('faq.tokenomics.a1') || 'Total supply: 1,000,000,000 $ONETAP tokens. Fixed supply, no minting function. Deflationary through manual burns announced to community.'
+          a: t('faq.tokenomics.a1') || 'Total supply: 1,000,000,000 $1TAP tokens. Fixed supply, no minting function. Deflationary through manual burns announced to community.'
         },
         {
           q: t('faq.tokenomics.q2') || 'Are there any taxes?',
@@ -93,7 +93,7 @@ const FAQ = () => {
           a: t('faq.security.a2') || 'No. Liquidity is locked, ownership is renounced post-launch, and contract has no mint function or admin withdrawals. Multi-sig wallet for community funds with transparent on-chain tracking.'
         },
         {
-          q: t('faq.security.q3') || 'How do I verify I have real $ONETAP?',
+          q: t('faq.security.q3') || 'How do I verify I have real $1TAP?',
           a: t('faq.security.a3') || 'Always check the official contract address on our website and BaseScan. Scammers create fake tokens. Join our Discord for verification help.'
         },
         {
@@ -123,7 +123,7 @@ const FAQ = () => {
         },
         {
           q: t('faq.features.q5') || 'What is the Steam integration?',
-          a: t('faq.features.a5') || 'Phase 4 innovation: Track real competitive gaming performance, earn $ONETAP rewards for achievements. Beta with 100 users first. Partnership discussions ongoing with major platforms.'
+          a: t('faq.features.a5') || 'Phase 4 innovation: Track real competitive gaming performance, earn $1TAP rewards for achievements. Beta with 100 users first. Partnership discussions ongoing with major platforms.'
         }
       ]
     },
@@ -140,7 +140,7 @@ const FAQ = () => {
         },
         {
           q: t('faq.community.q3') || 'How does DAO governance work?',
-          a: t('faq.community.a3') || 'Phase 4 feature. Stake $ONETAP to vote on: treasury spending, roadmap priorities, partnership approvals, and burn schedules. 1 token staked = 1 vote. Snapshot-based voting.'
+          a: t('faq.community.a3') || 'Phase 4 feature. Stake $1TAP to vote on: treasury spending, roadmap priorities, partnership approvals, and burn schedules. 1 token staked = 1 vote. Snapshot-based voting.'
         },
         {
           q: t('faq.community.q4') || 'Where can I see the team?',
@@ -168,7 +168,7 @@ const FAQ = () => {
               {t('faq.title') || 'Frequently Asked Questions'}
             </h1>
             <p className="text-lg text-muted-foreground">
-              {t('faq.subtitle') || 'Everything you need to know about $ONETAP'}
+              {t('faq.subtitle') || 'Everything you need to know about $1TAP'}
             </p>
           </motion.div>
 

@@ -124,7 +124,7 @@ const LiveStats = () => {
               animation: 'gradient-flow 10s linear infinite',
             }}
           >
-            {t('liveStats.title') || '$ONETAP LIVE STATS'}
+            {t('liveStats.title') || '$1TAP LIVE STATS'}
           </h2>
           <p className="text-lg text-muted-foreground">
             {t('liveStats.subtitle') || 'Real-time market data • Updates every 30s'}

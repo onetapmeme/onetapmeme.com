@@ -1,9 +1,9 @@
-# 🎨 $ONETAP Brand Bible
+# 🎨 $1TAP Brand Bible
 
 ## Vision Statement
 *"Where skill meets crypto, every shot counts."*
 
-$ONETAP is the first FPS-inspired memecoin that transforms gaming culture into a decentralized economy. We're not just a token—we're a movement of Onetappers.
+$1TAP is the first FPS-inspired memecoin that transforms gaming culture into a decentralized economy. We're not just a token—we're a movement of 1Tappers.
 
 ---
 
@@ -198,7 +198,7 @@ font-weight: 400-600;
 ### Official Terms
 | Term | Definition | Usage |
 |------|------------|-------|
-| **Onetapper** | $ONETAP holder/community member | "Join the Onetappers" |
+| **1Tapper** | $1TAP holder/community member | "Join the 1Tappers" |
 | **Commander** | Community moderator | "Ask a Commander for help" |
 | **Sniper** | Content creator | "Top Sniper of the week" |
 | **Drop** | Random reward from site/bot | "You got a Rare Drop!" |
@@ -274,7 +274,7 @@ font-weight: 400-600;
 - 10% Partnerships & announcements
 
 **Hashtag Strategy:**
-- Always: #ONETAP #BaseMemecoins
+- Always: #1TAP #BaseMemecoins
 - Rotating: #FPS #CS2 #CryptoGaming #Web3Gaming
 - Maximum: 3-5 hashtags per post
 
@@ -334,7 +334,7 @@ font-weight: 400-600;
 ```tsx
 // Primary CTA
 <Button variant="default" size="lg">
-  Get $ONETAP
+  Get $1TAP
 </Button>
 
 // Secondary Action
@@ -457,13 +457,13 @@ LFG! 🚀
 
 We just hit [number] [metric]!
 
-This is only possible because of YOU, Onetappers.
+This is only possible because of YOU, 1Tappers.
 
 GG to the entire community. 💪
 
 Next target: [next milestone]
 
-#ONETAP
+#1TAP
 ```
 
 ### Educational Thread
@@ -482,7 +482,7 @@ Next target: [next milestone]
 
 Questions? Drop them below 👇
 
-#ONETAP
+#1TAP
 ```
 
 ---

@@ -18,7 +18,7 @@ const VideoShowcase = () => {
   const videos = [
     {
       id: '1',
-      title: 'What is $ONETAP?',
+      title: 'What is $1TAP?',
       description: 'Introduction to the ultimate gaming memecoin',
       thumbnail: '/placeholder.svg',
       youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube ID
@@ -26,7 +26,7 @@ const VideoShowcase = () => {
     },
     {
       id: '2',
-      title: 'How to Buy $ONETAP',
+      title: 'How to Buy $1TAP',
       description: 'Step-by-step tutorial on purchasing tokens',
       thumbnail: '/placeholder.svg',
       youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube ID
@@ -35,7 +35,7 @@ const VideoShowcase = () => {
     {
       id: '3',
       title: 'Meet the Team',
-      description: 'Get to know the builders behind $ONETAP',
+      description: 'Get to know the builders behind $1TAP',
       thumbnail: '/placeholder.svg',
       youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube ID
       category: 'team',
@@ -64,9 +64,9 @@ const VideoShowcase = () => {
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
               Video Content
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Learn about $ONETAP through our video guides and updates
-            </p>
+          <p className="text-lg text-muted-foreground">
+            Learn about $1TAP through our video guides and updates
+          </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

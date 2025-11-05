@@ -92,7 +92,7 @@ const Tokenomics = () => {
               </div>
               <div>
                 <h3 className="text-base md:text-lg font-bold text-muted-foreground mb-2">{t('tokenomics.symbol')}</h3>
-                <p className="text-2xl md:text-3xl font-bold text-primary">$ONETAP</p>
+                <p className="text-2xl md:text-3xl font-bold text-primary">$1TAP</p>
               </div>
             </Card>
 

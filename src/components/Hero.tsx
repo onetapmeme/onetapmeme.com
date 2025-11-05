@@ -107,7 +107,7 @@ const Hero = () => {
           duration: 1.2,
           ease: [0.16, 1, 0.3, 1]
         }}>
-            <motion.img src={logo} alt="OneTap Logo" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56" animate={{
+            <motion.img src={logo} alt="1Tap Logo" className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56" animate={{
             y: [0, -15, 0],
             filter: ['drop-shadow(0 0 40px rgba(22,163,224,0.5))', 'drop-shadow(0 0 80px rgba(22,163,224,0.8))', 'drop-shadow(0 0 40px rgba(22,163,224,0.5))']
           }} transition={{

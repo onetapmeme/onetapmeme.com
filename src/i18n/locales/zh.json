@@ -15,12 +15,12 @@
     "cta": "获取 $1TAP"
   },
   "enter": {
-    "title": "欢迎来到 $ONETAP！",
+    "title": "欢迎来到 $1TAP！",
     "subtitle": "点击进入",
     "privacy": "隐私与风险通知",
     "important": "重要 - 请仔细阅读",
     "risk": "⚠️ 高风险投资：",
-    "riskText": "$ONETAP 是一种没有内在价值或财务回报预期的模因币。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
+    "riskText": "$1TAP 是一种没有内在价值或财务回报预期的模因币。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
     "noAffiliation": "🚫 无附属关系：",
     "noAffiliationText": "本项目与 Valve Corporation、Counter-Strike 或任何相关商标无关。这是一个社区驱动的娱乐性模因币。",
     "privacy2": "🔒 隐私：",
@@ -38,9 +38,9 @@
     "footer": "与 Valve Corporation 或 Counter-Strike 无关。仅供娱乐目的。"
   },
   "about": {
-    "title": "关于 $ONETAP",
+    "title": "关于 $1TAP",
     "subtitle": "每一次点击都重要，每个持有者都是战士",
-    "story": "源于对战术FPS游戏和表情包文化的热爱，$ONETAP 不仅仅是一枚硬币——它是一场运动。由玩家为玩家创建，有一个明确的愿景：将战术游戏的竞技能量带入加密世界。",
+    "story": "源于对战术FPS游戏和表情包文化的热爱，$1TAP 不仅仅是一枚硬币——它是一场运动。由玩家为玩家创建，有一个明确的愿景：将战术游戏的竞技能量带入加密世界。",
     "story2": "没有风投。没有私人预售。只有纯粹的社区。",
     "communityDriven": "社区驱动",
     "communityDrivenText": "每个决定都由持有者投票。您的声音很重要。",
@@ -163,8 +163,8 @@
     "ownership": "所有权证书",
     "nonAffiliation": "非关联声明",
     "legalNotice": "法律声明",
-    "legalShield": "受 ONETAP Legal Shield v1.0 保护",
-    "disclaimerText": "$ONETAP 是一个没有内在价值且没有财务回报期望的模因币。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
+    "legalShield": "受 1TAP Legal Shield v1.0 保护",
+    "disclaimerText": "$1TAP 是一个没有内在价值且没有财务回报期望的模因币。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
     "rights": "保留所有权利。",
     "contact": "联系方式"
   },

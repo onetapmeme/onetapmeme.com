@@ -85,7 +85,7 @@ const Blog = () => {
               News & Updates
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Stay updated with the latest $ONETAP announcements, partnerships, and community highlights
+              Stay updated with the latest $1TAP announcements, partnerships, and community highlights
             </p>
           </motion.div>
 

@@ -22,7 +22,7 @@ const Disclaimer = () => {
 
           <div className="space-y-6 text-foreground/90">
             <p className="text-lg leading-relaxed">
-              $ONETAP is a community meme token. It has no intrinsic value or expectation of financial return. 
+              $1TAP is a community meme token. It has no intrinsic value or expectation of financial return.
               It is not an investment, security, or financial product. Do your own research.
             </p>
 

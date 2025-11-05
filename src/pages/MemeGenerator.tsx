@@ -167,7 +167,7 @@ const MemeGenerator = () => {
       });
 
       const link = document.createElement("a");
-      link.download = `onetap-meme-${Date.now()}.png`;
+      link.download = `1tap-meme-${Date.now()}.png`;
       link.href = canvas.toDataURL();
       link.click();
 
@@ -204,7 +204,7 @@ const MemeGenerator = () => {
             </p>
           )}
           <div className="flex gap-2 justify-center mt-4">
-            <Button variant="outline" size="sm" onClick={() => window.open('https://x.com/intent/tweet?text=Check%20out%20my%20%24ONETAP%20meme!%20%23ONETAP%20%23CSGOMemes', '_blank')}>
+            <Button variant="outline" size="sm" onClick={() => window.open('https://x.com/intent/tweet?text=Check%20out%20my%20%241TAP%20meme!%20%231TAP%20%23FPSMemes', '_blank')}>
               Share to X
             </Button>
           </div>

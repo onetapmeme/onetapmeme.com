@@ -69,7 +69,7 @@ const WalletDashboard = () => {
               Connect Your Wallet
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Connect your wallet to view your portfolio, track rewards, and manage your $ONETAP holdings.
+              Connect your wallet to view your portfolio, track rewards, and manage your $1TAP holdings.
             </p>
             <WalletConnect />
           </motion.div>
@@ -144,7 +144,7 @@ const WalletDashboard = () => {
             <Card className="glass-effect p-6 rounded-2xl border-primary/20 hover:border-primary/40 transition-all duration-500">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm text-muted-foreground uppercase tracking-wider">
-                  $ONETAP Balance
+                  $1TAP Balance
                 </span>
                 <TrendingUp className="w-5 h-5 text-primary" />
               </div>

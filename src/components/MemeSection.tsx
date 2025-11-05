@@ -77,7 +77,7 @@ const MemeSection = () => {
       });
 
       const link = document.createElement("a");
-      link.download = `onetap-meme-${Date.now()}.png`;
+      link.download = `1tap-meme-${Date.now()}.png`;
       link.href = canvas.toDataURL("image/png", 1.0);
       link.click();
 
@@ -128,7 +128,7 @@ const MemeSection = () => {
               <div className="absolute inset-0 flex items-center justify-center p-8">
                 <img
                   src={logoImage}
-                  alt="OneTap Logo"
+                  alt="1Tap Logo"
                   className="max-w-[70%] max-h-[70%] object-contain drop-shadow-2xl"
                 />
               </div>

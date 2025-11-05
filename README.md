@@ -1,7 +1,7 @@
-# $ONETAP — Official Repository
+# $1TAP — Official Repository
 
-**Protected under ONETAP Legal Shield v1.0**  
-© 2025 Hugo / $ONETAP Project — All rights reserved.
+**Protected under 1TAP Legal Shield v1.0**  
+© 2025 Hugo / $1TAP Project — All rights reserved.
 
 ---
 
@@ -12,7 +12,7 @@
 ## ⚖️ Legal Protection
 
 This project is protected by:
-- [ONETAP Community License 1.0](./LICENSE)
+- [1TAP Community License 1.0](./LICENSE)
 - [Ownership Certificate](./legal/ONETAP_OWNERSHIP.md)
 - [Security & Transparency Audit](./legal/AUDIT.md)
 

@@ -46,7 +46,7 @@ const SwapWidget = () => {
         >
           <Repeat className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-6 text-primary animate-pulse" />
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
-            Swap $ONETAP
+            Swap $1TAP
           </h2>
           <p className="text-lg text-muted-foreground">
             Trade directly on-site with best rates via 1inch DEX aggregator
@@ -109,7 +109,7 @@ const SwapWidget = () => {
                   <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 font-bold">
                     4
                   </span>
-                  <span>Confirm swap and receive $ONETAP</span>
+                  <span>Confirm swap and receive $1TAP</span>
                 </li>
               </ol>
             </Card>

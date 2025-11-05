@@ -20,7 +20,7 @@ const Manifesto = () => {
     e.preventDefault();
     if (email) {
       setSigned(true);
-      toast.success("Welcome to the OneTapper army! 🎯");
+      toast.success("Welcome to the 1Tapper army! 🎯");
       setEmail("");
     }
   };
@@ -242,7 +242,7 @@ const Manifesto = () => {
                     {t('manifesto.signTitle')}
                   </h3>
                   <p className="text-muted-foreground font-rajdhani text-lg">
-                    Become an official OneTapper. Join the revolution.
+                    Become an official 1Tapper. Join the revolution.
                   </p>
                 </div>
                 
@@ -290,7 +290,7 @@ const Manifesto = () => {
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-lg backdrop-blur-sm">
                       <Trophy className="w-6 h-6 text-green-500" />
                       <span className="font-orbitron font-bold text-green-500">
-                        RANK: ONETAPPER
+                        RANK: 1TAPPER
                       </span>
                     </div>
                   </div>
@@ -312,7 +312,7 @@ const Manifesto = () => {
               <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
             </div>
             <p className="text-sm text-muted-foreground font-rajdhani">
-              Est. 2025 • OneTap Army • For Gamers, By Gamers
+              Est. 2025 • 1Tap Army • For Gamers, By Gamers
             </p>
           </motion.div>
         </div>

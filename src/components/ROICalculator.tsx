@@ -65,7 +65,7 @@ const ROICalculator = () => {
             ROI Calculator
           </h2>
           <p className="text-lg text-muted-foreground">
-            Calculate potential returns on your $ONETAP investment
+            Calculate potential returns on your $1TAP investment
           </p>
         </motion.div>
 

@@ -67,7 +67,7 @@ const StickyBuyButton = () => {
             <div className="relative flex items-center gap-3">
               <ShoppingCart className="w-6 h-6" />
               <div className="flex flex-col items-start">
-                <span className="text-sm font-bold uppercase tracking-wider">Buy $ONETAP</span>
+                <span className="text-sm font-bold uppercase tracking-wider">Buy $1TAP</span>
                 <div className="flex items-center gap-1 text-xs">
                   <span className="font-mono">${price.toFixed(5)}</span>
                   {priceChange > 0 ? (
