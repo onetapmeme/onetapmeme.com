@@ -23,7 +23,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="flex flex-col items-center md:items-start">
             <img src={logo} alt="OneTap Logo" className="w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4" />
-            <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">$ONETAP</h3>
+            <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">$1TAP</h3>
             <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
               {t('footer.tagline')}
             </p>
@@ -128,7 +128,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border pt-6 md:pt-8 text-center space-y-3">
           <p className="text-xs md:text-sm text-muted-foreground mb-2">
-            © 2025 $ONETAP. {t('footer.rights')}
+            © 2025 $1TAP. {t('footer.rights')}
           </p>
           <p className="text-xs font-semibold text-primary/80 mb-2">
             {t('footer.legalShield')}

@@ -19,12 +19,12 @@
     "learnMore": "En Savoir Plus"
   },
   "enter": {
-    "title": "Bienvenue sur $ONETAP !",
+    "title": "Bienvenue sur $1TAP !",
     "subtitle": "Appuyez pour Entrer",
     "privacy": "Avis de Confidentialité et Risques",
     "important": "IMPORTANT - Veuillez Lire Attentivement",
     "risk": "⚠️ Investissement à Haut Risque :",
-    "riskText": "$ONETAP est un memecoin sans valeur intrinsèque ni attente de rendement financier. La valeur peut fluctuer considérablement ou tomber à zéro. N'investissez jamais plus que ce que vous pouvez vous permettre de perdre.",
+    "riskText": "$1TAP est un memecoin sans valeur intrinsèque ni attente de rendement financier. La valeur peut fluctuer considérablement ou tomber à zéro. N'investissez jamais plus que ce que vous pouvez vous permettre de perdre.",
     "noAffiliation": "🚫 Aucune Affiliation :",
     "noAffiliationText": "Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée. C'est un memecoin communautaire à des fins de divertissement.",
     "privacy2": "🔒 Confidentialité :",
@@ -42,9 +42,9 @@
     "footer": "Non affilié à Valve Corporation ou Counter-Strike. À des fins de divertissement uniquement."
   },
   "about": {
-    "title": "À propos de $ONETAP",
+    "title": "À propos de $1TAP",
     "subtitle": "Chaque clic compte, chaque détenteur est un guerrier",
-    "story": "Né d'un amour pour les FPS tactiques et la culture meme, $ONETAP est plus qu'une simple pièce—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive du gaming tactique dans le monde crypto.",
+    "story": "Né d'un amour pour les FPS tactiques et la culture meme, $1TAP est plus qu'une simple pièce—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive du gaming tactique dans le monde crypto.",
     "story2": "Pas de VCs. Pas de préventes privées. Juste une communauté pure.",
     "communityDriven": "Piloté par la Communauté",
     "communityDrivenText": "Chaque décision est votée par les détenteurs. Votre voix compte.",
@@ -57,7 +57,7 @@
     "disclaimerNote": "N'oubliez pas : les memecoins sont hautement spéculatifs. N'investissez jamais plus que ce que vous pouvez vous permettre de perdre."
   },
   "whyOneTap": {
-    "title": "Pourquoi $ONETAP ?",
+    "title": "Pourquoi $1TAP ?",
     "subtitle": "Le seul memecoin créé par des gamers, pour des gamers",
     "gamers": {
       "title": "Créé par des Gamers, pour des Gamers",
@@ -131,16 +131,16 @@
     ]
   },
   "manifesto": {
-    "title": "Le Manifeste OneTapper",
+    "title": "Le Manifeste 1Tapper",
     "subtitle": "Notre code. Nos règles. Notre communauté.",
     "backHome": "Retour à l'Accueil",
-    "preamble": "Nous, les OneTappers, unis par notre amour du gaming et notre méfiance envers la finance traditionnelle, déclarons ces vérités évidentes : tous les gamers sont égaux, dotés de droits inaliénables, parmi lesquels la Vie, la Liberté et la poursuite des Headshots.",
+    "preamble": "Nous, les 1Tappers, unis par notre amour du gaming et notre méfiance envers la finance traditionnelle, déclarons ces vérités évidentes : tous les gamers sont égaux, dotés de droits inaliénables, parmi lesquels la Vie, la Liberté et la poursuite des Headshots.",
     "principle1": {
       "title": "Nous Sommes des Gamers Avant Tout",
       "description": "Il ne s'agit pas de devenir riche rapidement. Il s'agit de construire quelque chose de réel pour la communauté que nous aimons."
     },
     "principle2": {
-      "title": "Pas de Baleines, Seulement des OneTappers",
+      "title": "Pas de Baleines, Seulement des 1Tappers",
       "description": "Nous rejetons les pump-and-dump. Nous rejetons la manipulation. Tout le monde a les mêmes chances de réussir ici."
     },
     "principle3": {
@@ -159,30 +159,30 @@
     "emailPlaceholder": "votre@email.com",
     "signButton": "Signer le Manifeste",
     "thankYou": "Bienvenue dans l'Équipe !",
-    "welcomeMessage": "Vous êtes maintenant officiellement un OneTapper. Vérifiez votre email pour les mises à jour exclusives.",
+    "welcomeMessage": "Vous êtes maintenant officiellement un 1Tapper. Vérifiez votre email pour les mises à jour exclusives.",
     "footerNote": "En signant, vous rejoignez une communauté qui valorise la transparence, la culture gaming et le fair-play avant tout."
   },
   "integrations": {
     "title": "Intégrations Gaming",
-    "subtitle": "Où le gaming rencontre la blockchain. Découvrez comment $ONETAP révolutionne l'écosystème gaming.",
+    "subtitle": "Où le gaming rencontre la blockchain. Découvrez comment $1TAP révolutionne l'écosystème gaming.",
     "backHome": "Retour à l'Accueil",
     "twitch": {
       "title": "Widget de Tips Twitch",
-      "description": "Permettez aux viewers de donner des tips en $ONETAP directement aux streamers pendant les actions épiques.",
-      "feature1": "Tips $ONETAP en temps réel pendant les streams",
+      "description": "Permettez aux viewers de donner des tips en $1TAP directement aux streamers pendant les actions épiques.",
+      "feature1": "Tips $1TAP en temps réel pendant les streams",
       "feature2": "Conversion & distribution automatiques",
       "feature3": "Intégration du classement des viewers"
     },
     "discord": {
       "title": "Bot Discord MVP",
       "description": "Récompensez automatiquement vos meilleurs joueurs après chaque match communautaire.",
-      "feature1": "Distribution auto de $ONETAP aux MVPs",
+      "feature1": "Distribution auto de $1TAP aux MVPs",
       "feature2": "Suivi des stats & classements des joueurs",
       "feature3": "Pools de récompenses personnalisés par serveur"
     },
     "nft": {
       "title": "Showcase Skins NFT",
-      "description": "Skin AWP OneTap exclusif - uniquement pour les holders $ONETAP.",
+      "description": "Skin AWP 1Tap exclusif - uniquement pour les holders $1TAP.",
       "feature1": "Skins d'armes 3D en édition limitée",
       "feature2": "Designs exclusifs pour holders",
       "feature3": "Intégrations de jeux futures prévues"
@@ -196,7 +196,7 @@
   },
   "airdrops": {
     "title": "Airdrops Gamifiés",
-    "subtitle": "Gagnez des $ONETAP en jouant, créant et vous engageant avec la communauté",
+    "subtitle": "Gagnez des $1TAP en jouant, créant et vous engageant avec la communauté",
     "weekly": {
       "title": "Loterie Hebdo des Tappers",
       "description": "Les 100 meilleurs cliqueurs chaque semaine partagent le prize pool",
@@ -236,8 +236,8 @@
     }
   },
   "memes": {
-    "title": "Générateur de Memes $ONETAP",
-    "subtitle": "Créez vos propres memes personnalisés avec le logo $ONETAP et partagez-les avec la communauté !",
+    "title": "Générateur de Memes $1TAP",
+    "subtitle": "Créez vos propres memes personnalisés avec le logo $1TAP et partagez-les avec la communauté !",
     "randomize": "Randomiser",
     "download": "Télécharger",
     "backgrounds": "Arrière-plans",
@@ -299,8 +299,8 @@
     "ownership": "Certificat de Propriété",
     "nonAffiliation": "Déclaration de Non-Affiliation",
     "legalNotice": "Avis Juridique",
-    "legalShield": "Protégé par ONETAP Legal Shield v1.0",
-    "disclaimerText": "$ONETAP est un memecoin sans valeur intrinsèque et sans attente de retour financier. N'investissez que ce que vous pouvez vous permettre de perdre. Ce projet n'est pas affilié à Valve Corporation, Counter-Strike ou aux marques associées.",
+    "legalShield": "Protégé par 1TAP Legal Shield v1.0",
+    "disclaimerText": "$1TAP est un memecoin sans valeur intrinsèque et sans attente de retour financier. N'investissez que ce que vous pouvez vous permettre de perdre. Ce projet n'est pas affilié à Valve Corporation, Counter-Strike ou aux marques associées.",
     "rights": "Tous droits réservés.",
     "contact": "Contact"
   },

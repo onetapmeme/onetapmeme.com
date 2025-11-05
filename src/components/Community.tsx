@@ -98,7 +98,7 @@ const Community = () => {
         {/* Community Roles & XP System */}
         <div className="mb-12 max-w-4xl mx-auto">
           <Card className="p-6 md:p-8 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-2 border-primary/30">
-            <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Join the Onetappers</h3>
+            <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Join the 1Tappers</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div className="flex gap-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30">

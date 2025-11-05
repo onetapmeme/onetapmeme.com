@@ -52,7 +52,7 @@ const Newsletter = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="text-center mb-6">
           <h3 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">
-            Get OneTapped
+            Get 1Tapped
           </h3>
           <p className="text-muted-foreground">
             Subscribe for exclusive updates, airdrops & alpha

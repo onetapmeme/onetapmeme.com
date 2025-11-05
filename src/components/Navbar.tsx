@@ -60,7 +60,7 @@ const Navbar = () => {
           >
             <img src={logo} alt="OneTap" className="w-10 h-10 group-hover:animate-pulse-glow transition-all" />
             <span className="text-xl font-bold bg-gradient-accent bg-clip-text text-transparent hidden sm:block">
-              $ONETAP
+              $1TAP
             </span>
           </a>
 

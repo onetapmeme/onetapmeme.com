@@ -1,7 +1,7 @@
 {
-  "name": "$ONETAP - The Ultimate Gaming Memecoin",
-  "short_name": "$ONETAP",
-  "description": "$ONETAP combines Counter-Strike nostalgia with modern crypto. Join the revolution where every trade is a headshot.",
+  "name": "$1TAP - The Ultimate Gaming Memecoin",
+  "short_name": "$1TAP",
+  "description": "$1TAP combines FPS nostalgia with modern crypto. Join the revolution where every trade is a headshot.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f1419",
@@ -24,9 +24,9 @@
   "categories": ["finance", "games", "entertainment"],
   "shortcuts": [
     {
-      "name": "Buy $ONETAP",
+      "name": "Buy $1TAP",
       "short_name": "Buy",
-      "description": "Buy $ONETAP tokens",
+      "description": "Buy $1TAP tokens",
       "url": "/#tokenomics",
       "icons": [
         {
