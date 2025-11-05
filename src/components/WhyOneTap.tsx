@@ -1,4 +1,4 @@
-import { Gamepad2, Shield, Zap } from "lucide-react";
+import { Gamepad2, Shield } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -20,12 +20,6 @@ const WhyOneTap = () => {
       title: t('whyOneTap.secure.title'),
       description: t('whyOneTap.secure.description'),
       gradient: "from-green-500 to-emerald-500",
-    },
-    {
-      icon: Zap,
-      title: t('whyOneTap.utility.title'),
-      description: t('whyOneTap.utility.description'),
-      gradient: "from-orange-500 to-yellow-500",
     },
   ];
 
