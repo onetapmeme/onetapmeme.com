@@ -76,19 +76,22 @@ const TokenomicsChart = () => {
               cy="50%"
               labelLine={false}
               label={({ value, index }) => {
-                if (activeIndex !== null && activeIndex !== index) return null;
-                return (
-                  <text 
-                    x="50%" 
-                    y="50%" 
-                    textAnchor="middle" 
-                    dominantBaseline="middle"
-                    className="fill-white font-bold text-3xl drop-shadow-lg"
-                    style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))' }}
-                  >
-                    {`${value}%`}
-                  </text>
-                );
+                // N'afficher le label que si cet index est actif ou survolé
+                if (activeIndex === index || (hoveredIndex === index && activeIndex === null)) {
+                  return (
+                    <text 
+                      x="50%" 
+                      y="50%" 
+                      textAnchor="middle" 
+                      dominantBaseline="middle"
+                      className="fill-white font-bold text-3xl drop-shadow-lg"
+                      style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))' }}
+                    >
+                      {`${value}%`}
+                    </text>
+                  );
+                }
+                return null;
               }}
               innerRadius={70}
               outerRadius={120}
