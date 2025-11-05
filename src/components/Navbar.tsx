@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/onetap_new_logo.png";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "@/components/ThemeToggle";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -102,7 +103,6 @@ const Navbar = () => {
 
           {/* Mobile Navigation */}
           <div className="lg:hidden flex items-center gap-2">
-            <ThemeToggle />
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="hover:bg-primary/10">
@@ -111,6 +111,10 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent className="bg-background/95 backdrop-blur-xl border-primary/20">
                 <div className="flex flex-col gap-4 mt-8">
+                  <div className="flex items-center gap-2 pb-4 border-b border-primary/20">
+                    <ThemeToggle />
+                    <LanguageSwitcher inline />
+                  </div>
                   {navItems.map((item) => (
                     item.isExternal ? (
                       <a

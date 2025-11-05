@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ inline = false }: { inline?: boolean }) => {
   const { i18n } = useTranslation();
 
   const languages = [
@@ -27,7 +27,7 @@ const LanguageSwitcher = () => {
         <Button
           variant="ghost"
           size="sm"
-          className="fixed top-4 right-4 z-50 bg-card/80 backdrop-blur-sm border border-primary/20 hover:border-primary/50 transition-all"
+          className={inline ? "bg-card/80 backdrop-blur-sm border border-primary/20 hover:border-primary/50 transition-all" : "fixed top-4 right-4 z-50 bg-card/80 backdrop-blur-sm border border-primary/20 hover:border-primary/50 transition-all"}
         >
           <Languages className="w-4 h-4 mr-2" />
           <span className="mr-1">{currentLang.flag}</span>
