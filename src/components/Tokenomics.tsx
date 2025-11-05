@@ -44,7 +44,7 @@ const Tokenomics = () => {
     <section 
       id="tokenomics" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-12 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
     >
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-12 md:mb-16 animate-pixel-fade">

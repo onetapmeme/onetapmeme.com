@@ -29,7 +29,8 @@ const Hero = () => {
       });
     }, 100);
   };
-  return <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 pb-16 md:pb-20">
+  return (
+    <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-24 pb-12 md:pb-20">
       {/* Gaming Video Background */}
       <div className="absolute inset-0 z-0">
         <video autoPlay loop muted playsInline className="w-full h-full object-cover" poster={heroBg}>
@@ -96,8 +97,7 @@ const Hero = () => {
             <LiveHolderCount />
           </motion.div>
 
-          {/* Logo - Cinematic Entrance */}
-          <motion.div className="flex justify-center mb-8 md:mb-12" initial={{
+          <motion.div className="flex justify-center mb-6 md:mb-12" initial={{
           scale: 0.8,
           opacity: 0
         }} animate={{
@@ -155,7 +155,7 @@ const Hero = () => {
             One Shot. One Opportunity. No Recoil.
           </motion.p>
           
-          <motion.p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 md:mb-14 max-w-3xl mx-auto px-4 leading-relaxed" initial={{
+          <motion.p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 md:mb-14 max-w-3xl mx-auto px-4 leading-relaxed" initial={{
           opacity: 0
         }} animate={{
           opacity: 1
@@ -176,7 +176,7 @@ const Hero = () => {
         }} transition={{
           duration: 0.6,
           delay: 0.3
-        }} className="flex flex-wrap justify-center gap-3 mb-8 md:mb-10 px-4">
+        }} className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-10 px-4">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30">
               <Shield className="w-4 h-4 text-green-500" />
               <span className="text-xs font-semibold text-green-500">{t('hero.contractVerified')}</span>
@@ -188,7 +188,7 @@ const Hero = () => {
           </motion.div>
 
           {/* CTA Buttons - Premium Style */}
-          <motion.div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-16 md:mb-20 px-4" initial={{
+          <motion.div className="flex flex-col sm:flex-row gap-3 md:gap-6 justify-center items-center mb-12 md:mb-20 px-4" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -274,6 +274,7 @@ const Hero = () => {
         }} />
         </div>
       </motion.div>
-    </section>;
+    </section>
+  );
 };
 export default Hero;

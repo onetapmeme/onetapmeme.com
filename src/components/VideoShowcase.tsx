@@ -52,7 +52,7 @@ const VideoShowcase = () => {
 
   return (
     <>
-      <section ref={ref} className="py-16 md:py-24 px-4">
+      <section ref={ref} className="py-10 md:py-24 px-4">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             className="text-center mb-12"

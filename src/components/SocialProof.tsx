@@ -4,6 +4,7 @@ import { Users, TrendingUp, Shield, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { supabase } from '@/integrations/supabase/client';
+import TestimonialCarousel from '@/components/TestimonialCarousel';
 
 const SocialProof = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -51,7 +52,7 @@ const SocialProof = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-24 px-4 relative overflow-hidden">
+    <section ref={ref} className="py-10 md:py-24 px-4 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Live Holder Count */}
         <motion.div
@@ -120,7 +121,14 @@ const SocialProof = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 text-foreground">
             Community Love
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Mobile Carousel */}
+          <div className="md:hidden">
+            <TestimonialCarousel testimonials={testimonials} />
+          </div>
+          
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-3 gap-6">
             {testimonials.map((testimonial, i) => (
               <motion.div
                 key={i}
@@ -158,7 +166,7 @@ const SocialProof = () => {
 
         {/* Trust Indicators */}
         <motion.div
-          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6"
+          className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.7 }}

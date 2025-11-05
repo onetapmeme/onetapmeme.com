@@ -72,7 +72,7 @@ const Community = () => {
     <section 
       id="community" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-12 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
     >
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-8 md:mb-12 animate-pixel-fade">
@@ -99,25 +99,25 @@ const Community = () => {
         <div className="mb-12 max-w-4xl mx-auto">
           <Card className="p-6 md:p-8 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-2 border-primary/30">
             <h3 className="text-2xl font-bold mb-6 text-center text-foreground">Join the 1Tappers</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30">
+            <div className="grid grid-cols-2 gap-4 md:gap-6 mb-6">
+              <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/30 mx-auto md:mx-0">
                   <Users className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <div>
-                  <h4 className="font-bold text-lg text-foreground mb-1">Commanders</h4>
-                  <p className="text-sm text-muted-foreground">
+                <div className="text-center md:text-left">
+                  <h4 className="font-bold text-base md:text-lg text-foreground mb-1">Commanders</h4>
+                  <p className="text-xs md:text-sm text-muted-foreground">
                     Community moderators and information relays. Help newcomers and maintain a positive environment.
                   </p>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/30">
+              <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-accent/30 mx-auto md:mx-0">
                   <Zap className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <div>
-                  <h4 className="font-bold text-lg text-foreground mb-1">Snipers</h4>
-                  <p className="text-sm text-muted-foreground">
+                <div className="text-center md:text-left">
+                  <h4 className="font-bold text-base md:text-lg text-foreground mb-1">Snipers</h4>
+                  <p className="text-xs md:text-sm text-muted-foreground">
                     Creative content creators. Design memes, graphics, and visual content to spread the word.
                   </p>
                 </div>
@@ -141,7 +141,7 @@ const Community = () => {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {socialLinks.map((social, index) => (
             <Card
               key={index}

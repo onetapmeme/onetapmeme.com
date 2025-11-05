@@ -52,7 +52,7 @@ const TapToEarnSection = () => {
     <section
       id="tap-to-earn"
       ref={ref}
-      className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-12 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
     >
 
       <div className="container mx-auto max-w-7xl relative z-10">
@@ -86,7 +86,7 @@ const TapToEarnSection = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 md:mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-20">
           {features.map((feature, index) => (
             <Card
               key={index}

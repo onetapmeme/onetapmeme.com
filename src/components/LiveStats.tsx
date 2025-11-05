@@ -103,7 +103,7 @@ const LiveStats = () => {
     <section
       id="live-stats"
       ref={ref}
-      className="py-16 md:py-24 px-4 relative overflow-hidden"
+      className="py-10 md:py-24 px-4 relative overflow-hidden"
     >
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
@@ -132,7 +132,7 @@ const LiveStats = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}

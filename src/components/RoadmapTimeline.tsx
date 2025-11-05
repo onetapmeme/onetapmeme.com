@@ -66,10 +66,10 @@ const RoadmapTimeline = () => {
     <section 
       id="roadmap" 
       ref={ref}
-      className={`py-20 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
+      className={`py-12 md:py-32 px-4 relative overflow-hidden reveal-on-scroll ${isRevealed ? 'revealed' : ''}`}
     >
       <div className="container mx-auto relative z-10 max-w-4xl">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <Target className="w-16 h-16 mx-auto mb-6 text-primary icon-float icon-glow" />
           <h2 
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"

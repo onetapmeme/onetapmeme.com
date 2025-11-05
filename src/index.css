@@ -114,10 +114,14 @@ All colors MUST be HSL.
     @apply px-4 sm:px-6 lg:px-8;
   }
   
-  /* Touch-friendly spacing */
+  /* Mobile spacing optimization */
   @media (max-width: 768px) {
     section {
-      @apply py-12;
+      @apply py-10;
+    }
+    
+    .container {
+      @apply px-3;
     }
   }
 
