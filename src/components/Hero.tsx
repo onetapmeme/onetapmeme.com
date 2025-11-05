@@ -185,10 +185,6 @@ const Hero = () => {
               <Lock className="w-4 h-4 text-blue-500" />
               <span className="text-xs font-semibold text-blue-500">{t('hero.lpLocked')}</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30">
-              <Flame className="w-4 h-4 text-orange-500" />
-              <span className="text-xs font-semibold text-orange-500">{t('hero.dailyBurn')}</span>
-            </div>
           </motion.div>
 
           {/* CTA Buttons - Premium Style */}
