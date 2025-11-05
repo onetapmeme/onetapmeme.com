@@ -429,6 +429,10 @@ export type Database = {
     }
     Functions: {
       calculate_level: { Args: { xp: number }; Returns: number }
+      increment_user_xp: {
+        Args: { user_id_param: string; xp_amount: number }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
