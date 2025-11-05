@@ -84,7 +84,7 @@ const TokenomicsChart = () => {
                       y="50%" 
                       textAnchor="middle" 
                       dominantBaseline="middle"
-                      className="fill-white font-bold text-3xl drop-shadow-lg"
+                      className="fill-white dark:fill-white light:fill-foreground font-bold text-3xl drop-shadow-lg"
                       style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))' }}
                     >
                       {`${value}%`}
@@ -134,6 +134,12 @@ const TokenomicsChart = () => {
                 color: "hsl(var(--foreground))",
                 padding: "12px",
                 boxShadow: "0 8px 32px hsla(210, 100%, 55%, 0.4)"
+              }}
+              labelStyle={{
+                color: "hsl(var(--foreground))"
+              }}
+              itemStyle={{
+                color: "hsl(var(--foreground))"
               }}
               formatter={(value: number, name: string, props: any) => [
                 `${value}% (${(value * 1000000).toLocaleString()} tokens)`,
