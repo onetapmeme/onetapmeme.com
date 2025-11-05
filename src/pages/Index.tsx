@@ -32,6 +32,18 @@ const Index = () => {
           <Hero />
         </SectionWrapper>
       </div>
+
+      <div id="about" className="scroll-mt-20">
+        <SectionWrapper variant="accent" blendFrom="primary">
+          <About />
+        </SectionWrapper>
+      </div>
+
+      <div id="tokenomics">
+        <SectionWrapper variant="primary" blendFrom="accent">
+          <Tokenomics />
+        </SectionWrapper>
+      </div>
       
       <div id="why-onetap">
         <SectionWrapper variant="accent" blendFrom="primary">
@@ -39,27 +51,39 @@ const Index = () => {
         </SectionWrapper>
       </div>
 
-      <div id="about" className="scroll-mt-20">
+      <div id="swap">
         <SectionWrapper variant="primary" blendFrom="accent">
-          <About />
-        </SectionWrapper>
-      </div>
-
-      <div id="tokenomics">
-        <SectionWrapper variant="accent" blendFrom="primary">
-          <Tokenomics />
+          <SwapWidget />
         </SectionWrapper>
       </div>
 
       <div id="live-stats">
-        <SectionWrapper variant="primary" blendFrom="accent">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <LiveStats />
         </SectionWrapper>
       </div>
       
       <div id="roadmap">
-        <SectionWrapper variant="accent" blendFrom="primary">
+        <SectionWrapper variant="primary" blendFrom="accent">
           <RoadmapTimeline />
+        </SectionWrapper>
+      </div>
+
+      <div id="tap-to-earn">
+        <SectionWrapper variant="accent" blendFrom="primary">
+          <TapToEarnSection />
+        </SectionWrapper>
+      </div>
+
+      <div id="rewards">
+        <SectionWrapper variant="primary" blendFrom="accent">
+          <RewardSystem />
+        </SectionWrapper>
+      </div>
+
+      <div id="airdrops">
+        <SectionWrapper variant="accent" blendFrom="primary">
+          <AirdropCalendar />
         </SectionWrapper>
       </div>
       
@@ -75,39 +99,15 @@ const Index = () => {
         </SectionWrapper>
       </div>
 
-      <div id="social-proof">
-        <SectionWrapper variant="primary" blendFrom="accent">
-          <SocialProof />
-        </SectionWrapper>
-      </div>
-
-      <div id="swap">
-        <SectionWrapper variant="accent" blendFrom="primary">
-          <SwapWidget />
-        </SectionWrapper>
-      </div>
-
       <div id="videos">
         <SectionWrapper variant="primary" blendFrom="accent">
           <VideoShowcase />
         </SectionWrapper>
       </div>
 
-      <div id="tap-to-earn">
-        <SectionWrapper variant="primary" blendFrom="accent">
-          <TapToEarnSection />
-        </SectionWrapper>
-      </div>
-
-      <div id="rewards">
+      <div id="social-proof">
         <SectionWrapper variant="accent" blendFrom="primary">
-          <RewardSystem />
-        </SectionWrapper>
-      </div>
-
-      <div id="airdrops">
-        <SectionWrapper variant="primary" blendFrom="accent">
-          <AirdropCalendar />
+          <SocialProof />
         </SectionWrapper>
       </div>
       
