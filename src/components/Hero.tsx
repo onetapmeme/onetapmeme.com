@@ -32,14 +32,9 @@ const Hero = () => {
   return <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 pb-16 md:pb-20">
       {/* Gaming Video Background */}
       <div className="absolute inset-0 z-0">
-        <video autoPlay loop muted playsInline className="w-full h-full object-cover hidden md:block" poster={heroBg}>
+        <video autoPlay loop muted playsInline className="w-full h-full object-cover" poster={heroBg}>
           <source src="/videos/1.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 md:hidden" style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background/40"></div>
       </div>
 
