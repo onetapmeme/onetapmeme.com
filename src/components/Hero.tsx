@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import AudioControls from "@/components/AudioControls";
 import LiveHolderCount from "@/components/LiveHolderCount";
+import LiveMarketCap from "@/components/LiveMarketCap";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -96,13 +97,14 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Holder Count Badge */}
+          {/* Live Stats Badges */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="flex justify-center mb-6"
+            className="flex flex-wrap justify-center gap-3 mb-6"
           >
+            <LiveMarketCap />
             <LiveHolderCount />
           </motion.div>
 
@@ -151,14 +153,22 @@ const Hero = () => {
             {t('hero.title')}
           </motion.h1>
 
-          {/* Tagline */}
+          {/* Tagline - Viral CS:GO */}
           <motion.p 
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground mb-4 md:mb-6 font-semibold tracking-tight px-4"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground mb-2 md:mb-3 font-bold tracking-tight px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            No recoil. Just gains.
+            LE MEMECOIN DES VRAIS GAMERS CS:GO
+          </motion.p>
+          <motion.p 
+            className="text-lg sm:text-xl md:text-2xl text-primary mb-4 md:mb-6 font-semibold tracking-tight px-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            One Shot. One Opportunity. No Recoil.
           </motion.p>
           
           <motion.p 
@@ -232,9 +242,9 @@ const Hero = () => {
             transition={{ duration: 1, delay: 1.1 }}
           >
             {[
-              { icon: Crosshair, label: "Market Cap", value: "TBA" },
-              { icon: Zap, label: "Holders", value: "Growing" },
-              { icon: TrendingUp, label: "Liquidity", value: "Locked" },
+              { icon: Flame, label: "Burning", value: "FOMO" },
+              { icon: Zap, label: "Community", value: "Growing" },
+              { icon: Shield, label: "Liquidity", value: "Locked" },
             ].map((stat, i) => (
               <motion.div
                 key={i}

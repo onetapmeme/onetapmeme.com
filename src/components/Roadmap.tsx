@@ -56,6 +56,22 @@ const Roadmap = () => {
           </p>
         </div>
 
+        {/* Overall Progress */}
+        <div className="max-w-3xl mx-auto mb-8 px-4">
+          <div className="glass-effect rounded-xl p-4">
+            <div className="flex justify-between text-sm text-muted-foreground mb-2">
+              <span className="font-semibold">Overall Progress</span>
+              <span className="font-bold">41%</span>
+            </div>
+            <div className="w-full h-3 bg-muted rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-primary via-secondary to-primary transition-all duration-500"
+                style={{ width: '41%' }}
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
           {[
     { phase: "Phase 1", title: t('roadmap.phase1'), status: "completed", items: t('roadmap.phase1Items', { returnObjects: true }) as string[], progress: 100 },
@@ -92,9 +108,17 @@ const Roadmap = () => {
 
               <ul className="space-y-2">
                 {Array.isArray(phase.items) && phase.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-2 text-sm md:text-base text-muted-foreground">
-                    <span className="text-primary mt-1">▸</span>
-                    <span>{item}</span>
+                  <li key={j} className="flex items-start gap-2 text-sm md:text-base">
+                    {phase.status === "completed" ? (
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    ) : phase.status === "current" && j < Math.floor(phase.items.length * (phase.progress / 100)) ? (
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    ) : (
+                      <Circle className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                    )}
+                    <span className={phase.status === "completed" || (phase.status === "current" && j < Math.floor(phase.items.length * (phase.progress / 100))) ? "text-foreground" : "text-muted-foreground"}>
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
