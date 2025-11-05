@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import Enter from "./pages/Enter";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
@@ -35,6 +36,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <SEOHead />
         <Toaster />
         <Sonner />
         <Routes>

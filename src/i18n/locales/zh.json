@@ -10,7 +10,7 @@
   },
   "hero": {
     "title": "$1TAP",
-    "subtitle": "终极游戏模因币",
+    "subtitle": "终极游戏Memecoin",
     "description": "像素怀旧遇上现代加密货币。加入游戏革命，每笔交易都是爆头。",
     "cta": "获取 $1TAP"
   },
@@ -20,12 +20,12 @@
     "privacy": "隐私与风险通知",
     "important": "重要 - 请仔细阅读",
     "risk": "⚠️ 高风险投资：",
-    "riskText": "$1TAP 是一种没有内在价值或财务回报预期的模因币。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
+    "riskText": "$1TAP 是一种没有内在价值或财务回报预期的memecoin。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
     "noAffiliation": "🚫 无附属关系：",
-    "noAffiliationText": "本项目与 Valve Corporation、Counter-Strike 或任何相关商标无关。这是一个社区驱动的娱乐性模因币。",
+    "noAffiliationText": "本项目与 Valve Corporation、Counter-Strike 或任何相关商标无关。这是一个社区驱动的娱乐性memecoin。",
     "privacy2": "🔒 隐私：",
     "privacyText": "使用本网站即表示您同意我们隐私政策中概述的数据收集做法。我们收集钱包地址和使用数据。",
-    "noGuarantees": "📉 无保证：",
+    "noGuarantees": "📉 零保证：",
     "noGuaranteesText": "过去的表现不代表未来的结果。不保证利润或效用。此代币可能随时流动性为零。",
     "legal": "⚖️ 法律合规：",
     "legalText": "您确认您不是美国公民，并且从合法司法管辖区访问本网站。您接受所有风险和法律责任。",
@@ -46,11 +46,11 @@
     "communityDrivenText": "每个决定都由持有者投票。您的声音很重要。",
     "liquidityLocked": "流动性锁定",
     "liquidityLockedText": "LP 锁定 6 个月。完全透明，没有跑路。",
-    "fairLaunch": "平衡启动",
+    "fairLaunch": "公平启动",
     "fairLaunchText": "为社区长期增长设计的公平分配。",
     "toTheMoon": "登月",
-    "toTheMoonText": "坚定持有，更强力点击。我们一起创造历史。",
-    "disclaimerNote": "请记住：模因币具有高度投机性。永远不要投资超过您能承受损失的金额。"
+    "toTheMoonText": "钻石手，更强力点击。我们一起创造历史。",
+    "disclaimerNote": "请记住：memecoin具有高度投机性。永远不要投资超过您能承受损失的金额。"
   },
   "tokenomics": {
     "title": "代币经济",
@@ -154,7 +154,7 @@
     "youtubeText": "订阅游戏视频和教程"
   },
   "footer": {
-    "tagline": "Base网络上的终极游戏模因币",
+    "tagline": "Base网络上的终极游戏memecoin",
     "quickLinks": "快速链接",
     "legal": "法律",
     "disclaimer": "免责声明",
@@ -164,7 +164,7 @@
     "nonAffiliation": "非关联声明",
     "legalNotice": "法律声明",
     "legalShield": "受 1TAP Legal Shield v1.0 保护",
-    "disclaimerText": "$1TAP 是一个没有内在价值且没有财务回报期望的模因币。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
+    "disclaimerText": "$1TAP 是一个没有内在价值且没有财务回报期望的memecoin。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
     "rights": "保留所有权利。",
     "contact": "联系方式"
   },

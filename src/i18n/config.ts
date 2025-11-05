@@ -5,6 +5,7 @@ import fr from './locales/fr.json';
 import es from './locales/es.json';
 import ru from './locales/ru.json';
 import zh from './locales/zh.json';
+import { getLanguageWithGeolocation } from '@/utils/ipGeolocation';
 
 // Get browser language or default to 'en'
 const getBrowserLanguage = () => {
@@ -13,33 +14,33 @@ const getBrowserLanguage = () => {
   return supportedLangs.includes(browserLang) ? browserLang : 'en';
 };
 
-// Get saved language preference or detect browser language
-const getInitialLanguage = () => {
-  // First check localStorage for user preference
-  const savedLang = localStorage.getItem('1tap-language');
-  if (savedLang && ['en', 'fr', 'es', 'ru', 'zh'].includes(savedLang)) {
-    return savedLang;
-  }
-  // Fallback to browser detection
-  return getBrowserLanguage();
+// Get saved language preference or detect via IP geolocation + browser
+const getInitialLanguage = async () => {
+  // Use geolocation-enhanced detection
+  return await getLanguageWithGeolocation();
 };
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: { translation: en },
-      fr: { translation: fr },
-      es: { translation: es },
-      ru: { translation: ru },
-      zh: { translation: zh }
-    },
-    lng: getInitialLanguage(),
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false
-    }
-  });
+// Initialize with async language detection
+(async () => {
+  const initialLang = await getInitialLanguage();
+  
+  await i18n
+    .use(initReactI18next)
+    .init({
+      resources: {
+        en: { translation: en },
+        fr: { translation: fr },
+        es: { translation: es },
+        ru: { translation: ru },
+        zh: { translation: zh }
+      },
+      lng: initialLang,
+      fallbackLng: 'en',
+      interpolation: {
+        escapeValue: false
+      }
+    });
+})();
 
 // Save language preference whenever it changes
 i18n.on('languageChanged', (lng) => {
