@@ -83,7 +83,8 @@ const TokenomicsChart = () => {
                     y="50%" 
                     textAnchor="middle" 
                     dominantBaseline="middle"
-                    className="fill-foreground font-bold text-3xl"
+                    className="fill-white font-bold text-3xl drop-shadow-lg"
+                    style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))' }}
                   >
                     {`${value}%`}
                   </text>
