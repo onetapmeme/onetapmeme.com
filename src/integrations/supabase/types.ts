@@ -107,6 +107,71 @@ export type Database = {
         }
         Relationships: []
       }
+      meme_votes: {
+        Row: {
+          created_at: string | null
+          id: string
+          meme_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          meme_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          meme_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meme_votes_meme_id_fkey"
+            columns: ["meme_id"]
+            isOneToOne: false
+            referencedRelation: "memes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memes: {
+        Row: {
+          accessories: Json | null
+          background: string | null
+          created_at: string | null
+          id: string
+          image_url: string
+          shares: number | null
+          template_name: string | null
+          user_id: string | null
+          views: number | null
+        }
+        Insert: {
+          accessories?: Json | null
+          background?: string | null
+          created_at?: string | null
+          id?: string
+          image_url: string
+          shares?: number | null
+          template_name?: string | null
+          user_id?: string | null
+          views?: number | null
+        }
+        Update: {
+          accessories?: Json | null
+          background?: string | null
+          created_at?: string | null
+          id?: string
+          image_url?: string
+          shares?: number | null
+          template_name?: string | null
+          user_id?: string | null
+          views?: number | null
+        }
+        Relationships: []
+      }
       partnerships: {
         Row: {
           announcement_date: string | null
@@ -292,6 +357,39 @@ export type Database = {
           },
         ]
       }
+      user_xp: {
+        Row: {
+          id: string
+          level: number | null
+          memes_created: number | null
+          shares_count: number | null
+          total_xp: number | null
+          updated_at: string | null
+          user_id: string | null
+          votes_received: number | null
+        }
+        Insert: {
+          id?: string
+          level?: number | null
+          memes_created?: number | null
+          shares_count?: number | null
+          total_xp?: number | null
+          updated_at?: string | null
+          user_id?: string | null
+          votes_received?: number | null
+        }
+        Update: {
+          id?: string
+          level?: number | null
+          memes_created?: number | null
+          shares_count?: number | null
+          total_xp?: number | null
+          updated_at?: string | null
+          user_id?: string | null
+          votes_received?: number | null
+        }
+        Relationships: []
+      }
       wallet_stats: {
         Row: {
           created_at: string
@@ -330,7 +428,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      calculate_level: { Args: { xp: number }; Returns: number }
     }
     Enums: {
       [_ in never]: never
