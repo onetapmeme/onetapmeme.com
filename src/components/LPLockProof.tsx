@@ -3,6 +3,7 @@ import { Lock, ExternalLink, Calendar, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { LAUNCH_CONFIG } from '@/config/launch';
 
 interface LPLockProofProps {
   className?: string;
@@ -12,13 +13,15 @@ const LPLockProof = ({ className = '' }: LPLockProofProps) => {
   const { t } = useTranslation();
   const [timeRemaining, setTimeRemaining] = useState('');
 
-  // Placeholder data - will be updated with real lock info
+  // Get LP lock data from launch config
   const lockData = {
-    platform: 'Team.Finance',
-    lockUrl: 'https://www.team.finance/view-coin/0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8?name=ONETAP&symbol=ONETAP',
-    amount: '95%',
-    unlockDate: new Date('2025-07-06'), // 6 months from now
-    verified: true,
+    platform: LAUNCH_CONFIG.lpLock.platform,
+    lockUrl: LAUNCH_CONFIG.lpLock.lockUrl,
+    amount: LAUNCH_CONFIG.lpLock.amount,
+    unlockDate: LAUNCH_CONFIG.lpLock.unlockDate 
+      ? new Date(LAUNCH_CONFIG.lpLock.unlockDate)
+      : new Date(Date.now() + 180 * 24 * 60 * 60 * 1000), // Default: 6 months from now
+    verified: LAUNCH_CONFIG.lpLock.locked,
   };
 
   useEffect(() => {

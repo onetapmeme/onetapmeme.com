@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import PreLaunchBanner from "@/components/PreLaunchBanner";
 import Enter from "./pages/Enter";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
@@ -37,6 +38,7 @@ const App = () => (
     <BrowserRouter>
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
         <SEOHead />
+        <PreLaunchBanner />
         <Toaster />
         <Sonner />
         <Routes>

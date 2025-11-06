@@ -321,6 +321,15 @@
     "unlockDate": "Unlock Date",
     "unlocked": "Unlocked"
   },
+  "preLaunch": {
+    "title": "🚀 Launching Soon",
+    "subtitle": "Get ready for the $1TAP token launch",
+    "days": "days",
+    "hours": "hrs",
+    "minutes": "min",
+    "seconds": "sec",
+    "joinWaitlist": "Join Waitlist"
+  },
   "leaderboard": {
     "title": "Top Tappers",
     "noData": "No tapper data yet. Be the first!",

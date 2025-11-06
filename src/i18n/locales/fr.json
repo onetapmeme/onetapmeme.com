@@ -300,6 +300,15 @@
     "unlockDate": "Date de Déverrouillage",
     "unlocked": "Déverrouillé"
   },
+  "preLaunch": {
+    "title": "🚀 Lancement Imminent",
+    "subtitle": "Préparez-vous pour le lancement du token $1TAP",
+    "days": "jours",
+    "hours": "hrs",
+    "minutes": "min",
+    "seconds": "sec",
+    "joinWaitlist": "Rejoindre la Liste"
+  },
   "leaderboard": {
     "title": "Top Tappers",
     "noData": "Aucune donnée pour le moment. Soyez le premier !",

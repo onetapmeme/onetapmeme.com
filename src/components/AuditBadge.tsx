@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Shield, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
+import { LAUNCH_CONFIG } from '@/config/launch';
 
 interface AuditBadgeProps {
   variant?: 'inline' | 'card';
@@ -11,13 +12,13 @@ interface AuditBadgeProps {
 const AuditBadge = ({ variant = 'inline', className = '' }: AuditBadgeProps) => {
   const { t } = useTranslation();
 
-  // Placeholder data - will be updated with real audit info
+  // Get audit data from launch config
   const auditData = {
-    auditor: 'Pending', // Will be: CertiK, Solidproof, HashEx
-    status: 'scheduled', // scheduled, in-progress, completed
-    score: null, // Will be: 96/100
-    reportUrl: null, // Will be: IPFS link
-    date: null, // Will be: 2025-01-15
+    auditor: LAUNCH_CONFIG.audit.auditor || 'Pending',
+    status: LAUNCH_CONFIG.audit.completed ? 'completed' : 'scheduled',
+    score: LAUNCH_CONFIG.audit.score,
+    reportUrl: LAUNCH_CONFIG.audit.reportUrl,
+    date: LAUNCH_CONFIG.audit.date,
   };
 
   if (variant === 'inline') {
