@@ -279,6 +279,34 @@
     "epicDrop": "Drop Épique",
     "legendaryDrop": "Drop Légendaire"
   },
+  "audit": {
+    "title": "Audit de Sécurité",
+    "verified": "Audité",
+    "scheduled": "Audit Planifié",
+    "scheduledDesc": "Audit de sécurité professionnel en cours. Les résultats seront publiés prochainement.",
+    "inProgress": "Audit en cours",
+    "completedBy": "Audité par",
+    "score": "Score de Sécurité",
+    "viewReport": "Voir le Rapport Complet"
+  },
+  "lpLock": {
+    "title": "Liquidité Verrouillée",
+    "description": "Les tokens LP sont verrouillés pour assurer la protection des investisseurs et la stabilité à long terme",
+    "verified": "Vérifié",
+    "amountLocked": "Montant Verrouillé",
+    "timeRemaining": "Temps Restant",
+    "platform": "Plateforme",
+    "viewProof": "Voir la Preuve",
+    "unlockDate": "Date de Déverrouillage",
+    "unlocked": "Déverrouillé"
+  },
+  "leaderboard": {
+    "title": "Top Tappers",
+    "noData": "Aucune donnée pour le moment. Soyez le premier !",
+    "clicks": "clics",
+    "xp": "XP",
+    "updateInfo": "Mise à jour toutes les 30 secondes"
+  },
   "community": {
     "title": "Rejoins Notre Communauté",
     "subtitle": "Connecte-toi avec d'autres gamers et crypto enthusiasts. Fais partie de la révolution !",

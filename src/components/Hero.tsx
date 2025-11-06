@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import AudioControls from "@/components/AudioControls";
 import LiveHolderCount from "@/components/LiveHolderCount";
 import LiveMarketCap from "@/components/LiveMarketCap";
+import AuditBadge from "@/components/AuditBadge";
 import { motion } from "framer-motion";
 const Hero = () => {
   const navigate = useNavigate();
@@ -177,10 +178,7 @@ const Hero = () => {
           duration: 0.6,
           delay: 0.3
         }} className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-10 px-4">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30">
-              <Shield className="w-4 h-4 text-green-500" />
-              <span className="text-xs font-semibold text-green-500">{t('hero.contractVerified')}</span>
-            </div>
+            <AuditBadge variant="inline" />
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30">
               <Lock className="w-4 h-4 text-blue-500" />
               <span className="text-xs font-semibold text-blue-500">{t('hero.lpLocked')}</span>

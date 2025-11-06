@@ -300,6 +300,34 @@
     "youtube": "YouTube",
     "youtubeText": "Subscribe for gaming videos and tutorials"
   },
+  "audit": {
+    "title": "Security Audit",
+    "verified": "Audited",
+    "scheduled": "Audit Scheduled",
+    "scheduledDesc": "Professional security audit in progress. Results will be published soon.",
+    "inProgress": "Audit in progress",
+    "completedBy": "Audited by",
+    "score": "Security Score",
+    "viewReport": "View Full Report"
+  },
+  "lpLock": {
+    "title": "Liquidity Lock",
+    "description": "LP tokens are locked to ensure investor protection and long-term stability",
+    "verified": "Verified",
+    "amountLocked": "Amount Locked",
+    "timeRemaining": "Time Remaining",
+    "platform": "Platform",
+    "viewProof": "View Proof",
+    "unlockDate": "Unlock Date",
+    "unlocked": "Unlocked"
+  },
+  "leaderboard": {
+    "title": "Top Tappers",
+    "noData": "No tapper data yet. Be the first!",
+    "clicks": "clicks",
+    "xp": "XP",
+    "updateInfo": "Updates every 30 seconds"
+  },
   "footer": {
     "tagline": "The ultimate gaming memecoin on Base Network",
     "quickLinks": "Quick Links",

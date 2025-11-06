@@ -3,6 +3,7 @@ import { Trophy, Sparkles, Gift, Zap, Crown, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import TapSimulatorGame from "@/components/TapSimulatorGame";
+import TapLeaderboard from "@/components/TapLeaderboard";
 
 const TapToEarnSection = () => {
   const { t } = useTranslation();
@@ -104,15 +105,13 @@ const TapToEarnSection = () => {
           ))}
         </div>
 
-        {/* Game Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto mb-16">
-          {/* Left: Game */}
-          <div className="flex justify-center">
+        {/* Game and Leaderboard Section */}
+        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+          {/* Left: Game (2 columns) */}
+          <div className="lg:col-span-2 space-y-8">
             <TapSimulatorGame />
-          </div>
-
-          {/* Right: Rarity Explanation */}
-          <div className="space-y-6">
+            
+            {/* Rarity Tiers */}
             <Card className="p-6 md:p-8 glass-effect border-primary/30">
               <div className="flex items-center gap-3 mb-6">
                 <Star className="w-8 h-8 text-yellow-400" style={{ filter: 'drop-shadow(0 0 20px currentColor)' }} />
@@ -142,6 +141,7 @@ const TapToEarnSection = () => {
               </div>
             </Card>
 
+            {/* How It Works */}
             <Card className="p-6 glass-effect border-accent/30">
               <h3 className="text-xl font-bold mb-4 text-foreground flex items-center gap-2">
                 <Gift className="w-6 h-6 text-accent" />
@@ -170,6 +170,13 @@ const TapToEarnSection = () => {
                 </li>
               </ul>
             </Card>
+          </div>
+
+          {/* Right: Leaderboard (1 column) */}
+          <div className="lg:col-span-1">
+            <div className="lg:sticky lg:top-24">
+              <TapLeaderboard />
+            </div>
           </div>
         </div>
 

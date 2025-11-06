@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import LPLockProof from "@/components/LPLockProof";
+import AuditBadge from "@/components/AuditBadge";
 
 const Token = () => {
   const { t } = useTranslation();
@@ -116,6 +118,12 @@ const Token = () => {
               </Button>
             </div>
           </Card>
+
+          {/* LP Lock Proof */}
+          <LPLockProof className="mb-8" />
+
+          {/* Audit Badge */}
+          <AuditBadge variant="card" className="mb-8" />
 
           {/* Links Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
