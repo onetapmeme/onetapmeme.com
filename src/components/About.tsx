@@ -112,9 +112,9 @@ const About = () => {
         </motion.div>
 
         {/* Features Grid - Premium Cards */}
-        <div className="overflow-hidden">
+        <div className="overflow-hidden px-2 sm:px-0">
           <motion.div 
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-4 sm:gap-x-4 sm:gap-y-5 md:gap-8"
             initial={{ opacity: 0 }}
             animate={isVisible ? { opacity: 1 } : {}}
             transition={{ duration: 1, delay: 0.6 }}
