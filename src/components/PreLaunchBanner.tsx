@@ -2,29 +2,54 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Rocket, X, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { LAUNCH_CONFIG, getTimeUntilLaunch } from '@/config/launch';
+import { getLaunchConfig, getTimeUntilLaunch } from '@/config/launch';
 import { Button } from '@/components/ui/button';
 
 const PreLaunchBanner = () => {
   const { t } = useTranslation();
-  const [timeRemaining, setTimeRemaining] = useState(getTimeUntilLaunch());
-  const [isVisible, setIsVisible] = useState(!LAUNCH_CONFIG.isLaunched);
+  const [timeRemaining, setTimeRemaining] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  } | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Hide banner if already launched
-    if (LAUNCH_CONFIG.isLaunched) {
-      setIsVisible(false);
-      return;
-    }
+    const updateCountdown = async () => {
+      const config = await getLaunchConfig();
+      
+      // Hide banner if already launched
+      if (config.isLaunched) {
+        setIsVisible(false);
+        return;
+      }
+
+      // Get initial time
+      const time = await getTimeUntilLaunch();
+      setTimeRemaining(time);
+    };
+
+    // Initial update
+    updateCountdown();
 
     // Update countdown every second
-    const interval = setInterval(() => {
-      const time = getTimeUntilLaunch();
+    const interval = setInterval(async () => {
+      const config = await getLaunchConfig();
+      
+      if (config.isLaunched) {
+        setIsVisible(false);
+        clearInterval(interval);
+        return;
+      }
+
+      const time = await getTimeUntilLaunch();
       setTimeRemaining(time);
       
       // Hide banner when launch time is reached
       if (!time) {
         setIsVisible(false);
+        clearInterval(interval);
       }
     }, 1000);
 

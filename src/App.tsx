@@ -30,6 +30,7 @@ import Leaderboard from "./pages/Leaderboard";
 import Achievements from "./pages/Achievements";
 import Manifesto from "./pages/Manifesto";
 import Integrations from "./pages/Integrations";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => (
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/integrations" element={<Integrations />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

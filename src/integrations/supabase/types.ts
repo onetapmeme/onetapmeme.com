@@ -107,6 +107,69 @@ export type Database = {
         }
         Relationships: []
       }
+      launch_config: {
+        Row: {
+          audit_auditor: string | null
+          audit_completed: boolean
+          audit_date: string | null
+          audit_report_url: string | null
+          audit_score: string | null
+          buy_link: string
+          chart_link: string
+          contract_address: string
+          id: string
+          is_launched: boolean
+          launch_date: string
+          lp_amount: string
+          lp_lock_url: string
+          lp_locked: boolean
+          lp_platform: string
+          lp_unlock_date: string | null
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          audit_auditor?: string | null
+          audit_completed?: boolean
+          audit_date?: string | null
+          audit_report_url?: string | null
+          audit_score?: string | null
+          buy_link: string
+          chart_link: string
+          contract_address: string
+          id?: string
+          is_launched?: boolean
+          launch_date: string
+          lp_amount: string
+          lp_lock_url: string
+          lp_locked?: boolean
+          lp_platform: string
+          lp_unlock_date?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          audit_auditor?: string | null
+          audit_completed?: boolean
+          audit_date?: string | null
+          audit_report_url?: string | null
+          audit_score?: string | null
+          buy_link?: string
+          chart_link?: string
+          contract_address?: string
+          id?: string
+          is_launched?: boolean
+          launch_date?: string
+          lp_amount?: string
+          lp_lock_url?: string
+          lp_locked?: boolean
+          lp_platform?: string
+          lp_unlock_date?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       meme_votes: {
         Row: {
           created_at: string | null
@@ -357,6 +420,27 @@ export type Database = {
           },
         ]
       }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_xp: {
         Row: {
           id: string
@@ -429,13 +513,20 @@ export type Database = {
     }
     Functions: {
       calculate_level: { Args: { xp: number }; Returns: number }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       increment_user_xp: {
         Args: { user_id_param: string; xp_amount: number }
         Returns: undefined
       }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -562,6 +653,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const

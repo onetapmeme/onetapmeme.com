@@ -1,9 +1,9 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Lock, ExternalLink, Calendar, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
-import { LAUNCH_CONFIG } from '@/config/launch';
+import { getLaunchConfig, type LaunchConfig } from '@/config/launch';
 
 interface LPLockProofProps {
   className?: string;
@@ -12,19 +12,30 @@ interface LPLockProofProps {
 const LPLockProof = ({ className = '' }: LPLockProofProps) => {
   const { t } = useTranslation();
   const [timeRemaining, setTimeRemaining] = useState('');
-
-  // Get LP lock data from launch config
-  const lockData = {
-    platform: LAUNCH_CONFIG.lpLock.platform,
-    lockUrl: LAUNCH_CONFIG.lpLock.lockUrl,
-    amount: LAUNCH_CONFIG.lpLock.amount,
-    unlockDate: LAUNCH_CONFIG.lpLock.unlockDate 
-      ? new Date(LAUNCH_CONFIG.lpLock.unlockDate)
-      : new Date(Date.now() + 180 * 24 * 60 * 60 * 1000), // Default: 6 months from now
-    verified: LAUNCH_CONFIG.lpLock.locked,
-  };
+  const [config, setConfig] = useState<LaunchConfig | null>(null);
 
   useEffect(() => {
+    const fetchConfig = async () => {
+      const data = await getLaunchConfig();
+      setConfig(data);
+    };
+    fetchConfig();
+  }, []);
+
+  // Get LP lock data from launch config
+  const lockData = config ? {
+    platform: config.lpLock.platform,
+    lockUrl: config.lpLock.lockUrl,
+    amount: config.lpLock.amount,
+    unlockDate: config.lpLock.unlockDate 
+      ? new Date(config.lpLock.unlockDate)
+      : new Date(Date.now() + 180 * 24 * 60 * 60 * 1000), // Default: 6 months from now
+    verified: config.lpLock.locked,
+  } : null;
+
+  useEffect(() => {
+    if (!lockData) return;
+
     const calculateTimeRemaining = () => {
       const now = new Date();
       const diff = lockData.unlockDate.getTime() - now.getTime();
@@ -44,7 +55,9 @@ const LPLockProof = ({ className = '' }: LPLockProofProps) => {
     const interval = setInterval(calculateTimeRemaining, 60000); // Update every minute
 
     return () => clearInterval(interval);
-  }, [lockData.unlockDate, t]);
+  }, [lockData, t]);
+
+  if (!lockData) return null;
 
   return (
     <Card className={`glass-effect p-6 border-2 border-primary/30 hover:border-primary/50 transition-all duration-500 ${className}`}>

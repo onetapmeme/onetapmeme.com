@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Shield, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
-import { LAUNCH_CONFIG } from '@/config/launch';
+import { getLaunchConfig, type LaunchConfig } from '@/config/launch';
 
 interface AuditBadgeProps {
   variant?: 'inline' | 'card';
@@ -11,14 +12,25 @@ interface AuditBadgeProps {
 
 const AuditBadge = ({ variant = 'inline', className = '' }: AuditBadgeProps) => {
   const { t } = useTranslation();
+  const [config, setConfig] = useState<LaunchConfig | null>(null);
+
+  useEffect(() => {
+    const fetchConfig = async () => {
+      const data = await getLaunchConfig();
+      setConfig(data);
+    };
+    fetchConfig();
+  }, []);
+
+  if (!config) return null;
 
   // Get audit data from launch config
   const auditData = {
-    auditor: LAUNCH_CONFIG.audit.auditor || 'Pending',
-    status: LAUNCH_CONFIG.audit.completed ? 'completed' : 'scheduled',
-    score: LAUNCH_CONFIG.audit.score,
-    reportUrl: LAUNCH_CONFIG.audit.reportUrl,
-    date: LAUNCH_CONFIG.audit.date,
+    auditor: config.audit.auditor || 'Pending',
+    status: config.audit.completed ? 'completed' : 'scheduled',
+    score: config.audit.score,
+    reportUrl: config.audit.reportUrl,
+    date: config.audit.date,
   };
 
   if (variant === 'inline') {
