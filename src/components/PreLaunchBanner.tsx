@@ -68,10 +68,10 @@ const PreLaunchBanner = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary via-primary-glow to-primary backdrop-blur-sm border-b border-primary/30"
       >
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between gap-4">
+        <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
             {/* Left: Icon + Message */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
               <motion.div
                 animate={{ 
                   rotate: [0, -10, 10, -10, 0],
@@ -83,13 +83,13 @@ const PreLaunchBanner = () => {
                   repeatDelay: 3
                 }}
               >
-                <Rocket className="w-5 h-5 text-white" />
+                <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </motion.div>
               <div>
-                <p className="text-sm font-bold text-white">
+                <p className="text-xs sm:text-sm font-bold text-white">
                   {t('preLaunch.title')}
                 </p>
-                <p className="text-xs text-white/80 hidden sm:block">
+                <p className="text-[10px] sm:text-xs text-white/80 hidden md:block">
                   {t('preLaunch.subtitle')}
                 </p>
               </div>
@@ -97,19 +97,23 @@ const PreLaunchBanner = () => {
 
             {/* Center: Countdown */}
             {timeRemaining && (
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-white/80" />
-                <div className="flex gap-1 sm:gap-2 text-white font-mono">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-white/80" />
+                <div className="flex gap-1 text-white font-mono text-xs sm:text-base">
                   <CountdownUnit value={timeRemaining.days} label={t('preLaunch.days')} />
                   <span className="text-white/60">:</span>
                   <CountdownUnit value={timeRemaining.hours} label={t('preLaunch.hours')} />
-                  <span className="text-white/60">:</span>
-                  <CountdownUnit value={timeRemaining.minutes} label={t('preLaunch.minutes')} />
                   <span className="text-white/60 hidden sm:inline">:</span>
+                  <CountdownUnit 
+                    value={timeRemaining.minutes} 
+                    label={t('preLaunch.minutes')}
+                    className="hidden sm:flex"
+                  />
+                  <span className="text-white/60 hidden md:inline">:</span>
                   <CountdownUnit 
                     value={timeRemaining.seconds} 
                     label={t('preLaunch.seconds')} 
-                    className="hidden sm:flex"
+                    className="hidden md:flex"
                   />
                 </div>
               </div>
@@ -120,7 +124,7 @@ const PreLaunchBanner = () => {
               <Button
                 size="sm"
                 variant="secondary"
-                className="bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs"
+                className="bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs hidden md:flex"
                 onClick={() => {
                   // Scroll to newsletter or waitlist section
                   const element = document.getElementById('community');
@@ -131,10 +135,10 @@ const PreLaunchBanner = () => {
               </Button>
               <button
                 onClick={() => setIsVisible(false)}
-                className="p-1 rounded hover:bg-white/10 transition-colors"
+                className="p-1.5 sm:p-1 rounded hover:bg-white/10 transition-colors"
                 aria-label="Close banner"
               >
-                <X className="w-4 h-4 text-white/60 hover:text-white" />
+                <X className="w-5 h-5 sm:w-4 sm:h-4 text-white/60 hover:text-white" />
               </button>
             </div>
           </div>
@@ -156,11 +160,11 @@ const CountdownUnit = ({ value, label, className = '' }: CountdownUnitProps) => 
       key={value}
       initial={{ scale: 1.2, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="text-lg sm:text-xl font-bold leading-none"
+      className="text-sm sm:text-lg md:text-xl font-bold leading-none"
     >
       {String(value).padStart(2, '0')}
     </motion.span>
-    <span className="text-[8px] sm:text-[10px] text-white/60 uppercase leading-none mt-0.5">
+    <span className="text-[9px] sm:text-[10px] text-white/60 uppercase leading-none mt-0.5">
       {label}
     </span>
   </div>
