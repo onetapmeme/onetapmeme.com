@@ -86,6 +86,9 @@ const Navbar = () => {
           }} className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 font-medium">
                   {item.name}
                 </a>)}
+            <Button variant="hero" size="sm" asChild>
+              <a href="/auth">Login</a>
+            </Button>
             <ThemeToggle />
             
           </div>
@@ -115,10 +118,10 @@ const Navbar = () => {
                 }}>
                         {item.name}
                       </a>)}
-                  <Button variant="hero" className="mt-4" onClick={() => {
-                  setIsMobileMenuOpen(false);
-                }}>
-                    {t('hero.cta')}
+                  <Button variant="hero" className="mt-4" asChild>
+                    <a href="/auth" onClick={() => setIsMobileMenuOpen(false)}>
+                      Login
+                    </a>
                   </Button>
                 </div>
               </SheetContent>
