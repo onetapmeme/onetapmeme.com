@@ -8,6 +8,7 @@ import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import PreLaunchBanner from "@/components/PreLaunchBanner";
 const Enter = () => {
   const navigate = useNavigate();
   const {
@@ -47,6 +48,7 @@ const Enter = () => {
     }, 800);
   };
   return <div className="min-h-screen bg-background relative overflow-hidden">
+      <PreLaunchBanner />
       <div className="language-switcher">
         <LanguageSwitcher />
       </div>
