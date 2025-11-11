@@ -79,6 +79,7 @@ const Footer = () => {
             <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4 text-foreground">Resources</h4>
             <nav className="flex flex-col gap-2">
               {[
+                { label: "Team", path: "/team" },
                 { label: "Manifesto", path: "/manifesto" },
                 { label: "Integrations", path: "/integrations" },
                 { label: "Blog", path: "/blog" },
@@ -96,6 +97,13 @@ const Footer = () => {
                   {link.label}
                 </a>
               ))}
+              <a
+                href="/whitepaper-v2.pdf"
+                download
+                className="text-xs md:text-sm text-primary hover:text-primary/80 transition-colors font-semibold"
+              >
+                📄 Download PDF
+              </a>
             </nav>
           </div>
 

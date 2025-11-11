@@ -39,6 +39,10 @@ const Navbar = () => {
     href: "#tokenomics",
     onClick: () => scrollToSection('tokenomics')
   }, {
+    name: "Team",
+    href: "/team",
+    isExternal: true
+  }, {
     name: "Manifesto",
     href: "/manifesto",
     isExternal: true
