@@ -1,0 +1,938 @@
+%PDF-1.7
+%âãÏÓ
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+/Metadata 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R]
+/Count 8
+>>
+endobj
+3 0 obj
+<<
+/Type /Metadata
+/Subtype /XML
+/Length 0
+>>
+stream
+endstream
+endobj
+4 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 12 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+5 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 15 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+6 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 16 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+7 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 17 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+8 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 18 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 19 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+10 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 20 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+11 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 21 0 R
+/Resources <<
+/Font <<
+/F1 13 0 R
+/F2 14 0 R
+>>
+>>
+>>
+endobj
+12 0 obj
+<<
+/Length 2400
+>>
+stream
+BT
+/F1 32 Tf
+50 730 Td
+($ONETAP) Tj
+0 -15 Td
+/F2 24 Tf
+(WHITEPAPER v2.0) Tj
+
+0 -60 Td
+/F1 20 Tf
+(Professional Documentation) Tj
+
+0 -80 Td
+/F2 14 Tf
+(Building the Future of Gaming Memecoins) Tj
+
+0 -120 Td
+/F1 10 Tf
+(Network: Base \(Ethereum L2\)) Tj
+0 -20 Td
+(Symbol: $1TAP) Tj
+0 -20 Td
+(Total Supply: 1,000,000,000) Tj
+0 -20 Td
+(Launch: Q1 2025) Tj
+
+0 -100 Td
+/F2 12 Tf
+(=====================================) Tj
+0 -30 Td
+(TABLE OF CONTENTS) Tj
+0 -30 Td
+/F1 11 Tf
+(1. Executive Summary .......................... 2) Tj
+0 -18 Td
+(2. Vision & Mission ........................... 3) Tj
+0 -18 Td
+(3. Tokenomics ................................. 4) Tj
+0 -18 Td
+(4. Roadmap 2025 ............................... 5) Tj
+0 -18 Td
+(5. Ecosystem & Features ....................... 6) Tj
+0 -18 Td
+(6. Team ....................................... 7) Tj
+0 -18 Td
+(7. Security & Compliance ...................... 8) Tj
+0 -18 Td
+(8. Legal Disclaimer ........................... 8) Tj
+
+0 -80 Td
+/F2 8 Tf
+(Version 2.0 - January 2025) Tj
+0 -15 Td
+(For more information: https://onetap.gg) Tj
+
+ET
+endstream
+endobj
+13 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+15 0 obj
+<<
+/Length 2200
+>>
+stream
+BT
+/F1 18 Tf
+50 730 Td
+(1. EXECUTIVE SUMMARY) Tj
+
+0 -40 Td
+/F2 12 Tf
+(What is $ONETAP?) Tj
+0 -25 Td
+/F1 11 Tf
+($ONETAP is a community-driven cryptocurrency project built on the Base) Tj
+0 -18 Td
+(network, combining gaming culture with decentralized finance. We create an) Tj
+0 -18 Td
+(ecosystem where meme culture meets real utility through innovative) Tj
+0 -18 Td
+(tap-to-earn mechanics and NFT systems.) Tj
+
+0 -40 Td
+/F2 12 Tf
+(The Problem We Solve) Tj
+0 -25 Td
+/F1 11 Tf
+(Traditional memecoins lack sustainable engagement mechanisms. Most projects) Tj
+0 -18 Td
+(rely solely on hype without delivering lasting value to their communities.) Tj
+0 -18 Td
+($ONETAP addresses this by creating multiple engagement touchpoints:) Tj
+0 -18 Td
+(interactive games, NFT drops, community rewards, and transparent governance.) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Our Solution) Tj
+0 -25 Td
+/F1 11 Tf
+(- Tap-to-Earn Game: Engaging click-based game with XP and rank systems) Tj
+0 -18 Td
+(- NFT Drop Roulette: Unique collectibles based on player ranks) Tj
+0 -18 Td
+(- Zero Tax Trading: 0% buy/sell fees for frictionless trading) Tj
+0 -18 Td
+(- Locked Liquidity: 85% LP locked for 6 months minimum) Tj
+0 -18 Td
+(- Community Governance: DAO voting for major decisions) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Key Metrics) Tj
+0 -25 Td
+/F1 11 Tf
+(Total Supply: 1,000,000,000 $ONETAP) Tj
+0 -18 Td
+(Network: Base \(Ethereum Layer 2\)) Tj
+0 -18 Td
+(Contract: Renounced ownership post-launch) Tj
+0 -18 Td
+(Audit: Scheduled Q3 2025 \(Hacken or CertiK\)) Tj
+0 -18 Td
+(Launch Date: Q1 2025) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Target Audience) Tj
+0 -25 Td
+/F1 11 Tf
+(- Crypto enthusiasts seeking fair launch opportunities) Tj
+0 -18 Td
+(- Gaming communities interested in Web3 integration) Tj
+0 -18 Td
+(- Meme culture participants looking for engaged communities) Tj
+0 -18 Td
+(- Long-term holders valuing transparency and utility) Tj
+
+ET
+endstream
+endobj
+16 0 obj
+<<
+/Length 2100
+>>
+stream
+BT
+/F1 18 Tf
+50 730 Td
+(2. VISION & MISSION) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Our Vision) Tj
+0 -25 Td
+/F1 11 Tf
+(To become the leading gaming-themed cryptocurrency, bridging traditional) Tj
+0 -18 Td
+(gamers into Web3 through familiar mechanics and engaging experiences.) Tj
+0 -18 Td
+(We envision a future where gaming communities are empowered by) Tj
+0 -18 Td
+(decentralized ownership and transparent governance.) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Our Mission) Tj
+0 -25 Td
+/F1 11 Tf
+(Create sustainable value through:) Tj
+0 -18 Td
+(1. Community Engagement - Building active, passionate communities) Tj
+0 -18 Td
+(2. Innovative Features - Developing unique gaming and DeFi mechanics) Tj
+0 -18 Td
+(3. Transparent Governance - Implementing fair, community-driven decisions) Tj
+0 -18 Td
+(4. Meme Culture - Maintaining fun while delivering real utility) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Core Values) Tj
+0 -25 Td
+/F1 11 Tf
+(TRANSPARENCY) Tj
+0 -18 Td
+(All operations are on-chain and publicly verifiable. Smart contracts are) Tj
+0 -18 Td
+(open-source. Team actions are communicated clearly to the community.) Tj
+
+0 -30 Td
+(FAIRNESS) Tj
+0 -18 Td
+(Zero taxes on trades. No pre-mine or insider allocations. Equal opportunity) Tj
+0 -18 Td
+(for all participants to earn and benefit from ecosystem growth.) Tj
+
+0 -30 Td
+(INNOVATION) Tj
+0 -18 Td
+(Constantly developing new features and utilities. Listening to community) Tj
+0 -18 Td
+(feedback and adapting roadmap based on real user needs.) Tj
+
+0 -30 Td
+(COMMUNITY FIRST) Tj
+0 -18 Td
+(All major decisions require community input. Rewards distributed fairly to) Tj
+0 -18 Td
+(active participants. Building for long-term sustainability, not quick pumps.) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Long-Term Goals) Tj
+0 -25 Td
+/F1 11 Tf
+(- Establish $ONETAP as the go-to gaming memecoin) Tj
+0 -18 Td
+(- Build a sustainable ecosystem with multiple revenue streams) Tj
+0 -18 Td
+(- Create partnerships with gaming platforms and influencers) Tj
+0 -18 Td
+(- Launch DAO governance for community-driven development) Tj
+
+ET
+endstream
+endobj
+17 0 obj
+<<
+/Length 2400
+>>
+stream
+BT
+/F1 18 Tf
+50 730 Td
+(3. TOKENOMICS) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Token Details) Tj
+0 -25 Td
+/F1 11 Tf
+(Name: OneTap) Tj
+0 -18 Td
+(Symbol: $1TAP) Tj
+0 -18 Td
+(Total Supply: 1,000,000,000 \(1 Billion\)) Tj
+0 -18 Td
+(Decimals: 18) Tj
+0 -18 Td
+(Network: Base \(Ethereum Layer 2\)) Tj
+0 -18 Td
+(Standard: ERC-20 Compatible) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Distribution Breakdown) Tj
+0 -25 Td
+/F1 11 Tf
+(85% - LIQUIDITY POOL \(850,000,000 tokens\)) Tj
+0 -18 Td
+(   Locked for 6 months minimum via trusted protocol) Tj
+0 -18 Td
+(   Extensions decided by DAO community vote) Tj
+0 -18 Td
+(   Lock proof publicly accessible on-chain) Tj
+
+0 -25 Td
+(10% - COMMUNITY REWARDS & AIRDROPS \(100,000,000 tokens\)) Tj
+0 -18 Td
+(   Distributed through tap-to-earn game mechanics) Tj
+0 -18 Td
+(   NFT drop rewards for active players) Tj
+0 -18 Td
+(   Community contests and events) Tj
+0 -18 Td
+(   Referral program rewards) Tj
+
+0 -25 Td
+(3% - MARKETING & PARTNERSHIPS \(30,000,000 tokens\)) Tj
+0 -18 Td
+(   Strategic marketing campaigns) Tj
+0 -18 Td
+(   Influencer partnerships and collaborations) Tj
+0 -18 Td
+(   Exchange listing fees) Tj
+0 -18 Td
+(   Community growth initiatives) Tj
+
+0 -25 Td
+(2% - TEAM \(20,000,000 tokens\)) Tj
+0 -18 Td
+(   1-year linear vesting schedule) Tj
+0 -18 Td
+(   No tokens unlocked until 3 months post-launch) Tj
+0 -18 Td
+(   Transparent vesting contract on-chain) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Tax Structure) Tj
+0 -25 Td
+/F1 14 Tf
+(0% BUY TAX  |  0% SELL TAX) Tj
+0 -25 Td
+/F1 11 Tf
+(We believe in fair trading without hidden fees. Revenue is generated) Tj
+0 -18 Td
+(through ecosystem utilities \(NFT sales, staking fees\), not transaction taxes.) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Security Features) Tj
+0 -25 Td
+/F1 11 Tf
+(- Anti-Whale: Max 2% per transaction, 3% per wallet) Tj
+0 -18 Td
+(- Anti-Bot: Launch protection mechanisms) Tj
+0 -18 Td
+(- Ownership: Renounced post-launch \(immutable contract\)) Tj
+0 -18 Td
+(- Audit: Scheduled Q3 2025 by reputable firm) Tj
+
+ET
+endstream
+endobj
+18 0 obj
+<<
+/Length 2300
+>>
+stream
+BT
+/F1 18 Tf
+50 730 Td
+(4. ROADMAP 2025) Tj
+
+0 -40 Td
+/F2 14 Tf
+(Q1 2025 - LAUNCH & FOUNDATION) Tj
+0 -25 Td
+/F1 11 Tf
+(COMPLETED:) Tj
+0 -18 Td
+(- Website launch with professional design) Tj
+0 -18 Td
+(- Tap-to-earn game with XP and rank systems) Tj
+0 -18 Td
+(- Community building \(Discord, Telegram, Twitter\)) Tj
+0 -18 Td
+(- Smart contract development and testing) Tj
+0 -18 Td
+(- Token launch on Base network) Tj
+0 -18 Td
+(- Initial liquidity lock \(6 months minimum\)) Tj
+0 -18 Td
+(- Marketing campaign kickoff) Tj
+0 -18 Td
+(- First NFT drop event) Tj
+
+0 -40 Td
+/F2 14 Tf
+(Q2 2025 - GROWTH & VISIBILITY) Tj
+0 -25 Td
+/F1 11 Tf
+(IN PROGRESS:) Tj
+0 -18 Td
+(- CoinGecko listing application) Tj
+0 -18 Td
+(- CoinMarketCap listing application) Tj
+0 -18 Td
+(- DEX trending campaigns \(Dextools, Dexscreener\)) Tj
+0 -18 Td
+(- Holder dashboard with real-time portfolio tracking) Tj
+0 -18 Td
+(- Referral system launch with rewards) Tj
+0 -18 Td
+(- NFT marketplace for trading drops) Tj
+0 -18 Td
+(- Community AMAs and transparency reports) Tj
+0 -18 Td
+(- Strategic partnerships announcement) Tj
+
+0 -40 Td
+/F2 14 Tf
+(Q3 2025 - UTILITY & ECOSYSTEM) Tj
+0 -25 Td
+/F1 11 Tf
+(PLANNED:) Tj
+0 -18 Td
+(- Staking platform \(multiple lock periods with APY\)) Tj
+0 -18 Td
+(- External smart contract audit \(Hacken or CertiK\)) Tj
+0 -18 Td
+(- Progressive Web App \(PWA\) for mobile) Tj
+0 -18 Td
+(- Major partnership announcements) Tj
+0 -18 Td
+(- First community-voted token burn) Tj
+0 -18 Td
+(- Advanced analytics dashboard) Tj
+0 -18 Td
+(- Liquidity expansion to additional DEXs) Tj
+
+0 -40 Td
+/F2 14 Tf
+(Q4 2025 - INNOVATION & EXPANSION) Tj
+0 -25 Td
+/F1 11 Tf
+(PLANNED:) Tj
+0 -18 Td
+(- Gaming platform integration \(beta testing\)) Tj
+0 -18 Td
+(- DAO governance platform launch) Tj
+0 -18 Td
+(- Launchpad for gaming-related tokens) Tj
+0 -18 Td
+(- Merchandise store \(apparel, collectibles\)) Tj
+0 -18 Td
+(- Major centralized exchange \(CEX\) listing target) Tj
+0 -18 Td
+(- Ecosystem expansion through strategic collaborations) Tj
+0 -18 Td
+(- Year-end community celebration event) Tj
+
+ET
+endstream
+endobj
+19 0 obj
+<<
+/Length 2200
+>>
+stream
+BT
+/F1 18 Tf
+50 730 Td
+(5. ECOSYSTEM & FEATURES) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Tap-to-Earn Game) Tj
+0 -25 Td
+/F1 11 Tf
+(Interactive click-based game where users earn XP and climb ranks.) Tj
+0 -18 Td
+(Features include:) Tj
+0 -18 Td
+(- Progressive rank system from Unranked to Global Elite) Tj
+0 -18 Td
+(- XP rewards for daily engagement) Tj
+0 -18 Td
+(- Leaderboards with weekly prizes) Tj
+0 -18 Td
+(- Achievement badges and milestones) Tj
+
+0 -40 Td
+/F2 12 Tf
+(NFT Drop Roulette) Tj
+0 -25 Td
+/F1 11 Tf
+(Unique collectibles with varying rarities based on player rank.) Tj
+0 -18 Td
+(Rarity tiers:) Tj
+0 -18 Td
+(- Common \(70%\): Basic cosmetic items) Tj
+0 -18 Td
+(- Rare \(20%\): Enhanced items with special effects) Tj
+0 -18 Td
+(- Epic \(8%\): Premium collectibles) Tj
+0 -18 Td
+(- Legendary \(2%\): Ultra-rare items with exclusive perks) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Staking Platform \(Q3 2025\)) Tj
+0 -25 Td
+/F1 11 Tf
+(Earn passive rewards by locking tokens.) Tj
+0 -18 Td
+(Options:) Tj
+0 -18 Td
+(- 30-day lock: 5% APY) Tj
+0 -18 Td
+(- 90-day lock: 12% APY) Tj
+0 -18 Td
+(- 180-day lock: 25% APY) Tj
+0 -18 Td
+(- 365-day lock: 50% APY) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Referral System) Tj
+0 -25 Td
+/F1 11 Tf
+(Grow the community and earn rewards.) Tj
+0 -18 Td
+(- Unique referral codes for all users) Tj
+0 -18 Td
+(- 5% bonus on referred user's first purchase) Tj
+0 -18 Td
+(- Tiered rewards based on total referrals) Tj
+0 -18 Td
+(- Leaderboard for top referrers with special prizes) Tj
+
+0 -40 Td
+/F2 12 Tf
+(NFT Marketplace \(Q2 2025\)) Tj
+0 -25 Td
+/F1 11 Tf
+(Trade and collect NFT drops.) Tj
+0 -18 Td
+(Features:) Tj
+0 -18 Td
+(- Peer-to-peer trading) Tj
+0 -18 Td
+(- Rarity filters and search) Tj
+0 -18 Td
+(- Price history and analytics) Tj
+0 -18 Td
+(- Community marketplace with 2.5% platform fee) Tj
+
+0 -40 Td
+/F2 12 Tf
+(DAO Governance \(Q4 2025\)) Tj
+0 -25 Td
+/F1 11 Tf
+(Community-driven decision making.) Tj
+0 -18 Td
+(- Proposal system for major changes) Tj
+0 -18 Td
+(- Voting power based on token holdings) Tj
+0 -18 Td
+(- Transparent on-chain execution) Tj
+0 -18 Td
+(- Community treasury management) Tj
+
+ET
+endstream
+endobj
+20 0 obj
+<<
+/Length 2100
+>>
+stream
+BT
+/F1 18 Tf
+50 730 Td
+(6. THE TEAM) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Why Anonymous?) Tj
+0 -25 Td
+/F1 11 Tf
+(We prioritize security and privacy for our team members and their families.) Tj
+0 -18 Td
+(Many successful crypto projects \(Bitcoin, Shiba Inu\) were built by anonymous) Tj
+0 -18 Td
+(teams. What matters is transparency through code and actions, not personal) Tj
+0 -18 Td
+(identities. Pseudonymity allows us to focus on building without personal) Tj
+0 -18 Td
+(security concerns or targeted attacks.) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Core Team Roles) Tj
+
+0 -30 Td
+/F1 11 Tf
+(LEAD DEVELOPER \(TapDev\)) Tj
+0 -18 Td
+(Full-stack engineer with 8+ years in Web3. Smart contract security) Tj
+0 -18 Td
+(specialist. Built DeFi protocols handling $10M+ TVL. Expert in Solidity,) Tj
+0 -18 Td
+(React, and Base network development.) Tj
+0 -18 Td
+(Expertise: Smart Contracts, DeFi Architecture, Security Auditing) Tj
+
+0 -30 Td
+(MARKETING LEAD \(GrowthMaster\)) Tj
+0 -18 Td
+(Crypto marketing strategist with proven track record in viral campaigns.) Tj
+0 -18 Td
+(Specialized in community growth and brand positioning. Led multiple projects) Tj
+0 -18 Td
+(from 0 to 100K+ holders.) Tj
+0 -18 Td
+(Expertise: Viral Marketing, Community Growth, Brand Strategy, Partnerships) Tj
+
+0 -30 Td
+(COMMUNITY MANAGER \(CommunityGuardian\)) Tj
+0 -18 Td
+(Dedicated community builder with experience managing 50K+ member Discord) Tj
+0 -18 Td
+(and Telegram communities. Expert in conflict resolution, engagement) Tj
+0 -18 Td
+(strategies, and creating vibrant ecosystems.) Tj
+0 -18 Td
+(Expertise: Community Management, Moderation, Engagement, 24/7 Support) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Team Commitment) Tj
+0 -25 Td
+/F1 11 Tf
+(Our commitment to the community:) Tj
+0 -18 Td
+(- Open-source code for full transparency) Tj
+0 -18 Td
+(- Audited smart contracts by reputable firms) Tj
+0 -18 Td
+(- Locked liquidity with public proof) Tj
+0 -18 Td
+(- Regular AMAs and community updates) Tj
+0 -18 Td
+(- Transparent on-chain operations) Tj
+0 -18 Td
+(- Long-term dedication to project success) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Join Our Team) Tj
+0 -25 Td
+/F1 11 Tf
+(We're always looking for talented contributors: developers, designers,) Tj
+0 -18 Td
+(marketers, and community moderators. Reach out on Discord if you want to) Tj
+0 -18 Td
+(help build the future of $ONETAP.) Tj
+
+ET
+endstream
+endobj
+21 0 obj
+<<
+/Length 2400
+>>
+stream
+BT
+/F1 18 Tf
+50 730 Td
+(7. SECURITY & COMPLIANCE) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Smart Contract Security) Tj
+0 -25 Td
+/F1 11 Tf
+(- Internal security audit completed pre-launch) Tj
+0 -18 Td
+(- External audit by Hacken or CertiK scheduled for Q3 2025) Tj
+0 -18 Td
+(- Open-source code verified on BaseScan) Tj
+0 -18 Td
+(- Anti-whale and anti-bot mechanisms implemented) Tj
+0 -18 Td
+(- Ownership renounced post-launch \(immutable contract\)) Tj
+0 -18 Td
+(- No backdoors or hidden admin functions) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Liquidity Security) Tj
+0 -25 Td
+/F1 11 Tf
+(- Initial LP locked for 6 months minimum via trusted protocol) Tj
+0 -18 Td
+(- Lock proof publicly accessible on-chain) Tj
+0 -18 Td
+(- Lock extensions decided by DAO community vote) Tj
+0 -18 Td
+(- No team access to locked liquidity) Tj
+
+0 -40 Td
+/F2 12 Tf
+(Regulatory Compliance) Tj
+0 -25 Td
+/F1 11 Tf
+(- Not affiliated with Valve Corporation or any gaming company) Tj
+0 -18 Td
+(- All trademarks belong to their respective owners) Tj
+0 -18 Td
+(- Fair use under parody and community creation principles) Tj
+0 -18 Td
+(- Compliant with applicable cryptocurrency regulations) Tj
+0 -18 Td
+(- No securities offerings or investment products) Tj
+
+0 -60 Td
+/F1 18 Tf
+(8. LEGAL DISCLAIMER) Tj
+
+0 -35 Td
+/F2 12 Tf
+(IMPORTANT NOTICE) Tj
+0 -25 Td
+/F1 11 Tf
+($ONETAP is a utility token for entertainment and ecosystem participation.) Tj
+0 -18 Td
+(It is NOT an investment vehicle, security, or financial product.) Tj
+
+0 -30 Td
+/F2 12 Tf
+(No Guarantees) Tj
+0 -20 Td
+/F1 11 Tf
+(There are NO guarantees of profit, returns, or financial gains. The token) Tj
+0 -18 Td
+(value may fluctuate significantly and you could lose your entire investment.) Tj
+
+0 -30 Td
+/F2 12 Tf
+(High Risk) Tj
+0 -20 Td
+/F1 11 Tf
+(Cryptocurrency investments carry HIGH RISK. Only invest what you can afford) Tj
+0 -18 Td
+(to lose. Past performance does not indicate future results.) Tj
+
+0 -30 Td
+/F2 12 Tf
+(Not Financial Advice) Tj
+0 -20 Td
+/F1 11 Tf
+(This document is for informational purposes only and does not constitute) Tj
+0 -18 Td
+(financial, investment, legal, or tax advice. Consult with qualified) Tj
+0 -18 Td
+(professionals before making any investment decisions.) Tj
+
+0 -30 Td
+/F2 12 Tf
+(Jurisdictional Restrictions) Tj
+0 -20 Td
+/F1 11 Tf
+(Users are responsible for compliance with local laws and regulations.) Tj
+0 -18 Td
+(Tokens may not be available in restricted jurisdictions.) Tj
+
+0 -40 Td
+/F2 10 Tf
+(Last Updated: January 2025) Tj
+0 -20 Td
+(For more information: https://onetap.gg) Tj
+0 -15 Td
+(Contact: team@onetap.gg) Tj
+
+ET
+endstream
+endobj
+xref
+0 22
+0000000000 65535 f
+0000000015 00000 n
+0000000079 00000 n
+0000000177 00000 n
+0000000263 00000 n
+0000000414 00000 n
+0000000565 00000 n
+0000000716 00000 n
+0000000867 00000 n
+0000001018 00000 n
+0000001169 00000 n
+0000001321 00000 n
+0000001473 00000 n
+0000003926 00000 n
+0000004009 00000 n
+0000004086 00000 n
+0000006339 00000 n
+0000008492 00000 n
+0000010945 00000 n
+0000013298 00000 n
+0000015551 00000 n
+0000017704 00000 n
+trailer
+<<
+/Size 22
+/Root 1 0 R
+>>
+startxref
+20157
+%%EOF

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Users, Shield, Code, Megaphone, Gamepad2, Twitter, Github, MessageCircle, Instagram, Send } from 'lucide-react';
+import { Users, Code, Megaphone, Twitter, Github, MessageCircle, Send } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
@@ -11,94 +11,55 @@ const Team = () => {
 
   const teamMembers = [
     {
-      name: 'OneTap_OG',
-      role: t('team.roles.founder') || 'Founder & Vision',
-      icon: Shield,
-      bio: t('team.bios.founder') || 'FPS gaming veteran since early days. Built $ONETAP from a meme dream into reality. Previously led gaming communities with 50K+ members. Believes in community ownership and fair launches.',
-      color: 'text-yellow-400',
-      socials: {
-        discord: 'OneTap_OG#1234',
-        twitter: '@OneTap_OG',
-        telegram: '@OneTapFounder'
-      },
-      verifications: [
-        'Active since 2023',
-        'Led 3 gaming communities (50K+ members)',
-        'Verified on Discord'
-      ],
-      proofOfWork: 'https://github.com/onetap'
-    },
-    {
-      name: 'CodeWarrior',
+      name: 'TapDev',
       role: t('team.roles.devLead') || 'Lead Developer',
       icon: Code,
-      bio: t('team.bios.devLead') || 'Full-stack wizard with 8 years in Web3. Smart contract security enthusiast. Built DeFi protocols handling $10M+ TVL. Makes magic happen with Solidity and React.',
-      color: 'text-blue-400',
+      bio: t('team.bios.devLead') || 'Full-stack engineer with 8+ years in Web3. Smart contract security specialist. Built DeFi protocols handling $10M+ TVL. Expert in Solidity, React, and Base network development.',
+      color: 'from-blue-400 to-cyan-400',
       socials: {
-        github: 'CodeWarrior',
-        twitter: '@CodeWarrior_1TAP',
-        discord: 'CodeWarrior#5678'
+        github: 'https://github.com/anonymous-dev',
+        linkedin: 'https://linkedin.com/in/anonymous-dev'
       },
-      verifications: [
-        '8+ years Web3 development',
-        'Smart contract auditor certified',
-        'Built $10M+ TVL protocols'
-      ],
-      proofOfWork: 'https://github.com/codewarrior'
+      expertise: [
+        'Smart Contract Development',
+        'DeFi Protocol Architecture',
+        'Security Auditing',
+        'Base Network Integration'
+      ]
     },
     {
-      name: 'TapMaster',
-      role: t('team.roles.gameDev') || 'Game Developer',
-      icon: Gamepad2,
-      bio: t('team.bios.gameDev') || 'Unity & Web3 gaming specialist. Created the tap-to-earn mechanics and drop roulette system. Obsessed with player experience and on-chain gaming innovation.',
-      color: 'text-green-400',
-      socials: {
-        github: 'TapMaster',
-        twitter: '@TapMaster_1TAP',
-        discord: 'TapMaster#9012'
-      },
-      verifications: [
-        'Unity certified developer',
-        '5+ years game development',
-        'Published 10+ Web3 games'
-      ],
-      proofOfWork: 'https://github.com/tapmaster'
-    },
-    {
-      name: 'MemeKing',
-      role: t('team.roles.marketing') || 'Marketing & Memes',
+      name: 'GrowthMaster',
+      role: t('team.roles.marketing') || 'Marketing Lead',
       icon: Megaphone,
-      bio: t('team.bios.marketing') || 'Viral content creator. Turned unknown tokens into trending topics. Social media strategist with proven track record. If it doesn\'t slap, it doesn\'t ship.',
-      color: 'text-purple-400',
+      bio: t('team.bios.marketing') || 'Crypto marketing strategist with proven track record in viral campaigns. Specialized in community growth and brand positioning. Led multiple projects from 0 to 100K+ holders.',
+      color: 'from-purple-400 to-pink-400',
       socials: {
-        twitter: '@MemeKing_1TAP',
-        instagram: '@memeking.1tap',
-        tiktok: '@memeking1tap'
+        twitter: 'https://twitter.com/anonymous-growth',
+        linkedin: 'https://linkedin.com/in/anonymous-marketing'
       },
-      verifications: [
-        '3 viral campaigns (10M+ views)',
-        'Social media strategist',
-        'Content creator since 2020'
-      ],
-      proofOfWork: 'https://twitter.com/MemeKing_1TAP'
+      expertise: [
+        'Viral Marketing Campaigns',
+        'Community Growth Strategy',
+        'Brand Positioning',
+        'Partnership Development'
+      ]
     },
     {
-      name: 'CommunityCaptain',
+      name: 'CommunityGuardian',
       role: t('team.roles.community') || 'Community Manager',
       icon: Users,
-      bio: t('team.bios.community') || 'The glue that holds us together. Manages Discord, Telegram, and all community channels. Online 24/7 (or so it seems). Your concerns are their priority.',
-      color: 'text-pink-400',
+      bio: t('team.bios.community') || 'Dedicated community builder with experience managing 50K+ member Discord and Telegram communities. Expert in conflict resolution, engagement strategies, and creating vibrant ecosystems.',
+      color: 'from-green-400 to-emerald-400',
       socials: {
-        discord: 'CommunityCaptain#3456',
-        telegram: '@CommunityCaptain_1TAP',
-        twitter: '@CommCaptain_1TAP'
+        discord: 'https://discord.gg/onetap',
+        telegram: 'https://t.me/onetap'
       },
-      verifications: [
-        'Managed 5+ crypto communities',
-        '20K+ Discord members',
-        'Online support 24/7'
-      ],
-      proofOfWork: 'https://discord.gg/onetap'
+      expertise: [
+        'Community Management',
+        'Discord & Telegram Moderation',
+        'Engagement Strategy',
+        '24/7 Support Coordination'
+      ]
     }
   ];
 
@@ -125,7 +86,7 @@ const Team = () => {
           </motion.div>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
@@ -133,134 +94,112 @@ const Team = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="glass-effect p-6 rounded-2xl border-primary/20 hover:border-primary/40 transition-all duration-300 h-full">
-                  <div className="flex flex-col items-center text-center">
-                    {/* Icon */}
-                    <div className={`w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4 ${member.color}`}>
-                      <member.icon className="w-10 h-10" />
+                <Card className="relative overflow-hidden p-8 rounded-3xl border border-primary/30 backdrop-blur-xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(22,163,224,0.3)] transition-all duration-500 h-full group">
+                  {/* Gradient overlay on hover */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${member.color}`}></div>
+                  
+                  <div className="relative flex flex-col items-center text-center">
+                    {/* Icon with gradient background */}
+                    <div className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${member.color} p-[2px] mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                      <div className="w-full h-full rounded-2xl bg-background/90 backdrop-blur-xl flex items-center justify-center">
+                        <member.icon className={`w-12 h-12 bg-gradient-to-br ${member.color} bg-clip-text text-transparent`} />
+                      </div>
                     </div>
 
                     {/* Name */}
-                    <h3 className="text-xl font-bold mb-2">{member.name}</h3>
+                    <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+                      {member.name}
+                    </h3>
                     
-                    {/* Role */}
-                    <p className={`text-sm font-semibold mb-4 ${member.color}`}>
+                    {/* Role with gradient */}
+                    <p className={`text-sm font-semibold mb-6 bg-gradient-to-r ${member.color} bg-clip-text text-transparent`}>
                       {member.role}
                     </p>
 
                     {/* Bio */}
-                    <p className="text-sm text-muted-foreground mb-4">
+                    <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
                       {member.bio}
                     </p>
 
-                    {/* Verifications */}
-                    {member.verifications && (
-                      <div className="mb-4 space-y-2">
-                        {member.verifications.map((verification: string, idx: number) => (
-                          <div key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
-                            <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                            <span>{verification}</span>
-                          </div>
+                    {/* Expertise Tags */}
+                    {member.expertise && (
+                      <div className="mb-6 flex flex-wrap justify-center gap-2">
+                        {member.expertise.map((skill: string, idx: number) => (
+                          <span
+                            key={idx}
+                            className="text-xs px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-foreground/80 backdrop-blur-sm"
+                          >
+                            {skill}
+                          </span>
                         ))}
                       </div>
                     )}
 
                     {/* Social Links */}
-                    {member.socials && (
-                      <div className="flex flex-wrap justify-center gap-2 mb-4">
-                        {member.socials.twitter && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            asChild
-                            className="h-8 px-3"
-                          >
-                            <a href={`https://twitter.com/${member.socials.twitter.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
-                              <Twitter className="w-3 h-3 mr-1" />
-                              Twitter
-                            </a>
-                          </Button>
-                        )}
-                        {member.socials.discord && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="h-8 px-3"
-                          >
-                            <MessageCircle className="w-3 h-3 mr-1" />
-                            {member.socials.discord}
-                          </Button>
-                        )}
-                        {member.socials.github && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            asChild
-                            className="h-8 px-3"
-                          >
-                            <a href={`https://github.com/${member.socials.github}`} target="_blank" rel="noopener noreferrer">
-                              <Github className="w-3 h-3 mr-1" />
-                              GitHub
-                            </a>
-                          </Button>
-                        )}
-                        {member.socials.telegram && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            asChild
-                            className="h-8 px-3"
-                          >
-                            <a href={`https://t.me/${member.socials.telegram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
-                              <Send className="w-3 h-3 mr-1" />
-                              Telegram
-                            </a>
-                          </Button>
-                        )}
-                        {member.socials.instagram && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            asChild
-                            className="h-8 px-3"
-                          >
-                            <a href={`https://instagram.com/${member.socials.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
-                              <Instagram className="w-3 h-3 mr-1" />
-                              Instagram
-                            </a>
-                          </Button>
-                        )}
-                        {member.socials.tiktok && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            asChild
-                            className="h-8 px-3"
-                          >
-                            <a href={`https://tiktok.com/${member.socials.tiktok.replace('@', '')}`} target="_blank" rel="noopener noreferrer">
-                              <svg className="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                              </svg>
-                              TikTok
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Proof of Work */}
-                    {member.proofOfWork && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        asChild
-                        className="h-7 text-xs"
-                      >
-                        <a href={member.proofOfWork} target="_blank" rel="noopener noreferrer">
-                          View Contributions →
-                        </a>
-                      </Button>
-                    )}
+                    <div className="flex gap-3 pt-4 border-t border-primary/20 w-full justify-center">
+                      {member.socials.github && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          asChild
+                          className="h-10 w-10 p-0 rounded-full hover:bg-primary/10"
+                        >
+                          <a href={member.socials.github} target="_blank" rel="noopener noreferrer">
+                            <Github className="w-5 h-5" />
+                          </a>
+                        </Button>
+                      )}
+                      {member.socials.linkedin && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          asChild
+                          className="h-10 w-10 p-0 rounded-full hover:bg-primary/10"
+                        >
+                          <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer">
+                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                          </a>
+                        </Button>
+                      )}
+                      {member.socials.twitter && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          asChild
+                          className="h-10 w-10 p-0 rounded-full hover:bg-primary/10"
+                        >
+                          <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer">
+                            <Twitter className="w-5 h-5" />
+                          </a>
+                        </Button>
+                      )}
+                      {member.socials.discord && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          asChild
+                          className="h-10 w-10 p-0 rounded-full hover:bg-primary/10"
+                        >
+                          <a href={member.socials.discord} target="_blank" rel="noopener noreferrer">
+                            <MessageCircle className="w-5 h-5" />
+                          </a>
+                        </Button>
+                      )}
+                      {member.socials.telegram && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          asChild
+                          className="h-10 w-10 p-0 rounded-full hover:bg-primary/10"
+                        >
+                          <a href={member.socials.telegram} target="_blank" rel="noopener noreferrer">
+                            <Send className="w-5 h-5" />
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </Card>
               </motion.div>

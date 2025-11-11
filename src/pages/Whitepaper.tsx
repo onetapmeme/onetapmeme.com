@@ -10,8 +10,7 @@ const Whitepaper = () => {
   const { t } = useTranslation();
 
   const handleDownload = () => {
-    // TODO: Link to actual PDF when created
-    window.open('/whitepaper-v1.pdf', '_blank');
+    window.open('/whitepaper-v2.pdf', '_blank');
   };
 
   return (
