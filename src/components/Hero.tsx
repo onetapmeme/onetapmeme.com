@@ -30,8 +30,7 @@ const Hero = () => {
       });
     }, 100);
   };
-  return (
-    <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-24 pb-12 md:pb-20">
+  return <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-24 pb-12 md:pb-20">
       {/* Gaming Video Background */}
       <div className="absolute inset-0 z-0">
         <video autoPlay loop muted playsInline className="w-full h-full object-cover" poster={heroBg}>
@@ -208,10 +207,7 @@ const Hero = () => {
               {t('hero.cta')}
               <ArrowRight className="w-5 h-5 md:w-6 md:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button onClick={handleLearnMore} variant="outline" size="lg" className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full glass-effect hover:bg-primary/10 transition-all duration-500">
-              <TrendingUp className="w-5 h-5 md:w-6 md:h-6 mr-2" />
-              {t('hero.learnMore')}
-            </Button>
+            
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full glass-effect hover:bg-primary/10 transition-all duration-500">
               <a href="/whitepaper-v2.pdf" download>
                 📄 Download Whitepaper
@@ -277,7 +273,6 @@ const Hero = () => {
         }} />
         </div>
       </motion.div>
-    </section>
-  );
+    </section>;
 };
 export default Hero;
