@@ -78,27 +78,8 @@ const Navbar = () => {
             
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
-            {navItems.map(item => item.isExternal ? <a key={item.name} href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 font-medium">
-                  {item.name}
-                </a> : <a key={item.name} href={item.href} onClick={e => {
-            e.preventDefault();
-            if (item.onClick) {
-              item.onClick();
-            }
-          }} className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 font-medium">
-                  {item.name}
-                </a>)}
-            <Button variant="hero" size="sm" asChild>
-              <a href="/auth">Login</a>
-            </Button>
-            <ThemeToggle />
-            
-          </div>
-
-          {/* Mobile Navigation */}
-          <div className="lg:hidden flex items-center gap-2">
+          {/* Navigation Menu */}
+          <div className="flex items-center gap-2">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="hover:bg-primary/10">
