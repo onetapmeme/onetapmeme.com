@@ -40,14 +40,6 @@ const Navbar = () => {
     }
   };
   const navItems = [{
-    name: t('nav.about'),
-    href: "#about",
-    onClick: () => scrollToSection('about')
-  }, {
-    name: t('nav.tokenomics'),
-    href: "#tokenomics",
-    onClick: () => scrollToSection('tokenomics')
-  }, {
     name: "Manifesto",
     href: "/manifesto",
     isExternal: true
@@ -109,27 +101,12 @@ const Navbar = () => {
                   </div>
                   
                   {/* Main Navigation Links */}
-                  {navItems.map(item => item.isExternal ? (
+                  {navItems.map(item => (
                     <a 
                       key={item.name} 
                       href={item.href} 
                       className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium" 
                       onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <a 
-                      key={item.name} 
-                      href={item.href} 
-                      className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium" 
-                      onClick={e => {
-                        e.preventDefault();
-                        setIsMobileMenuOpen(false);
-                        if (item.onClick) {
-                          item.onClick();
-                        }
-                      }}
                     >
                       {item.name}
                     </a>
