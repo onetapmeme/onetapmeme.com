@@ -2,74 +2,83 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { ArrowLeft, CheckCircle2, Crosshair, Target, Shield, Users, Trophy } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Crosshair, Gamepad2, Gem, Eye, Image, Shield } from "lucide-react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { useManifestoSignatures } from "@/hooks/useManifestoSignatures";
+import { LiveSignatureCounter } from "@/components/manifesto/LiveSignatureCounter";
 
 const Manifesto = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [signed, setSigned] = useState(false);
+  const { count, loading, signManifesto } = useManifestoSignatures();
 
-  const handleSign = (e: React.FormEvent) => {
+  const handleSign = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) {
+      toast.error("Please enter your email");
+      return;
+    }
+
+    try {
+      await signManifesto(email);
       setSigned(true);
       toast.success("Welcome to the 1Tapper army! 🎯");
       setEmail("");
+    } catch (error: any) {
+      if (error.message === 'already_signed') {
+        toast.info("You've already signed the manifesto! 🎯");
+      } else {
+        toast.error("Failed to sign. Please try again.");
+      }
     }
   };
 
   const principles = [
     {
       number: "I",
-      icon: Users,
+      icon: Gamepad2,
       title: t('manifesto.principle1.title'),
       description: t('manifesto.principle1.description'),
-      color: "from-primary/20 to-primary/5"
     },
     {
       number: "II",
       icon: Shield,
       title: t('manifesto.principle2.title'),
       description: t('manifesto.principle2.description'),
-      color: "from-accent/20 to-accent/5"
     },
     {
       number: "III",
-      icon: Target,
+      icon: Gem,
       title: t('manifesto.principle3.title'),
       description: t('manifesto.principle3.description'),
-      color: "from-primary/20 to-primary/5"
     },
     {
       number: "IV",
-      icon: Trophy,
+      icon: Image,
       title: t('manifesto.principle4.title'),
       description: t('manifesto.principle4.description'),
-      color: "from-accent/20 to-accent/5"
     },
     {
       number: "V",
-      icon: Crosshair,
+      icon: Eye,
       title: t('manifesto.principle5.title'),
       description: t('manifesto.principle5.description'),
-      color: "from-primary/20 to-primary/5"
     },
   ];
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Gaming Vintage Background */}
+      {/* Enhanced Gaming Background */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(22,163,224,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,107,0,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 opacity-[0.03]" 
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(22,163,224,0.12),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,107,0,0.12),transparent_50%)]" />
+        <div className="absolute inset-0 opacity-[0.08]" 
           style={{ 
             backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)`,
             backgroundSize: '100% 4px'
@@ -95,226 +104,282 @@ const Manifesto = () => {
           </Button>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Vintage Header with Gaming Style */}
-          <motion.div 
-            className="text-center mb-16 relative"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+        <div className="max-w-5xl mx-auto space-y-20">
+          {/* TRANSFORMATION 1: CINEMATIC OPENING - Mission Statement */}
+          <motion.section
+            className="min-h-[60vh] flex flex-col items-center justify-center text-center relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
           >
-            {/* Decorative crosshair elements */}
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-32 h-32 opacity-10">
-              <Crosshair className="w-full h-full text-primary animate-spin-slow" />
-            </div>
-            
-            <div className="relative inline-block mb-8">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-20 blur-3xl" />
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-orbitron font-black mb-4 relative"
+            {/* Giant Crosshair Animation */}
+            <motion.div
+              className="absolute w-32 h-32 md:w-48 md:h-48 opacity-10 mb-12"
+              initial={{ scale: 0, rotate: 0 }}
+              animate={{ scale: 1, rotate: 360 }}
+              transition={{ duration: 2, ease: "easeOut" }}
+            >
+              <Crosshair className="w-full h-full text-primary" />
+            </motion.div>
+
+            <div className="relative z-10 space-y-6 md:space-y-8">
+              {/* Sequential text reveals */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="text-lg md:text-xl text-muted-foreground font-rajdhani"
+              >
+                We, the 1Tappers,
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="text-2xl md:text-3xl text-foreground font-rajdhani max-w-3xl mx-auto"
+              >
+                united by our love of gaming and distrust of traditional finance...
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 1.5 }}
+              >
+                <div className="flex items-center justify-center gap-4 my-8">
+                  <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
+                  <Crosshair className="w-6 h-6 text-accent" />
+                  <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
+                </div>
+                <p className="text-3xl md:text-4xl text-foreground font-orbitron mb-4">
+                  ...declare these truths to be self-evident:
+                </p>
+              </motion.div>
+
+              {/* EPIC REVEAL - Main tagline */}
+              <motion.h1
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 2 }}
+                className="text-5xl md:text-7xl lg:text-8xl font-orbitron font-bold uppercase leading-tight"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 50%, hsl(210, 100%, 55%) 100%)',
+                  background: 'linear-gradient(135deg, hsl(197, 79%, 48%) 0%, hsl(25, 100%, 55%) 50%, hsl(197, 79%, 48%) 100%)',
                   backgroundSize: '200% 200%',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  textShadow: '0 0 80px rgba(22,163,224,0.3)',
+                  filter: 'drop-shadow(0 0 30px rgba(22,163,224,0.5))',
                   animation: 'gradient-flow 5s linear infinite',
-                  letterSpacing: '0.05em'
                 }}
               >
-                {t('manifesto.title')}
-              </h1>
+                LIFE. LIBERTY.
+                <br />
+                AND THE PURSUIT
+                <br />
+                OF HEADSHOTS.
+              </motion.h1>
             </div>
-            
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
-              <Target className="w-8 h-8 text-accent animate-pulse" />
-              <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
-            </div>
-            
-            <p className="text-xl md:text-2xl text-primary font-rajdhani font-semibold uppercase tracking-wider">
-              {t('manifesto.subtitle')}
-            </p>
-          </motion.div>
+          </motion.section>
 
-          {/* Mission Statement - Vintage Military Style */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Card className="p-8 md:p-12 mb-12 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-2 border-primary/30 relative overflow-hidden group hover:border-primary/50 transition-all duration-500">
-              {/* Corner decorations */}
-              <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-primary/40" />
-              <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-primary/40" />
-              <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-primary/40" />
-              <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-primary/40" />
-              
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
-              <div className="relative z-10">
-                <div className="inline-block px-4 py-2 mb-6 border border-primary/30 rounded bg-primary/10 backdrop-blur-sm">
-                  <span className="font-orbitron text-xs uppercase tracking-widest text-primary font-bold">
-                    Mission Statement
-                  </span>
-                </div>
-                <p className="text-lg md:text-xl leading-relaxed text-foreground font-rajdhani tracking-wide">
-                  {t('manifesto.preamble')}
-                </p>
-              </div>
-            </Card>
-          </motion.div>
-
-          {/* Core Principles - Tactical Gaming Style */}
-          <div className="space-y-6 mb-16">
-            <motion.h2 
-              className="text-3xl md:text-4xl font-orbitron font-bold text-center mb-10 text-primary"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+          {/* TRANSFORMATION 2: GAMING STELES - Core Principles */}
+          <section className="space-y-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center space-y-4"
             >
-              CORE PRINCIPLES
-            </motion.h2>
-            
-            {principles.map((principle, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              >
-                <Card 
-                  className={`p-6 md:p-8 bg-gradient-to-br ${principle.color} backdrop-blur-xl border-2 border-primary/20 hover:border-accent/40 transition-all duration-500 relative overflow-hidden group`}
-                >
-                  {/* Tactical stripe */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary" />
-                  
-                  {/* Background number */}
-                  <div className="absolute -right-8 -top-8 text-[180px] font-orbitron font-black text-primary/5 group-hover:text-primary/10 transition-all duration-500 select-none">
-                    {principle.number}
-                  </div>
-                  
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4 md:gap-6 mb-4">
-                      <div className="flex-shrink-0">
-                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-                          <principle.icon className="w-8 h-8 md:w-10 md:h-10 text-primary" />
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <div className="inline-block px-3 py-1 mb-3 border border-primary/30 rounded bg-primary/10 backdrop-blur-sm">
-                          <span className="font-orbitron text-xs uppercase tracking-widest text-primary font-bold">
-                            Article {principle.number}
-                          </span>
-                        </div>
-                        <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                          {principle.title}
-                        </h3>
-                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed font-rajdhani">
-                          {principle.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+              <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-primary uppercase tracking-wider">
+                Core Principles
+              </h2>
+              <div className="flex items-center justify-center gap-4">
+                <div className="h-px w-24 bg-gradient-to-r from-transparent via-accent to-transparent" />
+                <Crosshair className="w-6 h-6 text-accent animate-pulse" />
+                <div className="h-px w-24 bg-gradient-to-r from-transparent via-accent to-transparent" />
+              </div>
+            </motion.div>
 
-          {/* Sign the Manifesto - Military Recruitment Style */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            {/* Article Cards Grid */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {principles.map((principle, index) => (
+                <motion.article
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="relative group"
+                >
+                  <div className="relative bg-gradient-to-br from-background via-background/95 to-primary/5 border-2 border-primary/20 rounded-xl p-8 md:p-10 overflow-hidden hover:border-primary/60 transition-all duration-500">
+                    {/* Background texture & glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div 
+                      className="absolute inset-0 opacity-[0.02]"
+                      style={{
+                        backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)`
+                      }}
+                    />
+
+                    {/* Watermark number */}
+                    <div className="absolute top-4 right-4 text-8xl md:text-9xl font-orbitron font-bold text-primary/5 pointer-events-none select-none">
+                      {principle.number}
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10 space-y-6">
+                      {/* Icon */}
+                      <div className="flex items-center justify-center">
+                        <principle.icon 
+                          className="w-16 h-16 text-primary transition-transform duration-300 group-hover:scale-110"
+                          style={{ filter: 'drop-shadow(0 0 15px rgba(22,163,224,0.5))' }}
+                        />
+                      </div>
+
+                      {/* Article number */}
+                      <div className="text-center">
+                        <span className="text-4xl font-orbitron font-bold text-primary uppercase tracking-wider">
+                          Article {principle.number}
+                        </span>
+                      </div>
+
+                      {/* Separator */}
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="h-px w-12 bg-gradient-to-r from-transparent via-primary to-transparent" />
+                        <div className="w-1 h-1 rounded-full bg-primary" />
+                        <div className="h-px w-12 bg-gradient-to-r from-transparent via-primary to-transparent" />
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                        {principle.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-base text-muted-foreground font-rajdhani leading-relaxed text-center">
+                        {principle.description}
+                      </p>
+                    </div>
+
+                    {/* Decorative corners */}
+                    <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-primary/40" />
+                    <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-primary/40" />
+                    <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-primary/40" />
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary/40" />
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </section>
+
+          {/* TRANSFORMATION 3: ARMY RECRUITMENT - CTA with Live Counter */}
+          <motion.section
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="py-16"
           >
-            <Card className="p-8 md:p-12 bg-gradient-to-br from-primary/20 via-card/80 to-accent/20 backdrop-blur-xl border-2 border-primary/40 relative overflow-hidden">
-              {/* Animated scanlines */}
-              <div className="absolute inset-0 pointer-events-none opacity-5"
-                style={{
-                  backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 4px)',
-                  animation: 'shimmer 3s linear infinite'
-                }}
-              />
-              
-              <div className="relative z-10">
-                <div className="text-center mb-8">
-                  <Crosshair className="w-16 h-16 mx-auto mb-4 text-primary animate-pulse" />
-                  <h3 className="text-3xl md:text-4xl font-orbitron font-bold text-foreground mb-3">
-                    {t('manifesto.signTitle')}
-                  </h3>
-                  <p className="text-muted-foreground font-rajdhani text-lg">
-                    Become an official 1Tapper. Join the revolution.
-                  </p>
-                </div>
-                
-                {!signed ? (
-                  <form onSubmit={handleSign} className="max-w-md mx-auto">
-                    <div className="flex flex-col sm:flex-row gap-4">
+            <div className="max-w-2xl mx-auto space-y-10">
+              {/* Epic Title */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-4">
+                  <span 
+                    className="inline-block animate-pulse"
+                    style={{
+                      background: 'linear-gradient(90deg, hsl(197, 79%, 48%), hsl(25, 100%, 55%), hsl(197, 79%, 48%))',
+                      backgroundSize: '200% 200%',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      filter: 'drop-shadow(0 0 20px rgba(22,163,224,0.4))',
+                      animation: 'gradient-flow 3s linear infinite',
+                    }}
+                  >
+                    ⚡ JOIN THE 1TAP ARMY ⚡
+                  </span>
+                </h2>
+              </motion.div>
+
+              {/* Live Signature Counter */}
+              <div className="flex justify-center">
+                <LiveSignatureCounter count={count} loading={loading} />
+              </div>
+
+              {/* Sign Form or Success Message */}
+              {!signed ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <form onSubmit={handleSign} className="space-y-6">
+                    <div className="relative">
                       <Input
                         type="email"
                         placeholder={t('manifesto.emailPlaceholder')}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        className="flex-1 bg-background/50 border-primary/30 focus:border-primary font-rajdhani text-lg backdrop-blur-sm"
+                        className="h-14 text-lg border-2 border-primary/30 bg-background/50 backdrop-blur-sm focus:border-primary transition-all font-rajdhani"
                       />
-                      <Button 
-                        type="submit" 
-                        size="lg" 
-                        className="font-orbitron font-bold uppercase tracking-wider bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80 text-black shadow-[0_0_30px_rgba(22,163,224,0.5)] hover:shadow-[0_0_50px_rgba(22,163,224,0.8)] transition-all duration-300"
-                      >
-                        <Target className="mr-2 w-5 h-5" />
-                        {t('manifesto.signButton')}
-                      </Button>
                     </div>
-                    <p className="text-xs text-muted-foreground text-center mt-6 font-rajdhani">
+                    
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full h-14 text-lg font-orbitron font-bold uppercase bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 transition-all duration-300 relative group overflow-hidden"
+                      style={{
+                        boxShadow: '0 0 30px rgba(22,163,224,0.4)',
+                      }}
+                    >
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <Crosshair className="w-5 h-5" />
+                        {t('manifesto.signButton')}
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </Button>
+
+                    <p className="text-sm text-muted-foreground text-center font-rajdhani leading-relaxed">
                       {t('manifesto.footerNote')}
                     </p>
                   </form>
-                ) : (
-                  <div className="text-center space-y-6 animate-fade-in">
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-center space-y-6 py-8"
+                >
+                  <div className="flex justify-center">
                     <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 0.5 }}
                     >
-                      <CheckCircle2 className="w-20 h-20 mx-auto text-green-500" />
+                      <CheckCircle2 className="w-20 h-20 text-primary" style={{ filter: 'drop-shadow(0 0 20px rgba(22,163,224,0.6))' }} />
                     </motion.div>
-                    <div>
-                      <p className="text-2xl md:text-3xl font-orbitron font-bold text-green-500 mb-2">
-                        {t('manifesto.thankYou')}
-                      </p>
-                      <p className="text-lg text-muted-foreground font-rajdhani">
-                        {t('manifesto.welcomeMessage')}
-                      </p>
-                    </div>
-                    <div className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-lg backdrop-blur-sm">
-                      <Trophy className="w-6 h-6 text-green-500" />
-                      <span className="font-orbitron font-bold text-green-500">
-                        RANK: 1TAPPER
-                      </span>
-                    </div>
                   </div>
-                )}
-              </div>
-            </Card>
-          </motion.div>
-
-          {/* Tactical Footer */}
-          <motion.div 
-            className="text-center mt-16 pb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-          >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-              <Crosshair className="w-6 h-6 text-primary/50" />
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                  <div className="space-y-2">
+                    <h3 className="text-3xl font-orbitron font-bold text-primary">
+                      {t('manifesto.thankYou')}
+                    </h3>
+                    <p className="text-lg text-muted-foreground font-rajdhani">
+                      {t('manifesto.welcomeMessage')}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
             </div>
-            <p className="text-sm text-muted-foreground font-rajdhani">
-              Est. 2025 • 1Tap Army • For Gamers, By Gamers
-            </p>
-          </motion.div>
+          </motion.section>
         </div>
       </div>
 

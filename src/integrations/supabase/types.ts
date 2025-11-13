@@ -170,6 +170,27 @@ export type Database = {
         }
         Relationships: []
       }
+      manifesto_signatures: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          signed_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          signed_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          signed_at?: string | null
+        }
+        Relationships: []
+      }
       meme_votes: {
         Row: {
           created_at: string | null
