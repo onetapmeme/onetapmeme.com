@@ -229,7 +229,7 @@ export type Database = {
           image_url: string
           shares: number | null
           template_name: string | null
-          user_id: string | null
+          user_id: string
           views: number | null
         }
         Insert: {
@@ -240,7 +240,7 @@ export type Database = {
           image_url: string
           shares?: number | null
           template_name?: string | null
-          user_id?: string | null
+          user_id: string
           views?: number | null
         }
         Update: {
@@ -251,7 +251,7 @@ export type Database = {
           image_url?: string
           shares?: number | null
           template_name?: string | null
-          user_id?: string | null
+          user_id?: string
           views?: number | null
         }
         Relationships: []
