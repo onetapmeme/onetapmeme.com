@@ -10,6 +10,14 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useManifestoSignatures } from "@/hooks/useManifestoSignatures";
 import { LiveSignatureCounter } from "@/components/manifesto/LiveSignatureCounter";
+import { z } from "zod";
+
+const manifestoSchema = z.object({
+  email: z.string()
+    .trim()
+    .email("Invalid email address")
+    .max(255, "Email must be less than 255 characters")
+});
 
 const Manifesto = () => {
   const { t } = useTranslation();
@@ -20,13 +28,18 @@ const Manifesto = () => {
 
   const handleSign = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) {
-      toast.error("Please enter your email");
+
+    // Validate email with zod schema
+    const validation = manifestoSchema.safeParse({ email });
+    if (!validation.success) {
+      toast.error(validation.error.errors[0].message);
       return;
     }
 
+    const validatedEmail = validation.data.email;
+
     try {
-      await signManifesto(email);
+      await signManifesto(validatedEmail);
       setSigned(true);
       toast.success("Welcome to the 1Tapper army! 🎯");
       setEmail("");
