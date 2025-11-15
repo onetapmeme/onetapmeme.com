@@ -8,6 +8,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Save, Shield } from 'lucide-react';
 import { clearConfigCache } from '@/config/launch';
+import { z } from 'zod';
+
+// URL validation schema
+const urlSchema = z.string().trim().url("Invalid URL format").max(500, "URL must be less than 500 characters");
+
+const launchConfigSchema = z.object({
+  contract_address: z.string().trim()
+    .min(1, "Contract address is required")
+    .max(100, "Contract address must be less than 100 characters")
+    .regex(/^(0x)?[0-9a-fA-F]+$/, "Invalid contract address format"),
+  buy_link: urlSchema,
+  chart_link: urlSchema,
+  audit_report_url: z.string().trim().url("Invalid URL format").max(500, "URL must be less than 500 characters").nullable(),
+  lp_lock_url: urlSchema,
+  lp_platform: z.string().trim().min(1, "LP platform is required").max(100),
+  lp_amount: z.string().trim().min(1, "LP amount is required").max(50),
+  audit_auditor: z.string().trim().max(100, "Auditor name must be less than 100 characters").nullable(),
+  audit_score: z.string().trim().max(20, "Audit score must be less than 20 characters").nullable(),
+  audit_date: z.string().nullable(),
+});
 
 interface LaunchConfigData {
   id: string;
@@ -64,6 +84,31 @@ export default function AdminLaunchDashboard() {
   const handleSave = async () => {
     if (!config) return;
 
+    // Validate all URL and text inputs before saving
+    try {
+      launchConfigSchema.parse({
+        contract_address: config.contract_address,
+        buy_link: config.buy_link,
+        chart_link: config.chart_link,
+        audit_report_url: config.audit_report_url || null,
+        lp_lock_url: config.lp_lock_url,
+        lp_platform: config.lp_platform,
+        lp_amount: config.lp_amount,
+        audit_auditor: config.audit_auditor || null,
+        audit_score: config.audit_score || null,
+        audit_date: config.audit_date || null,
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
     setSaving(true);
     try {
       const { error } = await supabase
@@ -71,18 +116,18 @@ export default function AdminLaunchDashboard() {
         .update({
           is_launched: config.is_launched,
           launch_date: config.launch_date,
-          contract_address: config.contract_address,
-          buy_link: config.buy_link,
-          chart_link: config.chart_link,
+          contract_address: config.contract_address.trim(),
+          buy_link: config.buy_link.trim(),
+          chart_link: config.chart_link.trim(),
           audit_completed: config.audit_completed,
-          audit_auditor: config.audit_auditor,
-          audit_score: config.audit_score,
-          audit_report_url: config.audit_report_url,
+          audit_auditor: config.audit_auditor?.trim() || null,
+          audit_score: config.audit_score?.trim() || null,
+          audit_report_url: config.audit_report_url?.trim() || null,
           audit_date: config.audit_date,
           lp_locked: config.lp_locked,
-          lp_platform: config.lp_platform,
-          lp_lock_url: config.lp_lock_url,
-          lp_amount: config.lp_amount,
+          lp_platform: config.lp_platform.trim(),
+          lp_lock_url: config.lp_lock_url.trim(),
+          lp_amount: config.lp_amount.trim(),
           lp_unlock_date: config.lp_unlock_date,
           updated_by: (await supabase.auth.getUser()).data.user?.id,
         })

@@ -196,19 +196,19 @@ export type Database = {
           created_at: string | null
           id: string
           meme_id: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           created_at?: string | null
           id?: string
           meme_id?: string | null
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           created_at?: string | null
           id?: string
           meme_id?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -470,7 +470,7 @@ export type Database = {
           shares_count: number | null
           total_xp: number | null
           updated_at: string | null
-          user_id: string | null
+          user_id: string
           votes_received: number | null
         }
         Insert: {
@@ -480,7 +480,7 @@ export type Database = {
           shares_count?: number | null
           total_xp?: number | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id: string
           votes_received?: number | null
         }
         Update: {
@@ -490,7 +490,7 @@ export type Database = {
           shares_count?: number | null
           total_xp?: number | null
           updated_at?: string | null
-          user_id?: string | null
+          user_id?: string
           votes_received?: number | null
         }
         Relationships: []
