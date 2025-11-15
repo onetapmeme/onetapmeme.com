@@ -4,24 +4,29 @@ import { Input } from '@/components/ui/input';
 import { Mail, Loader2, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
+import { z } from 'zod';
+
+// Email validation schema
+const newsletterSchema = z.object({
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+});
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateEmail(email)) {
-      toast.error('Please enter a valid email address');
+    // Validate email with zod schema
+    const validation = newsletterSchema.safeParse({ email });
+    if (!validation.success) {
+      toast.error(validation.error.errors[0].message);
       return;
     }
 
+    const validatedEmail = validation.data.email;
     setLoading(true);
 
     try {
@@ -35,7 +40,7 @@ const Newsletter = () => {
       
       setSuccess(true);
       setEmail('');
-      toast.success('Successfully subscribed to newsletter!');
+      toast.success(`Successfully subscribed: ${validatedEmail}`);
       
       // Reset success state after animation
       setTimeout(() => setSuccess(false), 3000);
