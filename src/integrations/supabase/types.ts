@@ -530,10 +530,21 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      leaderboard_stats: {
+        Row: {
+          level: number | null
+          memes_created: number | null
+          rank: number | null
+          shares_count: number | null
+          total_xp: number | null
+          votes_received: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       calculate_level: { Args: { xp: number }; Returns: number }
+      get_meme_vote_count: { Args: { meme_id_param: string }; Returns: number }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -545,6 +556,7 @@ export type Database = {
         Args: { user_id_param: string; xp_amount: number }
         Returns: undefined
       }
+      user_voted_on_meme: { Args: { meme_id_param: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
