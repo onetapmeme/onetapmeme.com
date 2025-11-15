@@ -530,20 +530,21 @@ export type Database = {
       }
     }
     Views: {
-      leaderboard_stats: {
-        Row: {
-          level: number | null
-          memes_created: number | null
-          rank: number | null
-          shares_count: number | null
-          total_xp: number | null
-          votes_received: number | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       calculate_level: { Args: { xp: number }; Returns: number }
+      get_leaderboard_stats: {
+        Args: { limit_count?: number }
+        Returns: {
+          level: number
+          memes_created: number
+          rank: number
+          shares_count: number
+          total_xp: number
+          votes_received: number
+        }[]
+      }
       get_meme_vote_count: { Args: { meme_id_param: string }; Returns: number }
       has_role: {
         Args: {
