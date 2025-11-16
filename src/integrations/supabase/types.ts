@@ -534,6 +534,24 @@ export type Database = {
     }
     Functions: {
       calculate_level: { Args: { xp: number }; Returns: number }
+      create_meme_with_validation: {
+        Args: {
+          accessories_param?: Json
+          background_param?: string
+          image_url_param: string
+          template_name_param?: string
+          user_id_param: string
+        }
+        Returns: string
+      }
+      create_referral: {
+        Args: {
+          referral_code_param: string
+          referred_wallet_param: string
+          referrer_wallet_param: string
+        }
+        Returns: string
+      }
       get_leaderboard_stats: {
         Args: { limit_count?: number }
         Returns: {
@@ -552,6 +570,18 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      increment_meme_share: {
+        Args: { meme_id_param: string }
+        Returns: undefined
+      }
+      increment_meme_view: {
+        Args: { meme_id_param: string }
+        Returns: undefined
+      }
+      increment_player_click: {
+        Args: { user_id_param: string }
+        Returns: undefined
       }
       increment_user_xp: {
         Args: { user_id_param: string; xp_amount: number }
