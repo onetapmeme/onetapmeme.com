@@ -46,17 +46,19 @@ export const useManifestoSignatures = () => {
     };
   }, []);
 
-  const signManifesto = async (email: string) => {
+  const signManifesto = async (email: string, recaptchaToken: string) => {
     try {
-      const { error } = await supabase
-        .from('manifesto_signatures')
-        .insert({ email });
+      const { data, error } = await supabase.functions.invoke('manifesto-sign', {
+        body: { email, recaptchaToken }
+      });
       
-      if (error) {
-        if (error.code === '23505') { // Unique constraint violation
+      if (error) throw error;
+      
+      if (data?.error) {
+        if (data.error === 'already_signed') {
           throw new Error('already_signed');
         }
-        throw error;
+        throw new Error(data.error);
       }
       
       return { success: true };

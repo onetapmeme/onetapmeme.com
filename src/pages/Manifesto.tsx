@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,12 @@ import { useManifestoSignatures } from "@/hooks/useManifestoSignatures";
 import { LiveSignatureCounter } from "@/components/manifesto/LiveSignatureCounter";
 import { z } from "zod";
 
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
+
 const manifestoSchema = z.object({
   email: z.string()
     .trim()
@@ -24,7 +30,21 @@ const Manifesto = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [signed, setSigned] = useState(false);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const { count, loading, signManifesto } = useManifestoSignatures();
+
+  useEffect(() => {
+    // Load reCAPTCHA script
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}`;
+    script.async = true;
+    script.onload = () => setRecaptchaLoaded(true);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const handleSign = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,13 +59,27 @@ const Manifesto = () => {
     const validatedEmail = validation.data.email;
 
     try {
-      await signManifesto(validatedEmail);
+      if (!recaptchaLoaded || !window.grecaptcha) {
+        throw new Error('reCAPTCHA not loaded');
+      }
+
+      // Get reCAPTCHA token
+      const recaptchaToken = await window.grecaptcha.execute(
+        import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+        { action: 'manifesto_sign' }
+      );
+
+      await signManifesto(validatedEmail, recaptchaToken);
       setSigned(true);
       toast.success("Welcome to the 1Tapper army! 🎯");
       setEmail("");
     } catch (error: any) {
       if (error.message === 'already_signed') {
         toast.info("You've already signed the manifesto! 🎯");
+      } else if (error.message === 'Rate limit exceeded. Please try again later.') {
+        toast.error("Too many attempts. Please try again later.");
+      } else if (error.message === 'CAPTCHA verification failed') {
+        toast.error("Security verification failed. Please try again.");
       } else {
         toast.error("Failed to sign. Please try again.");
       }

@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Mail, Loader2, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 import { z } from 'zod';
+import { supabase } from '@/integrations/supabase/client';
+
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
 
 // Email validation schema
 const newsletterSchema = z.object({
@@ -15,6 +22,20 @@ const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+
+  useEffect(() => {
+    // Load reCAPTCHA script
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}`;
+    script.async = true;
+    script.onload = () => setRecaptchaLoaded(true);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,23 +51,38 @@ const Newsletter = () => {
     setLoading(true);
 
     try {
-      // TODO: Replace with actual edge function call when RESEND_API_KEY is configured
-      // const { data, error } = await supabase.functions.invoke('newsletter-signup', {
-      //   body: { email }
-      // });
+      if (!recaptchaLoaded || !window.grecaptcha) {
+        throw new Error('reCAPTCHA not loaded');
+      }
 
-      // Simulated success for now
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Get reCAPTCHA token
+      const recaptchaToken = await window.grecaptcha.execute(
+        import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+        { action: 'newsletter_signup' }
+      );
+
+      const { data, error } = await supabase.functions.invoke('newsletter-signup', {
+        body: { email: validatedEmail, recaptchaToken }
+      });
+
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
       
       setSuccess(true);
       setEmail('');
-      toast.success(`Successfully subscribed: ${validatedEmail}`);
+      toast.success('Successfully subscribed!');
       
       // Reset success state after animation
       setTimeout(() => setSuccess(false), 3000);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Newsletter signup error:', error);
-      toast.error('Failed to subscribe. Please try again.');
+      if (error.message === 'Rate limit exceeded. Please try again later.') {
+        toast.error('Too many attempts. Please try again later.');
+      } else if (error.message === 'CAPTCHA verification failed') {
+        toast.error('Security verification failed. Please try again.');
+      } else {
+        toast.error('Failed to subscribe. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
