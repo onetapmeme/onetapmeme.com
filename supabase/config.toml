@@ -2,3 +2,9 @@ project_id = "evvzuyxcghokjwhhfwra"
 
 [functions.get-contract-config]
 verify_jwt = false
+
+[functions.manifesto-sign]
+verify_jwt = false
+
+[functions.newsletter-signup]
+verify_jwt = false
