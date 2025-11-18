@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -40,6 +40,13 @@ const Manifesto = () => {
     script.async = true;
     script.onload = () => setRecaptchaLoaded(true);
     document.head.appendChild(script);
+
+    // Set SEO meta tags
+    document.title = "1Tap Manifesto - Join the Gaming Revolution";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', "Join the 1Tap army. We believe in life, liberty, and the pursuit of headshots. Sign our manifesto and be part of the gaming-crypto revolution.");
+    }
 
     return () => {
       document.head.removeChild(script);
@@ -86,7 +93,7 @@ const Manifesto = () => {
     }
   };
 
-  const principles = [
+  const principles = useMemo(() => [
     {
       number: "I",
       icon: Gamepad2,
@@ -117,7 +124,7 @@ const Manifesto = () => {
       title: t('manifesto.principle5.title'),
       description: t('manifesto.principle5.description'),
     },
-  ];
+  ], [t]);
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
@@ -145,8 +152,9 @@ const Manifesto = () => {
             variant="outline"
             onClick={() => navigate("/home")}
             className="mb-8 border-primary/30 hover:border-primary/60 backdrop-blur-sm font-rajdhani"
+            aria-label="Go back to home page"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
+            <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
             {t('manifesto.backHome')}
           </Button>
         </motion.div>
@@ -165,6 +173,7 @@ const Manifesto = () => {
               initial={{ scale: 0, rotate: 0 }}
               animate={{ scale: 1, rotate: 360 }}
               transition={{ duration: 2, ease: "easeOut" }}
+              aria-hidden="true"
             >
               <Crosshair className="w-full h-full text-primary" />
             </motion.div>
@@ -194,7 +203,7 @@ const Manifesto = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 1.5 }}
               >
-                <div className="flex items-center justify-center gap-4 my-8">
+                <div className="flex items-center justify-center gap-4 my-8" aria-hidden="true">
                   <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
                   <Crosshair className="w-6 h-6 text-accent" />
                   <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-primary to-transparent" />
@@ -241,7 +250,7 @@ const Manifesto = () => {
               <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-primary uppercase tracking-wider">
                 Core Principles
               </h2>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4" aria-hidden="true">
                 <div className="h-px w-24 bg-gradient-to-r from-transparent via-accent to-transparent" />
                 <Crosshair className="w-6 h-6 text-accent animate-pulse" />
                 <div className="h-px w-24 bg-gradient-to-r from-transparent via-accent to-transparent" />
@@ -271,7 +280,7 @@ const Manifesto = () => {
                     />
 
                     {/* Watermark number */}
-                    <div className="absolute top-4 right-4 text-8xl md:text-9xl font-orbitron font-bold text-primary/5 pointer-events-none select-none">
+                    <div className="absolute top-4 right-4 text-8xl md:text-9xl font-orbitron font-bold text-primary/5 pointer-events-none select-none" aria-hidden="true">
                       {principle.number}
                     </div>
 
@@ -293,7 +302,7 @@ const Manifesto = () => {
                       </div>
 
                       {/* Separator */}
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center justify-center gap-2" aria-hidden="true">
                         <div className="h-px w-12 bg-gradient-to-r from-transparent via-primary to-transparent" />
                         <div className="w-1 h-1 rounded-full bg-primary" />
                         <div className="h-px w-12 bg-gradient-to-r from-transparent via-primary to-transparent" />
@@ -311,10 +320,10 @@ const Manifesto = () => {
                     </div>
 
                     {/* Decorative corners */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-primary/40" />
-                    <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-primary/40" />
-                    <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-primary/40" />
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary/40" />
+                    <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-primary/40" aria-hidden="true" />
+                    <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-primary/40" aria-hidden="true" />
+                    <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-primary/40" aria-hidden="true" />
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary/40" aria-hidden="true" />
                   </div>
                 </motion.article>
               ))}
@@ -387,9 +396,10 @@ const Manifesto = () => {
                       style={{
                         boxShadow: '0 0 30px rgba(22,163,224,0.4)',
                       }}
+                      aria-label="Sign the 1Tap manifesto"
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
-                        <Crosshair className="w-5 h-5" />
+                        <Crosshair className="w-5 h-5" aria-hidden="true" />
                         {t('manifesto.signButton')}
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -412,7 +422,7 @@ const Manifesto = () => {
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <CheckCircle2 className="w-20 h-20 text-primary" style={{ filter: 'drop-shadow(0 0 20px rgba(22,163,224,0.6))' }} />
+                      <CheckCircle2 className="w-20 h-20 text-primary" style={{ filter: 'drop-shadow(0 0 20px rgba(22,163,224,0.6))' }} aria-hidden="true" />
                     </motion.div>
                   </div>
                   <div className="space-y-2">
