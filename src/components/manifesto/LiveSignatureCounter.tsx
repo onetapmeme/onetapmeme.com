@@ -12,13 +12,16 @@ export const LiveSignatureCounter = ({ count, loading }: LiveSignatureCounterPro
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
       className="relative"
+      role="status"
+      aria-live="polite"
+      aria-label={`${count.toLocaleString()} 1Tappers have signed the manifesto`}
     >
       <div className="bg-primary/10 border-2 border-primary/30 rounded-xl px-8 py-6 backdrop-blur-md relative overflow-hidden group hover:border-primary/50 transition-all duration-300">
         {/* Glow effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         {/* Live indicator */}
-        <div className="absolute top-3 right-3 flex items-center gap-2">
+        <div className="absolute top-3 right-3 flex items-center gap-2" aria-hidden="true">
           <motion.div
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -66,10 +69,10 @@ export const LiveSignatureCounter = ({ count, loading }: LiveSignatureCounterPro
         </div>
 
         {/* Decorative corners */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-primary/40" />
-        <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-primary/40" />
-        <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-primary/40" />
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary/40" />
+        <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-primary/40" aria-hidden="true" />
+        <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-primary/40" aria-hidden="true" />
+        <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-primary/40" aria-hidden="true" />
+        <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary/40" aria-hidden="true" />
       </div>
     </motion.div>
   );
