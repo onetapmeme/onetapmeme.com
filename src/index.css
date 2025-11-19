@@ -439,4 +439,27 @@ All colors MUST be HSL.
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary));
   }
+  
+  /* reCAPTCHA badge styling - make it smaller and position behind Ben */
+  .grecaptcha-badge {
+    transform: scale(0.85) !important;
+    transform-origin: bottom right !important;
+    z-index: 9000 !important;
+    opacity: 0.8 !important;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+  }
+  
+  .grecaptcha-badge:hover {
+    opacity: 1 !important;
+    transform: scale(0.9) !important;
+  }
+  
+  /* On mobile, make it even smaller */
+  @media (max-width: 768px) {
+    .grecaptcha-badge {
+      transform: scale(0.7) !important;
+      bottom: 4px !important;
+      right: 4px !important;
+    }
+  }
 }
