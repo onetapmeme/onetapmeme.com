@@ -78,7 +78,7 @@ const Manifesto = () => {
 
       await signManifesto(validatedEmail, recaptchaToken);
       setSigned(true);
-      toast.success("Welcome to the 1Tapper army! 🎯");
+      toast.success("📧 Vérifiez votre email pour confirmer votre signature!");
       setEmail("");
     } catch (error: any) {
       if (error.message === 'already_signed') {
@@ -425,13 +425,24 @@ const Manifesto = () => {
                       <CheckCircle2 className="w-20 h-20 text-primary" style={{ filter: 'drop-shadow(0 0 20px rgba(22,163,224,0.6))' }} aria-hidden="true" />
                     </motion.div>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     <h3 className="text-3xl font-orbitron font-bold text-primary">
                       {t('manifesto.thankYou')}
                     </h3>
-                    <p className="text-lg text-muted-foreground font-rajdhani">
-                      {t('manifesto.welcomeMessage')}
-                    </p>
+                    <div className="space-y-2">
+                      <p className="text-lg text-foreground font-rajdhani font-semibold">
+                        📧 Vérifiez votre boîte email
+                      </p>
+                      <p className="text-base text-muted-foreground font-rajdhani">
+                        Nous vous avons envoyé un lien de confirmation.<br />
+                        Cliquez dessus pour valider votre signature.
+                      </p>
+                    </div>
+                    <div className="pt-4 px-4 py-3 bg-primary/10 border border-primary/30 rounded-lg">
+                      <p className="text-sm text-muted-foreground font-rajdhani">
+                        💡 Pensez à vérifier vos spams si vous ne voyez pas l'email
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               )}

@@ -176,18 +176,27 @@ export type Database = {
           email: string
           id: string
           signed_at: string | null
+          token_expires_at: string | null
+          verification_token: string | null
+          verified: boolean | null
         }
         Insert: {
           created_at?: string | null
           email: string
           id?: string
           signed_at?: string | null
+          token_expires_at?: string | null
+          verification_token?: string | null
+          verified?: boolean | null
         }
         Update: {
           created_at?: string | null
           email?: string
           id?: string
           signed_at?: string | null
+          token_expires_at?: string | null
+          verification_token?: string | null
+          verified?: boolean | null
         }
         Relationships: []
       }
@@ -534,6 +543,7 @@ export type Database = {
     }
     Functions: {
       calculate_level: { Args: { xp: number }; Returns: number }
+      cleanup_expired_manifesto_tokens: { Args: never; Returns: undefined }
       create_meme_with_validation: {
         Args: {
           accessories_param?: Json

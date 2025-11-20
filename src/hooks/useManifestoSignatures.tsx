@@ -9,7 +9,8 @@ export const useManifestoSignatures = () => {
     try {
       const { count: totalCount, error } = await supabase
         .from('manifesto_signatures')
-        .select('*', { count: 'exact', head: true });
+        .select('*', { count: 'exact', head: true })
+        .eq('verified', true);
       
       if (error) throw error;
       setCount(totalCount || 0);
@@ -25,15 +26,16 @@ export const useManifestoSignatures = () => {
     // Fetch initial count
     fetchSignatureCount();
     
-    // Subscribe to real-time updates
+    // Subscribe to real-time updates for verified signatures
     const channel = supabase
       .channel('manifesto_signatures_count')
       .on(
         'postgres_changes',
         {
-          event: 'INSERT',
+          event: 'UPDATE',
           schema: 'public',
-          table: 'manifesto_signatures'
+          table: 'manifesto_signatures',
+          filter: 'verified=eq.true'
         },
         () => {
           fetchSignatureCount();

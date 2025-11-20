@@ -28,6 +28,7 @@ import Blog from "./pages/Blog";
 import Leaderboard from "./pages/Leaderboard";
 import Achievements from "./pages/Achievements";
 import Manifesto from "./pages/Manifesto";
+import ManifestoVerify from "./pages/ManifestoVerify";
 import Integrations from "./pages/Integrations";
 import Admin from "./pages/Admin";
 
@@ -63,6 +64,7 @@ const App = () => (
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/manifesto" element={<Manifesto />} />
+          <Route path="/manifesto/verify" element={<ManifestoVerify />} />
           <Route path="/integrations" element={<Integrations />} />
           <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
