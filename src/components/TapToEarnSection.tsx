@@ -75,13 +75,10 @@ const TapToEarnSection = () => {
           >
             TAP TO EARN
           </h2>
-          <div className="max-w-3xl mx-auto px-4 space-y-3">
+          <div className="max-w-3xl mx-auto px-4">
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               Click to earn XP, climb ranks, and unlock exclusive drops. 
               Build your collection of legendary items and backgrounds for the meme generator.
-            </p>
-            <p className="text-sm md:text-base text-accent/80 font-semibold">
-              🚧 Currently in development - Coming soon!
             </p>
           </div>
         </div>

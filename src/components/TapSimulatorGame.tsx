@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Trophy, Sparkles, TrendingUp, LogIn, Save, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { z } from "zod";
+import confetti from "canvas-confetti";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DropRoulette from "./DropRoulette";
+import { useFloatingXP } from "./FloatingXP";
 
 interface Rank {
   name: string;
@@ -71,6 +73,8 @@ const getColorTier = (xp: number) => {
 const TapSimulatorGame = () => {
   const { t, i18n } = useTranslation();
   const { toast } = useToast();
+  const { addParticle, FloatingXPContainer } = useFloatingXP();
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [xp, setXp] = useState(0);
   const [currentRankIndex, setCurrentRankIndex] = useState(0);
   const [clicks, setClicks] = useState(0);
@@ -234,6 +238,20 @@ const TapSimulatorGame = () => {
       setNewDrop(nextRank.drop);
       setShowDrop(true);
       
+      // Confetti celebration on rank up
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#FFD700', '#FFA500', '#FF6347', '#FF1493']
+      });
+      
+      toast({
+        title: "🎉 RANK UP!",
+        description: `You've reached ${nextRank.name}!`,
+        duration: 5000,
+      });
+      
       // Save drop to inventory if user is logged in
       if (user) {
         saveDrop(nextRank.drop, nextRank.name);
@@ -241,7 +259,7 @@ const TapSimulatorGame = () => {
     }
   }, [xp, nextRank]);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     // Rate limiting: max 10 clicks per second (100ms between clicks)
     const now = Date.now();
     if (now - lastClickTime < 100) {
@@ -249,18 +267,34 @@ const TapSimulatorGame = () => {
     }
     setLastClickTime(now);
     
-    const xpGain = Math.floor(Math.random() * 50) + 10;
+    const xpGain = Math.floor(Math.random() * 5) + 10;
     setXp(prev => prev + xpGain);
     setClicks(prev => prev + 1);
     setClickAnimation(true);
-    setTimeout(() => setClickAnimation(false), 100);
+    setTimeout(() => setClickAnimation(false), 150);
+    
+    // Add floating XP particle at click position
+    addParticle(e.clientX, e.clientY, xpGain);
+    
+    // Random drop chance (every click has a chance)
+    const dropChance = Math.random();
+    if (dropChance < 0.01 && user) { // 1% chance per click for extra drops
+      const randomDrop = ranks[Math.floor(Math.random() * ranks.length)].drop;
+      toast({
+        title: "💎 Bonus Drop!",
+        description: `You found ${randomDrop.name}!`,
+      });
+      saveDrop(randomDrop, "Bonus");
+    }
   };
 
   const displayRankName = i18n.language === 'fr' ? currentRank.nameFr : currentRank.name;
   const nextRankName = nextRank ? (i18n.language === 'fr' ? nextRank.nameFr : nextRank.name) : null;
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <>
+      <FloatingXPContainer />
+      <div className="w-full max-w-md mx-auto">
       {/* Auth Status & Save */}
       {!user && (
         <div className="bg-card/40 backdrop-blur-md border-2 border-yellow-500/50 rounded-xl p-3 mb-4 text-center">
@@ -333,15 +367,18 @@ const TapSimulatorGame = () => {
 
       {/* Click Button */}
       <Button
+        ref={buttonRef}
         onClick={handleClick}
         size="lg"
         disabled={showDrop}
-        className={`w-full h-24 text-2xl font-bold bg-gradient-accent hover:shadow-glow-primary transition-all relative overflow-hidden ${
-          clickAnimation ? 'scale-95' : 'scale-100'
+        className={`w-full h-24 text-2xl font-bold bg-gradient-accent hover:shadow-glow-primary transition-all duration-150 relative overflow-hidden active:scale-90 ${
+          clickAnimation ? 'scale-95 shadow-[0_0_30px_rgba(255,165,0,0.8)]' : 'scale-100'
         }`}
       >
         <Sparkles className="w-6 h-6 absolute top-2 left-2 animate-pulse" />
-        <span>{showDrop ? 'DROP IN PROGRESS...' : 'TAP TO EARN'}</span>
+        <span className="drop-shadow-[0_2px_10px_rgba(255,255,255,0.5)]">
+          {showDrop ? 'DROP IN PROGRESS...' : 'TAP TO EARN'}
+        </span>
         <TrendingUp className="w-6 h-6 absolute bottom-2 right-2 animate-bounce" />
       </Button>
 
@@ -352,7 +389,8 @@ const TapSimulatorGame = () => {
           onClose={() => setShowDrop(false)}
         />
       )}
-    </div>
+      </div>
+    </>
   );
 };
 
