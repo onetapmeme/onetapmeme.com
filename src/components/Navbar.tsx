@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -16,11 +17,19 @@ import { useTranslation } from "react-i18next";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 const Navbar = () => {
-  const {
-    t
-  } = useTranslation();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Preload audio
+    audioRef.current = new Audio("/sounds/explosion.wav");
+    audioRef.current.preload = "auto";
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -28,6 +37,27 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Play explosion sound
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(console.error);
+    }
+
+    // If not on home page, navigate to home first
+    if (location.pathname !== '/home' && location.pathname !== '/') {
+      navigate('/home');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    } else {
+      // Already on home, just scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -74,15 +104,8 @@ const Navbar = () => {
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
           {/* Logo */}
-          <a href="/home" className="flex items-center gap-3 group" onClick={e => {
-          e.preventDefault();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        }}>
+          <a href="/home" className="flex items-center gap-3 group" onClick={handleLogoClick}>
             <img src={logo} alt="1Tap" className="w-10 h-10 group-hover:animate-pulse-glow transition-all" />
-            
           </a>
 
           {/* Navigation Menu */}
