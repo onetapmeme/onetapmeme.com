@@ -16,7 +16,7 @@ import RewardSystem from "@/components/RewardSystem";
 import MediaSection from "@/components/MediaSection";
 import SocialProof from "@/components/SocialProof";
 import SwapWidget from "@/components/SwapWidget";
-import VideoShowcase from "@/components/VideoShowcase";
+
 import WhyOneTap from "@/components/WhyOneTap";
 import AirdropCalendar from "@/components/AirdropCalendar";
 import StickyBuyButton from "@/components/StickyBuyButton";
@@ -96,12 +96,6 @@ const Index = () => {
       <div id="media">
         <SectionWrapper variant="accent" blendFrom="primary">
           <MediaSection />
-        </SectionWrapper>
-      </div>
-
-      <div id="videos">
-        <SectionWrapper variant="primary" blendFrom="accent">
-          <VideoShowcase />
         </SectionWrapper>
       </div>
 
