@@ -34,7 +34,25 @@ const TapLeaderboard = () => {
         .limit(10);
 
       if (error) throw error;
-      setLeaderboard(data || []);
+      
+      let leaderboardData = data || [];
+      
+      // Add bot players if not enough real players
+      if (leaderboardData.length < 5) {
+        const botPlayers: LeaderboardEntry[] = [
+          { user_id: "1TAP_PRO_001", xp: 15000, clicks: 5000, current_rank_index: 8 },
+          { user_id: "HEADSHOT_KING", xp: 12000, clicks: 4200, current_rank_index: 7 },
+          { user_id: "AWP_MASTER_99", xp: 9500, clicks: 3800, current_rank_index: 6 },
+          { user_id: "CLUTCH_GOD_42", xp: 7200, clicks: 3100, current_rank_index: 5 },
+        ];
+        
+        // Merge real players with bots, sort by XP
+        leaderboardData = [...leaderboardData, ...botPlayers]
+          .sort((a, b) => b.xp - a.xp)
+          .slice(0, 10);
+      }
+      
+      setLeaderboard(leaderboardData);
     } catch (error) {
       console.error('Error fetching leaderboard:', error);
     } finally {
@@ -56,6 +74,10 @@ const TapLeaderboard = () => {
   };
 
   const formatUserId = (userId: string) => {
+    // If it's a bot (contains underscore or is short), show full name
+    if (userId.includes('_') || userId.length < 20) {
+      return userId;
+    }
     return `${userId.slice(0, 4)}...${userId.slice(-4)}`;
   };
 
