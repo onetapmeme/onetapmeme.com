@@ -110,6 +110,15 @@ const Navbar = () => {
 
           {/* Navigation Menu */}
           <div className="flex items-center gap-2">
+            {/* Desktop Login Button */}
+            <Button 
+              variant="ghost" 
+              className="hidden md:inline-flex bg-background/10 backdrop-blur-md border border-primary/20 hover:bg-background/20 hover:border-primary/40 transition-all duration-300"
+              asChild
+            >
+              <a href="/auth">Login</a>
+            </Button>
+
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="hover:bg-primary/10">
@@ -151,7 +160,11 @@ const Navbar = () => {
                     ))}
                   </div>
 
-                  <Button variant="hero" className="mt-4" asChild>
+                  <Button 
+                    variant="ghost" 
+                    className="mt-4 bg-background/10 backdrop-blur-md border border-primary/20 hover:bg-background/20 hover:border-primary/40 transition-all duration-300" 
+                    asChild
+                  >
                     <a href="/auth" onClick={() => setIsMobileMenuOpen(false)}>
                       Login
                     </a>
