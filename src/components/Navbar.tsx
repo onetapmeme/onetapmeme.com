@@ -85,6 +85,11 @@ const Navbar = () => {
 
   const ecosystemItems = [
     {
+      name: "Gamified Airdrops",
+      href: "/airdrops",
+      comingSoon: true
+    },
+    {
       name: "Inventory",
       href: "/inventory",
       comingSoon: false
