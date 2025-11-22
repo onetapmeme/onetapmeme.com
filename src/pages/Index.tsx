@@ -18,7 +18,6 @@ import SocialProof from "@/components/SocialProof";
 import SwapWidget from "@/components/SwapWidget";
 
 import WhyOneTap from "@/components/WhyOneTap";
-import AirdropCalendar from "@/components/AirdropCalendar";
 import StickyBuyButton from "@/components/StickyBuyButton";
 import DailyQuests from "@/components/DailyQuests";
 import {
@@ -89,9 +88,9 @@ const Index = () => {
         </SectionWrapper>
       </div>
 
-      <div id="airdrops">
+      <div id="daily-quests">
         <SectionWrapper variant="accent" blendFrom="primary">
-          <AirdropCalendar />
+          <DailyQuests />
         </SectionWrapper>
       </div>
       
@@ -104,12 +103,6 @@ const Index = () => {
       <div id="media">
         <SectionWrapper variant="accent" blendFrom="primary">
           <MediaSection />
-        </SectionWrapper>
-      </div>
-
-      <div id="daily-quests">
-        <SectionWrapper variant="accent" blendFrom="primary">
-          <DailyQuests />
         </SectionWrapper>
       </div>
 
