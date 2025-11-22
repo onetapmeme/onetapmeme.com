@@ -85,6 +85,11 @@ const Navbar = () => {
 
   const ecosystemItems = [
     {
+      name: "Inventory",
+      href: "/inventory",
+      comingSoon: false
+    },
+    {
       name: "Integrations",
       href: "/integrations",
       comingSoon: true
@@ -97,7 +102,7 @@ const Navbar = () => {
     {
       name: "Leaderboard",
       href: "/leaderboard",
-      comingSoon: true
+      comingSoon: false
     }
   ];
   return <header className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${isScrolled ? "h-16 bg-background/40 backdrop-blur-xl border border-primary/20 scale-95 w-[90%] max-w-4xl shadow-glow-primary" : "h-16 bg-background/80 backdrop-blur-md border border-primary/10 w-[95%] max-w-5xl"}`}>
