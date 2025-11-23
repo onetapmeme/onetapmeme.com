@@ -84,6 +84,7 @@ const TapSimulatorGame = () => {
   const [user, setUser] = useState<any>(null);
   const [saving, setSaving] = useState(false);
   const [lastClickTime, setLastClickTime] = useState(0);
+  const [recentDrops, setRecentDrops] = useState<any[]>([]);
 
   const currentRank = ranks[currentRankIndex];
   const nextRank = ranks[currentRankIndex + 1];
@@ -142,6 +143,18 @@ const TapSimulatorGame = () => {
         setXp(data.xp);
         setClicks(data.clicks);
         setCurrentRankIndex(data.current_rank_index);
+      }
+      
+      // Load recent drops
+      const { data: drops } = await supabase
+        .from('player_inventory')
+        .select('*')
+        .eq('user_id', userId)
+        .order('collected_at', { ascending: false })
+        .limit(6);
+      
+      if (drops) {
+        setRecentDrops(drops);
       }
     } catch (error: any) {
       console.error('Error loading progress:', error);
@@ -221,6 +234,20 @@ const TapSimulatorGame = () => {
         });
 
       if (error) throw error;
+      
+      // Reload recent drops
+      if (user) {
+        const { data: drops } = await supabase
+          .from('player_inventory')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('collected_at', { ascending: false })
+          .limit(6);
+        
+        if (drops) {
+          setRecentDrops(drops);
+        }
+      }
       
       toast({
         title: "New Drop!",
@@ -388,6 +415,47 @@ const TapSimulatorGame = () => {
           drop={newDrop}
           onClose={() => setShowDrop(false)}
         />
+      )}
+
+      {/* Recent Drops Inventory */}
+      {user && recentDrops.length > 0 && (
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-sm font-semibold text-foreground">Recent Drops</h3>
+            <Link to="/inventory">
+              <Button variant="ghost" size="sm" className="text-xs">
+                View All →
+              </Button>
+            </Link>
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {recentDrops.map((item) => {
+              const rarityColors: Record<string, string> = {
+                "Common": "border-gray-500/50 bg-gray-500/10",
+                "Uncommon": "border-green-500/50 bg-green-500/10",
+                "Rare": "border-blue-500/50 bg-blue-500/10",
+                "Epic": "border-purple-500/50 bg-purple-500/10",
+                "Legendary": "border-yellow-500/50 bg-yellow-500/10",
+                "Legendary+": "border-orange-500/50 bg-orange-500/10",
+                "Mythic": "border-red-500/50 bg-red-500/10"
+              };
+              
+              return (
+                <div
+                  key={item.id}
+                  className={`relative aspect-square rounded-lg border-2 ${rarityColors[item.drop_rarity] || "border-border"} backdrop-blur-sm p-2 flex flex-col items-center justify-center`}
+                >
+                  <span className="text-2xl mb-1">
+                    {item.drop_icon.endsWith('.png') ? '🎮' : item.drop_icon}
+                  </span>
+                  <span className="text-[10px] text-center text-muted-foreground line-clamp-1">
+                    {item.drop_name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       )}
       </div>
     </>
