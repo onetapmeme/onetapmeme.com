@@ -95,6 +95,11 @@ const Navbar = () => {
       comingSoon: false
     },
     {
+      name: "Crafting",
+      href: "/crafting",
+      comingSoon: false
+    },
+    {
       name: "Integrations",
       href: "/integrations",
       comingSoon: true
@@ -158,15 +163,26 @@ const Navbar = () => {
                   <div className="border-t border-primary/20 pt-4">
                     <p className="text-sm text-muted-foreground mb-3 font-semibold">Écosystème</p>
                     {ecosystemItems.map(item => (
-                      <div 
-                        key={item.name}
-                        className="flex items-center justify-between py-2 text-muted-foreground/50 pointer-events-none"
-                      >
-                        <span className="text-lg font-medium">{item.name}</span>
-                        <Badge variant="outline" className="text-xs border-primary/30 text-primary/70">
-                          Bientôt
-                        </Badge>
-                      </div>
+                      item.comingSoon ? (
+                        <div 
+                          key={item.name}
+                          className="flex items-center justify-between py-2 text-muted-foreground/50 pointer-events-none"
+                        >
+                          <span className="text-lg font-medium">{item.name}</span>
+                          <Badge variant="outline" className="text-xs border-primary/30 text-primary/70">
+                            Bientôt
+                          </Badge>
+                        </div>
+                      ) : (
+                        <a 
+                          key={item.name}
+                          href={item.href}
+                          className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium py-2 block"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      )
                     ))}
                   </div>
 

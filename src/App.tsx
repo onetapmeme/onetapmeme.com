@@ -32,6 +32,7 @@ import ManifestoVerify from "./pages/ManifestoVerify";
 import Integrations from "./pages/Integrations";
 import Admin from "./pages/Admin";
 import Inventory from "./pages/Inventory";
+import Crafting from "./pages/Crafting";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +70,7 @@ const App = () => (
           <Route path="/integrations" element={<Integrations />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route path="/crafting" element={<Crafting />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
