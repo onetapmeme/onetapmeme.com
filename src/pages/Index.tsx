@@ -12,7 +12,6 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SectionWrapper from "@/components/SectionWrapper";
 import BenControllerV2 from "@/components/ben/BenControllerV2";
 import LiveStats from "@/components/LiveStats";
-import RewardSystem from "@/components/RewardSystem";
 import MediaSection from "@/components/MediaSection";
 import SocialProof from "@/components/SocialProof";
 import SwapWidget from "@/components/SwapWidget";
@@ -82,9 +81,9 @@ const Index = () => {
         </SectionWrapper>
       </div>
 
-      <div id="rewards">
+      <div id="memes">
         <SectionWrapper variant="primary" blendFrom="accent">
-          <RewardSystem />
+          <MemeSection />
         </SectionWrapper>
       </div>
 
