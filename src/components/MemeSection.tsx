@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download, Shuffle, Image as ImageIcon } from "lucide-react";
+import { Download, Shuffle, Image as ImageIcon, Package } from "lucide-react";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
 import logoImage from "@/assets/onetap_new_logo.png";
@@ -12,6 +12,8 @@ import csgoKarambitRainbow from "@/assets/meme-accessories/csgo-karambit-rainbow
 import csgoAwpAsiimov from "@/assets/meme-accessories/csgo-awp-asiimov.png";
 import csgoKarambitFade from "@/assets/meme-accessories/csgo-karambit-fade.png";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { supabase } from "@/integrations/supabase/client";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface Accessory {
   image: string;
@@ -19,6 +21,8 @@ interface Accessory {
   position: { x: number; y: number };
   size: number;
   rotation?: number;
+  isLoot?: boolean;
+  icon?: string;
 }
 
 interface Background {
@@ -26,7 +30,7 @@ interface Background {
   gradient: string;
 }
 
-const accessories: Accessory[] = [
+const defaultAccessories: Accessory[] = [
   { image: csgoM4a1, name: "M4A1 Shadow", position: { x: 30, y: 35 }, size: 120, rotation: -20 },
   { image: csgoAwpDragon, name: "AWP Dragon Lore", position: { x: 65, y: 40 }, size: 145, rotation: 10 },
   { image: csgoKarambitRainbow, name: "Karambit Doppler", position: { x: 85, y: 70 }, size: 85, rotation: -30 },
@@ -47,14 +51,60 @@ const MemeSection = () => {
   const { t } = useTranslation();
   const [selectedAccessories, setSelectedAccessories] = useState<number[]>([]);
   const [selectedBackground, setSelectedBackground] = useState<number>(0);
+  const [lootAccessories, setLootAccessories] = useState<Accessory[]>([]);
+  const [allAccessories, setAllAccessories] = useState<Accessory[]>(defaultAccessories);
+  const [user, setUser] = useState<any>(null);
   const memeRef = useRef<HTMLDivElement>(null);
   const { ref, isRevealed } = useScrollReveal();
+
+  useEffect(() => {
+    checkUser();
+  }, []);
+
+  const checkUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    setUser(user);
+    if (user) {
+      loadInventory(user.id);
+    }
+  };
+
+  const loadInventory = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('player_inventory')
+        .select('*')
+        .eq('user_id', userId)
+        .order('collected_at', { ascending: false });
+
+      if (error) throw error;
+
+      // Convert inventory items to accessories
+      const inventoryAccessories: Accessory[] = (data || []).map((item, index) => ({
+        image: '', // Will use icon instead
+        name: item.drop_name,
+        icon: item.drop_icon,
+        position: {
+          x: 20 + (index % 4) * 20,
+          y: 20 + Math.floor(index / 4) * 20
+        },
+        size: 80,
+        rotation: Math.random() * 60 - 30,
+        isLoot: true
+      }));
+
+      setLootAccessories(inventoryAccessories);
+      setAllAccessories([...defaultAccessories, ...inventoryAccessories]);
+    } catch (error) {
+      console.error('Error loading inventory:', error);
+    }
+  };
 
   const randomizeMeme = () => {
     const randomAccessoryCount = Math.floor(Math.random() * 3) + 2;
     const randomAccessories: number[] = [];
     while (randomAccessories.length < randomAccessoryCount) {
-      const randomIndex = Math.floor(Math.random() * accessories.length);
+      const randomIndex = Math.floor(Math.random() * allAccessories.length);
       if (!randomAccessories.includes(randomIndex)) {
         randomAccessories.push(randomIndex);
       }
@@ -94,6 +144,16 @@ const MemeSection = () => {
     );
   };
 
+  const rarityColors: Record<string, string> = {
+    "Common": "border-gray-500/50",
+    "Uncommon": "border-green-500/50",
+    "Rare": "border-blue-500/50",
+    "Epic": "border-purple-500/50",
+    "Legendary": "border-yellow-500/50",
+    "Legendary+": "border-orange-500/50",
+    "Mythic": "border-red-500/50"
+  };
+
   return (
     <section 
       id="memes" 
@@ -110,9 +170,12 @@ const MemeSection = () => {
             <p className="text-base md:text-lg text-muted-foreground">
               {t('memes.subtitle')}
             </p>
-            <p className="text-sm text-accent/80 font-semibold">
-              🚧 Currently in development - Coming soon!
-            </p>
+            {user && lootAccessories.length > 0 && (
+              <p className="text-sm text-primary font-semibold flex items-center justify-center gap-2">
+                <Package className="w-4 h-4" />
+                Use your Tap to Earn drops as accessories!
+              </p>
+            )}
           </div>
         </div>
 
@@ -135,8 +198,26 @@ const MemeSection = () => {
 
               {/* Accessories */}
               {selectedAccessories.map((accessoryIndex) => {
-                const accessory = accessories[accessoryIndex];
-                return (
+                const accessory = allAccessories[accessoryIndex];
+                if (!accessory) return null;
+
+                return accessory.isLoot ? (
+                  <div
+                    key={accessoryIndex}
+                    className="absolute drop-shadow-2xl animate-float pointer-events-none flex items-center justify-center"
+                    style={{
+                      left: `${accessory.position.x}%`,
+                      top: `${accessory.position.y}%`,
+                      transform: `translate(-50%, -50%) rotate(${accessory.rotation || 0}deg)`,
+                      width: `${accessory.size}px`,
+                      height: `${accessory.size}px`,
+                      fontSize: `${accessory.size * 0.8}px`,
+                      animationDelay: `${accessoryIndex * 0.2}s`,
+                    }}
+                  >
+                    {accessory.icon}
+                  </div>
+                ) : (
                   <img
                     key={accessoryIndex}
                     src={accessory.image}
@@ -191,29 +272,86 @@ const MemeSection = () => {
               </div>
             </Card>
 
-            {/* Accessory Selection */}
+            {/* Accessory Selection with Tabs */}
             <Card className="p-4 md:p-6 bg-card/50 backdrop-blur-sm border-primary/30">
               <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-foreground">{t('memes.accessories')}</h3>
-              <div className="grid grid-cols-5 gap-2 md:gap-3">
-                {accessories.map((accessory, index) => (
-                  <button
-                    key={index}
-                    onClick={() => toggleAccessory(index)}
-                    className={`aspect-square flex items-center justify-center rounded-lg transition-all duration-300 p-2 ${
-                      selectedAccessories.includes(index)
-                        ? "bg-primary/20 ring-2 ring-primary scale-110"
-                        : "bg-background/50 hover:bg-background/80 hover:scale-105"
-                    }`}
-                    title={accessory.name}
-                  >
-                    <img 
-                      src={accessory.image} 
-                      alt={accessory.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </button>
-                ))}
-              </div>
+              
+              <Tabs defaultValue="default" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="default">Default</TabsTrigger>
+                  <TabsTrigger value="loots" disabled={!user || lootAccessories.length === 0}>
+                    My Loots {lootAccessories.length > 0 && `(${lootAccessories.length})`}
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="default" className="mt-4">
+                  <div className="grid grid-cols-5 gap-2 md:gap-3">
+                    {defaultAccessories.map((accessory, index) => (
+                      <button
+                        key={index}
+                        onClick={() => toggleAccessory(index)}
+                        className={`aspect-square flex items-center justify-center rounded-lg transition-all duration-300 p-2 ${
+                          selectedAccessories.includes(index)
+                            ? "bg-primary/20 ring-2 ring-primary scale-110"
+                            : "bg-background/50 hover:bg-background/80 hover:scale-105"
+                        }`}
+                        title={accessory.name}
+                      >
+                        <img 
+                          src={accessory.image} 
+                          alt={accessory.name}
+                          className="w-full h-full object-contain"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="loots" className="mt-4">
+                  {!user ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      <p className="mb-4">Login to use your Tap to Earn drops!</p>
+                      <Button variant="outline" asChild>
+                        <a href="/auth">Login</a>
+                      </Button>
+                    </div>
+                  ) : lootAccessories.length === 0 ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      <p className="mb-4">No drops yet! Play Tap to Earn to collect items.</p>
+                      <Button variant="outline" onClick={() => {
+                        const element = document.getElementById('tap-to-earn');
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}>
+                        Play Now
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-5 gap-2 md:gap-3 max-h-[300px] overflow-y-auto">
+                      {lootAccessories.map((accessory, index) => {
+                        const globalIndex = defaultAccessories.length + index;
+                        return (
+                          <button
+                            key={globalIndex}
+                            onClick={() => toggleAccessory(globalIndex)}
+                            className={`aspect-square flex items-center justify-center rounded-lg transition-all duration-300 p-2 border-2 ${
+                              selectedAccessories.includes(globalIndex)
+                                ? "bg-primary/20 ring-2 ring-primary scale-110"
+                                : "bg-background/50 hover:bg-background/80 hover:scale-105"
+                            }`}
+                            title={accessory.name}
+                          >
+                            <span className="text-3xl">
+                              {accessory.icon?.endsWith('.png') ? '🎮' : accessory.icon}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </TabsContent>
+              </Tabs>
             </Card>
           </div>
         </div>
