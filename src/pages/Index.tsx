@@ -4,8 +4,6 @@ import About from "@/components/About";
 import Tokenomics from "@/components/Tokenomics";
 import Community from "@/components/Community";
 import RoadmapTimeline from "@/components/RoadmapTimeline";
-import MemeSection from "@/components/MemeSection";
-import TapToEarnSection from "@/components/TapToEarnSection";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -15,10 +13,8 @@ import LiveStats from "@/components/LiveStats";
 import MediaSection from "@/components/MediaSection";
 import SocialProof from "@/components/SocialProof";
 import SwapWidget from "@/components/SwapWidget";
-
 import WhyOneTap from "@/components/WhyOneTap";
 import StickyBuyButton from "@/components/StickyBuyButton";
-import DailyQuests from "@/components/DailyQuests";
 import {
   Accordion,
   AccordionContent,
@@ -72,24 +68,6 @@ const Index = () => {
       <div id="roadmap">
         <SectionWrapper variant="primary" blendFrom="accent">
           <RoadmapTimeline />
-        </SectionWrapper>
-      </div>
-
-      <div id="tap-to-earn">
-        <SectionWrapper variant="accent" blendFrom="primary">
-          <TapToEarnSection />
-        </SectionWrapper>
-      </div>
-
-      <div id="memes">
-        <SectionWrapper variant="primary" blendFrom="accent">
-          <MemeSection />
-        </SectionWrapper>
-      </div>
-
-      <div id="daily-quests">
-        <SectionWrapper variant="accent" blendFrom="primary">
-          <DailyQuests />
         </SectionWrapper>
       </div>
       
