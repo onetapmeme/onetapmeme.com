@@ -83,12 +83,7 @@ const Navbar = () => {
     isExternal: true
   }];
 
-  const ecosystemItems = [
-    {
-      name: "Gamified Airdrops",
-      href: "/airdrops",
-      comingSoon: true
-    },
+  const featureItems = [
     {
       name: "Inventory",
       href: "/inventory",
@@ -100,6 +95,34 @@ const Navbar = () => {
       comingSoon: false
     },
     {
+      name: "Tap to Earn",
+      href: "/enter",
+      comingSoon: false
+    },
+    {
+      name: "Meme Generator",
+      href: "/meme-generator",
+      comingSoon: false
+    },
+    {
+      name: "Daily Quests",
+      href: "/enter",
+      comingSoon: false
+    },
+    {
+      name: "Leaderboard",
+      href: "/leaderboard",
+      comingSoon: false
+    }
+  ];
+
+  const ecosystemItems = [
+    {
+      name: "Gamified Airdrops",
+      href: "/airdrops",
+      comingSoon: true
+    },
+    {
       name: "Integrations",
       href: "/integrations",
       comingSoon: true
@@ -108,11 +131,6 @@ const Navbar = () => {
       name: "Dashboard",
       href: "/dashboard",
       comingSoon: true
-    },
-    {
-      name: "Leaderboard",
-      href: "/leaderboard",
-      comingSoon: false
     }
   ];
   return <header className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${isScrolled ? "h-16 bg-background/40 backdrop-blur-xl border border-primary/20 scale-95 w-[90%] max-w-4xl shadow-glow-primary" : "h-16 bg-background/80 backdrop-blur-md border border-primary/10 w-[95%] max-w-5xl"}`}>
@@ -158,6 +176,21 @@ const Navbar = () => {
                       {item.name}
                     </a>
                   ))}
+
+                  {/* Features Section */}
+                  <div className="border-t border-primary/20 pt-4">
+                    <p className="text-sm text-muted-foreground mb-3 font-semibold">Fonctionnalités</p>
+                    {featureItems.map(item => (
+                      <a 
+                        key={item.name}
+                        href={item.href}
+                        className="text-lg text-muted-foreground hover:text-primary transition-colors font-medium py-2 block"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
 
                   {/* Ecosystem Section */}
                   <div className="border-t border-primary/20 pt-4">
