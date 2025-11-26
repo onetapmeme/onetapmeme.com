@@ -179,40 +179,58 @@ const MemeGenerator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <Button
-          variant="outline"
-          onClick={() => navigate("/home")}
-          className="mb-6"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          {t('memes.backHome')}
-        </Button>
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-purple-500/5 to-primary/5"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent"></div>
 
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-gold bg-clip-text text-transparent">
-            {t('memes.title')}
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            {t('memes.subtitle')}
-          </p>
-          {user && (
-            <p className="text-sm text-primary mt-2">
-              <Package className="inline w-4 h-4 mr-1" />
-              {t('memes.inventoryConnected')}
+      {/* Decorative Elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+      <div className="relative z-10">
+        <div className="container mx-auto px-4 py-8">
+          <Button
+            variant="outline"
+            onClick={() => navigate("/home")}
+            className="mb-6 bg-background/50 backdrop-blur border-primary/20"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t('memes.backHome')}
+          </Button>
+
+          {/* Hero Section */}
+          <div className="text-center mb-12 animate-fade-in">
+            <div className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-500/50">
+              <span className="text-4xl">🎨</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-black mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-primary bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(168,85,247,0.6)]">
+              {t('memes.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">
+              {t('memes.subtitle')}
             </p>
-          )}
-          <div className="flex gap-2 justify-center mt-4">
-            <Button variant="outline" size="sm" onClick={() => window.open('https://x.com/intent/tweet?text=Check%20out%20my%20%241TAP%20meme!%20%231TAP%20%23FPSMemes', '_blank')}>
-              Share to X
-            </Button>
+            {user && (
+              <p className="text-sm text-primary mb-4 flex items-center justify-center gap-2">
+                <Package className="w-4 h-4" />
+                {t('memes.inventoryConnected')}
+              </p>
+            )}
+            <div className="flex gap-2 justify-center">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="bg-background/50 backdrop-blur border-primary/20"
+                onClick={() => window.open('https://x.com/intent/tweet?text=Check%20out%20my%20%241TAP%20meme!%20%231TAP%20%23FPSMemes', '_blank')}
+              >
+                Share to X
+              </Button>
+            </div>
           </div>
-        </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Meme Canvas */}
-          <Card className="p-8 bg-card/50 backdrop-blur border-primary/20">
+          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Meme Canvas */}
+            <Card className="p-8 bg-card/50 backdrop-blur border-primary/20 hover:shadow-glow-primary transition-shadow">
             <div
               ref={memeRef}
               className="relative w-full aspect-square rounded-lg overflow-hidden transition-all duration-300"
@@ -356,9 +374,35 @@ const MemeGenerator = () => {
           </div>
         </div>
 
-        {/* Tap to Earn Game */}
-        <div className="mt-12 max-w-4xl mx-auto">
-          <TapSimulatorGame />
+          {/* Tips Section */}
+          <Card className="p-8 bg-card/50 backdrop-blur border-primary/20 max-w-6xl mx-auto mt-12">
+            <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Pro Meme Tips
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="text-4xl mb-3">🎨</div>
+                <h3 className="font-bold text-lg mb-2">Mix & Match</h3>
+                <p className="text-sm text-muted-foreground">
+                  Combine your earned drops with default accessories for unique creations
+                </p>
+              </div>
+              <div>
+                <div className="text-4xl mb-3">🎲</div>
+                <h3 className="font-bold text-lg mb-2">Randomize</h3>
+                <p className="text-sm text-muted-foreground">
+                  Use the shuffle button to discover unexpected and hilarious combinations
+                </p>
+              </div>
+              <div>
+                <div className="text-4xl mb-3">🚀</div>
+                <h3 className="font-bold text-lg mb-2">Share & Earn</h3>
+                <p className="text-sm text-muted-foreground">
+                  Post your memes on X to earn bonus XP and help spread the word!
+                </p>
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
     </div>

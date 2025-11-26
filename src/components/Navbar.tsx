@@ -96,7 +96,7 @@ const Navbar = () => {
     },
     {
       name: "Tap to Earn",
-      href: "/enter",
+      href: "/tap-to-earn",
       comingSoon: false
     },
     {
@@ -106,7 +106,7 @@ const Navbar = () => {
     },
     {
       name: "Daily Quests",
-      href: "/enter",
+      href: "/daily-quests",
       comingSoon: false
     },
     {
