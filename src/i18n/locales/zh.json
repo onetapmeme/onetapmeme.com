@@ -11,29 +11,33 @@
   "hero": {
     "title": "$1TAP",
     "subtitle": "终极游戏Memecoin",
-    "description": "像素怀旧遇上现代加密货币。加入游戏革命，每笔交易都是爆头。",
-    "cta": "获取 $1TAP"
+    "description": "像素怀旧遇上现代加密货币。加入游戏革命,每笔交易都是爆头。",
+    "cta": "获取 $1TAP",
+    "contractVerified": "✅ 合约已验证",
+    "lpLocked": "🔒 LP锁定6个月",
+    "dailyBurn": "🔥 每日销毁1%",
+    "learnMore": "了解更多"
   },
   "enter": {
-    "title": "欢迎来到 $1TAP！",
+    "title": "欢迎来到 1TAP!",
     "subtitle": "点击进入",
     "privacy": "隐私与风险通知",
-    "simplifiedNotice1": "$1TAP 是一种没有内在价值或财务回报预期的memecoin。",
+    "simplifiedNotice1": "1TAP 是一种没有内在价值或财务回报预期的memecoin。",
     "simplifiedNotice2": "加密货币投资具有高风险。只投资您能承受损失的金额。",
     "simplifiedNotice3": "继续使用即表示您确认理解这些风险并接受我们的条款。",
     "readFullDisclaimer": "阅读完整免责声明 →",
     "important": "重要 - 请仔细阅读",
-    "risk": "⚠️ 高风险投资：",
-    "riskText": "$1TAP 是一种没有内在价值或财务回报预期的memecoin。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
-    "noAffiliation": "🚫 无附属关系：",
+    "risk": "⚠️ 高风险投资:",
+    "riskText": "1TAP 是一种没有内在价值或财务回报预期的memecoin。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
+    "noAffiliation": "🚫 无附属关系:",
     "noAffiliationText": "本项目与 Valve Corporation、Counter-Strike 或任何相关商标无关。这是一个社区驱动的娱乐性memecoin。",
-    "privacy2": "🔒 隐私：",
+    "privacy2": "🔒 隐私:",
     "privacyText": "使用本网站即表示您同意我们隐私政策中概述的数据收集做法。我们收集钱包地址和使用数据。",
-    "noGuarantees": "📉 零保证：",
+    "noGuarantees": "📉 零保证:",
     "noGuaranteesText": "过去的表现不代表未来的结果。不保证利润或效用。此代币可能随时流动性为零。",
-    "legal": "⚖️ 法律合规：",
-    "legalText": "您确认您不是美国公民，并且从合法司法管辖区访问本网站。您接受所有风险和法律责任。",
-    "moreInfo": "欲了解更多信息，请阅读我们的",
+    "legal": "⚖️ 法律合规:",
+    "legalText": "您确认您不是美国公民,并且从合法司法管辖区访问本网站。您接受所有风险和法律责任。",
+    "moreInfo": "欲了解更多信息,请阅读我们的",
     "disclaimer": "免责声明",
     "nonAffiliation": "无附属声明",
     "privacyPolicy": "隐私政策",
@@ -42,25 +46,41 @@
     "footer": "与 Valve Corporation 或 Counter-Strike 无关。仅供娱乐目的。"
   },
   "about": {
-    "title": "关于 $1TAP",
-    "subtitle": "每一次点击都重要，每个持有者都是战士",
-    "story": "源于对战术FPS游戏和表情包文化的热爱，$1TAP 不仅仅是一枚硬币——它是一场运动。由玩家为玩家创建，有一个明确的愿景：将战术游戏的竞技能量带入加密世界。",
+    "title": "关于 1TAP",
+    "subtitle": "每一次点击都重要,每个持有者都是1Tapper",
+    "story": "源于对战术FPS游戏和表情包文化的热爱,1TAP 不仅仅是一枚代币——它是一场运动。由玩家为玩家创建,有一个明确的愿景:将战术游戏的竞技能量带入加密世界。",
     "story2": "没有风投。没有私人预售。只有纯粹的社区。",
     "communityDriven": "社区驱动",
-    "communityDrivenText": "每个决定都由持有者投票。您的声音很重要。",
+    "communityDrivenText": "每个决定都由1Tappers投票。您的声音很重要。",
     "liquidityLocked": "流动性锁定",
-    "liquidityLockedText": "LP 锁定 6 个月。完全透明，没有跑路。",
+    "liquidityLockedText": "LP 锁定 6 个月。完全透明,没有跑路。",
     "equilibratedLaunch": "均衡启动",
     "equilibratedLaunchText": "为社区、流动性和长期增长设计的均衡分配。",
     "fairLaunch": "公平启动",
     "fairLaunchText": "为社区长期增长设计的公平分配。",
     "toTheMoon": "登月",
-    "toTheMoonText": "钻石手，更强力点击。我们一起创造历史。",
-    "disclaimerNote": "请记住：memecoin具有高度投机性。永远不要投资超过您能承受损失的金额。"
+    "toTheMoonText": "钻石手,更强力点击。我们一起创造历史。",
+    "disclaimerNote": "请记住:memecoin具有高度投机性。永远不要投资超过您能承受损失的金额。"
+  },
+  "whyOneTap": {
+    "title": "为什么选择 1TAP?",
+    "subtitle": "唯一由玩家为玩家打造的memecoin",
+    "gamers": {
+      "title": "由玩家打造,为玩家服务",
+      "description": "从第一天起就由社区驱动。没有风投,没有鲸鱼。只有纯粹的竞技游戏文化转化为运动。"
+    },
+    "secure": {
+      "title": "100% 安全透明",
+      "description": "LP锁定6个月,合约已审计并完全验证。没有跑路,只有爆头。"
+    },
+    "utility": {
+      "title": "真实效用 = 真实价值",
+      "description": "点击赚取、独家NFT空投和未来游戏内整合。这不仅仅是一个表情包。"
+    }
   },
   "tokenomics": {
     "title": "代币经济",
-    "subtitle": "透明分配，可持续增长",
+    "subtitle": "透明分配,可持续增长",
     "supply": "总供应量",
     "network": "网络",
     "symbol": "符号",
@@ -71,8 +91,8 @@
     "security": "安全",
     "lpLocked": "LP 锁定 6 个月",
     "verified": "合约已验证",
-    "multiSig": "多签启用",
-    "timelock": "时间锁启用",
+    "multiSig": "多签已启用",
+    "timelock": "时间锁已启用",
     "renounced": "功能已放弃",
     "distribution": "代币分配",
     "chart": "查看图表",
@@ -84,46 +104,171 @@
     "rewardSystem": "奖励系统",
     "rewardSystemDesc": "持有者因长期持有而获得奖励",
     "transparent": "完全透明",
-    "transparentDesc": "公共钱包，定期更新，没有惊喜"
+    "transparentDesc": "公共钱包,定期更新,没有惊喜"
   },
   "roadmap": {
     "title": "路线图",
     "subtitle": "通往荣耀之路",
-    "phase1": "第1阶段：炒作启动",
+    "phase1": "第1阶段:炒作启动",
     "phase1Items": [
       "初始意识建立",
       "叙事设定",
       "社区预热"
     ],
-    "phase2": "第2阶段：真正的第1阶段",
+    "phase2": "第2阶段:真正的第1阶段",
     "phase2Items": [
       "初始销毁",
       "LP锁定",
       "有机上市",
       "营销推进"
     ],
-    "phase3": "第3阶段：社区游戏与空投",
+    "phase3": "第3阶段:社区游戏与空投",
     "phase3Items": [
       "启动点击赚取",
       "表情包游戏化功能",
       "社区奖励"
     ],
-    "phase4": "第4阶段：游戏生态系统",
+    "phase4": "第4阶段:游戏生态系统",
     "phase4Items": [
       "主播打赏系统集成",
       "锦标赛奖池",
-      "持有者专属NFT皮肤",
+      "1Tappers专属NFT皮肤",
       "电竞合作伙伴关系"
     ]
   },
+  "liveStats": {
+    "title": "1TAP 实时统计",
+    "subtitle": "实时市场数据 • 每30秒更新一次",
+    "marketCap": "市值",
+    "holders": "持有者",
+    "liquidity": "流动性",
+    "volume24h": "24小时交易量",
+    "notice": "📊 代币启动后实时数据集成即将推出"
+  },
   "memes": {
-    "title": "表情包生成器",
-    "subtitle": "创建您自己的像素 CT 表情包",
-    "weapon": "武器",
-    "style": "风格",
-    "randomize": "随机",
-    "download": "下载表情包",
-    "share": "分享到 Twitter"
+    "title": "1TAP 表情包生成器",
+    "subtitle": "用1TAP标志创建您自己的自定义表情包并与社区分享!",
+    "randomize": "随机化",
+    "download": "下载",
+    "backgrounds": "背景",
+    "accessories": "游戏配件",
+    "randomized": "表情包已随机化!",
+    "downloaded": "表情包下载成功!",
+    "downloadError": "表情包下载错误",
+    "backHome": "返回主页",
+    "dropsLoaded": "从库存加载的空投",
+    "inventoryConnected": "您的库存已连接",
+    "unlocked": "从库存解锁",
+    "howToUse": "如何使用",
+    "instruction1": "从战术射击游戏、GTA或复古风格中选择背景主题",
+    "instruction2": "点击配件将它们添加到您的表情包",
+    "instruction3": "点击'随机化'获得即时灵感",
+    "instruction4": "下载并在社交媒体上分享您的创作!"
+  },
+  "manifesto": {
+    "title": "1Tapper宣言",
+    "subtitle": "我们的代码。我们的规则。我们的社区。",
+    "backHome": "返回主页",
+    "preamble": "我们,1Tappers,因对游戏的热爱和对传统金融的不信任而团结在一起,声明这些真理是不言而喻的:所有玩家生而平等,我们被赋予某些不可剥夺的权利,其中包括生命、自由和追求爆头。",
+    "principle1": {
+      "title": "我们首先是玩家",
+      "description": "这不是为了快速致富。这是为了为我们热爱的社区建立一些真实的东西。金融兄弟们,现在转身吧。"
+    },
+    "principle2": {
+      "title": "没有鲸鱼,只有1Tappers",
+      "description": "我们拒绝拉高出货计划。我们拒绝操纵。这里的每个人都有平等的成功机会。"
+    },
+    "principle3": {
+      "title": "像职业选手一样HODL",
+      "description": "伟大的游戏需要耐心。钻石手每次都击败纸手。相信这个过程。"
+    },
+    "principle4": {
+      "title": "表情包是我们的语言",
+      "description": "我们不会太把自己当回事,但我们认真对待我们的社区。文化第一,利润第二。"
+    },
+    "principle5": {
+      "title": "透明度 > 炒作",
+      "description": "没有隐藏议程。没有秘密分配。你看到的就是你得到的。永远。"
+    },
+    "signTitle": "加入运动",
+    "emailPlaceholder": "your@email.com",
+    "signButton": "签署宣言",
+    "thankYou": "欢迎加入团队!",
+    "welcomeMessage": "您现在正式成为1Tapper。查看您的电子邮件获取独家更新。",
+    "footerNote": "通过签名,您加入了一个重视透明度、游戏文化和公平竞争高于一切的社区。"
+  },
+  "integrations": {
+    "title": "游戏整合",
+    "subtitle": "游戏与区块链的结合。看看1TAP如何革新游戏生态系统。",
+    "backHome": "返回主页",
+    "twitch": {
+      "title": "Twitch打赏小部件",
+      "description": "使观众能够在精彩游戏期间直接用1TAP打赏主播。",
+      "feature1": "直播期间实时1TAP打赏",
+      "feature2": "自动转换和分配",
+      "feature3": "观众排行榜整合"
+    },
+    "discord": {
+      "title": "Discord MVP机器人",
+      "description": "在每场社区比赛后自动奖励您最好的玩家。",
+      "feature1": "自动向比赛MVP分配1TAP",
+      "feature2": "追踪玩家统计和排名",
+      "feature3": "每个服务器的自定义奖励池"
+    },
+    "nft": {
+      "title": "NFT皮肤展示",
+      "description": "独家1Tap AWP皮肤 - 仅供1TAP持有者使用。",
+      "feature1": "限量版3D武器皮肤",
+      "feature2": "持有者独家设计",
+      "feature3": "计划未来游戏整合"
+    },
+    "cta": {
+      "title": "想要抢先体验?",
+      "description": "这些整合正在开发中。加入我们的Discord,在它们启动时获得通知。",
+      "discord": "加入Discord",
+      "github": "在GitHub上查看"
+    }
+  },
+  "airdrops": {
+    "title": "游戏化空投",
+    "subtitle": "通过游戏、创作和与社区互动来赚取1TAP",
+    "weekly": {
+      "title": "每周1Tapper抽奖",
+      "description": "每周前100名点击者分享奖池",
+      "schedule": "每周一00:00 UTC"
+    },
+    "meme": {
+      "title": "表情包竞赛",
+      "description": "创造最好的表情包,赢得大奖",
+      "schedule": "每周五公布获奖者"
+    },
+    "referral": {
+      "title": "推荐爆炸",
+      "description": "邀请朋友,在所有空投上获得乘数",
+      "schedule": "持续进行"
+    },
+    "tournament": {
+      "title": "锦标赛空投",
+      "description": "参加社区竞技游戏锦标赛",
+      "schedule": "每月活动"
+    },
+    "note": "连接您的钱包以参与空投。所有空投根据您的活动自动分配。"
+  },
+  "media": {
+    "asSeenOn": "媒体报道",
+    "comingSoon": "媒体报道即将推出...",
+    "title": "我们在TikTok上很活跃!",
+    "subtitle": "关注我们获取每日游戏内容和社区精彩集锦。",
+    "viewMore": "在TikTok上查看更多",
+    "video1": {
+      "title": "史诗游戏时刻"
+    },
+    "video2": {
+      "title": "社区精彩集锦"
+    },
+    "video3": {
+      "title": "幕后花絮"
+    }
   },
   "tapToEarn": {
     "title": "点击赚取 XP",
@@ -132,10 +277,10 @@
     "rank": "等级",
     "xp": "经验值",
     "clicks": "点击",
-    "tapButton": "点击！",
-    "rankUp": "升级！",
+    "tapButton": "点击!",
+    "rankUp": "升级!",
     "newRank": "新等级",
-    "dropReceived": "收到空投！",
+    "dropReceived": "收到空投!",
     "commonDrop": "普通空投",
     "rareDrop": "稀有空投",
     "epicDrop": "史诗空投",
@@ -143,7 +288,7 @@
   },
   "community": {
     "title": "加入我们的社区",
-    "subtitle": "与其他玩家和加密爱好者联系。成为革命的一部分！",
+    "subtitle": "与其他玩家和加密爱好者联系。成为革命的一部分!",
     "discord": "Discord",
     "discordText": "加入我们的Discord服务器进行实时聊天和独家活动",
     "github": "GitHub",
@@ -151,13 +296,50 @@
     "instagram": "Instagram",
     "instagramText": "查看我们的视觉内容和每日动态",
     "reddit": "Reddit",
-    "redditText": "参与讨论，分享表情包并与社区保持同步",
+    "redditText": "参与讨论,分享表情包并与社区保持同步",
     "tiktok": "TikTok",
     "tiktokText": "观看我们的游戏内容和病毒式表情包",
     "twitter": "Twitter/X",
     "twitterText": "关注我们获取公告、表情包和社区新闻",
     "youtube": "YouTube",
     "youtubeText": "订阅游戏视频和教程"
+  },
+  "audit": {
+    "title": "安全审计",
+    "verified": "已审计",
+    "scheduled": "审计已安排",
+    "scheduledDesc": "专业安全审计正在进行中。结果将很快发布。",
+    "inProgress": "审计进行中",
+    "completedBy": "审计方",
+    "score": "安全评分",
+    "viewReport": "查看完整报告"
+  },
+  "lpLock": {
+    "title": "流动性锁定",
+    "description": "LP代币已锁定以确保投资者保护和长期稳定",
+    "verified": "已验证",
+    "amountLocked": "锁定金额",
+    "timeRemaining": "剩余时间",
+    "platform": "平台",
+    "viewProof": "查看证明",
+    "unlockDate": "解锁日期",
+    "unlocked": "已解锁"
+  },
+  "preLaunch": {
+    "title": "🚀 即将推出",
+    "subtitle": "准备好迎接1TAP代币发布",
+    "days": "天",
+    "hours": "小时",
+    "minutes": "分钟",
+    "seconds": "秒",
+    "joinWaitlist": "加入等候名单"
+  },
+  "leaderboard": {
+    "title": "顶级1Tappers",
+    "noData": "暂无数据。成为第一个!",
+    "clicks": "点击",
+    "xp": "经验值",
+    "updateInfo": "每30秒更新一次"
   },
   "footer": {
     "tagline": "Base网络上的终极游戏memecoin",
@@ -170,45 +352,22 @@
     "nonAffiliation": "非关联声明",
     "legalNotice": "法律声明",
     "legalShield": "受 1TAP Legal Shield v1.0 保护",
-    "disclaimerText": "$1TAP 是一个没有内在价值且没有财务回报期望的memecoin。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
+    "disclaimerText": "1TAP 是一个没有内在价值且没有财务回报期望的memecoin。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
     "rights": "保留所有权利。",
     "contact": "联系方式"
   },
-  "liveStats": {
-    "title": "$ONETAP 实时统计",
-    "subtitle": "实时市场数据 • 每30秒更新一次",
-    "marketCap": "市值",
-    "holders": "持有者",
-    "liquidity": "流动性",
-    "volume24h": "24小时交易量",
-    "notice": "📊 代币启动后实时数据集成即将推出"
-  },
   "rewards": {
     "title": "奖励系统",
-    "subtitle": "点击、赚取经验值、升级并解锁独家传奇空投！",
+    "subtitle": "点击、赚取经验值、升级并解锁独家传奇空投!",
     "goldDrop": "黄金空投",
-    "goldDropDesc": "罕见的传奇空投，包含游戏风格的独家皮肤和配件。献给专注点击者的终极奖励。",
+    "goldDropDesc": "罕见的传奇空投,包含游戏主题的独家皮肤和配件。献给专注点击者的终极奖励。",
     "memeDrop": "表情包空投",
     "memeDropDesc": "社区创作的史诗表情包和自定义配件。用独特物品展示您的风格和创造力。",
     "communityDrop": "社区空投",
     "communityDropDesc": "活跃社区成员的定期奖励。参与、互动并赚取独家物品。",
     "eventDrop": "活动空投",
-    "eventDropDesc": "锦标赛和社区活动期间的特殊限时空投。在场或错过！",
+    "eventDropDesc": "锦标赛和社区活动期间的特殊限时空投。在场或错过!",
     "devNotice": "🎮 点击赚取和表情包模块目前正在开发中。",
-    "devNoticeDesc": "加入我们的社区，第一时间了解这些功能的推出！"
-  },
-  "media": {
-    "title": "我们在TikTok上很活跃！",
-    "subtitle": "关注我们获取每日游戏内容和社区精彩集锦。",
-    "viewMore": "在TikTok上查看更多",
-    "video1": {
-      "title": "史诗游戏时刻"
-    },
-    "video2": {
-      "title": "社区精彩集锦"
-    },
-    "video3": {
-      "title": "幕后花絮"
-    }
+    "devNoticeDesc": "加入我们的社区,第一时间了解这些功能的推出!"
   }
 }

@@ -2,7 +2,7 @@
   "nav": {
     "about": "À propos",
     "tokenomics": "Tokenomics",
-    "roadmap": "Feuille de route",
+    "roadmap": "Roadmap",
     "memes": "Memes",
     "community": "Communauté",
     "media": "Médias",
@@ -11,7 +11,7 @@
   "hero": {
     "title": "$1TAP",
     "subtitle": "Le Memecoin Gaming Ultime",
-    "description": "La nostalgie du pixel rencontre la crypto moderne. Rejoins la révolution gaming où chaque transaction est un one-tap.",
+    "description": "La nostalgie du pixel rencontre la crypto moderne. Rejoins la révolution gaming où chaque transaction est un headshot.",
     "cta": "Obtenir $1TAP",
     "contractVerified": "✅ Contrat Vérifié",
     "lpLocked": "🔒 LP Verrouillé 6 mois",
@@ -19,16 +19,16 @@
     "learnMore": "En Savoir Plus"
   },
   "enter": {
-    "title": "Bienvenue sur $1TAP !",
+    "title": "Bienvenue sur 1TAP !",
     "subtitle": "Appuie pour Entrer",
     "privacy": "Avis de Confidentialité et Risques",
-    "simplifiedNotice1": "$1TAP est un memecoin sans valeur intrinsèque ni attente de rendement financier.",
+    "simplifiedNotice1": "1TAP est un memecoin sans valeur intrinsèque ni attente de rendement financier.",
     "simplifiedNotice2": "Les investissements crypto comportent des risques élevés. N'investis que ce que tu peux te permettre de perdre.",
     "simplifiedNotice3": "En continuant, tu confirmes comprendre ces risques et accepter nos conditions.",
     "readFullDisclaimer": "Lire l'Avertissement Complet →",
     "important": "IMPORTANT - Lis Attentivement",
     "risk": "⚠️ Investissement à Haut Risque :",
-    "riskText": "$1TAP est un memecoin sans valeur intrinsèque ni attente de rendement. La valeur peut fluctuer brutalement ou tomber à zéro. N'investis jamais plus que ce que tu peux te permettre de perdre.",
+    "riskText": "1TAP est un memecoin sans valeur intrinsèque ni attente de rendement. La valeur peut fluctuer brutalement ou tomber à zéro. N'investis jamais plus que ce que tu peux te permettre de perdre.",
     "noAffiliation": "🚫 Aucune Affiliation :",
     "noAffiliationText": "Ce projet n'est PAS affilié à Valve Corporation, Counter-Strike ou toute marque associée. C'est un memecoin communautaire pour le divertissement.",
     "privacy2": "🔒 Confidentialité :",
@@ -46,16 +46,16 @@
     "footer": "Non affilié à Valve Corporation ou Counter-Strike. Divertissement uniquement."
   },
   "about": {
-    "title": "À propos de $1TAP",
-    "subtitle": "Chaque clic compte, chaque holder est un guerrier",
-    "story": "Né d'un amour pour les FPS tactiques et la culture meme, $1TAP est plus qu'une pièce—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive du gaming tactique dans la crypto.",
+    "title": "À propos de 1TAP",
+    "subtitle": "Chaque clic compte, chaque holder est un 1Tapper",
+    "story": "Né d'un amour pour les FPS tactiques et la culture meme, 1TAP est plus qu'un token—c'est un mouvement. Construit par des gamers pour des gamers, avec une vision claire : apporter l'énergie compétitive du gaming tactique dans la crypto.",
     "story2": "Pas de VCs. Pas de préventes. Que de la communauté pure.",
     "communityDriven": "Piloté par la Communauté",
-    "communityDrivenText": "Chaque décision est votée par les holders. Ta voix compte.",
+    "communityDrivenText": "Chaque décision est votée par les 1Tappers. Ta voix compte.",
     "liquidityLocked": "Liquidité Verrouillée",
-    "liquidityLockedText": "LP verrouillé 6 mois. Transparence totale, pas d'arnaques.",
+    "liquidityLockedText": "LP verrouillé 6 mois. Transparence totale, aucun rug pull.",
     "equilibratedLaunch": "Lancement Équilibré",
-    "equilibratedLaunchText": "Distribution balanced pour la communauté, la liquidité et la croissance long terme.",
+    "equilibratedLaunchText": "Distribution équilibrée pour la communauté, la liquidité et la croissance long terme.",
     "fairLaunch": "Lancement Équitable",
     "fairLaunchText": "Distribution équilibrée pour une croissance communautaire à long terme.",
     "toTheMoon": "Direction la Lune",
@@ -63,7 +63,7 @@
     "disclaimerNote": "Rappel : les memecoins sont hautement spéculatifs. N'investis jamais plus que ce que tu peux perdre."
   },
   "whyOneTap": {
-    "title": "Pourquoi $1TAP ?",
+    "title": "Pourquoi 1TAP ?",
     "subtitle": "Le seul memecoin créé par des gamers, pour des gamers",
     "gamers": {
       "title": "Créé par des Gamers, pour des Gamers",
@@ -71,7 +71,7 @@
     },
     "secure": {
       "title": "100% Sécurisé & Transparent",
-      "description": "LP verrouillé 6 mois, contrat audité et vérifié. Pas d'arnaques, que des one-taps."
+      "description": "LP verrouillé 6 mois, contrat audité et vérifié. Aucun rug pull, que des headshots."
     },
     "utility": {
       "title": "Utilité Réelle = Valeur Réelle",
@@ -81,7 +81,7 @@
   "tokenomics": {
     "title": "Tokenomics",
     "subtitle": "Distribution transparente, croissance durable",
-    "totalSupply": "Offre Totale",
+    "totalSupply": "Supply Total",
     "network": "Réseau",
     "symbol": "Symbole",
     "tax": "Taxe",
@@ -92,48 +92,48 @@
     "contract": "Adresse du Contrat",
     "copyContract": "Copier",
     "contractCopied": "Adresse copiée !",
-    "chart": "Voir le Graphique",
-    "note": "Liquidité verrouillée pour 6 mois. Distribution transparente, pas de surprises.",
+    "chart": "Voir le Chart",
+    "note": "Liquidité verrouillée pour 6 mois. Distribution transparente, aucune surprise.",
     "features": "Fonctionnalités Avancées",
     "antiWhale": "Protection Anti-Baleine",
     "antiWhaleText": "Limites de transaction pour une distribution équitable",
     "burnMechanism": "Mécanisme de Burn",
-    "burnMechanismText": "Offre déflationniste par brûlages automatiques",
+    "burnMechanismText": "Supply déflationniste par brûlages automatiques",
     "rewards": "Récompenses Holders",
     "rewardsText": "Les holders long-terme gagnent des récompenses"
   },
   "roadmap": {
-    "title": "Feuille de Route",
+    "title": "Roadmap",
     "subtitle": "Le Chemin vers la Gloire",
-    "phase1": "Phase 1: Ignition du Hype",
+    "phase1": "Phase 1 : Ignition du Hype",
     "phase1Items": [
       "Construction de la notoriété",
       "Semis narratif",
       "Échauffement communauté"
     ],
-    "phase2": "Phase 2: La Vraie Phase 1",
+    "phase2": "Phase 2 : La Vraie Phase 1",
     "phase2Items": [
       "Burn initial",
       "Verrouillage LP",
       "Listing organique",
       "Poussée marketing"
     ],
-    "phase3": "Phase 3: Jeux & Drops Communautaires",
+    "phase3": "Phase 3 : Jeux & Drops Communautaires",
     "phase3Items": [
       "Lancer Tap-to-Earn",
       "Gamification des memes",
       "Récompenses communautaires"
     ],
-    "phase4": "Phase 4: Écosystème Gaming",
+    "phase4": "Phase 4 : Écosystème Gaming",
     "phase4Items": [
       "Tips pour streamers",
       "Prize pools tournois",
-      "Skins NFT pour holders",
+      "Skins NFT pour 1Tappers",
       "Partenariats esports"
     ]
   },
   "liveStats": {
-    "title": "STATS LIVE $1TAP",
+    "title": "STATS LIVE 1TAP",
     "subtitle": "Données en temps réel • Mise à jour toutes les 30s",
     "marketCap": "Market Cap",
     "holders": "Holders",
@@ -143,8 +143,8 @@
     "notice": "📊 Intégration des données live après le lancement"
   },
   "memes": {
-    "title": "Générateur de Memes $1TAP",
-    "subtitle": "Crée tes propres memes personnalisés avec le logo $1TAP et partage-les avec la commu !",
+    "title": "Générateur de Memes 1TAP",
+    "subtitle": "Crée tes propres memes personnalisés avec le logo 1TAP et partage-les avec la commu !",
     "randomize": "Randomiser",
     "download": "Télécharger",
     "backgrounds": "Arrière-plans",
@@ -196,27 +196,27 @@
   },
   "integrations": {
     "title": "Intégrations Gaming",
-    "subtitle": "Quand le gaming rencontre la blockchain. Découvre comment $1TAP révolutionne l'écosystème gaming.",
+    "subtitle": "Quand le gaming rencontre la blockchain. Découvre comment 1TAP révolutionne l'écosystème gaming.",
     "backHome": "Retour Accueil",
     "twitch": {
       "title": "Widget Tips Twitch",
-      "description": "Permets aux viewers de donner des tips $1TAP aux streamers pendant les actions épiques.",
-      "feature1": "Tips $1TAP en temps réel pendant les streams",
+      "description": "Permets aux viewers de donner des tips 1TAP aux streamers pendant les actions épiques.",
+      "feature1": "Tips 1TAP en temps réel pendant les streams",
       "feature2": "Conversion & distribution auto",
       "feature3": "Leaderboard des viewers"
     },
     "discord": {
       "title": "Bot Discord MVP",
       "description": "Récompense auto tes meilleurs joueurs après chaque match commu.",
-      "feature1": "Distribution auto de $1TAP aux MVPs",
+      "feature1": "Distribution auto de 1TAP aux MVPs",
       "feature2": "Tracking des stats & classements",
       "feature3": "Pools de récompenses custom par serveur"
     },
     "nft": {
       "title": "Showcase Skins NFT",
-      "description": "Skin AWP 1Tap exclusif - uniquement pour holders $1TAP.",
+      "description": "Skin AWP 1Tap exclusif - uniquement pour holders 1TAP.",
       "feature1": "Skins d'armes 3D édition limitée",
-      "feature2": "Designs exclusifs holders",
+      "feature2": "Designs exclusifs 1Tappers",
       "feature3": "Intégrations in-game futures prévues"
     },
     "cta": {
@@ -228,9 +228,9 @@
   },
   "airdrops": {
     "title": "Airdrops Gamifiés",
-    "subtitle": "Gagne des $1TAP en jouant, créant et t'engageant avec la commu",
+    "subtitle": "Gagne des 1TAP en jouant, créant et t'engageant avec la commu",
     "weekly": {
-      "title": "Loterie Hebdo des Tappers",
+      "title": "Loterie Hebdo des 1Tappers",
       "description": "Top 100 cliqueurs chaque semaine partagent le prize pool",
       "schedule": "Chaque lundi à 00:00 UTC"
     },
@@ -306,7 +306,7 @@
   },
   "preLaunch": {
     "title": "🚀 Lancement Imminent",
-    "subtitle": "Préparez-vous pour le lancement du token $1TAP",
+    "subtitle": "Préparez-vous pour le lancement du token 1TAP",
     "days": "jours",
     "hours": "hrs",
     "minutes": "min",
@@ -314,8 +314,8 @@
     "joinWaitlist": "Rejoindre la Liste"
   },
   "leaderboard": {
-    "title": "Top Tappers",
-    "noData": "Aucune donnée pour le moment. Soyez le premier !",
+    "title": "Top 1Tappers",
+    "noData": "Aucune donnée pour le moment. Sois le premier !",
     "clicks": "clics",
     "xp": "XP",
     "updateInfo": "Mise à jour toutes les 30 secondes"
@@ -349,7 +349,7 @@
     "nonAffiliation": "Déclaration de Non-Affiliation",
     "legalNotice": "Avis Juridique",
     "legalShield": "Protégé par 1TAP Legal Shield v1.0",
-    "disclaimerText": "$1TAP est un memecoin sans valeur intrinsèque ni attente de retour. N'investis que ce que tu peux perdre. Non affilié à Valve Corporation, Counter-Strike ou marques associées.",
+    "disclaimerText": "1TAP est un memecoin sans valeur intrinsèque ni attente de retour. N'investis que ce que tu peux perdre. Non affilié à Valve Corporation, Counter-Strike ou marques associées.",
     "rights": "Tous droits réservés.",
     "contact": "Contact"
   },
