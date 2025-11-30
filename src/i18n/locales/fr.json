@@ -366,5 +366,82 @@
     "eventDropDesc": "Drops spéciaux durée limitée lors de tournois et events commu. Sois présent ou rate l'occasion !",
     "devNotice": "🎮 Les modules Tap-to-Earn et Meme sont en développement.",
     "devNoticeDesc": "Rejoins notre commu pour être le premier informé du lancement !"
+  },
+  "game": {
+    "tapToEarn": "CLIQUEZ POUR GAGNER",
+    "dropInProgress": "DROP EN COURS...",
+    "rankUp": "🎉 MONTÉE DE RANG !",
+    "rankUpDesc": "Vous avez atteint {{rank}} !",
+    "newDrop": "Nouveau Drop !",
+    "newDropDesc": "{{icon}} {{name}} ajouté à votre inventaire !",
+    "bonusDrop": "💎 Drop Bonus !",
+    "bonusDropDesc": "Vous avez trouvé {{name}} !",
+    "signInToSave": "⚠️ Progression non sauvegardée - Connectez-vous pour sauvegarder votre rang !",
+    "signInButton": "Connexion pour Sauvegarder",
+    "signedIn": "Connecté",
+    "saving": "Sauvegarde...",
+    "profile": "Profil",
+    "recentDrops": "Drops Récents",
+    "viewAll": "Voir Tout →",
+    "clicks": "clics",
+    "nextRank": "Suivant",
+    "congratulations": "🎉 FÉLICITATIONS ! 🎉",
+    "claimReward": "🎁 RÉCUPÉRER LE LOT 🎁",
+    "rankUpDrop": "DROP MONTÉE DE RANG !",
+    "validationFailed": "Échec de validation",
+    "validationFailedDesc": "Impossible de sauvegarder la progression en raison de données invalides",
+    "saveFailed": "Échec de sauvegarde",
+    "itemEquipped": "Objet équipé",
+    "itemUnequipped": "Objet déséquippé",
+    "errorEquipping": "Erreur lors de l'équipement"
+  },
+  "wallet": {
+    "connect": "Connecter le Wallet",
+    "connecting": "Connexion...",
+    "connected": "Wallet connecté",
+    "disconnected": "Wallet déconnecté",
+    "noMetaMask": "MetaMask non détecté. Cliquez pour l'installer.",
+    "connectionFailed": "Échec de connexion au wallet",
+    "switchToBase": "Passer sur Base",
+    "switchedToBase": "Basculé sur le réseau Base",
+    "baseAdded": "Réseau Base ajouté",
+    "addBaseFailed": "Échec d'ajout du réseau Base",
+    "switchFailed": "Échec de changement de réseau",
+    "addToken": "Ajouter le Token",
+    "tokenAdded": "1TAP ajouté à votre wallet",
+    "addTokenFailed": "Échec d'ajout du token",
+    "connectFirst": "Connectez d'abord votre wallet"
+  },
+  "quests": {
+    "authRequired": "Authentification requise",
+    "signInToClaim": "Connectez-vous pour récupérer les récompenses",
+    "rewardClaimed": "🎉 Récompense récupérée !",
+    "rewardClaimedDesc": "Vous avez gagné +{{xp}} XP !",
+    "claimError": "Erreur",
+    "claimErrorDesc": "Impossible de récupérer la récompense"
+  },
+  "auth": {
+    "validationError": "Erreur de validation",
+    "checkFields": "Vérifiez vos champs",
+    "success": "Succès !",
+    "checkEmail": "Vérifiez votre email pour confirmer votre compte",
+    "welcomeBack": "Bon retour !",
+    "signedInSuccess": "Connexion réussie",
+    "errorOccurred": "Une erreur est survenue",
+    "tryAgain": "Veuillez réessayer"
+  },
+  "admin": {
+    "errorLoading": "Erreur",
+    "errorLoadingDesc": "Impossible de charger la configuration",
+    "validationError": "Erreur de validation",
+    "checkAllFields": "Vérifiez tous les champs",
+    "configSaved": "Succès",
+    "configSavedDesc": "Configuration sauvegardée avec succès",
+    "errorSaving": "Erreur",
+    "errorSavingDesc": "Impossible de sauvegarder la configuration"
+  },
+  "inventory": {
+    "errorLoading": "Erreur de chargement de l'inventaire",
+    "errorLoadingDesc": "Impossible de charger vos objets"
   }
 }

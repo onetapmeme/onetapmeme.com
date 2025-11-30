@@ -369,5 +369,82 @@
     "eventDropDesc": "锦标赛和社区活动期间的特殊限时空投。在场或错过!",
     "devNotice": "🎮 点击赚取和表情包模块目前正在开发中。",
     "devNoticeDesc": "加入我们的社区,第一时间了解这些功能的推出!"
+  },
+  "game": {
+    "tapToEarn": "点击赚取",
+    "dropInProgress": "空投进行中...",
+    "rankUp": "🎉 升级!",
+    "rankUpDesc": "您已达到 {{rank}}!",
+    "newDrop": "新空投!",
+    "newDropDesc": "{{icon}} {{name}} 已添加到您的库存!",
+    "bonusDrop": "💎 奖励空投!",
+    "bonusDropDesc": "您找到了 {{name}}!",
+    "signInToSave": "⚠️ 进度未保存 - 登录以保存您的等级!",
+    "signInButton": "登录保存进度",
+    "signedIn": "已登录",
+    "saving": "保存中...",
+    "profile": "个人资料",
+    "recentDrops": "最近空投",
+    "viewAll": "查看全部 →",
+    "clicks": "点击",
+    "nextRank": "下一级",
+    "congratulations": "🎉 恭喜! 🎉",
+    "claimReward": "🎁 领取奖励 🎁",
+    "rankUpDrop": "升级空投!",
+    "validationFailed": "验证失败",
+    "validationFailedDesc": "由于数据无效无法保存进度",
+    "saveFailed": "保存失败",
+    "itemEquipped": "物品已装备",
+    "itemUnequipped": "物品已卸下",
+    "errorEquipping": "装备错误"
+  },
+  "wallet": {
+    "connect": "连接钱包",
+    "connecting": "连接中...",
+    "connected": "钱包已连接",
+    "disconnected": "钱包已断开",
+    "noMetaMask": "未检测到 MetaMask。点击安装。",
+    "connectionFailed": "连接钱包失败",
+    "switchToBase": "切换到 Base",
+    "switchedToBase": "已切换到 Base 网络",
+    "baseAdded": "Base 网络已添加",
+    "addBaseFailed": "添加 Base 网络失败",
+    "switchFailed": "切换网络失败",
+    "addToken": "添加代币",
+    "tokenAdded": "1TAP 已添加到您的钱包",
+    "addTokenFailed": "添加代币失败",
+    "connectFirst": "请先连接钱包"
+  },
+  "quests": {
+    "authRequired": "需要验证",
+    "signInToClaim": "登录以领取奖励",
+    "rewardClaimed": "🎉 奖励已领取!",
+    "rewardClaimedDesc": "您获得了 +{{xp}} 经验值!",
+    "claimError": "错误",
+    "claimErrorDesc": "领取奖励失败"
+  },
+  "auth": {
+    "validationError": "验证错误",
+    "checkFields": "请检查您的字段",
+    "success": "成功!",
+    "checkEmail": "查看您的电子邮件以确认账户",
+    "welcomeBack": "欢迎回来!",
+    "signedInSuccess": "登录成功",
+    "errorOccurred": "发生错误",
+    "tryAgain": "请重试"
+  },
+  "admin": {
+    "errorLoading": "错误",
+    "errorLoadingDesc": "加载配置失败",
+    "validationError": "验证错误",
+    "checkAllFields": "请检查所有字段",
+    "configSaved": "成功",
+    "configSavedDesc": "配置保存成功",
+    "errorSaving": "错误",
+    "errorSavingDesc": "保存配置失败"
+  },
+  "inventory": {
+    "errorLoading": "加载库存错误",
+    "errorLoadingDesc": "加载物品失败"
   }
 }

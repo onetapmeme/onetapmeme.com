@@ -369,5 +369,82 @@
     "eventDropDesc": "Special limited-time drops during tournaments and community events. Be there or miss out!",
     "devNotice": "🎮 Tap-to-Earn and Meme modules are currently under development.",
     "devNoticeDesc": "Join our community to be the first to know when these features launch!"
+  },
+  "game": {
+    "tapToEarn": "TAP TO EARN",
+    "dropInProgress": "DROP IN PROGRESS...",
+    "rankUp": "🎉 RANK UP!",
+    "rankUpDesc": "You've reached {{rank}}!",
+    "newDrop": "New Drop!",
+    "newDropDesc": "{{icon}} {{name}} added to your inventory!",
+    "bonusDrop": "💎 Bonus Drop!",
+    "bonusDropDesc": "You found {{name}}!",
+    "signInToSave": "⚠️ Progress not saved - Sign in to save your rank!",
+    "signInButton": "Sign In to Save Progress",
+    "signedIn": "Signed in",
+    "saving": "Saving...",
+    "profile": "Profile",
+    "recentDrops": "Recent Drops",
+    "viewAll": "View All →",
+    "clicks": "clicks",
+    "nextRank": "Next",
+    "congratulations": "🎉 CONGRATULATIONS! 🎉",
+    "claimReward": "🎁 CLAIM REWARD 🎁",
+    "rankUpDrop": "RANK UP DROP!",
+    "validationFailed": "Validation failed",
+    "validationFailedDesc": "Unable to save progress due to invalid data",
+    "saveFailed": "Save failed",
+    "itemEquipped": "Item equipped",
+    "itemUnequipped": "Item unequipped",
+    "errorEquipping": "Error equipping item"
+  },
+  "wallet": {
+    "connect": "Connect Wallet",
+    "connecting": "Connecting...",
+    "connected": "Wallet connected",
+    "disconnected": "Wallet disconnected",
+    "noMetaMask": "MetaMask not detected. Click to install.",
+    "connectionFailed": "Failed to connect wallet",
+    "switchToBase": "Switch to Base",
+    "switchedToBase": "Switched to Base network",
+    "baseAdded": "Base network added",
+    "addBaseFailed": "Failed to add Base network",
+    "switchFailed": "Failed to switch network",
+    "addToken": "Add Token",
+    "tokenAdded": "1TAP added to your wallet",
+    "addTokenFailed": "Failed to add token",
+    "connectFirst": "Connect your wallet first"
+  },
+  "quests": {
+    "authRequired": "Authentication Required",
+    "signInToClaim": "Sign in to claim rewards",
+    "rewardClaimed": "🎉 Reward Claimed!",
+    "rewardClaimedDesc": "You earned +{{xp}} XP!",
+    "claimError": "Error",
+    "claimErrorDesc": "Failed to claim reward"
+  },
+  "auth": {
+    "validationError": "Validation Error",
+    "checkFields": "Please check your fields",
+    "success": "Success!",
+    "checkEmail": "Check your email to confirm your account",
+    "welcomeBack": "Welcome back!",
+    "signedInSuccess": "Successfully signed in",
+    "errorOccurred": "An error occurred",
+    "tryAgain": "Please try again"
+  },
+  "admin": {
+    "errorLoading": "Error",
+    "errorLoadingDesc": "Failed to load configuration",
+    "validationError": "Validation Error",
+    "checkAllFields": "Please check all fields",
+    "configSaved": "Success",
+    "configSavedDesc": "Configuration saved successfully",
+    "errorSaving": "Error",
+    "errorSavingDesc": "Failed to save configuration"
+  },
+  "inventory": {
+    "errorLoading": "Error loading inventory",
+    "errorLoadingDesc": "Failed to load your items"
   }
 }
