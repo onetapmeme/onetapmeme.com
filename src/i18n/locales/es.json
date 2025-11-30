@@ -369,5 +369,82 @@
     "eventDropDesc": "Drops especiales de tiempo limitado durante torneos y eventos comunitarios. ¡Está presente o piérdelo!",
     "devNotice": "🎮 Los módulos Tap-to-Earn y Meme están actualmente en desarrollo.",
     "devNoticeDesc": "¡Únete a nuestra comunidad para ser el primero en saber cuándo se lancen estas funciones!"
+  },
+  "game": {
+    "tapToEarn": "TOCA PARA GANAR",
+    "dropInProgress": "DROP EN PROGRESO...",
+    "rankUp": "🎉 ¡SUBIDA DE RANGO!",
+    "rankUpDesc": "¡Has alcanzado {{rank}}!",
+    "newDrop": "¡Nuevo Drop!",
+    "newDropDesc": "¡{{icon}} {{name}} añadido a tu inventario!",
+    "bonusDrop": "💎 ¡Drop Bonus!",
+    "bonusDropDesc": "¡Encontraste {{name}}!",
+    "signInToSave": "⚠️ Progreso no guardado - ¡Inicia sesión para guardar tu rango!",
+    "signInButton": "Iniciar Sesión para Guardar",
+    "signedIn": "Sesión iniciada",
+    "saving": "Guardando...",
+    "profile": "Perfil",
+    "recentDrops": "Drops Recientes",
+    "viewAll": "Ver Todo →",
+    "clicks": "clics",
+    "nextRank": "Siguiente",
+    "congratulations": "🎉 ¡FELICIDADES! 🎉",
+    "claimReward": "🎁 RECLAMAR RECOMPENSA 🎁",
+    "rankUpDrop": "¡DROP DE SUBIDA DE RANGO!",
+    "validationFailed": "Error de validación",
+    "validationFailedDesc": "No se pudo guardar el progreso debido a datos inválidos",
+    "saveFailed": "Error al guardar",
+    "itemEquipped": "Objeto equipado",
+    "itemUnequipped": "Objeto desequipado",
+    "errorEquipping": "Error al equipar"
+  },
+  "wallet": {
+    "connect": "Conectar Wallet",
+    "connecting": "Conectando...",
+    "connected": "Wallet conectado",
+    "disconnected": "Wallet desconectado",
+    "noMetaMask": "MetaMask no detectado. Haz clic para instalar.",
+    "connectionFailed": "Error al conectar wallet",
+    "switchToBase": "Cambiar a Base",
+    "switchedToBase": "Cambiado a red Base",
+    "baseAdded": "Red Base añadida",
+    "addBaseFailed": "Error al añadir red Base",
+    "switchFailed": "Error al cambiar de red",
+    "addToken": "Añadir Token",
+    "tokenAdded": "1TAP añadido a tu wallet",
+    "addTokenFailed": "Error al añadir token",
+    "connectFirst": "Conecta tu wallet primero"
+  },
+  "quests": {
+    "authRequired": "Autenticación Requerida",
+    "signInToClaim": "Inicia sesión para reclamar recompensas",
+    "rewardClaimed": "🎉 ¡Recompensa Reclamada!",
+    "rewardClaimedDesc": "¡Ganaste +{{xp}} XP!",
+    "claimError": "Error",
+    "claimErrorDesc": "Error al reclamar recompensa"
+  },
+  "auth": {
+    "validationError": "Error de Validación",
+    "checkFields": "Verifica tus campos",
+    "success": "¡Éxito!",
+    "checkEmail": "Revisa tu correo para confirmar tu cuenta",
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "signedInSuccess": "Sesión iniciada exitosamente",
+    "errorOccurred": "Ocurrió un error",
+    "tryAgain": "Por favor intenta de nuevo"
+  },
+  "admin": {
+    "errorLoading": "Error",
+    "errorLoadingDesc": "Error al cargar configuración",
+    "validationError": "Error de Validación",
+    "checkAllFields": "Verifica todos los campos",
+    "configSaved": "Éxito",
+    "configSavedDesc": "Configuración guardada exitosamente",
+    "errorSaving": "Error",
+    "errorSavingDesc": "Error al guardar configuración"
+  },
+  "inventory": {
+    "errorLoading": "Error al cargar inventario",
+    "errorLoadingDesc": "Error al cargar tus objetos"
   }
 }
