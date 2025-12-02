@@ -391,6 +391,12 @@
     "validationFailed": "Échec de validation",
     "validationFailedDesc": "Impossible de sauvegarder la progression en raison de données invalides",
     "saveFailed": "Échec de sauvegarde",
+    "invalidData": "Impossible de sauvegarder la progression en raison de données invalides",
+    "progressNotSaved": "Progression non sauvegardée - Connectez-vous pour sauvegarder votre rang !",
+    "youReached": "Vous avez atteint",
+    "youFound": "Vous avez trouvé",
+    "addedToInventory": "ajouté à votre inventaire !",
+    "next": "Suivant",
     "itemEquipped": "Objet équipé",
     "itemUnequipped": "Objet déséquippé",
     "errorEquipping": "Erreur lors de l'équipement"
@@ -443,5 +449,25 @@
   "inventory": {
     "errorLoading": "Erreur de chargement de l'inventaire",
     "errorLoadingDesc": "Impossible de charger vos objets"
+  },
+  "swap": {
+    "title": "Échanger $1TAP",
+    "subtitle": "Échangez directement sur le site avec les meilleurs taux via l'agrégateur DEX 1inch",
+    "loading": "Chargement du widget d'échange...",
+    "contractNotice": "L'adresse du contrat sera ajoutée après le lancement",
+    "howToBuy": "Comment acheter",
+    "step1": "Connectez votre wallet (MetaMask, Coinbase, etc.)",
+    "step2": "Assurez-vous d'avoir de l'ETH sur le réseau Base",
+    "step3": "Sélectionnez le montant et vérifiez la transaction",
+    "step4": "Confirmez l'échange et recevez vos $1TAP",
+    "tradingStats": "Stats de Trading",
+    "slippage": "Slippage",
+    "network": "Réseau",
+    "gasFee": "Frais de Gas",
+    "tax": "Taxe",
+    "tradeOnUniswap": "Trader sur Uniswap",
+    "uniswapDesc": "Vous préférez Uniswap ? Tradez directement sur leur plateforme",
+    "openUniswap": "Ouvrir Uniswap",
+    "disclaimer": "Le trading de cryptomonnaies comporte des risques. Faites toujours vos propres recherches et n'investissez jamais plus que ce que vous pouvez vous permettre de perdre."
   }
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Sparkles, X } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -15,6 +16,7 @@ interface DropRouletteProps {
 }
 
 const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
+  const { t } = useTranslation();
   const [isSpinning, setIsSpinning] = useState(true);
   const [spinOffset, setSpinOffset] = useState(0);
   const [showDrop, setShowDrop] = useState(false);
@@ -43,7 +45,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
     });
   };
   
-  // Générer une liste d'items aléatoires pour l'effet de roulette
+  // Generate random items for roulette effect
   const generateRouletteItems = () => {
     const allDrops = [
       { name: "MP7 Skull", icon: "🔫", rarity: "Common" },
@@ -66,13 +68,13 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
       { name: "Elite Badge", icon: "🎖️", rarity: "Mythic" },
     ];
 
-    // Créer une liste de 30 items aléatoires, avec le drop gagné à la fin
+    // Create a list of 30 random items, with the won drop at the end
     const items = [];
     for (let i = 0; i < 29; i++) {
       const randomDrop = allDrops[Math.floor(Math.random() * allDrops.length)];
       items.push(randomDrop);
     }
-    // Ajouter le vrai drop à la position 25 (il sera centré après l'animation)
+    // Add the real drop at position 25 (will be centered after animation)
     items.splice(25, 0, { ...drop, icon: drop.icon.includes('.png') ? '🎁' : drop.icon });
     
     return items;
@@ -94,16 +96,16 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
   };
 
   useEffect(() => {
-    // Jouer le son principal pendant la roulette
+    // Play main sound during roulette
     musicMainRef.current = new Audio('/sounds/music_main.wav');
     musicMainRef.current.volume = 0.6;
     musicMainRef.current.play().catch(console.error);
 
-    // Animation de la roulette avec ralentissement progressif
+    // Roulette animation with progressive slowdown
     let animationFrame: number;
-    const targetOffset = 25 * 120; // Position du vrai drop (25 * hauteur d'item)
-    const spinDuration = 6000; // 6 secondes de spin rapide
-    const slowdownDuration = 2000; // 2 secondes de ralentissement
+    const targetOffset = 25 * 120; // Real drop position (25 * item height)
+    const spinDuration = 6000; // 6 seconds fast spin
+    const slowdownDuration = 2000; // 2 seconds slowdown
     const totalDuration = spinDuration + slowdownDuration;
     const startTime = Date.now();
 
@@ -114,12 +116,12 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
       let currentOffset: number;
       
       if (elapsed < spinDuration) {
-        // Phase rapide avec easing quadratic
+        // Fast phase with quadratic easing
         const spinProgress = elapsed / spinDuration;
         const easeOutQuad = 1 - Math.pow(1 - spinProgress, 2);
         currentOffset = easeOutQuad * (targetOffset * 0.85);
       } else {
-        // Phase de ralentissement progressif avec easing quintic
+        // Progressive slowdown phase with quintic easing
         const slowProgress = (elapsed - spinDuration) / slowdownDuration;
         const easeOutQuint = 1 - Math.pow(1 - slowProgress, 5);
         const remainingDistance = targetOffset * 0.15;
@@ -131,13 +133,13 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
       } else {
-        // Animation terminée - ajustement final doux
+        // Animation complete - smooth final adjustment
         setSpinOffset(targetOffset);
         
         setTimeout(() => {
           setIsSpinning(false);
           
-          // Fade-out en douceur de la musique principale puis lancement de l'epic
+          // Smooth fade-out of main music then start epic
           const doAudio = async () => {
             if (musicMainRef.current) {
               try { await fadeOutAudio(musicMainRef.current, 300); } catch {}
@@ -145,7 +147,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
             musicEpicRef.current = new Audio('/sounds/music_epic.wav');
             musicEpicRef.current.volume = 0.7;
             musicEpicRef.current.play().catch(console.error);
-            // Afficher l'animation de drop après un court délai
+            // Show drop animation after short delay
             setTimeout(() => setShowDrop(true), 300);
           };
           doAudio();
@@ -172,7 +174,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
   }, []);
 
   const handleClose = () => {
-    // Arrêter tous les sons
+    // Stop all sounds
     if (musicMainRef.current) {
       musicMainRef.current.pause();
       musicMainRef.current.currentTime = 0;
@@ -205,14 +207,14 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
           <div className="bg-gradient-primary text-center py-4 border-b-4 border-primary/50">
             <h2 className="text-2xl font-black text-white flex items-center justify-center gap-2">
               <Sparkles className="w-6 h-6 animate-pulse" />
-              RANK UP DROP!
+              {t('game.rankUpDrop')}
               <Sparkles className="w-6 h-6 animate-pulse" />
             </h2>
           </div>
 
           {/* Roulette viewport */}
           <div className="relative h-[360px] overflow-hidden">
-            {/* Selection indicator - visible seulement pendant le spin */}
+            {/* Selection indicator - visible only during spin */}
             {isSpinning && (
               <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[120px] border-y-4 border-yellow-400 bg-yellow-400/10 pointer-events-none z-10">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent animate-pulse" />
@@ -257,7 +259,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
             <div className="bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-xl text-center py-8 border-t-4 border-primary/50 animate-fade-in">
               <div className="text-yellow-400 font-bold text-xl mb-6 animate-pulse flex items-center justify-center gap-2">
                 <Sparkles className="w-6 h-6" />
-                🎉 FÉLICITATIONS! 🎉
+                🎉 {t('game.congratulations')} 🎉
                 <Sparkles className="w-6 h-6" />
               </div>
               
@@ -293,7 +295,7 @@ const DropRoulette = ({ drop, onClose }: DropRouletteProps) => {
                   size="lg"
                   className="bg-gradient-primary hover:shadow-glow-primary font-black text-xl px-12 py-7 shadow-[0_0_40px_rgba(33,150,243,0.4)] hover:shadow-[0_0_60px_rgba(33,150,243,0.6)] transition-all duration-300"
                 >
-                  🎁 OBTENIR LE LOT 🎁
+                  🎁 {t('game.claimDrop')} 🎁
                 </Button>
               </div>
             </div>
