@@ -394,6 +394,12 @@
     "validationFailed": "验证失败",
     "validationFailedDesc": "由于数据无效无法保存进度",
     "saveFailed": "保存失败",
+    "invalidData": "由于数据无效无法保存进度",
+    "progressNotSaved": "进度未保存 - 登录以保存您的等级!",
+    "youReached": "您已达到",
+    "youFound": "您找到了",
+    "addedToInventory": "已添加到您的库存!",
+    "next": "下一级",
     "itemEquipped": "物品已装备",
     "itemUnequipped": "物品已卸下",
     "errorEquipping": "装备错误"
@@ -446,5 +452,25 @@
   "inventory": {
     "errorLoading": "加载库存错误",
     "errorLoadingDesc": "加载物品失败"
+  },
+  "swap": {
+    "title": "兑换 $1TAP",
+    "subtitle": "通过 1inch DEX 聚合器在网站上直接交易，享受最优汇率",
+    "loading": "正在加载兑换小部件...",
+    "contractNotice": "合约地址将在启动后添加",
+    "howToBuy": "购买指南",
+    "step1": "连接您的钱包（MetaMask、Coinbase 等）",
+    "step2": "确保在 Base 网络上有 ETH",
+    "step3": "选择金额并查看交易",
+    "step4": "确认兑换并获得 $1TAP",
+    "tradingStats": "交易数据",
+    "slippage": "滑点",
+    "network": "网络",
+    "gasFee": "Gas 费用",
+    "tax": "税",
+    "tradeOnUniswap": "在 Uniswap 交易",
+    "uniswapDesc": "更喜欢 Uniswap？直接在他们的平台上交易",
+    "openUniswap": "打开 Uniswap",
+    "disclaimer": "加密货币交易存在风险。请务必自行研究，切勿投资超出您承受能力的金额。"
   }
 }

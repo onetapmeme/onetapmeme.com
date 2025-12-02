@@ -176,8 +176,8 @@ const TapSimulatorGame = () => {
       if (!validation.success) {
         console.error('Invalid progress data:', validation.error);
         toast({
-          title: "Validation failed",
-          description: "Unable to save progress due to invalid data",
+          title: t('game.validationFailed'),
+          description: t('game.invalidData'),
           variant: "destructive",
         });
         return;
@@ -197,7 +197,7 @@ const TapSimulatorGame = () => {
     } catch (error: any) {
       console.error('Error saving progress:', error);
       toast({
-        title: "Save failed",
+        title: t('game.saveFailed'),
         description: error.message,
         variant: "destructive",
       });
@@ -250,8 +250,8 @@ const TapSimulatorGame = () => {
       }
       
       toast({
-        title: "New Drop!",
-        description: `${drop.icon} ${drop.name} added to your inventory!`,
+        title: t('game.newDrop'),
+        description: `${drop.icon} ${drop.name} ${t('game.addedToInventory')}`,
       });
     } catch (error: any) {
       console.error('Error saving drop:', error);
@@ -274,8 +274,8 @@ const TapSimulatorGame = () => {
       });
       
       toast({
-        title: "🎉 RANK UP!",
-        description: `You've reached ${nextRank.name}!`,
+        title: `🎉 ${t('game.rankUp')}`,
+        description: `${t('game.youReached')} ${nextRank.name}!`,
         duration: 5000,
       });
       
@@ -308,8 +308,8 @@ const TapSimulatorGame = () => {
     if (dropChance < 0.01 && user) { // 1% chance per click for extra drops
       const randomDrop = ranks[Math.floor(Math.random() * ranks.length)].drop;
       toast({
-        title: "💎 Bonus Drop!",
-        description: `You found ${randomDrop.name}!`,
+        title: `💎 ${t('game.bonusDrop')}`,
+        description: `${t('game.youFound')} ${randomDrop.name}!`,
       });
       saveDrop(randomDrop, "Bonus");
     }
@@ -325,11 +325,11 @@ const TapSimulatorGame = () => {
       {/* Auth Status & Save */}
       {!user && (
         <div className="bg-card/40 backdrop-blur-md border-2 border-yellow-500/50 rounded-xl p-3 mb-4 text-center">
-          <p className="text-xs text-muted-foreground mb-2">⚠️ Progress not saved - Sign in to save your rank!</p>
+          <p className="text-xs text-muted-foreground mb-2">⚠️ {t('game.progressNotSaved')}</p>
           <Link to="/auth">
             <Button size="sm" variant="outline" className="w-full">
               <LogIn className="w-4 h-4 mr-2" />
-              Sign In to Save Progress
+              {t('game.signInToSave')}
             </Button>
           </Link>
         </div>
@@ -339,19 +339,19 @@ const TapSimulatorGame = () => {
         <div className="flex items-center justify-between bg-card/40 backdrop-blur-md border-2 border-green-500/30 rounded-xl p-3 mb-4">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-xs text-muted-foreground">Signed in</span>
+            <span className="text-xs text-muted-foreground">{t('game.signedIn')}</span>
           </div>
           <div className="flex items-center gap-2">
             {saving && (
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <Save className="w-3 h-3 animate-pulse" />
-                Saving...
+                {t('game.saving')}
               </div>
             )}
             <Link to="/profile">
               <Button size="sm" variant="outline">
                 <User className="w-3 h-3 mr-1" />
-                Profile
+                {t('game.profile')}
               </Button>
             </Link>
           </div>
@@ -363,9 +363,9 @@ const TapSimulatorGame = () => {
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <Trophy className={`w-5 h-5 ${currentRank.color}`} />
-            <span className={`font-bold text-sm ${currentRank.color}`}>{displayRankName}</span>
-          </div>
-          <span className="text-xs text-muted-foreground">{clicks} clicks</span>
+          <span className={`font-bold text-sm ${currentRank.color}`}>{displayRankName}</span>
+        </div>
+        <span className="text-xs text-muted-foreground">{clicks} {t('game.clicks')}</span>
         </div>
 
         {/* Color Tier Display (after Global Elite) */}
@@ -387,7 +387,7 @@ const TapSimulatorGame = () => {
 
         {nextRank && (
           <div className="mt-2 text-xs text-center text-muted-foreground">
-            Next: <span className={nextRank.color}>{nextRankName}</span>
+            {t('game.next')}: <span className={nextRank.color}>{nextRankName}</span>
           </div>
         )}
       </div>
@@ -404,7 +404,7 @@ const TapSimulatorGame = () => {
       >
         <Sparkles className="w-6 h-6 absolute top-2 left-2 animate-pulse" />
         <span className="drop-shadow-[0_2px_10px_rgba(255,255,255,0.5)]">
-          {showDrop ? 'DROP IN PROGRESS...' : 'TAP TO EARN'}
+          {showDrop ? t('game.dropInProgress') : t('game.tapToEarn')}
         </span>
         <TrendingUp className="w-6 h-6 absolute bottom-2 right-2 animate-bounce" />
       </Button>
@@ -421,10 +421,10 @@ const TapSimulatorGame = () => {
       {user && recentDrops.length > 0 && (
         <div className="mt-6">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-semibold text-foreground">Recent Drops</h3>
+            <h3 className="text-sm font-semibold text-foreground">{t('game.recentDrops')}</h3>
             <Link to="/inventory">
               <Button variant="ghost" size="sm" className="text-xs">
-                View All →
+                {t('game.viewAll')} →
               </Button>
             </Link>
           </div>

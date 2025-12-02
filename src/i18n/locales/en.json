@@ -394,6 +394,12 @@
     "validationFailed": "Validation failed",
     "validationFailedDesc": "Unable to save progress due to invalid data",
     "saveFailed": "Save failed",
+    "invalidData": "Unable to save progress due to invalid data",
+    "progressNotSaved": "Progress not saved - Sign in to save your rank!",
+    "youReached": "You've reached",
+    "youFound": "You found",
+    "addedToInventory": "added to your inventory!",
+    "next": "Next",
     "itemEquipped": "Item equipped",
     "itemUnequipped": "Item unequipped",
     "errorEquipping": "Error equipping item"
@@ -446,5 +452,25 @@
   "inventory": {
     "errorLoading": "Error loading inventory",
     "errorLoadingDesc": "Failed to load your items"
+  },
+  "swap": {
+    "title": "Swap $1TAP",
+    "subtitle": "Trade directly on-site with best rates via 1inch DEX aggregator",
+    "loading": "Loading swap widget...",
+    "contractNotice": "Contract address will be added after launch",
+    "howToBuy": "How to Buy",
+    "step1": "Connect your wallet (MetaMask, Coinbase, etc.)",
+    "step2": "Ensure you have ETH on Base Network",
+    "step3": "Select amount and review transaction",
+    "step4": "Confirm swap and receive $1TAP",
+    "tradingStats": "Trading Stats",
+    "slippage": "Slippage",
+    "network": "Network",
+    "gasFee": "Gas Fee",
+    "tax": "Tax",
+    "tradeOnUniswap": "Trade on Uniswap",
+    "uniswapDesc": "Prefer Uniswap? Trade directly on their platform",
+    "openUniswap": "Open Uniswap",
+    "disclaimer": "Cryptocurrency trading carries risk. Always DYOR and never invest more than you can afford to lose."
   }
 }
