@@ -469,5 +469,155 @@
     "uniswapDesc": "Vous préférez Uniswap ? Tradez directement sur leur plateforme",
     "openUniswap": "Ouvrir Uniswap",
     "disclaimer": "Le trading de cryptomonnaies comporte des risques. Faites toujours vos propres recherches et n'investissez jamais plus que ce que vous pouvez vous permettre de perdre."
+  },
+  "legal": {
+    "backHome": "Retour à l'accueil",
+    "lastUpdated": "Dernière mise à jour"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "intro": "Nous respectons votre vie privée. Ce site ne collecte, ne stocke ni ne traite de données personnelles par défaut.",
+    "dataCollection": {
+      "title": "Collecte de Données",
+      "description": "Notre site fonctionne avec une collecte minimale de données :",
+      "noPersonal": "Aucune information personnelle : Nous ne collectons ni noms, ni emails, ni adresses",
+      "noCookies": "Aucun cookie : Aucun cookie de suivi n'est utilisé sur ce site",
+      "noAnalytics": "Aucune analyse : Nous n'utilisons pas d'outils d'analyse qui suivent votre comportement",
+      "blockchain": "Interactions blockchain : Toute connexion wallet est gérée directement par votre fournisseur de wallet"
+    },
+    "thirdParty": {
+      "title": "Services Tiers",
+      "description": "Lorsque vous interagissez avec des réseaux blockchain ou des exchanges décentralisés (DEX), vous êtes soumis à leurs politiques de confidentialité respectives :",
+      "wallets": "Les fournisseurs de wallets (MetaMask, WalletConnect, etc.) ont leurs propres politiques de confidentialité",
+      "blockchain": "Les transactions blockchain sont publiques et enregistrées de façon permanente sur le réseau Base",
+      "dex": "Les plateformes DEX peuvent collecter leurs propres données d'analyse et d'utilisation"
+    },
+    "gdpr": {
+      "title": "Vos Droits (RGPD)",
+      "description": "Conformément à l'article 13 du RGPD, vous avez le droit d'être informé sur le traitement des données. Puisque nous ne collectons pas de données personnelles, il n'y a aucune donnée à consulter, modifier ou supprimer.",
+      "blockchain": "Si vous avez des questions sur la confidentialité ou les transactions blockchain, notez que les données blockchain sont immuables et ne peuvent pas être supprimées une fois enregistrées."
+    },
+    "changes": {
+      "title": "Modifications de cette Politique",
+      "description": "Nous pouvons mettre à jour cette politique de confidentialité de temps en temps. Tout changement sera publié sur cette page avec une date de révision mise à jour."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Si vous avez des questions concernant cette politique de confidentialité, contactez-nous via nos canaux communautaires listés sur le site principal."
+    }
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "intro": "En accédant et en utilisant ce site, vous acceptez d'être lié par les termes et dispositions de cet accord.",
+    "useOfWebsite": {
+      "title": "Utilisation du Site",
+      "description": "Ce site et son contenu sont fournis \"en l'état\" sans aucune garantie, expresse ou implicite. Nous ne garantissons pas l'exactitude, l'exhaustivité ou la disponibilité des informations, produits, services ou graphiques associés contenus sur le site.",
+      "item1": "Le site peut contenir des inexactitudes techniques ou des erreurs typographiques",
+      "item2": "Les informations peuvent être modifiées ou mises à jour sans préavis",
+      "item3": "Nous nous réservons le droit de modifier ces conditions à tout moment"
+    },
+    "noFinancialAdvice": {
+      "title": "Aucun Conseil Financier",
+      "important": "Important",
+      "warning": "En utilisant ce site, vous acceptez de ne pas vous y fier pour des décisions financières. Rien sur ce site ne constitue un conseil financier, d'investissement, juridique ou fiscal professionnel.",
+      "description": "Toute information fournie est uniquement à des fins de divertissement et d'éducation. Vous devez effectuer vos propres recherches et consulter des professionnels qualifiés avant de prendre des décisions d'investissement."
+    },
+    "liability": {
+      "title": "Limitation de Responsabilité",
+      "description": "En aucun cas, 1TAP, ses opérateurs ou contributeurs ne seront responsables de quelque dommage que ce soit, y compris, sans limitation, les dommages directs ou indirects, spéciaux, accessoires ou consécutifs, les pertes ou dépenses découlant de l'utilisation de ce site."
+    },
+    "compliance": {
+      "title": "Conformité aux Lois",
+      "description": "Vous êtes responsable de vous conformer aux lois et réglementations locales. Les réglementations sur les cryptomonnaies varient selon les juridictions.",
+      "item1": "Assurez-vous que le trading de cryptomonnaies est légal dans votre juridiction",
+      "item2": "Conformez-vous à toutes les obligations de déclaration fiscale applicables",
+      "item3": "Comprenez et suivez les réglementations KYC/AML de votre région"
+    },
+    "intellectualProperty": {
+      "title": "Propriété Intellectuelle",
+      "description": "Le contenu de ce site, à l'exclusion des marques et références tierces, est la propriété de la communauté 1TAP. Toute utilisation ou reproduction non autorisée est interdite."
+    },
+    "governingLaw": {
+      "title": "Droit Applicable",
+      "description": "Ces conditions seront régies et interprétées conformément au droit international applicable, sans tenir compte de ses dispositions relatives aux conflits de lois."
+    }
+  },
+  "disclaimer": {
+    "title": "Avertissement",
+    "intro": "1TAP est un token meme communautaire. Il n'a aucune valeur intrinsèque ni attente de rendement financier. Ce n'est pas un investissement, un titre ou un produit financier. Faites vos propres recherches.",
+    "responsibility": "En interagissant avec ce site ou le token, vous acceptez d'être seul responsable de vos actions et reconnaissez les risques associés aux cryptomonnaies.",
+    "importantNotice": {
+      "title": "Avis Important",
+      "description": "Rien sur ce site ne constitue un conseil financier. Le trading de cryptomonnaies comporte un risque substantiel de perte et ne convient pas à tous les investisseurs. Consultez toujours un conseiller financier qualifié avant de prendre des décisions d'investissement."
+    },
+    "risks": {
+      "title": "Risques",
+      "item1": "Haute volatilité et potentiel de perte totale de l'investissement",
+      "item2": "Aucune garantie de valeur, de liquidité ou de performance du marché",
+      "item3": "Risques liés aux smart contracts et vulnérabilités potentielles",
+      "item4": "Incertitude réglementaire dans diverses juridictions"
+    },
+    "yourResponsibility": {
+      "title": "Votre Responsabilité",
+      "description": "Vous êtes seul responsable de déterminer si tout investissement, stratégie d'investissement ou transaction associée vous convient en fonction de vos objectifs d'investissement personnels, de votre situation financière et de votre tolérance au risque."
+    }
+  },
+  "legalNotice": {
+    "title": "Mentions Légales",
+    "intro": "Cette page fournit des informations légales sur le projet 1TAP conformément aux exigences applicables de transparence et de divulgation.",
+    "projectInfo": {
+      "title": "Informations sur le Projet",
+      "name": "Nom du Projet",
+      "nature": "Nature",
+      "natureValue": "Memecoin communautaire (Crypto-actif)",
+      "network": "Réseau",
+      "tokenStandard": "Standard du Token"
+    },
+    "contact": {
+      "title": "Coordonnées",
+      "email": "Email",
+      "community": "Support Communautaire",
+      "communityValue": "Disponible via Discord et Reddit"
+    },
+    "hosting": {
+      "title": "Hébergement du Site",
+      "provider": "Hébergeur",
+      "registrar": "Registrar du Domaine",
+      "domain": "Domaine",
+      "ssl": "Certificat SSL",
+      "security": "Sécurité",
+      "securityValue": "Protection DDoS & Chiffrement SSL/TLS"
+    },
+    "legalStatus": {
+      "title": "Statut Légal",
+      "classification": "Classification Importante",
+      "description": "1TAP est un memecoin et n'est PAS classé comme un titre financier. Le token a :",
+      "item1": "Aucune promesse de rendement financier",
+      "item2": "Aucune activité génératrice de revenus",
+      "item3": "Aucune gestion centralisée avec attentes de profits",
+      "item4": "Gouvernance et développement pilotés par la communauté"
+    },
+    "intellectualProperty": {
+      "title": "Propriété Intellectuelle",
+      "description": "Tout le contenu original, y compris la marque 1TAP, le logo et le design du site, appartient au projet communautaire 1TAP.",
+      "thirdParty": "Marques Tierces",
+      "thirdPartyDesc": "Les références à Counter-Strike, CS:GO, CS2 et Valve Corporation sont uniquement à des fins d'inspiration et de description. Ce projet n'est PAS affilié à ces entités.",
+      "seeNotice": "Voir la Déclaration de Non-Affiliation"
+    },
+    "regulatory": {
+      "title": "Conformité Réglementaire",
+      "noKyc": "Aucun KYC Requis",
+      "noKycDesc": "Le projet 1TAP ne collecte ni ne traite les données d'identification personnelle des utilisateurs.",
+      "aml": "Conformité AML",
+      "amlDesc": "Les utilisateurs sont responsables de se conformer aux lois anti-blanchiment dans leurs juridictions respectives.",
+      "tax": "Obligations Fiscales",
+      "taxDesc": "Les détenteurs de tokens sont seuls responsables de déclarer et payer les impôts sur toute transaction de cryptomonnaie comme l'exigent leurs autorités fiscales locales.",
+      "geo": "Restrictions Géographiques",
+      "geoDesc": "Ce projet peut ne pas être disponible pour les résidents de certaines juridictions où les activités de cryptomonnaie sont restreintes ou interdites."
+    },
+    "dispute": {
+      "title": "Résolution des Litiges",
+      "description": "Tout litige découlant de l'utilisation de ce site ou des interactions avec le token 1TAP sera résolu conformément aux principes d'arbitrage international."
+    }
   }
 }

@@ -472,5 +472,155 @@
     "uniswapDesc": "Prefer Uniswap? Trade directly on their platform",
     "openUniswap": "Open Uniswap",
     "disclaimer": "Cryptocurrency trading carries risk. Always DYOR and never invest more than you can afford to lose."
+  },
+  "legal": {
+    "backHome": "Back to Home",
+    "lastUpdated": "Last updated"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "We respect your privacy. This website does not collect, store, or process personal data by default.",
+    "dataCollection": {
+      "title": "Data Collection",
+      "description": "Our website operates with minimal data collection:",
+      "noPersonal": "No personal information: We do not collect names, emails, or addresses",
+      "noCookies": "No cookies: No tracking cookies are used on this website",
+      "noAnalytics": "No analytics: We do not use analytics tools that track your behavior",
+      "blockchain": "Blockchain interactions: Any wallet connections are handled directly by your wallet provider"
+    },
+    "thirdParty": {
+      "title": "Third-Party Services",
+      "description": "When you interact with blockchain networks or decentralized exchanges (DEX), you are subject to their respective privacy policies:",
+      "wallets": "Wallet providers (MetaMask, WalletConnect, etc.) have their own privacy policies",
+      "blockchain": "Blockchain transactions are public and permanently recorded on the Base network",
+      "dex": "DEX platforms may collect their own analytics and usage data"
+    },
+    "gdpr": {
+      "title": "Your Rights (GDPR)",
+      "description": "Under GDPR Article 13, you have the right to information about data processing. Since we do not collect personal data, there is no data to access, modify, or delete.",
+      "blockchain": "If you have questions about privacy or blockchain transactions, please note that blockchain data is immutable and cannot be deleted once recorded."
+    },
+    "changes": {
+      "title": "Changes to This Policy",
+      "description": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "If you have any questions about this privacy policy, please reach out to us through our community channels listed on the main website."
+    }
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "intro": "By accessing and using this website, you accept and agree to be bound by the terms and provisions of this agreement.",
+    "useOfWebsite": {
+      "title": "Use of Website",
+      "description": "This website and its contents are provided \"as is\" without any warranties, expressed or implied. We do not warrant the accuracy, completeness, or availability of the information, products, services, or related graphics contained on the website.",
+      "item1": "The website may contain technical inaccuracies or typographical errors",
+      "item2": "Information may be changed or updated without notice",
+      "item3": "We reserve the right to modify these terms at any time"
+    },
+    "noFinancialAdvice": {
+      "title": "No Financial Advice",
+      "important": "Important",
+      "warning": "By using this site, you agree not to rely on it for financial decisions. Nothing on this website constitutes professional financial, investment, legal, or tax advice.",
+      "description": "Any information provided is for entertainment and educational purposes only. You should conduct your own research and consult with qualified professionals before making any investment decisions."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "description": "In no event shall 1TAP, its operators, or contributors be liable for any damages including, without limitation, direct or indirect, special, incidental, or consequential damages, losses or expenses arising in connection with this website or use thereof."
+    },
+    "compliance": {
+      "title": "Compliance with Laws",
+      "description": "You are responsible for complying with your local laws and regulations. Cryptocurrency regulations vary by jurisdiction.",
+      "item1": "Ensure cryptocurrency trading is legal in your jurisdiction",
+      "item2": "Comply with all applicable tax reporting requirements",
+      "item3": "Understand and follow KYC/AML regulations in your region"
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property",
+      "description": "The content on this website, excluding third-party trademarks and references, is the property of the 1TAP community. Unauthorized use or reproduction is prohibited."
+    },
+    "governingLaw": {
+      "title": "Governing Law",
+      "description": "These terms shall be governed by and construed in accordance with applicable international law, without regard to its conflict of law provisions."
+    }
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "intro": "1TAP is a community meme token. It has no intrinsic value or expectation of financial return. It is not an investment, security, or financial product. Do your own research.",
+    "responsibility": "By interacting with this website or the token, you agree that you are solely responsible for your actions and acknowledge the risks associated with cryptocurrencies.",
+    "importantNotice": {
+      "title": "Important Notice",
+      "description": "Nothing on this website constitutes financial advice. Cryptocurrency trading involves substantial risk of loss and is not suitable for every investor. Always consult with a qualified financial advisor before making any investment decisions."
+    },
+    "risks": {
+      "title": "Risks",
+      "item1": "High volatility and potential for complete loss of investment",
+      "item2": "No guarantees of value, liquidity, or market performance",
+      "item3": "Smart contract risks and potential vulnerabilities",
+      "item4": "Regulatory uncertainty in various jurisdictions"
+    },
+    "yourResponsibility": {
+      "title": "Your Responsibility",
+      "description": "You are solely responsible for determining whether any investment, investment strategy, or related transaction is appropriate for you based on your personal investment objectives, financial circumstances, and risk tolerance."
+    }
+  },
+  "legalNotice": {
+    "title": "Legal Notice",
+    "intro": "This page provides legal information about the 1TAP project in compliance with applicable transparency and disclosure requirements.",
+    "projectInfo": {
+      "title": "Project Information",
+      "name": "Project Name",
+      "nature": "Nature",
+      "natureValue": "Community-driven memecoin (Crypto-asset)",
+      "network": "Network",
+      "tokenStandard": "Token Standard"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "email": "Email",
+      "community": "Community Support",
+      "communityValue": "Available via Discord and Reddit"
+    },
+    "hosting": {
+      "title": "Website Hosting",
+      "provider": "Hosting Provider",
+      "registrar": "Domain Registrar",
+      "domain": "Domain",
+      "ssl": "SSL Certificate",
+      "security": "Security",
+      "securityValue": "DDoS Protection & SSL/TLS Encryption"
+    },
+    "legalStatus": {
+      "title": "Legal Status",
+      "classification": "Important Classification",
+      "description": "1TAP is a memecoin and is NOT classified as a security. The token has:",
+      "item1": "No promise of financial return",
+      "item2": "No revenue-generating activity",
+      "item3": "No centralized management with profit expectations",
+      "item4": "Community-driven governance and development"
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property",
+      "description": "All original content, including the 1TAP branding, logo, and website design, is owned by the 1TAP community project.",
+      "thirdParty": "Third-Party Trademarks",
+      "thirdPartyDesc": "References to Counter-Strike, CS:GO, CS2, and Valve Corporation are for inspirational and descriptive purposes only. This project is NOT affiliated with these entities.",
+      "seeNotice": "See Non-Affiliation Notice"
+    },
+    "regulatory": {
+      "title": "Regulatory Compliance",
+      "noKyc": "No KYC Required",
+      "noKycDesc": "The 1TAP project does not collect or process personal identification data from users.",
+      "aml": "AML Compliance",
+      "amlDesc": "Users are responsible for complying with anti-money laundering laws in their respective jurisdictions.",
+      "tax": "Tax Obligations",
+      "taxDesc": "Token holders are solely responsible for reporting and paying taxes on any cryptocurrency transactions as required by their local tax authorities.",
+      "geo": "Geographic Restrictions",
+      "geoDesc": "This project may not be available to residents of certain jurisdictions where cryptocurrency activities are restricted or prohibited."
+    },
+    "dispute": {
+      "title": "Dispute Resolution",
+      "description": "Any disputes arising from the use of this website or interactions with the 1TAP token shall be resolved in accordance with international arbitration principles."
+    }
   }
 }

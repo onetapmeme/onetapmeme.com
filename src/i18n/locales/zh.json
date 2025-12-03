@@ -472,5 +472,155 @@
     "uniswapDesc": "更喜欢 Uniswap？直接在他们的平台上交易",
     "openUniswap": "打开 Uniswap",
     "disclaimer": "加密货币交易存在风险。请务必自行研究，切勿投资超出您承受能力的金额。"
+  },
+  "legal": {
+    "backHome": "返回首页",
+    "lastUpdated": "最后更新"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "intro": "我们尊重您的隐私。本网站默认不收集、存储或处理个人数据。",
+    "dataCollection": {
+      "title": "数据收集",
+      "description": "我们的网站以最少的数据收集运营：",
+      "noPersonal": "无个人信息：我们不收集姓名、邮箱或地址",
+      "noCookies": "无Cookie：本网站不使用跟踪Cookie",
+      "noAnalytics": "无分析：我们不使用跟踪您行为的分析工具",
+      "blockchain": "区块链交互：任何钱包连接都由您的钱包提供商直接处理"
+    },
+    "thirdParty": {
+      "title": "第三方服务",
+      "description": "当您与区块链网络或去中心化交易所（DEX）交互时，您需遵守其各自的隐私政策：",
+      "wallets": "钱包提供商（MetaMask、WalletConnect等）有其自己的隐私政策",
+      "blockchain": "区块链交易是公开的，并永久记录在Base网络上",
+      "dex": "DEX平台可能收集其自己的分析和使用数据"
+    },
+    "gdpr": {
+      "title": "您的权利（GDPR）",
+      "description": "根据GDPR第13条，您有权了解数据处理信息。由于我们不收集个人数据，因此没有数据可供访问、修改或删除。",
+      "blockchain": "如果您对隐私或区块链交易有疑问，请注意区块链数据是不可变的，一旦记录就无法删除。"
+    },
+    "changes": {
+      "title": "政策变更",
+      "description": "我们可能会不时更新此隐私政策。任何更改都将在此页面上发布，并附有更新的修订日期。"
+    },
+    "contact": {
+      "title": "联系方式",
+      "description": "如果您对此隐私政策有任何疑问，请通过主网站上列出的社区渠道与我们联系。"
+    }
+  },
+  "terms": {
+    "title": "使用条款",
+    "intro": "访问和使用本网站即表示您接受并同意受本协议条款和条款的约束。",
+    "useOfWebsite": {
+      "title": "网站使用",
+      "description": "本网站及其内容按\"原样\"提供，不提供任何明示或暗示的保证。我们不保证网站上包含的信息、产品、服务或相关图形的准确性、完整性或可用性。",
+      "item1": "网站可能包含技术不准确或印刷错误",
+      "item2": "信息可能会在不通知的情况下更改或更新",
+      "item3": "我们保留随时修改这些条款的权利"
+    },
+    "noFinancialAdvice": {
+      "title": "无财务建议",
+      "important": "重要",
+      "warning": "使用本网站即表示您同意不依赖它做出财务决策。本网站上的任何内容都不构成专业财务、投资、法律或税务建议。",
+      "description": "提供的任何信息仅用于娱乐和教育目的。在做出任何投资决定之前，您应该进行自己的研究并咨询合格的专业人士。"
+    },
+    "liability": {
+      "title": "责任限制",
+      "description": "在任何情况下，1TAP、其运营商或贡献者均不对任何损害承担责任，包括但不限于与本网站使用相关的直接或间接、特殊、附带或后果性损害、损失或费用。"
+    },
+    "compliance": {
+      "title": "法律合规",
+      "description": "您有责任遵守当地法律法规。加密货币法规因司法管辖区而异。",
+      "item1": "确保加密货币交易在您的司法管辖区合法",
+      "item2": "遵守所有适用的税务申报要求",
+      "item3": "了解并遵守您所在地区的KYC/AML法规"
+    },
+    "intellectualProperty": {
+      "title": "知识产权",
+      "description": "本网站上的内容，不包括第三方商标和引用，是1TAP社区的财产。未经授权的使用或复制是被禁止的。"
+    },
+    "governingLaw": {
+      "title": "适用法律",
+      "description": "这些条款应根据适用的国际法进行管辖和解释，不考虑其法律冲突条款。"
+    }
+  },
+  "disclaimer": {
+    "title": "免责声明",
+    "intro": "1TAP是一个社区meme代币。它没有内在价值或财务回报预期。它不是投资、证券或金融产品。请自行研究。",
+    "responsibility": "通过与本网站或代币交互，您同意您对自己的行为负全部责任，并承认与加密货币相关的风险。",
+    "importantNotice": {
+      "title": "重要通知",
+      "description": "本网站上的任何内容都不构成财务建议。加密货币交易涉及重大损失风险，并非适合每个投资者。在做出任何投资决定之前，请始终咨询合格的财务顾问。"
+    },
+    "risks": {
+      "title": "风险",
+      "item1": "高波动性和投资完全损失的可能性",
+      "item2": "无价值、流动性或市场表现保证",
+      "item3": "智能合约风险和潜在漏洞",
+      "item4": "各司法管辖区的监管不确定性"
+    },
+    "yourResponsibility": {
+      "title": "您的责任",
+      "description": "您全权负责根据您的个人投资目标、财务状况和风险承受能力确定任何投资、投资策略或相关交易是否适合您。"
+    }
+  },
+  "legalNotice": {
+    "title": "法律声明",
+    "intro": "本页面根据适用的透明度和披露要求提供有关1TAP项目的法律信息。",
+    "projectInfo": {
+      "title": "项目信息",
+      "name": "项目名称",
+      "nature": "性质",
+      "natureValue": "社区驱动的memecoin（加密资产）",
+      "network": "网络",
+      "tokenStandard": "代币标准"
+    },
+    "contact": {
+      "title": "联系信息",
+      "email": "邮箱",
+      "community": "社区支持",
+      "communityValue": "通过Discord和Reddit提供"
+    },
+    "hosting": {
+      "title": "网站托管",
+      "provider": "托管提供商",
+      "registrar": "域名注册商",
+      "domain": "域名",
+      "ssl": "SSL证书",
+      "security": "安全",
+      "securityValue": "DDoS防护和SSL/TLS加密"
+    },
+    "legalStatus": {
+      "title": "法律地位",
+      "classification": "重要分类",
+      "description": "1TAP是一个memecoin，不被归类为证券。该代币具有：",
+      "item1": "无财务回报承诺",
+      "item2": "无创收活动",
+      "item3": "无带有利润预期的中心化管理",
+      "item4": "社区驱动的治理和开发"
+    },
+    "intellectualProperty": {
+      "title": "知识产权",
+      "description": "所有原创内容，包括1TAP品牌、标志和网站设计，均归1TAP社区项目所有。",
+      "thirdParty": "第三方商标",
+      "thirdPartyDesc": "对Counter-Strike、CS:GO、CS2和Valve Corporation的引用仅用于灵感和描述目的。本项目与这些实体无关。",
+      "seeNotice": "查看非关联声明"
+    },
+    "regulatory": {
+      "title": "监管合规",
+      "noKyc": "无需KYC",
+      "noKycDesc": "1TAP项目不收集或处理用户的个人身份数据。",
+      "aml": "AML合规",
+      "amlDesc": "用户有责任遵守其各自司法管辖区的反洗钱法律。",
+      "tax": "税务义务",
+      "taxDesc": "代币持有者全权负责按当地税务机关的要求申报和缴纳任何加密货币交易的税款。",
+      "geo": "地理限制",
+      "geoDesc": "本项目可能不适用于加密货币活动受限或禁止的某些司法管辖区的居民。"
+    },
+    "dispute": {
+      "title": "争议解决",
+      "description": "因使用本网站或与1TAP代币交互而产生的任何争议应根据国际仲裁原则解决。"
+    }
   }
 }

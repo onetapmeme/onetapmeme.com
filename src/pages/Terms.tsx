@@ -2,119 +2,118 @@ import { ArrowLeft, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Terms = () => {
+  const { t, i18n } = useTranslation();
+  
+  const formatDate = () => {
+    const locale = i18n.language === 'zh' ? 'zh-CN' : 
+                   i18n.language === 'ru' ? 'ru-RU' : 
+                   i18n.language === 'es' ? 'es-ES' : 
+                   i18n.language === 'fr' ? 'fr-FR' : 'en-US';
+    return new Date().toLocaleDateString(locale, { month: 'long', year: 'numeric' });
+  };
+
   return (
     <div className="min-h-screen bg-background py-12 px-4">
       <div className="container mx-auto max-w-4xl">
         <Link to="/">
           <Button variant="ghost" className="mb-8">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
+            {t('legal.backHome')}
           </Button>
         </Link>
 
         <Card className="p-8 md:p-12 bg-card border-2 border-primary/30">
           <div className="flex items-center gap-3 mb-6">
             <FileText className="w-8 h-8 text-primary" />
-            <h1 className="text-4xl font-bold text-foreground">Terms of Use</h1>
+            <h1 className="text-4xl font-bold text-foreground">{t('terms.title')}</h1>
           </div>
 
           <div className="space-y-6 text-foreground/90">
             <p className="text-lg leading-relaxed">
-              By accessing and using this website, you accept and agree to be bound by the terms and provisions 
-              of this agreement.
+              {t('terms.intro')}
             </p>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Use of Website</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('terms.useOfWebsite.title')}</h2>
               <p className="text-foreground/80 mb-4">
-                This website and its contents are provided "as is" without any warranties, expressed or implied. 
-                We do not warrant the accuracy, completeness, or availability of the information, products, 
-                services, or related graphics contained on the website.
+                {t('terms.useOfWebsite.description')}
               </p>
               <ul className="space-y-2 text-foreground/80">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">▸</span>
-                  <span>The website may contain technical inaccuracies or typographical errors</span>
+                  <span>{t('terms.useOfWebsite.item1')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">▸</span>
-                  <span>Information may be changed or updated without notice</span>
+                  <span>{t('terms.useOfWebsite.item2')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">▸</span>
-                  <span>We reserve the right to modify these terms at any time</span>
+                  <span>{t('terms.useOfWebsite.item3')}</span>
                 </li>
               </ul>
             </div>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">No Financial Advice</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('terms.noFinancialAdvice.title')}</h2>
               <div className="bg-destructive/10 border-l-4 border-destructive p-4 rounded mb-4">
-                <p className="font-bold text-destructive mb-2">Important</p>
+                <p className="font-bold text-destructive mb-2">{t('terms.noFinancialAdvice.important')}</p>
                 <p className="text-foreground/80">
-                  By using this site, you agree not to rely on it for financial decisions. Nothing on this 
-                  website constitutes professional financial, investment, legal, or tax advice.
+                  {t('terms.noFinancialAdvice.warning')}
                 </p>
               </div>
               <p className="text-foreground/80">
-                Any information provided is for entertainment and educational purposes only. You should conduct 
-                your own research and consult with qualified professionals before making any investment decisions.
+                {t('terms.noFinancialAdvice.description')}
               </p>
             </div>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Limitation of Liability</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('terms.liability.title')}</h2>
               <p className="text-foreground/80 mb-4">
-                In no event shall $ONETAP, its operators, or contributors be liable for any damages including, 
-                without limitation, direct or indirect, special, incidental, or consequential damages, losses or 
-                expenses arising in connection with this website or use thereof or inability to use by any party, 
-                or in connection with any failure of performance, error, omission, interruption, defect, delay in 
-                operation or transmission, computer virus or line or system failure.
+                {t('terms.liability.description')}
               </p>
             </div>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Compliance with Laws</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('terms.compliance.title')}</h2>
               <p className="text-foreground/80 mb-4">
-                You are responsible for complying with your local laws and regulations. Cryptocurrency regulations 
-                vary by jurisdiction.
+                {t('terms.compliance.description')}
               </p>
               <ul className="space-y-2 text-foreground/80">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">▸</span>
-                  <span>Ensure cryptocurrency trading is legal in your jurisdiction</span>
+                  <span>{t('terms.compliance.item1')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">▸</span>
-                  <span>Comply with all applicable tax reporting requirements</span>
+                  <span>{t('terms.compliance.item2')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">▸</span>
-                  <span>Understand and follow KYC/AML regulations in your region</span>
+                  <span>{t('terms.compliance.item3')}</span>
                 </li>
               </ul>
             </div>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Intellectual Property</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('terms.intellectualProperty.title')}</h2>
               <p className="text-foreground/80">
-                The content on this website, excluding third-party trademarks and references, is the property of 
-                the $ONETAP community. Unauthorized use or reproduction is prohibited.
+                {t('terms.intellectualProperty.description')}
               </p>
             </div>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Governing Law</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('terms.governingLaw.title')}</h2>
               <p className="text-foreground/80">
-                These terms shall be governed by and construed in accordance with applicable international law, 
-                without regard to its conflict of law provisions.
+                {t('terms.governingLaw.description')}
               </p>
             </div>
 
             <div className="text-sm text-muted-foreground pt-6 border-t border-border">
-              Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+              {t('legal.lastUpdated')}: {formatDate()}
             </div>
           </div>
         </Card>
