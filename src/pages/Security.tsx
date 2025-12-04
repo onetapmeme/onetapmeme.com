@@ -6,48 +6,50 @@ import { Shield, Lock, CheckCircle, ExternalLink, FileText, Users, AlertTriangle
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useTranslation } from 'react-i18next';
 
 const Security = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const { t } = useTranslation();
 
   const securityFeatures = [
     {
       icon: Shield,
-      title: 'Smart Contract Audit',
-      description: 'Comprehensive security audit by Hacken (planned Q1 2025)',
+      title: t('security.features.audit.title'),
+      description: t('security.features.audit.description'),
       status: 'pending',
     },
     {
       icon: Lock,
-      title: 'Liquidity Locked',
-      description: '85% LP locked for 6 months via Team Finance',
+      title: t('security.features.lpLocked.title'),
+      description: t('security.features.lpLocked.description'),
       status: 'active',
     },
     {
       icon: CheckCircle,
-      title: 'Verified Contract',
-      description: 'Contract verified on BaseScan',
+      title: t('security.features.verified.title'),
+      description: t('security.features.verified.description'),
       status: 'active',
     },
     {
       icon: Users,
-      title: 'Multi-Sig Wallet',
-      description: '3/5 multi-signature for treasury management',
+      title: t('security.features.multiSig.title'),
+      description: t('security.features.multiSig.description'),
       status: 'active',
     },
   ];
 
   const auditDetails = {
-    company: 'Hacken (Planned)',
-    date: 'Q1 2025',
-    scope: 'Smart Contract + Frontend Security',
+    company: t('security.auditReport.company'),
+    date: t('security.auditReport.date'),
+    scope: t('security.auditReport.scope'),
     findings: {
       critical: 0,
       high: 0,
       medium: 0,
       low: 0,
     },
-    score: 'TBA',
+    score: t('security.auditReport.scoreTBA'),
   };
 
   return (
@@ -67,10 +69,10 @@ const Security = () => {
           >
             <Shield className="w-16 h-16 mx-auto mb-6 text-primary" />
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-foreground">
-              Security & Audit
+              {t('security.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Your security is our priority. Full transparency on audits, locks, and smart contract verification.
+              {t('security.subtitle')}
             </p>
           </motion.div>
 
@@ -104,7 +106,7 @@ const Security = () => {
                           ? 'bg-green-500/10 text-green-500'
                           : 'bg-accent/10 text-accent'
                       }`}>
-                        {feature.status === 'active' ? '✓ Active' : '⏳ Planned'}
+                        {feature.status === 'active' ? t('security.statusActive') : t('security.statusPlanned')}
                       </span>
                     </div>
                   </div>
@@ -124,7 +126,7 @@ const Security = () => {
                 <FileText className="w-10 h-10 text-primary" />
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                    Audit Report
+                    {t('security.auditReport.title')}
                   </h2>
                   <p className="text-muted-foreground">
                     {auditDetails.company} • {auditDetails.date}
@@ -134,11 +136,11 @@ const Security = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h3 className="font-bold text-foreground mb-4">Audit Scope</h3>
+                  <h3 className="font-bold text-foreground mb-4">{t('security.auditReport.scopeTitle')}</h3>
                   <p className="text-muted-foreground">{auditDetails.scope}</p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-foreground mb-4">Security Score</h3>
+                  <h3 className="font-bold text-foreground mb-4">{t('security.auditReport.scoreTitle')}</h3>
                   <p className="text-3xl font-bold text-primary">{auditDetails.score}</p>
                 </div>
               </div>
@@ -148,25 +150,25 @@ const Security = () => {
                   <p className="text-2xl font-bold text-red-500">
                     {auditDetails.findings.critical}
                   </p>
-                  <p className="text-sm text-muted-foreground">Critical</p>
+                  <p className="text-sm text-muted-foreground">{t('security.auditReport.critical')}</p>
                 </div>
                 <div className="p-4 rounded-xl bg-orange-500/10 text-center">
                   <p className="text-2xl font-bold text-orange-500">
                     {auditDetails.findings.high}
                   </p>
-                  <p className="text-sm text-muted-foreground">High</p>
+                  <p className="text-sm text-muted-foreground">{t('security.auditReport.high')}</p>
                 </div>
                 <div className="p-4 rounded-xl bg-yellow-500/10 text-center">
                   <p className="text-2xl font-bold text-yellow-500">
                     {auditDetails.findings.medium}
                   </p>
-                  <p className="text-sm text-muted-foreground">Medium</p>
+                  <p className="text-sm text-muted-foreground">{t('security.auditReport.medium')}</p>
                 </div>
                 <div className="p-4 rounded-xl bg-blue-500/10 text-center">
                   <p className="text-2xl font-bold text-blue-500">
                     {auditDetails.findings.low}
                   </p>
-                  <p className="text-sm text-muted-foreground">Low</p>
+                  <p className="text-sm text-muted-foreground">{t('security.auditReport.low')}</p>
                 </div>
               </div>
 
@@ -176,7 +178,7 @@ const Security = () => {
                 disabled
               >
                 <FileText className="w-4 h-4" />
-                Download Full Report (Coming Soon)
+                {t('security.auditReport.downloadButton')}
                 <ExternalLink className="w-4 h-4" />
               </Button>
             </Card>
@@ -190,31 +192,31 @@ const Security = () => {
           >
             <Card className="glass-effect p-8 rounded-2xl border-primary/20 mb-16">
               <h2 className="text-2xl font-bold mb-6 text-foreground">
-                Contract Verification
+                {t('security.contractVerification.title')}
               </h2>
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 rounded-xl bg-background/50">
                   <div>
-                    <p className="font-semibold text-foreground">Base Network Contract</p>
+                    <p className="font-semibold text-foreground">{t('security.contractVerification.baseNetwork')}</p>
                     <p className="text-sm text-muted-foreground font-mono">
-                      0x...Coming Soon
+                      {t('security.contractVerification.comingSoon')}
                     </p>
                   </div>
                   <Button variant="outline" size="sm" disabled>
                     <ExternalLink className="w-4 h-4" />
-                    View on BaseScan
+                    {t('security.contractVerification.viewOnBaseScan')}
                   </Button>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-xl bg-background/50">
                   <div>
-                    <p className="font-semibold text-foreground">LP Lock Contract</p>
+                    <p className="font-semibold text-foreground">{t('security.contractVerification.lpLock')}</p>
                     <p className="text-sm text-muted-foreground">
-                      6-month lock via Team Finance
+                      {t('security.contractVerification.lpLockDescription')}
                     </p>
                   </div>
                   <Button variant="outline" size="sm" disabled>
                     <Lock className="w-4 h-4" />
-                    View Lock Proof
+                    {t('security.contractVerification.viewLockProof')}
                   </Button>
                 </div>
               </div>
@@ -232,23 +234,23 @@ const Security = () => {
                 <AlertTriangle className="w-10 h-10 text-accent flex-shrink-0" />
                 <div className="flex-1">
                   <h2 className="text-2xl font-bold mb-4 text-foreground">
-                    Bug Bounty Program
+                    {t('security.bugBounty.title')}
                   </h2>
                   <p className="text-muted-foreground mb-6">
-                    Found a vulnerability? We reward responsible disclosure. Report security issues directly to our team.
+                    {t('security.bugBounty.description')}
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div className="p-4 rounded-xl bg-background/50 text-center">
                       <p className="text-2xl font-bold text-primary mb-1">$500</p>
-                      <p className="text-sm text-muted-foreground">Low Severity</p>
+                      <p className="text-sm text-muted-foreground">{t('security.bugBounty.lowSeverity')}</p>
                     </div>
                     <div className="p-4 rounded-xl bg-background/50 text-center">
                       <p className="text-2xl font-bold text-primary mb-1">$2,500</p>
-                      <p className="text-sm text-muted-foreground">Medium Severity</p>
+                      <p className="text-sm text-muted-foreground">{t('security.bugBounty.mediumSeverity')}</p>
                     </div>
                     <div className="p-4 rounded-xl bg-background/50 text-center">
                       <p className="text-2xl font-bold text-primary mb-1">$10,000</p>
-                      <p className="text-sm text-muted-foreground">Critical</p>
+                      <p className="text-sm text-muted-foreground">{t('security.bugBounty.criticalSeverity')}</p>
                     </div>
                   </div>
                   <Button
@@ -257,7 +259,7 @@ const Security = () => {
                     onClick={() => window.location.href = 'mailto:security@onetapmeme.com'}
                   >
                     <AlertTriangle className="w-4 h-4" />
-                    Report Vulnerability
+                    {t('security.bugBounty.reportButton')}
                   </Button>
                 </div>
               </div>

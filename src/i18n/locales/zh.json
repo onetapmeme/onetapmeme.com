@@ -622,5 +622,155 @@
       "title": "争议解决",
       "description": "因使用本网站或与1TAP代币交互而产生的任何争议应根据国际仲裁原则解决。"
     }
+  },
+  "nonAffiliation": {
+    "title": "非关联声明",
+    "mainNotice": "$1TAP <strong>不隶属于</strong>、不关联、未授权、未认可，也与Counter-Strike、Counter-Strike 2 (CS2)、Valve Corporation或Gabe Newell没有任何官方联系。",
+    "independentDescription": "这是一个由社区驱动的独立meme币项目，灵感来自游戏文化。我们与任何游戏公司或其代表没有任何官方关系、合作或认可。",
+    "trademarks": {
+      "title": "商标",
+      "description": "本网站提到的所有产品和公司名称均为其各自持有者的商标™或注册商标®。使用它们并不意味着与其有任何关联或获得其认可。",
+      "item1": "Counter-Strike和CS:GO是Valve Corporation的商标",
+      "item2": "所有游戏资产、标志和图像均属于其各自所有者",
+      "item3": "本项目使用公开可用的游戏文化参考仅供娱乐目的"
+    },
+    "independentProject": {
+      "title": "独立项目",
+      "description": "$1TAP是由游戏爱好者和加密货币支持者创建的草根社区倡议。与现有游戏或品牌的任何相似之处纯属灵感来源，不代表官方合作或认可。"
+    },
+    "contact": {
+      "title": "联系方式",
+      "description": "如果您是商标持有人并对我们使用参考内容有疑虑，请联系我们进行澄清或解决。"
+    }
+  },
+  "security": {
+    "title": "安全与审计",
+    "subtitle": "您的安全是我们的首要任务。审计、锁定和智能合约验证的完全透明。",
+    "statusActive": "✓ 已激活",
+    "statusPlanned": "⏳ 已计划",
+    "features": {
+      "audit": {
+        "title": "智能合约审计",
+        "description": "Hacken全面安全审计（计划于2025年Q1）"
+      },
+      "lpLocked": {
+        "title": "流动性已锁定",
+        "description": "85% LP通过Team Finance锁定6个月"
+      },
+      "verified": {
+        "title": "已验证合约",
+        "description": "合约已在BaseScan上验证"
+      },
+      "multiSig": {
+        "title": "多签钱包",
+        "description": "3/5多重签名用于财务管理"
+      }
+    },
+    "auditReport": {
+      "title": "审计报告",
+      "company": "Hacken（计划中）",
+      "date": "2025年Q1",
+      "scope": "智能合约 + 前端安全",
+      "scopeTitle": "审计范围",
+      "scoreTitle": "安全评分",
+      "scoreTBA": "待定",
+      "critical": "严重",
+      "high": "高",
+      "medium": "中",
+      "low": "低",
+      "downloadButton": "下载完整报告（即将推出）"
+    },
+    "contractVerification": {
+      "title": "合约验证",
+      "baseNetwork": "Base网络合约",
+      "comingSoon": "0x...即将推出",
+      "viewOnBaseScan": "在BaseScan上查看",
+      "lpLock": "LP锁定合约",
+      "lpLockDescription": "通过Team Finance锁定6个月",
+      "viewLockProof": "查看锁定证明"
+    },
+    "bugBounty": {
+      "title": "漏洞赏金计划",
+      "description": "发现漏洞了吗？我们奖励负责任的披露。直接向我们的团队报告安全问题。",
+      "lowSeverity": "低严重性",
+      "mediumSeverity": "中等严重性",
+      "criticalSeverity": "严重",
+      "reportButton": "报告漏洞"
+    }
+  },
+  "ownership": {
+    "title": "官方所有权证书",
+    "subtitle": "$1TAP项目的所有权和知识产权的法律证明",
+    "documentTitle": "$1TAP — 官方所有权文件",
+    "projectName": "项目名称",
+    "owner": "所有者",
+    "date": "日期",
+    "dateValue": "2025年1月7日",
+    "version": "版本",
+    "projectDescription": {
+      "title": "项目描述",
+      "description": "$1TAP项目是一个独立的数字倡议，结合了区块链、游戏文化和受Counter-Strike启发的艺术设计。它包括：",
+      "item1": "部署在Base网络上的meme币",
+      "item2": "1TAP网站和游戏化体验",
+      "item3": "视觉资产、品牌、音效和\"Pixel CT\"身份下的数字艺术"
+    },
+    "ownershipStatement": {
+      "title": "所有权声明",
+      "declaration": "我，Hugo，声明我是$1TAP项目及所有相关知识产权的唯一合法所有者，包括但不限于：",
+      "branding": "品牌和身份",
+      "brandingDetails": "\"$1TAP\"、\"Onetapper\"、\"Pixel-CT Memes\"",
+      "assets": "视觉和音频资产",
+      "assetsDetails": "所有图像、声音、动画和设计元素",
+      "website": "$1TAP网站",
+      "websiteDetails": "源代码、用户界面和交互功能",
+      "token": "代币概念",
+      "tokenDetails": "智能合约设计和代币经济结构",
+      "extension": "此所有权延伸至项目的所有未来版本、更新和衍生作品。"
+    },
+    "legalFramework": {
+      "title": "法律框架",
+      "description": "本文件作为以下法律框架下的所有权证明：",
+      "eu": "欧盟指令2001/29/EC",
+      "euDescription": "（信息社会中的版权）",
+      "berne": "伯尔尼公约",
+      "berneDescription": "关于保护文学和艺术作品",
+      "french": "法国知识产权法典",
+      "frenchDescription": "第L111-1和L113-1条"
+    },
+    "nonAffiliation": {
+      "title": "非关联声明",
+      "statement": "$1TAP项目不隶属于、不关联、未授权、未认可，也与Valve Corporation、Counter-Strike（CS:GO、CS2或任何相关游戏）、Gabe Newell或任何官方游戏实体没有任何官方联系。",
+      "references": "所有对Counter-Strike、CS:GO、CS2或相关游戏文化的引用纯粹是主题性的、艺术性的，仅供娱乐目的。这是一个独立的社区项目。"
+    },
+    "digitalSignature": {
+      "title": "数字签名",
+      "signedBy": "签署人",
+      "website": "网站",
+      "timestamp": "时间戳",
+      "hash": "文档哈希",
+      "hashValue": "[提交时生成]"
+    },
+    "footer": {
+      "copyright": "© 2025 $1TAP项目 — 保留所有权利。",
+      "nonAffiliated": "与Valve Corporation或Counter-Strike无关。",
+      "protection": "受1TAP法律保护盾v1.0保护"
+    },
+    "resources": {
+      "license": {
+        "title": "许可证",
+        "description": "查看1TAP社区许可证1.0",
+        "link": "阅读许可证"
+      },
+      "audit": {
+        "title": "安全审计",
+        "description": "代币透明度和安全报告",
+        "link": "查看审计"
+      },
+      "sourceCode": {
+        "title": "源代码",
+        "description": "GitHub上的开源仓库",
+        "link": "查看仓库"
+      }
+    }
   }
 }
