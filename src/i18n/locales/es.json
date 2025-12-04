@@ -622,5 +622,155 @@
       "title": "Resolución de Disputas",
       "description": "Cualquier disputa que surja del uso de este sitio o las interacciones con el token 1TAP se resolverá de acuerdo con los principios de arbitraje internacional."
     }
+  },
+  "nonAffiliation": {
+    "title": "Aviso de No Afiliación",
+    "mainNotice": "$1TAP <strong>no está afiliado</strong>, asociado, autorizado, respaldado por, ni de ninguna manera oficialmente conectado con Counter-Strike, Counter-Strike 2 (CS2), Valve Corporation, o Gabe Newell.",
+    "independentDescription": "Este es un proyecto de memecoin independiente impulsado por la comunidad, inspirado en la cultura gaming. No tenemos ninguna relación oficial, asociación o respaldo de ninguna empresa de videojuegos o sus representantes.",
+    "trademarks": {
+      "title": "Marcas Registradas",
+      "description": "Todos los nombres de productos y empresas mencionados en este sitio son marcas™ o marcas registradas® de sus respectivos propietarios. Su uso no implica ninguna afiliación o respaldo por parte de ellos.",
+      "item1": "Counter-Strike y CS:GO son marcas de Valve Corporation",
+      "item2": "Todos los assets de juegos, logos e imágenes pertenecen a sus respectivos propietarios",
+      "item3": "Este proyecto utiliza referencias de cultura gaming disponibles públicamente con fines de entretenimiento"
+    },
+    "independentProject": {
+      "title": "Proyecto Independiente",
+      "description": "$1TAP es una iniciativa comunitaria de base creada por entusiastas del gaming y partidarios de las criptomonedas. Cualquier similitud con juegos o marcas existentes es puramente inspiracional y no representa asociaciones o respaldos oficiales."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Si eres titular de una marca y tienes preocupaciones sobre nuestro uso de referencias, por favor contáctanos para aclaración o resolución."
+    }
+  },
+  "security": {
+    "title": "Seguridad y Auditoría",
+    "subtitle": "Tu seguridad es nuestra prioridad. Transparencia total en auditorías, bloqueos y verificación de contratos inteligentes.",
+    "statusActive": "✓ Activo",
+    "statusPlanned": "⏳ Planificado",
+    "features": {
+      "audit": {
+        "title": "Auditoría de Contrato Inteligente",
+        "description": "Auditoría de seguridad completa por Hacken (planificada Q1 2025)"
+      },
+      "lpLocked": {
+        "title": "Liquidez Bloqueada",
+        "description": "85% LP bloqueado por 6 meses vía Team Finance"
+      },
+      "verified": {
+        "title": "Contrato Verificado",
+        "description": "Contrato verificado en BaseScan"
+      },
+      "multiSig": {
+        "title": "Wallet Multi-Sig",
+        "description": "Multi-firma 3/5 para gestión de tesorería"
+      }
+    },
+    "auditReport": {
+      "title": "Informe de Auditoría",
+      "company": "Hacken (Planificado)",
+      "date": "Q1 2025",
+      "scope": "Contrato Inteligente + Seguridad Frontend",
+      "scopeTitle": "Alcance de la Auditoría",
+      "scoreTitle": "Puntuación de Seguridad",
+      "scoreTBA": "Por determinar",
+      "critical": "Crítico",
+      "high": "Alto",
+      "medium": "Medio",
+      "low": "Bajo",
+      "downloadButton": "Descargar Informe Completo (Próximamente)"
+    },
+    "contractVerification": {
+      "title": "Verificación del Contrato",
+      "baseNetwork": "Contrato Red Base",
+      "comingSoon": "0x...Próximamente",
+      "viewOnBaseScan": "Ver en BaseScan",
+      "lpLock": "Contrato de Bloqueo LP",
+      "lpLockDescription": "Bloqueo de 6 meses vía Team Finance",
+      "viewLockProof": "Ver Prueba de Bloqueo"
+    },
+    "bugBounty": {
+      "title": "Programa Bug Bounty",
+      "description": "¿Encontraste una vulnerabilidad? Recompensamos la divulgación responsable. Reporta problemas de seguridad directamente a nuestro equipo.",
+      "lowSeverity": "Severidad Baja",
+      "mediumSeverity": "Severidad Media",
+      "criticalSeverity": "Crítico",
+      "reportButton": "Reportar Vulnerabilidad"
+    }
+  },
+  "ownership": {
+    "title": "Certificado Oficial de Propiedad",
+    "subtitle": "Prueba legal de propiedad y derechos de propiedad intelectual para el proyecto $1TAP",
+    "documentTitle": "$1TAP — Documento Oficial de Propiedad",
+    "projectName": "Nombre del Proyecto",
+    "owner": "Propietario",
+    "date": "Fecha",
+    "dateValue": "7 de enero de 2025",
+    "version": "Versión",
+    "projectDescription": {
+      "title": "Descripción del Proyecto",
+      "description": "El proyecto $1TAP es una iniciativa digital independiente que combina blockchain, cultura gaming y diseño artístico inspirado en Counter-Strike. Incluye:",
+      "item1": "Un memecoin desplegado en la red Base",
+      "item2": "El sitio web 1TAP y la experiencia gamificada",
+      "item3": "Assets visuales, branding, efectos de sonido y arte digital bajo la identidad \"Pixel CT\""
+    },
+    "ownershipStatement": {
+      "title": "Declaración de Propiedad",
+      "declaration": "Yo, Hugo, declaro que soy el único y legítimo propietario del proyecto $1TAP y toda la propiedad intelectual asociada, incluyendo pero no limitado a:",
+      "branding": "Marca e identidad",
+      "brandingDetails": "\"$1TAP\", \"Onetapper\", \"Pixel-CT Memes\"",
+      "assets": "Assets visuales y de audio",
+      "assetsDetails": "Todas las imágenes, sonidos, animaciones y elementos de diseño",
+      "website": "El sitio web $1TAP",
+      "websiteDetails": "Código fuente, interfaz de usuario y funcionalidades interactivas",
+      "token": "Concepto del token",
+      "tokenDetails": "Diseño del contrato inteligente y estructura de tokenomics",
+      "extension": "Esta propiedad se extiende a todas las versiones futuras, actualizaciones y derivados del proyecto."
+    },
+    "legalFramework": {
+      "title": "Marco Legal",
+      "description": "Este documento sirve como prueba de propiedad bajo:",
+      "eu": "Directiva Europea 2001/29/CE",
+      "euDescription": "(Derechos de Autor en la Sociedad de la Información)",
+      "berne": "Convenio de Berna",
+      "berneDescription": "para la Protección de las Obras Literarias y Artísticas",
+      "french": "Código de Propiedad Intelectual Francés",
+      "frenchDescription": "Artículos L111-1 y L113-1"
+    },
+    "nonAffiliation": {
+      "title": "Declaración de No Afiliación",
+      "statement": "El proyecto $1TAP no está afiliado, asociado, autorizado, respaldado por, ni de ninguna manera oficialmente conectado con Valve Corporation, Counter-Strike (CS:GO, CS2, o cualquier juego relacionado), Gabe Newell, o cualquier entidad de gaming oficial.",
+      "references": "Todas las referencias a Counter-Strike, CS:GO, CS2, o cultura gaming relacionada son puramente temáticas, artísticas y solo con fines de entretenimiento. Este es un proyecto comunitario independiente."
+    },
+    "digitalSignature": {
+      "title": "Firma Digital",
+      "signedBy": "Firmado por",
+      "website": "Sitio Web",
+      "timestamp": "Marca de tiempo",
+      "hash": "Hash del Documento",
+      "hashValue": "[Generado en commit]"
+    },
+    "footer": {
+      "copyright": "© 2025 Proyecto $1TAP — Todos los derechos reservados.",
+      "nonAffiliated": "No afiliado con Valve Corporation o Counter-Strike.",
+      "protection": "Protegido bajo 1TAP Legal Shield v1.0"
+    },
+    "resources": {
+      "license": {
+        "title": "Licencia",
+        "description": "Ver la Licencia Comunitaria 1TAP 1.0",
+        "link": "Leer Licencia"
+      },
+      "audit": {
+        "title": "Auditoría de Seguridad",
+        "description": "Transparencia del token e informe de seguridad",
+        "link": "Ver Auditoría"
+      },
+      "sourceCode": {
+        "title": "Código Fuente",
+        "description": "Repositorio de código abierto en GitHub",
+        "link": "Ver Repositorio"
+      }
+    }
   }
 }
