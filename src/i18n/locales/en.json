@@ -772,5 +772,172 @@
         "link": "View Repository"
       }
     }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about $1TAP",
+    "stillQuestions": "Still have questions?",
+    "joinCommunity": "Join our Discord community for real-time support from the team and community members.",
+    "joinDiscord": "Join Discord",
+    "categories": {
+      "general": "General",
+      "buying": "How to Buy",
+      "tokenomics": "Tokenomics",
+      "security": "Security",
+      "features": "Features & Roadmap",
+      "community": "Community"
+    },
+    "general": {
+      "q1": "What is $1TAP?",
+      "a1": "$1TAP is a community-driven meme coin on the Base network, inspired by competitive gaming culture. It combines gaming nostalgia with DeFi innovation, offering a tap-to-earn game, NFT drops, and a vibrant ecosystem.",
+      "q2": "Why Base network?",
+      "a2": "Base offers lightning-fast transactions, minimal fees, and Coinbase integration. Perfect for gaming features and mass adoption without the high costs of Ethereum mainnet.",
+      "q3": "Is this affiliated with Valve or popular FPS games?",
+      "a3": "No. $1TAP is an independent community project inspired by competitive gaming culture. We are not affiliated with, endorsed by, or connected to any game developers or publishers in any official capacity.",
+      "q4": "What makes $1TAP different from other meme coins?",
+      "a4": "Unique gaming theme, interactive tap-to-earn game, NFT drop roulette system, locked liquidity for 6 months, and real utility beyond speculation. Plus, our community is built by gamers, for gamers."
+    },
+    "buying": {
+      "q1": "How do I buy $1TAP?",
+      "a1": "1. Get a Web3 wallet (MetaMask, Coinbase Wallet)\n2. Add Base network to your wallet\n3. Buy ETH and bridge to Base\n4. Swap ETH for $1TAP on Uniswap or our integrated DEX widget\n5. Add $1TAP contract address to see your tokens",
+      "q2": "What is the contract address?",
+      "a2": "Contract address will be announced at launch on our official channels (Discord, Twitter). Always verify from our official sources to avoid scams.",
+      "q3": "What slippage should I use?",
+      "a3": "We recommend 1-2% slippage for most trades. During high volatility, you may need to increase to 3-5%. Our 0% buy/sell tax means slippage is purely for DEX mechanics.",
+      "q4": "Can I buy with a credit card?",
+      "a4": "You can use on-ramp services like Moonpay or Coinbase to buy ETH with a card, then bridge to Base and swap for $1TAP. Direct fiat-to-$1TAP coming in Phase 2."
+    },
+    "tokenomics": {
+      "q1": "What is the total supply?",
+      "a1": "Total supply: 1,000,000,000 $1TAP tokens. Fixed supply, no minting function. Deflationary through manual burns announced to community.",
+      "q2": "Are there any taxes?",
+      "a2": "ZERO taxes. 0% buy, 0% sell. We believe in fair trading without hidden fees. Liquidity is sustained through initial lock and community growth.",
+      "q3": "How is liquidity secured?",
+      "a3": "Liquidity pool is locked for 6 months at launch via secure protocol. Lock proof will be published on our Security page. After initial period, community DAO votes on extension.",
+      "q4": "What about anti-whale protection?",
+      "a4": "Max transaction: 2% of total supply per trade. Max wallet: 3% of total supply. Prevents pump-and-dump schemes while allowing fair accumulation.",
+      "q5": "Will there be token burns?",
+      "a5": "Yes! Manual burns announced quarterly based on: 50% of marketplace fees, community vote thresholds, and milestone achievements. Transparent burn wallet tracking."
+    },
+    "security": {
+      "q1": "Has the contract been audited?",
+      "a1": "Internal security audit completed (see Security page). External audit by Hacken scheduled for Phase 3. Contract is open-source and verified on BaseScan.",
+      "q2": "Can the team rug pull?",
+      "a2": "No. Liquidity is locked, ownership is renounced post-launch, and contract has no mint function or admin withdrawals. Multi-sig wallet for community funds with transparent on-chain tracking.",
+      "q3": "How do I verify I have real $1TAP?",
+      "a3": "Always check the official contract address on our website and BaseScan. Scammers create fake tokens. Join our Discord for verification help.",
+      "q4": "What if I find a security issue?",
+      "a4": "Report to security@onetap.com immediately. We have a bug bounty program (details on Security page). Responsible disclosure is rewarded."
+    },
+    "features": {
+      "q1": "How does the Tap-to-Earn game work?",
+      "a1": "Tap the screen to earn XP, rank up through 10+ tiers (Bronze → Global Elite), and unlock NFT drops. Higher ranks = rarer drops. Fully on-chain, play on web or mobile.",
+      "q2": "What are Drop Roulettes?",
+      "a2": "Gaming-style loot system. Spin to win: Common skins (60%), Rare weapons (25%), Epic items (10%), Legendary prizes (5%). Trade or hold as NFTs. Marketplace coming Phase 2.",
+      "q3": "When will staking launch?",
+      "a3": "Staking interface planned for Phase 3 (Month 2). Three lock periods: 7 days (5% APY), 30 days (12% APY), 90 days (25% APY). Rewards from ecosystem fees.",
+      "q4": "Will there be a mobile app?",
+      "a4": "Progressive Web App (PWA) launching Phase 4. Install from browser for native-like experience: offline mode, push notifications, portfolio tracking. Full iOS/Android apps if community votes yes.",
+      "q5": "What is the Steam integration?",
+      "a5": "Phase 4 innovation: Track real competitive gaming performance, earn $1TAP rewards for achievements. Beta with 100 users first. Partnership discussions ongoing with major platforms."
+    },
+    "community": {
+      "q1": "How can I get involved?",
+      "a1": "Join our Discord (link in footer), follow Twitter for updates, participate in meme contests, vote on DAO proposals, and help spread the word. Active contributors get special roles and rewards.",
+      "q2": "Is there a referral program?",
+      "a2": "Yes! Share your unique referral link, earn XP bonus for each signup, and climb the leaderboard for exclusive NFT airdrops. Top 50 referrers get monthly prizes.",
+      "q3": "How does DAO governance work?",
+      "a3": "Phase 4 feature. Stake $1TAP to vote on: treasury spending, roadmap priorities, partnership approvals, and burn schedules. 1 token staked = 1 vote. Snapshot-based voting.",
+      "q4": "Where can I see the team?",
+      "a4": "Visit our Team page. Core members use pseudonyms for privacy (common in crypto). Doxxing is not required for legitimate projects. We prioritize transparency through code and actions."
+    }
+  },
+  "team": {
+    "title": "Meet the Core 1Tappers",
+    "subtitle": "Anonymous warriors building the future of gaming memecoins. We use pseudonyms for privacy, but our work speaks louder than names.",
+    "members": {
+      "hugo": {
+        "role": "Founder & Visionary",
+        "bio": "Project founder with a passion for bridging gaming culture and Web3. Leading $1TAP from vision to execution with strategic planning and community-first approach.",
+        "expertise": ["Project Leadership", "Brand Strategy", "Community Architecture", "Vision & Roadmap"]
+      },
+      "tapdev": {
+        "role": "Lead Developer",
+        "bio": "Full-stack engineer with 8+ years in Web3. Smart contract security specialist who built DeFi protocols handling $10M+ TVL. Expert in Solidity, React, and Base network development.",
+        "expertise": ["Smart Contract Development", "DeFi Protocol Architecture", "Security Auditing", "Base Network Integration"]
+      },
+      "growthmaster": {
+        "role": "Marketing Lead",
+        "bio": "Crypto marketing strategist with proven track record in viral campaigns. Specialized in community growth and brand positioning. Led multiple projects from 0 to 100K+ holders.",
+        "expertise": ["Viral Marketing Campaigns", "Community Growth Strategy", "Brand Positioning", "Partnership Development"]
+      },
+      "communityguardian": {
+        "role": "Community Manager",
+        "bio": "Dedicated community builder with experience managing 50K+ member Discord and Telegram communities. Expert in conflict resolution, engagement strategies, and creating vibrant ecosystems.",
+        "expertise": ["Community Management", "Discord & Telegram Moderation", "Engagement Strategy", "24/7 Support Coordination"]
+      }
+    },
+    "whyPseudonyms": {
+      "title": "Why We Use Pseudonyms",
+      "paragraph1": "In Web3 culture, pseudonyms are standard practice for good reason. Many of the most successful crypto projects (Bitcoin, Shiba Inu, Yearn Finance) were built by anonymous teams. What matters is transparency through code and actions, not personal identities.",
+      "securityFirst": "Security First:",
+      "securityText": "Doxxing in crypto can lead to targeted attacks, harassment, extortion attempts, and physical security risks for team members and their families. By using pseudonyms, we protect our team while maintaining full transparency in our work.",
+      "focusOnWork": "Focus on Work, Not Personalities:",
+      "focusText": "Pseudonymity allows us to be judged purely on merit—on the quality of our code, the strength of our partnerships, and the value we deliver to the community. No distractions, just results.",
+      "commitment": "Our Commitment:",
+      "commitmentText": "Fully audited smart contracts, locked liquidity, transparent on-chain operations, and open communication with the community. Judge us by our work, not our IDs. That's the Web3 way."
+    },
+    "joinUs": {
+      "title": "Want to Join The Team?",
+      "description": "We're always looking for talented contributors: developers, designers, marketers, and community moderators. If you're passionate about gaming and Web3, reach out on Discord to help build the future of $1TAP.",
+      "cta": "Apply on Discord"
+    }
+  },
+  "lore": {
+    "title": "The Legend of 1TAP",
+    "subtitle": "From a single headshot to a global movement",
+    "chapter1": {
+      "title": "Chapter 1: The First Shot",
+      "content": "In the depths of competitive gaming servers, a legend was born. They called it the 'One Tap'—the perfect shot, the ultimate display of skill. But this wasn't just about gaming. It was about precision, community, and the thrill of the game."
+    },
+    "chapter2": {
+      "title": "Chapter 2: The Awakening",
+      "content": "As blockchain technology emerged, a group of passionate gamers saw an opportunity. What if the energy and culture of competitive gaming could merge with the decentralized revolution? What if every headshot could mean something more?"
+    },
+    "chapter3": {
+      "title": "Chapter 3: The Community Rises",
+      "content": "Word spread through Discord servers, Twitter threads, and gaming forums. The 1Tappers weren't just investors—they were believers. United by a shared love for gaming and the dream of building something legendary."
+    },
+    "chapter4": {
+      "title": "Chapter 4: The Launch",
+      "content": "With locked liquidity, zero taxes, and a community-first approach, $1TAP launched on Base network. Not as just another memecoin, but as a movement. Every holder became part of the story."
+    },
+    "chapter5": {
+      "title": "Chapter 5: The Future",
+      "content": "The journey has only begun. NFT drops, tap-to-earn games, DAO governance—the roadmap is ambitious. But with a community of true 1Tappers, nothing is impossible. This is our story. This is our legend."
+    },
+    "cta": {
+      "title": "Ready to Write the Next Chapter?",
+      "subtitle": "Join thousands of 1Tappers building the future of gaming memecoins",
+      "join": "Join the Movement",
+      "learnMore": "Explore Tokenomics"
+    }
+  },
+  "blog": {
+    "title": "News & Updates",
+    "subtitle": "Stay updated with the latest $1TAP announcements, partnerships, and community highlights",
+    "loading": "Loading posts...",
+    "noPosts": {
+      "title": "No Posts Yet",
+      "description": "Check back soon for exciting updates and announcements!"
+    },
+    "readMore": "Read More",
+    "categories": {
+      "all": "All",
+      "announcement": "Announcement",
+      "partnership": "Partnership",
+      "tutorial": "Tutorial",
+      "community": "Community"
+    }
   }
 }
