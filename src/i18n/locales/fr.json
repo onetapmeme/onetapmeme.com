@@ -769,5 +769,172 @@
         "link": "Voir le Dépôt"
       }
     }
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Tout ce que vous devez savoir sur $1TAP",
+    "stillQuestions": "Encore des questions ?",
+    "joinCommunity": "Rejoignez notre communauté Discord pour un support en temps réel de l'équipe et des membres de la communauté.",
+    "joinDiscord": "Rejoindre Discord",
+    "categories": {
+      "general": "Général",
+      "buying": "Comment Acheter",
+      "tokenomics": "Tokenomics",
+      "security": "Sécurité",
+      "features": "Fonctionnalités & Roadmap",
+      "community": "Communauté"
+    },
+    "general": {
+      "q1": "Qu'est-ce que $1TAP ?",
+      "a1": "$1TAP est un meme coin communautaire sur le réseau Base, inspiré de la culture du gaming compétitif. Il combine la nostalgie du gaming avec l'innovation DeFi, offrant un jeu tap-to-earn, des drops NFT et un écosystème vibrant.",
+      "q2": "Pourquoi le réseau Base ?",
+      "a2": "Base offre des transactions ultra-rapides, des frais minimaux et l'intégration Coinbase. Parfait pour les fonctionnalités gaming et l'adoption massive sans les coûts élevés du mainnet Ethereum.",
+      "q3": "Est-ce affilié à Valve ou aux jeux FPS populaires ?",
+      "a3": "Non. $1TAP est un projet communautaire indépendant inspiré de la culture du gaming compétitif. Nous ne sommes pas affiliés, approuvés ou connectés à des développeurs ou éditeurs de jeux de quelque manière officielle que ce soit.",
+      "q4": "Qu'est-ce qui rend $1TAP différent des autres meme coins ?",
+      "a4": "Un thème gaming unique, un jeu tap-to-earn interactif, un système de roulette de drops NFT, une liquidité verrouillée 6 mois et une vraie utilité au-delà de la spéculation. De plus, notre communauté est construite par des gamers, pour des gamers."
+    },
+    "buying": {
+      "q1": "Comment acheter $1TAP ?",
+      "a1": "1. Obtenez un wallet Web3 (MetaMask, Coinbase Wallet)\n2. Ajoutez le réseau Base à votre wallet\n3. Achetez de l'ETH et transférez-le vers Base\n4. Échangez ETH contre $1TAP sur Uniswap ou notre widget DEX intégré\n5. Ajoutez l'adresse du contrat $1TAP pour voir vos tokens",
+      "q2": "Quelle est l'adresse du contrat ?",
+      "a2": "L'adresse du contrat sera annoncée au lancement sur nos canaux officiels (Discord, Twitter). Vérifiez toujours depuis nos sources officielles pour éviter les arnaques.",
+      "q3": "Quel slippage utiliser ?",
+      "a3": "Nous recommandons un slippage de 1-2% pour la plupart des trades. En période de forte volatilité, vous devrez peut-être augmenter à 3-5%. Notre taxe de 0% achat/vente signifie que le slippage est purement pour les mécanismes DEX.",
+      "q4": "Puis-je acheter par carte de crédit ?",
+      "a4": "Vous pouvez utiliser des services on-ramp comme Moonpay ou Coinbase pour acheter de l'ETH par carte, puis transférer vers Base et échanger contre $1TAP. Fiat direct vers $1TAP prévu en Phase 2."
+    },
+    "tokenomics": {
+      "q1": "Quelle est l'offre totale ?",
+      "a1": "Offre totale : 1 000 000 000 tokens $1TAP. Offre fixe, pas de fonction de minting. Déflationnaire par des burns manuels annoncés à la communauté.",
+      "q2": "Y a-t-il des taxes ?",
+      "a2": "ZÉRO taxe. 0% à l'achat, 0% à la vente. Nous croyons au trading équitable sans frais cachés. La liquidité est maintenue par le verrouillage initial et la croissance communautaire.",
+      "q3": "Comment la liquidité est-elle sécurisée ?",
+      "a3": "Le pool de liquidité est verrouillé 6 mois au lancement via un protocole sécurisé. La preuve de verrouillage sera publiée sur notre page Sécurité. Après la période initiale, la DAO communautaire vote pour une extension.",
+      "q4": "Qu'en est-il de la protection anti-baleine ?",
+      "a4": "Transaction max : 2% de l'offre totale par trade. Wallet max : 3% de l'offre totale. Empêche les schémas pump-and-dump tout en permettant une accumulation équitable.",
+      "q5": "Y aura-t-il des burns de tokens ?",
+      "a5": "Oui ! Burns manuels annoncés trimestriellement basés sur : 50% des frais de marketplace, seuils de vote communautaire et accomplissements d'étapes. Suivi transparent du wallet de burn."
+    },
+    "security": {
+      "q1": "Le contrat a-t-il été audité ?",
+      "a1": "Audit de sécurité interne complété (voir page Sécurité). Audit externe par Hacken prévu pour la Phase 3. Le contrat est open-source et vérifié sur BaseScan.",
+      "q2": "L'équipe peut-elle faire un rug pull ?",
+      "a2": "Non. La liquidité est verrouillée, la propriété est renoncée après le lancement, et le contrat n'a pas de fonction mint ou de retraits admin. Wallet multi-sig pour les fonds communautaires avec suivi on-chain transparent.",
+      "q3": "Comment vérifier que j'ai le vrai $1TAP ?",
+      "a3": "Vérifiez toujours l'adresse officielle du contrat sur notre site et BaseScan. Les arnaqueurs créent de faux tokens. Rejoignez notre Discord pour de l'aide à la vérification.",
+      "q4": "Et si je trouve un problème de sécurité ?",
+      "a4": "Signalez à security@onetap.com immédiatement. Nous avons un programme de bug bounty (détails sur la page Sécurité). La divulgation responsable est récompensée."
+    },
+    "features": {
+      "q1": "Comment fonctionne le jeu Tap-to-Earn ?",
+      "a1": "Tapez sur l'écran pour gagner de l'XP, montez à travers 10+ niveaux (Bronze → Global Elite), et débloquez des drops NFT. Rangs plus élevés = drops plus rares. Entièrement on-chain, jouez sur web ou mobile.",
+      "q2": "Que sont les Roulettes de Drops ?",
+      "a2": "Système de loot style gaming. Tournez pour gagner : Skins communs (60%), Armes rares (25%), Items épiques (10%), Prix légendaires (5%). Échangez ou conservez comme NFTs. Marketplace à venir Phase 2.",
+      "q3": "Quand le staking sera-t-il lancé ?",
+      "a3": "Interface de staking prévue pour la Phase 3 (Mois 2). Trois périodes de lock : 7 jours (5% APY), 30 jours (12% APY), 90 jours (25% APY). Récompenses des frais de l'écosystème.",
+      "q4": "Y aura-t-il une application mobile ?",
+      "a4": "Progressive Web App (PWA) lancement Phase 4. Installez depuis le navigateur pour une expérience native : mode hors ligne, notifications push, suivi de portfolio. Apps iOS/Android complètes si la communauté vote oui.",
+      "q5": "Qu'est-ce que l'intégration Steam ?",
+      "a5": "Innovation Phase 4 : Suivez vos vraies performances de gaming compétitif, gagnez des récompenses $1TAP pour vos accomplissements. Beta avec 100 utilisateurs d'abord. Discussions de partenariat en cours avec les grandes plateformes."
+    },
+    "community": {
+      "q1": "Comment puis-je m'impliquer ?",
+      "a1": "Rejoignez notre Discord (lien en footer), suivez Twitter pour les mises à jour, participez aux concours de memes, votez sur les propositions DAO, et aidez à faire passer le mot. Les contributeurs actifs obtiennent des rôles spéciaux et des récompenses.",
+      "q2": "Y a-t-il un programme de parrainage ?",
+      "a2": "Oui ! Partagez votre lien de parrainage unique, gagnez un bonus XP pour chaque inscription, et grimpez le leaderboard pour des airdrops NFT exclusifs. Les 50 meilleurs parrains reçoivent des prix mensuels.",
+      "q3": "Comment fonctionne la gouvernance DAO ?",
+      "a3": "Fonctionnalité Phase 4. Stakez $1TAP pour voter sur : dépenses de trésorerie, priorités roadmap, approbations de partenariats et calendriers de burn. 1 token staké = 1 vote. Vote basé sur Snapshot.",
+      "q4": "Où puis-je voir l'équipe ?",
+      "a4": "Visitez notre page Équipe. Les membres principaux utilisent des pseudonymes pour la confidentialité (courant en crypto). Le doxxing n'est pas requis pour les projets légitimes. Nous privilégions la transparence par le code et les actions."
+    }
+  },
+  "team": {
+    "title": "Rencontrez les Core 1Tappers",
+    "subtitle": "Guerriers anonymes construisant l'avenir des memecoins gaming. Nous utilisons des pseudonymes pour la confidentialité, mais notre travail parle plus fort que les noms.",
+    "members": {
+      "hugo": {
+        "role": "Fondateur & Visionnaire",
+        "bio": "Fondateur du projet passionné par le pont entre culture gaming et Web3. Dirigeant $1TAP de la vision à l'exécution avec une planification stratégique et une approche communauté-first.",
+        "expertise": ["Leadership de Projet", "Stratégie de Marque", "Architecture Communautaire", "Vision & Roadmap"]
+      },
+      "tapdev": {
+        "role": "Lead Developer",
+        "bio": "Ingénieur full-stack avec 8+ ans en Web3. Spécialiste en sécurité smart contract ayant construit des protocoles DeFi gérant $10M+ TVL. Expert en Solidity, React et développement réseau Base.",
+        "expertise": ["Développement Smart Contract", "Architecture Protocole DeFi", "Audit Sécurité", "Intégration Réseau Base"]
+      },
+      "growthmaster": {
+        "role": "Lead Marketing",
+        "bio": "Stratège marketing crypto avec un historique prouvé en campagnes virales. Spécialisé en croissance communautaire et positionnement de marque. A mené plusieurs projets de 0 à 100K+ holders.",
+        "expertise": ["Campagnes Marketing Virales", "Stratégie Croissance Communautaire", "Positionnement de Marque", "Développement Partenariats"]
+      },
+      "communityguardian": {
+        "role": "Community Manager",
+        "bio": "Bâtisseur de communauté dévoué avec expérience dans la gestion de communautés Discord et Telegram de 50K+ membres. Expert en résolution de conflits, stratégies d'engagement et création d'écosystèmes vibrants.",
+        "expertise": ["Gestion de Communauté", "Modération Discord & Telegram", "Stratégie d'Engagement", "Coordination Support 24/7"]
+      }
+    },
+    "whyPseudonyms": {
+      "title": "Pourquoi Nous Utilisons des Pseudonymes",
+      "paragraph1": "Dans la culture Web3, les pseudonymes sont une pratique standard pour de bonnes raisons. Beaucoup des projets crypto les plus réussis (Bitcoin, Shiba Inu, Yearn Finance) ont été construits par des équipes anonymes. Ce qui compte est la transparence par le code et les actions, pas les identités personnelles.",
+      "securityFirst": "Sécurité d'Abord :",
+      "securityText": "Le doxxing en crypto peut mener à des attaques ciblées, harcèlement, tentatives d'extorsion et risques de sécurité physique pour les membres de l'équipe et leurs familles. En utilisant des pseudonymes, nous protégeons notre équipe tout en maintenant une transparence totale dans notre travail.",
+      "focusOnWork": "Focus sur le Travail, Pas les Personnalités :",
+      "focusText": "La pseudonymité nous permet d'être jugés uniquement sur le mérite—sur la qualité de notre code, la force de nos partenariats et la valeur que nous apportons à la communauté. Pas de distractions, juste des résultats.",
+      "commitment": "Notre Engagement :",
+      "commitmentText": "Smart contracts entièrement audités, liquidité verrouillée, opérations on-chain transparentes et communication ouverte avec la communauté. Jugez-nous par notre travail, pas nos identités. C'est la voie Web3."
+    },
+    "joinUs": {
+      "title": "Vous Voulez Rejoindre l'Équipe ?",
+      "description": "Nous cherchons toujours des contributeurs talentueux : développeurs, designers, marketeurs et modérateurs communautaires. Si vous êtes passionné par le gaming et le Web3, contactez-nous sur Discord pour aider à construire le futur de $1TAP.",
+      "cta": "Postuler sur Discord"
+    }
+  },
+  "lore": {
+    "title": "La Légende de 1TAP",
+    "subtitle": "D'un seul headshot à un mouvement mondial",
+    "chapter1": {
+      "title": "Chapitre 1 : Le Premier Tir",
+      "content": "Dans les profondeurs des serveurs de gaming compétitif, une légende est née. Ils l'ont appelé le 'One Tap'—le tir parfait, la démonstration ultime de skill. Mais ce n'était pas juste une question de gaming. C'était une question de précision, de communauté et du frisson du jeu."
+    },
+    "chapter2": {
+      "title": "Chapitre 2 : L'Éveil",
+      "content": "Alors que la technologie blockchain émergeait, un groupe de gamers passionnés a vu une opportunité. Et si l'énergie et la culture du gaming compétitif pouvaient fusionner avec la révolution décentralisée ? Et si chaque headshot pouvait signifier quelque chose de plus ?"
+    },
+    "chapter3": {
+      "title": "Chapitre 3 : La Communauté Se Lève",
+      "content": "Le mot s'est répandu à travers les serveurs Discord, les threads Twitter et les forums gaming. Les 1Tappers n'étaient pas juste des investisseurs—ils étaient des croyants. Unis par un amour partagé du gaming et le rêve de construire quelque chose de légendaire."
+    },
+    "chapter4": {
+      "title": "Chapitre 4 : Le Lancement",
+      "content": "Avec liquidité verrouillée, zéro taxe et une approche communauté-first, $1TAP a été lancé sur le réseau Base. Pas comme juste un autre memecoin, mais comme un mouvement. Chaque holder est devenu partie de l'histoire."
+    },
+    "chapter5": {
+      "title": "Chapitre 5 : Le Futur",
+      "content": "Le voyage ne fait que commencer. Drops NFT, jeux tap-to-earn, gouvernance DAO—la roadmap est ambitieuse. Mais avec une communauté de vrais 1Tappers, rien n'est impossible. C'est notre histoire. C'est notre légende."
+    },
+    "cta": {
+      "title": "Prêt à Écrire le Prochain Chapitre ?",
+      "subtitle": "Rejoignez des milliers de 1Tappers construisant le futur des memecoins gaming",
+      "join": "Rejoindre le Mouvement",
+      "learnMore": "Explorer les Tokenomics"
+    }
+  },
+  "blog": {
+    "title": "Actualités & Mises à Jour",
+    "subtitle": "Restez informé des dernières annonces $1TAP, partenariats et moments forts de la communauté",
+    "loading": "Chargement des articles...",
+    "noPosts": {
+      "title": "Pas Encore d'Articles",
+      "description": "Revenez bientôt pour des mises à jour et annonces passionnantes !"
+    },
+    "readMore": "Lire Plus",
+    "categories": {
+      "all": "Tout",
+      "announcement": "Annonce",
+      "partnership": "Partenariat",
+      "tutorial": "Tutoriel",
+      "community": "Communauté"
+    }
   }
 }
