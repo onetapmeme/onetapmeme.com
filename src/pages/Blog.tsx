@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -24,6 +25,7 @@ interface BlogPost {
 }
 
 const Blog = () => {
+  const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -82,10 +84,10 @@ const Blog = () => {
           >
             <Newspaper className="w-16 h-16 mx-auto mb-6 text-primary" />
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-foreground">
-              News & Updates
+              {t('blog.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Stay updated with the latest $1TAP announcements, partnerships, and community highlights
+              {t('blog.subtitle')}
             </p>
           </motion.div>
 
@@ -112,14 +114,14 @@ const Blog = () => {
           {loading ? (
             <div className="text-center py-12">
               <div className="animate-spin w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto"></div>
-              <p className="text-muted-foreground mt-4">Loading posts...</p>
+              <p className="text-muted-foreground mt-4">{t('blog.loading')}</p>
             </div>
           ) : posts.length === 0 ? (
             <Card className="glass-effect p-12 rounded-2xl border-primary/20 text-center">
               <Newspaper className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-xl font-bold mb-2 text-foreground">No Posts Yet</h3>
+              <h3 className="text-xl font-bold mb-2 text-foreground">{t('blog.noPosts.title')}</h3>
               <p className="text-muted-foreground">
-                Check back soon for exciting updates and announcements!
+                {t('blog.noPosts.description')}
               </p>
             </Card>
           ) : (
@@ -183,7 +185,7 @@ const Blog = () => {
                         variant="ghost"
                         className="mt-4 gap-2 group-hover:gap-3 transition-all"
                       >
-                        Read More
+                        {t('blog.readMore')}
                         <ArrowRight className="w-4 h-4" />
                       </Button>
                     </div>

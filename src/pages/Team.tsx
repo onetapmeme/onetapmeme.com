@@ -12,71 +12,51 @@ const Team = () => {
   const teamMembers = [
     {
       name: 'Hugo',
-      role: 'Founder & Visionary',
+      role: t('team.members.hugo.role'),
       icon: Users,
-      bio: 'Project founder with a passion for bridging gaming culture and Web3. Leading $1TAP from vision to execution with strategic planning and community-first approach.',
+      bio: t('team.members.hugo.bio'),
       color: 'from-yellow-400 to-orange-400',
       socials: {
         twitter: 'https://twitter.com/1tap',
         discord: 'https://discord.gg/onetap'
       },
-      expertise: [
-        'Project Leadership',
-        'Brand Strategy',
-        'Community Architecture',
-        'Vision & Roadmap'
-      ]
+      expertise: t('team.members.hugo.expertise', { returnObjects: true }) as string[]
     },
     {
       name: 'TapDev',
-      role: 'Lead Developer',
+      role: t('team.members.tapdev.role'),
       icon: Code,
-      bio: 'Full-stack engineer with 8+ years in Web3. Smart contract security specialist who built DeFi protocols handling $10M+ TVL. Expert in Solidity, React, and Base network development.',
+      bio: t('team.members.tapdev.bio'),
       color: 'from-blue-400 to-cyan-400',
       socials: {
         github: 'https://github.com/anonymous-dev',
         linkedin: 'https://linkedin.com/in/anonymous-dev'
       },
-      expertise: [
-        'Smart Contract Development',
-        'DeFi Protocol Architecture',
-        'Security Auditing',
-        'Base Network Integration'
-      ]
+      expertise: t('team.members.tapdev.expertise', { returnObjects: true }) as string[]
     },
     {
       name: 'GrowthMaster',
-      role: 'Marketing Lead',
+      role: t('team.members.growthmaster.role'),
       icon: Megaphone,
-      bio: 'Crypto marketing strategist with proven track record in viral campaigns. Specialized in community growth and brand positioning. Led multiple projects from 0 to 100K+ holders.',
+      bio: t('team.members.growthmaster.bio'),
       color: 'from-purple-400 to-pink-400',
       socials: {
         twitter: 'https://twitter.com/anonymous-growth',
         linkedin: 'https://linkedin.com/in/anonymous-marketing'
       },
-      expertise: [
-        'Viral Marketing Campaigns',
-        'Community Growth Strategy',
-        'Brand Positioning',
-        'Partnership Development'
-      ]
+      expertise: t('team.members.growthmaster.expertise', { returnObjects: true }) as string[]
     },
     {
       name: 'CommunityGuardian',
-      role: 'Community Manager',
+      role: t('team.members.communityguardian.role'),
       icon: Users,
-      bio: 'Dedicated community builder with experience managing 50K+ member Discord and Telegram communities. Expert in conflict resolution, engagement strategies, and creating vibrant ecosystems.',
+      bio: t('team.members.communityguardian.bio'),
       color: 'from-green-400 to-emerald-400',
       socials: {
         discord: 'https://discord.gg/onetap',
         telegram: 'https://t.me/onetap'
       },
-      expertise: [
-        'Community Management',
-        'Discord & Telegram Moderation',
-        'Engagement Strategy',
-        '24/7 Support Coordination'
-      ]
+      expertise: t('team.members.communityguardian.expertise', { returnObjects: true }) as string[]
     }
   ];
 
@@ -95,10 +75,10 @@ const Team = () => {
           >
             <Users className="w-16 h-16 mx-auto mb-6 text-primary" />
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Meet the Core 1Tappers
+              {t('team.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Anonymous warriors building the future of gaming memecoins. We use pseudonyms for privacy, but our work speaks louder than names.
+              {t('team.subtitle')}
             </p>
           </motion.div>
 
@@ -231,20 +211,20 @@ const Team = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <h2 className="text-2xl font-bold mb-4 text-center">
-              Why We Use Pseudonyms
+              {t('team.whyPseudonyms.title')}
             </h2>
             <div className="max-w-3xl mx-auto space-y-4 text-muted-foreground">
               <p>
-                In Web3 culture, pseudonyms are standard practice for good reason. Many of the most successful crypto projects (Bitcoin, Shiba Inu, Yearn Finance) were built by anonymous teams. What matters is transparency through code and actions, not personal identities.
+                {t('team.whyPseudonyms.paragraph1')}
               </p>
               <p>
-                <strong className="text-foreground">Security First:</strong> Doxxing in crypto can lead to targeted attacks, harassment, extortion attempts, and physical security risks for team members and their families. By using pseudonyms, we protect our team while maintaining full transparency in our work.
+                <strong className="text-foreground">{t('team.whyPseudonyms.securityFirst')}</strong> {t('team.whyPseudonyms.securityText')}
               </p>
               <p>
-                <strong className="text-foreground">Focus on Work, Not Personalities:</strong> Pseudonymity allows us to be judged purely on merit—on the quality of our code, the strength of our partnerships, and the value we deliver to the community. No distractions, just results.
+                <strong className="text-foreground">{t('team.whyPseudonyms.focusOnWork')}</strong> {t('team.whyPseudonyms.focusText')}
               </p>
               <p className="font-semibold text-foreground">
-                <strong>Our Commitment:</strong> Fully audited smart contracts, locked liquidity, transparent on-chain operations, and open communication with the community. Judge us by our work, not our IDs. That&apos;s the Web3 way.
+                <strong>{t('team.whyPseudonyms.commitment')}</strong> {t('team.whyPseudonyms.commitmentText')}
               </p>
             </div>
           </motion.div>
@@ -257,10 +237,10 @@ const Team = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              Want to Join The Team?
+              {t('team.joinUs.title')}
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              We&apos;re always looking for talented contributors: developers, designers, marketers, and community moderators. If you&apos;re passionate about gaming and Web3, reach out on Discord to help build the future of $1TAP.
+              {t('team.joinUs.description')}
             </p>
             <a
               href="https://discord.gg/onetap"
@@ -268,7 +248,7 @@ const Team = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
             >
-              Apply on Discord
+              {t('team.joinUs.cta')}
             </a>
           </motion.div>
         </div>
