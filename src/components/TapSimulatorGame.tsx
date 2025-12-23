@@ -166,39 +166,18 @@ const TapSimulatorGame = () => {
     
     setSaving(true);
     try {
-      // Validate progress data before saving
-      const validation = progressSchema.safeParse({
-        xp,
-        clicks,
-        current_rank_index: currentRankIndex
+      // Use secure RPC function instead of direct database access
+      const { error } = await supabase.rpc('save_player_progress', {
+        xp_increment: Math.min(xp, 50), // Server validates and clamps
+        clicks_increment: Math.min(clicks, 100),
+        new_rank_index: currentRankIndex
       });
-
-      if (!validation.success) {
-        console.error('Invalid progress data:', validation.error);
-        toast({
-          title: t('game.validationFailed'),
-          description: t('game.invalidData'),
-          variant: "destructive",
-        });
-        return;
-      }
-
-      const { error } = await supabase
-        .from('player_progress')
-        .upsert({
-          user_id: user.id,
-          ...validation.data,
-          updated_at: new Date().toISOString()
-        }, {
-          onConflict: 'user_id'
-        });
 
       if (error) throw error;
     } catch (error: any) {
-      console.error('Error saving progress:', error);
       toast({
         title: t('game.saveFailed'),
-        description: error.message,
+        description: t('game.tryAgain'),
         variant: "destructive",
       });
     } finally {
@@ -210,43 +189,26 @@ const TapSimulatorGame = () => {
     if (!user) return;
     
     try {
-      // Validate drop data before saving
-      const validation = dropSchema.safeParse({
-        drop_name: drop.name,
-        drop_icon: drop.icon,
-        drop_rarity: drop.rarity,
-        rank_name: rankName
+      // Use secure RPC function instead of direct database access
+      const { error } = await supabase.rpc('add_inventory_item', {
+        drop_name_param: drop.name,
+        drop_icon_param: drop.icon,
+        drop_rarity_param: drop.rarity,
+        rank_name_param: rankName
       });
-
-      if (!validation.success) {
-        console.error('Invalid drop data:', validation.error);
-        return;
-      }
-
-      const { error } = await supabase
-        .from('player_inventory')
-        .insert({
-          user_id: user.id,
-          drop_name: validation.data.drop_name,
-          drop_icon: validation.data.drop_icon,
-          drop_rarity: validation.data.drop_rarity,
-          rank_name: validation.data.rank_name
-        });
 
       if (error) throw error;
       
       // Reload recent drops
-      if (user) {
-        const { data: drops } = await supabase
-          .from('player_inventory')
-          .select('*')
-          .eq('user_id', user.id)
-          .order('collected_at', { ascending: false })
-          .limit(6);
-        
-        if (drops) {
-          setRecentDrops(drops);
-        }
+      const { data: drops } = await supabase
+        .from('player_inventory')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('collected_at', { ascending: false })
+        .limit(6);
+      
+      if (drops) {
+        setRecentDrops(drops);
       }
       
       toast({
@@ -254,7 +216,7 @@ const TapSimulatorGame = () => {
         description: `${drop.icon} ${drop.name} ${t('game.addedToInventory')}`,
       });
     } catch (error: any) {
-      console.error('Error saving drop:', error);
+      // Silently handle drop errors (rate limits, etc.)
     }
   };
 

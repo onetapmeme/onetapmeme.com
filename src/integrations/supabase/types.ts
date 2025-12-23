@@ -622,8 +622,22 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      add_inventory_item: {
+        Args: {
+          drop_icon_param: string
+          drop_name_param: string
+          drop_rarity_param: string
+          rank_name_param: string
+        }
+        Returns: string
+      }
       calculate_level: { Args: { xp: number }; Returns: number }
+      claim_quest_reward: { Args: { quest_id_param: string }; Returns: number }
       cleanup_expired_manifesto_tokens: { Args: never; Returns: undefined }
+      complete_daily_quest: {
+        Args: { progress_value?: number; quest_id_param: string }
+        Returns: boolean
+      }
       create_meme_with_validation: {
         Args: {
           accessories_param?: Json
@@ -675,6 +689,15 @@ export type Database = {
       }
       increment_user_xp: {
         Args: { user_id_param: string; xp_amount: number }
+        Returns: undefined
+      }
+      initialize_user_xp: { Args: never; Returns: undefined }
+      save_player_progress: {
+        Args: {
+          clicks_increment?: number
+          new_rank_index?: number
+          xp_increment?: number
+        }
         Returns: undefined
       }
       user_voted_on_meme: { Args: { meme_id_param: string }; Returns: boolean }

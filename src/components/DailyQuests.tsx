@@ -90,18 +90,18 @@ const DailyQuests = () => {
       .maybeSingle();
 
     if (!existingProgress) {
-      await supabase.from('user_quest_progress').insert({
-        user_id: userId,
-        quest_id: loginQuest.id,
-        progress: 1,
-        completed: true,
-        quest_date: new Date().toISOString().split('T')[0]
+      // Use secure RPC function instead of direct database access
+      const { error } = await supabase.rpc('complete_daily_quest', {
+        quest_id_param: loginQuest.id,
+        progress_value: 1
       });
 
-      setQuestProgress(prev => ({
-        ...prev,
-        [loginQuest.id]: { quest_id: loginQuest.id, progress: 1, completed: true, claimed: false }
-      }));
+      if (!error) {
+        setQuestProgress(prev => ({
+          ...prev,
+          [loginQuest.id]: { quest_id: loginQuest.id, progress: 1, completed: true, claimed: false }
+        }));
+      }
     }
   };
 
@@ -118,13 +118,10 @@ const DailyQuests = () => {
     const progress = questProgress[quest.id];
     if (!progress?.completed || progress.claimed) return;
 
-    // Update quest as claimed
-    const { error } = await supabase
-      .from('user_quest_progress')
-      .update({ claimed: true })
-      .eq('user_id', user.id)
-      .eq('quest_id', quest.id)
-      .eq('quest_date', new Date().toISOString().split('T')[0]);
+    // Use secure RPC function instead of direct database access
+    const { data: xpEarned, error } = await supabase.rpc('claim_quest_reward', {
+      quest_id_param: quest.id
+    });
 
     if (error) {
       toast({
@@ -135,12 +132,6 @@ const DailyQuests = () => {
       return;
     }
 
-    // Award XP
-    await supabase.rpc('increment_user_xp', {
-      user_id_param: user.id,
-      xp_amount: quest.xp_reward
-    });
-
     setQuestProgress(prev => ({
       ...prev,
       [quest.id]: { ...prev[quest.id], claimed: true }
@@ -148,7 +139,7 @@ const DailyQuests = () => {
 
     toast({
       title: "🎉 Reward Claimed!",
-      description: `You earned ${quest.xp_reward} XP!`,
+      description: `You earned ${xpEarned || quest.xp_reward} XP!`,
       className: "bg-primary text-primary-foreground"
     });
   };

@@ -32,7 +32,6 @@ function checkRateLimit(ip: string): boolean {
 async function verifyRecaptcha(token: string): Promise<boolean> {
   const secretKey = Deno.env.get('RECAPTCHA_SECRET_KEY');
   if (!secretKey) {
-    console.error('RECAPTCHA_SECRET_KEY not configured');
     return false;
   }
 
@@ -46,7 +45,6 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
     const data = await response.json();
     return data.success && data.score >= 0.5; // Score threshold for reCAPTCHA v3
   } catch (error) {
-    console.error('reCAPTCHA verification failed:', error);
     return false;
   }
 }
@@ -60,7 +58,6 @@ serve(async (req) => {
 
   // Rate limiting check
   if (!checkRateLimit(clientIp)) {
-    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
     return new Response(
       JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
       { 
@@ -86,7 +83,6 @@ serve(async (req) => {
 
     // Verify reCAPTCHA
     if (!recaptchaToken || !(await verifyRecaptcha(recaptchaToken))) {
-      console.warn(`CAPTCHA verification failed for IP: ${clientIp}`);
       return new Response(
         JSON.stringify({ error: 'CAPTCHA verification failed' }),
         { 
@@ -193,14 +189,9 @@ serve(async (req) => {
           </html>
         `,
       });
-
-      console.log(`Verification email sent to: ${email}`);
     } catch (emailError) {
-      console.error('Failed to send verification email:', emailError);
       // Don't fail the request if email fails, signature is saved
     }
-
-    console.log(`Manifesto signature pending verification for: ${email}`);
 
     return new Response(
       JSON.stringify({ success: true, message: 'Vérifiez votre email pour confirmer' }),
@@ -210,7 +201,6 @@ serve(async (req) => {
       }
     );
   } catch (error) {
-    console.error('Error signing manifesto:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to sign manifesto' }),
       { 

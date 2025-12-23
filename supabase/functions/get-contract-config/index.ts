@@ -36,7 +36,6 @@ serve(async (req) => {
   // Rate limiting check
   const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
   if (!checkRateLimit(clientIp)) {
-    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
     return new Response(
       JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
       { 
@@ -47,8 +46,6 @@ serve(async (req) => {
   }
 
   try {
-    console.log('Fetching contract configuration');
-
     // Contract configuration - verified and documented in legal/AUDIT.md
     const contractConfig = {
       address: '0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8',
@@ -61,8 +58,6 @@ serve(async (req) => {
       logoUrl: 'https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png',
     };
 
-    console.log('Successfully retrieved contract configuration');
-
     return new Response(
       JSON.stringify(contractConfig),
       { 
@@ -71,7 +66,6 @@ serve(async (req) => {
       }
     );
   } catch (error) {
-    console.error('Error fetching contract configuration:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to fetch contract configuration' }),
       { 

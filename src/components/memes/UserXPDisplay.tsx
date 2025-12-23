@@ -53,15 +53,14 @@ export const UserXPDisplay = () => {
       if (error && error.code !== 'PGRST116') throw error;
 
       if (!data) {
-        // Create initial XP record
+        // Use secure RPC function instead of direct database access
+        await supabase.rpc('initialize_user_xp');
+        
+        // Fetch the newly created record
         const { data: newXP } = await supabase
           .from('user_xp')
-          .insert({ 
-            user_id: session.user.id,
-            total_xp: 0,
-            level: 1
-          })
-          .select()
+          .select('*')
+          .eq('user_id', session.user.id)
           .single();
         
         setXpData(newXP);
@@ -69,7 +68,7 @@ export const UserXPDisplay = () => {
         setXpData(data);
       }
     } catch (error) {
-      console.error('Error loading XP:', error);
+      // Silently handle errors
     } finally {
       setLoading(false);
     }
