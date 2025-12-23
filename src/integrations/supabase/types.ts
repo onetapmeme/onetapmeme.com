@@ -656,6 +656,14 @@ export type Database = {
         }
         Returns: string
       }
+      create_referral_secure: {
+        Args: {
+          referral_code_param: string
+          referred_wallet_param: string
+          referrer_wallet_param: string
+        }
+        Returns: string
+      }
       get_leaderboard_stats: {
         Args: { limit_count?: number }
         Returns: {
@@ -668,6 +676,20 @@ export type Database = {
         }[]
       }
       get_meme_vote_count: { Args: { meme_id_param: string }; Returns: number }
+      get_public_memes: {
+        Args: { limit_count?: number; offset_count?: number }
+        Returns: {
+          accessories: Json
+          background: string
+          created_at: string
+          id: string
+          image_url: string
+          shares: number
+          template_name: string
+          views: number
+          vote_count: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -700,6 +722,8 @@ export type Database = {
         }
         Returns: undefined
       }
+      sign_manifesto_secure: { Args: { email_param: string }; Returns: string }
+      user_owns_meme: { Args: { meme_id_param: string }; Returns: boolean }
       user_voted_on_meme: { Args: { meme_id_param: string }; Returns: boolean }
     }
     Enums: {
