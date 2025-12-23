@@ -6,9 +6,44 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Rate limiting (per IP) - prevents token enumeration attacks
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT = 5; // 5 verification attempts per window
+const RATE_WINDOW = 3600000; // 1 hour
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_WINDOW });
+    return true;
+  }
+
+  if (record.count >= RATE_LIMIT) {
+    return false;
+  }
+
+  record.count++;
+  return true;
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
+
+  // Rate limiting check
+  if (!checkRateLimit(clientIp)) {
+    return new Response(
+      JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
+      { 
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 429 
+      }
+    );
   }
 
   try {
@@ -36,7 +71,6 @@ serve(async (req) => {
       .single();
 
     if (fetchError || !signature) {
-      console.warn(`Invalid token attempted: ${token}`);
       return new Response(
         JSON.stringify({ error: 'invalid_token', message: 'Token invalide ou expiré' }),
         { 
@@ -49,7 +83,7 @@ serve(async (req) => {
     // Check if already verified
     if (signature.verified) {
       return new Response(
-        JSON.stringify({ success: true, message: 'already_verified', email: signature.email }),
+        JSON.stringify({ success: true, message: 'already_verified' }),
         { 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           status: 200 
@@ -59,7 +93,6 @@ serve(async (req) => {
 
     // Check if token expired
     if (new Date(signature.token_expires_at) < new Date()) {
-      console.warn(`Expired token attempted: ${token} for ${signature.email}`);
       return new Response(
         JSON.stringify({ error: 'expired_token', message: 'Le lien de vérification a expiré' }),
         { 
@@ -83,13 +116,10 @@ serve(async (req) => {
       throw updateError;
     }
 
-    console.log(`Signature verified successfully for: ${signature.email}`);
-
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: 'verified',
-        email: signature.email 
+        message: 'verified'
       }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -97,7 +127,6 @@ serve(async (req) => {
       }
     );
   } catch (error) {
-    console.error('Error verifying signature:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to verify signature' }),
       { 

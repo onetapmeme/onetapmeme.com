@@ -74,7 +74,6 @@ Deno.serve(async (req) => {
     } = await supabase.auth.getUser();
 
     if (userError || !user) {
-      console.error('Auth error:', userError);
       return new Response(
         JSON.stringify({ error: 'Unauthorized' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -83,7 +82,6 @@ Deno.serve(async (req) => {
 
     // Check rate limit
     if (!checkRateLimit(user.id)) {
-      console.log(`Rate limit exceeded for user ${user.id}`);
       return new Response(
         JSON.stringify({ error: 'Too many crafting attempts. Please try again later.' }),
         { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -99,8 +97,6 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log(`Crafting request from user ${user.id} with ${itemIds.length} items`);
-
     // Fetch the items
     const { data: items, error: fetchError } = await supabase
       .from('player_inventory')
@@ -109,7 +105,6 @@ Deno.serve(async (req) => {
       .eq('user_id', user.id);
 
     if (fetchError || !items) {
-      console.error('Error fetching items:', fetchError);
       return new Response(
         JSON.stringify({ error: 'Failed to fetch items' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -155,7 +150,6 @@ Deno.serve(async (req) => {
       .in('id', itemIds);
 
     if (deleteError) {
-      console.error('Error deleting items:', deleteError);
       return new Response(
         JSON.stringify({ error: 'Failed to delete items' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -188,14 +182,11 @@ Deno.serve(async (req) => {
       .single();
 
     if (insertError || !craftedItem) {
-      console.error('Error creating crafted item:', insertError);
       return new Response(
         JSON.stringify({ error: 'Failed to create crafted item' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
-
-    console.log(`Successfully crafted ${recipe.to} item for user ${user.id}`);
 
     // Award XP for crafting
     await supabase.rpc('increment_user_xp', {
@@ -213,7 +204,6 @@ Deno.serve(async (req) => {
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
-    console.error('Unexpected error:', error);
     return new Response(
       JSON.stringify({ error: 'Internal server error' }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }

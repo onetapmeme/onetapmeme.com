@@ -30,7 +30,6 @@ function checkRateLimit(ip: string): boolean {
 async function verifyRecaptcha(token: string): Promise<boolean> {
   const secretKey = Deno.env.get('RECAPTCHA_SECRET_KEY');
   if (!secretKey) {
-    console.error('RECAPTCHA_SECRET_KEY not configured');
     return false;
   }
 
@@ -44,7 +43,6 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
     const data = await response.json();
     return data.success && data.score >= 0.5;
   } catch (error) {
-    console.error('reCAPTCHA verification failed:', error);
     return false;
   }
 }
@@ -58,7 +56,6 @@ serve(async (req) => {
 
   // Rate limiting check
   if (!checkRateLimit(clientIp)) {
-    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
     return new Response(
       JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
       { 
@@ -84,7 +81,6 @@ serve(async (req) => {
 
     // Verify reCAPTCHA
     if (!recaptchaToken || !(await verifyRecaptcha(recaptchaToken))) {
-      console.warn(`CAPTCHA verification failed for IP: ${clientIp}`);
       return new Response(
         JSON.stringify({ error: 'CAPTCHA verification failed' }),
         { 
@@ -107,8 +103,7 @@ serve(async (req) => {
     }
 
     // TODO: Integrate with email service (Resend, SendGrid, etc.)
-    // For now, just log the signup
-    console.log(`Newsletter signup: ${email}`);
+    // Signup processed successfully
 
     return new Response(
       JSON.stringify({ success: true, message: 'Successfully subscribed to newsletter' }),
@@ -118,7 +113,6 @@ serve(async (req) => {
       }
     );
   } catch (error) {
-    console.error('Error signing up for newsletter:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to subscribe' }),
       { 
