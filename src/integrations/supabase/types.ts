@@ -725,6 +725,10 @@ export type Database = {
       sign_manifesto_secure: { Args: { email_param: string }; Returns: string }
       user_owns_meme: { Args: { meme_id_param: string }; Returns: boolean }
       user_voted_on_meme: { Args: { meme_id_param: string }; Returns: boolean }
+      verify_manifesto_signature: {
+        Args: { token_param: string }
+        Returns: boolean
+      }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
