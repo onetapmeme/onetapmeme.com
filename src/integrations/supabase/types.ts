@@ -723,6 +723,10 @@ export type Database = {
         Returns: undefined
       }
       sign_manifesto_secure: { Args: { email_param: string }; Returns: string }
+      toggle_item_equipped: {
+        Args: { item_id_param: string }
+        Returns: boolean
+      }
       user_owns_meme: { Args: { meme_id_param: string }; Returns: boolean }
       user_voted_on_meme: { Args: { meme_id_param: string }; Returns: boolean }
       verify_manifesto_signature: {
