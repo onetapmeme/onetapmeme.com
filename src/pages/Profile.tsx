@@ -107,21 +107,19 @@ const Profile = () => {
     if (!user) return;
     
     try {
-      const { error } = await supabase
-        .from('player_inventory')
-        .update({ is_equipped: !currentEquipped })
-        .eq('id', itemId)
-        .eq('user_id', user.id);
+      // Use secure RPC function instead of direct UPDATE
+      const { data: newEquippedStatus, error } = await supabase
+        .rpc('toggle_item_equipped', { item_id_param: itemId });
 
       if (error) throw error;
       
       setInventory(prev => prev.map(item => 
-        item.id === itemId ? { ...item, is_equipped: !currentEquipped } : item
+        item.id === itemId ? { ...item, is_equipped: newEquippedStatus } : item
       ));
       
       toast({
-        title: currentEquipped ? "Item unequipped" : "Item equipped",
-        description: currentEquipped ? "Item removed from profile" : "Item equipped to profile",
+        title: newEquippedStatus ? "Item equipped" : "Item unequipped",
+        description: newEquippedStatus ? "Item equipped to profile" : "Item removed from profile",
       });
     } catch (error: any) {
       console.error('Error toggling equip:', error);
