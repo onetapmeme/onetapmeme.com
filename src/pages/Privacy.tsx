@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { GDPRDataDeletion } from "@/components/GDPRDataDeletion";
+import { GDPRDataExport } from "@/components/GDPRDataExport";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 const Privacy = () => {
@@ -114,7 +115,8 @@ const Privacy = () => {
               </p>
               
               {isAuthenticated && (
-                <div className="mt-6">
+                <div className="mt-6 space-y-4">
+                  <GDPRDataExport />
                   <GDPRDataDeletion />
                 </div>
               )}
