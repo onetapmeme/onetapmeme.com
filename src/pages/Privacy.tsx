@@ -3,9 +3,26 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { GDPRDataDeletion } from "@/components/GDPRDataDeletion";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 const Privacy = () => {
   const { t, i18n } = useTranslation();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setIsAuthenticated(!!session);
+    };
+    checkAuth();
+    
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
+      setIsAuthenticated(!!session);
+    });
+    
+    return () => subscription.unsubscribe();
+  }, []);
   
   const formatDate = () => {
     const locale = i18n.language === 'zh' ? 'zh-CN' : 
@@ -92,9 +109,15 @@ const Privacy = () => {
               <p className="text-foreground/80 mb-4">
                 {t('privacy.gdpr.description')}
               </p>
-              <p className="text-foreground/80">
+              <p className="text-foreground/80 mb-6">
                 {t('privacy.gdpr.blockchain')}
               </p>
+              
+              {isAuthenticated && (
+                <div className="mt-6">
+                  <GDPRDataDeletion />
+                </div>
+              )}
             </div>
 
             <div className="pt-6 border-t border-border">
