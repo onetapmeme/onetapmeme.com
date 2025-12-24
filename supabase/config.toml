@@ -11,3 +11,6 @@ verify_jwt = false
 
 [functions.newsletter-signup]
 verify_jwt = false
+
+[functions.gdpr-delete-user-data]
+verify_jwt = true
