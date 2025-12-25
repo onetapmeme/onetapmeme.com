@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Save, Shield } from 'lucide-react';
 import { clearConfigCache } from '@/config/launch';
 import { z } from 'zod';
+import { useAuditLog, AUDIT_ACTIONS, RESOURCE_TYPES } from '@/hooks/useAuditLog';
 
 // URL validation schema
 const urlSchema = z.string().trim().url("Invalid URL format").max(500, "URL must be less than 500 characters");
@@ -53,6 +54,7 @@ export default function AdminLaunchDashboard() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const { toast } = useToast();
+  const { logAction } = useAuditLog();
 
   useEffect(() => {
     fetchConfig();
@@ -69,6 +71,14 @@ export default function AdminLaunchDashboard() {
 
       if (error) throw error;
       setConfig(data);
+      
+      // Log admin access to sensitive configuration
+      await logAction({
+        action: AUDIT_ACTIONS.VIEW,
+        resourceType: RESOURCE_TYPES.LAUNCH_CONFIG,
+        resourceId: data.id,
+        details: { accessed_fields: Object.keys(data) },
+      });
     } catch (error) {
       console.error('Error fetching config:', error);
       toast({
@@ -134,6 +144,22 @@ export default function AdminLaunchDashboard() {
         .eq('id', config.id);
 
       if (error) throw error;
+
+      // Log the update action with changed fields
+      await logAction({
+        action: AUDIT_ACTIONS.UPDATE,
+        resourceType: RESOURCE_TYPES.LAUNCH_CONFIG,
+        resourceId: config.id,
+        details: {
+          updated_fields: {
+            is_launched: config.is_launched,
+            launch_date: config.launch_date,
+            contract_address: config.contract_address,
+            audit_completed: config.audit_completed,
+            lp_locked: config.lp_locked,
+          },
+        },
+      });
 
       // Clear the cache so the config is refreshed everywhere
       clearConfigCache();

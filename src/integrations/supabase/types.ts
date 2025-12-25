@@ -53,6 +53,45 @@ export type Database = {
         }
         Relationships: []
       }
+      admin_audit_logs: {
+        Row: {
+          action: string
+          admin_user_id: string
+          created_at: string
+          details: Json | null
+          id: string
+          ip_address: string | null
+          resource_id: string | null
+          resource_type: string
+          target_user_id: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          action: string
+          admin_user_id: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          ip_address?: string | null
+          resource_id?: string | null
+          resource_type: string
+          target_user_id?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          action?: string
+          admin_user_id?: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          ip_address?: string | null
+          resource_id?: string | null
+          resource_type?: string
+          target_user_id?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author_avatar_url: string | null
@@ -714,6 +753,18 @@ export type Database = {
         Returns: undefined
       }
       initialize_user_xp: { Args: never; Returns: undefined }
+      log_admin_action: {
+        Args: {
+          action_param: string
+          details_param?: Json
+          ip_address_param?: string
+          resource_id_param?: string
+          resource_type_param: string
+          target_user_id_param?: string
+          user_agent_param?: string
+        }
+        Returns: string
+      }
       save_player_progress: {
         Args: {
           clicks_increment?: number
