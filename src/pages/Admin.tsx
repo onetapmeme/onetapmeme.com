@@ -6,12 +6,14 @@ import Footer from '@/components/Footer';
 import AdminLaunchDashboard from '@/components/AdminLaunchDashboard';
 import { Loader2, ShieldAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuditLog, AUDIT_ACTIONS, RESOURCE_TYPES } from '@/hooks/useAuditLog';
 
 export default function Admin() {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
+  const { logAction } = useAuditLog();
 
   useEffect(() => {
     checkAdminAccess();
@@ -41,6 +43,16 @@ export default function Admin() {
         setIsAdmin(false);
       } else {
         setIsAdmin(true);
+        
+        // Log successful admin panel access
+        await logAction({
+          action: AUDIT_ACTIONS.ACCESS,
+          resourceType: 'admin_panel',
+          details: { 
+            page: 'admin_dashboard',
+            timestamp: new Date().toISOString(),
+          },
+        });
       }
     } catch (error) {
       console.error('Error checking admin access:', error);
