@@ -126,25 +126,52 @@ const Index = () => {
                   <span className="font-semibold">What are the tokenomics?</span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Total supply: 1,000,000,000 $1TAP tokens. Fixed supply, no minting function. ZERO taxes (0% buy, 0% sell). Liquidity pool locked for 6 months at launch.
+                  Total supply: 100,000,000 $1TAP tokens. Fixed supply, no minting function. 3% transaction tax (1% dev, 1% marketing, 1% liquidity). Liquidity pool locked for 6 months.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="q4" className="glass-effect border border-primary/20 rounded-lg px-6">
                 <AccordionTrigger className="text-left hover:text-primary transition-colors">
-                  <span className="font-semibold">Is the contract audited?</span>
+                  <span className="font-semibold">Is the contract audited and safe?</span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Internal security audit completed. Contract is open-source and verified. Liquidity is locked, ownership is renounced post-launch, and there's no mint function or admin withdrawals.
+                  Yes! Internal security audit completed. Contract is open-source and verified on BaseScan. LP locked for 6 months, multi-sig wallet (2/3 required), no mint function, and taxes are immutable. Check our Security page for full details.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="q5" className="glass-effect border border-primary/20 rounded-lg px-6">
                 <AccordionTrigger className="text-left hover:text-primary transition-colors">
-                  <span className="font-semibold">How can I get involved?</span>
+                  <span className="font-semibold">How do I buy $1TAP?</span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Join our Discord, follow Twitter for updates, participate in meme contests, vote on DAO proposals, and help spread the word. Active contributors get special roles and rewards.
+                  1. Get a Web3 wallet (MetaMask, Coinbase Wallet). 2. Add Base network. 3. Bridge ETH to Base. 4. Swap on Uniswap using our contract address. Always verify the contract on our official channels!
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="q6" className="glass-effect border border-primary/20 rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:text-primary transition-colors">
+                  <span className="font-semibold">What makes $1TAP different from other meme coins?</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Unlike typical meme coins, $1TAP has real utility: a tap-to-earn game, XP rankings, NFT drops, and a gamified ecosystem. We focus on the gaming community with CS:GO-inspired themes and competitive features.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="q7" className="glass-effect border border-primary/20 rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:text-primary transition-colors">
+                  <span className="font-semibold">Is there a team token lock?</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Yes! Team tokens are locked with a transparent release schedule via timelock. Dev and marketing funds require multi-sig approval (2/3 signatures). Full transparency is our priority.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="q8" className="glass-effect border border-primary/20 rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:text-primary transition-colors">
+                  <span className="font-semibold">How can I get involved in the community?</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Join our Discord, follow us on X/Twitter, participate in meme contests, earn XP through daily quests, and help spread the word. Active contributors earn special "Commander" and "Sniper" roles with exclusive rewards!
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

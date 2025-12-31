@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Crosshair, Zap, TrendingUp, Shield, Lock, Flame, ArrowRight } from "lucide-react";
+import { Zap, TrendingUp, Shield, Lock, Flame, ArrowRight, Sparkles } from "lucide-react";
 import logo from "@/assets/onetap_new_logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { useNavigate } from "react-router-dom";
@@ -228,16 +228,16 @@ const Hero = () => {
         }}>
             {[{
             icon: Flame,
-            label: "Burning",
-            value: "FOMO"
-          }, {
-            icon: Zap,
-            label: "Community",
-            value: "Growing"
+            label: "Total Supply",
+            value: "100M"
           }, {
             icon: Shield,
-            label: "Liquidity",
-            value: "Locked"
+            label: "LP Locked",
+            value: "6 Months"
+          }, {
+            icon: TrendingUp,
+            label: "Tax",
+            value: "3%"
           }].map((stat, i) => <motion.div key={i} className="glass-effect rounded-2xl p-6 md:p-8 hover:bg-primary/5 transition-all duration-500 group" whileHover={{
             scale: 1.05,
             y: -5
