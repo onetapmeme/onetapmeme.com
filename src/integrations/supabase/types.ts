@@ -337,6 +337,127 @@ export type Database = {
         }
         Relationships: []
       }
+      notification_preferences: {
+        Row: {
+          airdrop_alerts: boolean | null
+          announcements: boolean | null
+          created_at: string
+          id: string
+          price_alerts: boolean | null
+          price_threshold_down: number | null
+          price_threshold_up: number | null
+          subscription_id: string
+          updated_at: string
+          whale_alerts: boolean | null
+        }
+        Insert: {
+          airdrop_alerts?: boolean | null
+          announcements?: boolean | null
+          created_at?: string
+          id?: string
+          price_alerts?: boolean | null
+          price_threshold_down?: number | null
+          price_threshold_up?: number | null
+          subscription_id: string
+          updated_at?: string
+          whale_alerts?: boolean | null
+        }
+        Update: {
+          airdrop_alerts?: boolean | null
+          announcements?: boolean | null
+          created_at?: string
+          id?: string
+          price_alerts?: boolean | null
+          price_threshold_down?: number | null
+          price_threshold_up?: number | null
+          subscription_id?: string
+          updated_at?: string
+          whale_alerts?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notification_preferences_subscription_id_fkey"
+            columns: ["subscription_id"]
+            isOneToOne: true
+            referencedRelation: "notification_subscriptions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notification_subscriptions: {
+        Row: {
+          auth_key: string
+          created_at: string
+          endpoint: string
+          id: string
+          p256dh_key: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          auth_key: string
+          created_at?: string
+          endpoint: string
+          id?: string
+          p256dh_key: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          auth_key?: string
+          created_at?: string
+          endpoint?: string
+          id?: string
+          p256dh_key?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      notifications_log: {
+        Row: {
+          body: string
+          data: Json | null
+          delivered: boolean | null
+          error_message: string | null
+          id: string
+          notification_type: string
+          sent_at: string
+          subscription_id: string | null
+          title: string
+        }
+        Insert: {
+          body: string
+          data?: Json | null
+          delivered?: boolean | null
+          error_message?: string | null
+          id?: string
+          notification_type: string
+          sent_at?: string
+          subscription_id?: string | null
+          title: string
+        }
+        Update: {
+          body?: string
+          data?: Json | null
+          delivered?: boolean | null
+          error_message?: string | null
+          id?: string
+          notification_type?: string
+          sent_at?: string
+          subscription_id?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_log_subscription_id_fkey"
+            columns: ["subscription_id"]
+            isOneToOne: false
+            referencedRelation: "notification_subscriptions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       partnerships: {
         Row: {
           announcement_date: string | null
@@ -774,6 +895,18 @@ export type Database = {
         Returns: undefined
       }
       sign_manifesto_secure: { Args: { email_param: string }; Returns: string }
+      subscribe_to_notifications: {
+        Args: {
+          airdrop_alerts_param?: boolean
+          announcements_param?: boolean
+          auth_key_param: string
+          endpoint_param: string
+          p256dh_key_param: string
+          price_alerts_param?: boolean
+          whale_alerts_param?: boolean
+        }
+        Returns: string
+      }
       toggle_item_equipped: {
         Args: { item_id_param: string }
         Returns: boolean
