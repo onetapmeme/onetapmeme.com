@@ -15,6 +15,10 @@ import SocialProof from "@/components/SocialProof";
 import SwapWidget from "@/components/SwapWidget";
 import WhyOneTap from "@/components/WhyOneTap";
 import StickyBuyButton from "@/components/StickyBuyButton";
+import LiveMarketCap from "@/components/LiveMarketCap";
+import HowToBuy from "@/components/HowToBuy";
+import EarlyBuyerBonus from "@/components/EarlyBuyerBonus";
+import PartnersSection from "@/components/PartnersSection";
 import {
   Accordion,
   AccordionContent,
@@ -53,14 +57,32 @@ const Index = () => {
         </SectionWrapper>
       </div>
 
-      <div id="swap">
+      <div id="how-to-buy">
         <SectionWrapper variant="primary" blendFrom="accent">
+          <HowToBuy />
+        </SectionWrapper>
+      </div>
+
+      <div id="swap">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <SwapWidget />
         </SectionWrapper>
       </div>
 
-      <div id="live-stats">
+      <div id="early-bonus">
+        <SectionWrapper variant="primary" blendFrom="accent">
+          <EarlyBuyerBonus />
+        </SectionWrapper>
+      </div>
+
+      <div id="live-market">
         <SectionWrapper variant="accent" blendFrom="primary">
+          <LiveMarketCap />
+        </SectionWrapper>
+      </div>
+
+      <div id="live-stats">
+        <SectionWrapper variant="primary" blendFrom="accent">
           <LiveStats />
         </SectionWrapper>
       </div>
@@ -83,8 +105,14 @@ const Index = () => {
         </SectionWrapper>
       </div>
 
-      <div id="social-proof">
+      <div id="partners">
         <SectionWrapper variant="primary" blendFrom="accent">
+          <PartnersSection />
+        </SectionWrapper>
+      </div>
+
+      <div id="social-proof">
+        <SectionWrapper variant="accent" blendFrom="primary">
           <SocialProof />
         </SectionWrapper>
       </div>
