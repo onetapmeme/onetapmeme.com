@@ -19,6 +19,8 @@ import LiveMarketCap from "@/components/LiveMarketCap";
 import HowToBuy from "@/components/HowToBuy";
 import EarlyBuyerBonus from "@/components/EarlyBuyerBonus";
 import PartnersSection from "@/components/PartnersSection";
+import NotificationBell from "@/components/NotificationBell";
+import NotificationCTA from "@/components/NotificationCTA";
 import {
   Accordion,
   AccordionContent,
@@ -31,6 +33,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <BenControllerV2 />
+      <NotificationBell />
       <LanguageSwitcher />
       <Navbar />
       <div id="hero">
@@ -96,6 +99,14 @@ const Index = () => {
       <div id="community">
         <SectionWrapper variant="primary" blendFrom="accent">
           <Community />
+        </SectionWrapper>
+      </div>
+
+      <div id="notifications">
+        <SectionWrapper variant="accent" blendFrom="primary">
+          <div className="container mx-auto max-w-4xl">
+            <NotificationCTA />
+          </div>
         </SectionWrapper>
       </div>
 
