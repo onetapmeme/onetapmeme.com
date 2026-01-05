@@ -21,6 +21,7 @@ import EarlyBuyerBonus from "@/components/EarlyBuyerBonus";
 import PartnersSection from "@/components/PartnersSection";
 import NotificationBell from "@/components/NotificationBell";
 import NotificationCTA from "@/components/NotificationCTA";
+import ReferralDashboard from "@/components/ReferralDashboard";
 import {
   Accordion,
   AccordionContent,
@@ -107,6 +108,12 @@ const Index = () => {
           <div className="container mx-auto max-w-4xl">
             <NotificationCTA />
           </div>
+        </SectionWrapper>
+      </div>
+
+      <div id="referral">
+        <SectionWrapper variant="primary" blendFrom="accent">
+          <ReferralDashboard />
         </SectionWrapper>
       </div>
 
