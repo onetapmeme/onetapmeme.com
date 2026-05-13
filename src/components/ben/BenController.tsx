@@ -35,7 +35,7 @@ const BenController = () => {
   const [hasSpawned, setHasSpawned] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const controls = useAnimation();
-  const dialogTimeoutRef = useRef<NodeJS.Timeout>();
+  const dialogTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
