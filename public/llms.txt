@@ -1,0 +1,32 @@
+# $1TAP
+
+> $1TAP is a community-driven gaming memecoin on the Base network that combines FPS culture with crypto: tap-to-earn gameplay, NFT drops, locked liquidity, and fair-launch tokenomics.
+
+$1TAP fuses competitive shooter nostalgia with on-chain mechanics. The token has a fixed 100M supply, locked LP, multi-sig treasury, and powers a tap-to-earn game with FPS-style ranks and craftable NFT items.
+
+## Pages
+
+- [Home](/home): Overview, live market data, how to buy, and roadmap.
+- [Token](/token): Tokenomics, supply, contract address, and distribution.
+- [Whitepaper](/whitepaper): Full vision, tokenomics, and roadmap document.
+- [Security](/security): Audit reports, locked LP proof, and multi-sig setup.
+- [Lore](/lore): Origin story of the tactical memecoin.
+- [FAQ](/faq): Common questions about buying, security, and the project.
+- [Team](/team): People building $1TAP.
+- [Blog](/blog): News, updates, and announcements.
+- [Integrations](/integrations): Ecosystem partners and integrations.
+- [Tap-to-Earn](/tap-to-earn): Play the on-chain tapping game.
+- [Daily Quests](/daily-quests): Earn XP and rewards every day.
+- [Leaderboard](/leaderboard): Top players, holders, and ambassadors.
+- [Achievements](/achievements): Badges and milestones.
+- [Meme Generator](/meme-generator): Create and share $1TAP memes.
+- [Manifesto](/manifesto): Sign the tactical pledge.
+
+## Optional
+
+- [Ownership](/ownership): Project ownership disclosure.
+- [Privacy](/privacy): Privacy policy and GDPR rights.
+- [Terms](/terms): Terms of service.
+- [Legal Notice](/legal-notice): Publisher and hosting info.
+- [Disclaimer](/disclaimer): Risk disclaimers.
+- [Non-Affiliation](/non-affiliation): Trademark non-affiliation notice.

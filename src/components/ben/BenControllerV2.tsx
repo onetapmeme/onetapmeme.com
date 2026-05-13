@@ -60,7 +60,7 @@ const BenControllerV2 = () => {
   const [currentSprite, setCurrentSprite] = useState<keyof typeof SPRITE_POSITIONS>('neutral');
   const [isSpawning, setIsSpawning] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const dialogueTimeoutRef = useRef<NodeJS.Timeout>();
+  const dialogueTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const lastSectionChangeRef = useRef<number>(0);
   const heroShownRef = useRef(false);
 

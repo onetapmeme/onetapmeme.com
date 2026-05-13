@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 const SEOHead = () => {
   const { i18n } = useTranslation();
-  const currentLang = i18n.language;
+  const currentLang = i18n.language || 'en';
 
   useEffect(() => {
     // Update HTML lang attribute
