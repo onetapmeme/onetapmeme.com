@@ -1,7 +1,7 @@
 {
-  "name": "$1TAP - The Ultimate Gaming Memecoin",
-  "short_name": "$1TAP",
-  "description": "$1TAP combines FPS nostalgia with modern crypto. Join the revolution where every trade is a headshot.",
+  "name": "1Tap — Restauration de cartes de collection",
+  "short_name": "1Tap",
+  "description": "Restauration professionnelle de cartes Pokémon, One Piece et autres TCG. Précision chirurgicale, transparence totale.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f1419",
@@ -21,31 +21,5 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["finance", "games", "entertainment"],
-  "shortcuts": [
-    {
-      "name": "Buy $1TAP",
-      "short_name": "Buy",
-      "description": "Buy $1TAP tokens",
-      "url": "/#tokenomics",
-      "icons": [
-        {
-          "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Community",
-      "short_name": "Community",
-      "description": "Join the community",
-      "url": "/#community",
-      "icons": [
-        {
-          "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ]
+  "categories": ["business", "shopping", "lifestyle"]
 }
