@@ -27,7 +27,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
         <SEOHead />
         <RouteSEO />
         <Toaster />
