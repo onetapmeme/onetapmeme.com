@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import logo from "@/assets/onetap_new_logo.png";
+import logo from "@/assets/cardsurgery-logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { copy, pickLang } from "./copy";
 

@@ -21,6 +21,11 @@ import FAQ from "./pages/FAQ";
 import Team from "./pages/Team";
 import Blog from "./pages/Blog";
 import Admin from "./pages/Admin";
+import Gallery from "./pages/Gallery";
+import Pricing from "./pages/Pricing";
+import Diagnostic from "./pages/Diagnostic";
+import Booking from "./pages/Booking";
+import Tracking from "./pages/Tracking";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +52,11 @@ const App = () => (
           <Route path="/team" element={<Team />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/diagnostic" element={<Diagnostic />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/tracking" element={<Tracking />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>
