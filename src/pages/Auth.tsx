@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Shield, Mail, Lock, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoImage from "@/assets/onetap_new_logo.png";
+import logoImage from "@/assets/cardsurgery-logo.png";
 import { z } from "zod";
 
 // Input validation schema
