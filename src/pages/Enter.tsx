@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import logoImage from "@/assets/onetap_new_logo.png";
+import logoImage from "@/assets/cardsurgery-logo.png";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LanguageSwitcher from "@/components/LanguageSwitcher";

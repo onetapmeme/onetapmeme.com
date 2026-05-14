@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import logo from "@/assets/onetap_new_logo.png";
-import { useTranslation } from "react-i18next";
-import ThemeToggle from "@/components/ThemeToggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { copy, pickLang } from "@/components/cards/copy";
+import logo from "@/assets/cardsurgery-logo.png";
+
+const NAV_ITEMS = [
+  { label: "Services", to: "/pricing" },
+  { label: "Galerie", to: "/gallery" },
+  { label: "Diagnostic", to: "/diagnostic" },
+  { label: "Réservation", to: "/booking" },
+  { label: "Suivi", to: "/tracking" },
+  { label: "FAQ", to: "/faq" },
+];
 
 const Navbar = () => {
-  const { i18n } = useTranslation();
-  const lang = pickLang(i18n.language);
-  const t = (k: keyof typeof copy) => copy[k][lang];
   const navigate = useNavigate();
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,57 +26,33 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const goToSection = (id: string) => {
-    setIsMobileMenuOpen(false);
-    if (location.pathname !== "/home" && location.pathname !== "/") {
-      navigate("/home");
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 150);
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleLogoClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (location.pathname !== "/home" && location.pathname !== "/") {
-      navigate("/home");
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
-  const navItems = [
-    { label: t("navServices"), id: "services" },
-    { label: t("navProcess"), id: "process" },
-    { label: t("navWhy"), id: "why" },
-    { label: t("navFaq"), id: "faq" },
-    { label: t("navContact"), id: "contact" },
-  ];
-
   return (
     <header
       className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${
         isScrolled
-          ? "h-16 bg-background/40 backdrop-blur-xl border border-primary/20 scale-95 w-[92%] max-w-5xl shadow-glow-primary"
-          : "h-16 bg-background/80 backdrop-blur-md border border-primary/10 w-[95%] max-w-6xl"
+          ? "h-16 bg-background/80 backdrop-blur-xl border border-border scale-95 w-[94%] max-w-5xl shadow-md"
+          : "h-16 bg-background/90 backdrop-blur-md border border-border w-[96%] max-w-6xl"
       }`}
     >
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
-          <a href="/home" className="flex items-center gap-3 group" onClick={handleLogoClick}>
-            <img src={logo} alt="1Tap" className="w-10 h-10 group-hover:animate-pulse-glow transition-all" />
-            <span className="hidden sm:inline font-bold text-foreground">1Tap</span>
-          </a>
+          <Link to="/home" className="flex items-center gap-2 group">
+            <img src={logo} alt="CardSurgery" className="w-10 h-10 object-contain" />
+            <span className="hidden sm:inline font-bold text-foreground tracking-tight">
+              Card<span className="text-accent">Surgery</span>
+            </span>
+          </Link>
 
-          <div className="hidden md:flex items-center gap-2">
-            {navItems.map((item) => (
+          <div className="hidden lg:flex items-center gap-1">
+            {NAV_ITEMS.map((item) => (
               <Button
-                key={item.id}
+                key={item.to}
                 variant="ghost"
-                onClick={() => goToSection(item.id)}
-                className="text-sm font-medium hover:bg-primary/10"
+                size="sm"
+                onClick={() => navigate(item.to)}
+                className={`text-sm font-medium ${
+                  location.pathname === item.to ? "text-accent" : ""
+                }`}
               >
                 {item.label}
               </Button>
@@ -83,42 +61,39 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2">
             <Button
-              variant="ghost"
-              className="hidden md:inline-flex bg-background/10 backdrop-blur-md border border-primary/20 hover:bg-background/20"
-              asChild
+              size="sm"
+              className="hidden md:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground"
+              onClick={() => navigate("/diagnostic")}
             >
-              <a href="/auth">{t("login")}</a>
+              Expertiser ma carte
             </Button>
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden hover:bg-primary/10">
+                <Button variant="ghost" size="icon" className="lg:hidden">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-background/95 backdrop-blur-xl border-primary/20 z-[100]">
-                <div className="flex flex-col gap-4 mt-8">
-                  <div className="flex items-center gap-2 pb-4 border-b border-primary/20">
-                    <ThemeToggle />
-                    <LanguageSwitcher inline />
-                  </div>
-                  {navItems.map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => goToSection(item.id)}
-                      className="text-left text-lg text-muted-foreground hover:text-primary transition-colors font-medium"
+              <SheetContent className="bg-background border-border z-[100]">
+                <div className="flex flex-col gap-2 mt-8">
+                  {NAV_ITEMS.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg text-foreground hover:text-accent transition-colors font-medium py-2"
                     >
                       {item.label}
-                    </button>
+                    </Link>
                   ))}
                   <Button
-                    variant="ghost"
-                    className="mt-4 bg-background/10 border border-primary/20"
-                    asChild
+                    className="mt-4 bg-accent hover:bg-accent/90 text-accent-foreground"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      navigate("/diagnostic");
+                    }}
                   >
-                    <a href="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                      {t("login")}
-                    </a>
+                    Expertiser ma carte
                   </Button>
                 </div>
               </SheetContent>
@@ -131,3 +106,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

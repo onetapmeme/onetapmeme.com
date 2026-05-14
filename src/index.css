@@ -8,38 +8,37 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 25% 6%;
-    --foreground: 0 0% 98%;
-    --card: 220 25% 8%;
-    --card-foreground: 0 0% 98%;
-    --popover: 220 25% 8%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 210 100% 55%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 15% 20%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 220 15% 25%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 25 100% 55%;
+    /* CardSurgery — premium artisan beige / warm grey / ECG red / midnight blue */
+    --background: 38 35% 94%;
+    --foreground: 222 30% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 30% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 30% 14%;
+    --primary: 222 45% 18%;
+    --primary-foreground: 38 40% 96%;
+    --secondary: 32 25% 88%;
+    --secondary-foreground: 222 30% 14%;
+    --muted: 34 20% 90%;
+    --muted-foreground: 25 12% 38%;
+    --accent: 4 78% 52%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 210 100% 55%;
-    --radius: 0.75rem;
-    
-    /* Apple-style gradients */
-    --gradient-hero: linear-gradient(180deg, hsl(220, 25%, 6%) 0%, hsl(220, 30%, 10%) 50%, hsl(220, 25%, 6%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(210, 100%, 55%) 0%, hsl(25, 100%, 55%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(220, 25%, 8%) 0%, hsl(220, 25%, 12%) 100%);
-    --gradient-section: radial-gradient(ellipse at top, hsl(220, 30%, 12%) 0%, hsl(220, 25%, 6%) 50%);
-    
-    /* Premium glow effects */
-    --glow-primary: 0 0 80px hsla(210, 100%, 55%, 0.3);
-    --glow-accent: 0 0 100px hsla(25, 100%, 55%, 0.25);
-    --glow-subtle: 0 8px 32px hsla(210, 100%, 55%, 0.15);
+    --destructive: 4 78% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 32 20% 82%;
+    --input: 32 20% 82%;
+    --ring: 222 45% 18%;
+    --radius: 0.5rem;
+
+    --gradient-hero: linear-gradient(180deg, hsl(38, 40%, 96%) 0%, hsl(34, 28%, 92%) 60%, hsl(32, 25%, 88%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(222, 45%, 18%) 0%, hsl(4, 78%, 52%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(36, 55%, 55%) 0%, hsl(32, 60%, 70%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(38, 30%, 96%) 100%);
+    --gradient-section: radial-gradient(ellipse at top, hsl(34, 30%, 94%) 0%, hsl(38, 35%, 94%) 60%);
+
+    --glow-primary: 0 8px 32px hsla(222, 45%, 18%, 0.12);
+    --glow-accent: 0 0 60px hsla(4, 78%, 52%, 0.18);
+    --glow-subtle: 0 4px 16px hsla(25, 20%, 30%, 0.08);
     
     /* Apple-like timing functions */
     --transition-base: 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -47,38 +46,26 @@ All colors MUST be HSL.
     --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .light {
-    --background: 0 0% 98%;
-    --foreground: 220 25% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 25% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
-    --primary: 210 100% 45%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 15% 90%;
-    --secondary-foreground: 220 25% 10%;
-    --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 40%;
-    --accent: 25 100% 50%;
+  .dark {
+    --background: 222 30% 10%;
+    --foreground: 38 30% 94%;
+    --card: 222 25% 14%;
+    --card-foreground: 38 30% 94%;
+    --popover: 222 25% 14%;
+    --popover-foreground: 38 30% 94%;
+    --primary: 38 40% 88%;
+    --primary-foreground: 222 30% 10%;
+    --secondary: 222 20% 20%;
+    --secondary-foreground: 38 30% 94%;
+    --muted: 222 18% 22%;
+    --muted-foreground: 38 15% 70%;
+    --accent: 4 78% 56%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 85%;
-    --input: 220 15% 85%;
-    --ring: 210 100% 45%;
-    
-    /* Light mode gradients */
-    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(210, 20%, 95%) 50%, hsl(0, 0%, 98%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(210, 100%, 45%) 0%, hsl(25, 100%, 50%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(210, 100%, 45%) 0%, hsl(25, 100%, 50%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(210, 20%, 97%) 100%);
-    --gradient-section: radial-gradient(ellipse at top, hsl(210, 30%, 96%) 0%, hsl(0, 0%, 98%) 50%);
-    
-    /* Light mode glow effects */
-    --glow-primary: 0 0 40px hsla(210, 100%, 45%, 0.15);
-    --glow-accent: 0 0 50px hsla(25, 100%, 50%, 0.12);
-    --glow-subtle: 0 4px 16px hsla(210, 100%, 45%, 0.08);
+    --destructive: 4 78% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 18% 22%;
+    --input: 222 18% 22%;
+    --ring: 38 40% 88%;
   }
 }
 
