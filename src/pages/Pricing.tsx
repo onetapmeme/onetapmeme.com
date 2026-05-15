@@ -2,19 +2,21 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check, Stethoscope, Scissors, Sparkles } from "lucide-react";
+import { Check, Stethoscope, Scissors, Sparkles, Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const PLANS = [
   {
-    id: "deep-clean",
-    name: "Deep Clean",
+    id: "clean",
+    name: "Surface Clean & Polish",
+    level: "Standard",
     icon: Sparkles,
-    price: "29 €",
-    tagline: "Nettoyage de surface premium",
+    price: "19 €",
+    tagline: "Nettoyage léger & brillance",
     features: [
-      "Élimination des impuretés et résidus",
+      "Nettoyage de surface premium",
       "Polissage doux non-invasif",
+      "Restitution de la brillance d'origine",
       "Photos avant / après HD",
       "Retour sleeve + toploader",
       "Délai : 7 jours",
@@ -22,14 +24,16 @@ const PLANS = [
     highlight: false,
   },
   {
-    id: "surgery",
-    name: "Surgery Pack",
+    id: "pro",
+    name: "Professional Restoration",
+    level: "Avancé",
     icon: Scissors,
-    price: "59 €",
-    tagline: "L'intervention 1Tap signature",
+    price: "39 €",
+    tagline: "Micro-rayures & whitening des bords",
     features: [
-      "Tout du Deep Clean",
-      "Whitening des 4 bords",
+      "Tout du forfait Standard",
+      "Correction des micro-rayures",
+      "Traitement du blanchiment des bords",
       "Pressage de précision micro-pliures",
       "Diagnostic sous microscope",
       "Délai : 10 jours",
@@ -38,20 +42,28 @@ const PLANS = [
   },
   {
     id: "full",
-    name: "Full Restoration",
+    name: "Full Surgery",
+    level: "Premium",
     icon: Stethoscope,
-    price: "129 €",
-    tagline: "Restauration complète & expertise",
+    price: "95 €",
+    tagline: "Restauration complète & polissage expert",
     features: [
-      "Tout du Surgery Pack",
-      "De-curving & remise à plat",
+      "Tout du forfait Avancé",
       "Restauration coins & arêtes",
+      "Polissage expert haute valeur",
+      "De-curving & remise à plat",
       "Pré-grading visuel détaillé",
-      "Retour express assuré 5 000 €",
+      "Retour express assuré",
       "Délai : 14 jours",
     ],
     highlight: false,
   },
+];
+
+const OPTIONS = [
+  { name: "Redressage (De-curving)", price: "9 €" },
+  { name: "Retrait de colle / résidus", price: "9 €" },
+  { name: "Expertise pré-grading", price: "15 €" },
 ];
 
 const Pricing = () => {
@@ -90,8 +102,8 @@ const Pricing = () => {
                       <Icon className="w-6 h-6 text-accent" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-foreground">{p.name}</h3>
-                      <p className="text-xs text-muted-foreground">{p.tagline}</p>
+                      <h3 className="text-xl font-bold text-foreground leading-tight">{p.name}</h3>
+                      <p className="text-xs uppercase tracking-wider text-muted-foreground">{p.level} — {p.tagline}</p>
                     </div>
                   </div>
                   <div className="mb-6">
@@ -110,7 +122,7 @@ const Pricing = () => {
                     asChild
                     className={
                       p.highlight
-                        ? "w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+                        ? "w-full glossy-btn text-accent-foreground border-0"
                         : "w-full"
                     }
                     variant={p.highlight ? "default" : "outline"}
@@ -122,10 +134,30 @@ const Pricing = () => {
             })}
           </div>
 
+          {/* OPTIONS */}
+          <section className="mt-14">
+            <h2 className="text-2xl font-bold text-center mb-2 text-foreground">Options à la carte</h2>
+            <p className="text-center text-sm text-muted-foreground mb-6">
+              Ajoutez ces interventions complémentaires à n'importe quel forfait.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {OPTIONS.map((o) => (
+                <Card key={o.name} className="p-5 flex items-center justify-between border-border">
+                  <div className="flex items-center gap-3">
+                    <Plus className="w-4 h-4 text-accent" />
+                    <span className="text-sm font-medium text-foreground">{o.name}</span>
+                  </div>
+                  <span className="text-lg font-bold text-foreground">{o.price}</span>
+                </Card>
+              ))}
+            </div>
+          </section>
+
           <p className="text-center text-xs text-muted-foreground mt-10 max-w-3xl mx-auto">
             Les tarifs s'entendent par carte, hors frais de retour. Forfaits indicatifs : un devis personnalisé
-            est établi après le diagnostic 1Tap. Nous garantissons l'esthétique mais le grade final dépend
-            exclusivement des organismes de certification.
+            est établi après le diagnostic. La technologie 1Tap désigne le geste de précision réalisé par notre
+            expert restaurateur. Nous garantissons l'esthétique mais le grade final dépend exclusivement des
+            organismes de certification.
           </p>
         </div>
       </main>

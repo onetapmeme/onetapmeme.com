@@ -93,7 +93,7 @@ const CardHome = () => {
             <div className="flex justify-center mb-6">
               <motion.img
                 src={logo}
-                alt="1Tap"
+                alt="CardSurgery"
                 className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44"
                 animate={{
                   y: [0, -10, 0],
