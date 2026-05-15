@@ -326,7 +326,10 @@ const CardHome = () => {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* SOCIAL PROOF — testimonials + Instagram corner */}
+      <SocialProof />
+
+
       <section id="faq" className="py-20 md:py-32 px-4">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12">
