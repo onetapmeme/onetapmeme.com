@@ -14,6 +14,7 @@ import {
   Eye,
   Lock,
   Mail,
+  FlaskConical,
 } from "lucide-react";
 import {
   Accordion,
@@ -26,6 +27,7 @@ import { Card } from "@/components/ui/card";
 import logo from "@/assets/cardsurgery-logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { copy, pickLang } from "./copy";
+import SocialProof from "./SocialProof";
 
 const CardHome = () => {
   const { i18n } = useTranslation();
@@ -142,7 +144,17 @@ const CardHome = () => {
               )}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border border-accent/40 mb-8 shadow-[0_0_30px_hsla(4,78%,52%,0.25)]"
+            >
+              <FlaskConical className="w-4 h-4 text-accent animate-pulse" />
+              <span className="text-sm font-semibold text-foreground">
+                +100 cartes déjà sauvées par nos experts
+              </span>
+            </motion.div>
               <Button
                 size="lg"
                 onClick={() => scrollTo("contact")}
