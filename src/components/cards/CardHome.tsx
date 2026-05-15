@@ -93,7 +93,7 @@ const CardHome = () => {
             <div className="flex justify-center mb-6">
               <motion.img
                 src={logo}
-                alt="1Tap"
+                alt="CardSurgery"
                 className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44"
                 animate={{
                   y: [0, -10, 0],
@@ -146,12 +146,7 @@ const CardHome = () => {
               <Button
                 size="lg"
                 onClick={() => scrollTo("contact")}
-                className="text-lg px-8 py-6 rounded-full group"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(210,100%,60%), hsl(210,100%,50%))",
-                  boxShadow: "0 0 40px hsla(210,100%,55%,0.4)",
-                }}
+                className="text-lg px-8 py-6 rounded-full group glossy-btn text-accent-foreground border-0"
               >
                 <Sparkles className="w-5 h-5 mr-2" />
                 {t("heroCtaPrimary")}
@@ -352,14 +347,9 @@ const CardHome = () => {
             <Button
               size="lg"
               asChild
-              className="text-lg px-8 py-6 rounded-full"
-              style={{
-                background:
-                  "linear-gradient(135deg, hsl(210,100%,60%), hsl(210,100%,50%))",
-                boxShadow: "0 0 40px hsla(210,100%,55%,0.4)",
-              }}
+              className="text-lg px-8 py-6 rounded-full glossy-btn text-accent-foreground border-0"
             >
-              <a href="mailto:contact@1tap-restoration.com">
+              <a href="mailto:contact@cardsurgery.com">
                 <Mail className="w-5 h-5 mr-2" />
                 {t("ctaButton")}
               </a>
@@ -367,10 +357,10 @@ const CardHome = () => {
             <p className="text-sm text-muted-foreground mt-6">
               {t("ctaContact")}{" "}
               <a
-                href="mailto:contact@1tap-restoration.com"
+                href="mailto:contact@cardsurgery.com"
                 className="text-primary hover:underline"
               >
-                contact@1tap-restoration.com
+                contact@cardsurgery.com
               </a>
             </p>
           </Card>

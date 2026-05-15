@@ -62,10 +62,10 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Button
               size="sm"
-              className="hidden md:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground"
+              className="hidden md:inline-flex glossy-btn text-accent-foreground border-0"
               onClick={() => navigate("/diagnostic")}
             >
-              Expertiser ma carte
+              Estimer ma carte
             </Button>
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -87,13 +87,13 @@ const Navbar = () => {
                     </Link>
                   ))}
                   <Button
-                    className="mt-4 bg-accent hover:bg-accent/90 text-accent-foreground"
+                    className="mt-4 glossy-btn text-accent-foreground border-0"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       navigate("/diagnostic");
                     }}
                   >
-                    Expertiser ma carte
+                    Estimer ma carte
                   </Button>
                 </div>
               </SheetContent>

@@ -13,7 +13,7 @@ export function pickLang(raw: string | undefined): Lang {
 type C = Record<Lang, string>;
 
 export const copy = {
-  brand: { fr: "1Tap", en: "1Tap", es: "1Tap", ru: "1Tap", zh: "1Tap" } satisfies C,
+  brand: { fr: "CardSurgery", en: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
 
   // Hero
   heroEyebrow: {
@@ -24,11 +24,11 @@ export const copy = {
     zh: "专业收藏卡牌修复",
   } satisfies C,
   heroTitle: {
-    fr: "1Tap : la précision au service de vos collections.",
-    en: "1Tap: precision at the service of your collection.",
-    es: "1Tap: la precisión al servicio de tus colecciones.",
-    ru: "1Tap: точность на службе вашей коллекции.",
-    zh: "1Tap：以精准守护你的珍藏。",
+    fr: "L'art de la chirurgie appliqué à vos cartes.",
+    en: "The art of surgery applied to your cards.",
+    es: "El arte de la cirugía aplicado a tus cartas.",
+    ru: "Искусство хирургии для ваших карт.",
+    zh: "以外科精准之艺，呵护每一张珍藏。",
   } satisfies C,
   heroSubtitle: {
     fr: "Redonnez vie à vos cartes en un seul geste maîtrisé. Pokémon, One Piece, Magic, Yu-Gi-Oh et autres TCG.",
@@ -38,11 +38,11 @@ export const copy = {
     zh: "一次精准的处理，让卡牌焕然一新。涵盖 Pokémon、One Piece、Magic、Yu-Gi-Oh 等集换式卡牌。",
   } satisfies C,
   heroCtaPrimary: {
-    fr: "Lancer ma restauration",
-    en: "Start my restoration",
-    es: "Iniciar mi restauración",
-    ru: "Начать реставрацию",
-    zh: "开始我的修复",
+    fr: "Estimer ma carte",
+    en: "Estimate my card",
+    es: "Estimar mi carta",
+    ru: "Оценить мою карту",
+    zh: "估价我的卡牌",
   } satisfies C,
   heroCtaSecondary: {
     fr: "Expertiser ma carte",
