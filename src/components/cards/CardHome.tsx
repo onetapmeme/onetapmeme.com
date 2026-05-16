@@ -252,7 +252,7 @@ const CardHome = () => {
                     <Card className="glass-effect p-6 rounded-2xl border-primary/20 max-w-md w-full">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                          Étape {i + 1}
+                          {t("stepLabel")} {i + 1}
                         </span>
                       </div>
                       <h3 className="text-xl font-bold mb-2 text-foreground">{s.title}</h3>
