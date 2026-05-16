@@ -155,7 +155,7 @@ const Pricing = () => {
 
           <p className="text-center text-xs text-muted-foreground mt-10 max-w-3xl mx-auto">
             Les tarifs s'entendent par carte, hors frais de retour. Forfaits indicatifs : un devis personnalisé
-            est établi après le diagnostic. La technologie 1Tap désigne le geste de précision réalisé par notre
+            est établi après le diagnostic. La technologie CardSurgery désigne le geste de précision réalisé par notre
             expert restaurateur. Nous garantissons l'esthétique mais le grade final dépend exclusivement des
             organismes de certification.
           </p>

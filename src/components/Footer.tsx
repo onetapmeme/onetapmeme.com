@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   const company = [
-    { label: "Pourquoi 1Tap", to: "/home#why" },
+    { label: "Pourquoi CardSurgery", to: "/home#why" },
     { label: "Notre processus", to: "/home#process" },
     { label: "FAQ", to: "/faq" },
     { label: "Contact", to: "/home#contact" },
@@ -38,7 +38,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-sm text-muted-foreground italic">
-              "1Tap — la précision du geste unique."
+              "CardSurgery — la précision du geste unique."
             </p>
             <p className="text-xs text-muted-foreground mt-3">
               Restauration premium de cartes de collection : Pokémon, One Piece, Lorcana, Magic, Yu-Gi-Oh.

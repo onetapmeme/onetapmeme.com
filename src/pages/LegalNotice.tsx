@@ -44,7 +44,7 @@ const LegalNotice = () => {
               <div className="space-y-3 text-foreground/80">
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">{t('legalNotice.projectInfo.name')}:</span>
-                  <span>1TAP</span>
+                  <span>CardSurgery</span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
                   <span className="font-bold min-w-[180px]">{t('legalNotice.projectInfo.nature')}:</span>

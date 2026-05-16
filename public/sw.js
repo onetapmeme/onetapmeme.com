@@ -1,4 +1,4 @@
-// $1TAP Push Notification Service Worker
+// CardSurgery Push Notification Service Worker
 
 self.addEventListener('install', (event) => {
   console.log('[SW] Installing service worker...');
@@ -22,7 +22,7 @@ self.addEventListener('push', (event) => {
     const data = event.data.json();
     
     const options = {
-      body: data.body || 'New notification from $1TAP',
+      body: data.body || 'New notification from CardSurgery',
       icon: data.icon || 'https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png',
       badge: 'https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png',
       vibrate: [100, 50, 100],
@@ -41,14 +41,14 @@ self.addEventListener('push', (event) => {
     };
 
     event.waitUntil(
-      self.registration.showNotification(data.title || '$1TAP Alert', options)
+      self.registration.showNotification(data.title || 'CardSurgery Alert', options)
     );
   } catch (error) {
     console.error('[SW] Error processing push event:', error);
     
     // Fallback notification
     event.waitUntil(
-      self.registration.showNotification('$1TAP', {
+      self.registration.showNotification('CardSurgery', {
         body: event.data.text() || 'New notification',
         icon: 'https://storage.googleapis.com/gpt-engineer-file-uploads/bzha1MKxKTbCseyWzTBWNn1IviE2/uploads/1760711243340-onetap_new_logo.png',
       })

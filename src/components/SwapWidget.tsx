@@ -20,7 +20,7 @@ const SwapWidget = () => {
     script.onload = () => {
       if (window.OneInchWidget && widgetRef.current) {
         window.OneInchWidget.render(widgetRef.current, {
-          tokenAddress: '0x...', // TODO: Replace with actual $1TAP contract address
+          tokenAddress: '0x...', // TODO: Replace with actual CardSurgery contract address
           colorScheme: 'dark',
           chainId: 8453, // Base Network
           theme: 'dark',

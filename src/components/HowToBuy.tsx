@@ -66,14 +66,14 @@ const steps = [
   },
   {
     id: 4,
-    title: "Buy $1TAP",
-    description: "Swap your ETH for $1TAP on Uniswap",
+    title: "Buy CardSurgery",
+    description: "Swap your ETH for CardSurgery on Uniswap",
     icon: ShoppingCart,
     color: "from-green-500 to-emerald-500",
     details: [
       "Go to Uniswap and connect your wallet",
       "Select Base network",
-      "Paste the $1TAP contract address",
+      "Paste the CardSurgery contract address",
       "Set slippage to 3-5% and swap!",
     ],
     contractAddress: "0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8",
@@ -117,10 +117,10 @@ const HowToBuy = () => {
             BEGINNER FRIENDLY
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            How to Buy $1TAP
+            How to Buy CardSurgery
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Follow these simple steps to get your $1TAP tokens in just 5 minutes
+            Follow these simple steps to get your CardSurgery tokens in just 5 minutes
           </p>
         </motion.div>
 

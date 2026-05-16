@@ -103,7 +103,7 @@ const Whitepaper = () => {
                   <ul className="space-y-2 text-muted-foreground">
                     <li>• Total Supply: 1,000,000,000 $ONETAP</li>
                     <li>• Network: Base (Ethereum L2)</li>
-                    <li>• Symbol: $1TAP</li>
+                    <li>• Symbol: CardSurgery</li>
                     <li>• Decimals: 18</li>
                   </ul>
                 </div>

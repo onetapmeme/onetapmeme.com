@@ -54,7 +54,7 @@ const ReferralDashboard = () => {
       name: 'Starter',
       description: 'Parrainez votre premier ami',
       requirement: 1,
-      reward: '100 $1TAP',
+      reward: '100 CardSurgery',
       icon: <Star className="w-5 h-5" />,
       achieved: stats.totalReferrals >= 1
     },
@@ -63,7 +63,7 @@ const ReferralDashboard = () => {
       name: 'Ambassador',
       description: 'Parrainez 5 amis',
       requirement: 5,
-      reward: '500 $1TAP + NFT Badge',
+      reward: '500 CardSurgery + NFT Badge',
       icon: <Award className="w-5 h-5" />,
       achieved: stats.totalReferrals >= 5
     },
@@ -72,7 +72,7 @@ const ReferralDashboard = () => {
       name: 'Influencer',
       description: 'Parrainez 25 amis',
       requirement: 25,
-      reward: '2,500 $1TAP + Whitelist',
+      reward: '2,500 CardSurgery + Whitelist',
       icon: <Medal className="w-5 h-5" />,
       achieved: stats.totalReferrals >= 25
     },
@@ -81,7 +81,7 @@ const ReferralDashboard = () => {
       name: 'Legend',
       description: 'Parrainez 100 amis',
       requirement: 100,
-      reward: '10,000 $1TAP + VIP Access',
+      reward: '10,000 CardSurgery + VIP Access',
       icon: <Crown className="w-5 h-5" />,
       achieved: stats.totalReferrals >= 100
     }
@@ -104,7 +104,7 @@ const ReferralDashboard = () => {
   }, []);
 
   const generateReferralCode = (wallet: string) => {
-    const code = `1TAP-${wallet.slice(2, 6).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+    const code = `CardSurgery-${wallet.slice(2, 6).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
     setReferralCode(code);
   };
 
@@ -199,12 +199,12 @@ const ReferralDashboard = () => {
   };
 
   const shareOnTwitter = () => {
-    const text = encodeURIComponent(`🚀 Rejoignez la révolution $1TAP! Utilisez mon lien de parrainage pour des bonus exclusifs! 🎁\n\n${getReferralLink()}\n\n#OneTap #Crypto #Meme`);
+    const text = encodeURIComponent(`🚀 Rejoignez la révolution CardSurgery! Utilisez mon lien de parrainage pour des bonus exclusifs! 🎁\n\n${getReferralLink()}\n\n#OneTap #Crypto #Meme`);
     window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
   };
 
   const shareOnTelegram = () => {
-    const text = encodeURIComponent(`🚀 Rejoignez la révolution $1TAP! Utilisez mon lien de parrainage pour des bonus exclusifs! 🎁`);
+    const text = encodeURIComponent(`🚀 Rejoignez la révolution CardSurgery! Utilisez mon lien de parrainage pour des bonus exclusifs! 🎁`);
     const url = encodeURIComponent(getReferralLink());
     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
   };
@@ -259,7 +259,7 @@ const ReferralDashboard = () => {
             Parrainez & <span className="text-primary">Gagnez</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Invitez vos amis et gagnez jusqu'à 10% de leurs transactions en récompenses $1TAP
+            Invitez vos amis et gagnez jusqu'à 10% de leurs transactions en récompenses CardSurgery
           </p>
         </motion.div>
 
@@ -306,7 +306,7 @@ const ReferralDashboard = () => {
                   <CardContent className="p-4 text-center">
                     <Gift className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
                     <p className="text-2xl font-bold">{formatNumber(stats.rewardsEarned)}</p>
-                    <p className="text-xs text-muted-foreground">$1TAP Gagnés</p>
+                    <p className="text-xs text-muted-foreground">CardSurgery Gagnés</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -487,7 +487,7 @@ const ReferralDashboard = () => {
                         </div>
                         <div className="text-right">
                           <p className="font-bold text-primary">{formatNumber(entry.rewards)}</p>
-                          <p className="text-xs text-muted-foreground">$1TAP</p>
+                          <p className="text-xs text-muted-foreground">CardSurgery</p>
                         </div>
                       </motion.div>
                     ))
@@ -506,7 +506,7 @@ const ReferralDashboard = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-5 h-5 rounded-full bg-primary/20 text-primary text-xs flex items-center justify-center flex-shrink-0">2</span>
-                      Vos amis achètent $1TAP
+                      Vos amis achètent CardSurgery
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-5 h-5 rounded-full bg-primary/20 text-primary text-xs flex items-center justify-center flex-shrink-0">3</span>

@@ -1,4 +1,4 @@
-// Multilingual copy for the "1Tap — Card Restoration" homepage.
+// Multilingual copy for the "CardSurgery — Card Restoration" homepage.
 // Keys are kept flat so each section component can read its own slice.
 
 export type Lang = "fr" | "en" | "es" | "ru" | "zh";
@@ -75,11 +75,11 @@ export const copy = {
 
   // About / Storytelling
   aboutTitle: {
-    fr: "Pourquoi 1Tap ?",
-    en: "Why 1Tap?",
-    es: "¿Por qué 1Tap?",
-    ru: "Почему 1Tap?",
-    zh: "为什么是 1Tap？",
+    fr: "Pourquoi CardSurgery ?",
+    en: "Why CardSurgery?",
+    es: "¿Por qué CardSurgery?",
+    ru: "Почему CardSurgery?",
+    zh: "为什么是 CardSurgery？",
   } satisfies C,
   aboutP1: {
     fr: "Parce que dans le monde du collectionnable, la différence entre une carte abîmée et une carte de valeur se joue à un détail près : un impact, une rayure, un geste.",
@@ -89,11 +89,11 @@ export const copy = {
     zh: "因为在收藏领域，一张受损卡与一张珍品之间的差别，往往就在一个细节：一次撞击、一道划痕、一个动作。",
   } satisfies C,
   aboutP2: {
-    fr: "1Tap symbolise la précision chirurgicale de notre intervention. Un seul geste expert, une seule pression maîtrisée pour effacer les marques du temps et redonner à vos trésors leur éclat d'origine.",
-    en: "1Tap stands for the surgical precision of our craft. A single expert gesture, a single controlled press to erase the marks of time and bring your treasures back to their original brilliance.",
-    es: "1Tap simboliza la precisión quirúrgica de nuestra intervención. Un solo gesto experto, una sola presión controlada para borrar las huellas del tiempo y devolverle a tus tesoros su brillo original.",
-    ru: "1Tap — это хирургическая точность нашей работы. Одно выверенное движение, одно контролируемое прикосновение, чтобы стереть следы времени и вернуть вашим сокровищам первоначальный блеск.",
-    zh: "1Tap 象征着我们如外科手术般的精准。一次专业的手势，一次受控的按压，抹去岁月痕迹，让你的珍藏重现原本光彩。",
+    fr: "CardSurgery symbolise la précision chirurgicale de notre intervention. Un seul geste expert, une seule pression maîtrisée pour effacer les marques du temps et redonner à vos trésors leur éclat d'origine.",
+    en: "CardSurgery stands for the surgical precision of our craft. A single expert gesture, a single controlled press to erase the marks of time and bring your treasures back to their original brilliance.",
+    es: "CardSurgery simboliza la precisión quirúrgica de nuestra intervención. Un solo gesto experto, una sola presión controlada para borrar las huellas del tiempo y devolverle a tus tesoros su brillo original.",
+    ru: "CardSurgery — это хирургическая точность нашей работы. Одно выверенное движение, одно контролируемое прикосновение, чтобы стереть следы времени и вернуть вашим сокровищам первоначальный блеск.",
+    zh: "CardSurgery 象征着我们如外科手术般的精准。一次专业的手势，一次受控的按压，抹去岁月痕迹，让你的珍藏重现原本光彩。",
   } satisfies C,
 
   // Services
@@ -204,11 +204,11 @@ export const copy = {
   } satisfies C,
 
   step2Title: {
-    fr: "Diagnostic 1Tap",
-    en: "1Tap diagnosis",
-    es: "Diagnóstico 1Tap",
-    ru: "Диагностика 1Tap",
-    zh: "1Tap 诊断",
+    fr: "Diagnostic CardSurgery",
+    en: "CardSurgery diagnosis",
+    es: "Diagnóstico CardSurgery",
+    ru: "Диагностика CardSurgery",
+    zh: "CardSurgery 诊断",
   } satisfies C,
   step2Desc: {
     fr: "Expertise du défaut sous lumière contrôlée, devis transparent et sans engagement.",
@@ -359,11 +359,11 @@ export const copy = {
     zh: "准备好让你的收藏焕新了吗？",
   } satisfies C,
   ctaDesc: {
-    fr: "Demandez votre diagnostic 1Tap gratuit. Réponse sous 24 h ouvrées.",
-    en: "Request your free 1Tap diagnosis. Reply within 24 working hours.",
-    es: "Solicita tu diagnóstico 1Tap gratuito. Respuesta en 24 h laborables.",
-    ru: "Запросите бесплатную диагностику 1Tap. Ответ в течение 24 рабочих часов.",
-    zh: "立即获取免费 1Tap 诊断，24 个工作小时内回复。",
+    fr: "Demandez votre diagnostic CardSurgery gratuit. Réponse sous 24 h ouvrées.",
+    en: "Request your free CardSurgery diagnosis. Reply within 24 working hours.",
+    es: "Solicita tu diagnóstico CardSurgery gratuito. Respuesta en 24 h laborables.",
+    ru: "Запросите бесплатную диагностику CardSurgery. Ответ в течение 24 рабочих часов.",
+    zh: "立即获取免费 CardSurgery 诊断，24 个工作小时内回复。",
   } satisfies C,
   ctaButton: {
     fr: "Lancer ma restauration",
@@ -383,7 +383,7 @@ export const copy = {
   // Section anchors / nav
   navServices: { fr: "Services", en: "Services", es: "Servicios", ru: "Услуги", zh: "服务" } satisfies C,
   navProcess: { fr: "Processus", en: "Process", es: "Proceso", ru: "Процесс", zh: "流程" } satisfies C,
-  navWhy: { fr: "Pourquoi 1Tap", en: "Why 1Tap", es: "Por qué 1Tap", ru: "Почему 1Tap", zh: "关于 1Tap" } satisfies C,
+  navWhy: { fr: "Pourquoi CardSurgery", en: "Why CardSurgery", es: "Por qué CardSurgery", ru: "Почему CardSurgery", zh: "关于 CardSurgery" } satisfies C,
   navFaq: { fr: "FAQ", en: "FAQ", es: "FAQ", ru: "FAQ", zh: "常见问题" } satisfies C,
   navContact: { fr: "Contact", en: "Contact", es: "Contacto", ru: "Контакты", zh: "联系" } satisfies C,
   login: { fr: "Connexion", en: "Login", es: "Acceder", ru: "Войти", zh: "登录" } satisfies C,
