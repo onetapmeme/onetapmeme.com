@@ -37,6 +37,20 @@ export const copy = {
     ru: "Верните карты к жизни одним выверенным движением. Pokémon, One Piece, Magic, Yu-Gi-Oh и другие ККИ.",
     zh: "一次精准的处理，让卡牌焕然一新。涵盖 Pokémon、One Piece、Magic、Yu-Gi-Oh 等集换式卡牌。",
   } satisfies C,
+  heroTagline: {
+    fr: "La précision chirurgicale dont vos précieuses cartes ont besoin.",
+    en: "The surgical precision your precious cards deserve.",
+    es: "La precisión quirúrgica que tus preciadas cartas merecen.",
+    ru: "Хирургическая точность, которой заслуживают ваши драгоценные карты.",
+    zh: "为您珍贵卡牌应得的外科级精准。",
+  } satisfies C,
+  heroBadgeSaved: {
+    fr: "+{count} cartes déjà sauvées par nos experts",
+    en: "+{count} cards already saved by our experts",
+    es: "+{count} cartas ya salvadas por nuestros expertos",
+    ru: "Уже спасено +{count} карт нашими экспертами",
+    zh: "我们的专家已挽救 +{count} 张卡牌",
+  } satisfies C,
   heroCtaPrimary: {
     fr: "Débuter une opération de restauration",
     en: "Start a restoration operation",
