@@ -1,19 +1,11 @@
-import { ArrowLeft, Building2, Mail, Server } from "lucide-react";
+import { ArrowLeft, Building2, Mail, Server, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 
 const LegalNotice = () => {
-  const { t, i18n } = useTranslation();
-  
-  const formatDate = () => {
-    const locale = i18n.language === 'zh' ? 'zh-CN' : 
-                   i18n.language === 'ru' ? 'ru-RU' : 
-                   i18n.language === 'es' ? 'es-ES' : 
-                   i18n.language === 'fr' ? 'fr-FR' : 'en-US';
-    return new Date().toLocaleDateString(locale, { month: 'long', year: 'numeric' });
-  };
+  const formatDate = () =>
+    new Date().toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
 
   return (
     <div className="min-h-screen bg-background py-12 px-4">
@@ -21,42 +13,43 @@ const LegalNotice = () => {
         <Link to="/">
           <Button variant="ghost" className="mb-8">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('legal.backHome')}
+            Retour à l'accueil
           </Button>
         </Link>
 
         <Card className="p-8 md:p-12 bg-card border-2 border-primary/30">
           <div className="flex items-center gap-3 mb-6">
             <Building2 className="w-8 h-8 text-primary" />
-            <h1 className="text-4xl font-bold text-foreground">{t('legalNotice.title')}</h1>
+            <h1 className="text-4xl font-bold text-foreground">Mentions légales</h1>
           </div>
 
           <div className="space-y-6 text-foreground/90">
             <p className="text-lg leading-relaxed">
-              {t('legalNotice.intro')}
+              Les présentes mentions légales s'appliquent au site CardSurgery, laboratoire
+              français spécialisé dans la restauration et la préservation esthétique de cartes
+              de collection (TCG).
             </p>
 
             <div className="pt-6 border-t border-border">
               <h2 className="text-2xl font-bold mb-4 text-foreground flex items-center gap-2">
                 <Building2 className="w-6 h-6 text-primary" />
-                {t('legalNotice.projectInfo.title')}
+                Éditeur du site
               </h2>
               <div className="space-y-3 text-foreground/80">
                 <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.projectInfo.name')}:</span>
+                  <span className="font-bold min-w-[200px]">Nom commercial :</span>
                   <span>CardSurgery</span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.projectInfo.nature')}:</span>
-                  <span>{t('legalNotice.projectInfo.natureValue')}</span>
+                  <span className="font-bold min-w-[200px]">Activité :</span>
+                  <span>
+                    Restauration, nettoyage et préservation esthétique de cartes à collectionner
+                    (Pokémon, One Piece, Lorcana, Magic, Yu-Gi-Oh et autres TCG).
+                  </span>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.projectInfo.network')}:</span>
-                  <span>Base (Layer 2 Ethereum)</span>
-                </div>
-                <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.projectInfo.tokenStandard')}:</span>
-                  <span>ERC-20</span>
+                  <span className="font-bold min-w-[200px]">Pays :</span>
+                  <span>France</span>
                 </div>
               </div>
             </div>
@@ -64,16 +57,25 @@ const LegalNotice = () => {
             <div className="pt-6 border-t border-border">
               <h2 className="text-2xl font-bold mb-4 text-foreground flex items-center gap-2">
                 <Mail className="w-6 h-6 text-primary" />
-                {t('legalNotice.contact.title')}
+                Contact
               </h2>
               <div className="space-y-3 text-foreground/80">
                 <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.contact.email')}:</span>
-                  <span>contactonetapmeme@gmail.com</span>
+                  <span className="font-bold min-w-[200px]">Email :</span>
+                  <a href="mailto:contact@cardsurgery.com" className="text-primary hover:underline">
+                    contact@cardsurgery.com
+                  </a>
                 </div>
-                <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.contact.community')}:</span>
-                  <span>{t('legalNotice.contact.communityValue')}</span>
+                <div className="flex flex-col md:flex-row gap-2 items-center">
+                  <span className="font-bold min-w-[200px]">Instagram :</span>
+                  <a
+                    href="https://www.instagram.com/card_surgery/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline inline-flex items-center gap-1"
+                  >
+                    <Instagram className="w-4 h-4" /> @card_surgery
+                  </a>
                 </div>
               </div>
             </div>
@@ -81,89 +83,47 @@ const LegalNotice = () => {
             <div className="pt-6 border-t border-border">
               <h2 className="text-2xl font-bold mb-4 text-foreground flex items-center gap-2">
                 <Server className="w-6 h-6 text-primary" />
-                {t('legalNotice.hosting.title')}
+                Hébergement
               </h2>
-              <div className="space-y-3 text-foreground/80">
-                <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.hosting.provider')}:</span>
-                  <span>IONOS by 1&1 (DDoS Protection)</span>
-                </div>
-                <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.hosting.registrar')}:</span>
-                  <span>IONOS SE</span>
-                </div>
-                <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.hosting.domain')}:</span>
-                  <span>onetapmeme.com</span>
-                </div>
-                <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.hosting.ssl')}:</span>
-                  <span>Sectigo Wildcard SSL</span>
-                </div>
-                <div className="flex flex-col md:flex-row gap-2">
-                  <span className="font-bold min-w-[180px]">{t('legalNotice.hosting.security')}:</span>
-                  <span>{t('legalNotice.hosting.securityValue')}</span>
-                </div>
-              </div>
+              <p className="text-foreground/80">
+                Le site est hébergé par un prestataire technique européen conforme au RGPD.
+                Les données techniques sont traitées au sein de l'Union européenne.
+              </p>
             </div>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('legalNotice.legalStatus.title')}</h2>
-              <div className="bg-primary/10 border-l-4 border-primary p-4 rounded mb-4">
-                <p className="font-bold text-primary mb-2">{t('legalNotice.legalStatus.classification')}</p>
-                <p className="text-foreground/80">
-                  {t('legalNotice.legalStatus.description')}
-                </p>
-                <ul className="mt-3 space-y-1 ml-4">
-                  <li>• {t('legalNotice.legalStatus.item1')}</li>
-                  <li>• {t('legalNotice.legalStatus.item2')}</li>
-                  <li>• {t('legalNotice.legalStatus.item3')}</li>
-                  <li>• {t('legalNotice.legalStatus.item4')}</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('legalNotice.intellectualProperty.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">Propriété intellectuelle</h2>
               <p className="text-foreground/80 mb-4">
-                {t('legalNotice.intellectualProperty.description')}
+                L'ensemble des contenus présents sur ce site (textes, identité visuelle, logo,
+                photographies de restauration) est la propriété exclusive de CardSurgery, sauf
+                mention contraire. Toute reproduction est interdite sans autorisation écrite.
               </p>
               <div className="bg-destructive/10 border-l-4 border-destructive p-4 rounded">
-                <p className="font-bold text-destructive mb-2">{t('legalNotice.intellectualProperty.thirdParty')}</p>
+                <p className="font-bold text-destructive mb-2">Marques tierces</p>
                 <p className="text-foreground/80">
-                  {t('legalNotice.intellectualProperty.thirdPartyDesc')}{' '}
-                  <Link to="/non-affiliation" className="text-primary hover:underline">{t('legalNotice.intellectualProperty.seeNotice')}</Link>
+                  CardSurgery est un service totalement indépendant. Pokémon™, One Piece™,
+                  Lorcana™, Magic: The Gathering™, Yu-Gi-Oh!™ et toutes les marques associées
+                  appartiennent à leurs propriétaires respectifs (Nintendo, The Pokémon Company,
+                  Bandai, Disney, Wizards of the Coast, Konami).{" "}
+                  <Link to="/non-affiliation" className="text-primary hover:underline">
+                    Voir la mention de non-affiliation
+                  </Link>
+                  .
                 </p>
               </div>
             </div>
 
             <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('legalNotice.regulatory.title')}</h2>
-              <div className="space-y-3 text-foreground/80">
-                <p>
-                  <strong>{t('legalNotice.regulatory.noKyc')}:</strong> {t('legalNotice.regulatory.noKycDesc')}
-                </p>
-                <p>
-                  <strong>{t('legalNotice.regulatory.aml')}:</strong> {t('legalNotice.regulatory.amlDesc')}
-                </p>
-                <p>
-                  <strong>{t('legalNotice.regulatory.tax')}:</strong> {t('legalNotice.regulatory.taxDesc')}
-                </p>
-                <p>
-                  <strong>{t('legalNotice.regulatory.geo')}:</strong> {t('legalNotice.regulatory.geoDesc')}
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-border">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">{t('legalNotice.dispute.title')}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-foreground">Litiges</h2>
               <p className="text-foreground/80">
-                {t('legalNotice.dispute.description')}
+                Tout litige relatif à l'utilisation du site ou aux prestations de restauration est
+                soumis au droit français. À défaut d'accord amiable, les tribunaux français seront
+                seuls compétents.
               </p>
             </div>
 
             <div className="text-sm text-muted-foreground pt-6 border-t border-border">
-              {t('legal.lastUpdated')}: {formatDate()}
+              Dernière mise à jour : {formatDate()}
             </div>
           </div>
         </Card>
