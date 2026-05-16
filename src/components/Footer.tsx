@@ -23,8 +23,7 @@ const Footer = () => {
     { label: "Mentions légales", to: "/legal-notice" },
     { label: "CGV", to: "/terms" },
     { label: "Confidentialité", to: "/privacy" },
-    { label: "Disclaimer", to: "/disclaimer" },
-    { label: "Non-affiliation", to: "/non-affiliation" },
+    { label: "Disclaimer & Non-affiliation", to: "/non-affiliation" },
   ];
 
   return (
