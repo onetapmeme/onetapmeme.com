@@ -120,7 +120,7 @@ const CardHome = () => {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/90 mb-4 max-w-3xl mx-auto">
-              La précision chirurgicale dont vos précieuses cartes ont besoin.
+              {t("heroTagline")}
             </p>
 
             <p className="text-base sm:text-lg text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
