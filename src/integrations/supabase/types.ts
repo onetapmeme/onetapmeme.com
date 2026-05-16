@@ -179,6 +179,69 @@ export type Database = {
         }
         Relationships: []
       }
+      dossiers: {
+        Row: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          photos: Json
+          ref: string
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          card_name?: string | null
+          cares?: Json
+          created_at?: string
+          defects?: string | null
+          email: string
+          estimated_value?: string | null
+          id?: string
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          photos?: Json
+          ref: string
+          status?: Database["public"]["Enums"]["dossier_status"]
+          tcg?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          card_name?: string | null
+          cares?: Json
+          created_at?: string
+          defects?: string | null
+          email?: string
+          estimated_value?: string | null
+          id?: string
+          name?: string
+          pack?: string
+          pack_label?: string
+          pack_price?: string
+          photos?: Json
+          ref?: string
+          status?: Database["public"]["Enums"]["dossier_status"]
+          tcg?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       launch_config: {
         Row: {
           audit_auditor: string | null
@@ -791,12 +854,119 @@ export type Database = {
         }
         Returns: string
       }
+      admin_list_dossiers: {
+        Args: { status_filter?: string }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          photos: Json
+          ref: string
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      admin_update_dossier_status: {
+        Args: {
+          notes_param?: string
+          ref_param: string
+          status_param: Database["public"]["Enums"]["dossier_status"]
+        }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          photos: Json
+          ref: string
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
       calculate_level: { Args: { xp: number }; Returns: number }
       claim_quest_reward: { Args: { quest_id_param: string }; Returns: number }
       cleanup_expired_manifesto_tokens: { Args: never; Returns: undefined }
       complete_daily_quest: {
         Args: { progress_value?: number; quest_id_param: string }
         Returns: boolean
+      }
+      confirm_dossier_payment: {
+        Args: { ref_param: string }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          photos: Json
+          ref: string
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      create_dossier: {
+        Args: {
+          card_name_param: string
+          cares_param: Json
+          defects_param: string
+          email_param: string
+          estimated_value_param: string
+          name_param: string
+          pack_label_param: string
+          pack_param: string
+          pack_price_param: string
+          photos_param: Json
+          tcg_param: string
+        }
+        Returns: string
       }
       create_meme_with_validation: {
         Args: {
@@ -823,6 +993,35 @@ export type Database = {
           referrer_wallet_param: string
         }
         Returns: string
+      }
+      get_dossier_by_ref: {
+        Args: { ref_param: string }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          photos: Json
+          ref: string
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
       }
       get_leaderboard_stats: {
         Args: { limit_count?: number }
@@ -920,6 +1119,14 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      dossier_status:
+        | "pending_review"
+        | "approved"
+        | "rejected"
+        | "paid"
+        | "received"
+        | "in_surgery"
+        | "shipped"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1048,6 +1255,15 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      dossier_status: [
+        "pending_review",
+        "approved",
+        "rejected",
+        "paid",
+        "received",
+        "in_surgery",
+        "shipped",
+      ],
     },
   },
 } as const

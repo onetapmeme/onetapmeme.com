@@ -1,20 +1,24 @@
-// Local-only dossier registry (demo / pre-backend). Persists in localStorage so
-// a freshly submitted diagnostic can be retrieved on the Tracking page.
+// Server-backed dossier helpers. All persistence is in Supabase; this module
+// only wraps the RPCs / storage uploads to keep call sites tidy.
+
+import { supabase } from "@/integrations/supabase/client";
 
 export type DossierStatus =
-  | "pending_review"   // diagnostic envoyé, en attente d'évaluation par l'équipe
-  | "approved"         // diagnostic validé, paiement requis
-  | "rejected"         // diagnostic refusé
-  | "paid"             // paiement effectué, en attente d'expédition par le client
-  | "received"         // colis reçu en atelier
-  | "in_surgery"       // intervention en cours
-  | "shipped";         // renvoyé
+  | "pending_review"
+  | "approved"
+  | "rejected"
+  | "paid"
+  | "received"
+  | "in_surgery"
+  | "shipped";
+
+export interface DossierPhoto { slot: string; url: string; }
 
 export interface Dossier {
   ref: string;
-  pack: string;          // ex: "clean" | "pro" | "full"
-  packLabel: string;     // libellé affichage
-  packPrice: string;     // ex: "39 €"
+  pack: string;
+  packLabel: string;
+  packPrice: string;
   cardName?: string;
   tcg?: string;
   estimatedValue?: string;
@@ -22,64 +26,11 @@ export interface Dossier {
   defects?: string;
   email: string;
   name: string;
+  photos: DossierPhoto[];
+  status: DossierStatus;
+  adminNotes?: string | null;
   createdAt: string;
   updatedAt: string;
-  status: DossierStatus;
-}
-
-const KEY = "cardsurgery_dossiers";
-
-function readAll(): Record<string, Dossier> {
-  try {
-    return JSON.parse(localStorage.getItem(KEY) || "{}");
-  } catch {
-    return {};
-  }
-}
-
-function writeAll(d: Record<string, Dossier>) {
-  localStorage.setItem(KEY, JSON.stringify(d));
-}
-
-export function generateRef(): string {
-  const r = Math.random().toString(36).slice(2, 8).toUpperCase();
-  return `CS-${r}`;
-}
-
-export function createDossier(d: Omit<Dossier, "ref" | "createdAt" | "updatedAt" | "status">): Dossier {
-  const all = readAll();
-  const ref = generateRef();
-  const now = new Date().toISOString();
-  const dossier: Dossier = {
-    ...d,
-    ref,
-    createdAt: now,
-    updatedAt: now,
-    status: "pending_review",
-  };
-  all[ref] = dossier;
-  writeAll(all);
-  return dossier;
-}
-
-export function getDossier(ref: string): Dossier | null {
-  return readAll()[ref.trim().toUpperCase()] || null;
-}
-
-export function updateDossierStatus(ref: string, status: DossierStatus): Dossier | null {
-  const all = readAll();
-  const r = ref.trim().toUpperCase();
-  if (!all[r]) return null;
-  all[r] = { ...all[r], status, updatedAt: new Date().toISOString() };
-  writeAll(all);
-  return all[r];
-}
-
-export function listMyRefs(email?: string): string[] {
-  const all = readAll();
-  const refs = Object.keys(all);
-  if (!email) return refs;
-  return refs.filter((r) => all[r].email.toLowerCase() === email.toLowerCase());
 }
 
 export const PACKS: Record<string, { label: string; price: string; priceCents: number }> = {
@@ -87,3 +38,104 @@ export const PACKS: Record<string, { label: string; price: string; priceCents: n
   pro: { label: "Professional Restoration", price: "39 €", priceCents: 3900 },
   full: { label: "Full Surgery", price: "95 €", priceCents: 9500 },
 };
+
+function mapRow(r: any): Dossier {
+  return {
+    ref: r.ref,
+    pack: r.pack,
+    packLabel: r.pack_label,
+    packPrice: r.pack_price,
+    cardName: r.card_name ?? undefined,
+    tcg: r.tcg ?? undefined,
+    estimatedValue: r.estimated_value ?? undefined,
+    cares: r.cares ?? [],
+    defects: r.defects ?? undefined,
+    email: r.email,
+    name: r.name,
+    photos: r.photos ?? [],
+    status: r.status,
+    adminNotes: r.admin_notes ?? null,
+    createdAt: r.created_at,
+    updatedAt: r.updated_at,
+  };
+}
+
+export async function uploadDossierPhoto(file: File, slot: string): Promise<DossierPhoto> {
+  const ext = file.name.split(".").pop() || "jpg";
+  const path = `${crypto.randomUUID()}-${slot}.${ext}`;
+  const { error } = await supabase.storage.from("dossier-photos").upload(path, file, {
+    cacheControl: "3600",
+    upsert: false,
+    contentType: file.type,
+  });
+  if (error) throw error;
+  const { data } = supabase.storage.from("dossier-photos").getPublicUrl(path);
+  return { slot, url: data.publicUrl };
+}
+
+export async function createDossierRemote(input: {
+  email: string; name: string; pack: string;
+  cardName?: string; tcg?: string; estimatedValue?: string;
+  cares: string[]; defects?: string; photos: DossierPhoto[];
+}): Promise<string> {
+  const p = PACKS[input.pack];
+  const { data, error } = await supabase.rpc("create_dossier", {
+    email_param: input.email,
+    name_param: input.name,
+    pack_param: input.pack,
+    pack_label_param: p.label,
+    pack_price_param: p.price,
+    card_name_param: input.cardName ?? null,
+    tcg_param: input.tcg ?? null,
+    estimated_value_param: input.estimatedValue ?? null,
+    cares_param: input.cares as any,
+    defects_param: input.defects ?? null,
+    photos_param: input.photos as any,
+  });
+  if (error) throw error;
+  return data as string;
+}
+
+export async function getDossierRemote(ref: string): Promise<Dossier | null> {
+  const { data, error } = await supabase.rpc("get_dossier_by_ref", {
+    ref_param: ref,
+  });
+  if (error) throw error;
+  if (!data) return null;
+  return mapRow(data);
+}
+
+export async function adminListDossiers(statusFilter?: DossierStatus): Promise<Dossier[]> {
+  const { data, error } = await supabase.rpc("admin_list_dossiers", {
+    status_filter: statusFilter ?? null,
+  });
+  if (error) throw error;
+  return (data ?? []).map(mapRow);
+}
+
+export async function adminUpdateStatus(
+  ref: string, status: DossierStatus, notes?: string,
+): Promise<Dossier> {
+  const { data, error } = await supabase.rpc("admin_update_dossier_status", {
+    ref_param: ref, status_param: status, notes_param: notes ?? null,
+  });
+  if (error) throw error;
+  return mapRow(data);
+}
+
+export async function confirmPayment(ref: string): Promise<Dossier> {
+  const { data, error } = await supabase.rpc("confirm_dossier_payment", { ref_param: ref });
+  if (error) throw error;
+  return mapRow(data);
+}
+
+export async function sendDossierEmail(
+  ref: string,
+  kind: "received" | "approved" | "rejected" | "paid" | "shipped",
+) {
+  try {
+    await supabase.functions.invoke("send-dossier-email", { body: { ref, kind } });
+  } catch (e) {
+    console.warn("send-dossier-email failed", e);
+  }
+}
