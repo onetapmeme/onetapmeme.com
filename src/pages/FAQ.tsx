@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { HelpCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FAQAssistant from "@/components/cards/FAQAssistant";
 import {
   Accordion,
   AccordionContent,
@@ -159,6 +160,8 @@ const FAQ = () => {
               Tout ce que vous devez savoir sur la restauration CardSurgery.
             </p>
           </motion.div>
+
+          <FAQAssistant />
 
           {faqCategories.map((category, categoryIndex) => (
             <motion.div
