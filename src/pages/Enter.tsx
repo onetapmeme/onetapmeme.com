@@ -16,7 +16,7 @@ const Enter = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio("/sounds/explosion.wav");
+    audioRef.current = new Audio("/sounds/enter.wav");
     audioRef.current.preload = "auto";
   }, []);
 
