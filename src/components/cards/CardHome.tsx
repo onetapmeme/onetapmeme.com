@@ -115,17 +115,7 @@ const CardHome = () => {
               {t("heroEyebrow")}
             </p>
 
-            <h1
-              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
-              style={{
-                background:
-                  "linear-gradient(90deg, hsl(210,100%,55%) 0%, hsl(25,100%,55%) 50%, hsl(210,100%,55%) 100%)",
-                backgroundSize: "300% 100%",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "gradient-flow 10s linear infinite",
-              }}
-            >
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
               {t("heroTitle")}
             </h1>
 
