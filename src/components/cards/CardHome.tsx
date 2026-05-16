@@ -164,13 +164,15 @@ const CardHome = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
+                asChild
                 size="lg"
-                onClick={() => scrollTo("contact")}
                 className="text-lg px-8 py-6 rounded-full group glossy-btn text-accent-foreground border-0"
               >
-                <Sparkles className="w-5 h-5 mr-2" />
-                {t("heroCtaPrimary")}
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <a href="/pricing">
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  {t("heroCtaPrimary")}
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
             </div>
           </motion.div>
@@ -363,8 +365,8 @@ const CardHome = () => {
               asChild
               className="text-lg px-8 py-6 rounded-full glossy-btn text-accent-foreground border-0"
             >
-              <a href="mailto:contact@cardsurgery.com">
-                <Mail className="w-5 h-5 mr-2" />
+              <a href="/pricing">
+                <Sparkles className="w-5 h-5 mr-2" />
                 {t("ctaButton")}
               </a>
             </Button>

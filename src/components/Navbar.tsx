@@ -63,9 +63,9 @@ const Navbar = () => {
             <Button
               size="sm"
               className="hidden md:inline-flex glossy-btn text-accent-foreground border-0"
-              onClick={() => navigate("/diagnostic")}
+              onClick={() => navigate("/pricing")}
             >
-              Expertiser ma carte
+              Débuter une opération de restauration
             </Button>
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -90,10 +90,10 @@ const Navbar = () => {
                     className="mt-4 glossy-btn text-accent-foreground border-0"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
-                      navigate("/diagnostic");
+                      navigate("/pricing");
                     }}
                   >
-                    Expertiser ma carte
+                    Débuter une opération de restauration
                   </Button>
                 </div>
               </SheetContent>

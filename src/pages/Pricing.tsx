@@ -127,7 +127,7 @@ const Pricing = () => {
                     }
                     variant={p.highlight ? "default" : "outline"}
                   >
-                    <Link to="/diagnostic">Choisir ce forfait</Link>
+                    <Link to={`/diagnostic?pack=${p.id}`}>Débuter une opération de restauration</Link>
                   </Button>
                 </Card>
               );
