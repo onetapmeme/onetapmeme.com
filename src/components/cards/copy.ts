@@ -37,6 +37,20 @@ export const copy = {
     ru: "Верните карты к жизни одним выверенным движением. Pokémon, One Piece, Magic, Yu-Gi-Oh и другие ККИ.",
     zh: "一次精准的处理，让卡牌焕然一新。涵盖 Pokémon、One Piece、Magic、Yu-Gi-Oh 等集换式卡牌。",
   } satisfies C,
+  heroTagline: {
+    fr: "La précision chirurgicale dont vos précieuses cartes ont besoin.",
+    en: "The surgical precision your precious cards deserve.",
+    es: "La precisión quirúrgica que tus preciadas cartas merecen.",
+    ru: "Хирургическая точность, которой заслуживают ваши драгоценные карты.",
+    zh: "为您珍贵卡牌应得的外科级精准。",
+  } satisfies C,
+  heroBadgeSaved: {
+    fr: "+{count} cartes déjà sauvées par nos experts",
+    en: "+{count} cards already saved by our experts",
+    es: "+{count} cartas ya salvadas por nuestros expertos",
+    ru: "Уже спасено +{count} карт нашими экспертами",
+    zh: "我们的专家已挽救 +{count} 张卡牌",
+  } satisfies C,
   heroCtaPrimary: {
     fr: "Débuter une opération de restauration",
     en: "Start a restoration operation",
@@ -489,6 +503,13 @@ export const copy = {
     ru: "Смета после диагностики. Оплата картой, переводом или PayPal после её утверждения. До согласия с вас ничего не списывается.",
     zh: "诊断后提供报价。报价确认后可用信用卡、银行转账或 PayPal 付款，确认前不收取任何费用。",
   } satisfies C,
+
+  // Navigation labels
+  navGallery: { fr: "Galerie", en: "Gallery", es: "Galería", ru: "Галерея", zh: "画廊" } satisfies C,
+  navDiagnostic: { fr: "Diagnostic", en: "Diagnosis", es: "Diagnóstico", ru: "Диагностика", zh: "诊断" } satisfies C,
+  navBooking: { fr: "Réservation", en: "Booking", es: "Reserva", ru: "Запись", zh: "预约" } satisfies C,
+  navTracking: { fr: "Suivi", en: "Tracking", es: "Seguimiento", ru: "Отслеживание", zh: "跟踪" } satisfies C,
+  stepLabel: { fr: "Étape", en: "Step", es: "Paso", ru: "Шаг", zh: "步骤" } satisfies C,
 } as const;
 
 export type CopyKey = keyof typeof copy;

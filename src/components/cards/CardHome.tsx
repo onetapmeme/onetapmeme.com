@@ -115,22 +115,12 @@ const CardHome = () => {
               {t("heroEyebrow")}
             </p>
 
-            <h1
-              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
-              style={{
-                background:
-                  "linear-gradient(90deg, hsl(210,100%,55%) 0%, hsl(25,100%,55%) 50%, hsl(210,100%,55%) 100%)",
-                backgroundSize: "300% 100%",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "gradient-flow 10s linear infinite",
-              }}
-            >
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
               {t("heroTitle")}
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/90 mb-4 max-w-3xl mx-auto">
-              La précision chirurgicale dont vos précieuses cartes ont besoin.
+              {t("heroTagline")}
             </p>
 
             <p className="text-base sm:text-lg text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
@@ -158,7 +148,7 @@ const CardHome = () => {
             >
               <FlaskConical className="w-4 h-4 text-accent animate-pulse" />
               <span className="text-sm font-semibold text-foreground">
-                +{savedCount.toLocaleString("fr-FR")} cartes déjà sauvées par nos experts
+                {t("heroBadgeSaved").replace("{count}", savedCount.toLocaleString())}
               </span>
             </motion.div>
 
@@ -262,7 +252,7 @@ const CardHome = () => {
                     <Card className="glass-effect p-6 rounded-2xl border-primary/20 max-w-md w-full">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                          Étape {i + 1}
+                          {t("stepLabel")} {i + 1}
                         </span>
                       </div>
                       <h3 className="text-xl font-bold mb-2 text-foreground">{s.title}</h3>

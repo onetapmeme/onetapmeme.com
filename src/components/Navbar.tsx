@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/cardsurgery-logo.png";
-
-const NAV_ITEMS = [
-  { label: "Services", to: "/pricing" },
-  { label: "Galerie", to: "/gallery" },
-  { label: "Diagnostic", to: "/diagnostic" },
-  { label: "Réservation", to: "/booking" },
-  { label: "Suivi", to: "/tracking" },
-  { label: "FAQ", to: "/faq" },
-];
+import { copy, pickLang } from "@/components/cards/copy";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { i18n } = useTranslation();
+  const lang = pickLang(i18n.language);
+  const t = (k: keyof typeof copy) => copy[k][lang];
+
+  const NAV_ITEMS = [
+    { label: t("navServices"), to: "/pricing" },
+    { label: t("navGallery"), to: "/gallery" },
+    { label: t("navDiagnostic"), to: "/diagnostic" },
+    { label: t("navBooking"), to: "/booking" },
+    { label: t("navTracking"), to: "/tracking" },
+    { label: t("navFaq"), to: "/faq" },
+  ];
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -34,23 +40,23 @@ const Navbar = () => {
           : "h-20 bg-background/90 backdrop-blur-md border border-border w-[96%] max-w-6xl"
       }`}
     >
-      <div className="mx-auto h-full px-6">
-        <nav className="flex items-center justify-between h-full">
-          <Link to="/home" className="flex items-center gap-2 group">
-            <img src={logo} alt="CardSurgery" className="h-16 w-auto object-contain drop-shadow-[0_0_15px_hsla(210,100%,55%,0.4)]" />
+      <div className="mx-auto h-full px-4 sm:px-6">
+        <nav className="flex items-center justify-between h-full gap-2">
+          <Link to="/home" className="flex items-center gap-2 group shrink-0">
+            <img src={logo} alt="CardSurgery" className="h-14 sm:h-16 w-auto object-contain drop-shadow-[0_0_15px_hsla(22,55%,55%,0.4)]" />
             <span className="hidden sm:inline font-bold text-foreground tracking-tight text-lg">
               Card<span className="text-accent">Surgery</span>
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1 flex-1 justify-center">
             {NAV_ITEMS.map((item) => (
               <Button
                 key={item.to}
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate(item.to)}
-                className={`text-sm font-medium ${
+                className={`text-sm font-medium whitespace-nowrap ${
                   location.pathname === item.to ? "text-accent" : ""
                 }`}
               >
@@ -59,18 +65,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Button
               size="sm"
-              className="hidden md:inline-flex glossy-btn text-accent-foreground border-0"
+              className="hidden lg:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap"
               onClick={() => navigate("/pricing")}
             >
-              Débuter une opération de restauration
+              {t("heroCtaPrimary")}
             </Button>
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="lg:hidden">
+                <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Menu">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
@@ -93,7 +99,7 @@ const Navbar = () => {
                       navigate("/pricing");
                     }}
                   >
-                    Débuter une opération de restauration
+                    {t("heroCtaPrimary")}
                   </Button>
                 </div>
               </SheetContent>
@@ -106,4 +112,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
