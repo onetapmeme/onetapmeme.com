@@ -503,6 +503,16 @@ export const copy = {
     ru: "Смета после диагностики. Оплата картой, переводом или PayPal после её утверждения. До согласия с вас ничего не списывается.",
     zh: "诊断后提供报价。报价确认后可用信用卡、银行转账或 PayPal 付款，确认前不收取任何费用。",
   } satisfies C,
+
+  // Navigation
+  navServices: { fr: "Services", en: "Services", es: "Servicios", ru: "Услуги", zh: "服务" } satisfies C,
+  navGallery: { fr: "Galerie", en: "Gallery", es: "Galería", ru: "Галерея", zh: "画廊" } satisfies C,
+  navDiagnostic: { fr: "Diagnostic", en: "Diagnosis", es: "Diagnóstico", ru: "Диагностика", zh: "诊断" } satisfies C,
+  navBooking: { fr: "Réservation", en: "Booking", es: "Reserva", ru: "Запись", zh: "预约" } satisfies C,
+  navTracking: { fr: "Suivi", en: "Tracking", es: "Seguimiento", ru: "Отслеживание", zh: "跟踪" } satisfies C,
+  navFAQ: { fr: "FAQ", en: "FAQ", es: "FAQ", ru: "FAQ", zh: "常见问题" } satisfies C,
+
+  stepLabel: { fr: "Étape", en: "Step", es: "Paso", ru: "Шаг", zh: "步骤" } satisfies C,
 } as const;
 
 export type CopyKey = keyof typeof copy;
