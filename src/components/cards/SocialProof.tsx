@@ -20,7 +20,7 @@ const TILES = [
   { src: tile("Avant / Après", "#7a5b55", "#2d2018"), tag: "#dracaufeu" },
   { src: tile("Whitening Pro", "#5a6f7a", "#1f2a33"), tag: "#whitening" },
   { src: tile("De-curving", "#6a6055", "#1a1814"), tag: "#decurving" },
-  { src: tile("Atelier 1Tap", "#806a85", "#2a1f33"), tag: "#atelier" },
+  { src: tile("Atelier CardSurgery", "#806a85", "#2a1f33"), tag: "#atelier" },
   { src: tile("Pressage", "#7a6a55", "#3a2f24"), tag: "#pressing" },
   { src: tile("Luffy OP01", "#6f5a4a", "#1f1814"), tag: "#onepiece" },
   { src: tile("Lorcana Care", "#5a7a6f", "#1a2a24"), tag: "#lorcana" },

@@ -12,6 +12,20 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { Upload, Check, ChevronRight, ChevronLeft, FileImage } from "lucide-react";
+import { incrementSavedCards } from "@/hooks/useSavedCardsCounter";
+
+const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
+const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+
+function validateImage(file: File): string | null {
+  if (!ACCEPTED_TYPES.includes(file.type.toLowerCase())) {
+    return "Format invalide : PNG, JPG, JPEG ou WebP uniquement.";
+  }
+  if (file.size > MAX_SIZE) {
+    return "Fichier trop volumineux : 5 Mo maximum.";
+  }
+  return null;
+}
 
 type Photos = { recto?: File; verso?: File; corners?: File };
 const CARES = [
@@ -41,9 +55,19 @@ const PhotoSlot = ({
     )}
     <input
       type="file"
-      accept="image/*"
+      accept="image/png,image/jpeg,image/jpg,image/webp"
       className="hidden"
-      onChange={(e) => onChange(e.target.files?.[0])}
+      onChange={(e) => {
+        const f = e.target.files?.[0];
+        if (!f) return onChange(undefined);
+        const err = validateImage(f);
+        if (err) {
+          toast({ title: "Image refusée", description: err, variant: "destructive" });
+          e.target.value = "";
+          return;
+        }
+        onChange(f);
+      }}
     />
   </label>
 );
@@ -74,6 +98,7 @@ const Diagnostic = () => {
     setSubmitting(true);
     // Simulated edge confirmation
     await new Promise((r) => setTimeout(r, 800));
+    incrementSavedCards(1);
     toast({
       title: "Diagnostic envoyé ✓",
       description: `Confirmation envoyée à ${email}. Nous revenons vers vous sous 24 h avec un devis personnalisé.`,
