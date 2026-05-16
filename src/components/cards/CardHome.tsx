@@ -28,11 +28,13 @@ import logo from "@/assets/cardsurgery-logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { copy, pickLang } from "./copy";
 import SocialProof from "./SocialProof";
+import { useSavedCardsCounter } from "@/hooks/useSavedCardsCounter";
 
 const CardHome = () => {
   const { i18n } = useTranslation();
   const lang = pickLang(i18n.language);
   const t = (k: keyof typeof copy) => copy[k][lang];
+  const savedCount = useSavedCardsCounter();
 
   const services = [
     { icon: Brush, title: t("service1Title"), desc: t("service1Desc") },
@@ -96,7 +98,7 @@ const CardHome = () => {
               <motion.img
                 src={logo}
                 alt="CardSurgery"
-                className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44"
+                className="h-28 sm:h-36 md:h-44 w-auto object-contain"
                 animate={{
                   y: [0, -10, 0],
                   filter: [
@@ -152,7 +154,7 @@ const CardHome = () => {
             >
               <FlaskConical className="w-4 h-4 text-accent animate-pulse" />
               <span className="text-sm font-semibold text-foreground">
-                +100 cartes déjà sauvées par nos experts
+                +{savedCount.toLocaleString("fr-FR")} cartes déjà sauvées par nos experts
               </span>
             </motion.div>
 
