@@ -155,12 +155,12 @@ const SocialProof = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Coulisses, restaurations live et avant/après. Suivez{" "}
             <a
-              href="https://instagram.com/cardsurgery"
+              href="https://instagram.com/card_surgery"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent font-semibold hover:underline"
             >
-              @cardsurgery
+              @card_surgery
             </a>
             .
           </p>
@@ -170,7 +170,7 @@ const SocialProof = () => {
           {TILES.map((t, i) => (
             <motion.a
               key={i}
-              href="https://instagram.com/cardsurgery"
+              href="https://instagram.com/card_surgery"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
@@ -196,12 +196,12 @@ const SocialProof = () => {
         <div className="text-center mt-8">
           <Button asChild variant="outline" className="rounded-full">
             <a
-              href="https://instagram.com/cardsurgery"
+              href="https://instagram.com/card_surgery"
               target="_blank"
               rel="noopener noreferrer"
             >
               <Instagram className="w-4 h-4 mr-2" />
-              Suivre @cardsurgery
+              Suivre @card_surgery
             </a>
           </Button>
         </div>

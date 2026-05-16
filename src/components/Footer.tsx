@@ -32,14 +32,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-              <img src={logo} alt="CardSurgery" className="w-12 h-12 object-contain" />
+              <img src={logo} alt="CardSurgery" className="h-16 w-auto object-contain drop-shadow-[0_0_15px_hsla(210,100%,55%,0.4)]" />
               <span className="text-xl font-bold text-foreground">
                 Card<span className="text-accent">Surgery</span>
               </span>
             </div>
-            <p className="text-sm text-muted-foreground italic">
-              "CardSurgery — la précision du geste unique."
+            <p className="text-sm text-foreground/90 italic font-serif">
+              "La précision chirurgicale dont vos précieuses cartes ont besoin."
             </p>
+            <p className="text-xs text-muted-foreground mt-3">
+              Restauration premium de cartes de collection : Pokémon, One Piece, Lorcana, Magic, Yu-Gi-Oh.
+            </p>
+          </div>
             <p className="text-xs text-muted-foreground mt-3">
               Restauration premium de cartes de collection : Pokémon, One Piece, Lorcana, Magic, Yu-Gi-Oh.
             </p>
@@ -76,15 +80,15 @@ const Footer = () => {
                 </Link>
               ))}
             </nav>
-            <a href="mailto:contact@cardsurgery.com" className="text-sm text-accent hover:underline break-all block mb-3">
-              contact@cardsurgery.com
+            <a href="mailto:contact@card_surgery.com" className="text-sm text-accent hover:underline break-all block mb-3">
+              contact@card_surgery.com
             </a>
             <div className="flex gap-2 justify-center md:justify-start">
               <Button variant="outline" size="icon" asChild>
-                <a href="mailto:contact@cardsurgery.com" aria-label="Email"><Mail className="w-4 h-4" /></a>
+                <a href="mailto:contact@card_surgery.com" aria-label="Email"><Mail className="w-4 h-4" /></a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="https://instagram.com/cardsurgery" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://instagram.com/card_surgery" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <Instagram className="w-4 h-4" />
                 </a>
               </Button>
