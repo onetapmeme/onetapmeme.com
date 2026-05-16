@@ -26,6 +26,7 @@ import Pricing from "./pages/Pricing";
 import Diagnostic from "./pages/Diagnostic";
 import Booking from "./pages/Booking";
 import Tracking from "./pages/Tracking";
+import Payment from "./pages/Payment";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ const App = () => (
           <Route path="/diagnostic" element={<Diagnostic />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/tracking" element={<Tracking />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>
