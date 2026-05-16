@@ -27,6 +27,7 @@ import Diagnostic from "./pages/Diagnostic";
 import Booking from "./pages/Booking";
 import Tracking from "./pages/Tracking";
 import Payment from "./pages/Payment";
+import AdminDossiers from "./pages/AdminDossiers";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/team" element={<Team />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/dossiers" element={<AdminDossiers />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/diagnostic" element={<Diagnostic />} />

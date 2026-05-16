@@ -7,9 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
-  PackageCheck, Stethoscope, Scissors, Sparkles, Truck, Check, Hourglass, CreditCard, XCircle, AlertCircle,
+  PackageCheck, Stethoscope, Scissors, Sparkles, Truck, Check, Hourglass,
+  CreditCard, XCircle, Loader2,
 } from "lucide-react";
-import { getDossier, updateDossierStatus, type Dossier, type DossierStatus } from "@/lib/dossiers";
+import { getDossierRemote, type Dossier, type DossierStatus } from "@/lib/dossiers";
 
 const STAGES: { id: DossierStatus; label: string; icon: typeof PackageCheck; desc: string }[] = [
   { id: "pending_review", label: "Diagnostic en évaluation", icon: Hourglass, desc: "Nos chirurgiens analysent vos photos et établissent un devis." },
@@ -20,29 +21,6 @@ const STAGES: { id: DossierStatus; label: string; icon: typeof PackageCheck; des
   { id: "shipped", label: "Expédié", icon: Sparkles, desc: "Renvoi en colis blindé et assuré." },
 ];
 
-const DEMO: Record<string, Dossier> = {
-  "CS-A7K2X9": {
-    ref: "CS-A7K2X9", pack: "pro", packLabel: "Professional Restoration", packPrice: "39 €",
-    cardName: "Dracaufeu Base Set", tcg: "Pokémon", cares: [], email: "demo@example.com", name: "Demo",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), status: "in_surgery",
-  },
-  "CS-LU8P3M": {
-    ref: "CS-LU8P3M", pack: "full", packLabel: "Full Surgery", packPrice: "95 €",
-    cardName: "Luffy OP01 Leader", tcg: "One Piece", cares: [], email: "demo@example.com", name: "Demo",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), status: "shipped",
-  },
-  "CS-APPR01": {
-    ref: "CS-APPR01", pack: "clean", packLabel: "Surface Clean & Polish", packPrice: "19 €",
-    cardName: "Mew Promo Holo", tcg: "Pokémon", cares: [], email: "demo@example.com", name: "Demo",
-    createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), status: "approved",
-  },
-};
-
-function lookupAny(ref: string): Dossier | null {
-  const k = ref.trim().toUpperCase();
-  return getDossier(k) || DEMO[k] || null;
-}
-
 const statusOrder: DossierStatus[] = ["pending_review", "approved", "paid", "received", "in_surgery", "shipped"];
 
 const Tracking = () => {
@@ -50,13 +28,21 @@ const Tracking = () => {
   const [ref, setRef] = useState(params.get("ref") || "");
   const [dossier, setDossier] = useState<Dossier | null>(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const lookup = (value?: string) => {
+  const lookup = async (value?: string) => {
     const k = (value ?? ref).trim().toUpperCase();
     if (!k) return;
-    const d = lookupAny(k);
-    if (d) { setDossier(d); setError(""); }
-    else { setDossier(null); setError("Référence introuvable. Essayez une référence de démo : CS-A7K2X9, CS-LU8P3M ou CS-APPR01."); }
+    setLoading(true); setError("");
+    try {
+      const d = await getDossierRemote(k);
+      if (d) { setDossier(d); setError(""); }
+      else { setDossier(null); setError("Référence introuvable. Vérifiez votre numéro ou contactez-nous."); }
+    } catch (e: any) {
+      setError(e?.message || "Erreur lors de la recherche.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -92,8 +78,8 @@ const Tracking = () => {
                   onKeyDown={(e) => e.key === "Enter" && lookup()}
                 />
               </div>
-              <Button onClick={() => lookup()} className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                Rechercher
+              <Button onClick={() => lookup()} disabled={loading} className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Rechercher"}
               </Button>
             </div>
             {error && <p className="text-destructive text-sm mt-3">{error}</p>}
@@ -118,7 +104,6 @@ const Tracking = () => {
                 <div><p className="text-xs text-muted-foreground">Forfait</p><p className="font-bold">{dossier.packLabel} <span className="text-accent">({dossier.packPrice})</span></p></div>
               </div>
 
-              {/* Status banner */}
               {dossier.status === "pending_review" && (
                 <div className="mb-6 p-4 rounded-lg bg-primary/10 border border-primary/30 flex gap-3">
                   <Hourglass className="w-5 h-5 text-primary flex-shrink-0 mt-0.5 animate-pulse" />
@@ -126,7 +111,7 @@ const Tracking = () => {
                     <p className="font-bold text-foreground">Diagnostic en cours d'évaluation</p>
                     <p className="text-sm text-muted-foreground">
                       Notre équipe analyse vos photos sous 24 h ouvrées et vous adressera la validation par e-mail.
-                      Aucun paiement n'est requis tant que le diagnostic n'est pas approuvé.
+                      Le paiement ne sera proposé qu'après approbation du diagnostic.
                     </p>
                   </div>
                 </div>
@@ -173,14 +158,16 @@ const Tracking = () => {
                   <div>
                     <p className="font-bold text-foreground">Diagnostic refusé</p>
                     <p className="text-sm text-muted-foreground">
-                      Notre équipe a estimé qu'aucune intervention n'apporterait de bénéfice mesurable. Vous avez reçu
-                      un e-mail détaillé. Aucun frais n'est dû.
+                      Notre équipe a estimé qu'aucune intervention n'apporterait de bénéfice mesurable.
+                      Vous avez reçu un e-mail détaillé. Aucun frais n'est dû.
                     </p>
+                    {dossier.adminNotes && (
+                      <p className="text-sm text-foreground/80 mt-2 italic">« {dossier.adminNotes} »</p>
+                    )}
                   </div>
                 </div>
               )}
 
-              {/* Timeline */}
               {!isRejected && (
                 <ol className="relative">
                   {STAGES.map((s, i) => {
@@ -211,47 +198,15 @@ const Tracking = () => {
                   })}
                 </ol>
               )}
-
-              {/* Demo helper: simulate approval */}
-              {dossier.status === "pending_review" && (
-                <div className="mt-6 pt-4 border-t border-border">
-                  <div className="flex items-start gap-2 text-xs text-muted-foreground">
-                    <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                    <p>
-                      <strong>Démo :</strong> en production, la validation est faite manuellement par notre équipe après
-                      réception de votre e-mail. Pour tester le parcours de paiement,{" "}
-                      <button
-                        onClick={() => {
-                          const u = updateDossierStatus(dossier.ref, "approved");
-                          if (u) setDossier(u);
-                        }}
-                        className="text-accent hover:underline font-medium"
-                      >
-                        simuler une approbation
-                      </button>.
-                    </p>
-                  </div>
-                </div>
-              )}
             </Card>
           )}
 
-          {!dossier && (
+          {!dossier && !loading && (
             <Card className="p-6 bg-secondary/30">
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground">
                 <strong className="text-foreground">Pas encore de dossier ?</strong>{" "}
                 <Link to="/pricing" className="text-accent hover:underline">Débutez une opération de restauration →</Link>
               </p>
-              <p className="text-sm text-muted-foreground mb-3">
-                <strong className="text-foreground">Démo :</strong> essayez ces références pour visualiser le suivi.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {Object.keys(DEMO).map((k) => (
-                  <Button key={k} variant="outline" size="sm" onClick={() => { setRef(k); lookup(k); }}>
-                    {k}
-                  </Button>
-                ))}
-              </div>
             </Card>
           )}
         </div>

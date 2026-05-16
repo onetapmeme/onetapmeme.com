@@ -14,7 +14,13 @@ import {
 import { toast } from "@/hooks/use-toast";
 import { Upload, Check, ChevronRight, ChevronLeft, FileImage, Mail, Info, Copy } from "lucide-react";
 import { incrementSavedCards } from "@/hooks/useSavedCardsCounter";
-import { createDossier, PACKS } from "@/lib/dossiers";
+import {
+  PACKS,
+  uploadDossierPhoto,
+  createDossierRemote,
+  sendDossierEmail,
+  type DossierPhoto,
+} from "@/lib/dossiers";
 import { supabase } from "@/integrations/supabase/client";
 
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
@@ -131,23 +137,39 @@ const Diagnostic = () => {
       }
     }
 
-    const packInfo = PACKS[pack];
-    const dossier = createDossier({
-      pack,
-      packLabel: packInfo.label,
-      packPrice: packInfo.price,
-      cardName,
-      tcg: cardType,
-      estimatedValue,
-      cares,
-      defects,
-      email,
-      name,
-    });
+    try {
+      // 1) Upload photos to storage (best-effort: skip missing slots).
+      const uploaded: DossierPhoto[] = [];
+      for (const [slot, file] of Object.entries(photos) as [string, File | undefined][]) {
+        if (!file) continue;
+        try {
+          uploaded.push(await uploadDossierPhoto(file, slot));
+        } catch (err: any) {
+          console.warn("photo upload failed", slot, err);
+        }
+      }
 
-    incrementSavedCards(1);
-    setCreatedRef(dossier.ref);
-    setSubmitting(false);
+      // 2) Create dossier server-side
+      const ref = await createDossierRemote({
+        email, name, pack,
+        cardName, tcg: cardType, estimatedValue,
+        cares, defects, photos: uploaded,
+      });
+
+      // 3) Trigger confirmation email (non-blocking)
+      sendDossierEmail(ref, "received");
+
+      incrementSavedCards(1);
+      setCreatedRef(ref);
+    } catch (err: any) {
+      toast({
+        title: "Envoi impossible",
+        description: err?.message || "Une erreur est survenue. Réessayez dans un instant.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (createdRef) {

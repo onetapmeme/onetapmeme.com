@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { CreditCard, Truck, MapPin, ShieldCheck, Package, ArrowLeft, Check, Info } from "lucide-react";
-import { getDossier, updateDossierStatus, type Dossier } from "@/lib/dossiers";
+import { getDossierRemote, confirmPayment, sendDossierEmail, type Dossier } from "@/lib/dossiers";
 
 const Payment = () => {
   const [params] = useSearchParams();
@@ -15,17 +15,35 @@ const Payment = () => {
   const [paying, setPaying] = useState(false);
 
   useEffect(() => {
-    if (refParam) setDossier(getDossier(refParam));
+    (async () => {
+      if (refParam) {
+        try { setDossier(await getDossierRemote(refParam)); }
+        catch { setDossier(null); }
+      }
+    })();
   }, [refParam]);
 
   const fakePay = async () => {
     if (!dossier) return;
+    if (dossier.status !== "approved") {
+      toast({
+        title: "Paiement indisponible",
+        description: "Le diagnostic doit être validé avant tout paiement.",
+        variant: "destructive",
+      });
+      return;
+    }
     setPaying(true);
-    await new Promise((r) => setTimeout(r, 900));
-    const u = updateDossierStatus(dossier.ref, "paid");
-    if (u) setDossier(u);
-    toast({ title: "Paiement confirmé ✓", description: "Vous pouvez maintenant expédier votre carte." });
-    setPaying(false);
+    try {
+      const u = await confirmPayment(dossier.ref);
+      setDossier(u);
+      sendDossierEmail(u.ref, "paid");
+      toast({ title: "Paiement confirmé ✓", description: "Vous pouvez maintenant expédier votre carte." });
+    } catch (e: any) {
+      toast({ title: "Échec du paiement", description: e?.message || "Réessayez.", variant: "destructive" });
+    } finally {
+      setPaying(false);
+    }
   };
 
   if (!refParam || !dossier) {
