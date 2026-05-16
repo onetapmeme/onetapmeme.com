@@ -366,11 +366,11 @@ export const copy = {
     zh: "立即获取免费 CardSurgery 诊断，24 个工作小时内回复。",
   } satisfies C,
   ctaButton: {
-    fr: "Lancer ma restauration",
-    en: "Start my restoration",
-    es: "Iniciar mi restauración",
-    ru: "Начать реставрацию",
-    zh: "开始我的修复",
+    fr: "Débuter une opération de restauration",
+    en: "Start a restoration operation",
+    es: "Iniciar una operación de restauración",
+    ru: "Начать операцию реставрации",
+    zh: "开始修复操作",
   } satisfies C,
   ctaContact: {
     fr: "Ou écrivez-nous à",
