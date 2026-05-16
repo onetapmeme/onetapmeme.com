@@ -148,7 +148,7 @@ const CardHome = () => {
             >
               <FlaskConical className="w-4 h-4 text-accent animate-pulse" />
               <span className="text-sm font-semibold text-foreground">
-                +{savedCount.toLocaleString("fr-FR")} cartes déjà sauvées par nos experts
+                {t("heroBadgeSaved").replace("{count}", savedCount.toLocaleString())}
               </span>
             </motion.div>
 
