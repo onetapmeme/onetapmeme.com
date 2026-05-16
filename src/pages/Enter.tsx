@@ -58,7 +58,7 @@ const Enter = () => {
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse" />
             <img
               src={logoImage}
-              alt="1Tap"
+              alt="CardSurgery"
               className="relative w-32 h-32 md:w-44 md:h-44 object-contain drop-shadow-[0_0_40px_hsla(210,100%,55%,0.8)]"
             />
           </div>

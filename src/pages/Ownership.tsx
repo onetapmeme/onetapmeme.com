@@ -38,7 +38,7 @@ const Ownership = () => {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <p className="text-sm text-muted-foreground">{t('ownership.projectName')}</p>
-                <p className="text-lg font-semibold">$1TAP</p>
+                <p className="text-lg font-semibold">CardSurgery</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">{t('ownership.owner')}</p>

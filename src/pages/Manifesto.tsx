@@ -43,10 +43,10 @@ const Manifesto = () => {
     document.head.appendChild(script);
 
     // Set SEO meta tags
-    document.title = "1Tap Manifesto - Join the Gaming Revolution";
+    document.title = "CardSurgery Manifesto - Join the Gaming Revolution";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', "Join the 1Tap army. We believe in life, liberty, and the pursuit of headshots. Sign our manifesto and be part of the gaming-crypto revolution.");
+      metaDescription.setAttribute('content', "Join the CardSurgery army. We believe in life, liberty, and the pursuit of headshots. Sign our manifesto and be part of the gaming-crypto revolution.");
     }
 
     return () => {
@@ -368,7 +368,7 @@ const Manifesto = () => {
                       animation: 'gradient-flow 5s linear infinite',
                     }}
                   >
-                    ⚡ JOIN THE 1TAP ARMY ⚡
+                    ⚡ JOIN THE CardSurgery ARMY ⚡
                   </motion.span>
                 </h2>
                 <p className="text-lg md:text-xl text-muted-foreground font-rajdhani max-w-2xl mx-auto">
@@ -417,7 +417,7 @@ const Manifesto = () => {
                         e.currentTarget.style.boxShadow = '0 0 40px hsla(210, 100%, 55%, 0.5)';
                         e.currentTarget.style.transform = 'scale(1)';
                       }}
-                      aria-label="Sign the 1Tap manifesto"
+                      aria-label="Sign the CardSurgery manifesto"
                     >
                       <Zap className="w-6 h-6 mr-2" aria-hidden="true" />
                       Sign the Manifesto
@@ -426,7 +426,7 @@ const Manifesto = () => {
                   </form>
                   
                   <p className="text-sm text-muted-foreground text-center font-rajdhani leading-relaxed">
-                    By signing, you agree to uphold the 1Tap principles and become part of the gaming-crypto revolution. We'll send you a confirmation email to verify your signature.
+                    By signing, you agree to uphold the CardSurgery principles and become part of the gaming-crypto revolution. We'll send you a confirmation email to verify your signature.
                   </p>
                 </motion.div>
               ) : (

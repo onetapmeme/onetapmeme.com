@@ -1,14 +1,14 @@
-# 1Tap
+# CardSurgery
 
-> 1Tap est un service professionnel de restauration de cartes de collection (Pokémon, One Piece, Magic, Yu-Gi-Oh et autres TCG) — nettoyage, correction des bords, redressage et pressage avec une précision chirurgicale.
+> CardSurgery est un service professionnel de restauration de cartes de collection (Pokémon, One Piece, Magic, Yu-Gi-Oh et autres TCG) — nettoyage, correction des bords, redressage et pressage avec une précision chirurgicale.
 
-1Tap reçoit vos cartes en envoi sécurisé, réalise un diagnostic transparent, restaure manuellement chaque défaut (impuretés, traces blanches sur les arêtes, courbure, micro-pliures), puis renvoie la carte sous protection rigide, prête pour la certification PSA ou BGS.
+CardSurgery reçoit vos cartes en envoi sécurisé, réalise un diagnostic transparent, restaure manuellement chaque défaut (impuretés, traces blanches sur les arêtes, courbure, micro-pliures), puis renvoie la carte sous protection rigide, prête pour la certification PSA ou BGS.
 
 ## Pages
 
 - [Accueil](/home): Présentation, services, processus, garanties et FAQ.
 - [FAQ](/faq): Réponses sur les délais, le grading, les garanties et les jeux acceptés.
-- [Équipe](/team): Les restaurateurs experts derrière 1Tap.
+- [Équipe](/team): Les restaurateurs experts derrière CardSurgery.
 - [Blog](/blog): Conseils d'entretien et coulisses de la restauration.
 
 ## Optional

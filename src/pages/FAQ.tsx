@@ -26,8 +26,8 @@ const faqCategories: { category: string; questions: { q: string; a: string }[] }
         a: "Non. CardSurgery est un service totalement indépendant. Nous ne sommes pas affiliés à Nintendo, The Pokémon Company, Bandai ou tout autre éditeur de TCG.",
       },
       {
-        q: "Qu'est-ce qui rend la technologie 1Tap différente des méthodes classiques ?",
-        a: "Notre protocole unique « Technologie de précision 1Tap » utilise des outils chirurgicaux et des solutions non invasives pour agir au micromètre près, sans jamais altérer la structure d'origine de la carte.",
+        q: "Qu'est-ce qui rend la technologie CardSurgery différente des méthodes classiques ?",
+        a: "Notre protocole unique « Technologie de précision CardSurgery » utilise des outils chirurgicaux et des solutions non invasives pour agir au micromètre près, sans jamais altérer la structure d'origine de la carte.",
       },
     ],
   },

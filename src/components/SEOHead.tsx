@@ -45,20 +45,20 @@ const SEOHead = () => {
 
     // Language-specific meta descriptions
     const descriptions: Record<string, string> = {
-      en: '$1TAP combines FPS nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.',
-      fr: '$1TAP combine la nostalgie des FPS avec la crypto moderne. Rejoins la révolution où chaque trade est un headshot. Memecoin gaming communautaire, fair launch.',
-      es: '$1TAP combina nostalgia FPS con cripto moderna. Únete a la revolución donde cada trade es un headshot. Gaming memecoin community-driven, fair launch.',
-      ru: '$1TAP сочетает FPS ностальгию с современной криптой. Присоединяйся к революции, где каждый трейд — хедшот. Community-driven gaming memecoin, fair launch.',
-      zh: '$1TAP 结合了 FPS 怀旧与现代加密货币。加入革命，每笔交易都是爆头。社区驱动的游戏 memecoin，公平启动。'
+      en: 'CardSurgery combines FPS nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.',
+      fr: 'CardSurgery combine la nostalgie des FPS avec la crypto moderne. Rejoins la révolution où chaque trade est un headshot. Memecoin gaming communautaire, fair launch.',
+      es: 'CardSurgery combina nostalgia FPS con cripto moderna. Únete a la revolución donde cada trade es un headshot. Gaming memecoin community-driven, fair launch.',
+      ru: 'CardSurgery сочетает FPS ностальгию с современной криптой. Присоединяйся к революции, где каждый трейд — хедшот. Community-driven gaming memecoin, fair launch.',
+      zh: 'CardSurgery 结合了 FPS 怀旧与现代加密货币。加入革命，每笔交易都是爆头。社区驱动的游戏 memecoin，公平启动。'
     };
 
     // Language-specific titles
     const titles: Record<string, string> = {
-      en: '$1TAP - The Ultimate Gaming Memecoin',
-      fr: '$1TAP - Le Memecoin Gaming Ultime',
-      es: '$1TAP - El Memecoin Gaming Definitivo',
-      ru: '$1TAP - Главный Gaming Memecoin',
-      zh: '$1TAP - 终极游戏 Memecoin'
+      en: 'CardSurgery - The Ultimate Gaming Memecoin',
+      fr: 'CardSurgery - Le Memecoin Gaming Ultime',
+      es: 'CardSurgery - El Memecoin Gaming Definitivo',
+      ru: 'CardSurgery - Главный Gaming Memecoin',
+      zh: 'CardSurgery - 终极游戏 Memecoin'
     };
 
     document.title = titles[currentLang] || titles.en;

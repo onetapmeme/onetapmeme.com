@@ -18,7 +18,7 @@ const VideoShowcase = () => {
   const videos = [
     {
       id: '1',
-      title: 'What is $1TAP?',
+      title: 'What is CardSurgery?',
       description: 'Introduction to the ultimate gaming memecoin',
       thumbnail: '/placeholder.svg',
       youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube ID
@@ -26,7 +26,7 @@ const VideoShowcase = () => {
     },
     {
       id: '2',
-      title: 'How to Buy $1TAP',
+      title: 'How to Buy CardSurgery',
       description: 'Step-by-step tutorial on purchasing tokens',
       thumbnail: '/placeholder.svg',
       youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube ID
@@ -35,7 +35,7 @@ const VideoShowcase = () => {
     {
       id: '3',
       title: 'Meet the Team',
-      description: 'Get to know the builders behind $1TAP',
+      description: 'Get to know the builders behind CardSurgery',
       thumbnail: '/placeholder.svg',
       youtubeId: 'dQw4w9WgXcQ', // Replace with actual YouTube ID
       category: 'team',
@@ -65,7 +65,7 @@ const VideoShowcase = () => {
               Video Content
             </h2>
           <p className="text-lg text-muted-foreground">
-            Learn about $1TAP through our video guides and updates
+            Learn about CardSurgery through our video guides and updates
           </p>
           </motion.div>
 

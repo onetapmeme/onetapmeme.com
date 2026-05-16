@@ -1,6 +1,6 @@
 {
-  "name": "1Tap — Restauration de cartes de collection",
-  "short_name": "1Tap",
+  "name": "CardSurgery — Restauration de cartes de collection",
+  "short_name": "CardSurgery",
   "description": "Restauration professionnelle de cartes Pokémon, One Piece et autres TCG. Précision chirurgicale, transparence totale.",
   "start_url": "/",
   "display": "standalone",

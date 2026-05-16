@@ -1,7 +1,7 @@
 /**
  * LAUNCH CONFIGURATION
  * 
- * Central configuration for the $1TAP token launch.
+ * Central configuration for the CardSurgery token launch.
  * Now managed through the Admin Dashboard with Supabase backend.
  * 
  * IMPORTANT: Use the Admin Dashboard (/admin) to update launch settings

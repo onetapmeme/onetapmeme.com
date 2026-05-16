@@ -232,7 +232,7 @@ const PartnersSection = () => {
           className="text-center mt-12"
         >
           <p className="text-muted-foreground mb-4">
-            Want to partner with $1TAP?
+            Want to partner with CardSurgery?
           </p>
           <a
             href="mailto:partnerships@1tap.com"

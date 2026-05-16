@@ -9,26 +9,26 @@
     "rewards": "Rewards"
   },
   "hero": {
-    "title": "$1TAP",
+    "title": "CardSurgery",
     "subtitle": "The Ultimate Gaming Memecoin",
     "description": "Pixel nostalgia meets modern crypto. Join the gaming revolution where every transaction is a headshot.",
-    "cta": "Get $1TAP",
+    "cta": "Get CardSurgery",
     "contractVerified": "✅ Contract Verified",
     "lpLocked": "🔒 LP Locked 6mo",
     "dailyBurn": "🔥 1% Burned Daily",
     "learnMore": "Learn More"
   },
   "enter": {
-    "title": "Welcome to 1TAP!",
+    "title": "Welcome to CardSurgery!",
     "subtitle": "Tap to Enter",
     "privacy": "Privacy & Risk Notice",
-    "simplifiedNotice1": "1TAP is a meme token with no intrinsic value or expectation of financial return.",
+    "simplifiedNotice1": "CardSurgery is a meme token with no intrinsic value or expectation of financial return.",
     "simplifiedNotice2": "Cryptocurrency investments carry high risk. Only invest what you can afford to lose.",
     "simplifiedNotice3": "By continuing, you confirm you understand these risks and accept our terms.",
     "readFullDisclaimer": "Read Full Disclaimer →",
     "important": "IMPORTANT - Please Read Carefully",
     "risk": "⚠️ High Risk Investment:",
-    "riskText": "1TAP is a memecoin with no intrinsic value or expectation of financial return. The value can fluctuate wildly or go to zero. Never invest more than you can afford to lose.",
+    "riskText": "CardSurgery is a memecoin with no intrinsic value or expectation of financial return. The value can fluctuate wildly or go to zero. Never invest more than you can afford to lose.",
     "noAffiliation": "🚫 No Affiliation:",
     "noAffiliationText": "This project is NOT affiliated with Valve Corporation, Counter-Strike, or any related trademarks. This is a community-driven memecoin for entertainment purposes.",
     "privacy2": "🔒 Privacy:",
@@ -46,9 +46,9 @@
     "footer": "Not affiliated with Valve Corporation or Counter-Strike. Entertainment purposes only."
   },
   "about": {
-    "title": "About 1TAP",
+    "title": "About CardSurgery",
     "subtitle": "Every click counts, every holder is a 1Tapper",
-    "story": "Born from a love of tactical FPS games and meme culture, 1TAP is more than just a coin—it's a movement. Built by gamers for gamers, with a clear vision: bring the competitive energy of tactical gaming into the crypto world.",
+    "story": "Born from a love of tactical FPS games and meme culture, CardSurgery is more than just a coin—it's a movement. Built by gamers for gamers, with a clear vision: bring the competitive energy of tactical gaming into the crypto world.",
     "story2": "No VCs. No private presales. Just pure community.",
     "communityDriven": "Community-Driven",
     "communityDrivenText": "Every decision is voted on by 1Tappers. Your voice matters.",
@@ -63,7 +63,7 @@
     "disclaimerNote": "Remember: Memecoins are highly speculative. Never invest more than you can afford to lose."
   },
   "whyOneTap": {
-    "title": "Why 1TAP?",
+    "title": "Why CardSurgery?",
     "subtitle": "The only memecoin built by gamers, for gamers",
     "gamers": {
       "title": "Built by Gamers, for Gamers",
@@ -137,7 +137,7 @@
     ]
   },
   "liveStats": {
-    "title": "1TAP LIVE STATS",
+    "title": "CardSurgery LIVE STATS",
     "subtitle": "Real-time market data • Updates every 30s",
     "marketCap": "Market Cap",
     "holders": "Holders",
@@ -146,8 +146,8 @@
     "notice": "📊 Live data integration coming soon after token launch"
   },
   "memes": {
-    "title": "1TAP Meme Generator",
-    "subtitle": "Create your own custom memes with 1TAP logo and share them with the community!",
+    "title": "CardSurgery Meme Generator",
+    "subtitle": "Create your own custom memes with CardSurgery logo and share them with the community!",
     "randomize": "Randomize",
     "download": "Download",
     "backgrounds": "Backgrounds",
@@ -199,25 +199,25 @@
   },
   "integrations": {
     "title": "Gaming Integrations",
-    "subtitle": "Where gaming meets blockchain. See how 1TAP is revolutionizing the gaming ecosystem.",
+    "subtitle": "Where gaming meets blockchain. See how CardSurgery is revolutionizing the gaming ecosystem.",
     "backHome": "Back to Home",
     "twitch": {
       "title": "Twitch Tip Widget",
-      "description": "Enable viewers to tip streamers directly in 1TAP during epic plays.",
-      "feature1": "Real-time 1TAP tips during streams",
+      "description": "Enable viewers to tip streamers directly in CardSurgery during epic plays.",
+      "feature1": "Real-time CardSurgery tips during streams",
       "feature2": "Automatic conversion & distribution",
       "feature3": "Viewer leaderboard integration"
     },
     "discord": {
       "title": "Discord MVP Bot",
       "description": "Reward your best players automatically after each community match.",
-      "feature1": "Auto-distribute 1TAP to match MVPs",
+      "feature1": "Auto-distribute CardSurgery to match MVPs",
       "feature2": "Track player stats & rankings",
       "feature3": "Custom reward pools per server"
     },
     "nft": {
       "title": "NFT Skins Showcase",
-      "description": "Exclusive 1Tap AWP skin - only for 1TAP holders.",
+      "description": "Exclusive CardSurgery AWP skin - only for CardSurgery holders.",
       "feature1": "Limited edition 3D weapon skins",
       "feature2": "Holder-exclusive designs",
       "feature3": "Future game integrations planned"
@@ -231,7 +231,7 @@
   },
   "airdrops": {
     "title": "Gamified Airdrops",
-    "subtitle": "Earn 1TAP by playing, creating, and engaging with the community",
+    "subtitle": "Earn CardSurgery by playing, creating, and engaging with the community",
     "weekly": {
       "title": "Weekly 1Tapper Lottery",
       "description": "Top 100 clickers each week share the prize pool",
@@ -327,7 +327,7 @@
   },
   "preLaunch": {
     "title": "🚀 Launching Soon",
-    "subtitle": "Get ready for the 1TAP token launch",
+    "subtitle": "Get ready for the CardSurgery token launch",
     "days": "days",
     "hours": "hrs",
     "minutes": "min",
@@ -351,8 +351,8 @@
     "ownership": "Certificate of Ownership",
     "nonAffiliation": "Non-Affiliation Statement",
     "legalNotice": "Legal Notice",
-    "legalShield": "Protected by 1TAP Legal Shield v1.0",
-    "disclaimerText": "1TAP is a memecoin with no intrinsic value and no expectation of financial return. Only invest what you can afford to lose. This project is not affiliated with Valve Corporation, Counter-Strike, or related trademarks.",
+    "legalShield": "Protected by CardSurgery Legal Shield v1.0",
+    "disclaimerText": "CardSurgery is a memecoin with no intrinsic value and no expectation of financial return. Only invest what you can afford to lose. This project is not affiliated with Valve Corporation, Counter-Strike, or related trademarks.",
     "rights": "All rights reserved.",
     "contact": "Contact"
   },
@@ -417,7 +417,7 @@
     "addBaseFailed": "Failed to add Base network",
     "switchFailed": "Failed to switch network",
     "addToken": "Add Token",
-    "tokenAdded": "1TAP added to your wallet",
+    "tokenAdded": "CardSurgery added to your wallet",
     "addTokenFailed": "Failed to add token",
     "connectFirst": "Connect your wallet first"
   },
@@ -454,7 +454,7 @@
     "errorLoadingDesc": "Failed to load your items"
   },
   "swap": {
-    "title": "Swap $1TAP",
+    "title": "Swap CardSurgery",
     "subtitle": "Trade directly on-site with best rates via 1inch DEX aggregator",
     "loading": "Loading swap widget...",
     "contractNotice": "Contract address will be added after launch",
@@ -462,7 +462,7 @@
     "step1": "Connect your wallet (MetaMask, Coinbase, etc.)",
     "step2": "Ensure you have ETH on Base Network",
     "step3": "Select amount and review transaction",
-    "step4": "Confirm swap and receive $1TAP",
+    "step4": "Confirm swap and receive CardSurgery",
     "tradingStats": "Trading Stats",
     "slippage": "Slippage",
     "network": "Network",
@@ -527,7 +527,7 @@
     },
     "liability": {
       "title": "Limitation of Liability",
-      "description": "In no event shall 1TAP, its operators, or contributors be liable for any damages including, without limitation, direct or indirect, special, incidental, or consequential damages, losses or expenses arising in connection with this website or use thereof."
+      "description": "In no event shall CardSurgery, its operators, or contributors be liable for any damages including, without limitation, direct or indirect, special, incidental, or consequential damages, losses or expenses arising in connection with this website or use thereof."
     },
     "compliance": {
       "title": "Compliance with Laws",
@@ -538,7 +538,7 @@
     },
     "intellectualProperty": {
       "title": "Intellectual Property",
-      "description": "The content on this website, excluding third-party trademarks and references, is the property of the 1TAP community. Unauthorized use or reproduction is prohibited."
+      "description": "The content on this website, excluding third-party trademarks and references, is the property of the CardSurgery community. Unauthorized use or reproduction is prohibited."
     },
     "governingLaw": {
       "title": "Governing Law",
@@ -547,7 +547,7 @@
   },
   "disclaimer": {
     "title": "Disclaimer",
-    "intro": "1TAP is a community meme token. It has no intrinsic value or expectation of financial return. It is not an investment, security, or financial product. Do your own research.",
+    "intro": "CardSurgery is a community meme token. It has no intrinsic value or expectation of financial return. It is not an investment, security, or financial product. Do your own research.",
     "responsibility": "By interacting with this website or the token, you agree that you are solely responsible for your actions and acknowledge the risks associated with cryptocurrencies.",
     "importantNotice": {
       "title": "Important Notice",
@@ -567,7 +567,7 @@
   },
   "legalNotice": {
     "title": "Legal Notice",
-    "intro": "This page provides legal information about the 1TAP project in compliance with applicable transparency and disclosure requirements.",
+    "intro": "This page provides legal information about the CardSurgery project in compliance with applicable transparency and disclosure requirements.",
     "projectInfo": {
       "title": "Project Information",
       "name": "Project Name",
@@ -594,7 +594,7 @@
     "legalStatus": {
       "title": "Legal Status",
       "classification": "Important Classification",
-      "description": "1TAP is a memecoin and is NOT classified as a security. The token has:",
+      "description": "CardSurgery is a memecoin and is NOT classified as a security. The token has:",
       "item1": "No promise of financial return",
       "item2": "No revenue-generating activity",
       "item3": "No centralized management with profit expectations",
@@ -602,7 +602,7 @@
     },
     "intellectualProperty": {
       "title": "Intellectual Property",
-      "description": "All original content, including the 1TAP branding, logo, and website design, is owned by the 1TAP community project.",
+      "description": "All original content, including the CardSurgery branding, logo, and website design, is owned by the CardSurgery community project.",
       "thirdParty": "Third-Party Trademarks",
       "thirdPartyDesc": "References to Counter-Strike, CS:GO, CS2, and Valve Corporation are for inspirational and descriptive purposes only. This project is NOT affiliated with these entities.",
       "seeNotice": "See Non-Affiliation Notice"
@@ -610,7 +610,7 @@
     "regulatory": {
       "title": "Regulatory Compliance",
       "noKyc": "No KYC Required",
-      "noKycDesc": "The 1TAP project does not collect or process personal identification data from users.",
+      "noKycDesc": "The CardSurgery project does not collect or process personal identification data from users.",
       "aml": "AML Compliance",
       "amlDesc": "Users are responsible for complying with anti-money laundering laws in their respective jurisdictions.",
       "tax": "Tax Obligations",
@@ -620,12 +620,12 @@
     },
     "dispute": {
       "title": "Dispute Resolution",
-      "description": "Any disputes arising from the use of this website or interactions with the 1TAP token shall be resolved in accordance with international arbitration principles."
+      "description": "Any disputes arising from the use of this website or interactions with the CardSurgery token shall be resolved in accordance with international arbitration principles."
     }
   },
   "nonAffiliation": {
     "title": "Non-Affiliation Notice",
-    "mainNotice": "$1TAP is <strong>not affiliated</strong>, associated, authorized, endorsed by, or in any way officially connected with Counter-Strike, Counter-Strike 2 (CS2), Valve Corporation, or Gabe Newell.",
+    "mainNotice": "CardSurgery is <strong>not affiliated</strong>, associated, authorized, endorsed by, or in any way officially connected with Counter-Strike, Counter-Strike 2 (CS2), Valve Corporation, or Gabe Newell.",
     "independentDescription": "This is an independent community-driven memecoin project inspired by gaming culture. We have no official relationship, partnership, or endorsement from any gaming companies or their representatives.",
     "trademarks": {
       "title": "Trademarks",
@@ -636,7 +636,7 @@
     },
     "independentProject": {
       "title": "Independent Project",
-      "description": "$1TAP is a grassroots community initiative created by gaming enthusiasts and cryptocurrency supporters. Any similarities to existing games or brands are purely inspirational and do not represent official partnerships or endorsements."
+      "description": "CardSurgery is a grassroots community initiative created by gaming enthusiasts and cryptocurrency supporters. Any similarities to existing games or brands are purely inspirational and do not represent official partnerships or endorsements."
     },
     "contact": {
       "title": "Contact",
@@ -700,8 +700,8 @@
   },
   "ownership": {
     "title": "Official Ownership Certificate",
-    "subtitle": "Legal proof of ownership and intellectual property rights for the $1TAP project",
-    "documentTitle": "$1TAP — Official Ownership Document",
+    "subtitle": "Legal proof of ownership and intellectual property rights for the CardSurgery project",
+    "documentTitle": "CardSurgery — Official Ownership Document",
     "projectName": "Project Name",
     "owner": "Owner",
     "date": "Date",
@@ -709,19 +709,19 @@
     "version": "Version",
     "projectDescription": {
       "title": "Project Description",
-      "description": "The $1TAP project is an independent digital initiative combining blockchain, gaming culture, and artistic design inspired by Counter-Strike. It includes:",
+      "description": "The CardSurgery project is an independent digital initiative combining blockchain, gaming culture, and artistic design inspired by Counter-Strike. It includes:",
       "item1": "A memecoin deployed on the Base network",
-      "item2": "The 1TAP website and gamified experience",
+      "item2": "The CardSurgery website and gamified experience",
       "item3": "Visual assets, branding, sound effects, and digital art under the \"Pixel CT\" identity"
     },
     "ownershipStatement": {
       "title": "Ownership Statement",
-      "declaration": "I, Hugo, declare that I am the sole and legitimate owner of the $1TAP project and all associated intellectual property, including but not limited to:",
+      "declaration": "I, Hugo, declare that I am the sole and legitimate owner of the CardSurgery project and all associated intellectual property, including but not limited to:",
       "branding": "Branding and identity",
-      "brandingDetails": "\"$1TAP\", \"Onetapper\", \"Pixel-CT Memes\"",
+      "brandingDetails": "\"CardSurgery\", \"Onetapper\", \"Pixel-CT Memes\"",
       "assets": "Visual and audio assets",
       "assetsDetails": "All images, sounds, animations, and design elements",
-      "website": "The $1TAP website",
+      "website": "The CardSurgery website",
       "websiteDetails": "Source code, user interface, and interactive features",
       "token": "Token concept",
       "tokenDetails": "Smart contract design and tokenomics structure",
@@ -739,7 +739,7 @@
     },
     "nonAffiliation": {
       "title": "Non-Affiliation Statement",
-      "statement": "The $1TAP project is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Valve Corporation, Counter-Strike (CS:GO, CS2, or any related games), Gabe Newell, or any official gaming entities.",
+      "statement": "The CardSurgery project is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Valve Corporation, Counter-Strike (CS:GO, CS2, or any related games), Gabe Newell, or any official gaming entities.",
       "references": "All references to Counter-Strike, CS:GO, CS2, or related gaming culture are purely thematic, artistic, and for entertainment purposes only. This is an independent community project."
     },
     "digitalSignature": {
@@ -751,14 +751,14 @@
       "hashValue": "[Generated on commit]"
     },
     "footer": {
-      "copyright": "© 2025 $1TAP Project — All rights reserved.",
+      "copyright": "© 2025 CardSurgery Project — All rights reserved.",
       "nonAffiliated": "Non-affiliated with Valve Corporation or Counter-Strike.",
-      "protection": "Protected under 1TAP Legal Shield v1.0"
+      "protection": "Protected under CardSurgery Legal Shield v1.0"
     },
     "resources": {
       "license": {
         "title": "License",
-        "description": "View the 1TAP Community License 1.0",
+        "description": "View the CardSurgery Community License 1.0",
         "link": "Read License"
       },
       "audit": {
@@ -775,7 +775,7 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about $1TAP",
+    "subtitle": "Everything you need to know about CardSurgery",
     "stillQuestions": "Still have questions?",
     "joinCommunity": "Join our Discord community for real-time support from the team and community members.",
     "joinDiscord": "Join Discord",
@@ -788,28 +788,28 @@
       "community": "Community"
     },
     "general": {
-      "q1": "What is $1TAP?",
-      "a1": "$1TAP is a community-driven meme coin on the Base network, inspired by competitive gaming culture. It combines gaming nostalgia with DeFi innovation, offering a tap-to-earn game, NFT drops, and a vibrant ecosystem.",
+      "q1": "What is CardSurgery?",
+      "a1": "CardSurgery is a community-driven meme coin on the Base network, inspired by competitive gaming culture. It combines gaming nostalgia with DeFi innovation, offering a tap-to-earn game, NFT drops, and a vibrant ecosystem.",
       "q2": "Why Base network?",
       "a2": "Base offers lightning-fast transactions, minimal fees, and Coinbase integration. Perfect for gaming features and mass adoption without the high costs of Ethereum mainnet.",
       "q3": "Is this affiliated with Valve or popular FPS games?",
-      "a3": "No. $1TAP is an independent community project inspired by competitive gaming culture. We are not affiliated with, endorsed by, or connected to any game developers or publishers in any official capacity.",
-      "q4": "What makes $1TAP different from other meme coins?",
+      "a3": "No. CardSurgery is an independent community project inspired by competitive gaming culture. We are not affiliated with, endorsed by, or connected to any game developers or publishers in any official capacity.",
+      "q4": "What makes CardSurgery different from other meme coins?",
       "a4": "Unique gaming theme, interactive tap-to-earn game, NFT drop roulette system, locked liquidity for 6 months, and real utility beyond speculation. Plus, our community is built by gamers, for gamers."
     },
     "buying": {
-      "q1": "How do I buy $1TAP?",
-      "a1": "1. Get a Web3 wallet (MetaMask, Coinbase Wallet)\n2. Add Base network to your wallet\n3. Buy ETH and bridge to Base\n4. Swap ETH for $1TAP on Uniswap or our integrated DEX widget\n5. Add $1TAP contract address to see your tokens",
+      "q1": "How do I buy CardSurgery?",
+      "a1": "1. Get a Web3 wallet (MetaMask, Coinbase Wallet)\n2. Add Base network to your wallet\n3. Buy ETH and bridge to Base\n4. Swap ETH for CardSurgery on Uniswap or our integrated DEX widget\n5. Add CardSurgery contract address to see your tokens",
       "q2": "What is the contract address?",
       "a2": "Contract address will be announced at launch on our official channels (Discord, Twitter). Always verify from our official sources to avoid scams.",
       "q3": "What slippage should I use?",
       "a3": "We recommend 1-2% slippage for most trades. During high volatility, you may need to increase to 3-5%. Our 0% buy/sell tax means slippage is purely for DEX mechanics.",
       "q4": "Can I buy with a credit card?",
-      "a4": "You can use on-ramp services like Moonpay or Coinbase to buy ETH with a card, then bridge to Base and swap for $1TAP. Direct fiat-to-$1TAP coming in Phase 2."
+      "a4": "You can use on-ramp services like Moonpay or Coinbase to buy ETH with a card, then bridge to Base and swap for CardSurgery. Direct fiat-to-CardSurgery coming in Phase 2."
     },
     "tokenomics": {
       "q1": "What is the total supply?",
-      "a1": "Total supply: 1,000,000,000 $1TAP tokens. Fixed supply, no minting function. Deflationary through manual burns announced to community.",
+      "a1": "Total supply: 1,000,000,000 CardSurgery tokens. Fixed supply, no minting function. Deflationary through manual burns announced to community.",
       "q2": "Are there any taxes?",
       "a2": "ZERO taxes. 0% buy, 0% sell. We believe in fair trading without hidden fees. Liquidity is sustained through initial lock and community growth.",
       "q3": "How is liquidity secured?",
@@ -824,7 +824,7 @@
       "a1": "Internal security audit completed (see Security page). External audit by Hacken scheduled for Phase 3. Contract is open-source and verified on BaseScan.",
       "q2": "Can the team rug pull?",
       "a2": "No. Liquidity is locked, ownership is renounced post-launch, and contract has no mint function or admin withdrawals. Multi-sig wallet for community funds with transparent on-chain tracking.",
-      "q3": "How do I verify I have real $1TAP?",
+      "q3": "How do I verify I have real CardSurgery?",
       "a3": "Always check the official contract address on our website and BaseScan. Scammers create fake tokens. Join our Discord for verification help.",
       "q4": "What if I find a security issue?",
       "a4": "Report to security@onetap.com immediately. We have a bug bounty program (details on Security page). Responsible disclosure is rewarded."
@@ -839,7 +839,7 @@
       "q4": "Will there be a mobile app?",
       "a4": "Progressive Web App (PWA) launching Phase 4. Install from browser for native-like experience: offline mode, push notifications, portfolio tracking. Full iOS/Android apps if community votes yes.",
       "q5": "What is the Steam integration?",
-      "a5": "Phase 4 innovation: Track real competitive gaming performance, earn $1TAP rewards for achievements. Beta with 100 users first. Partnership discussions ongoing with major platforms."
+      "a5": "Phase 4 innovation: Track real competitive gaming performance, earn CardSurgery rewards for achievements. Beta with 100 users first. Partnership discussions ongoing with major platforms."
     },
     "community": {
       "q1": "How can I get involved?",
@@ -847,7 +847,7 @@
       "q2": "Is there a referral program?",
       "a2": "Yes! Share your unique referral link, earn XP bonus for each signup, and climb the leaderboard for exclusive NFT airdrops. Top 50 referrers get monthly prizes.",
       "q3": "How does DAO governance work?",
-      "a3": "Phase 4 feature. Stake $1TAP to vote on: treasury spending, roadmap priorities, partnership approvals, and burn schedules. 1 token staked = 1 vote. Snapshot-based voting.",
+      "a3": "Phase 4 feature. Stake CardSurgery to vote on: treasury spending, roadmap priorities, partnership approvals, and burn schedules. 1 token staked = 1 vote. Snapshot-based voting.",
       "q4": "Where can I see the team?",
       "a4": "Visit our Team page. Core members use pseudonyms for privacy (common in crypto). Doxxing is not required for legitimate projects. We prioritize transparency through code and actions."
     }
@@ -858,7 +858,7 @@
     "members": {
       "hugo": {
         "role": "Founder & Visionary",
-        "bio": "Project founder with a passion for bridging gaming culture and Web3. Leading $1TAP from vision to execution with strategic planning and community-first approach.",
+        "bio": "Project founder with a passion for bridging gaming culture and Web3. Leading CardSurgery from vision to execution with strategic planning and community-first approach.",
         "expertise": ["Project Leadership", "Brand Strategy", "Community Architecture", "Vision & Roadmap"]
       },
       "tapdev": {
@@ -889,12 +889,12 @@
     },
     "joinUs": {
       "title": "Want to Join The Team?",
-      "description": "We're always looking for talented contributors: developers, designers, marketers, and community moderators. If you're passionate about gaming and Web3, reach out on Discord to help build the future of $1TAP.",
+      "description": "We're always looking for talented contributors: developers, designers, marketers, and community moderators. If you're passionate about gaming and Web3, reach out on Discord to help build the future of CardSurgery.",
       "cta": "Apply on Discord"
     }
   },
   "lore": {
-    "title": "The Legend of 1TAP",
+    "title": "The Legend of CardSurgery",
     "subtitle": "From a single headshot to a global movement",
     "chapter1": {
       "title": "Chapter 1: The First Shot",
@@ -910,7 +910,7 @@
     },
     "chapter4": {
       "title": "Chapter 4: The Launch",
-      "content": "With locked liquidity, zero taxes, and a community-first approach, $1TAP launched on Base network. Not as just another memecoin, but as a movement. Every holder became part of the story."
+      "content": "With locked liquidity, zero taxes, and a community-first approach, CardSurgery launched on Base network. Not as just another memecoin, but as a movement. Every holder became part of the story."
     },
     "chapter5": {
       "title": "Chapter 5: The Future",
@@ -925,7 +925,7 @@
   },
   "blog": {
     "title": "News & Updates",
-    "subtitle": "Stay updated with the latest $1TAP announcements, partnerships, and community highlights",
+    "subtitle": "Stay updated with the latest CardSurgery announcements, partnerships, and community highlights",
     "loading": "Loading posts...",
     "noPosts": {
       "title": "No Posts Yet",

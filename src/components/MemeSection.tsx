@@ -191,7 +191,7 @@ const MemeSection = () => {
               <div className="absolute inset-0 flex items-center justify-center p-8">
                 <img
                   src={logoImage}
-                  alt="1Tap Logo"
+                  alt="CardSurgery Logo"
                   className="max-w-[70%] max-h-[70%] object-contain drop-shadow-2xl"
                 />
               </div>

@@ -1,6 +1,6 @@
 # Launch Configuration System
 
-This directory contains the centralized launch configuration for the $1TAP token project.
+This directory contains the centralized launch configuration for the CardSurgery token project.
 
 ## 📁 Files
 

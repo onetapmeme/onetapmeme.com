@@ -12,7 +12,7 @@ import {
 const STAGES = [
   { id: "received", label: "Reçu", icon: PackageCheck, desc: "Colis réceptionné, carte vérifiée et photographiée." },
   { id: "expertise", label: "Expertise", icon: Stethoscope, desc: "Diagnostic sous lumière contrôlée et microscope." },
-  { id: "surgery", label: "Chirurgie en cours", icon: Scissors, desc: "Intervention 1Tap par notre restaurateur expert." },
+  { id: "surgery", label: "Chirurgie en cours", icon: Scissors, desc: "Intervention CardSurgery par notre restaurateur expert." },
   { id: "finalisation", label: "Finalisation", icon: Sparkles, desc: "Contrôle qualité, photos finales, mise en pochette scellée." },
   { id: "shipped", label: "Expédié", icon: Truck, desc: "Renvoi en colis blindé et assuré." },
 ] as const;

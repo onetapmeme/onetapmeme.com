@@ -8,61 +8,61 @@ type Meta = { title: string; description: string };
 
 const ROUTE_META: Record<string, Meta> = {
   "/": {
-    title: "1Tap — Restauration professionnelle de cartes de collection",
+    title: "CardSurgery — Restauration professionnelle de cartes de collection",
     description: "Redonnez vie à vos cartes Pokémon, One Piece et TCG. Nettoyage, whitening, redressage et pressage de précision.",
   },
   "/home": {
-    title: "1Tap — Restauration de cartes Pokémon, One Piece & TCG",
+    title: "CardSurgery — Restauration de cartes Pokémon, One Piece & TCG",
     description: "Service artisanal de restauration de cartes : nettoyage, correction des bords, redressage, pressage. Devis transparent et garantie satisfait ou remboursé.",
   },
   "/auth": {
-    title: "Connexion — 1Tap",
-    description: "Accédez à votre espace 1Tap pour suivre vos restaurations en cours.",
+    title: "Connexion — CardSurgery",
+    description: "Accédez à votre espace CardSurgery pour suivre vos restaurations en cours.",
   },
   "/profile": {
-    title: "Mon profil — 1Tap",
-    description: "Gérez votre compte et vos préférences 1Tap.",
+    title: "Mon profil — CardSurgery",
+    description: "Gérez votre compte et vos préférences CardSurgery.",
   },
   "/faq": {
-    title: "FAQ — Questions fréquentes sur la restauration de cartes | 1Tap",
-    description: "Délais, garanties, impact sur le grading PSA/BGS, jeux acceptés : toutes les réponses sur la restauration 1Tap.",
+    title: "FAQ — Questions fréquentes sur la restauration de cartes | CardSurgery",
+    description: "Délais, garanties, impact sur le grading PSA/BGS, jeux acceptés : toutes les réponses sur la restauration CardSurgery.",
   },
   "/team": {
-    title: "L'équipe — 1Tap",
-    description: "Rencontrez les restaurateurs experts derrière 1Tap.",
+    title: "L'équipe — CardSurgery",
+    description: "Rencontrez les restaurateurs experts derrière CardSurgery.",
   },
   "/blog": {
-    title: "Blog — Conseils & actualités sur les cartes de collection | 1Tap",
+    title: "Blog — Conseils & actualités sur les cartes de collection | CardSurgery",
     description: "Conseils d'entretien, retours clients et coulisses de la restauration de cartes Pokémon, One Piece et TCG.",
   },
   "/ownership": {
-    title: "Mentions de propriété — 1Tap",
-    description: "Informations légales sur la propriété et l'exploitation de 1Tap.",
+    title: "Mentions de propriété — CardSurgery",
+    description: "Informations légales sur la propriété et l'exploitation de CardSurgery.",
   },
   "/disclaimer": {
-    title: "Avertissement — 1Tap",
-    description: "Avertissements et limites de responsabilité concernant le service 1Tap.",
+    title: "Avertissement — CardSurgery",
+    description: "Avertissements et limites de responsabilité concernant le service CardSurgery.",
   },
   "/non-affiliation": {
-    title: "Non-affiliation — 1Tap",
-    description: "1Tap n'est affilié à aucune marque, éditeur ou détenteur de droits sur les cartes restaurées.",
+    title: "Non-affiliation — CardSurgery",
+    description: "CardSurgery n'est affilié à aucune marque, éditeur ou détenteur de droits sur les cartes restaurées.",
   },
   "/privacy": {
-    title: "Politique de confidentialité — 1Tap",
-    description: "Comment 1Tap collecte, utilise et protège vos données personnelles, dans le respect du RGPD.",
+    title: "Politique de confidentialité — CardSurgery",
+    description: "Comment CardSurgery collecte, utilise et protège vos données personnelles, dans le respect du RGPD.",
   },
   "/terms": {
-    title: "Conditions d'utilisation — 1Tap",
-    description: "Les conditions qui régissent l'utilisation des services de restauration 1Tap.",
+    title: "Conditions d'utilisation — CardSurgery",
+    description: "Les conditions qui régissent l'utilisation des services de restauration CardSurgery.",
   },
   "/legal-notice": {
-    title: "Mentions légales — 1Tap",
-    description: "Informations légales sur l'éditeur et l'hébergeur de 1Tap.",
+    title: "Mentions légales — CardSurgery",
+    description: "Informations légales sur l'éditeur et l'hébergeur de CardSurgery.",
   },
 };
 
 const DEFAULT_META: Meta = {
-  title: "1Tap — Restauration professionnelle de cartes de collection",
+  title: "CardSurgery — Restauration professionnelle de cartes de collection",
   description: "Service artisanal de restauration de cartes Pokémon, One Piece et TCG. Précision, transparence et discrétion.",
 };
 

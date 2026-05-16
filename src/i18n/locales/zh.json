@@ -9,26 +9,26 @@
     "rewards": "奖励"
   },
   "hero": {
-    "title": "$1TAP",
+    "title": "CardSurgery",
     "subtitle": "终极游戏Memecoin",
     "description": "像素怀旧遇上现代加密货币。加入游戏革命,每笔交易都是爆头。",
-    "cta": "获取 $1TAP",
+    "cta": "获取 CardSurgery",
     "contractVerified": "✅ 合约已验证",
     "lpLocked": "🔒 LP锁定6个月",
     "dailyBurn": "🔥 每日销毁1%",
     "learnMore": "了解更多"
   },
   "enter": {
-    "title": "欢迎来到 1TAP!",
+    "title": "欢迎来到 CardSurgery!",
     "subtitle": "点击进入",
     "privacy": "隐私与风险通知",
-    "simplifiedNotice1": "1TAP 是一种没有内在价值或财务回报预期的memecoin。",
+    "simplifiedNotice1": "CardSurgery 是一种没有内在价值或财务回报预期的memecoin。",
     "simplifiedNotice2": "加密货币投资具有高风险。只投资您能承受损失的金额。",
     "simplifiedNotice3": "继续使用即表示您确认理解这些风险并接受我们的条款。",
     "readFullDisclaimer": "阅读完整免责声明 →",
     "important": "重要 - 请仔细阅读",
     "risk": "⚠️ 高风险投资:",
-    "riskText": "1TAP 是一种没有内在价值或财务回报预期的memecoin。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
+    "riskText": "CardSurgery 是一种没有内在价值或财务回报预期的memecoin。价值可能剧烈波动或归零。切勿投资超过您承受损失的金额。",
     "noAffiliation": "🚫 无附属关系:",
     "noAffiliationText": "本项目与 Valve Corporation、Counter-Strike 或任何相关商标无关。这是一个社区驱动的娱乐性memecoin。",
     "privacy2": "🔒 隐私:",
@@ -46,9 +46,9 @@
     "footer": "与 Valve Corporation 或 Counter-Strike 无关。仅供娱乐目的。"
   },
   "about": {
-    "title": "关于 1TAP",
+    "title": "关于 CardSurgery",
     "subtitle": "每一次点击都重要,每个持有者都是1Tapper",
-    "story": "源于对战术FPS游戏和表情包文化的热爱,1TAP 不仅仅是一枚代币——它是一场运动。由玩家为玩家创建,有一个明确的愿景:将战术游戏的竞技能量带入加密世界。",
+    "story": "源于对战术FPS游戏和表情包文化的热爱,CardSurgery 不仅仅是一枚代币——它是一场运动。由玩家为玩家创建,有一个明确的愿景:将战术游戏的竞技能量带入加密世界。",
     "story2": "没有风投。没有私人预售。只有纯粹的社区。",
     "communityDriven": "社区驱动",
     "communityDrivenText": "每个决定都由1Tappers投票。您的声音很重要。",
@@ -63,7 +63,7 @@
     "disclaimerNote": "请记住:memecoin具有高度投机性。永远不要投资超过您能承受损失的金额。"
   },
   "whyOneTap": {
-    "title": "为什么选择 1TAP?",
+    "title": "为什么选择 CardSurgery?",
     "subtitle": "唯一由玩家为玩家打造的memecoin",
     "gamers": {
       "title": "由玩家打造,为玩家服务",
@@ -137,7 +137,7 @@
     ]
   },
   "liveStats": {
-    "title": "1TAP 实时统计",
+    "title": "CardSurgery 实时统计",
     "subtitle": "实时市场数据 • 每30秒更新一次",
     "marketCap": "市值",
     "holders": "持有者",
@@ -146,8 +146,8 @@
     "notice": "📊 代币启动后实时数据集成即将推出"
   },
   "memes": {
-    "title": "1TAP 表情包生成器",
-    "subtitle": "用1TAP标志创建您自己的自定义表情包并与社区分享!",
+    "title": "CardSurgery 表情包生成器",
+    "subtitle": "用CardSurgery标志创建您自己的自定义表情包并与社区分享!",
     "randomize": "随机化",
     "download": "下载",
     "backgrounds": "背景",
@@ -199,25 +199,25 @@
   },
   "integrations": {
     "title": "游戏整合",
-    "subtitle": "游戏与区块链的结合。看看1TAP如何革新游戏生态系统。",
+    "subtitle": "游戏与区块链的结合。看看CardSurgery如何革新游戏生态系统。",
     "backHome": "返回主页",
     "twitch": {
       "title": "Twitch打赏小部件",
-      "description": "使观众能够在精彩游戏期间直接用1TAP打赏主播。",
-      "feature1": "直播期间实时1TAP打赏",
+      "description": "使观众能够在精彩游戏期间直接用CardSurgery打赏主播。",
+      "feature1": "直播期间实时CardSurgery打赏",
       "feature2": "自动转换和分配",
       "feature3": "观众排行榜整合"
     },
     "discord": {
       "title": "Discord MVP机器人",
       "description": "在每场社区比赛后自动奖励您最好的玩家。",
-      "feature1": "自动向比赛MVP分配1TAP",
+      "feature1": "自动向比赛MVP分配CardSurgery",
       "feature2": "追踪玩家统计和排名",
       "feature3": "每个服务器的自定义奖励池"
     },
     "nft": {
       "title": "NFT皮肤展示",
-      "description": "独家1Tap AWP皮肤 - 仅供1TAP持有者使用。",
+      "description": "独家CardSurgery AWP皮肤 - 仅供CardSurgery持有者使用。",
       "feature1": "限量版3D武器皮肤",
       "feature2": "持有者独家设计",
       "feature3": "计划未来游戏整合"
@@ -231,7 +231,7 @@
   },
   "airdrops": {
     "title": "游戏化空投",
-    "subtitle": "通过游戏、创作和与社区互动来赚取1TAP",
+    "subtitle": "通过游戏、创作和与社区互动来赚取CardSurgery",
     "weekly": {
       "title": "每周1Tapper抽奖",
       "description": "每周前100名点击者分享奖池",
@@ -327,7 +327,7 @@
   },
   "preLaunch": {
     "title": "🚀 即将推出",
-    "subtitle": "准备好迎接1TAP代币发布",
+    "subtitle": "准备好迎接CardSurgery代币发布",
     "days": "天",
     "hours": "小时",
     "minutes": "分钟",
@@ -351,8 +351,8 @@
     "ownership": "所有权证书",
     "nonAffiliation": "非关联声明",
     "legalNotice": "法律声明",
-    "legalShield": "受 1TAP Legal Shield v1.0 保护",
-    "disclaimerText": "1TAP 是一个没有内在价值且没有财务回报期望的memecoin。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
+    "legalShield": "受 CardSurgery Legal Shield v1.0 保护",
+    "disclaimerText": "CardSurgery 是一个没有内在价值且没有财务回报期望的memecoin。只投资您能承受损失的资金。本项目与 Valve Corporation、Counter-Strike 或相关商标无关。",
     "rights": "保留所有权利。",
     "contact": "联系方式"
   },
@@ -417,7 +417,7 @@
     "addBaseFailed": "添加 Base 网络失败",
     "switchFailed": "切换网络失败",
     "addToken": "添加代币",
-    "tokenAdded": "1TAP 已添加到您的钱包",
+    "tokenAdded": "CardSurgery 已添加到您的钱包",
     "addTokenFailed": "添加代币失败",
     "connectFirst": "请先连接钱包"
   },
@@ -454,7 +454,7 @@
     "errorLoadingDesc": "加载物品失败"
   },
   "swap": {
-    "title": "兑换 $1TAP",
+    "title": "兑换 CardSurgery",
     "subtitle": "通过 1inch DEX 聚合器在网站上直接交易，享受最优汇率",
     "loading": "正在加载兑换小部件...",
     "contractNotice": "合约地址将在启动后添加",
@@ -462,7 +462,7 @@
     "step1": "连接您的钱包（MetaMask、Coinbase 等）",
     "step2": "确保在 Base 网络上有 ETH",
     "step3": "选择金额并查看交易",
-    "step4": "确认兑换并获得 $1TAP",
+    "step4": "确认兑换并获得 CardSurgery",
     "tradingStats": "交易数据",
     "slippage": "滑点",
     "network": "网络",
@@ -527,7 +527,7 @@
     },
     "liability": {
       "title": "责任限制",
-      "description": "在任何情况下，1TAP、其运营商或贡献者均不对任何损害承担责任，包括但不限于与本网站使用相关的直接或间接、特殊、附带或后果性损害、损失或费用。"
+      "description": "在任何情况下，CardSurgery、其运营商或贡献者均不对任何损害承担责任，包括但不限于与本网站使用相关的直接或间接、特殊、附带或后果性损害、损失或费用。"
     },
     "compliance": {
       "title": "法律合规",
@@ -538,7 +538,7 @@
     },
     "intellectualProperty": {
       "title": "知识产权",
-      "description": "本网站上的内容，不包括第三方商标和引用，是1TAP社区的财产。未经授权的使用或复制是被禁止的。"
+      "description": "本网站上的内容，不包括第三方商标和引用，是CardSurgery社区的财产。未经授权的使用或复制是被禁止的。"
     },
     "governingLaw": {
       "title": "适用法律",
@@ -547,7 +547,7 @@
   },
   "disclaimer": {
     "title": "免责声明",
-    "intro": "1TAP是一个社区meme代币。它没有内在价值或财务回报预期。它不是投资、证券或金融产品。请自行研究。",
+    "intro": "CardSurgery是一个社区meme代币。它没有内在价值或财务回报预期。它不是投资、证券或金融产品。请自行研究。",
     "responsibility": "通过与本网站或代币交互，您同意您对自己的行为负全部责任，并承认与加密货币相关的风险。",
     "importantNotice": {
       "title": "重要通知",
@@ -567,7 +567,7 @@
   },
   "legalNotice": {
     "title": "法律声明",
-    "intro": "本页面根据适用的透明度和披露要求提供有关1TAP项目的法律信息。",
+    "intro": "本页面根据适用的透明度和披露要求提供有关CardSurgery项目的法律信息。",
     "projectInfo": {
       "title": "项目信息",
       "name": "项目名称",
@@ -594,7 +594,7 @@
     "legalStatus": {
       "title": "法律地位",
       "classification": "重要分类",
-      "description": "1TAP是一个memecoin，不被归类为证券。该代币具有：",
+      "description": "CardSurgery是一个memecoin，不被归类为证券。该代币具有：",
       "item1": "无财务回报承诺",
       "item2": "无创收活动",
       "item3": "无带有利润预期的中心化管理",
@@ -602,7 +602,7 @@
     },
     "intellectualProperty": {
       "title": "知识产权",
-      "description": "所有原创内容，包括1TAP品牌、标志和网站设计，均归1TAP社区项目所有。",
+      "description": "所有原创内容，包括CardSurgery品牌、标志和网站设计，均归CardSurgery社区项目所有。",
       "thirdParty": "第三方商标",
       "thirdPartyDesc": "对Counter-Strike、CS:GO、CS2和Valve Corporation的引用仅用于灵感和描述目的。本项目与这些实体无关。",
       "seeNotice": "查看非关联声明"
@@ -610,7 +610,7 @@
     "regulatory": {
       "title": "监管合规",
       "noKyc": "无需KYC",
-      "noKycDesc": "1TAP项目不收集或处理用户的个人身份数据。",
+      "noKycDesc": "CardSurgery项目不收集或处理用户的个人身份数据。",
       "aml": "AML合规",
       "amlDesc": "用户有责任遵守其各自司法管辖区的反洗钱法律。",
       "tax": "税务义务",
@@ -620,12 +620,12 @@
     },
     "dispute": {
       "title": "争议解决",
-      "description": "因使用本网站或与1TAP代币交互而产生的任何争议应根据国际仲裁原则解决。"
+      "description": "因使用本网站或与CardSurgery代币交互而产生的任何争议应根据国际仲裁原则解决。"
     }
   },
   "nonAffiliation": {
     "title": "非关联声明",
-    "mainNotice": "$1TAP <strong>不隶属于</strong>、不关联、未授权、未认可，也与Counter-Strike、Counter-Strike 2 (CS2)、Valve Corporation或Gabe Newell没有任何官方联系。",
+    "mainNotice": "CardSurgery <strong>不隶属于</strong>、不关联、未授权、未认可，也与Counter-Strike、Counter-Strike 2 (CS2)、Valve Corporation或Gabe Newell没有任何官方联系。",
     "independentDescription": "这是一个由社区驱动的独立meme币项目，灵感来自游戏文化。我们与任何游戏公司或其代表没有任何官方关系、合作或认可。",
     "trademarks": {
       "title": "商标",
@@ -636,7 +636,7 @@
     },
     "independentProject": {
       "title": "独立项目",
-      "description": "$1TAP是由游戏爱好者和加密货币支持者创建的草根社区倡议。与现有游戏或品牌的任何相似之处纯属灵感来源，不代表官方合作或认可。"
+      "description": "CardSurgery是由游戏爱好者和加密货币支持者创建的草根社区倡议。与现有游戏或品牌的任何相似之处纯属灵感来源，不代表官方合作或认可。"
     },
     "contact": {
       "title": "联系方式",
@@ -700,8 +700,8 @@
   },
   "ownership": {
     "title": "官方所有权证书",
-    "subtitle": "$1TAP项目的所有权和知识产权的法律证明",
-    "documentTitle": "$1TAP — 官方所有权文件",
+    "subtitle": "CardSurgery项目的所有权和知识产权的法律证明",
+    "documentTitle": "CardSurgery — 官方所有权文件",
     "projectName": "项目名称",
     "owner": "所有者",
     "date": "日期",
@@ -709,19 +709,19 @@
     "version": "版本",
     "projectDescription": {
       "title": "项目描述",
-      "description": "$1TAP项目是一个独立的数字倡议，结合了区块链、游戏文化和受Counter-Strike启发的艺术设计。它包括：",
+      "description": "CardSurgery项目是一个独立的数字倡议，结合了区块链、游戏文化和受Counter-Strike启发的艺术设计。它包括：",
       "item1": "部署在Base网络上的meme币",
-      "item2": "1TAP网站和游戏化体验",
+      "item2": "CardSurgery网站和游戏化体验",
       "item3": "视觉资产、品牌、音效和\"Pixel CT\"身份下的数字艺术"
     },
     "ownershipStatement": {
       "title": "所有权声明",
-      "declaration": "我，Hugo，声明我是$1TAP项目及所有相关知识产权的唯一合法所有者，包括但不限于：",
+      "declaration": "我，Hugo，声明我是CardSurgery项目及所有相关知识产权的唯一合法所有者，包括但不限于：",
       "branding": "品牌和身份",
-      "brandingDetails": "\"$1TAP\"、\"Onetapper\"、\"Pixel-CT Memes\"",
+      "brandingDetails": "\"CardSurgery\"、\"Onetapper\"、\"Pixel-CT Memes\"",
       "assets": "视觉和音频资产",
       "assetsDetails": "所有图像、声音、动画和设计元素",
-      "website": "$1TAP网站",
+      "website": "CardSurgery网站",
       "websiteDetails": "源代码、用户界面和交互功能",
       "token": "代币概念",
       "tokenDetails": "智能合约设计和代币经济结构",
@@ -739,7 +739,7 @@
     },
     "nonAffiliation": {
       "title": "非关联声明",
-      "statement": "$1TAP项目不隶属于、不关联、未授权、未认可，也与Valve Corporation、Counter-Strike（CS:GO、CS2或任何相关游戏）、Gabe Newell或任何官方游戏实体没有任何官方联系。",
+      "statement": "CardSurgery项目不隶属于、不关联、未授权、未认可，也与Valve Corporation、Counter-Strike（CS:GO、CS2或任何相关游戏）、Gabe Newell或任何官方游戏实体没有任何官方联系。",
       "references": "所有对Counter-Strike、CS:GO、CS2或相关游戏文化的引用纯粹是主题性的、艺术性的，仅供娱乐目的。这是一个独立的社区项目。"
     },
     "digitalSignature": {
@@ -751,14 +751,14 @@
       "hashValue": "[提交时生成]"
     },
     "footer": {
-      "copyright": "© 2025 $1TAP项目 — 保留所有权利。",
+      "copyright": "© 2025 CardSurgery项目 — 保留所有权利。",
       "nonAffiliated": "与Valve Corporation或Counter-Strike无关。",
-      "protection": "受1TAP法律保护盾v1.0保护"
+      "protection": "受CardSurgery法律保护盾v1.0保护"
     },
     "resources": {
       "license": {
         "title": "许可证",
-        "description": "查看1TAP社区许可证1.0",
+        "description": "查看CardSurgery社区许可证1.0",
         "link": "阅读许可证"
       },
       "audit": {
@@ -775,7 +775,7 @@
   },
   "faq": {
     "title": "常见问题",
-    "subtitle": "关于$1TAP你需要知道的一切",
+    "subtitle": "关于CardSurgery你需要知道的一切",
     "stillQuestions": "还有问题？",
     "joinCommunity": "加入我们的Discord社区，获得团队和社区成员的实时支持。",
     "joinDiscord": "加入Discord",
@@ -788,28 +788,28 @@
       "community": "社区"
     },
     "general": {
-      "q1": "什么是$1TAP？",
-      "a1": "$1TAP是Base网络上的社区驱动meme币，灵感来自竞技游戏文化。它将游戏怀旧与DeFi创新相结合，提供点击赚取游戏、NFT空投和充满活力的生态系统。",
+      "q1": "什么是CardSurgery？",
+      "a1": "CardSurgery是Base网络上的社区驱动meme币，灵感来自竞技游戏文化。它将游戏怀旧与DeFi创新相结合，提供点击赚取游戏、NFT空投和充满活力的生态系统。",
       "q2": "为什么选择Base网络？",
       "a2": "Base提供闪电般快速的交易、极低的费用和Coinbase集成。非常适合游戏功能和大规模采用，无需以太坊主网的高成本。",
       "q3": "这与Valve或热门FPS游戏有关联吗？",
-      "a3": "没有。$1TAP是一个独立的社区项目，灵感来自竞技游戏文化。我们没有与任何游戏开发商或发行商以任何官方方式有关联、认可或连接。",
-      "q4": "$1TAP与其他meme币有什么不同？",
+      "a3": "没有。CardSurgery是一个独立的社区项目，灵感来自竞技游戏文化。我们没有与任何游戏开发商或发行商以任何官方方式有关联、认可或连接。",
+      "q4": "CardSurgery与其他meme币有什么不同？",
       "a4": "独特的游戏主题、互动的点击赚取游戏、NFT空投轮盘系统、锁定6个月的流动性，以及超越投机的真正实用性。此外，我们的社区是由游戏玩家为游戏玩家打造的。"
     },
     "buying": {
-      "q1": "如何购买$1TAP？",
-      "a1": "1. 获取Web3钱包（MetaMask、Coinbase Wallet）\n2. 将Base网络添加到您的钱包\n3. 购买ETH并桥接到Base\n4. 在Uniswap或我们集成的DEX小部件上将ETH兑换为$1TAP\n5. 添加$1TAP合约地址以查看您的代币",
+      "q1": "如何购买CardSurgery？",
+      "a1": "1. 获取Web3钱包（MetaMask、Coinbase Wallet）\n2. 将Base网络添加到您的钱包\n3. 购买ETH并桥接到Base\n4. 在Uniswap或我们集成的DEX小部件上将ETH兑换为CardSurgery\n5. 添加CardSurgery合约地址以查看您的代币",
       "q2": "合约地址是什么？",
       "a2": "合约地址将在发布时通过我们的官方渠道（Discord、Twitter）公布。请务必从我们的官方来源验证以避免诈骗。",
       "q3": "应该使用多少滑点？",
       "a3": "我们建议大多数交易使用1-2%的滑点。在高波动期间，您可能需要增加到3-5%。我们0%的买卖税意味着滑点纯粹是DEX机制所需。",
       "q4": "可以用信用卡购买吗？",
-      "a4": "您可以使用Moonpay或Coinbase等入金服务用卡购买ETH，然后桥接到Base并兑换$1TAP。直接法币到$1TAP将在第二阶段推出。"
+      "a4": "您可以使用Moonpay或Coinbase等入金服务用卡购买ETH，然后桥接到Base并兑换CardSurgery。直接法币到CardSurgery将在第二阶段推出。"
     },
     "tokenomics": {
       "q1": "总供应量是多少？",
-      "a1": "总供应量：1,000,000,000 $1TAP代币。固定供应，无铸造功能。通过向社区公布的手动销毁实现通缩。",
+      "a1": "总供应量：1,000,000,000 CardSurgery代币。固定供应，无铸造功能。通过向社区公布的手动销毁实现通缩。",
       "q2": "有税吗？",
       "a2": "零税。0%买入，0%卖出。我们相信公平交易，没有隐藏费用。流动性通过初始锁定和社区增长来维持。",
       "q3": "流动性如何保护？",
@@ -824,7 +824,7 @@
       "a1": "内部安全审计已完成（见安全页面）。Hacken外部审计计划在第三阶段。合约是开源的，并在BaseScan上验证。",
       "q2": "团队能跑路吗？",
       "a2": "不能。流动性已锁定，发布后所有权已放弃，合约没有铸造功能或管理员提款。社区资金使用多签钱包，透明的链上跟踪。",
-      "q3": "如何验证我有真正的$1TAP？",
+      "q3": "如何验证我有真正的CardSurgery？",
       "a3": "始终在我们的网站和BaseScan上验证官方合约地址。骗子会创建假代币。加入我们的Discord获取验证帮助。",
       "q4": "如果我发现安全问题怎么办？",
       "a4": "立即报告到security@onetap.com。我们有漏洞赏金计划（详情见安全页面）。负责任的披露将获得奖励。"
@@ -839,7 +839,7 @@
       "q4": "会有移动应用吗？",
       "a4": "渐进式Web应用（PWA）将在第四阶段发布。从浏览器安装获得原生体验：离线模式、推送通知、投资组合跟踪。如果社区投票同意，将推出完整的iOS/Android应用。",
       "q5": "Steam集成是什么？",
-      "a5": "第四阶段创新：跟踪真实的竞技游戏表现，通过成就赚取$1TAP奖励。首先与100名用户进行测试。与主要平台的合作讨论正在进行中。"
+      "a5": "第四阶段创新：跟踪真实的竞技游戏表现，通过成就赚取CardSurgery奖励。首先与100名用户进行测试。与主要平台的合作讨论正在进行中。"
     },
     "community": {
       "q1": "我如何参与？",
@@ -847,7 +847,7 @@
       "q2": "有推荐计划吗？",
       "a2": "有！分享您的独特推荐链接，每次注册获得XP奖励，在排行榜上攀升获得独家NFT空投。前50名推荐人获得月度奖品。",
       "q3": "DAO治理如何运作？",
-      "a3": "第四阶段功能。质押$1TAP投票决定：国库支出、路线图优先级、合作批准和销毁时间表。1个质押代币=1票。基于Snapshot的投票。",
+      "a3": "第四阶段功能。质押CardSurgery投票决定：国库支出、路线图优先级、合作批准和销毁时间表。1个质押代币=1票。基于Snapshot的投票。",
       "q4": "在哪里可以看到团队？",
       "a4": "访问我们的团队页面。核心成员使用化名保护隐私（在加密领域很常见）。合法项目不需要实名。我们通过代码和行动优先考虑透明度。"
     }
@@ -858,7 +858,7 @@
     "members": {
       "hugo": {
         "role": "创始人与愿景者",
-        "bio": "项目创始人，热衷于将游戏文化与Web3连接。以战略规划和社区优先的方法带领$1TAP从愿景走向执行。",
+        "bio": "项目创始人，热衷于将游戏文化与Web3连接。以战略规划和社区优先的方法带领CardSurgery从愿景走向执行。",
         "expertise": ["项目领导", "品牌战略", "社区架构", "愿景与路线图"]
       },
       "tapdev": {
@@ -889,12 +889,12 @@
     },
     "joinUs": {
       "title": "想加入团队？",
-      "description": "我们一直在寻找有才华的贡献者：开发者、设计师、营销人员和社区版主。如果你对游戏和Web3充满热情，请在Discord上联系我们，帮助构建$1TAP的未来。",
+      "description": "我们一直在寻找有才华的贡献者：开发者、设计师、营销人员和社区版主。如果你对游戏和Web3充满热情，请在Discord上联系我们，帮助构建CardSurgery的未来。",
       "cta": "在Discord申请"
     }
   },
   "lore": {
-    "title": "1TAP的传说",
+    "title": "CardSurgery的传说",
     "subtitle": "从一次爆头到全球运动",
     "chapter1": {
       "title": "第一章：第一枪",
@@ -910,7 +910,7 @@
     },
     "chapter4": {
       "title": "第四章：发布",
-      "content": "凭借锁定的流动性、零税收和社区优先的方法，$1TAP在Base网络上发布了。不是作为另一个meme币，而是作为一场运动。每个持有者都成为了故事的一部分。"
+      "content": "凭借锁定的流动性、零税收和社区优先的方法，CardSurgery在Base网络上发布了。不是作为另一个meme币，而是作为一场运动。每个持有者都成为了故事的一部分。"
     },
     "chapter5": {
       "title": "第五章：未来",
@@ -925,7 +925,7 @@
   },
   "blog": {
     "title": "新闻与更新",
-    "subtitle": "了解$1TAP的最新公告、合作伙伴关系和社区亮点",
+    "subtitle": "了解CardSurgery的最新公告、合作伙伴关系和社区亮点",
     "loading": "加载文章中...",
     "noPosts": {
       "title": "暂无文章",
