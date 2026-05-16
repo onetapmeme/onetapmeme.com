@@ -98,6 +98,7 @@ const Diagnostic = () => {
     setSubmitting(true);
     // Simulated edge confirmation
     await new Promise((r) => setTimeout(r, 800));
+    incrementSavedCards(1);
     toast({
       title: "Diagnostic envoyé ✓",
       description: `Confirmation envoyée à ${email}. Nous revenons vers vous sous 24 h avec un devis personnalisé.`,
