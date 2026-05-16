@@ -98,7 +98,7 @@ const CardHome = () => {
               <motion.img
                 src={logo}
                 alt="CardSurgery"
-                className="h-28 sm:h-36 md:h-44 w-auto object-contain"
+                className="h-40 sm:h-52 md:h-64 w-auto object-contain"
                 animate={{
                   y: [0, -10, 0],
                   filter: [
@@ -129,12 +129,16 @@ const CardHome = () => {
               {t("heroTitle")}
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/90 mb-4 max-w-3xl mx-auto">
+              La précision chirurgicale dont vos précieuses cartes ont besoin.
+            </p>
+
+            <p className="text-base sm:text-lg text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
               {t("heroSubtitle")}
             </p>
 
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {[t("heroBadgeTrust"), t("heroBadgeWarranty"), t("heroBadgeInsured")].map(
+              {[t("heroBadgeWarranty"), t("heroBadgeInsured")].map(
                 (b) => (
                   <span
                     key={b}

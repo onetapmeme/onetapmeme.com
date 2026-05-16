@@ -30,15 +30,15 @@ const Navbar = () => {
     <header
       className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${
         isScrolled
-          ? "h-16 bg-background/80 backdrop-blur-xl border border-border scale-95 w-[94%] max-w-5xl shadow-md"
-          : "h-16 bg-background/90 backdrop-blur-md border border-border w-[96%] max-w-6xl"
+          ? "h-20 bg-background/80 backdrop-blur-xl border border-border scale-95 w-[94%] max-w-5xl shadow-md"
+          : "h-20 bg-background/90 backdrop-blur-md border border-border w-[96%] max-w-6xl"
       }`}
     >
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
           <Link to="/home" className="flex items-center gap-2 group">
-            <img src={logo} alt="CardSurgery" className="w-10 h-10 object-contain" />
-            <span className="hidden sm:inline font-bold text-foreground tracking-tight">
+            <img src={logo} alt="CardSurgery" className="h-16 w-auto object-contain drop-shadow-[0_0_15px_hsla(210,100%,55%,0.4)]" />
+            <span className="hidden sm:inline font-bold text-foreground tracking-tight text-lg">
               Card<span className="text-accent">Surgery</span>
             </span>
           </Link>

@@ -52,11 +52,11 @@ export const copy = {
     zh: "鉴定我的卡牌",
   } satisfies C,
   heroBadgeTrust: {
-    fr: "+10 000 cartes restaurées",
-    en: "10,000+ cards restored",
-    es: "+10 000 cartas restauradas",
-    ru: "Более 10 000 карт восстановлено",
-    zh: "已修复 10,000+ 张卡牌",
+    fr: "+127 cartes déjà sauvées",
+    en: "+127 cards already saved",
+    es: "+127 cartas ya salvadas",
+    ru: "Уже спасено +127 карт",
+    zh: "已挽救 +127 张卡牌",
   } satisfies C,
   heroBadgeWarranty: {
     fr: "Garantie satisfait ou remboursé",
