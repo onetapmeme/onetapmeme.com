@@ -44,10 +44,6 @@ const Footer = () => {
               Restauration premium de cartes de collection : Pokémon, One Piece, Lorcana, Magic, Yu-Gi-Oh.
             </p>
           </div>
-            <p className="text-xs text-muted-foreground mt-3">
-              Restauration premium de cartes de collection : Pokémon, One Piece, Lorcana, Magic, Yu-Gi-Oh.
-            </p>
-          </div>
 
           <div className="text-center md:text-left">
             <h4 className="text-base font-bold mb-4 text-foreground">Services</h4>
