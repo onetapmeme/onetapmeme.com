@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   const company = [
-    { label: "Pourquoi CardSurgery", to: "/home#why" },
+    { label: "Qui sommes-nous", to: "/home#about" },
     { label: "Notre processus", to: "/home#process" },
     { label: "FAQ", to: "/faq" },
     { label: "Contact", to: "/home#contact" },
