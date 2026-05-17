@@ -404,7 +404,7 @@ export const copy = {
   // Section anchors / nav
   navServices: { fr: "Services", en: "Services", es: "Servicios", ru: "Услуги", zh: "服务" } satisfies C,
   navProcess: { fr: "Processus", en: "Process", es: "Proceso", ru: "Процесс", zh: "流程" } satisfies C,
-  navWhy: { fr: "Pourquoi CardSurgery", en: "Why CardSurgery", es: "Por qué CardSurgery", ru: "Почему CardSurgery", zh: "关于 CardSurgery" } satisfies C,
+  navWhy: { fr: "Qui sommes-nous", en: "About us", es: "Quiénes somos", ru: "О нас", zh: "关于我们" } satisfies C,
   navFaq: { fr: "FAQ", en: "FAQ", es: "FAQ", ru: "FAQ", zh: "常见问题" } satisfies C,
   navContact: { fr: "Contact", en: "Contact", es: "Contacto", ru: "Контакты", zh: "联系" } satisfies C,
   login: { fr: "Connexion", en: "Login", es: "Acceder", ru: "Войти", zh: "登录" } satisfies C,
