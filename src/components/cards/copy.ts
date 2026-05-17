@@ -89,25 +89,25 @@ export const copy = {
 
   // About / Storytelling
   aboutTitle: {
-    fr: "Pourquoi CardSurgery ?",
-    en: "Why CardSurgery?",
-    es: "¿Por qué CardSurgery?",
-    ru: "Почему CardSurgery?",
-    zh: "为什么是 CardSurgery？",
+    fr: "Qui sommes-nous",
+    en: "About us",
+    es: "Quiénes somos",
+    ru: "О нас",
+    zh: "关于我们",
   } satisfies C,
   aboutP1: {
-    fr: "CardSurgery est un laboratoire de restauration haut de gamme dédié aux collectionneurs et investisseurs exigeants. Notre mission : préserver le capital esthétique et la valeur marchande de vos cartes les plus précieuses grâce à une méthodologie chirurgicale documentée, reproductible et certifiée.",
-    en: "CardSurgery is a premium restoration laboratory dedicated to discerning collectors and investors. Our mission: preserve the aesthetic capital and market value of your most precious cards through a documented, reproducible and certified surgical methodology.",
-    es: "CardSurgery es un laboratorio de restauración de alta gama dedicado a coleccionistas e inversores exigentes. Nuestra misión: preservar el capital estético y el valor de mercado de tus cartas más preciadas mediante una metodología quirúrgica documentada, reproducible y certificada.",
-    ru: "CardSurgery — это лаборатория реставрации премиум-класса для требовательных коллекционеров и инвесторов. Наша миссия: сохранить эстетический капитал и рыночную ценность ваших самых ценных карт благодаря задокументированной, воспроизводимой и сертифицированной хирургической методологии.",
-    zh: "CardSurgery 是面向严苛收藏家与投资者的高端修复实验室。我们的使命：通过有据可查、可复现且经过认证的外科级方法，守护您最珍贵卡牌的美学价值与市场价值。",
+    fr: "CardSurgery est né de la passion d'Hugo Bouat, collectionneur acharné de cartes Pokémon et One Piece depuis l'enfance. Pour Hugo, chaque carte raconte une histoire — un souvenir, une émotion, un patrimoine — qui mérite d'être préservé avec la même rigueur que l'on accorderait à une œuvre d'art. De cette dévotion est né un laboratoire où la culture du TCG rencontre l'exigence médicale.",
+    en: "CardSurgery was born from the lifelong passion of Hugo Bouat, a devoted collector of Pokémon and One Piece trading cards. For Hugo, every card tells a story — a memory, an emotion, a legacy — that deserves to be preserved with the same reverence as a work of art. From that devotion grew a laboratory where TCG culture meets the standards of clinical medicine.",
+    es: "CardSurgery nació de la pasión de toda una vida de Hugo Bouat, ferviente coleccionista de cartas Pokémon y One Piece. Para Hugo, cada carta cuenta una historia — un recuerdo, una emoción, un legado — que merece preservarse con la misma reverencia que una obra de arte. De esa devoción nació un laboratorio donde la cultura TCG se encuentra con la exigencia médica.",
+    ru: "CardSurgery родился из многолетней страсти Юго Буа — преданного коллекционера карт Pokémon и One Piece. Для Юго каждая карта рассказывает историю — воспоминание, эмоцию, наследие, — которую нужно сохранить с той же бережностью, что и произведение искусства. Из этой преданности вырос лаборатория, где культура TCG встречается с медицинской дисциплиной.",
+    zh: "CardSurgery 源自 Hugo Bouat 一生的热爱——他是 Pokémon 与 One Piece 卡牌的资深收藏家。对 Hugo 而言，每一张卡都讲述着一段故事——一段记忆、一份情感、一份传承——值得以艺术品般的虔诚加以守护。正是这份执着，孕育出一个让 TCG 文化与临床医学标准相遇的实验室。",
   } satisfies C,
   aboutP2: {
-    fr: "Chaque intervention est pensée pour maximiser le potentiel de grading auprès des organismes professionnels (PCA, CCC, Collect Aura), sans jamais dénaturer la carte. Outils calibrés, traçabilité photo HD, coffre ignifuge, assurance dédiée : nous appliquons les standards de l'horlogerie de précision à la conservation de vos actifs collectibles.",
-    en: "Every intervention is designed to maximize grading potential with professional bodies (PCA, CCC, Collect Aura), without ever altering the card. Calibrated tools, HD photo traceability, fireproof vault, dedicated insurance: we apply the standards of fine watchmaking to the preservation of your collectible assets.",
-    es: "Cada intervención está diseñada para maximizar el potencial de grading ante organismos profesionales (PCA, CCC, Collect Aura), sin desnaturalizar la carta. Herramientas calibradas, trazabilidad fotográfica HD, caja fuerte ignífuga y seguro dedicado: aplicamos los estándares de la alta relojería a la conservación de tus activos coleccionables.",
-    ru: "Каждое вмешательство рассчитано на максимизацию потенциала грейдинга у профессиональных организаций (PCA, CCC, Collect Aura) без искажения карты. Калиброванные инструменты, HD-фотодокументирование, огнестойкий сейф и отдельная страховка: мы применяем стандарты высокого часового искусства к сохранению ваших коллекционных активов.",
-    zh: "每一次操作都旨在最大限度提升在 PCA、CCC、Collect Aura 等专业机构的评级潜力，且绝不破坏卡牌本身。校准工具、高清照片可追溯、防火保险柜与专项保险：我们以精密制表的标准守护您的收藏资产。",
+    fr: "Car Hugo n'est pas qu'un collectionneur : il est infirmier en bloc opératoire. Chaque jour, il opère dans des environnements où l'erreur n'a pas sa place — précision millimétrée, asepsie absolue, gestuelle calibrée, traçabilité totale. Ces réflexes chirurgicaux, il les transpose intégralement à la restauration de vos cartes les plus précieuses : champ stérile, instruments calibrés, dextérité méticuleuse et discipline du bloc. Pour vous, cela signifie une seule chose : vos cartes sont entre les mains d'un soignant, traitées avec l'exigence d'un patient.",
+    en: "Because Hugo is not only a collector — he is an Operating Room Nurse. Every day, he works in environments where error is not an option: millimetric precision, absolute asepsis, calibrated gestures, full traceability. He transposes those surgical reflexes, in full, to the restoration of your most precious cards: sterile field, calibrated instruments, meticulous dexterity, operating-room discipline. For you, this means one thing: your cards are in the hands of a clinician, treated with the rigor reserved for a patient.",
+    es: "Porque Hugo no es solo un coleccionista: es enfermero de quirófano. Cada día opera en entornos donde el error no tiene cabida: precisión milimétrica, asepsia absoluta, gestos calibrados, trazabilidad total. Traslada íntegramente esos reflejos quirúrgicos a la restauración de tus cartas más valiosas: campo estéril, instrumentos calibrados, destreza meticulosa y disciplina de quirófano. Para ti significa una sola cosa: tus cartas están en manos de un sanitario, tratadas con el rigor reservado a un paciente.",
+    ru: "Юго — не только коллекционер: он операционная медсестра (Operating Room Nurse). Каждый день он работает там, где ошибка недопустима: миллиметровая точность, абсолютная асептика, выверенные движения, полная прослеживаемость. Эти хирургические рефлексы он целиком переносит в реставрацию ваших самых ценных карт: стерильное поле, калиброванные инструменты, скрупулёзная ловкость и дисциплина операционного блока. Для вас это значит одно: ваши карты — в руках медика, и с ними обращаются как с пациентом.",
+    zh: "Hugo 不仅是收藏家，更是一名手术室护士（Operating Room Nurse）。他每天工作的环境容不得半点差错：毫米级精度、绝对无菌、标准化操作、全程可追溯。他将这些外科级的反射动作完整地带入到您珍贵卡牌的修复中：无菌台面、校准器械、精细手法与手术室纪律。对您而言，这意味着一件事：您的卡牌正交由一位医护人员之手，被当作病人一般对待。",
   } satisfies C,
 
   // Services
