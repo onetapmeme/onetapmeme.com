@@ -23,12 +23,14 @@ import {
 } from "@/lib/dossiers";
 import {
   MAX_INSURED_VALUE,
+  INSURANCE_TIERS,
   computeInsurance,
   packTotalEuros,
   eurosToCents,
 } from "@/lib/insurance";
 import { Slider } from "@/components/ui/slider";
 import { ShieldCheck } from "lucide-react";
+import { InsuranceTierSelector } from "@/components/InsuranceTierSelector";
 import { supabase } from "@/integrations/supabase/client";
 
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
