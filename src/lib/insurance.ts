@@ -10,11 +10,11 @@ export interface InsuranceTier {
 }
 
 export const INSURANCE_TIERS: InsuranceTier[] = [
-  { index: 1, capEuros: 200,  feeEuros: 2.5, label: "Tier 1 — jusqu'à 200 €" },
-  { index: 2, capEuros: 500,  feeEuros: 5,   label: "Tier 2 — jusqu'à 500 €" },
-  { index: 3, capEuros: 1000, feeEuros: 10,  label: "Tier 3 — jusqu'à 1 000 €" },
-  { index: 4, capEuros: 2000, feeEuros: 20,  label: "Tier 4 — jusqu'à 2 000 €" },
-  { index: 5, capEuros: 5000, feeEuros: 45,  label: "Tier 5 — jusqu'à 5 000 €" },
+  { index: 1, capEuros: 200,  feeEuros: 4.90,  label: "Tier 1 — jusqu'à 200 €" },
+  { index: 2, capEuros: 500,  feeEuros: 9.90,  label: "Tier 2 — jusqu'à 500 €" },
+  { index: 3, capEuros: 1000, feeEuros: 19.90, label: "Tier 3 — jusqu'à 1 000 €" },
+  { index: 4, capEuros: 2000, feeEuros: 39.90, label: "Tier 4 — jusqu'à 2 000 €" },
+  { index: 5, capEuros: 5000, feeEuros: 79.90, label: "Tier 5 — jusqu'à 5 000 €" },
 ];
 
 export const MAX_INSURED_VALUE = 5000;
