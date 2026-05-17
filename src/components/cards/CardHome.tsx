@@ -15,6 +15,10 @@ import {
   Lock,
   Mail,
   FlaskConical,
+  Microscope,
+  Droplets,
+  Hammer,
+  Gem,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -34,10 +38,10 @@ const CardHome = () => {
 
 
   const steps = [
-    { icon: PackageCheck, title: t("step1Title"), desc: t("step1Desc") },
-    { icon: Stethoscope, title: t("step2Title"), desc: t("step2Desc") },
-    { icon: Wand2, title: t("step3Title"), desc: t("step3Desc") },
-    { icon: ShieldCheck, title: t("step4Title"), desc: t("step4Desc") },
+    { icon: Microscope, title: t("step1Title"), desc: t("step1Desc") },
+    { icon: Droplets, title: t("step2Title"), desc: t("step2Desc") },
+    { icon: Hammer, title: t("step3Title"), desc: t("step3Desc") },
+    { icon: Gem, title: t("step4Title"), desc: t("step4Desc") },
   ];
 
   const why = [
@@ -198,14 +202,14 @@ const CardHome = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`relative pl-16 md:pl-0 md:grid md:grid-cols-2 md:gap-12 ${
+                  className={`group relative pl-16 md:pl-0 md:grid md:grid-cols-2 md:gap-12 ${
                     i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
                   }`}
                 >
                   <div
                     className={`md:flex ${i % 2 === 1 ? "md:justify-start" : "md:justify-end"}`}
                   >
-                    <Card className="glass-effect p-6 rounded-2xl border-primary/20 max-w-md w-full">
+                    <Card className="glass-effect p-6 rounded-2xl border-primary/20 max-w-md w-full transition-all duration-500 group-hover:border-accent/60 group-hover:shadow-[0_0_40px_-8px_hsla(22,80%,55%,0.45)] group-hover:-translate-y-0.5">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
                           {t("stepLabel")} {i + 1}
@@ -218,9 +222,11 @@ const CardHome = () => {
                     </Card>
                   </div>
                   <div
-                    className={`absolute left-0 md:left-1/2 top-6 md:-translate-x-1/2 p-3 rounded-full bg-background border-4 border-primary shadow-[0_0_30px_hsla(210,100%,55%,0.4)]`}
+                    className="absolute left-0 md:left-1/2 top-6 md:-translate-x-1/2 p-3 rounded-full bg-background border-4 border-primary/70 shadow-[0_0_20px_hsla(22,80%,55%,0.25)] transition-all duration-500 ease-out group-hover:border-accent group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_45px_hsla(22,90%,60%,0.75),0_0_90px_hsla(22,90%,60%,0.35)]"
                   >
-                    <s.icon className="w-6 h-6 text-primary" />
+                    <span className="pointer-events-none absolute inset-0 rounded-full bg-accent/0 group-hover:bg-accent/10 transition-colors duration-500" />
+                    <span className="pointer-events-none absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 blur-2xl bg-accent/30 transition-opacity duration-700" />
+                    <s.icon className="relative w-6 h-6 text-primary transition-colors duration-500 group-hover:text-accent" strokeWidth={1.75} />
                   </div>
                 </motion.div>
               ))}
