@@ -166,7 +166,14 @@ const Payment = () => {
 
                 <div className="rounded-lg border-2 border-dashed border-border p-6 text-center bg-muted/30">
                   <p className="text-sm text-muted-foreground mb-2">Montant à régler</p>
-                  <p className="text-4xl font-bold text-foreground mb-4">{dossier.packPrice}</p>
+                  <p className="text-4xl font-bold text-foreground mb-4">
+                    {(() => {
+                      const m = /([\d.,]+)/.exec(dossier.packPrice || "");
+                      const baseCents = m ? Math.round(parseFloat(m[1].replace(",", ".")) * 100) : 0;
+                      const totalCents = baseCents + (dossier.insuranceCents ?? 0);
+                      return (totalCents / 100).toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
+                    })()}
+                  </p>
                   <Button
                     onClick={fakePay}
                     disabled={paying}
