@@ -174,35 +174,37 @@ const Payment = () => {
             {dossier.status === "approved" && (
               <div className="space-y-5">
                 <h1 className="text-2xl font-bold flex items-center gap-2">
-                  <CreditCard className="w-6 h-6 text-accent" /> Paiement du forfait
+                  <CreditCard className="w-6 h-6 text-accent" /> Paiement sécurisé
                 </h1>
                 <p className="text-muted-foreground text-sm">
-                  Le diagnostic est validé. Réglez le forfait pour réserver l'intervention.
-                  Le paiement est sécurisé et déclenche immédiatement les instructions d'expédition.
+                  Diagnostic validé. Réglez votre forfait + assurance Ad Valorem pour réserver l'intervention.
+                  Le paiement est traité par Stripe ; aucune donnée bancaire ne transite par nos serveurs.
                 </p>
 
-                <div className="rounded-lg border-2 border-dashed border-border p-6 text-center bg-muted/30">
-                  <p className="text-sm text-muted-foreground mb-2">Montant à régler</p>
-                  <p className="text-4xl font-bold text-foreground mb-4">
-                    {(() => {
-                      const m = /([\d.,]+)/.exec(dossier.packPrice || "");
-                      const baseCents = m ? Math.round(parseFloat(m[1].replace(",", ".")) * 100) : 0;
-                      const totalCents = baseCents + (dossier.insuranceCents ?? 0);
-                      return (totalCents / 100).toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
-                    })()}
-                  </p>
-                  <Button
-                    onClick={fakePay}
-                    disabled={paying}
-                    size="lg"
-                    className="glossy-btn text-accent-foreground border-0"
-                  >
-                    <CreditCard className="w-5 h-5 mr-2" />
-                    {paying ? "Traitement…" : "Payer maintenant"}
-                  </Button>
-                  <p className="text-xs text-muted-foreground mt-3">
-                    Paiement sécurisé. Module bancaire en cours d'intégration ; cette démo simule l'encaissement.
-                  </p>
+                <div className="-mx-2 sm:mx-0">
+                  <PaymentTestModeBanner />
+                  {(() => {
+                    const packPriceId = PACK_PRICE_LOOKUP[dossier.pack];
+                    if (!packPriceId) {
+                      return (
+                        <div className="p-4 text-sm text-destructive">
+                          Forfait inconnu — contactez le support.
+                        </div>
+                      );
+                    }
+                    const tierIdx = tierIndexFromLabel(dossier.insuranceTier);
+                    const qty: 1 | 2 = dossier.insuranceMultiLeg ? 2 : 1;
+                    return (
+                      <StripeDossierCheckout
+                        packPriceId={packPriceId}
+                        insuranceTierIndex={tierIdx}
+                        insuranceQuantity={qty}
+                        dossierRef={dossier.ref}
+                        customerEmail={dossier.email}
+                        returnUrl={`${window.location.origin}/checkout/return?ref=${dossier.ref}&session_id={CHECKOUT_SESSION_ID}`}
+                      />
+                    );
+                  })()}
                 </div>
               </div>
             )}
