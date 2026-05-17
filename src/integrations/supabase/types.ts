@@ -243,13 +243,19 @@ export type Database = {
           pack: string
           pack_label: string
           pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
           photos: Json
           ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
           user_id: string | null
+          validated_at: string | null
         }
         Insert: {
           admin_notes?: string | null
@@ -269,13 +275,19 @@ export type Database = {
           pack: string
           pack_label: string
           pack_price: string
+          paid_at?: string | null
+          payment_link_expires_at?: string | null
+          payment_link_url?: string | null
           photos?: Json
           ref: string
+          return_carrier?: string | null
+          return_tracking_number?: string | null
           shipping_carrier?: string | null
           status?: Database["public"]["Enums"]["dossier_status"]
           tcg?: string | null
           updated_at?: string
           user_id?: string | null
+          validated_at?: string | null
         }
         Update: {
           admin_notes?: string | null
@@ -295,13 +307,19 @@ export type Database = {
           pack?: string
           pack_label?: string
           pack_price?: string
+          paid_at?: string | null
+          payment_link_expires_at?: string | null
+          payment_link_url?: string | null
           photos?: Json
           ref?: string
+          return_carrier?: string | null
+          return_tracking_number?: string | null
           shipping_carrier?: string | null
           status?: Database["public"]["Enums"]["dossier_status"]
           tcg?: string | null
           updated_at?: string
           user_id?: string | null
+          validated_at?: string | null
         }
         Relationships: []
       }
@@ -1021,19 +1039,193 @@ export type Database = {
           pack: string
           pack_label: string
           pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
           photos: Json
           ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
           user_id: string | null
+          validated_at: string | null
         }[]
         SetofOptions: {
           from: "*"
           to: "dossiers"
           isOneToOne: false
           isSetofReturn: true
+        }
+      }
+      admin_mark_in_surgery: {
+        Args: { ref_param: string }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          declared_value_cents: number | null
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
+          photos: Json
+          ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
+          shipping_carrier: string | null
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+          validated_at: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      admin_mark_received: {
+        Args: { ref_param: string }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          declared_value_cents: number | null
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
+          photos: Json
+          ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
+          shipping_carrier: string | null
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+          validated_at: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      admin_mark_shipped: {
+        Args: {
+          carrier_param: string
+          ref_param: string
+          tracking_param: string
+        }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          declared_value_cents: number | null
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
+          photos: Json
+          ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
+          shipping_carrier: string | null
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+          validated_at: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      admin_reject_dossier: {
+        Args: { notes_param: string; ref_param: string }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          declared_value_cents: number | null
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
+          photos: Json
+          ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
+          shipping_carrier: string | null
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+          validated_at: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
         }
       }
       admin_update_dossier_status: {
@@ -1060,13 +1252,65 @@ export type Database = {
           pack: string
           pack_label: string
           pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
           photos: Json
           ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
           user_id: string | null
+          validated_at: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
+      admin_validate_dossier: {
+        Args: {
+          notes_param?: string
+          override_insurance_cents_param?: number
+          override_pack_price_param?: string
+          ref_param: string
+        }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          declared_value_cents: number | null
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
+          photos: Json
+          ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
+          shipping_carrier: string | null
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+          validated_at: string | null
         }
         SetofOptions: {
           from: "*"
@@ -1076,6 +1320,7 @@ export type Database = {
         }
       }
       calculate_level: { Args: { xp: number }; Returns: number }
+      claim_dossiers_by_email: { Args: never; Returns: number }
       claim_quest_reward: { Args: { quest_id_param: string }; Returns: number }
       cleanup_expired_manifesto_tokens: { Args: never; Returns: undefined }
       complete_daily_quest: {
@@ -1102,13 +1347,19 @@ export type Database = {
           pack: string
           pack_label: string
           pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
           photos: Json
           ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
           user_id: string | null
+          validated_at: string | null
         }
         SetofOptions: {
           from: "*"
@@ -1127,45 +1378,28 @@ export type Database = {
         }
         Returns: string
       }
-      create_dossier:
-        | {
-            Args: {
-              card_name_param: string
-              cares_param: Json
-              defects_param: string
-              email_param: string
-              estimated_value_param: string
-              name_param: string
-              pack_label_param: string
-              pack_param: string
-              pack_price_param: string
-              photos_param: Json
-              tcg_param: string
-            }
-            Returns: string
-          }
-        | {
-            Args: {
-              card_name_param: string
-              cares_param: Json
-              declared_value_cents_param?: number
-              defects_param: string
-              email_param: string
-              estimated_value_param: string
-              insurance_cap_cents_param?: number
-              insurance_cents_param?: number
-              insurance_multi_leg_param?: boolean
-              insurance_tier_param?: string
-              name_param: string
-              pack_label_param: string
-              pack_param: string
-              pack_price_param: string
-              photos_param: Json
-              shipping_carrier_param?: string
-              tcg_param: string
-            }
-            Returns: string
-          }
+      create_dossier: {
+        Args: {
+          card_name_param: string
+          cares_param: Json
+          declared_value_cents_param?: number
+          defects_param: string
+          email_param: string
+          estimated_value_param: string
+          insurance_cap_cents_param?: number
+          insurance_cents_param?: number
+          insurance_multi_leg_param?: boolean
+          insurance_tier_param?: string
+          name_param: string
+          pack_label_param: string
+          pack_param: string
+          pack_price_param: string
+          photos_param: Json
+          shipping_carrier_param?: string
+          tcg_param: string
+        }
+        Returns: string
+      }
       create_meme_with_validation: {
         Args: {
           accessories_param?: Json
@@ -1212,13 +1446,19 @@ export type Database = {
           pack: string
           pack_label: string
           pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
           photos: Json
           ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
           user_id: string | null
+          validated_at: string | null
         }
         SetofOptions: {
           from: "*"
@@ -1303,6 +1543,47 @@ export type Database = {
           xp_increment?: number
         }
         Returns: undefined
+      }
+      set_dossier_payment_link: {
+        Args: { expires_param: string; ref_param: string; url_param: string }
+        Returns: {
+          admin_notes: string | null
+          card_name: string | null
+          cares: Json
+          created_at: string
+          declared_value_cents: number | null
+          defects: string | null
+          email: string
+          estimated_value: string | null
+          id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
+          name: string
+          pack: string
+          pack_label: string
+          pack_price: string
+          paid_at: string | null
+          payment_link_expires_at: string | null
+          payment_link_url: string | null
+          photos: Json
+          ref: string
+          return_carrier: string | null
+          return_tracking_number: string | null
+          shipping_carrier: string | null
+          status: Database["public"]["Enums"]["dossier_status"]
+          tcg: string | null
+          updated_at: string
+          user_id: string | null
+          validated_at: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "dossiers"
+          isOneToOne: true
+          isSetofReturn: false
+        }
       }
       sign_manifesto_secure: { Args: { email_param: string }; Returns: string }
       subscribe_to_notifications: {
