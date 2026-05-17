@@ -164,11 +164,19 @@ const Diagnostic = () => {
         }
       }
 
-      // 2) Create dossier server-side
+      // 2) Create dossier server-side (with insurance breakdown)
+      const ins = pack ? computeInsurance(pack, declaredValue) : null;
       const ref = await createDossierRemote({
         email, name, pack,
-        cardName, tcg: cardType, estimatedValue,
+        cardName, tcg: cardType,
+        estimatedValue: `${declaredValue} €`,
         cares, defects, photos: uploaded,
+        declaredValueCents: eurosToCents(declaredValue),
+        insuranceTier: ins?.tier.label ?? null,
+        insuranceCents: ins ? eurosToCents(ins.feeEuros) : null,
+        insuranceCapCents: ins ? eurosToCents(ins.tier.capEuros) : null,
+        insuranceMultiLeg: ins?.multiLeg ?? false,
+        shippingCarrier,
       });
 
       // 3) Trigger confirmation email (non-blocking)
