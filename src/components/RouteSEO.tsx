@@ -70,6 +70,29 @@ const RouteSEO = () => {
   const { pathname } = useLocation();
   const meta = ROUTE_META[pathname] || DEFAULT_META;
   const url = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
+  const isHome = pathname === "/" || pathname === "/home";
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "CardSurgery — Restauration professionnelle de cartes de collection",
+    serviceType: "Collectible card restoration",
+    provider: {
+      "@type": "Organization",
+      name: "CardSurgery",
+      url: SITE_URL,
+      email: "contact@cardsurgery.com",
+    },
+    areaServed: "Worldwide",
+    description:
+      "Restauration artisanale de cartes TCG (Pokémon, One Piece, Magic, Yu-Gi-Oh, Lorcana) : nettoyage de surface, whitening, redressage, pressage de précision et préparation au grading PCA / CCC / Collect Aura.",
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "EUR",
+      lowPrice: "19",
+      highPrice: "95",
+    },
+  };
 
   return (
     <Helmet>
@@ -83,6 +106,11 @@ const RouteSEO = () => {
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
       <meta name="twitter:image" content={OG_IMAGE} />
+      {isHome && (
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+      )}
     </Helmet>
   );
 };
