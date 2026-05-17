@@ -19,3 +19,9 @@ verify_jwt = true
 verify_jwt = true
 [functions.process-email-queue]
 verify_jwt = true
+
+[functions.create-dossier-checkout]
+verify_jwt = false
+
+[functions.payments-webhook]
+verify_jwt = false
