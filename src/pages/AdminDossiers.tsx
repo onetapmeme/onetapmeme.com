@@ -10,10 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-import { Loader2, ShieldAlert, Check, X, Eye, RefreshCcw } from "lucide-react";
+import { Loader2, ShieldAlert, Check, X, Eye, RefreshCcw, Save, Truck } from "lucide-react";
 import {
   adminListDossiers, adminUpdateStatus, sendDossierEmail,
+  adminValidateDossier, adminMarkShipped,
   type Dossier, type DossierStatus,
 } from "@/lib/dossiers";
 
@@ -47,6 +50,10 @@ export default function AdminDossiers() {
   const [selected, setSelected] = useState<Dossier | null>(null);
   const [notes, setNotes] = useState("");
   const [acting, setActing] = useState(false);
+  const [overridePrice, setOverridePrice] = useState("");
+  const [overrideInsuranceEuros, setOverrideInsuranceEuros] = useState("");
+  const [carrier, setCarrier] = useState("");
+  const [tracking, setTracking] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -80,6 +87,59 @@ export default function AdminDossiers() {
       toast({ title: "Dossier mis à jour", description: `${updated.ref} → ${STATUS_LABEL[status]}` });
       setSelected(updated);
       setNotes("");
+      await load();
+    } catch (e: any) {
+      toast({ title: "Échec", description: e?.message, variant: "destructive" });
+    } finally { setActing(false); }
+  };
+
+  // Pre-fill price/insurance/tracking inputs when a dossier is selected.
+  useEffect(() => {
+    if (!selected) return;
+    setOverridePrice(selected.packPrice ?? "");
+    setOverrideInsuranceEuros(
+      typeof selected.insuranceCents === "number" ? (selected.insuranceCents / 100).toFixed(2) : ""
+    );
+    setCarrier(selected.returnCarrier ?? "");
+    setTracking(selected.returnTrackingNumber ?? "");
+  }, [selected?.ref]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const saveOverridesAndApprove = async () => {
+    if (!selected) return;
+    setActing(true);
+    try {
+      const insCents = overrideInsuranceEuros.trim()
+        ? Math.round(parseFloat(overrideInsuranceEuros.replace(",", ".")) * 100)
+        : undefined;
+      if (insCents !== undefined && (!Number.isFinite(insCents) || insCents < 0)) {
+        throw new Error("Montant d'assurance invalide");
+      }
+      const updated = await adminValidateDossier(selected.ref, {
+        notes: notes || undefined,
+        overridePackPrice: overridePrice.trim() || undefined,
+        overrideInsuranceCents: insCents,
+      });
+      sendDossierEmail(updated.ref, "approved");
+      toast({ title: "Tarifs enregistrés", description: `${updated.ref} validé avec les nouveaux montants.` });
+      setSelected(updated);
+      await load();
+    } catch (e: any) {
+      toast({ title: "Échec", description: e?.message, variant: "destructive" });
+    } finally { setActing(false); }
+  };
+
+  const shipWithTracking = async () => {
+    if (!selected) return;
+    if (!carrier.trim() || tracking.trim().length < 4) {
+      toast({ title: "Transporteur et n° de suivi requis", variant: "destructive" });
+      return;
+    }
+    setActing(true);
+    try {
+      const updated = await adminMarkShipped(selected.ref, carrier.trim(), tracking.trim());
+      sendDossierEmail(updated.ref, "shipped");
+      toast({ title: "Expédition enregistrée", description: `${updated.ref} — ${carrier} ${tracking}` });
+      setSelected(updated);
       await load();
     } catch (e: any) {
       toast({ title: "Échec", description: e?.message, variant: "destructive" });
@@ -219,7 +279,7 @@ export default function AdminDossiers() {
                     className="mb-3"
                   />
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 mb-4">
                     <Button
                       onClick={() => act("approved", "approved")}
                       disabled={acting || selected.status === "approved"}
@@ -236,8 +296,75 @@ export default function AdminDossiers() {
                     </Button>
                     <Button onClick={() => act("received")} disabled={acting} variant="outline">Colis reçu</Button>
                     <Button onClick={() => act("in_surgery")} disabled={acting} variant="outline">En chirurgie</Button>
-                    <Button onClick={() => act("shipped", "shipped")} disabled={acting} variant="outline" className="col-span-2">
-                      Marquer comme expédié
+                  </div>
+
+                  {/* Manual price override (custom cases) */}
+                  <div className="border-t border-border pt-4 mb-4 space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Tarification manuelle
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <Label htmlFor="ov-price" className="text-xs">Prix forfait</Label>
+                        <Input
+                          id="ov-price"
+                          value={overridePrice}
+                          onChange={(e) => setOverridePrice(e.target.value)}
+                          placeholder="ex. 49 €"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="ov-ins" className="text-xs">Assurance (€)</Label>
+                        <Input
+                          id="ov-ins"
+                          value={overrideInsuranceEuros}
+                          onChange={(e) => setOverrideInsuranceEuros(e.target.value)}
+                          placeholder="ex. 19.90"
+                          inputMode="decimal"
+                        />
+                      </div>
+                    </div>
+                    <Button
+                      onClick={saveOverridesAndApprove}
+                      disabled={acting}
+                      className="w-full"
+                    >
+                      <Save className="w-4 h-4 mr-1" /> Enregistrer tarifs & valider
+                    </Button>
+                  </div>
+
+                  {/* Return tracking */}
+                  <div className="border-t border-border pt-4 space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Expédition retour
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <Label htmlFor="ship-carrier" className="text-xs">Transporteur</Label>
+                        <Input
+                          id="ship-carrier"
+                          value={carrier}
+                          onChange={(e) => setCarrier(e.target.value)}
+                          placeholder="La Poste, Chronopost…"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="ship-track" className="text-xs">N° de suivi</Label>
+                        <Input
+                          id="ship-track"
+                          value={tracking}
+                          onChange={(e) => setTracking(e.target.value)}
+                          placeholder="Tracking number"
+                        />
+                      </div>
+                    </div>
+                    <Button
+                      onClick={shipWithTracking}
+                      disabled={acting}
+                      variant="outline"
+                      className="w-full"
+                    >
+                      <Truck className="w-4 h-4 mr-1" /> Marquer comme expédié
                     </Button>
                   </div>
                 </Card>
