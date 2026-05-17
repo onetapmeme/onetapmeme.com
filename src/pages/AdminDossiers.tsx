@@ -50,6 +50,10 @@ export default function AdminDossiers() {
   const [selected, setSelected] = useState<Dossier | null>(null);
   const [notes, setNotes] = useState("");
   const [acting, setActing] = useState(false);
+  const [overridePrice, setOverridePrice] = useState("");
+  const [overrideInsuranceEuros, setOverrideInsuranceEuros] = useState("");
+  const [carrier, setCarrier] = useState("");
+  const [tracking, setTracking] = useState("");
 
   useEffect(() => {
     (async () => {
