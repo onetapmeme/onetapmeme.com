@@ -90,12 +90,19 @@ const Diagnostic = () => {
   const navigate = useNavigate();
   const initialPack = params.get("pack") && PACKS[params.get("pack")!] ? params.get("pack")! : "";
 
+  const initialDeclared = (() => {
+    const raw = Number.parseFloat(params.get("declared") ?? "");
+    if (!Number.isFinite(raw) || raw <= 0) return 200;
+    return Math.min(MAX_INSURED_VALUE, Math.max(0, raw));
+  })();
+
   const [step, setStep] = useState(initialPack ? 1 : 0);
   const [pack, setPack] = useState<string>(initialPack);
   const [photos, setPhotos] = useState<Photos>({});
   const [cardType, setCardType] = useState<string>("");
   const [cardName, setCardName] = useState("");
-  const [estimatedValue, setEstimatedValue] = useState<string>("");
+  const [declaredValue, setDeclaredValue] = useState<number>(initialDeclared);
+  const [shippingCarrier, setShippingCarrier] = useState<string>("colissimo");
   const [cares, setCares] = useState<string[]>([]);
   const [defects, setDefects] = useState("");
   const [name, setName] = useState("");
