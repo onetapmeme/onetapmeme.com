@@ -75,6 +75,12 @@ function mapRow(r: any): Dossier {
     insuranceCapCents: r.insurance_cap_cents ?? null,
     insuranceMultiLeg: !!r.insurance_multi_leg,
     shippingCarrier: r.shipping_carrier ?? null,
+    paymentLinkUrl: r.payment_link_url ?? null,
+    paymentLinkExpiresAt: r.payment_link_expires_at ?? null,
+    paidAt: r.paid_at ?? null,
+    validatedAt: r.validated_at ?? null,
+    returnCarrier: r.return_carrier ?? null,
+    returnTrackingNumber: r.return_tracking_number ?? null,
   };
 }
 
