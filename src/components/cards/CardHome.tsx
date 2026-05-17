@@ -16,14 +16,9 @@ import {
   Mail,
   FlaskConical,
 } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import BeforeAfterSlider from "@/components/cards/BeforeAfterSlider";
 import logo from "@/assets/cardsurgery-logo.png";
 import heroBg from "@/assets/hero-bg.png";
 import { copy, pickLang } from "./copy";
@@ -59,12 +54,6 @@ const CardHome = () => {
 
   const trust = [t("trust1"), t("trust2"), t("trust3"), t("trust4")];
 
-  const faqs = [
-    { q: t("faq1Q"), a: t("faq1A") },
-    { q: t("faq2Q"), a: t("faq2A") },
-    { q: t("faq3Q"), a: t("faq3A") },
-    { q: t("faq4Q"), a: t("faq4A") },
-  ];
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -200,6 +189,9 @@ const CardHome = () => {
             <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("servicesTitle")}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("servicesSubtitle")}
+            </p>
+            <p className="mt-5 text-sm md:text-base text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed glass-effect border border-primary/15 rounded-2xl px-5 py-4">
+              {t("servicesFlow")}
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -355,27 +347,56 @@ const CardHome = () => {
       <SocialProof />
 
 
-      <section id="faq" className="py-20 md:py-32 px-4">
+      {/* BEFORE / AFTER DEMO */}
+      <section id="before-after" className="py-20 md:py-32 px-4">
         <div className="container mx-auto max-w-3xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("faqTitle")}</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Avant / Après</h2>
+            <p className="text-lg text-muted-foreground">
+              Glissez le curseur pour comparer une restauration réelle.
+            </p>
           </div>
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((f, i) => (
-              <AccordionItem
-                key={i}
-                value={`q${i}`}
-                className="glass-effect border border-primary/20 rounded-lg px-6"
-              >
-                <AccordionTrigger className="text-left hover:text-primary">
-                  <span className="font-semibold">{f.q}</span>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <BeforeAfterSlider
+            before="https://placehold.co/800x1100/7a6a55/ffffff?text=AVANT"
+            after="https://placehold.co/800x1100/3a2f24/ffffff?text=APRÈS"
+            alt="Démonstration restauration CardSurgery"
+          />
+        </div>
+      </section>
+
+      {/* SÉCURITÉ CLINIQUE */}
+      <section id="security" className="py-20 md:py-32 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <Lock className="w-14 h-14 mx-auto mb-6 text-primary" />
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Sécurité clinique</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Vos cartes traitées comme des actifs : traçabilité, stockage protégé, assurance dédiée.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="glass-effect p-6 rounded-2xl border-primary/20">
+              <Lock className="w-10 h-10 text-primary mb-4" />
+              <h3 className="text-lg font-bold mb-2">Coffre ignifuge</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Stockage en coffre-fort ignifuge entre chaque étape, accès restreint à l'équipe technique habilitée.
+              </p>
+            </Card>
+            <Card className="glass-effect p-6 rounded-2xl border-primary/20">
+              <ShieldCheck className="w-10 h-10 text-primary mb-4" />
+              <h3 className="text-lg font-bold mb-2">Assurance bout-en-bout</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Colis aller / retour assurés et suivis jusqu'à 5 000 € la déclaration. Aucune zone d'ombre.
+              </p>
+            </Card>
+            <Card className="glass-effect p-6 rounded-2xl border-primary/20">
+              <Eye className="w-10 h-10 text-primary mb-4" />
+              <h3 className="text-lg font-bold mb-2">Traçabilité HD</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Photos haute définition à chaque étape, archivées dans votre dossier sécurisé.
+              </p>
+            </Card>
+          </div>
         </div>
       </section>
 

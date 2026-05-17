@@ -125,6 +125,13 @@ export const copy = {
     ru: "Четыре авторские процедуры, рассчитанные под каждый тип дефекта.",
     zh: "四种匠心工艺，针对不同瑕疵精准应对。",
   } satisfies C,
+  servicesFlow: {
+    fr: "Parcours sécurisé : vous expédiez votre carte en colis assuré et suivi → diagnostic en laboratoire → restauration → option grading partenaire (PCA, CCC, Collect Aura) si choisie → retour chez vous en colis assuré et suivi de bout en bout.",
+    en: "Secure journey: you ship your card in an insured tracked parcel → lab diagnosis → restoration → optional partner grading (PCA, CCC, Collect Aura) if selected → return to you via fully insured tracked parcel.",
+    es: "Trayecto seguro: envías tu carta en un paquete asegurado y rastreado → diagnóstico en laboratorio → restauración → grading opcional con socio (PCA, CCC, Collect Aura) si lo eliges → devolución a tu domicilio en paquete asegurado y rastreado.",
+    ru: "Безопасный маршрут: вы отправляете карту застрахованной отслеживаемой посылкой → диагностика в лаборатории → реставрация → опциональный грейдинг у партнёра (PCA, CCC, Collect Aura) → возврат застрахованной отслеживаемой посылкой.",
+    zh: "安全流程：您以保价并可追踪的包裹寄出卡牌 → 实验室诊断 → 修复 → 可选合作机构评级（PCA、CCC、Collect Aura）→ 全程保价追踪寄回。",
+  } satisfies C,
 
   service1Title: {
     fr: "Nettoyage de surface",
