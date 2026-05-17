@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Calendar } from "@/components/ui/calendar";
@@ -7,15 +7,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-import { CalendarDays, Clock, Check } from "lucide-react";
+import { CalendarDays, Clock, Check, Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  TIME_SLOTS,
+  isBookableDay,
+  listTakenSlots,
+  createBookingSlot,
+} from "@/lib/booking";
 
-const SLOTS = ["09:00", "10:30", "13:30", "15:00", "16:30"];
+const fmtKey = (d: Date) => d.toISOString().slice(0, 10);
 
 const Booking = () => {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [date, setDate] = useState<Date | undefined>(undefined);
   const [slot, setSlot] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [dossierRef, setDossierRef] = useState("");
+  const [taken, setTaken] = useState<Set<string>>(new Set());
+  const [submitting, setSubmitting] = useState(false);
   const [confirmed, setConfirmed] = useState<{ ref: string; date: string; slot: string } | null>(null);
 
   const today = useMemo(() => {
@@ -24,15 +34,41 @@ const Booking = () => {
     return d;
   }, []);
 
-  const confirm = () => {
+  // Load taken slots for the next 60 days
+  useEffect(() => {
+    const to = new Date(today);
+    to.setDate(to.getDate() + 60);
+    listTakenSlots(today, to)
+      .then(setTaken)
+      .catch(() => setTaken(new Set()));
+  }, [today]);
+
+  const slotKey = date ? fmtKey(date) : "";
+  const isSlotTaken = (t: string) => taken.has(`${slotKey}|${t}`);
+
+  const confirm = async () => {
     if (!date || !slot || !name || !email) {
       toast({ title: "Champs manquants", description: "Date, créneau, nom et email requis.", variant: "destructive" });
       return;
     }
-    const ref = "CS-" + Math.random().toString(36).slice(2, 8).toUpperCase();
-    const fmt = date.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-    setConfirmed({ ref, date: fmt, slot });
-    toast({ title: "Créneau réservé ✓", description: `Référence ${ref} envoyée à ${email}.` });
+    setSubmitting(true);
+    try {
+      const ref = await createBookingSlot({ name, email, date, time: slot, dossierRef: dossierRef || undefined });
+      const fmt = date.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+      setConfirmed({ ref, date: fmt, slot });
+      setTaken((prev) => new Set(prev).add(`${slotKey}|${slot}`));
+      toast({ title: "Créneau réservé ✓", description: `Référence ${ref} envoyée à ${email}.` });
+    } catch (e: any) {
+      const msg = e?.message?.includes("Slot already taken")
+        ? "Ce créneau vient d'être réservé. Choisissez-en un autre."
+        : e?.message || "Erreur lors de la réservation";
+      toast({ title: "Échec de la réservation", description: msg, variant: "destructive" });
+      // refresh taken set
+      const to = new Date(today); to.setDate(to.getDate() + 60);
+      listTakenSlots(today, to).then(setTaken).catch(() => {});
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -45,7 +81,8 @@ const Booking = () => {
               <span className="text-accent">Réservez</span> votre créneau d'envoi
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Choisissez la date à laquelle vous comptez expédier votre carte. Nous garantissons la prise en charge dès réception.
+              Atelier ouvert du <strong>lundi au jeudi, 10 h–18 h</strong>. Choisissez la date à laquelle vous comptez expédier votre carte ;
+              nous garantissons la prise en charge dès réception.
             </p>
           </header>
 
@@ -59,7 +96,7 @@ const Booking = () => {
               <p className="text-foreground"><CalendarDays className="inline w-4 h-4 mr-1" />{confirmed.date}</p>
               <p className="text-foreground mb-6"><Clock className="inline w-4 h-4 mr-1" />{confirmed.slot}</p>
               <div className="flex gap-2 justify-center">
-                <Button variant="outline" onClick={() => setConfirmed(null)}>Nouvelle réservation</Button>
+                <Button variant="outline" onClick={() => { setConfirmed(null); setSlot(null); }}>Nouvelle réservation</Button>
                 <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   <a href="/tracking">Suivre mon dossier</a>
                 </Button>
@@ -72,41 +109,64 @@ const Booking = () => {
                 <Calendar
                   mode="single"
                   selected={date}
-                  onSelect={setDate}
-                  disabled={(d) => d < today}
-                  className="rounded-md border bg-background"
+                  onSelect={(d) => { setDate(d); setSlot(null); }}
+                  disabled={(d) => d < today || !isBookableDay(d)}
+                  className={cn("rounded-md border bg-background p-3 pointer-events-auto")}
                 />
+                <p className="text-xs text-muted-foreground mt-3">
+                  Vendredi, samedi et dimanche fermés (week-end logistique).
+                </p>
               </Card>
 
               <Card className="p-6 space-y-5">
                 <div>
                   <h3 className="font-bold mb-3 flex items-center gap-2"><Clock className="w-5 h-5 text-accent" /> Créneau de dépôt</h3>
-                  <div className="grid grid-cols-3 gap-2">
-                    {SLOTS.map((s) => (
-                      <Button
-                        key={s}
-                        variant={slot === s ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setSlot(s)}
-                        className={slot === s ? "bg-accent hover:bg-accent/90 text-accent-foreground" : ""}
-                      >
-                        {s}
-                      </Button>
-                    ))}
-                  </div>
+                  {!date ? (
+                    <p className="text-sm text-muted-foreground">Sélectionnez d'abord une date.</p>
+                  ) : (
+                    <div className="grid grid-cols-3 gap-2">
+                      {TIME_SLOTS.map((s) => {
+                        const taken = isSlotTaken(s);
+                        return (
+                          <Button
+                            key={s}
+                            variant={slot === s ? "default" : "outline"}
+                            size="sm"
+                            disabled={taken}
+                            onClick={() => setSlot(s)}
+                            className={cn(
+                              slot === s ? "bg-accent hover:bg-accent/90 text-accent-foreground" : "",
+                              taken && "opacity-40 line-through",
+                            )}
+                            aria-label={taken ? `Créneau ${s} déjà pris` : `Choisir le créneau ${s}`}
+                          >
+                            {s}
+                          </Button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
                 <div className="space-y-3">
                   <div>
-                    <Label>Nom</Label>
-                    <Input value={name} onChange={(e) => setName(e.target.value)} maxLength={120} />
+                    <Label htmlFor="bk-name">Nom</Label>
+                    <Input id="bk-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={120} />
                   </div>
                   <div>
-                    <Label>Email</Label>
-                    <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={255} />
+                    <Label htmlFor="bk-email">Email</Label>
+                    <Input id="bk-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={255} />
+                  </div>
+                  <div>
+                    <Label htmlFor="bk-ref">Référence dossier (optionnel)</Label>
+                    <Input id="bk-ref" value={dossierRef} onChange={(e) => setDossierRef(e.target.value.toUpperCase())} placeholder="CS-XXXXXX" maxLength={20} />
                   </div>
                 </div>
-                <Button onClick={confirm} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                  Confirmer la réservation
+                <Button
+                  onClick={confirm}
+                  disabled={submitting || !date || !slot || !name || !email}
+                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+                >
+                  {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Réservation…</> : "Confirmer la réservation"}
                 </Button>
               </Card>
             </div>

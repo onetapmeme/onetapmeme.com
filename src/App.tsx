@@ -28,6 +28,10 @@ import Booking from "./pages/Booking";
 import Tracking from "./pages/Tracking";
 import Payment from "./pages/Payment";
 import AdminDossiers from "./pages/AdminDossiers";
+import AdminHub from "./pages/AdminHub";
+import AdminBookings from "./pages/AdminBookings";
+import AdminPricing from "./pages/AdminPricing";
+import AdminGrading from "./pages/AdminGrading";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +59,10 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/dossiers" element={<AdminDossiers />} />
+          <Route path="/admin/hub" element={<AdminHub />} />
+          <Route path="/admin/bookings" element={<AdminBookings />} />
+          <Route path="/admin/pricing" element={<AdminPricing />} />
+          <Route path="/admin/grading" element={<AdminGrading />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/diagnostic" element={<Diagnostic />} />

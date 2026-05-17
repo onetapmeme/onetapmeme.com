@@ -146,6 +146,51 @@ export type Database = {
         }
         Relationships: []
       }
+      booking_slots: {
+        Row: {
+          booking_date: string
+          booking_time: string
+          created_at: string
+          dossier_ref: string | null
+          email: string
+          id: string
+          name: string
+          notes: string | null
+          ref: string
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          booking_date: string
+          booking_time: string
+          created_at?: string
+          dossier_ref?: string | null
+          email: string
+          id?: string
+          name: string
+          notes?: string | null
+          ref: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          booking_date?: string
+          booking_time?: string
+          created_at?: string
+          dossier_ref?: string | null
+          email?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          ref?: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       daily_quests: {
         Row: {
           created_at: string
@@ -239,6 +284,48 @@ export type Database = {
           tcg?: string | null
           updated_at?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      grading_pricing: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          max_value_cents: number | null
+          min_value_cents: number
+          partner: string
+          price_cents: number
+          sort_order: number
+          tier_label: string
+          turnaround_days: number | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          max_value_cents?: number | null
+          min_value_cents?: number
+          partner: string
+          price_cents: number
+          sort_order?: number
+          tier_label: string
+          turnaround_days?: number | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          max_value_cents?: number | null
+          min_value_cents?: number
+          partner?: string
+          price_cents?: number
+          sort_order?: number
+          tier_label?: string
+          turnaround_days?: number | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -677,6 +764,48 @@ export type Database = {
         }
         Relationships: []
       }
+      service_pricing: {
+        Row: {
+          created_at: string
+          description: string | null
+          features: Json
+          id: string
+          is_active: boolean
+          label: string
+          pack_key: string
+          price_cents: number
+          sort_order: number
+          turnaround_days: number | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          features?: Json
+          id?: string
+          is_active?: boolean
+          label: string
+          pack_key: string
+          price_cents: number
+          sort_order?: number
+          turnaround_days?: number | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          features?: Json
+          id?: string
+          is_active?: boolean
+          label?: string
+          pack_key?: string
+          price_cents?: number
+          sort_order?: number
+          turnaround_days?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_achievements: {
         Row: {
           achievement_id: string
@@ -952,6 +1081,16 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      create_booking_slot: {
+        Args: {
+          booking_date_param: string
+          booking_time_param: string
+          dossier_ref_param?: string
+          email_param: string
+          name_param: string
+        }
+        Returns: string
+      }
       create_dossier: {
         Args: {
           card_name_param: string
@@ -1073,6 +1212,13 @@ export type Database = {
         Returns: undefined
       }
       initialize_user_xp: { Args: never; Returns: undefined }
+      list_taken_slots: {
+        Args: { from_date: string; to_date: string }
+        Returns: {
+          booking_date: string
+          booking_time: string
+        }[]
+      }
       log_admin_action: {
         Args: {
           action_param: string
