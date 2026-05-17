@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { Menu, ShieldCheck } from "lucide-react";
+import { Menu, ShieldCheck, User as UserIcon, LogOut, FolderOpen } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import logo from "@/assets/cardsurgery-logo.png";
 import { copy, pickLang } from "@/components/cards/copy";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const Navbar = () => {
   const { i18n } = useTranslation();
   const lang = pickLang(i18n.language);
   const t = (k: keyof typeof copy) => copy[k][lang];
+  const { user, isAdmin } = useAuth();
 
   const NAV_ITEMS = [
     { label: t("navServices"), to: "/pricing" },
@@ -27,7 +30,6 @@ const Navbar = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -35,21 +37,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const check = async (uid?: string) => {
-      if (!uid) { setIsAdmin(false); return; }
-      const { data } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", uid)
-        .eq("role", "admin")
-        .maybeSingle();
-      setIsAdmin(!!data);
-    };
-    supabase.auth.getSession().then(({ data: { session } }) => check(session?.user?.id));
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => check(session?.user?.id));
-    return () => sub.subscription.unsubscribe();
-  }, []);
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/home");
+  };
+
+  const initial = (user?.email ?? "?").charAt(0).toUpperCase();
 
   return (
     <header
@@ -86,14 +79,42 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2 shrink-0">
             <LanguageSwitcher inline />
-            {isAdmin && (
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button size="sm" variant="outline" className="border-accent/40 rounded-full px-2.5 gap-2 hidden sm:inline-flex" aria-label="Mon compte">
+                    <span className="w-6 h-6 rounded-full bg-accent text-accent-foreground text-xs font-semibold flex items-center justify-center">
+                      {initial}
+                    </span>
+                    <span className="hidden md:inline text-xs max-w-[120px] truncate">{user.email}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 z-[100]">
+                  <DropdownMenuLabel className="truncate">{user.email}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => navigate("/my-dossiers")}>
+                    <FolderOpen className="w-4 h-4 mr-2" /> Mes dossiers
+                  </DropdownMenuItem>
+                  {isAdmin && (
+                    <DropdownMenuItem onClick={() => navigate("/admin")}>
+                      <ShieldCheck className="w-4 h-4 mr-2 text-accent" /> Admin
+                    </DropdownMenuItem>
+                  )}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut}>
+                    <LogOut className="w-4 h-4 mr-2" /> Déconnexion
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
               <Button
                 size="sm"
                 variant="outline"
-                className="hidden lg:inline-flex border-accent/40 text-accent hover:bg-accent/10"
-                onClick={() => navigate("/admin")}
+                className="hidden sm:inline-flex border-accent/40 rounded-full"
+                onClick={() => navigate("/auth")}
               >
-                <ShieldCheck className="w-4 h-4 mr-1" /> Admin
+                <UserIcon className="w-4 h-4 sm:mr-1.5" />
+                <span className="hidden md:inline">Connexion</span>
               </Button>
             )}
             <Button
@@ -131,6 +152,25 @@ const Navbar = () => {
                   <div className="pt-3 mt-2 border-t border-border">
                     <LanguageSwitcher inline />
                   </div>
+                  {user ? (
+                    <>
+                      <Link to="/my-dossiers" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
+                        <FolderOpen className="w-4 h-4" /> Mes dossiers
+                      </Link>
+                      {isAdmin && (
+                        <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-accent py-2 flex items-center gap-2">
+                          <ShieldCheck className="w-4 h-4" /> Admin
+                        </Link>
+                      )}
+                      <button onClick={() => { setIsMobileMenuOpen(false); handleSignOut(); }} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2 text-left">
+                        <LogOut className="w-4 h-4" /> Déconnexion
+                      </button>
+                    </>
+                  ) : (
+                    <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
+                      <UserIcon className="w-4 h-4" /> Connexion
+                    </Link>
+                  )}
                   <Button
                     className="mt-4 glossy-btn text-accent-foreground border-0"
                     onClick={() => {

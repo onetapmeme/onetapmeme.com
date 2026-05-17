@@ -1,98 +1,94 @@
-# Plan d'exécution — Batch CardSurgery
+## Goal
+Ship the Card Surgery customer + admin experience to production quality: pixel-perfect responsive, real Stripe payments after admin validation, branded email link, FR/EN switcher with geo-detect, and a fuller admin control center.
 
-Le périmètre est très large. Je propose de l'exécuter en **3 vagues** pour livrer rapidement de la valeur, valider visuellement à chaque étape, et garder le code maintenable.
+## Phasing
 
----
-
-## VAGUE 1 — UI globale, contenu homepage, services (rapide, à fort impact visuel)
-
-### 1.1 Global / i18n
-- Réduire de 50% le volume audio par défaut au premier clic (modifier `Enter.tsx` + `AudioControls.tsx` : default 70 → 35).
-- FR = langue par défaut (modifier `i18n/config.ts` : `fallbackLng: 'fr'`, prio FR > EN > autres dans la détection).
-- Switcher de langue : rendre le `LanguageSwitcher` visible dans la Navbar desktop ET dans le menu mobile (actuellement floating en haut à droite).
-
-### 1.2 Homepage
-- **Pourquoi CardSurgery** : réécriture corporate/premium (préservation haut de gamme, maximisation valeur grading, méthodologie chirurgicale).
-- **Compteur** : harmoniser à `+200 cartes restaurées` partout (`useSavedCardsCounter`, `SocialProof`, `CardHome`).
-- **Encore des questions ?** : retirer Discord, remplacer par `contact@cardsurgery.com` (mailto + icône Mail).
-
-### 1.3 Processus 4 étapes (refonte ordonnée)
-1. Analyse au microscope 🔬
-2. Nettoyage en profondeur (recto/verso)
-3. Redressage carte + coins (humidification contrôlée) — **délais dynamiques injectés depuis les forfaits**
-4. Polissage de surface (réduction rayures superficielles)
-- Liens externes : lien produit vers `kurtscardcare.com`, badge "Formations professionnelles" vers `rocketcollect.net`.
-
-### 1.4 Services (page Pricing)
-- Pack 19€ : ajouter "Renvoi sous assurance + suivi".
-- Pack 39€ : ajouter "Couverture assurance haute valeur".
-- Pack 95€ : dropdown grading (PCA / CCC / Collect Aura) avec liens, délais dynamiques selon le choix, mention "Colis assurés selon valeur déclarée", **wizard tarif avancé** (valeur déclarée + variables d'assurance, log côté Supabase pour ajustement manuel admin).
-- Retirer "Options à la carte" → remplacer par **matrice tarifaire PCA/CCC/Collect Aura** (tarifs de soumission tiers).
-- Disclaimer minimaliste : "CardSurgery optimise la condition physique ; le grade final reste à la discrétion exclusive de PCA/CCC/Aura."
+I'll deliver in 5 phases, each independently shippable. You can stop after any phase.
 
 ---
 
-## VAGUE 2 — FAQ + IA, suivi dossiers, emails automatiques
+### Phase 1 — Tracking + workflow data model (foundation for everything)
 
-### 2.1 FAQ
-- Approfondir avec Q/R techniques (holofoil, cartonnage vintage, chrome moderne, encres UV, vernis).
-- Lien direct vers `/faq` sous l'assistant.
+The current `dossiers.status` enum doesn't match your 5 stages and `ref` is `CS-XXXXXX`. I'll align both.
 
-### 2.2 Chatbot IA (FAQAssistant)
-- Refonte du composant existant pour appeler une **edge function `faq-assistant`** utilisant Lovable AI (`google/gemini-3-flash-preview`) avec un system prompt strict centré sur l'expertise CardSurgery (matériaux, sécurité, types acceptés, préparation grading).
-- Rendu markdown + streaming, garde-fou : refuse de répondre hors-sujet.
-
-### 2.3 Suivi dossiers
-- Déjà côté serveur (Supabase). Vérifier que :
-  - Paiement gaté par statut `approved` ✅ (déjà en place via `confirm_dossier_payment`).
-  - Timeline visuelle "Received → Analysis → Surgery → Grading/Shipping" plus claire dans `Tracking.tsx`.
-
-### 2.4 Emails automatiques
-- L'edge function `send-dossier-email` existe déjà. Vérifier qu'elle est bien déclenchée à chaque transition de statut + lors de la création (récap + instructions d'envoi).
+**Schema migration:**
+- New status enum values (mapped from old):
+  - `request_sent` (Demande envoyée) — replaces `pending_review`
+  - `diagnostic_in_progress` (Diagnostic en cours) — new transition state
+  - `awaiting_payment` (Prêt pour paiement) — replaces `approved`
+  - `surgery_in_progress` (Chirurgie en cours) — replaces `paid`
+  - `shipped` (Expédiée) — replaces `completed`
+  - Keep `rejected`
+- Tracking ref format: `CS-2026-XXXX` (4 hex chars, collision-checked in `create_dossier`)
+- Add `return_tracking_number text`, `return_carrier text`, `payment_link_url text`, `payment_link_expires_at timestamptz`, `paid_at timestamptz`, `validated_at timestamptz` to `dossiers`
+- New SECURITY DEFINER RPCs: `admin_validate_dossier(ref, notes)` → sets `awaiting_payment`, generates payment link, triggers email; `admin_mark_shipped(ref, tracking, carrier)`; `admin_update_pricing(ref, pack_price_cents, insurance_cents)` for custom cases
 
 ---
 
-## VAGUE 3 — Booking calendrier, Admin étendu, bonus premium
+### Phase 2 — Stripe checkout + branded email
 
-### 3.1 Booking (Discovery Call)
-- Calendrier interactif (créneaux 30 min, lun-ven 10h-18h) avec placeholders.
-- Table Supabase `booking_slots` (date, slot, is_booked, customer_email, customer_name, source).
-- Form de réservation simple, confirmation email.
+**Stripe (Lovable-managed seamless):**
+- Enable Lovable Payments → Stripe. Requires Pro plan. Test mode immediately, real money after you verify your business.
+- One product per pack: `clean` (19€), `pro` (39€), `full` (95€). Insurance is added as a separate line item with the per-dossier amount (multi-leg doubled for Full Surgery).
+- Edge function `create-dossier-checkout(ref)` — admin-only or signed-token-only call → returns Stripe Checkout URL valid 7 days, stores on dossier.
+- Webhook `stripe-webhook` → on `checkout.session.completed` for dossier ref: set status → `surgery_in_progress`, fill `paid_at`, unlock shipping instructions page.
 
-### 3.2 Admin Portal centralisé (`/admin`)
-- Tabs : **Dossiers** (existant), **Réservations**, **Blog**, **Créneaux**, **Forfaits & Tarifs grading**.
-- CRUD pour : posts blog, slots calendrier, prix forfaits, tarifs grading tiers.
-- Tables Supabase : `service_pricing` (id, pack, price, label, features jsonb), `grading_pricing` (provider, tier, price, turnaround_days).
-- Sécurité : RLS admin uniquement via `has_role(uid, 'admin')`.
-
-### 3.3 Bonus premium
-- **Before/After slider** : composant existe (`BeforeAfterSlider.tsx`) — l'intégrer à la `/gallery` avec drag fluide + responsive.
-- **Section Sécurité Clinique** : nouvelle section (vidéo unboxing, coffre ignifuge, gants antistatiques, zone sans poussière).
-- **Micro-interactions Apple** : audit `index.css` pour glassmorphism navbar + transitions 300ms ease-in-out sur cards/boutons.
-- **Schema.org/Service JSON-LD** : ajouter dans `index.html` et `RouteSEO.tsx` pour la page services.
-- **Disclaimer technique** : footnote dans footer + page Services.
+**Email (Lovable Emails on your domain):**
+- Set up email domain `cardsurgery.com` (you'll add DNS records — Lovable provisions automatically).
+- Auth email templates (signup, password reset, magic link) re-skinned in your brand.
+- Transactional email `dossier-awaiting-payment` triggered by `admin_validate_dossier` → contains pack summary, declared value, insurance breakdown, **secure Stripe link**, and shipping instructions teaser.
+- Second transactional `dossier-shipped` triggered on `admin_mark_shipped` with carrier + tracking link.
 
 ---
 
-## Détails techniques (pour validation)
+### Phase 3 — Auth + RBAC + customer dashboard
 
-- **Base de données** (nouvelles tables) :
-  - `booking_slots(id, slot_date, slot_time, is_booked, customer_email, customer_name, notes, created_at)`
-  - `service_pricing(id, pack_id, label, price_eur, features jsonb, sort_order, active)`
-  - `grading_pricing(id, provider, tier_label, price_eur, turnaround_days, url)`
-  - `dossier_grading_request(dossier_id, provider, declared_value_eur, insurance_tier)` — pour le wizard 95€
-- **Edge functions** :
-  - Nouvelle : `faq-assistant` (Lovable AI Gateway, sans secret)
-  - Existante : `send-dossier-email` (à vérifier déclenchements)
-- **Pas de changements** sur l'auth ni sur le système de rôles (déjà en place).
+**Already partly built:** `Auth.tsx`, Google OAuth, `has_role` SECURITY DEFINER, admin email `contact@cardsurgery.com`. I'll finish the loop:
+
+- Navbar: add minimalist **Connexion / Mon compte** button. When logged in → avatar dropdown with `/my-dossiers`, sign-out, and if admin → `/admin`.
+- `/my-dossiers` page — list of the user's dossiers grouped by status with timeline component (5 steps), photos preview, pay-now CTA when `awaiting_payment`, shipping instructions when `surgery_in_progress`, return tracking when `shipped`.
+- Route guards: redirect-to-/auth on protected pages, admin-only guard on `/admin/*`.
+- On signup/login, auto-attach orphan dossiers (where `user_id IS NULL AND email = user.email`) via SECURITY DEFINER `claim_dossiers_by_email()`.
 
 ---
 
-## Questions de cadrage avant de démarrer
+### Phase 4 — Admin control center
 
-1. **Tarifs PCA/CCC/Collect Aura** : je mets des placeholders réalistes ou tu me fournis les grilles exactes ?
-2. **Créneaux Booking** : 30 min lun-ven 10h-18h OK, ou autre format ?
-3. **Vagues** : on enchaîne les 3 d'affilée, ou tu valides vague par vague ?
-4. **Section Sécurité Clinique** : photos/vidéos placeholder pour l'instant, tu fourniras les vrais médias plus tard ?
+Extend existing `AdminDossiers`:
+- Filter chips by the 5 statuses + search by ref/email
+- Row actions: **Valider l'intervention** → opens dialog (review photos, override pack price + insurance, set notes) → calls `admin_validate_dossier` → email goes out automatically
+- Row actions for `surgery_in_progress`: **Marquer expédiée** → tracking number + carrier dropdown (La Poste / Chronopost / Mondial Relay) → email
+- Quick stats header: counts per status, total revenue this month (from `paid_at` + `pack_price`)
+- Audit log writes through existing `log_admin_action` on every state change
 
-Dis-moi sur quoi tu veux que je commence (ou "GO tout" pour enchaîner les 3 vagues).
+---
+
+### Phase 5 — i18n shell + responsive polish
+
+**i18n (engine only, strings deferred):**
+- `react-i18next` + `i18next-browser-languagedetector`
+- Detection order: `localStorage` → navigator language → fallback `en`
+- IP geo via Cloudflare's `CF-IPCountry` request (works on cardsurgery.lovable.app + custom domain) through a tiny `/api/geo` edge function, used only when no localStorage value exists
+- Default FR for FR/BE/CH/LU/MC/CA-QC, EN otherwise
+- Navbar switcher (FR/EN) writing to `localStorage.cs_lang`
+- One namespace `common.json` seeded with current FR strings + machine-translated EN placeholders, then I migrate Hero/Navbar/Footer/Pricing/Diagnostic/Tracking/Payment/FAQ as a starter
+- `<HtmlLangSync/>` + dynamic `<title>`/`<meta description>` via react-helmet-async per page
+
+**Responsive polish (customer funnel + admin):**
+- Replace ad-hoc `px-*` with a `container-page` utility (max-w-6xl, fluid `px-4 sm:px-6 lg:px-8`)
+- Fluid type scale via `clamp()` for h1/h2/h3 in `index.css`
+- Audit Hero, Pricing/Forfaits cards, Diagnostic stepper, Tracking timeline, Payment summary, FAQ accordion, Navbar (mobile sheet), Footer, AdminHub/Dossiers tables (horizontal scroll wrappers + responsive cards on mobile)
+- 44px min tap targets, no horizontal overflow (`overflow-x-hidden` on `body`), safe-area insets on iOS
+
+---
+
+## Technical notes
+
+- **Stripe is Lovable-managed seamless** — no `STRIPE_SECRET_KEY` needed from you; Lovable provisions it. Pro plan required; if you're not on Pro yet you'll be prompted during enable.
+- **Email domain**: I'll trigger the Lovable Emails setup dialog for `cardsurgery.com`. You'll click through, add NS records at your registrar (or accept the in-Lovable DNS if the domain was bought through Lovable), and the rest is automatic.
+- **No breaking changes to existing dossiers**: the migration maps old statuses to new ones in a `CASE`, and old `CS-XXXXXX` refs continue to work alongside new `CS-2026-XXXX` ones.
+- **i18n strings are deferred**: the engine lands now; I migrate the customer-funnel strings as part of Phase 5 but the rest of the site stays in its current FR copy until you ask for the EN pass.
+
+## Open question before I start Phase 2
+
+Are you on a **Lovable Pro plan**? Lovable-managed Stripe requires Pro. If not, I'll do Phase 1 + 3 + 4 + 5 first and you can flip Stripe on later — the `awaiting_payment` flow will use a placeholder link until then.

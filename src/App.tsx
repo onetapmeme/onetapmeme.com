@@ -32,6 +32,8 @@ import AdminHub from "./pages/AdminHub";
 import AdminBookings from "./pages/AdminBookings";
 import AdminPricing from "./pages/AdminPricing";
 import AdminGrading from "./pages/AdminGrading";
+import MyDossiers from "./pages/MyDossiers";
+import RequireAuth from "./components/RequireAuth";
 
 const queryClient = new QueryClient();
 
@@ -57,13 +59,14 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/team" element={<Team />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/admin" element={<AdminHub />} />
-          <Route path="/admin/hub" element={<AdminHub />} />
-          <Route path="/admin/legacy" element={<Admin />} />
-          <Route path="/admin/dossiers" element={<AdminDossiers />} />
-          <Route path="/admin/bookings" element={<AdminBookings />} />
-          <Route path="/admin/pricing" element={<AdminPricing />} />
-          <Route path="/admin/grading" element={<AdminGrading />} />
+          <Route path="/admin" element={<RequireAuth requireAdmin><AdminHub /></RequireAuth>} />
+          <Route path="/admin/hub" element={<RequireAuth requireAdmin><AdminHub /></RequireAuth>} />
+          <Route path="/admin/legacy" element={<RequireAuth requireAdmin><Admin /></RequireAuth>} />
+          <Route path="/admin/dossiers" element={<RequireAuth requireAdmin><AdminDossiers /></RequireAuth>} />
+          <Route path="/admin/bookings" element={<RequireAuth requireAdmin><AdminBookings /></RequireAuth>} />
+          <Route path="/admin/pricing" element={<RequireAuth requireAdmin><AdminPricing /></RequireAuth>} />
+          <Route path="/admin/grading" element={<RequireAuth requireAdmin><AdminGrading /></RequireAuth>} />
+          <Route path="/my-dossiers" element={<RequireAuth><MyDossiers /></RequireAuth>} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/diagnostic" element={<Diagnostic />} />

@@ -37,6 +37,12 @@ export interface Dossier {
   insuranceCapCents?: number | null;
   insuranceMultiLeg?: boolean;
   shippingCarrier?: string | null;
+  paymentLinkUrl?: string | null;
+  paymentLinkExpiresAt?: string | null;
+  paidAt?: string | null;
+  validatedAt?: string | null;
+  returnCarrier?: string | null;
+  returnTrackingNumber?: string | null;
 }
 
 export const PACKS: Record<string, { label: string; price: string; priceCents: number }> = {
@@ -69,6 +75,12 @@ function mapRow(r: any): Dossier {
     insuranceCapCents: r.insurance_cap_cents ?? null,
     insuranceMultiLeg: !!r.insurance_multi_leg,
     shippingCarrier: r.shipping_carrier ?? null,
+    paymentLinkUrl: r.payment_link_url ?? null,
+    paymentLinkExpiresAt: r.payment_link_expires_at ?? null,
+    paidAt: r.paid_at ?? null,
+    validatedAt: r.validated_at ?? null,
+    returnCarrier: r.return_carrier ?? null,
+    returnTrackingNumber: r.return_tracking_number ?? null,
   };
 }
 
@@ -163,3 +175,65 @@ export async function sendDossierEmail(
     console.warn("send-dossier-email failed", e);
   }
 }
+
+export async function listMyDossiers(): Promise<Dossier[]> {
+  const { data, error } = await supabase
+    .from("dossiers")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return (data ?? []).map(mapRow);
+}
+
+export async function adminValidateDossier(
+  ref: string,
+  opts: { notes?: string; overridePackPrice?: string; overrideInsuranceCents?: number } = {},
+): Promise<Dossier> {
+  const { data, error } = await supabase.rpc("admin_validate_dossier", {
+    ref_param: ref,
+    notes_param: opts.notes ?? null,
+    override_pack_price_param: opts.overridePackPrice ?? null,
+    override_insurance_cents_param: opts.overrideInsuranceCents ?? null,
+  } as any);
+  if (error) throw error;
+  return mapRow(data);
+}
+
+export async function adminMarkShipped(
+  ref: string, carrier: string, tracking: string,
+): Promise<Dossier> {
+  const { data, error } = await supabase.rpc("admin_mark_shipped", {
+    ref_param: ref, carrier_param: carrier, tracking_param: tracking,
+  } as any);
+  if (error) throw error;
+  return mapRow(data);
+}
+
+export const STATUS_LABEL_FR: Record<DossierStatus, string> = {
+  pending_review: "Demande envoyée",
+  received: "Diagnostic en cours",
+  approved: "Prêt pour paiement",
+  paid: "Paiement reçu",
+  in_surgery: "Chirurgie en cours",
+  shipped: "Expédiée",
+  rejected: "Refusée",
+};
+
+export const STATUS_STEP_INDEX: Record<DossierStatus, number> = {
+  pending_review: 0,
+  received: 1,
+  approved: 2,
+  paid: 3,
+  in_surgery: 3,
+  shipped: 4,
+  rejected: -1,
+};
+
+export const WORKFLOW_STEPS = [
+  "Demande envoyée",
+  "Diagnostic en cours",
+  "Prêt pour paiement",
+  "Chirurgie en cours",
+  "Expédiée",
+];
+
