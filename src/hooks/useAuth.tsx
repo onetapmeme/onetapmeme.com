@@ -34,7 +34,7 @@ export function useAuth(): AuthState {
       if (_e === "SIGNED_IN") {
         // claim any guest dossiers matching the user's email
         setTimeout(() => {
-          supabase.rpc("claim_dossiers_by_email").catch(() => {});
+          void supabase.rpc("claim_dossiers_by_email").then(() => {}, () => {});
         }, 0);
       }
     });
