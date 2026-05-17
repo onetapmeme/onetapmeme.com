@@ -32,6 +32,8 @@ import AdminHub from "./pages/AdminHub";
 import AdminBookings from "./pages/AdminBookings";
 import AdminPricing from "./pages/AdminPricing";
 import AdminGrading from "./pages/AdminGrading";
+import MyDossiers from "./pages/MyDossiers";
+import RequireAuth from "./components/RequireAuth";
 
 const queryClient = new QueryClient();
 
