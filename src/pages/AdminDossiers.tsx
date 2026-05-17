@@ -279,7 +279,7 @@ export default function AdminDossiers() {
                     className="mb-3"
                   />
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 mb-4">
                     <Button
                       onClick={() => act("approved", "approved")}
                       disabled={acting || selected.status === "approved"}
@@ -296,8 +296,75 @@ export default function AdminDossiers() {
                     </Button>
                     <Button onClick={() => act("received")} disabled={acting} variant="outline">Colis reçu</Button>
                     <Button onClick={() => act("in_surgery")} disabled={acting} variant="outline">En chirurgie</Button>
-                    <Button onClick={() => act("shipped", "shipped")} disabled={acting} variant="outline" className="col-span-2">
-                      Marquer comme expédié
+                  </div>
+
+                  {/* Manual price override (custom cases) */}
+                  <div className="border-t border-border pt-4 mb-4 space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Tarification manuelle
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <Label htmlFor="ov-price" className="text-xs">Prix forfait</Label>
+                        <Input
+                          id="ov-price"
+                          value={overridePrice}
+                          onChange={(e) => setOverridePrice(e.target.value)}
+                          placeholder="ex. 49 €"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="ov-ins" className="text-xs">Assurance (€)</Label>
+                        <Input
+                          id="ov-ins"
+                          value={overrideInsuranceEuros}
+                          onChange={(e) => setOverrideInsuranceEuros(e.target.value)}
+                          placeholder="ex. 19.90"
+                          inputMode="decimal"
+                        />
+                      </div>
+                    </div>
+                    <Button
+                      onClick={saveOverridesAndApprove}
+                      disabled={acting}
+                      className="w-full"
+                    >
+                      <Save className="w-4 h-4 mr-1" /> Enregistrer tarifs & valider
+                    </Button>
+                  </div>
+
+                  {/* Return tracking */}
+                  <div className="border-t border-border pt-4 space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Expédition retour
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <Label htmlFor="ship-carrier" className="text-xs">Transporteur</Label>
+                        <Input
+                          id="ship-carrier"
+                          value={carrier}
+                          onChange={(e) => setCarrier(e.target.value)}
+                          placeholder="La Poste, Chronopost…"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="ship-track" className="text-xs">N° de suivi</Label>
+                        <Input
+                          id="ship-track"
+                          value={tracking}
+                          onChange={(e) => setTracking(e.target.value)}
+                          placeholder="Tracking number"
+                        />
+                      </div>
+                    </div>
+                    <Button
+                      onClick={shipWithTracking}
+                      disabled={acting}
+                      variant="outline"
+                      className="w-full"
+                    >
+                      <Truck className="w-4 h-4 mr-1" /> Marquer comme expédié
                     </Button>
                   </div>
                 </Card>
