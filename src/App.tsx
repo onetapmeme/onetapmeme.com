@@ -27,6 +27,8 @@ import Diagnostic from "./pages/Diagnostic";
 import Booking from "./pages/Booking";
 import Tracking from "./pages/Tracking";
 import Payment from "./pages/Payment";
+import CheckoutReturn from "./pages/CheckoutReturn";
+import Receipt from "./pages/Receipt";
 import AdminDossiers from "./pages/AdminDossiers";
 import AdminHub from "./pages/AdminHub";
 import AdminBookings from "./pages/AdminBookings";
