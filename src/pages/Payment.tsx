@@ -7,6 +7,23 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { CreditCard, Truck, MapPin, ShieldCheck, Package, ArrowLeft, Check, Info } from "lucide-react";
 import { getDossierRemote, confirmPayment, sendDossierEmail, type Dossier } from "@/lib/dossiers";
+import { StripeDossierCheckout } from "@/components/StripeDossierCheckout";
+import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
+
+const PACK_PRICE_LOOKUP: Record<string, "pack_clean" | "pack_pro" | "pack_full"> = {
+  clean: "pack_clean",
+  pro: "pack_pro",
+  full: "pack_full",
+};
+
+// Parse "Tier N — …" label to recover the tier index (1-5).
+function tierIndexFromLabel(label?: string | null): number | undefined {
+  if (!label) return undefined;
+  const m = /Tier\s*(\d)/i.exec(label);
+  if (!m) return undefined;
+  const n = parseInt(m[1], 10);
+  return n >= 1 && n <= 5 ? n : undefined;
+}
 
 const Payment = () => {
   const [params] = useSearchParams();
