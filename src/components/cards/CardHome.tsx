@@ -201,6 +201,9 @@ const CardHome = () => {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("servicesSubtitle")}
             </p>
+            <p className="mt-5 text-sm md:text-base text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed glass-effect border border-primary/15 rounded-2xl px-5 py-4">
+              {t("servicesFlow")}
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((s, i) => (
