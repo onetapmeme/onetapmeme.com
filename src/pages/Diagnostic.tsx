@@ -23,12 +23,14 @@ import {
 } from "@/lib/dossiers";
 import {
   MAX_INSURED_VALUE,
+  INSURANCE_TIERS,
   computeInsurance,
   packTotalEuros,
   eurosToCents,
 } from "@/lib/insurance";
 import { Slider } from "@/components/ui/slider";
 import { ShieldCheck } from "lucide-react";
+import { InsuranceTierSelector } from "@/components/InsuranceTierSelector";
 import { supabase } from "@/integrations/supabase/client";
 
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
@@ -378,6 +380,18 @@ const Diagnostic = () => {
                     step={50}
                     onValueChange={(v) => setDeclaredValue(v[0] ?? 0)}
                   />
+                  {pack && (
+                    <div className="mt-4">
+                      <InsuranceTierSelector
+                        pack={pack}
+                        selectedTierIndex={computeInsurance(pack, declaredValue).tier.index}
+                        onChange={(idx) => {
+                          const t = INSURANCE_TIERS[idx - 1];
+                          if (t) setDeclaredValue(t.capEuros);
+                        }}
+                      />
+                    </div>
+                  )}
                   {pack && (() => {
                     const ins = computeInsurance(pack, declaredValue);
                     const total = packTotalEuros(pack, declaredValue);

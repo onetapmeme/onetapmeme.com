@@ -43,6 +43,7 @@ export interface Dossier {
   validatedAt?: string | null;
   returnCarrier?: string | null;
   returnTrackingNumber?: string | null;
+  stripeSessionId?: string | null;
 }
 
 export const PACKS: Record<string, { label: string; price: string; priceCents: number }> = {
@@ -81,6 +82,7 @@ function mapRow(r: any): Dossier {
     validatedAt: r.validated_at ?? null,
     returnCarrier: r.return_carrier ?? null,
     returnTrackingNumber: r.return_tracking_number ?? null,
+    stripeSessionId: r.stripe_session_id ?? null,
   };
 }
 

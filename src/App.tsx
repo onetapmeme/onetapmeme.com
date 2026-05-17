@@ -27,6 +27,8 @@ import Diagnostic from "./pages/Diagnostic";
 import Booking from "./pages/Booking";
 import Tracking from "./pages/Tracking";
 import Payment from "./pages/Payment";
+import CheckoutReturn from "./pages/CheckoutReturn";
+import Receipt from "./pages/Receipt";
 import AdminDossiers from "./pages/AdminDossiers";
 import AdminHub from "./pages/AdminHub";
 import AdminBookings from "./pages/AdminBookings";
@@ -73,6 +75,8 @@ const App = () => (
           <Route path="/booking" element={<Booking />} />
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/checkout/return" element={<CheckoutReturn />} />
+          <Route path="/receipt" element={<Receipt />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>

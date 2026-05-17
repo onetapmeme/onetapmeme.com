@@ -238,7 +238,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -252,6 +254,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -270,7 +273,9 @@ export type Database = {
           insurance_cap_cents?: number | null
           insurance_cents?: number | null
           insurance_multi_leg?: boolean
+          insurance_quantity?: number
           insurance_tier?: string | null
+          insurance_tier_index?: number | null
           name: string
           pack: string
           pack_label: string
@@ -284,6 +289,7 @@ export type Database = {
           return_tracking_number?: string | null
           shipping_carrier?: string | null
           status?: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id?: string | null
           tcg?: string | null
           updated_at?: string
           user_id?: string | null
@@ -302,7 +308,9 @@ export type Database = {
           insurance_cap_cents?: number | null
           insurance_cents?: number | null
           insurance_multi_leg?: boolean
+          insurance_quantity?: number
           insurance_tier?: string | null
+          insurance_tier_index?: number | null
           name?: string
           pack?: string
           pack_label?: string
@@ -316,6 +324,7 @@ export type Database = {
           return_tracking_number?: string | null
           shipping_carrier?: string | null
           status?: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id?: string | null
           tcg?: string | null
           updated_at?: string
           user_id?: string | null
@@ -1145,7 +1154,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1159,6 +1170,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1186,7 +1198,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1200,6 +1214,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1227,7 +1242,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1241,6 +1258,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1272,7 +1290,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1286,6 +1306,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1313,7 +1334,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1327,6 +1350,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1358,7 +1382,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1372,6 +1398,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1404,7 +1431,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1418,6 +1447,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1438,47 +1468,95 @@ export type Database = {
         Args: { progress_value?: number; quest_id_param: string }
         Returns: boolean
       }
-      confirm_dossier_payment: {
-        Args: { ref_param: string }
-        Returns: {
-          admin_notes: string | null
-          card_name: string | null
-          cares: Json
-          created_at: string
-          declared_value_cents: number | null
-          defects: string | null
-          email: string
-          estimated_value: string | null
-          id: string
-          insurance_cap_cents: number | null
-          insurance_cents: number | null
-          insurance_multi_leg: boolean
-          insurance_tier: string | null
-          name: string
-          pack: string
-          pack_label: string
-          pack_price: string
-          paid_at: string | null
-          payment_link_expires_at: string | null
-          payment_link_url: string | null
-          photos: Json
-          ref: string
-          return_carrier: string | null
-          return_tracking_number: string | null
-          shipping_carrier: string | null
-          status: Database["public"]["Enums"]["dossier_status"]
-          tcg: string | null
-          updated_at: string
-          user_id: string | null
-          validated_at: string | null
-        }
-        SetofOptions: {
-          from: "*"
-          to: "dossiers"
-          isOneToOne: true
-          isSetofReturn: false
-        }
-      }
+      confirm_dossier_payment:
+        | {
+            Args: { ref_param: string }
+            Returns: {
+              admin_notes: string | null
+              card_name: string | null
+              cares: Json
+              created_at: string
+              declared_value_cents: number | null
+              defects: string | null
+              email: string
+              estimated_value: string | null
+              id: string
+              insurance_cap_cents: number | null
+              insurance_cents: number | null
+              insurance_multi_leg: boolean
+              insurance_quantity: number
+              insurance_tier: string | null
+              insurance_tier_index: number | null
+              name: string
+              pack: string
+              pack_label: string
+              pack_price: string
+              paid_at: string | null
+              payment_link_expires_at: string | null
+              payment_link_url: string | null
+              photos: Json
+              ref: string
+              return_carrier: string | null
+              return_tracking_number: string | null
+              shipping_carrier: string | null
+              status: Database["public"]["Enums"]["dossier_status"]
+              stripe_session_id: string | null
+              tcg: string | null
+              updated_at: string
+              user_id: string | null
+              validated_at: string | null
+            }
+            SetofOptions: {
+              from: "*"
+              to: "dossiers"
+              isOneToOne: true
+              isSetofReturn: false
+            }
+          }
+        | {
+            Args: { ref_param: string; stripe_session_id_param?: string }
+            Returns: {
+              admin_notes: string | null
+              card_name: string | null
+              cares: Json
+              created_at: string
+              declared_value_cents: number | null
+              defects: string | null
+              email: string
+              estimated_value: string | null
+              id: string
+              insurance_cap_cents: number | null
+              insurance_cents: number | null
+              insurance_multi_leg: boolean
+              insurance_quantity: number
+              insurance_tier: string | null
+              insurance_tier_index: number | null
+              name: string
+              pack: string
+              pack_label: string
+              pack_price: string
+              paid_at: string | null
+              payment_link_expires_at: string | null
+              payment_link_url: string | null
+              photos: Json
+              ref: string
+              return_carrier: string | null
+              return_tracking_number: string | null
+              shipping_carrier: string | null
+              status: Database["public"]["Enums"]["dossier_status"]
+              stripe_session_id: string | null
+              tcg: string | null
+              updated_at: string
+              user_id: string | null
+              validated_at: string | null
+            }
+            SetofOptions: {
+              from: "*"
+              to: "dossiers"
+              isOneToOne: true
+              isSetofReturn: false
+            }
+          }
       create_booking_slot: {
         Args: {
           booking_date_param: string
@@ -1560,7 +1638,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1574,6 +1654,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
@@ -1695,7 +1776,9 @@ export type Database = {
           insurance_cap_cents: number | null
           insurance_cents: number | null
           insurance_multi_leg: boolean
+          insurance_quantity: number
           insurance_tier: string | null
+          insurance_tier_index: number | null
           name: string
           pack: string
           pack_label: string
@@ -1709,6 +1792,7 @@ export type Database = {
           return_tracking_number: string | null
           shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
+          stripe_session_id: string | null
           tcg: string | null
           updated_at: string
           user_id: string | null
