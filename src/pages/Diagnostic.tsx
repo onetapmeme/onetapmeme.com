@@ -21,6 +21,14 @@ import {
   sendDossierEmail,
   type DossierPhoto,
 } from "@/lib/dossiers";
+import {
+  MAX_INSURED_VALUE,
+  computeInsurance,
+  packTotalEuros,
+  eurosToCents,
+} from "@/lib/insurance";
+import { Slider } from "@/components/ui/slider";
+import { ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
@@ -82,12 +90,19 @@ const Diagnostic = () => {
   const navigate = useNavigate();
   const initialPack = params.get("pack") && PACKS[params.get("pack")!] ? params.get("pack")! : "";
 
+  const initialDeclared = (() => {
+    const raw = Number.parseFloat(params.get("declared") ?? "");
+    if (!Number.isFinite(raw) || raw <= 0) return 200;
+    return Math.min(MAX_INSURED_VALUE, Math.max(0, raw));
+  })();
+
   const [step, setStep] = useState(initialPack ? 1 : 0);
   const [pack, setPack] = useState<string>(initialPack);
   const [photos, setPhotos] = useState<Photos>({});
   const [cardType, setCardType] = useState<string>("");
   const [cardName, setCardName] = useState("");
-  const [estimatedValue, setEstimatedValue] = useState<string>("");
+  const [declaredValue, setDeclaredValue] = useState<number>(initialDeclared);
+  const [shippingCarrier, setShippingCarrier] = useState<string>("colissimo");
   const [cares, setCares] = useState<string[]>([]);
   const [defects, setDefects] = useState("");
   const [name, setName] = useState("");
@@ -149,11 +164,19 @@ const Diagnostic = () => {
         }
       }
 
-      // 2) Create dossier server-side
+      // 2) Create dossier server-side (with insurance breakdown)
+      const ins = pack ? computeInsurance(pack, declaredValue) : null;
       const ref = await createDossierRemote({
         email, name, pack,
-        cardName, tcg: cardType, estimatedValue,
+        cardName, tcg: cardType,
+        estimatedValue: `${declaredValue} €`,
         cares, defects, photos: uploaded,
+        declaredValueCents: eurosToCents(declaredValue),
+        insuranceTier: ins?.tier.label ?? null,
+        insuranceCents: ins ? eurosToCents(ins.feeEuros) : null,
+        insuranceCapCents: ins ? eurosToCents(ins.tier.capEuros) : null,
+        insuranceMultiLeg: ins?.multiLeg ?? false,
+        shippingCarrier,
       });
 
       // 3) Trigger confirmation email (non-blocking)
@@ -342,15 +365,58 @@ const Diagnostic = () => {
                   </Select>
                 </div>
                 <div>
-                  <Label>Valeur estimée</Label>
-                  <Select value={estimatedValue} onValueChange={setEstimatedValue}>
-                    <SelectTrigger><SelectValue placeholder="Choisir une fourchette" /></SelectTrigger>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <Label>Valeur estimée de votre carte (€)</Label>
+                    <span className="text-sm font-mono font-bold text-foreground">
+                      {declaredValue.toLocaleString("fr-FR")} €
+                    </span>
+                  </div>
+                  <Slider
+                    value={[declaredValue]}
+                    min={0}
+                    max={MAX_INSURED_VALUE}
+                    step={50}
+                    onValueChange={(v) => setDeclaredValue(v[0] ?? 0)}
+                  />
+                  {pack && (() => {
+                    const ins = computeInsurance(pack, declaredValue);
+                    const total = packTotalEuros(pack, declaredValue);
+                    return (
+                      <div className="mt-3 rounded-lg border border-border bg-secondary/30 p-3 space-y-1 text-xs">
+                        <div className="flex justify-between text-muted-foreground">
+                          <span>Forfait {PACKS[pack]?.label}</span>
+                          <span className="font-mono">{PACKS[pack]?.price}</span>
+                        </div>
+                        <div className="flex justify-between text-muted-foreground">
+                          <span>Assurance Ad Valorem{ins.multiLeg ? " (×2 trajets)" : ""}</span>
+                          <span className="font-mono">
+                            {ins.feeEuros > 0 ? `+ ${ins.feeEuros.toFixed(2)} €` : "incluse"}
+                          </span>
+                        </div>
+                        <div className="flex justify-between pt-1.5 border-t border-border/60">
+                          <span className="font-semibold text-foreground">Total estimé</span>
+                          <span className="font-bold text-foreground text-sm">{total.toFixed(2)} €</span>
+                        </div>
+                        <p className="flex items-start gap-1.5 pt-1 text-[10.5px] text-muted-foreground/90">
+                          <ShieldCheck className="w-3 h-3 text-accent flex-shrink-0 mt-0.5" />
+                          <span>
+                            Inclut la protection Ad Valorem sécurisée (normes La Poste / Chronopost)
+                            jusqu'à {ins.tier.capEuros.toLocaleString("fr-FR")} €.
+                          </span>
+                        </p>
+                      </div>
+                    );
+                  })()}
+                </div>
+                <div>
+                  <Label>Transporteur préféré</Label>
+                  <Select value={shippingCarrier} onValueChange={setShippingCarrier}>
+                    <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="0-50">Moins de 50 €</SelectItem>
-                      <SelectItem value="50-200">50 € — 200 €</SelectItem>
-                      <SelectItem value="200-1000">200 € — 1 000 €</SelectItem>
-                      <SelectItem value="1000-5000">1 000 € — 5 000 €</SelectItem>
-                      <SelectItem value="5000+">Plus de 5 000 €</SelectItem>
+                      <SelectItem value="colissimo">La Poste — Colissimo Ad Valorem</SelectItem>
+                      <SelectItem value="chronopost">Chronopost Ad Valorem</SelectItem>
+                      <SelectItem value="recommande">Lettre recommandée R2 / R3</SelectItem>
+                      <SelectItem value="mondial-relay">Mondial Relay assuré</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

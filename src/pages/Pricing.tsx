@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -23,6 +23,12 @@ import {
   ExternalLink,
   Info,
 } from "lucide-react";
+import {
+  INSURANCE_TIERS,
+  MAX_INSURED_VALUE,
+  computeInsurance,
+  packTotalEuros,
+} from "@/lib/insurance";
 
 type Provider = "pca" | "ccc" | "aura";
 
@@ -50,37 +56,6 @@ const GRADING_PROVIDERS: Record<
   },
 };
 
-// Indicative third-party submission rates (replace with real grids when available)
-const GRADING_RATES: {
-  provider: Provider;
-  tiers: { label: string; price: string; turnaround: string }[];
-}[] = [
-  {
-    provider: "pca",
-    tiers: [
-      { label: "Standard (≤ 200 €)", price: "20 €", turnaround: "60 j" },
-      { label: "Premium (≤ 1 000 €)", price: "40 €", turnaround: "45 j" },
-      { label: "Luxe (≤ 5 000 €)", price: "90 €", turnaround: "30 j" },
-    ],
-  },
-  {
-    provider: "ccc",
-    tiers: [
-      { label: "Classique", price: "18 €", turnaround: "45 j" },
-      { label: "Express", price: "35 €", turnaround: "25 j" },
-      { label: "Haute valeur", price: "80 €", turnaround: "20 j" },
-    ],
-  },
-  {
-    provider: "aura",
-    tiers: [
-      { label: "Slab Standard", price: "25 €", turnaround: "40 j" },
-      { label: "Slab Signature", price: "50 €", turnaround: "30 j" },
-      { label: "Slab Vault", price: "120 €", turnaround: "21 j" },
-    ],
-  },
-];
-
 const PLANS = [
   {
     id: "clean",
@@ -88,6 +63,7 @@ const PLANS = [
     level: "Standard",
     icon: Sparkles,
     price: "19 €",
+    basePriceEuros: 19,
     tagline: "Nettoyage léger & brillance",
     baseDays: 7,
     features: [
@@ -99,6 +75,7 @@ const PLANS = [
       "Renvoi sous assurance + suivi inclus",
     ],
     highlight: false,
+    defaultDeclared: 100,
   },
   {
     id: "pro",
@@ -106,6 +83,7 @@ const PLANS = [
     level: "Avancé",
     icon: Scissors,
     price: "39 €",
+    basePriceEuros: 39,
     tagline: "Micro-rayures & whitening des bords",
     baseDays: 10,
     features: [
@@ -117,6 +95,7 @@ const PLANS = [
       "Couverture assurance haute valeur incluse",
     ],
     highlight: true,
+    defaultDeclared: 400,
   },
   {
     id: "full",
@@ -124,6 +103,7 @@ const PLANS = [
     level: "Premium",
     icon: Stethoscope,
     price: "95 €",
+    basePriceEuros: 95,
     tagline: "Restauration complète + soumission grading",
     baseDays: 14,
     features: [
@@ -133,37 +113,118 @@ const PLANS = [
       "De-curving & remise à plat",
       "Pré-grading visuel détaillé",
       "Soumission accompagnée chez PCA / CCC / Collect Aura",
-      "Colis entièrement assurés selon la valeur déclarée",
+      "Double assurance aller-retour + transit grading",
     ],
     highlight: false,
+    defaultDeclared: 1000,
   },
 ] as const;
 
+const SLIDER_STOPS = [50, 200, 500, 1000, 2000, 5000];
+
+const formatEuros = (n: number) =>
+  n.toLocaleString("fr-FR", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: n % 1 === 0 ? 0 : 2,
+  });
+
+const PackInsuranceConfigurator = ({
+  pack,
+  basePriceEuros,
+  defaultDeclared,
+}: {
+  pack: "clean" | "pro" | "full";
+  basePriceEuros: number;
+  defaultDeclared: number;
+}) => {
+  const [declared, setDeclared] = useState<number>(defaultDeclared);
+  const ins = useMemo(() => computeInsurance(pack, declared), [pack, declared]);
+  const total = useMemo(() => packTotalEuros(pack, declared), [pack, declared]);
+
+  return (
+    <div className="mt-4 mb-4 rounded-xl border border-border bg-secondary/30 p-4 space-y-3">
+      <div className="flex items-center justify-between gap-2">
+        <Label className="text-xs font-semibold text-foreground/90">
+          Valeur estimée de votre carte
+        </Label>
+        <span className="text-sm font-mono font-bold text-foreground">
+          {formatEuros(declared)}
+        </span>
+      </div>
+
+      <Slider
+        value={[declared]}
+        min={0}
+        max={MAX_INSURED_VALUE}
+        step={50}
+        onValueChange={(v) => setDeclared(v[0] ?? 0)}
+      />
+
+      <div className="flex flex-wrap gap-1.5">
+        {SLIDER_STOPS.map((v) => (
+          <button
+            key={v}
+            type="button"
+            onClick={() => setDeclared(v)}
+            className={`text-[10px] px-2 py-0.5 rounded-full border transition ${
+              declared === v
+                ? "border-accent text-accent bg-accent/10"
+                : "border-border text-muted-foreground hover:border-accent/60"
+            }`}
+          >
+            {formatEuros(v)}
+          </button>
+        ))}
+      </div>
+
+      <div className="pt-2 border-t border-border/60 space-y-1">
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <span>Forfait base</span>
+          <span className="font-mono">{formatEuros(basePriceEuros)}</span>
+        </div>
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <span>
+            Assurance Ad Valorem{ins.multiLeg ? " (×2 trajets)" : ""}
+          </span>
+          <span className="font-mono">
+            {ins.feeEuros > 0 ? `+ ${formatEuros(ins.feeEuros)}` : "incluse"}
+          </span>
+        </div>
+        <div className="flex items-center justify-between pt-1.5 border-t border-border/40">
+          <span className="text-sm font-semibold text-foreground">Total</span>
+          <span className="text-xl font-bold text-foreground">
+            {formatEuros(total)}
+          </span>
+        </div>
+        <p className="text-[10.5px] leading-snug text-muted-foreground/90 flex items-start gap-1.5 pt-1">
+          <ShieldCheck className="w-3 h-3 text-accent flex-shrink-0 mt-0.5" />
+          <span>
+            Inclut la protection Ad Valorem sécurisée (normes La Poste /
+            Chronopost) jusqu'à {formatEuros(ins.tier.capEuros)}
+            {ins.multiLeg && " — couverture doublée pour les deux trajets (atelier ↔ grading)"}.
+          </span>
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const Pricing = () => {
-  // Full Surgery wizard state
+  // Full Surgery wizard state (grading partner)
   const [provider, setProvider] = useState<Provider>("pca");
-  const [declaredValue, setDeclaredValue] = useState<string>("");
-
-  const declared = Number.parseFloat(declaredValue.replace(",", ".")) || 0;
-
-  // Insurance tier (simple matrix — adjusted manually by admin afterwards)
-  const insuranceTier = useMemo(() => {
-    if (declared >= 5000) return { label: "Tier 5 — Vault (≥ 5 000 €)", fee: 45 };
-    if (declared >= 2000) return { label: "Tier 4 — Premium (2 000 – 5 000 €)", fee: 25 };
-    if (declared >= 500) return { label: "Tier 3 — Standard+ (500 – 2 000 €)", fee: 12 };
-    if (declared >= 100) return { label: "Tier 2 — Standard (100 – 500 €)", fee: 6 };
-    return { label: "Tier 1 — Base (< 100 €)", fee: 0 };
-  }, [declared]);
+  const [fullDeclared, setFullDeclared] = useState<number>(1000);
 
   const fullSurgery = PLANS[2];
   const totalDays = fullSurgery.baseDays + GRADING_PROVIDERS[provider].extraDays;
-  const estimatedTotal = 95 + insuranceTier.fee;
+  const fullIns = useMemo(() => computeInsurance("full", fullDeclared), [fullDeclared]);
+  const estimatedTotal = useMemo(() => packTotalEuros("full", fullDeclared), [fullDeclared]);
 
   const buildFullSurgeryLink = () => {
     const params = new URLSearchParams({
       pack: "full",
       grading: provider,
-      declared: String(declared || 0),
+      declared: String(fullDeclared || 0),
     });
     return `/diagnostic?${params.toString()}`;
   };
@@ -178,8 +239,8 @@ const Pricing = () => {
               Nos <span className="text-accent">forfaits</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Trois niveaux d'intervention pour s'adapter à l'état et à la valeur de votre carte.
-              Devis transparent avant toute manipulation, colis assurés à l'aller comme au retour.
+              Trois niveaux d'intervention, transport assuré Ad Valorem (normes La Poste / Chronopost) calculé
+              en temps réel selon la valeur déclarée de votre carte.
             </p>
           </header>
 
@@ -218,7 +279,7 @@ const Pricing = () => {
                   <p className="text-xs text-muted-foreground mb-4">
                     Délai laboratoire : <span className="font-semibold text-foreground">{p.baseDays} jours</span>
                   </p>
-                  <ul className="space-y-2 mb-6 flex-1">
+                  <ul className="space-y-2 mb-2 flex-1">
                     {p.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-foreground/90">
                         <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
@@ -226,23 +287,31 @@ const Pricing = () => {
                       </li>
                     ))}
                   </ul>
+
                   {!isFull && (
-                    <Button
-                      asChild
-                      className={
-                        p.highlight
-                          ? "w-full glossy-btn text-accent-foreground border-0"
-                          : "w-full"
-                      }
-                      variant={p.highlight ? "default" : "outline"}
-                    >
-                      <Link to={`/diagnostic?pack=${p.id}`}>
-                        Débuter une opération de restauration
-                      </Link>
-                    </Button>
+                    <>
+                      <PackInsuranceConfigurator
+                        pack={p.id as "clean" | "pro"}
+                        basePriceEuros={p.basePriceEuros}
+                        defaultDeclared={p.defaultDeclared}
+                      />
+                      <Button
+                        asChild
+                        className={
+                          p.highlight
+                            ? "w-full glossy-btn text-accent-foreground border-0"
+                            : "w-full"
+                        }
+                        variant={p.highlight ? "default" : "outline"}
+                      >
+                        <Link to={`/diagnostic?pack=${p.id}`}>
+                          Débuter une opération de restauration
+                        </Link>
+                      </Button>
+                    </>
                   )}
                   {isFull && (
-                    <p className="text-xs text-center text-muted-foreground">
+                    <p className="text-xs text-center text-muted-foreground mt-2">
                       ↓ Configurez votre soumission grading ci-dessous
                     </p>
                   )}
@@ -261,8 +330,8 @@ const Pricing = () => {
                 </h2>
               </div>
               <p className="text-sm text-muted-foreground mb-6">
-                Configurez la soumission grading et la valeur déclarée pour calculer
-                automatiquement les délais et le palier d'assurance.
+                Configurez la soumission grading et la valeur déclarée. L'assurance Ad Valorem
+                est doublée pour couvrir intégralement les deux trajets (atelier ↔ grading).
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -290,21 +359,23 @@ const Pricing = () => {
                   </a>
                 </div>
                 <div>
-                  <Label htmlFor="declared" className="text-sm font-semibold">
-                    Valeur déclarée de la carte (€)
-                  </Label>
-                  <Input
-                    id="declared"
-                    type="number"
+                  <div className="flex items-center justify-between mb-1.5">
+                    <Label className="text-sm font-semibold">
+                      Valeur estimée de votre carte
+                    </Label>
+                    <span className="text-sm font-mono font-bold text-foreground">
+                      {formatEuros(fullDeclared)}
+                    </span>
+                  </div>
+                  <Slider
+                    value={[fullDeclared]}
                     min={0}
-                    step="10"
-                    placeholder="ex : 750"
-                    value={declaredValue}
-                    onChange={(e) => setDeclaredValue(e.target.value)}
-                    className="mt-1.5"
+                    max={MAX_INSURED_VALUE}
+                    step={50}
+                    onValueChange={(v) => setFullDeclared(v[0] ?? 0)}
                   />
                   <p className="text-xs text-muted-foreground mt-2">
-                    Sert au calcul du palier d'assurance. Ajustable manuellement par notre équipe après diagnostic.
+                    Calcul automatique du palier Ad Valorem (×2 trajets pour Full Surgery).
                   </p>
                 </div>
               </div>
@@ -324,19 +395,23 @@ const Pricing = () => {
                     Palier d'assurance
                   </p>
                   <p className="text-sm font-semibold text-foreground leading-tight">
-                    {insuranceTier.label}
+                    {fullIns.tier.label}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Frais supplémentaire : <span className="font-semibold text-foreground">+ {insuranceTier.fee} €</span>
+                    Supplément :{" "}
+                    <span className="font-semibold text-foreground">
+                      {fullIns.feeEuros > 0 ? `+ ${formatEuros(fullIns.feeEuros)}` : "inclus"}
+                    </span>
+                    {fullIns.multiLeg && " (×2 trajets)"}
                   </p>
                 </div>
                 <div className="rounded-xl border border-accent/40 bg-accent/5 p-4">
                   <p className="text-xs uppercase tracking-wider text-accent mb-1">
                     Total indicatif
                   </p>
-                  <p className="text-2xl font-bold text-foreground">{estimatedTotal} €</p>
+                  <p className="text-2xl font-bold text-foreground">{formatEuros(estimatedTotal)}</p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Hors frais de soumission grading (voir matrice ci-dessous)
+                    Hors frais de soumission grading partenaire
                   </p>
                 </div>
               </div>
@@ -344,8 +419,9 @@ const Pricing = () => {
               <div className="flex items-start gap-2 mb-6 p-3 rounded-lg bg-secondary/30 border border-border">
                 <ShieldCheck className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
                 <p className="text-xs text-muted-foreground">
-                  Colis entièrement assurés par nos soins en fonction de la valeur déclarée
-                  de la carte, à l'aller comme au retour.
+                  Inclut la protection Ad Valorem sécurisée (normes La Poste / Chronopost) jusqu'à{" "}
+                  {formatEuros(fullIns.tier.capEuros)}, doublée pour couvrir les deux trajets
+                  atelier ↔ partenaire de grading.
                 </p>
               </div>
 
@@ -361,50 +437,36 @@ const Pricing = () => {
             </Card>
           </section>
 
-          {/* GRADING RATES MATRIX (replaces "options à la carte") */}
+          {/* INSURANCE TIER MATRIX */}
           <section className="mt-14">
             <h2 className="text-2xl font-bold text-center mb-2 text-foreground">
-              Tarifs de soumission grading (partenaires)
+              Grille d'assurance Ad Valorem
             </h2>
             <p className="text-center text-sm text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Grilles indicatives publiques des trois partenaires de grading que nous accompagnons.
-              Tarifs et délais réels sujets aux conditions de l'opérateur.
+              Tarifs alignés sur les grilles standard La Poste Colissimo Ad Valorem et Chronopost Ad Valorem.
+              Forfait Full Surgery : tarif doublé (atelier ↔ grading).
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {GRADING_RATES.map((row) => {
-                const p = GRADING_PROVIDERS[row.provider];
-                return (
-                  <Card key={row.provider} className="p-5 border-border">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-bold text-foreground">{p.name}</h3>
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-accent hover:underline inline-flex items-center gap-1"
-                      >
-                        Officiel <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </div>
-                    <p className="text-xs text-muted-foreground mb-4">{p.tagline}</p>
-                    <ul className="space-y-2">
-                      {row.tiers.map((t) => (
-                        <li
-                          key={t.label}
-                          className="flex items-center justify-between text-sm border-b border-border last:border-none pb-1.5"
-                        >
-                          <div>
-                            <p className="text-foreground font-medium">{t.label}</p>
-                            <p className="text-xs text-muted-foreground">Retour ~ {t.turnaround}</p>
-                          </div>
-                          <span className="font-bold text-foreground">{t.price}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </Card>
-                );
-              })}
-            </div>
+            <Card className="border-border overflow-hidden">
+              <div className="grid grid-cols-3 px-4 py-3 bg-secondary/40 text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+                <span>Palier</span>
+                <span className="text-center">Valeur déclarée</span>
+                <span className="text-right">Coût (1 trajet)</span>
+              </div>
+              {INSURANCE_TIERS.map((t) => (
+                <div
+                  key={t.index}
+                  className="grid grid-cols-3 px-4 py-3 border-t border-border text-sm items-center"
+                >
+                  <span className="font-semibold text-foreground">Tier {t.index}</span>
+                  <span className="text-center text-foreground/90">
+                    Jusqu'à {formatEuros(t.capEuros)}
+                  </span>
+                  <span className="text-right font-bold text-foreground">
+                    + {formatEuros(t.feeEuros)}
+                  </span>
+                </div>
+              ))}
+            </Card>
           </section>
 
           {/* DISCLAIMER */}
@@ -413,8 +475,8 @@ const Pricing = () => {
             <p className="text-xs text-muted-foreground leading-relaxed">
               CardSurgery optimise la condition physique et l'<em>Eye-Appeal</em> de vos cartes.
               Le grade final attribué reste à la discrétion exclusive des organismes de certification
-              (PCA, CCC, Collect Aura). Les tarifs partenaires affichés sont indicatifs et peuvent
-              évoluer selon leurs grilles officielles.
+              (PCA, CCC, Collect Aura). Les paliers d'assurance respectent les grilles publiques
+              Ad Valorem des transporteurs sélectionnés.
             </p>
           </div>
         </div>

@@ -93,6 +93,57 @@ const Payment = () => {
               </div>
             </div>
 
+            {/* Order breakdown */}
+            {(() => {
+              const baseCents = (() => {
+                const m = /([\d.,]+)/.exec(dossier.packPrice || "");
+                return m ? Math.round(parseFloat(m[1].replace(",", ".")) * 100) : 0;
+              })();
+              const insCents = dossier.insuranceCents ?? 0;
+              const totalCents = baseCents + insCents;
+              const fmt = (c: number) =>
+                (c / 100).toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
+              return (
+                <div className="mb-5 rounded-lg border border-border bg-secondary/30 p-4 text-sm">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
+                    Récapitulatif
+                  </p>
+                  <div className="flex justify-between py-1">
+                    <span className="text-muted-foreground">Service ({dossier.packLabel})</span>
+                    <span className="font-mono">{fmt(baseCents)}</span>
+                  </div>
+                  <div className="flex justify-between py-1">
+                    <span className="text-muted-foreground">
+                      Assurance Ad Valorem
+                      {dossier.insuranceMultiLeg ? " (×2 trajets)" : ""}
+                      {dossier.insuranceCapCents
+                        ? ` — jusqu'à ${fmt(dossier.insuranceCapCents)}`
+                        : ""}
+                    </span>
+                    <span className="font-mono">
+                      {insCents > 0 ? `+ ${fmt(insCents)}` : "incluse"}
+                    </span>
+                  </div>
+                  {dossier.declaredValueCents != null && (
+                    <div className="flex justify-between py-1 text-xs text-muted-foreground">
+                      <span>Valeur déclarée</span>
+                      <span className="font-mono">{fmt(dossier.declaredValueCents)}</span>
+                    </div>
+                  )}
+                  {dossier.shippingCarrier && (
+                    <div className="flex justify-between py-1 text-xs text-muted-foreground">
+                      <span>Transporteur</span>
+                      <span className="font-mono uppercase">{dossier.shippingCarrier}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between pt-2 mt-1 border-t border-border">
+                    <span className="font-semibold text-foreground">Total à régler</span>
+                    <span className="font-bold text-foreground text-lg">{fmt(totalCents)}</span>
+                  </div>
+                </div>
+              );
+            })()}
+
             {dossier.status === "pending_review" && (
               <div className="p-4 bg-primary/10 border border-primary/30 rounded flex gap-3">
                 <Info className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -115,7 +166,14 @@ const Payment = () => {
 
                 <div className="rounded-lg border-2 border-dashed border-border p-6 text-center bg-muted/30">
                   <p className="text-sm text-muted-foreground mb-2">Montant à régler</p>
-                  <p className="text-4xl font-bold text-foreground mb-4">{dossier.packPrice}</p>
+                  <p className="text-4xl font-bold text-foreground mb-4">
+                    {(() => {
+                      const m = /([\d.,]+)/.exec(dossier.packPrice || "");
+                      const baseCents = m ? Math.round(parseFloat(m[1].replace(",", ".")) * 100) : 0;
+                      const totalCents = baseCents + (dossier.insuranceCents ?? 0);
+                      return (totalCents / 100).toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
+                    })()}
+                  </p>
                   <Button
                     onClick={fakePay}
                     disabled={paying}

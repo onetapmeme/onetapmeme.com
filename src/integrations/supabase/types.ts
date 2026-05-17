@@ -230,16 +230,22 @@ export type Database = {
           card_name: string | null
           cares: Json
           created_at: string
+          declared_value_cents: number | null
           defects: string | null
           email: string
           estimated_value: string | null
           id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
           name: string
           pack: string
           pack_label: string
           pack_price: string
           photos: Json
           ref: string
+          shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
@@ -250,16 +256,22 @@ export type Database = {
           card_name?: string | null
           cares?: Json
           created_at?: string
+          declared_value_cents?: number | null
           defects?: string | null
           email: string
           estimated_value?: string | null
           id?: string
+          insurance_cap_cents?: number | null
+          insurance_cents?: number | null
+          insurance_multi_leg?: boolean
+          insurance_tier?: string | null
           name: string
           pack: string
           pack_label: string
           pack_price: string
           photos?: Json
           ref: string
+          shipping_carrier?: string | null
           status?: Database["public"]["Enums"]["dossier_status"]
           tcg?: string | null
           updated_at?: string
@@ -270,16 +282,22 @@ export type Database = {
           card_name?: string | null
           cares?: Json
           created_at?: string
+          declared_value_cents?: number | null
           defects?: string | null
           email?: string
           estimated_value?: string | null
           id?: string
+          insurance_cap_cents?: number | null
+          insurance_cents?: number | null
+          insurance_multi_leg?: boolean
+          insurance_tier?: string | null
           name?: string
           pack?: string
           pack_label?: string
           pack_price?: string
           photos?: Json
           ref?: string
+          shipping_carrier?: string | null
           status?: Database["public"]["Enums"]["dossier_status"]
           tcg?: string | null
           updated_at?: string
@@ -990,16 +1008,22 @@ export type Database = {
           card_name: string | null
           cares: Json
           created_at: string
+          declared_value_cents: number | null
           defects: string | null
           email: string
           estimated_value: string | null
           id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
           name: string
           pack: string
           pack_label: string
           pack_price: string
           photos: Json
           ref: string
+          shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
@@ -1023,16 +1047,22 @@ export type Database = {
           card_name: string | null
           cares: Json
           created_at: string
+          declared_value_cents: number | null
           defects: string | null
           email: string
           estimated_value: string | null
           id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
           name: string
           pack: string
           pack_label: string
           pack_price: string
           photos: Json
           ref: string
+          shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
@@ -1059,16 +1089,22 @@ export type Database = {
           card_name: string | null
           cares: Json
           created_at: string
+          declared_value_cents: number | null
           defects: string | null
           email: string
           estimated_value: string | null
           id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
           name: string
           pack: string
           pack_label: string
           pack_price: string
           photos: Json
           ref: string
+          shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
@@ -1091,22 +1127,45 @@ export type Database = {
         }
         Returns: string
       }
-      create_dossier: {
-        Args: {
-          card_name_param: string
-          cares_param: Json
-          defects_param: string
-          email_param: string
-          estimated_value_param: string
-          name_param: string
-          pack_label_param: string
-          pack_param: string
-          pack_price_param: string
-          photos_param: Json
-          tcg_param: string
-        }
-        Returns: string
-      }
+      create_dossier:
+        | {
+            Args: {
+              card_name_param: string
+              cares_param: Json
+              defects_param: string
+              email_param: string
+              estimated_value_param: string
+              name_param: string
+              pack_label_param: string
+              pack_param: string
+              pack_price_param: string
+              photos_param: Json
+              tcg_param: string
+            }
+            Returns: string
+          }
+        | {
+            Args: {
+              card_name_param: string
+              cares_param: Json
+              declared_value_cents_param?: number
+              defects_param: string
+              email_param: string
+              estimated_value_param: string
+              insurance_cap_cents_param?: number
+              insurance_cents_param?: number
+              insurance_multi_leg_param?: boolean
+              insurance_tier_param?: string
+              name_param: string
+              pack_label_param: string
+              pack_param: string
+              pack_price_param: string
+              photos_param: Json
+              shipping_carrier_param?: string
+              tcg_param: string
+            }
+            Returns: string
+          }
       create_meme_with_validation: {
         Args: {
           accessories_param?: Json
@@ -1140,16 +1199,22 @@ export type Database = {
           card_name: string | null
           cares: Json
           created_at: string
+          declared_value_cents: number | null
           defects: string | null
           email: string
           estimated_value: string | null
           id: string
+          insurance_cap_cents: number | null
+          insurance_cents: number | null
+          insurance_multi_leg: boolean
+          insurance_tier: string | null
           name: string
           pack: string
           pack_label: string
           pack_price: string
           photos: Json
           ref: string
+          shipping_carrier: string | null
           status: Database["public"]["Enums"]["dossier_status"]
           tcg: string | null
           updated_at: string
