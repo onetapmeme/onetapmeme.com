@@ -43,6 +43,7 @@ export interface Dossier {
   validatedAt?: string | null;
   returnCarrier?: string | null;
   returnTrackingNumber?: string | null;
+  stripeSessionId?: string | null;
 }
 
 export const PACKS: Record<string, { label: string; price: string; priceCents: number }> = {
