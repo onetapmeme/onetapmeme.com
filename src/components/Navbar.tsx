@@ -152,6 +152,25 @@ const Navbar = () => {
                   <div className="pt-3 mt-2 border-t border-border">
                     <LanguageSwitcher inline />
                   </div>
+                  {user ? (
+                    <>
+                      <Link to="/my-dossiers" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
+                        <FolderOpen className="w-4 h-4" /> Mes dossiers
+                      </Link>
+                      {isAdmin && (
+                        <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-accent py-2 flex items-center gap-2">
+                          <ShieldCheck className="w-4 h-4" /> Admin
+                        </Link>
+                      )}
+                      <button onClick={() => { setIsMobileMenuOpen(false); handleSignOut(); }} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2 text-left">
+                        <LogOut className="w-4 h-4" /> Déconnexion
+                      </button>
+                    </>
+                  ) : (
+                    <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
+                      <UserIcon className="w-4 h-4" /> Connexion
+                    </Link>
+                  )}
                   <Button
                     className="mt-4 glossy-btn text-accent-foreground border-0"
                     onClick={() => {
