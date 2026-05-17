@@ -10,10 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-import { Loader2, ShieldAlert, Check, X, Eye, RefreshCcw } from "lucide-react";
+import { Loader2, ShieldAlert, Check, X, Eye, RefreshCcw, Save, Truck } from "lucide-react";
 import {
   adminListDossiers, adminUpdateStatus, sendDossierEmail,
+  adminValidateDossier, adminMarkShipped,
   type Dossier, type DossierStatus,
 } from "@/lib/dossiers";
 
