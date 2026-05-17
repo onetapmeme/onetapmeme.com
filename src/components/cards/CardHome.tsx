@@ -31,12 +31,7 @@ const CardHome = () => {
   const t = (k: keyof typeof copy) => copy[k][lang];
   const savedCount = useSavedCardsCounter();
 
-  const services = [
-    { icon: Brush, title: t("service1Title"), desc: t("service1Desc") },
-    { icon: Sparkles, title: t("service2Title"), desc: t("service2Desc") },
-    { icon: Layers, title: t("service3Title"), desc: t("service3Desc") },
-    { icon: Diamond, title: t("service4Title"), desc: t("service4Desc") },
-  ];
+
 
   const steps = [
     { icon: PackageCheck, title: t("step1Title"), desc: t("step1Desc") },
