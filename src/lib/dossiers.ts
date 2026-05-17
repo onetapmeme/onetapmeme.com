@@ -163,3 +163,65 @@ export async function sendDossierEmail(
     console.warn("send-dossier-email failed", e);
   }
 }
+
+export async function listMyDossiers(): Promise<Dossier[]> {
+  const { data, error } = await supabase
+    .from("dossiers")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return (data ?? []).map(mapRow);
+}
+
+export async function adminValidateDossier(
+  ref: string,
+  opts: { notes?: string; overridePackPrice?: string; overrideInsuranceCents?: number } = {},
+): Promise<Dossier> {
+  const { data, error } = await supabase.rpc("admin_validate_dossier", {
+    ref_param: ref,
+    notes_param: opts.notes ?? null,
+    override_pack_price_param: opts.overridePackPrice ?? null,
+    override_insurance_cents_param: opts.overrideInsuranceCents ?? null,
+  } as any);
+  if (error) throw error;
+  return mapRow(data);
+}
+
+export async function adminMarkShipped(
+  ref: string, carrier: string, tracking: string,
+): Promise<Dossier> {
+  const { data, error } = await supabase.rpc("admin_mark_shipped", {
+    ref_param: ref, carrier_param: carrier, tracking_param: tracking,
+  } as any);
+  if (error) throw error;
+  return mapRow(data);
+}
+
+export const STATUS_LABEL_FR: Record<DossierStatus, string> = {
+  pending_review: "Demande envoyée",
+  received: "Diagnostic en cours",
+  approved: "Prêt pour paiement",
+  paid: "Paiement reçu",
+  in_surgery: "Chirurgie en cours",
+  shipped: "Expédiée",
+  rejected: "Refusée",
+};
+
+export const STATUS_STEP_INDEX: Record<DossierStatus, number> = {
+  pending_review: 0,
+  received: 1,
+  approved: 2,
+  paid: 3,
+  in_surgery: 3,
+  shipped: 4,
+  rejected: -1,
+};
+
+export const WORKFLOW_STEPS = [
+  "Demande envoyée",
+  "Diagnostic en cours",
+  "Prêt pour paiement",
+  "Chirurgie en cours",
+  "Expédiée",
+];
+
