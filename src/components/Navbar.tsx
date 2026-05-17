@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/cardsurgery-logo.png";
 import { copy, pickLang } from "@/components/cards/copy";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -66,6 +67,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
+            <LanguageSwitcher inline />
             <Button
               size="sm"
               className="hidden lg:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap"
@@ -92,6 +94,9 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ))}
+                  <div className="pt-3 mt-2 border-t border-border">
+                    <LanguageSwitcher inline />
+                  </div>
                   <Button
                     className="mt-4 glossy-btn text-accent-foreground border-0"
                     onClick={() => {

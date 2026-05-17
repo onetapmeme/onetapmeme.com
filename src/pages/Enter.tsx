@@ -18,6 +18,8 @@ const Enter = () => {
   useEffect(() => {
     audioRef.current = new Audio("/sounds/enter.wav");
     audioRef.current.preload = "auto";
+    // Reduce default audio volume by 50% (was full → 0.5) on first activation
+    audioRef.current.volume = 0.5;
   }, []);
 
   const handleClick = () => {
@@ -25,6 +27,7 @@ const Enter = () => {
     setIsClicked(true);
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
+      audioRef.current.volume = 0.5;
       audioRef.current.play().catch(() => {});
     }
     setTimeout(() => navigate("/home"), 600);

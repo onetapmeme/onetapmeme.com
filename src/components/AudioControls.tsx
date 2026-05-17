@@ -9,9 +9,10 @@ interface AudioControlsProps {
 const AudioControls = ({
   className = ""
 }: AudioControlsProps) => {
-  const [volume, setVolume] = useState(70);
+  // Reduced default volume by 50% (was 70 → now 35) per UX request
+  const [volume, setVolume] = useState(35);
   const [isMuted, setIsMuted] = useState(false);
-  const [previousVolume, setPreviousVolume] = useState(70);
+  const [previousVolume, setPreviousVolume] = useState(35);
 
   // Load saved settings
   useEffect(() => {

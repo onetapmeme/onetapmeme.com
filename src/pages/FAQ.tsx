@@ -200,19 +200,17 @@ const FAQ = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="text-2xl font-bold mb-4">
-              Encore des questions ?
-            </h3>
+            <h3 className="text-2xl font-bold mb-4">Encore des questions ?</h3>
             <p className="text-muted-foreground mb-6">
-              Rejoignez notre communauté Discord pour un support en temps réel de l'équipe et des membres de la communauté.
+              Notre équipe vous répond personnellement sous 24 h ouvrées.
+              Écrivez-nous pour toute demande de devis personnalisé, partenariat
+              ou question technique avancée.
             </p>
             <a
-              href="https://discord.gg/cardsurgery"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:contact@cardsurgery.com"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
             >
-              Join Discord
+              contact@cardsurgery.com
             </a>
           </motion.div>
         </div>

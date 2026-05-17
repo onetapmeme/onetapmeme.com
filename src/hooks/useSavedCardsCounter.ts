@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 const KEY = "cardsurgery_saved_count";
 const EVENT = "cardsurgery:saved-count-changed";
-const BASE = 127;
+// Synced realistic baseline across the entire site (homepage badge, trust section, etc.)
+const BASE = 200;
 
 function read(): number {
   if (typeof window === "undefined") return BASE;
