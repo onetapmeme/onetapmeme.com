@@ -63,6 +63,12 @@ function mapRow(r: any): Dossier {
     adminNotes: r.admin_notes ?? null,
     createdAt: r.created_at,
     updatedAt: r.updated_at,
+    declaredValueCents: r.declared_value_cents ?? null,
+    insuranceTier: r.insurance_tier ?? null,
+    insuranceCents: r.insurance_cents ?? null,
+    insuranceCapCents: r.insurance_cap_cents ?? null,
+    insuranceMultiLeg: !!r.insurance_multi_leg,
+    shippingCarrier: r.shipping_carrier ?? null,
   };
 }
 
@@ -83,6 +89,12 @@ export async function createDossierRemote(input: {
   email: string; name: string; pack: string;
   cardName?: string; tcg?: string; estimatedValue?: string;
   cares: string[]; defects?: string; photos: DossierPhoto[];
+  declaredValueCents?: number | null;
+  insuranceTier?: string | null;
+  insuranceCents?: number | null;
+  insuranceCapCents?: number | null;
+  insuranceMultiLeg?: boolean;
+  shippingCarrier?: string | null;
 }): Promise<string> {
   const p = PACKS[input.pack];
   const { data, error } = await supabase.rpc("create_dossier", {
@@ -97,7 +109,13 @@ export async function createDossierRemote(input: {
     cares_param: input.cares as any,
     defects_param: input.defects ?? null,
     photos_param: input.photos as any,
-  });
+    declared_value_cents_param: input.declaredValueCents ?? null,
+    insurance_tier_param: input.insuranceTier ?? null,
+    insurance_cents_param: input.insuranceCents ?? null,
+    insurance_cap_cents_param: input.insuranceCapCents ?? null,
+    insurance_multi_leg_param: input.insuranceMultiLeg ?? false,
+    shipping_carrier_param: input.shippingCarrier ?? null,
+  } as any);
   if (error) throw error;
   return data as string;
 }
