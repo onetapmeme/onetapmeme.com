@@ -37,6 +37,12 @@ export interface Dossier {
   insuranceCapCents?: number | null;
   insuranceMultiLeg?: boolean;
   shippingCarrier?: string | null;
+  paymentLinkUrl?: string | null;
+  paymentLinkExpiresAt?: string | null;
+  paidAt?: string | null;
+  validatedAt?: string | null;
+  returnCarrier?: string | null;
+  returnTrackingNumber?: string | null;
 }
 
 export const PACKS: Record<string, { label: string; price: string; priceCents: number }> = {
