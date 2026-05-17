@@ -93,6 +93,59 @@ export default function AdminDossiers() {
     } finally { setActing(false); }
   };
 
+  // Pre-fill price/insurance/tracking inputs when a dossier is selected.
+  useEffect(() => {
+    if (!selected) return;
+    setOverridePrice(selected.packPrice ?? "");
+    setOverrideInsuranceEuros(
+      typeof selected.insuranceCents === "number" ? (selected.insuranceCents / 100).toFixed(2) : ""
+    );
+    setCarrier(selected.returnCarrier ?? "");
+    setTracking(selected.returnTrackingNumber ?? "");
+  }, [selected?.ref]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const saveOverridesAndApprove = async () => {
+    if (!selected) return;
+    setActing(true);
+    try {
+      const insCents = overrideInsuranceEuros.trim()
+        ? Math.round(parseFloat(overrideInsuranceEuros.replace(",", ".")) * 100)
+        : undefined;
+      if (insCents !== undefined && (!Number.isFinite(insCents) || insCents < 0)) {
+        throw new Error("Montant d'assurance invalide");
+      }
+      const updated = await adminValidateDossier(selected.ref, {
+        notes: notes || undefined,
+        overridePackPrice: overridePrice.trim() || undefined,
+        overrideInsuranceCents: insCents,
+      });
+      sendDossierEmail(updated.ref, "approved");
+      toast({ title: "Tarifs enregistrés", description: `${updated.ref} validé avec les nouveaux montants.` });
+      setSelected(updated);
+      await load();
+    } catch (e: any) {
+      toast({ title: "Échec", description: e?.message, variant: "destructive" });
+    } finally { setActing(false); }
+  };
+
+  const shipWithTracking = async () => {
+    if (!selected) return;
+    if (!carrier.trim() || tracking.trim().length < 4) {
+      toast({ title: "Transporteur et n° de suivi requis", variant: "destructive" });
+      return;
+    }
+    setActing(true);
+    try {
+      const updated = await adminMarkShipped(selected.ref, carrier.trim(), tracking.trim());
+      sendDossierEmail(updated.ref, "shipped");
+      toast({ title: "Expédition enregistrée", description: `${updated.ref} — ${carrier} ${tracking}` });
+      setSelected(updated);
+      await load();
+    } catch (e: any) {
+      toast({ title: "Échec", description: e?.message, variant: "destructive" });
+    } finally { setActing(false); }
+  };
+
   if (!authChecked) {
     return <div className="min-h-screen flex items-center justify-center"><Loader2 className="w-10 h-10 animate-spin text-primary" /></div>;
   }
