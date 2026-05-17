@@ -82,6 +82,7 @@ function mapRow(r: any): Dossier {
     validatedAt: r.validated_at ?? null,
     returnCarrier: r.return_carrier ?? null,
     returnTrackingNumber: r.return_tracking_number ?? null,
+    stripeSessionId: r.stripe_session_id ?? null,
   };
 }
 
