@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, ShieldCheck } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/cardsurgery-logo.png";
 import { copy, pickLang } from "@/components/cards/copy";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -26,11 +27,28 @@ const Navbar = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const check = async (uid?: string) => {
+      if (!uid) { setIsAdmin(false); return; }
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", uid)
+        .eq("role", "admin")
+        .maybeSingle();
+      setIsAdmin(!!data);
+    };
+    supabase.auth.getSession().then(({ data: { session } }) => check(session?.user?.id));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => check(session?.user?.id));
+    return () => sub.subscription.unsubscribe();
   }, []);
 
   return (
@@ -68,15 +86,29 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2 shrink-0">
             <LanguageSwitcher inline />
-            {!isScrolled && (
+            {isAdmin && (
               <Button
                 size="sm"
-                className="hidden 2xl:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap"
-                onClick={() => navigate("/pricing")}
+                variant="outline"
+                className="hidden lg:inline-flex border-accent/40 text-accent hover:bg-accent/10"
+                onClick={() => navigate("/admin")}
               >
-                {t("heroCtaPrimary")}
+                <ShieldCheck className="w-4 h-4 mr-1" /> Admin
               </Button>
             )}
+            <Button
+              size="sm"
+              tabIndex={isScrolled ? -1 : 0}
+              aria-hidden={isScrolled}
+              className={`hidden 2xl:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap transition-all duration-500 ease-in-out origin-right ${
+                isScrolled
+                  ? "opacity-0 scale-90 -translate-x-2 pointer-events-none w-0 px-0 ml-0 overflow-hidden"
+                  : "opacity-100 scale-100 translate-x-0"
+              }`}
+              onClick={() => navigate("/pricing")}
+            >
+              {t("heroCtaPrimary")}
+            </Button>
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
