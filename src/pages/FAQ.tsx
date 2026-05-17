@@ -117,6 +117,60 @@ const faqCategories: { category: string; questions: { q: string; a: string }[] }
     ],
   },
   {
+    category: "Expertise technique",
+    questions: [
+      {
+        q: "Le nettoyage abîme-t-il le vernis holographique (holofoil) ?",
+        a: "Non. Nous utilisons des solvants doux non-polaires appliqués au coton chirurgical, calibrés pour dissoudre les graisses et résidus sans attaquer la couche de vernis UV ni la trame holographique sous-jacente. Chaque carte holo est testée sur une zone non visible avant intervention.",
+      },
+      {
+        q: "Comment traitez-vous les cartes vintage au carton ancien (Base Set, Jungle…) ?",
+        a: "Les cartons d'avant 2003 sont plus poreux et plus sensibles à l'humidité. Nous travaillons à hygrométrie contrôlée (45–55 %), sans solution aqueuse en contact direct, et utilisons un redressage thermique progressif basse température pour éviter le delaminage de la couche bleue arrière.",
+      },
+      {
+        q: "Pouvez-vous intervenir sur les cartes Chrome / Refractor / Prizm ?",
+        a: "Oui. Les couches chromées exigent un polish purement mécanique (micro-pads <0.5 µm) sans aucun solvant. Nous restaurons l'éclat de surface sans créer de micro-rayures circulaires perceptibles sous lumière directe — point critique pour la note Surface en grading.",
+      },
+      {
+        q: "Les encres UV modernes (Pokémon Scarlet & Violet) résistent-elles ?",
+        a: "Les encres UV récentes sont nettement plus stables que les vernis pré-2010. Nous adaptons néanmoins l'angle d'attaque et le temps de contact pour préserver la texture des cartes Illustration Rare et Special Art Rare, où la trame est particulièrement fine.",
+      },
+      {
+        q: "Que faire si ma carte a des micro-rayures de surface ?",
+        a: "Selon leur profondeur, nous proposons un **micro-polish** (Pack 19 €) pour les rayures superficielles, ou un **resurfaçage contrôlé** (Pack 39 €+) pour les rayures plus marquées. Une carte avec rayures profondes traversant le vernis n'est pas restaurable sans risque ; nous le signalons dans le diagnostic.",
+      },
+      {
+        q: "Quels défauts ne peuvent PAS être restaurés ?",
+        a: "Whitening profond traversant le carton, pliures structurelles, déchirures, taches d'encre internes, dommages par eau ayant gondolé le noyau, et bords mâchés. Dans ces cas, le diagnostic est facturé 0 € et la carte est renvoyée.",
+      },
+    ],
+  },
+  {
+    category: "Grading & organismes tiers",
+    questions: [
+      {
+        q: "Quelle est la différence entre PCA, CCC et Collect Aura ?",
+        a: "**PCA (Professional Card Authentication)** : leader européen, slab transparent, échelle 1–10. **CCC (Cartes Certifiées Cassées… non, Card Certification Center)** : alternative française, délais souvent plus courts. **Collect Aura** : nouvel acteur premium axé sur les cartes haute valeur, photographie HD incluse. Nous gérons les trois en tant que partenaires logistiques.",
+      },
+      {
+        q: "CardSurgery peut-il garantir une note PCA 10 ou CCC 10 ?",
+        a: "**Non, et personne ne le peut.** Nous optimisons la physique de la carte (surface, bords, coins, centrage visible) mais la note finale relève exclusivement de l'organisme de grading. Nous communiquons une estimation indicative basée sur 200+ cartes restaurées, sans engagement de résultat.",
+      },
+      {
+        q: "Vos interventions sont-elles considérées comme « altération » par les organismes ?",
+        a: "Le nettoyage de surface et le polishing léger relèvent de l'entretien collector courant, accepté par tous les organismes. En revanche, la **trempe (trimming)**, le **recoloriage** et le **resurfaçage agressif** sont des altérations et nous ne les pratiquons JAMAIS.",
+      },
+      {
+        q: "Quels sont les délais de grading après envoi par CardSurgery ?",
+        a: "Les délais dépendent du partenaire et de la valeur déclarée : PCA Standard ~30–60 jours, PCA Express ~15 jours, CCC ~20–40 jours, Collect Aura Premium ~10–20 jours. Le suivi est intégré dans votre espace dossier CardSurgery.",
+      },
+      {
+        q: "Que se passe-t-il en cas de note décevante ?",
+        a: "CardSurgery ne rembourse pas la note (hors de notre contrôle) mais offre une analyse post-grading gratuite identifiant les critères pénalisés. Si l'erreur vient d'une intervention de notre laboratoire (ce qui n'est jamais arrivé), nous prenons en charge un re-grading.",
+      },
+    ],
+  },
+  {
     category: "Communauté & Partenaires",
     questions: [
       {
