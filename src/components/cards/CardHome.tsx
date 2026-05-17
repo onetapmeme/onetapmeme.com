@@ -309,41 +309,7 @@ const CardHome = () => {
         </div>
       </section>
 
-      {/* SÉCURITÉ CLINIQUE */}
-      <section id="security" className="py-20 md:py-32 px-4">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-12">
-            <Lock className="w-14 h-14 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Sécurité clinique</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Vos cartes traitées comme des actifs : traçabilité, stockage protégé, assurance dédiée.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="glass-effect p-6 rounded-2xl border-primary/20">
-              <Lock className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-lg font-bold mb-2">Coffre ignifuge</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Stockage en coffre-fort ignifuge entre chaque étape, accès restreint à l'équipe technique habilitée.
-              </p>
-            </Card>
-            <Card className="glass-effect p-6 rounded-2xl border-primary/20">
-              <ShieldCheck className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-lg font-bold mb-2">Assurance bout-en-bout</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Colis aller / retour assurés et suivis jusqu'à 5 000 € la déclaration. Aucune zone d'ombre.
-              </p>
-            </Card>
-            <Card className="glass-effect p-6 rounded-2xl border-primary/20">
-              <Eye className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-lg font-bold mb-2">Traçabilité HD</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Photos haute définition à chaque étape, archivées dans votre dossier sécurisé.
-              </p>
-            </Card>
-          </div>
-        </div>
-      </section>
+
 
       {/* FINAL CTA */}
       <section id="contact" className="py-20 md:py-32 px-4">
