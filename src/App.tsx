@@ -28,6 +28,10 @@ import Booking from "./pages/Booking";
 import Tracking from "./pages/Tracking";
 import Payment from "./pages/Payment";
 import AdminDossiers from "./pages/AdminDossiers";
+import AdminHub from "./pages/AdminHub";
+import AdminBookings from "./pages/AdminBookings";
+import AdminPricing from "./pages/AdminPricing";
+import AdminGrading from "./pages/AdminGrading";
 
 const queryClient = new QueryClient();
 
