@@ -270,6 +270,42 @@ const CardHome = () => {
               ))}
             </div>
           </div>
+
+          {/* Authority & references */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <a
+              href="https://www.kurtscardcare.com/post/kurts-card-care-recovery?srsltid=AfmBOoqfAlwPgcz3Lha8FPmjA9pa2Z33TlFC4Q5bs5nuWSEdAVr4u1wt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-effect rounded-2xl border border-primary/20 p-5 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 group block"
+            >
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
+                Produits référencés
+              </p>
+              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                Solutions Kurt's Card Care Recovery →
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Gamme professionnelle utilisée par notre laboratoire.
+              </p>
+            </a>
+            <a
+              href="https://www.rocketcollect.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-effect rounded-2xl border border-accent/30 p-5 hover:border-accent/60 hover:bg-accent/5 transition-all duration-300 group block"
+            >
+              <p className="text-xs uppercase tracking-widest text-accent mb-1">
+                Certifications & formations
+              </p>
+              <p className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">
+                Maîtrise validée par Rocket Collect →
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Formations premium et certifications professionnelles.
+              </p>
+            </a>
+          </div>
         </div>
       </section>
 

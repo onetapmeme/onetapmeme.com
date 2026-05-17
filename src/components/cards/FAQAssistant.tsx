@@ -22,9 +22,9 @@ const KB: Entry[] = [
       "CardSurgery est un service totalement indépendant. Nous ne sommes affiliés ni à Nintendo, ni à The Pokémon Company, ni à Bandai, ni à aucun autre éditeur de TCG.",
   },
   {
-    keywords: ["technologie", "protocole", "outil", "1tap", "precision", "précision"],
+    keywords: ["technologie", "protocole", "outil", "precision", "précision", "methode", "méthode"],
     answer:
-      "Nous utilisons notre protocole exclusif « Technologie de précision 1Tap » : outils chirurgicaux et solutions non invasives appliqués au micromètre près, sans jamais altérer la structure d'origine de la carte.",
+      "Nous appliquons notre protocole exclusif de précision chirurgicale : outils calibrés et solutions non invasives appliqués au micromètre près, sans jamais altérer la structure d'origine de la carte.",
   },
   {
     keywords: ["reserver", "réserver", "reservation", "réservation", "commander", "comment commencer", "diagnostic"],
@@ -84,7 +84,7 @@ const KB: Entry[] = [
   {
     keywords: ["suivi", "suivre", "tracking", "etat", "état", "avancement", "ou en est", "où en est"],
     answer:
-      "Notre dashboard de suivi temps réel affiche les étapes : Réception → Analyse → En Chirurgie 1Tap → Expédié.",
+      "Notre dashboard de suivi temps réel affiche les étapes : Réception → Analyse → En Chirurgie → Expédié.",
   },
   {
     keywords: ["pre-grading", "pré-grading", "pregrading", "evaluer note", "évaluer note"],
@@ -102,9 +102,9 @@ const KB: Entry[] = [
       "Toute notre interface, y compris le suivi de dossier, est 100 % responsive et optimisée pour smartphone.",
   },
   {
-    keywords: ["instagram", "discord", "reseau", "réseau", "social", "communaute", "communauté"],
+    keywords: ["instagram", "reseau", "réseau", "social", "communaute", "communauté"],
     answer:
-      "Suivez les coulisses, les vidéos avant/après et nos restaurations live sur Instagram @card_surgery (https://www.instagram.com/card_surgery/) et sur notre Discord.",
+      "Suivez les coulisses, les vidéos avant/après et nos restaurations live sur Instagram @card_surgery (https://www.instagram.com/card_surgery/).",
   },
   {
     keywords: ["affiliation creator", "affilié", "createur", "créateur", "influence", "partenaire content"],
@@ -129,7 +129,7 @@ const KB: Entry[] = [
 ];
 
 const FALLBACK =
-  "Je suis l'assistant virtuel de CardSurgery, spécialisé uniquement dans la chirurgie et la préservation de vos cartes TCG. Pour toute autre demande, vous pouvez contacter notre équipe à contact@cardsurgery.com ou rejoindre notre Discord.";
+  "Je suis l'assistant virtuel de CardSurgery, spécialisé uniquement dans la chirurgie et la préservation de vos cartes TCG. Pour toute autre demande, écrivez-nous à contact@cardsurgery.com.";
 
 const SUGGESTIONS = [
   "Quel est le prix pour une carte Pokémon ?",
