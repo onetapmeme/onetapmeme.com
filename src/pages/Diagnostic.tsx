@@ -378,6 +378,18 @@ const Diagnostic = () => {
                     step={50}
                     onValueChange={(v) => setDeclaredValue(v[0] ?? 0)}
                   />
+                  {pack && (
+                    <div className="mt-4">
+                      <InsuranceTierSelector
+                        pack={pack}
+                        selectedTierIndex={computeInsurance(pack, declaredValue).tier.index}
+                        onChange={(idx) => {
+                          const t = INSURANCE_TIERS[idx - 1];
+                          if (t) setDeclaredValue(t.capEuros);
+                        }}
+                      />
+                    </div>
+                  )}
                   {pack && (() => {
                     const ins = computeInsurance(pack, declaredValue);
                     const total = packTotalEuros(pack, declaredValue);
