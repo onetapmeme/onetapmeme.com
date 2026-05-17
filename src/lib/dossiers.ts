@@ -31,6 +31,12 @@ export interface Dossier {
   adminNotes?: string | null;
   createdAt: string;
   updatedAt: string;
+  declaredValueCents?: number | null;
+  insuranceTier?: string | null;
+  insuranceCents?: number | null;
+  insuranceCapCents?: number | null;
+  insuranceMultiLeg?: boolean;
+  shippingCarrier?: string | null;
 }
 
 export const PACKS: Record<string, { label: string; price: string; priceCents: number }> = {
