@@ -68,13 +68,15 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2 shrink-0">
             <LanguageSwitcher inline />
-            <Button
-              size="sm"
-              className="hidden lg:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap"
-              onClick={() => navigate("/pricing")}
-            >
-              {t("heroCtaPrimary")}
-            </Button>
+            {!isScrolled && (
+              <Button
+                size="sm"
+                className="hidden 2xl:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap"
+                onClick={() => navigate("/pricing")}
+              >
+                {t("heroCtaPrimary")}
+              </Button>
+            )}
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
