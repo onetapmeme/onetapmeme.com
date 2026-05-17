@@ -44,12 +44,7 @@ const CardHome = () => {
     { icon: Gem, title: t("step4Title"), desc: t("step4Desc") },
   ];
 
-  const why = [
-    { icon: Search, title: t("why1Title"), desc: t("why1Desc") },
-    { icon: Diamond, title: t("why2Title"), desc: t("why2Desc") },
-    { icon: Eye, title: t("why3Title"), desc: t("why3Desc") },
-    { icon: Lock, title: t("why4Title"), desc: t("why4Desc") },
-  ];
+
 
   const trust = [t("trust1"), t("trust2"), t("trust3"), t("trust4")];
 
@@ -271,26 +266,6 @@ const CardHome = () => {
         </div>
       </section>
 
-      {/* WHY */}
-      <section id="why" className="py-20 md:py-32 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("whyTitle")}</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {why.map((w, i) => (
-              <Card
-                key={i}
-                className="glass-effect h-full p-6 rounded-2xl border-primary/20 hover:border-primary/40 transition-all duration-500"
-              >
-                <w.icon className="w-10 h-10 text-primary mb-4" />
-                <h3 className="text-lg font-bold mb-2 text-foreground">{w.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* TRUST */}
       <section id="trust" className="py-20 md:py-32 px-4">
