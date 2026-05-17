@@ -86,6 +86,16 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2 shrink-0">
             <LanguageSwitcher inline />
+            {isAdmin && (
+              <Button
+                size="sm"
+                variant="outline"
+                className="hidden lg:inline-flex border-accent/40 text-accent hover:bg-accent/10"
+                onClick={() => navigate("/admin")}
+              >
+                <ShieldCheck className="w-4 h-4 mr-1" /> Admin
+              </Button>
+            )}
             <Button
               size="sm"
               tabIndex={isScrolled ? -1 : 0}
