@@ -182,39 +182,8 @@ const CardHome = () => {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="py-20 md:py-32 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("servicesTitle")}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t("servicesSubtitle")}
-            </p>
-            <p className="mt-5 text-sm md:text-base text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed glass-effect border border-primary/15 rounded-2xl px-5 py-4">
-              {t("servicesFlow")}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <Card className="glass-effect h-full p-6 rounded-2xl border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 group">
-                  <s.icon className="w-12 h-12 text-primary mb-5 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-bold mb-3 text-foreground">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* PROCESS */}
+
       <section id="process" className="py-20 md:py-32 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
