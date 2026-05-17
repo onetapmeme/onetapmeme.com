@@ -21,6 +21,14 @@ import {
   sendDossierEmail,
   type DossierPhoto,
 } from "@/lib/dossiers";
+import {
+  MAX_INSURED_VALUE,
+  computeInsurance,
+  packTotalEuros,
+  eurosToCents,
+} from "@/lib/insurance";
+import { Slider } from "@/components/ui/slider";
+import { ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
