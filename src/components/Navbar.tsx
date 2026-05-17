@@ -79,14 +79,42 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2 shrink-0">
             <LanguageSwitcher inline />
-            {isAdmin && (
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button size="sm" variant="outline" className="border-accent/40 rounded-full px-2.5 gap-2 hidden sm:inline-flex" aria-label="Mon compte">
+                    <span className="w-6 h-6 rounded-full bg-accent text-accent-foreground text-xs font-semibold flex items-center justify-center">
+                      {initial}
+                    </span>
+                    <span className="hidden md:inline text-xs max-w-[120px] truncate">{user.email}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 z-[100]">
+                  <DropdownMenuLabel className="truncate">{user.email}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => navigate("/my-dossiers")}>
+                    <FolderOpen className="w-4 h-4 mr-2" /> Mes dossiers
+                  </DropdownMenuItem>
+                  {isAdmin && (
+                    <DropdownMenuItem onClick={() => navigate("/admin")}>
+                      <ShieldCheck className="w-4 h-4 mr-2 text-accent" /> Admin
+                    </DropdownMenuItem>
+                  )}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut}>
+                    <LogOut className="w-4 h-4 mr-2" /> Déconnexion
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
               <Button
                 size="sm"
                 variant="outline"
-                className="hidden lg:inline-flex border-accent/40 text-accent hover:bg-accent/10"
-                onClick={() => navigate("/admin")}
+                className="hidden sm:inline-flex border-accent/40 rounded-full"
+                onClick={() => navigate("/auth")}
               >
-                <ShieldCheck className="w-4 h-4 mr-1" /> Admin
+                <UserIcon className="w-4 h-4 sm:mr-1.5" />
+                <span className="hidden md:inline">Connexion</span>
               </Button>
             )}
             <Button
