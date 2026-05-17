@@ -35,7 +35,7 @@ const getInitialLanguage = async () => {
         zh: { translation: zh }
       },
       lng: initialLang,
-      fallbackLng: 'en',
+      fallbackLng: 'fr',
       interpolation: {
         escapeValue: false
       }

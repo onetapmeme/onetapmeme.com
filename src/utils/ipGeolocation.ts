@@ -77,9 +77,9 @@ export const detectLanguageFromIP = async (): Promise<string | null> => {
       return suggestedLanguage;
     }
 
-    // Default to English for unmapped countries
-    console.log(`IP geolocation: ${countryCode} → en (fallback)`);
-    return 'en';
+    // Default to French (primary language) for unmapped countries
+    console.log(`IP geolocation: ${countryCode} → fr (fallback)`);
+    return 'fr';
   } catch (error) {
     console.error('IP geolocation detection failed:', error);
     return null;
@@ -101,10 +101,10 @@ export const getLanguageWithGeolocation = async (): Promise<string> => {
     return ipLang;
   }
 
-  // 3. Fall back to browser language detection
+  // 3. Fall back to browser language detection (French primary)
   const browserLang = navigator.language.split('-')[0];
   const supportedLangs = ['en', 'fr', 'es', 'ru', 'zh'];
-  const detectedLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
+  const detectedLang = supportedLangs.includes(browserLang) ? browserLang : 'fr';
   
   console.log(`Using browser language: ${detectedLang}`);
   return detectedLang;
