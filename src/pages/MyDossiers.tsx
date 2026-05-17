@@ -130,7 +130,7 @@ export default function MyDossiers() {
                           size="sm"
                           className="glossy-btn text-accent-foreground border-0 w-full sm:w-auto"
                         >
-                          <Link to={d.payment_link_url || `/payment?ref=${d.ref}`}>
+                          <Link to={d.paymentLinkUrl || `/payment?ref=${d.ref}`}>
                             <CreditCard className="w-4 h-4 mr-1.5" /> Payer maintenant
                           </Link>
                         </Button>
@@ -147,15 +147,15 @@ export default function MyDossiers() {
                       </div>
                     )}
 
-                    {d.status === "shipped" && d.return_tracking_number && (
+                    {d.status === "shipped" && d.returnTrackingNumber && (
                       <div className="mt-5 rounded-lg border border-accent/30 bg-accent/5 p-3 sm:p-4 text-sm">
                         <div className="font-semibold flex items-center gap-2">
                           <Truck className="w-4 h-4" /> Carte expédiée
                         </div>
                         <p className="text-muted-foreground text-xs sm:text-sm mt-1">
-                          Transporteur : <span className="text-foreground">{d.return_carrier}</span>
+                          Transporteur : <span className="text-foreground">{d.returnCarrier}</span>
                           <br />
-                          N° de suivi : <span className="font-mono text-foreground">{d.return_tracking_number}</span>
+                          N° de suivi : <span className="font-mono text-foreground">{d.returnTrackingNumber}</span>
                         </p>
                       </div>
                     )}
