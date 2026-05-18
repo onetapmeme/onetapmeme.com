@@ -195,7 +195,7 @@ const Hero = () => {
           duration: 1,
           delay: 0.9
         }}>
-            <Button onClick={handleGetStarted} size="lg" className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full transition-all duration-500 group" style={{
+            <Button onClick={handleGetStarted} size="lg" className="w-full sm:w-auto text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-6 md:py-8 rounded-full transition-all duration-500 group whitespace-normal h-auto leading-tight text-center" style={{
             background: 'linear-gradient(135deg, hsl(210, 100%, 60%), hsl(210, 100%, 50%))',
             boxShadow: '0 0 40px hsla(210, 100%, 55%, 0.4)'
           }} onMouseEnter={e => {
@@ -203,12 +203,12 @@ const Hero = () => {
           }} onMouseLeave={e => {
             e.currentTarget.style.boxShadow = '0 0 40px hsla(210, 100%, 55%, 0.4)';
           }}>
-              <Zap className="w-5 h-5 md:w-6 md:h-6 mr-2" />
+              <Zap className="w-5 h-5 md:w-6 md:h-6 mr-2 shrink-0" />
               {t('hero.cta')}
-              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 md:w-6 md:h-6 ml-2 group-hover:translate-x-1 transition-transform shrink-0" />
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 rounded-full glass-effect hover:bg-primary/10 transition-all duration-500">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-6 md:py-8 rounded-full glass-effect hover:bg-primary/10 transition-all duration-500 whitespace-normal h-auto leading-tight text-center">
               <a href="/whitepaper-v2.pdf" download>
                 📄 Download Whitepaper
               </a>
