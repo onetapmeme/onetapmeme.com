@@ -135,16 +135,16 @@ const CardHome = () => {
               </span>
             </motion.div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto px-4">
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 py-6 rounded-full group glossy-btn text-accent-foreground border-0"
+                className="w-full sm:w-auto max-w-full text-base sm:text-lg px-5 sm:px-8 py-4 sm:py-6 rounded-full group glossy-btn text-accent-foreground border-0 whitespace-normal h-auto leading-tight text-center"
               >
                 <a href="/pricing">
-                  <Sparkles className="w-5 h-5 mr-2" />
+                  <Sparkles className="w-5 h-5 mr-2 shrink-0" />
                   {t("heroCtaPrimary")}
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 ml-2 shrink-0 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
             </div>
