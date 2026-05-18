@@ -90,18 +90,20 @@ const Enter = () => {
         </div>
 
         <div className="fixed bottom-8 left-0 right-0 z-30 flex justify-center px-4">
-          <Button
-            size="lg"
-            className="text-lg md:text-xl py-6 px-12 rounded-full font-bold animate-pulse"
-            style={{
-              background:
-                "linear-gradient(135deg, hsl(210,100%,60%), hsl(210,100%,50%))",
-              boxShadow: "0 0 50px hsla(210,100%,55%,0.5)",
-            }}
-          >
-            <Sparkles className="w-5 h-5 mr-2" />
-            {t("heroCtaPrimary")}
-          </Button>
+          <div className="w-full max-w-md mx-auto">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto text-base sm:text-lg md:text-xl py-4 sm:py-6 px-6 sm:px-12 rounded-full font-bold animate-pulse whitespace-normal h-auto leading-tight text-center"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(210,100%,60%), hsl(210,100%,50%))",
+                boxShadow: "0 0 50px hsla(210,100%,55%,0.5)",
+              }}
+            >
+              <Sparkles className="w-5 h-5 mr-2 shrink-0" />
+              {t("heroCtaPrimary")}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
