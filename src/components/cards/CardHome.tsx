@@ -295,17 +295,20 @@ const CardHome = () => {
 
 
       {/* BEFORE / AFTER DEMO */}
-      <section id="before-after" className="py-20 md:py-32 px-4">
-        <div className="container mx-auto max-w-3xl">
+      <section id="before-after" className="py-20 md:py-32 px-4 overflow-hidden">
+        <div className="container mx-auto max-w-3xl w-full">
           <div className="text-center mb-10 px-2">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Avant / Après</h2>
           </div>
 
-          <BeforeAfterSlider
-            before={lugiaAvant}
-            after={lugiaApres}
-            alt="Restauration Lugia Légende 113/106"
-          />
+          <div className="mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl overflow-hidden">
+            <BeforeAfterSlider
+              before={lugiaAvant}
+              after={lugiaApres}
+              alt="Restauration Lugia Légende 113/106"
+            />
+          </div>
+
 
           <div className="mt-8 text-center px-4">
             <h3 className="font-serif italic text-xl sm:text-2xl md:text-3xl text-foreground leading-tight max-w-2xl mx-auto">
