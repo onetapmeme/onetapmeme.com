@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import BeforeAfterSlider from "@/components/cards/BeforeAfterSlider";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import lugiaAvant from "@/assets/lugia-avant.jpeg";
+import lugiaApres from "@/assets/lugia-apres.jpeg";
 
 type Cat = "Tous" | "Pokémon" | "One Piece" | "Lorcana" | "Magic";
 const CATS: Cat[] = ["Tous", "Pokémon", "One Piece", "Lorcana", "Magic"];
@@ -15,6 +17,7 @@ const ph = (label: string, color: string) =>
   )}`;
 
 const PROJECTS: { id: string; cat: Exclude<Cat, "Tous">; title: string; subtitle: string; before: string; after: string }[] = [
+  { id: "lugia", cat: "Pokémon", title: "Lugia Légende 113/106", subtitle: "Étude N°113 — polissage holographique", before: lugiaAvant, after: lugiaApres },
   { id: "1", cat: "Pokémon", title: "Dracaufeu Base Set", subtitle: "Whitening + nettoyage de surface", before: ph("AVANT — Dracaufeu", "#7a6a55"), after: ph("APRÈS — Dracaufeu", "#3a2f24") },
   { id: "2", cat: "One Piece", title: "Luffy OP01 Leader", subtitle: "Pressage de précision", before: ph("AVANT — Luffy", "#7a5b55"), after: ph("APRÈS — Luffy", "#2d2018") },
   { id: "3", cat: "Lorcana", title: "Elsa First Chapter", subtitle: "De-curving complet", before: ph("AVANT — Elsa", "#5a6f7a"), after: ph("APRÈS — Elsa", "#1f2a33") },
