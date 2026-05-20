@@ -24,6 +24,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import BeforeAfterSlider from "@/components/cards/BeforeAfterSlider";
 import logo from "@/assets/cardsurgery-logo.png";
+import lugiaAvant from "@/assets/lugia-avant.jpeg";
+import lugiaApres from "@/assets/lugia-apres.jpeg";
 import heroBg from "@/assets/hero-bg.png";
 import { copy, pickLang } from "./copy";
 import SocialProof from "./SocialProof";
