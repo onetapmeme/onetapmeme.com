@@ -23,6 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import BeforeAfterSlider from "@/components/cards/BeforeAfterSlider";
+import ScrollCue from "@/components/ScrollCue";
 import logo from "@/assets/cardsurgery-logo.png";
 import lugiaAvant from "@/assets/lugia-avant.jpeg";
 import lugiaApres from "@/assets/lugia-apres.jpeg";
@@ -60,64 +61,74 @@ const CardHome = () => {
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 px-4"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-24 pb-20 px-5 sm:px-6"
       >
         <div className="absolute inset-0 z-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
         </div>
 
+        {/* Refined ambient glows (2 instead of 3, more diffused) */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
-          <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[1400px] h-[700px] bg-primary/18 rounded-full blur-[200px] opacity-45" />
-          <div className="absolute -bottom-40 left-1/3 w-[1000px] h-[600px] bg-primary/14 rounded-full blur-[200px] opacity-40" />
-          <div className="absolute -bottom-44 right-1/3 w-[1100px] h-[650px] bg-primary/16 rounded-full blur-[220px] opacity-42" />
+          <div className="absolute -bottom-48 left-1/2 -translate-x-1/2 w-[120vw] max-w-[1400px] h-[700px] bg-accent/10 rounded-full blur-[180px]" />
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[90vw] max-w-[900px] h-[500px] bg-primary/8 rounded-full blur-[160px]" />
         </div>
+
+        {/* Apple-style grain overlay */}
+        <div className="grain-overlay z-[2]" />
 
         <div className="relative z-10 container mx-auto max-w-5xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-8">
               <motion.img
                 src={logo}
                 alt="CardSurgery"
-                className="h-40 sm:h-52 md:h-64 w-auto object-contain"
+                className="h-36 sm:h-48 md:h-60 w-auto object-contain"
                 animate={{
-                  y: [0, -10, 0],
+                  y: [0, -6, 0],
                   filter: [
-                    "drop-shadow(0 0 30px hsla(210,100%,55%,0.5))",
-                    "drop-shadow(0 0 60px hsla(210,100%,55%,0.8))",
-                    "drop-shadow(0 0 30px hsla(210,100%,55%,0.5))",
+                    "drop-shadow(0 0 25px hsla(22,55%,55%,0.28))",
+                    "drop-shadow(0 0 45px hsla(22,55%,55%,0.42))",
+                    "drop-shadow(0 0 25px hsla(22,55%,55%,0.28))",
                   ],
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 5, repeat: Infinity, ease: [0.42, 0, 0.58, 1] }}
               />
             </div>
 
-            <p className="uppercase tracking-widest text-xs md:text-sm text-primary mb-4 font-semibold">
+            <p className="uppercase text-[11px] sm:text-[13px] text-accent mb-5 font-semibold" style={{ letterSpacing: "0.2em" }}>
               {t("heroEyebrow")}
             </p>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
+            <h1
+              className="font-bold mb-5 text-foreground"
+              style={{
+                fontSize: "clamp(2.25rem, 7vw, 4.75rem)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+              }}
+            >
               {t("heroTitle")}
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/90 mb-4 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/85 mb-5 max-w-2xl mx-auto leading-snug">
               {t("heroTagline")}
             </p>
 
-            <p className="text-base sm:text-lg text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               {t("heroSubtitle")}
             </p>
 
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <div className="flex flex-wrap justify-center gap-2 mb-5">
               {[t("heroBadgeWarranty"), t("heroBadgeInsured")].map(
                 (b) => (
                   <span
                     key={b}
-                    className="px-3 py-1.5 rounded-full glass-effect border border-primary/30 text-xs font-semibold text-foreground/90"
+                    className="px-2.5 py-1 rounded-full glass-effect border border-border/60 text-[11px] font-semibold text-foreground/85"
                   >
                     {b}
                   </span>
@@ -126,10 +137,10 @@ const CardHome = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border border-accent/40 mb-8 shadow-[0_0_30px_hsla(4,78%,52%,0.25)]"
+              transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border border-accent/30 mb-8 shadow-[0_0_24px_hsla(22,55%,55%,0.18)]"
             >
               <FlaskConical className="w-4 h-4 text-accent animate-pulse" />
               <span className="text-sm font-semibold text-foreground">
@@ -137,11 +148,12 @@ const CardHome = () => {
               </span>
             </motion.div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto px-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto max-w-full text-base sm:text-lg px-5 sm:px-8 py-4 sm:py-6 rounded-full group glossy-btn text-accent-foreground border-0 whitespace-normal h-auto leading-tight text-center"
+                className="w-full sm:w-auto min-h-[44px] max-w-full text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full group glossy-btn text-accent-foreground border-0 whitespace-normal h-auto leading-tight text-center ring-1 ring-accent/15 hover:ring-accent/30 hover:scale-[1.02] transition-[transform,box-shadow,filter] duration-300"
+                style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
               >
                 <a href="/pricing">
                   <Sparkles className="w-5 h-5 mr-2 shrink-0" />
@@ -152,7 +164,10 @@ const CardHome = () => {
             </div>
           </motion.div>
         </div>
+
+        <ScrollCue targetId="about" />
       </section>
+
 
       {/* ABOUT / STORYTELLING */}
       <section id="about" className="py-20 md:py-32 px-4">

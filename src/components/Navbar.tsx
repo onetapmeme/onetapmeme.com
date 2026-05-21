@@ -46,35 +46,50 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${
+      style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full safe-top ${
         isScrolled
-          ? "h-20 bg-background/80 backdrop-blur-xl border border-border scale-95 w-[94%] max-w-5xl shadow-md"
-          : "h-20 bg-background/90 backdrop-blur-md border border-border w-[96%] max-w-6xl"
+          ? "h-14 sm:h-16 bg-background/65 backdrop-blur-2xl backdrop-saturate-150 border border-border/60 w-[94%] max-w-5xl shadow-[0_8px_30px_-12px_hsla(20,35%,16%,0.18)]"
+          : "h-16 sm:h-20 bg-background/80 backdrop-blur-xl backdrop-saturate-150 border border-border/70 w-[96%] max-w-6xl shadow-[0_4px_20px_-12px_hsla(20,35%,16%,0.12)]"
       }`}
     >
-      <div className="mx-auto h-full px-4 sm:px-6">
+      <div className="mx-auto h-full px-3 sm:px-6">
         <nav className="flex items-center justify-between h-full gap-2">
-          <Link to="/home" className="flex items-center gap-2 group shrink-0">
-            <img src={logo} alt="CardSurgery" className="h-14 sm:h-16 w-auto object-contain drop-shadow-[0_0_15px_hsla(22,55%,55%,0.4)]" />
-            <span className="hidden sm:inline font-bold text-foreground tracking-tight text-lg">
+          <Link to="/home" className="flex items-center gap-2 group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full">
+            <img
+              src={logo}
+              alt="CardSurgery"
+              className={`w-auto object-contain drop-shadow-[0_0_12px_hsla(22,55%,55%,0.3)] transition-all duration-500 ${
+                isScrolled ? "h-9 sm:h-11" : "h-10 sm:h-14"
+              }`}
+              style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+            />
+            <span className="hidden sm:inline font-bold text-foreground tracking-tight text-base leading-none">
               Card<span className="text-accent">Surgery</span>
             </span>
           </Link>
 
           <div className="hidden xl:flex items-center gap-1 flex-1 justify-center">
-            {NAV_ITEMS.map((item) => (
-              <Button
-                key={item.to}
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate(item.to)}
-                className={`text-sm font-medium whitespace-nowrap ${
-                  location.pathname === item.to ? "text-accent" : ""
-                }`}
-              >
-                {item.label}
-              </Button>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const isActive = location.pathname === item.to;
+              return (
+                <button
+                  key={item.to}
+                  onClick={() => navigate(item.to)}
+                  className={`relative text-sm font-medium whitespace-nowrap px-3 py-2 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 ${
+                    isActive ? "text-accent" : "text-foreground/80 hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-1 h-[2px] rounded-full bg-accent transition-all duration-500 ${
+                      isActive ? "w-5 opacity-100" : "w-0 opacity-0"
+                    }`}
+                    style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                  />
+                </button>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
