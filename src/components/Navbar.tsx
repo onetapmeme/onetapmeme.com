@@ -46,8 +46,11 @@ const Navbar = () => {
 
   return (
     <header
-      style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
-      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full safe-top ${
+      style={{
+        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+        top: "calc(env(safe-area-inset-top) + 0.75rem)",
+      }}
+      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full ${
         isScrolled
           ? "h-14 sm:h-16 bg-background/65 backdrop-blur-2xl backdrop-saturate-150 border border-border/60 w-[94%] max-w-5xl shadow-[0_8px_30px_-12px_hsla(20,35%,16%,0.18)]"
           : "h-16 sm:h-20 bg-background/80 backdrop-blur-xl backdrop-saturate-150 border border-border/70 w-[96%] max-w-6xl shadow-[0_4px_20px_-12px_hsla(20,35%,16%,0.12)]"

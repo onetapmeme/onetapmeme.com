@@ -1,18 +1,17 @@
-## Problem
+# Fix : navbar décalée vers le bas sur mobile
 
-On mobile (390px), the hero CTA "Débuter une opération de restauration" overflows: text is clipped at edges (the "D" and "N" touch screen borders) because the button uses fixed `text-lg px-8 py-6` with `whitespace-nowrap` (shadcn Button default) and the icons consume horizontal space.
+## Cause
+Dans `src/components/Navbar.tsx`, le `<header>` (pilule flottante à hauteur fixe `h-14`/`h-16`) reçoit la classe `safe-top`, qui ajoute un `padding-top: env(safe-area-inset-top)` (~44px sur iPhone à encoche). Comme la hauteur du header est fixée, ce padding pousse le logo et le bouton menu vers le bas, hors de l'axe central de la pilule.
 
-## Fix
+## Correction
+1. Retirer `safe-top` de l'élément `<header>`.
+2. Remplacer le `top-3` statique par un offset qui respecte la safe-area iOS via style inline :
+   `style={{ top: 'calc(env(safe-area-inset-top) + 0.75rem)' }}`
+   (et conserver le `transitionTimingFunction` existant dans le même `style`).
+3. Vérifier que `flex items-center` reste sur le `<nav>` interne pour garantir le centrage vertical du logo, des liens et du bouton menu.
+4. Re-tester en viewport 390/414px : logo, wordmark et hamburger doivent être parfaitement centrés verticalement dans la pilule, sans débordement.
 
-Edit `src/components/cards/CardHome.tsx` (lines 138-150) only — apply the same mobile-safe pattern already used for other CTAs in the project:
+## Fichier impacté
+- `src/components/Navbar.tsx` (uniquement le `<header>` racine)
 
-1. Wrap button container with `w-full max-w-md mx-auto px-4` so it never touches the viewport edge.
-2. Button class changes:
-   - `w-full sm:w-auto` (full width on mobile, auto on desktop)
-   - Responsive padding: `px-5 sm:px-8 py-4 sm:py-6`
-   - Responsive text size: `text-base sm:text-lg`
-   - `whitespace-normal h-auto leading-tight text-center` (allow wrapping)
-   - `max-w-full`
-3. Add `shrink-0` to both icons so they don't compress the text.
-
-No copy changes, no logic changes, no other components touched.
+Aucun autre composant ni style global n'est modifié.
