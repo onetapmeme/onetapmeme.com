@@ -359,11 +359,11 @@ const CardHome = () => {
 
 
       {/* FINAL CTA */}
-      <section id="contact" className="py-20 md:py-32 px-4">
+      <section id="contact" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-3xl">
           <Card className="glass-effect p-6 sm:p-10 md:p-14 rounded-3xl border-primary/30 text-center">
             <Sparkles className="w-12 h-12 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("ctaTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("ctaTitle")}</h2>
             <p className="text-lg text-muted-foreground mb-8">{t("ctaDesc")}</p>
             <Button
               size="lg"
