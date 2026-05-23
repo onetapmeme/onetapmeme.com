@@ -21,7 +21,7 @@ export function pickLang(raw: string | undefined): Lang {
 type C = Record<Lang, string>;
 
 export const copy = {
-  brand: { fr: "CardSurgery", en: "CardSurgery", de: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
+  brand: { fr: "CardSurgery", en: "CardSurgery", de: "CardSurgery", de: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
 
   // Hero
   heroEyebrow: {
@@ -463,12 +463,12 @@ export const copy = {
   } satisfies C,
 
   // Section anchors / nav
-  navServices: { fr: "Services", en: "Services", es: "Servicios", ru: "Услуги", zh: "服务" } satisfies C,
-  navProcess: { fr: "Processus", en: "Process", es: "Proceso", ru: "Процесс", zh: "流程" } satisfies C,
-  navWhy: { fr: "Qui sommes-nous", en: "About us", es: "Quiénes somos", ru: "О нас", zh: "关于我们" } satisfies C,
-  navFaq: { fr: "FAQ", en: "FAQ", es: "FAQ", ru: "FAQ", zh: "常见问题" } satisfies C,
-  navContact: { fr: "Contact", en: "Contact", es: "Contacto", ru: "Контакты", zh: "联系" } satisfies C,
-  login: { fr: "Connexion", en: "Login", es: "Acceder", ru: "Войти", zh: "登录" } satisfies C,
+  navServices: { fr: "Services", en: "Services", de: "Services", es: "Servicios", ru: "Услуги", zh: "服务" } satisfies C,
+  navProcess: { fr: "Processus", en: "Process", de: "Process", es: "Proceso", ru: "Процесс", zh: "流程" } satisfies C,
+  navWhy: { fr: "Qui sommes-nous", en: "About us", de: "About us", es: "Quiénes somos", ru: "О нас", zh: "关于我们" } satisfies C,
+  navFaq: { fr: "FAQ", en: "FAQ", de: "FAQ", es: "FAQ", ru: "FAQ", zh: "常见问题" } satisfies C,
+  navContact: { fr: "Contact", en: "Contact", de: "Contact", es: "Contacto", ru: "Контакты", zh: "联系" } satisfies C,
+  login: { fr: "Connexion", en: "Login", de: "Login", es: "Acceder", ru: "Войти", zh: "登录" } satisfies C,
 
   // Footer
   footerTagline: {
@@ -587,11 +587,11 @@ export const copy = {
   } satisfies C,
 
   // Navigation labels
-  navGallery: { fr: "Galerie", en: "Gallery", es: "Galería", ru: "Галерея", zh: "画廊" } satisfies C,
-  navDiagnostic: { fr: "Diagnostic", en: "Diagnosis", es: "Diagnóstico", ru: "Диагностика", zh: "诊断" } satisfies C,
-  navBooking: { fr: "Réservation", en: "Booking", es: "Reserva", ru: "Запись", zh: "预约" } satisfies C,
-  navTracking: { fr: "Suivi", en: "Tracking", es: "Seguimiento", ru: "Отслеживание", zh: "跟踪" } satisfies C,
-  stepLabel: { fr: "Étape", en: "Step", es: "Paso", ru: "Шаг", zh: "步骤" } satisfies C,
+  navGallery: { fr: "Galerie", en: "Gallery", de: "Gallery", es: "Galería", ru: "Галерея", zh: "画廊" } satisfies C,
+  navDiagnostic: { fr: "Diagnostic", en: "Diagnosis", de: "Diagnosis", es: "Diagnóstico", ru: "Диагностика", zh: "诊断" } satisfies C,
+  navBooking: { fr: "Réservation", en: "Booking", de: "Booking", es: "Reserva", ru: "Запись", zh: "预约" } satisfies C,
+  navTracking: { fr: "Suivi", en: "Tracking", de: "Tracking", es: "Seguimiento", ru: "Отслеживание", zh: "跟踪" } satisfies C,
+  stepLabel: { fr: "Étape", en: "Step", de: "Step", es: "Paso", ru: "Шаг", zh: "步骤" } satisfies C,
 } as const;
 
 export type CopyKey = keyof typeof copy;
