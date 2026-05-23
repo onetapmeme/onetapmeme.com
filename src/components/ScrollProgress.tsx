@@ -22,7 +22,8 @@ const ScrollProgress = () => {
   return (
     <div
       aria-hidden
-      className="fixed top-0 left-0 right-0 z-[60] h-[2px] pointer-events-none"
+      className="fixed left-0 right-0 z-[60] h-[2px] pointer-events-none"
+      style={{ top: "env(safe-area-inset-top)" }}
     >
       <div
         className="h-full bg-gradient-to-r from-accent via-primary to-accent transition-[width] duration-150 ease-out"
