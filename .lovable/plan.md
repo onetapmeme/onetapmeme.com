@@ -1,77 +1,128 @@
+## Objectif
+1. Réparer le sélecteur de langue dans le sidebar mobile.
+2. Ajouter **DE** comme langue prioritaire (FR/EN/DE en avant, ES/RU/ZH conservés en fallback).
+3. Auto-détection IP + persistance, SEO synchro.
+4. Révision copy premium FR/EN/DE (homepage, nav, footer, Lugia #113, dashboard admin, emails transactionnels).
+5. Aucune régression visuelle, lockout `overflow-x: clip`.
 
-# Audit QA — CardSurgery (état actuel)
+---
 
-## Note globale : **8.4 / 10**
+## 1. Bug fix — Mobile sidebar language switcher
 
-Le site est déjà très soigné (navbar pill, hero clamp, grain, scroll progress, slider Lugia stable). Il reste des micro-défauts qui empêchent un véritable 10/10 façon Apple / horlogerie de luxe.
+**Fichier :** `src/components/Navbar.tsx` + `src/components/LanguageSwitcher.tsx`
 
-### Tableau des défauts détectés
+Problème : le `DropdownMenu` Radix dans le `SheetContent` est tronqué / mal aligné sur mobile (z-index, container du portail, hit target trop petit).
 
-| Composant / Page | Défaut détecté | Sévérité |
+Correctifs :
+- Dans le bloc mobile du `Sheet`, remplacer le `LanguageSwitcher` actuel par une rangée de **boutons-pills** (FR / EN / DE + un sous-menu "Autres") avec drapeau + code, full-width, hauteur ≥ 44 px (Apple HIG touch target).
+- Variante : si on garde le dropdown, forcer `DropdownMenuContent` avec `sideOffset={8}`, `align="start"`, `className="z-[110] w-[calc(100vw-3rem)]"` pour qu'il ne soit ni rogné ni derrière le sheet.
+- Style cohérent avec la version desktop (border `border-accent/40`, `rounded-full`, hover `bg-accent/10`, `tracking-[0.08em]`).
+- Active state = anneau copper + bullet point.
+
+---
+
+## 2. Architecture localisation FR/EN/DE (avec fallback ES/RU/ZH)
+
+### 2.1 `src/i18n/locales/de.json`
+- Création d'un fichier `de.json` complet à partir de `en.json` (~942 lignes) traduit en allemand premium (ton : *Chirurgische Präzision, Werterhalt, Absolute Zuverlässigkeit*).
+- Vocabulaire : *Kartenrestaurierung, Mikropräzise Reinigung, Holografischer Glanzbereich, Sammlerwert, Klinische Wiederherstellung*.
+
+### 2.2 `src/i18n/config.ts`
+- Importer `de` et l'ajouter aux `resources`.
+- Ordre : FR/EN/DE prioritaires, ES/RU/ZH en fallback secondaire.
+
+### 2.3 `src/utils/ipGeolocation.ts`
+- Étendre la détection : ajouter `GERMAN_COUNTRIES = { DE, AT, LI, CH (zones DE) }`.
+- Logique : FR-zone → `fr` ; DE-zone → `de` ; sinon `en`.
+- Persistance `localStorage['1tap-language']` inchangée — override manuel prioritaire.
+- Type retour : `'fr' | 'en' | 'de' | null`.
+
+### 2.4 `src/components/cards/copy.ts`
+- Élargir `Lang` à `"fr" | "en" | "de" | "es" | "ru" | "zh"`.
+- `SUPPORTED` ordre : `["fr","en","de","es","ru","zh"]`.
+- Ajouter clé `de` sur **chaque** entrée du `copy` object (~110 clés). Ton premium allemand.
+
+### 2.5 `src/components/LanguageSwitcher.tsx`
+- Ajouter `{ code:'de', flag:'🇩🇪', name:'Deutsch' }` dans la liste, positionné en 3ᵉ après FR/EN.
+- Mettre FR/EN/DE en haut, séparateur, puis ES/RU/ZH en bas (groupe "More languages").
+
+### 2.6 `src/components/SEOHead.tsx`
+- Ajouter `de` aux `languages` du `hreflang`.
+- Ajouter titres et descriptions DE :
+  - Title : `CardSurgery – Chirurgische Kartenrestaurierung`
+  - Description : `CardSurgery restauriert Sammlerkarten mit chirurgischer Präzision. Werterhalt für Premium-Sammler, absolute Zuverlässigkeit.`
+- Map `og:locale` : `de` → `de_DE`.
+- HTML `lang` attribute déjà géré via `i18n.on('languageChanged')`.
+
+### 2.7 `src/components/RouteSEO.tsx`
+- Vérifier que les titres par route sont traduits via i18n (passer en clés `t('seo.home.title')` etc., avec fallback EN).
+
+---
+
+## 3. Copy review premium
+
+### 3.1 Lugia Légende #113
+Mise à jour dans le composant qui contient la description (à localiser via `rg "Lugia"`), exposé via 3 clés :
+- `lugiaCaption.fr` : *Nettoyage Micro-Précis et Polissage de la zone éclairée centrale.*
+- `lugiaCaption.en` : *Micro-Precision Cleaning and Technical Polishing of the central highlighted holo area.*
+- `lugiaCaption.de` : *Mikropräzise Reinigung und technisches Polieren des zentralen holografischen Glanzbereichs.*
+
+Mapping AVANT/APRÈS préservé (Fichier 2 = AVANT à gauche, Fichier 1 = APRÈS à droite). Aucun changement de logique du slider.
+
+### 3.2 Passe rédactionnelle
+Cibles, par ordre de priorité :
+1. **copy.ts** — FR/EN/DE : Hero, About, Process, Pricing, Footer, CTA. Élimination des tournures littérales, alignement sur le ton brand.
+2. **locales JSON** — `fr.json`, `en.json`, `de.json` : nav, formulaires, toasts, erreurs.
+3. **Dashboard admin** — `src/pages/Admin*.tsx`, labels et toasts (vérifier que rien n'est en dur).
+4. **Emails transactionnels** — `supabase/functions/send-dossier-email/`, templates HTML : ajouter détection langue (FR/EN/DE) via param `lang` et 3 versions du sujet + corps. Si pas de templates React Email scaffold, on garde le HTML inline mais on l'internationalise.
+
+### 3.3 Glossaire FR / EN / DE
+Aligné dans un commentaire en tête de `copy.ts` :
+
+| FR | EN | DE |
 |---|---|---|
-| `CardHome` HERO | Mix de paddings horizontaux : hero en `px-5`, autres sections en `px-4`, footer en `px-4` → casse la grille verticale | Medium |
-| `CardHome` HERO | 2 badges (`heroBadgeWarranty/Insured`) + 1 badge "saved" empilés sur 3 lignes → bloc dense sur mobile 390-414px | Medium |
-| `CardHome` ABOUT/PROCESS/TRUST | Titres `text-3xl md:text-5xl` sans `clamp()` → saut typographique brut entre 640 et 768px | Medium |
-| `BeforeAfterSlider` | Bordure `border-border` + `rounded-lg` (8px) alors que toutes les cards utilisent `rounded-2xl/3xl` → incohérence radius | Medium |
-| `BeforeAfterSlider` | Labels AVANT/APRÈS en `rounded` (4px) génériques, pas de glass-effect, pas de tracking → look Bootstrap | Medium |
-| `BeforeAfterSlider` | Poignée 40px = sous le seuil tactile 44px d'Apple HIG | Medium |
-| `BeforeAfterSlider` | Pas de hint visuel d'interactivité au repos (aucune pulsation, aucun "← →") | Low |
-| `Footer` | `px-4` rigide, colonnes `gap-8` cramées sur tablette 768px, logo `h-16` disproportionné vs texte | Medium |
-| `Footer` | Email `contact@card_surgery.com` (underscore) ≠ `contact@cardsurgery.com` utilisé dans le hero → **incohérence de marque** | Critical |
-| `Footer` | `drop-shadow` bleu `hsla(210,100%,55%)` sur le logo alors que la marque est cuivre `hsl(22,55%,55%)` | Medium |
-| `Navbar` | Plus de `safe-top` sur `<header>` mais `ScrollProgress` (top:0) passe sous la notch iOS | Low |
-| Global | `section { padding: py-20 md:py-32 }` répété 6× → devrait être tokenisé | Low |
-| Global | Pas de `scroll-margin-top` sur les sections ciblées par `#about/#process/#contact` → ancre cachée derrière la navbar fixe | Medium |
-| Global | `html { scroll-padding-top: 100px }` codé en dur, ne suit pas la navbar dynamique (56/64/80px) | Low |
+| Restauration clinique | Clinical restoration | Klinische Wiederherstellung |
+| Précision chirurgicale | Surgical precision | Chirurgische Präzision |
+| Préservation de la valeur | Asset preservation | Werterhalt |
+| Infirmier en chirurgie | Surgical nurse | OP-Pfleger |
+| Polissage technique | Technical polishing | Technisches Polieren |
 
 ---
 
-## Axes architecturaux d'amélioration
-
-1. **Rythme horizontal unifié** : token `.section-x` = `px-5 sm:px-6 lg:px-8` appliqué à TOUTES les sections (hero, about, process, trust, before/after, contact, footer). Plus aucun `px-4` orphelin.
-2. **Lockout horizontal absolu** : `html, body, #root { overflow-x: clip; max-width: 100vw }` déjà présent → ajouter `min-width: 0` sur les grids et `break-words` sur les emails/URLs.
-3. **Typographie fluide partout** : remplacer `text-3xl md:text-5xl` par `clamp(1.875rem, 4.5vw, 3rem)` sur les H2, idem H3.
-4. **Slider Lugia premium** : `rounded-2xl`, labels en `glass-effect` + `tracking-[0.2em]` + `uppercase`, poignée 48px avec halo pulsant, ring `ring-1 ring-border/60`. **Mapping AVANT/APRÈS conservé strictement** (file 2 = avant gauche, file 1 = après droite — déjà OK dans le code).
-5. **Footer cohérent marque** : email unifié `contact@cardsurgery.com`, `drop-shadow` cuivre `hsla(22,55%,55%,0.3)`, logo `h-12`, colonnes `gap-10 md:gap-8`.
-6. **Ancres respectées** : `[id]{scroll-margin-top: 6rem}` global, et `ScrollProgress` avec `top: env(safe-area-inset-top)`.
+## 4. Visual lockout
+- Vérifier que `html, body, #root { overflow-x: clip; max-width: 100vw }` est toujours en place dans `index.css` (posé à la passe précédente).
+- Tester sur 390×844 et 414×896 : pas de scroll horizontal, switcher mobile centré, dropdown visible en entier.
 
 ---
 
-## Plan d'exécution (1 passe, frontend only)
+## 5. Vérification
+- Démarrer le preview, basculer FR → EN → DE depuis le sidebar mobile, vérifier que les copys changent partout.
+- Recharger : la langue choisie persiste.
+- Screenshot mobile du sidebar ouvert avec dropdown actif.
+- `console.log` IP geolocation : afficher la langue détectée.
 
-### Bloc A — `src/index.css`
-- Ajouter `[id] { scroll-margin-top: 6rem }`
-- Ajouter utilitaire `.section-x { @apply px-5 sm:px-6 lg:px-8 }`
-- Ajouter utilitaire `.h2-fluid { font-size: clamp(1.875rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -0.015em }`
-- Renforcer lockout : `#root { min-width: 0 }`
+---
 
-### Bloc B — `src/components/cards/CardHome.tsx`
-- Remplacer tous les `px-4` / `px-5 sm:px-6` de section par `section-x`
-- Remplacer les H2 par `className="h2-fluid font-bold mb-4"`
-- Fusionner les 2 badges de garantie sur une ligne avec séparateur `•` pour gagner en respiration
-- Ajouter `id` cibles intactes
+## Fichiers touchés (estimation)
 
-### Bloc C — `src/components/cards/BeforeAfterSlider.tsx`
-- Container : `rounded-2xl ring-1 ring-border/60 shadow-[0_10px_40px_-12px_hsla(20,35%,16%,0.18)]`
-- Labels AVANT/APRÈS : `glass-effect uppercase tracking-[0.18em] text-[10px] font-bold px-2.5 py-1 rounded-full` (AVANT gauche, APRÈS droite — **mapping inchangé**)
-- Poignée : 48×48, halo pulsant `animate-pulse` au repos uniquement, `cursor-ew-resize`
-- Conserver 100% la logique de pointer/preload/aspect-ratio
+```text
+NEW   src/i18n/locales/de.json
+EDIT  src/i18n/config.ts
+EDIT  src/utils/ipGeolocation.ts
+EDIT  src/components/cards/copy.ts            (+ DE sur toutes les clés)
+EDIT  src/components/LanguageSwitcher.tsx     (réordo + DE)
+EDIT  src/components/Navbar.tsx               (fix mobile switcher)
+EDIT  src/components/SEOHead.tsx              (DE titles/desc/hreflang)
+EDIT  src/components/RouteSEO.tsx             (i18n des titres)
+EDIT  composant Lugia                         (3 captions)
+EDIT  supabase/functions/send-dossier-email/  (i18n DE)
+```
 
-### Bloc D — `src/components/Footer.tsx`
-- Email → `contact@cardsurgery.com` (×3 occurrences)
-- `drop-shadow` logo → cuivre `hsla(22,55%,55%,0.35)`
-- `px-4` → `section-x`, logo `h-12`, ajout `break-words` sur email
-- Grid `gap-10 md:gap-8` pour respirer sur tablette
+## Détails techniques
 
-### Bloc E — `src/components/ScrollProgress.tsx`
-- `top: env(safe-area-inset-top)` pour respecter la notch (vérification rapide du composant)
-
-### Garde-fou — Lugia #113
-- Aucune modification de `lugiaAvant`/`lugiaApres` imports
-- Mapping conservé : `before={lugiaAvant}` (gauche/AVANT), `after={lugiaApres}` (droite/APRÈS)
-- Description clinique intacte (texte, ordre, structure des `<ol>`)
-
-### Vérification post-refactor
-- Screenshot mobile 390×844 + 414×896 du hero, slider, footer
-- Vérifier absence de scroll horizontal
-- Vérifier ancres `#about/#process/#contact` avec offset correct
+- **Type Lang** : étendu mais `pickLang` continue à fallback vers `fr` si code inconnu.
+- **i18next** : `fallbackLng: ['en','fr']` pour que DE manquant retombe sur EN.
+- **Persistance** : clé `localStorage['1tap-language']`, override absolu sur géoloc.
+- **Touch target mobile** : min 44×44 px (`h-11`), espacement `gap-2`.
+- **Z-index** : `DropdownMenuContent` à `z-[110]` (au-dessus du `SheetContent` à `z-[100]`).
+- **Aucun changement DB**, aucune migration.

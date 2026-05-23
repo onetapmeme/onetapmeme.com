@@ -14,8 +14,8 @@ const SEOHead = () => {
     existingLinks.forEach(link => link.remove());
 
     // Add hreflang links for all supported languages
-    const languages = ['en', 'fr', 'es', 'ru', 'zh'];
-    const baseUrl = 'https://onetapmeme.com';
+    const languages = ['en', 'fr', 'de', 'es', 'ru', 'zh'];
+    const baseUrl = 'https://cardsurgery.com';
     
     languages.forEach(lang => {
       const link = document.createElement('link');
@@ -45,20 +45,21 @@ const SEOHead = () => {
 
     // Language-specific meta descriptions
     const descriptions: Record<string, string> = {
-      en: 'CardSurgery combines FPS nostalgia with modern crypto. Join the revolution where every trade is a headshot. Community-driven, fair launch gaming memecoin.',
-      fr: 'CardSurgery combine la nostalgie des FPS avec la crypto moderne. Rejoins la révolution où chaque trade est un headshot. Memecoin gaming communautaire, fair launch.',
-      es: 'CardSurgery combina nostalgia FPS con cripto moderna. Únete a la revolución donde cada trade es un headshot. Gaming memecoin community-driven, fair launch.',
-      ru: 'CardSurgery сочетает FPS ностальгию с современной криптой. Присоединяйся к революции, где каждый трейд — хедшот. Community-driven gaming memecoin, fair launch.',
-      zh: 'CardSurgery 结合了 FPS 怀旧与现代加密货币。加入革命，每笔交易都是爆头。社区驱动的游戏 memecoin，公平启动。'
+      en: 'CardSurgery restores collectible cards with surgical precision. Premium asset preservation, absolute trust — Pokémon, One Piece, Magic, Yu-Gi-Oh and more.',
+      fr: "CardSurgery restaure vos cartes de collection avec une précision chirurgicale. Préservation de la valeur, confiance absolue — Pokémon, One Piece, Magic, Yu-Gi-Oh et plus.",
+      de: 'CardSurgery restauriert Sammelkarten mit chirurgischer Präzision. Werterhalt für Premium-Sammler, absolute Zuverlässigkeit — Pokémon, One Piece, Magic, Yu-Gi-Oh und mehr.',
+      es: 'CardSurgery restaura cartas coleccionables con precisión quirúrgica. Preservación premium del valor y confianza absoluta — Pokémon, One Piece, Magic, Yu-Gi-Oh y más.',
+      ru: 'CardSurgery реставрирует коллекционные карты с хирургической точностью. Сохранение премиальной ценности и абсолютное доверие — Pokémon, One Piece, Magic, Yu-Gi-Oh и другие.',
+      zh: 'CardSurgery 以外科级精准修复收藏卡牌，守护藏品价值，赢得绝对信任 —— Pokémon、One Piece、Magic、Yu-Gi-Oh 及更多。',
     };
 
-    // Language-specific titles
     const titles: Record<string, string> = {
-      en: 'CardSurgery - The Ultimate Gaming Memecoin',
-      fr: 'CardSurgery - Le Memecoin Gaming Ultime',
-      es: 'CardSurgery - El Memecoin Gaming Definitivo',
-      ru: 'CardSurgery - Главный Gaming Memecoin',
-      zh: 'CardSurgery - 终极游戏 Memecoin'
+      en: 'CardSurgery — Surgical Card Restoration',
+      fr: 'CardSurgery — Restauration Clinique de Cartes',
+      de: 'CardSurgery — Chirurgische Kartenrestaurierung',
+      es: 'CardSurgery — Restauración Quirúrgica de Cartas',
+      ru: 'CardSurgery — Хирургическая реставрация карт',
+      zh: 'CardSurgery — 外科级卡牌修复',
     };
 
     document.title = titles[currentLang] || titles.en;
