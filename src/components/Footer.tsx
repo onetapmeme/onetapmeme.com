@@ -27,12 +27,12 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary/40 border-t border-border py-12 px-4">
+    <footer className="bg-secondary/40 border-t border-border py-12 section-x">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-8">
+          <div className="text-center md:text-left min-w-0">
             <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-              <img src={logo} alt="CardSurgery" className="h-16 w-auto object-contain drop-shadow-[0_0_15px_hsla(210,100%,55%,0.4)]" />
+              <img src={logo} alt="CardSurgery" className="h-12 w-auto object-contain drop-shadow-[0_0_15px_hsla(22,55%,55%,0.35)]" />
               <span className="text-xl font-bold text-foreground">
                 Card<span className="text-accent">Surgery</span>
               </span>
