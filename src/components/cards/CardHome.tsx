@@ -61,7 +61,7 @@ const CardHome = () => {
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-24 pb-20 px-5 sm:px-6"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-24 pb-20 section-x"
       >
         <div className="absolute inset-0 z-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
