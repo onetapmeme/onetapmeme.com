@@ -168,7 +168,7 @@ const CardHome = () => {
 
 
       {/* ABOUT / STORYTELLING */}
-      <section id="about" className="py-20 md:py-32 px-4">
+      <section id="about" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -178,7 +178,7 @@ const CardHome = () => {
             className="text-center mb-12"
           >
             <Diamond className="w-14 h-14 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("aboutTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("aboutTitle")}</h2>
           </motion.div>
           <Card className="glass-effect p-8 md:p-12 rounded-3xl border-primary/20">
             <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-6">
