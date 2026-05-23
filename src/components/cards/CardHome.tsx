@@ -123,17 +123,15 @@ const CardHome = () => {
               {t("heroSubtitle")}
             </p>
 
-            <div className="flex flex-wrap justify-center gap-2 mb-5">
-              {[t("heroBadgeWarranty"), t("heroBadgeInsured")].map(
-                (b) => (
-                  <span
-                    key={b}
-                    className="px-2.5 py-1 rounded-full glass-effect border border-border/60 text-[11px] font-semibold text-foreground/85"
-                  >
+            <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-5">
+              {[t("heroBadgeWarranty"), t("heroBadgeInsured")].map((b, idx) => (
+                <span key={b} className="inline-flex items-center gap-3">
+                  {idx > 0 && <span aria-hidden className="text-accent/60 text-xs">•</span>}
+                  <span className="px-2.5 py-1 rounded-full glass-effect border border-border/60 text-[11px] font-semibold text-foreground/85 tracking-wide">
                     {b}
                   </span>
-                )
-              )}
+                </span>
+              ))}
             </div>
 
             <motion.div
