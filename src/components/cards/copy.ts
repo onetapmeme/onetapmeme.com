@@ -1,9 +1,17 @@
 // Multilingual copy for the "CardSurgery — Card Restoration" homepage.
 // Keys are kept flat so each section component can read its own slice.
+//
+// Brand tone — strict glossary:
+//   FR : « Restauration clinique », « Précision chirurgicale », « Préservation de la valeur »
+//   EN : "Clinical restoration", "Surgical precision", "Asset preservation"
+//   DE : „Klinische Wiederherstellung", „Chirurgische Präzision", „Werterhalt"
+//
+// Priority languages: FR / EN / DE (German auto-detected for DE/AT/LI/CH-DE).
+// ES / RU / ZH are kept as fallback locales — surfaced in the "More languages" group.
 
-export type Lang = "fr" | "en" | "es" | "ru" | "zh";
+export type Lang = "fr" | "en" | "de" | "es" | "ru" | "zh";
 
-export const SUPPORTED: Lang[] = ["fr", "en", "es", "ru", "zh"];
+export const SUPPORTED: Lang[] = ["fr", "en", "de", "es", "ru", "zh"];
 
 export function pickLang(raw: string | undefined): Lang {
   const code = (raw || "fr").slice(0, 2).toLowerCase() as Lang;
@@ -13,7 +21,7 @@ export function pickLang(raw: string | undefined): Lang {
 type C = Record<Lang, string>;
 
 export const copy = {
-  brand: { fr: "CardSurgery", en: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
+  brand: { fr: "CardSurgery", en: "CardSurgery", de: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
 
   // Hero
   heroEyebrow: {
