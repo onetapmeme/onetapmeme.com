@@ -311,7 +311,7 @@ const CardHome = () => {
       <section id="before-after" className="py-20 md:py-32 section-x overflow-hidden">
         <div className="container mx-auto max-w-3xl w-full">
           <div className="text-center mb-10">
-            <h2 className="h2-fluid font-bold mb-4">Avant / Après</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("beforeAfterTitle")}</h2>
           </div>
 
           <div className="mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl overflow-hidden">
@@ -325,31 +325,33 @@ const CardHome = () => {
 
           <div className="mt-8 text-center px-4">
             <h3 className="font-serif italic text-xl sm:text-2xl md:text-3xl text-foreground leading-tight max-w-2xl mx-auto">
-              Restauration Clinique : Étude de cas N°113 (Lugia Légende)
+              {t("lugiaCaseTitle")}
             </h3>
           </div>
 
           <div className="mt-8 mx-auto max-w-2xl px-4">
             <Card className="glass-effect p-6 sm:p-8 md:p-10 rounded-3xl border-primary/20">
               <p className="text-base sm:text-lg text-foreground/90 leading-relaxed mb-5">
-                Ce dossier traite une <span className="font-semibold">Lugia Légende (113/106)</span> présentant une usure sévère sur sa surface holographique. Notre intervention chirurgicale a ciblé deux points critiques :
+                {t("lugiaIntro")}
               </p>
               <ol className="space-y-4 mb-5 list-none">
                 <li className="flex gap-3">
                   <span className="font-serif italic text-primary text-lg shrink-0">1.</span>
                   <p className="text-base text-muted-foreground leading-relaxed">
-                    <span className="font-semibold text-foreground">Nettoyage Micro-Précis :</span> Élimination des dépôts de surface sans altérer les micro-pigments de l'illustration.
+                    <span className="font-semibold text-foreground">{t("lugiaStep1Label")}</span>{" "}
+                    {t("lugiaStep1Desc")}
                   </p>
                 </li>
                 <li className="flex gap-3">
                   <span className="font-serif italic text-primary text-lg shrink-0">2.</span>
                   <p className="text-base text-muted-foreground leading-relaxed">
-                    <span className="font-semibold text-foreground">Polissage de la Zone Éclairée :</span> Un polissage technique a été appliqué sur la zone centrale impactée par le halo lumineux, effaçant les micro-rayures et les frottements pour redonner une clarté et une brillance maximales au foil.
+                    <span className="font-semibold text-foreground">{t("lugiaStep2Label")}</span>{" "}
+                    {t("lugiaStep2Desc")}
                   </p>
                 </li>
               </ol>
               <p className="text-sm sm:text-base font-serif italic text-foreground/80 text-center pt-4 border-t border-primary/10">
-                Glissez pour observer la résurrection de la clarté sur la zone holographique centrale.
+                {t("lugiaSlideHint")}
               </p>
             </Card>
           </div>
