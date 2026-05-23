@@ -125,6 +125,19 @@ All colors MUST be HSL.
   .safe-top { padding-top: env(safe-area-inset-top); }
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
 
+  /* Unified horizontal section rhythm */
+  .section-x { @apply px-5 sm:px-6 lg:px-8; }
+
+  /* Fluid H2 typography (Apple-grade) */
+  .h2-fluid {
+    font-size: clamp(1.875rem, 4.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  /* Anchor offset for fixed navbar */
+  [id] { scroll-margin-top: 6rem; }
+
   /* Subtle film grain overlay (Apple-like texture) */
   .grain-overlay {
     position: absolute;

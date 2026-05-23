@@ -61,7 +61,7 @@ const CardHome = () => {
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-24 pb-20 px-5 sm:px-6"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-24 pb-20 section-x"
       >
         <div className="absolute inset-0 z-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
@@ -123,17 +123,15 @@ const CardHome = () => {
               {t("heroSubtitle")}
             </p>
 
-            <div className="flex flex-wrap justify-center gap-2 mb-5">
-              {[t("heroBadgeWarranty"), t("heroBadgeInsured")].map(
-                (b) => (
-                  <span
-                    key={b}
-                    className="px-2.5 py-1 rounded-full glass-effect border border-border/60 text-[11px] font-semibold text-foreground/85"
-                  >
+            <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-5">
+              {[t("heroBadgeWarranty"), t("heroBadgeInsured")].map((b, idx) => (
+                <span key={b} className="inline-flex items-center gap-3">
+                  {idx > 0 && <span aria-hidden className="text-accent/60 text-xs">•</span>}
+                  <span className="px-2.5 py-1 rounded-full glass-effect border border-border/60 text-[11px] font-semibold text-foreground/85 tracking-wide">
                     {b}
                   </span>
-                )
-              )}
+                </span>
+              ))}
             </div>
 
             <motion.div
@@ -170,7 +168,7 @@ const CardHome = () => {
 
 
       {/* ABOUT / STORYTELLING */}
-      <section id="about" className="py-20 md:py-32 px-4">
+      <section id="about" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -180,7 +178,7 @@ const CardHome = () => {
             className="text-center mb-12"
           >
             <Diamond className="w-14 h-14 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("aboutTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("aboutTitle")}</h2>
           </motion.div>
           <Card className="glass-effect p-8 md:p-12 rounded-3xl border-primary/20">
             <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-6">
@@ -195,10 +193,10 @@ const CardHome = () => {
 
 
 
-      <section id="process" className="py-20 md:py-32 px-4">
+      <section id="process" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("processTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("processTitle")}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("processSubtitle")}
             </p>
@@ -285,11 +283,11 @@ const CardHome = () => {
 
 
       {/* TRUST */}
-      <section id="trust" className="py-20 md:py-32 px-4">
+      <section id="trust" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <ShieldCheck className="w-14 h-14 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("trustTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("trustTitle")}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {trust.map((line, i) => (
@@ -310,10 +308,10 @@ const CardHome = () => {
 
 
       {/* BEFORE / AFTER DEMO */}
-      <section id="before-after" className="py-20 md:py-32 px-4 overflow-hidden">
+      <section id="before-after" className="py-20 md:py-32 section-x overflow-hidden">
         <div className="container mx-auto max-w-3xl w-full">
-          <div className="text-center mb-10 px-2">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Avant / Après</h2>
+          <div className="text-center mb-10">
+            <h2 className="h2-fluid font-bold mb-4">Avant / Après</h2>
           </div>
 
           <div className="mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl overflow-hidden">
@@ -361,11 +359,11 @@ const CardHome = () => {
 
 
       {/* FINAL CTA */}
-      <section id="contact" className="py-20 md:py-32 px-4">
+      <section id="contact" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-3xl">
           <Card className="glass-effect p-6 sm:p-10 md:p-14 rounded-3xl border-primary/30 text-center">
             <Sparkles className="w-12 h-12 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("ctaTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("ctaTitle")}</h2>
             <p className="text-lg text-muted-foreground mb-8">{t("ctaDesc")}</p>
             <Button
               size="lg"

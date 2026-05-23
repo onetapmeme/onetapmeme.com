@@ -56,7 +56,7 @@ const BeforeAfterSlider = ({ before, after, alt = "Avant / Après restauration" 
     <div className="w-full max-w-full overflow-hidden">
       <div
         ref={containerRef}
-        className="relative w-full max-w-full aspect-[3/4] overflow-hidden rounded-lg border border-border bg-muted select-none touch-none"
+        className="relative w-full max-w-full aspect-[3/4] overflow-hidden rounded-2xl ring-1 ring-border/60 bg-muted select-none touch-none shadow-[0_10px_40px_-12px_hsla(20,35%,16%,0.22)]"
         onPointerMove={onPointerMove}
       >
         {!loaded && (
@@ -87,17 +87,17 @@ const BeforeAfterSlider = ({ before, after, alt = "Avant / Après restauration" 
             className={`absolute inset-0 h-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
             style={{ width: `${(100 / Math.max(pos, 0.0001)) * 100}%`, maxWidth: "none" }}
           />
-          <span className="absolute top-3 left-3 bg-foreground/80 text-background text-xs font-bold px-2 py-1 rounded">
-            AVANT
+          <span className="absolute top-3 left-3 glass-effect uppercase tracking-[0.18em] text-[10px] font-bold px-2.5 py-1 rounded-full text-foreground/90 border border-border/60">
+            Avant
           </span>
         </div>
-        <span className="absolute top-3 right-3 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded">
-          APRÈS
+        <span className="absolute top-3 right-3 uppercase tracking-[0.18em] text-[10px] font-bold px-2.5 py-1 rounded-full bg-accent/90 text-accent-foreground border border-accent/40 backdrop-blur-md shadow-[0_4px_14px_-4px_hsla(22,55%,40%,0.45)]">
+          Après
         </span>
 
         {loaded && (
           <div
-            className="absolute top-0 bottom-0 w-0.5 bg-accent shadow-lg pointer-events-none"
+            className="absolute top-0 bottom-0 w-px bg-accent/90 shadow-[0_0_12px_hsla(22,55%,55%,0.6)] pointer-events-none"
             style={{ left: `${pos}%`, transform: "translateX(-50%)" }}
           >
             <button
@@ -105,9 +105,11 @@ const BeforeAfterSlider = ({ before, after, alt = "Avant / Après restauration" 
               onPointerDown={onPointerDown}
               onPointerUp={onPointerUp}
               aria-label="Glisser pour comparer"
-              className="pointer-events-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center shadow-xl cursor-ew-resize hover:scale-110 transition"
+              className="pointer-events-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center shadow-[0_8px_24px_-6px_hsla(22,55%,40%,0.55)] ring-4 ring-background/70 cursor-ew-resize hover:scale-110 active:scale-95 transition-transform duration-200"
+              style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
             >
-              <GripVertical className="w-5 h-5" />
+              <span className="absolute inset-0 rounded-full bg-accent/40 animate-ping" aria-hidden />
+              <GripVertical className="relative w-5 h-5" />
             </button>
           </div>
         )}
