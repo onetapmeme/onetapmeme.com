@@ -31,12 +31,14 @@ const getInitialLanguage = async () => {
       resources: {
         en: { translation: en },
         fr: { translation: fr },
+        de: { translation: de },
         es: { translation: es },
         ru: { translation: ru },
         zh: { translation: zh }
       },
       lng: initialLang,
-      fallbackLng: 'fr',
+      // Priority fallback chain: missing keys fall back to EN, then FR.
+      fallbackLng: ['en', 'fr'],
       interpolation: {
         escapeValue: false
       }
