@@ -76,12 +76,12 @@ const Footer = () => {
                 </Link>
               ))}
             </nav>
-            <a href="mailto:contact@card_surgery.com" className="text-sm text-accent hover:underline break-all block mb-3">
-              contact@card_surgery.com
+            <a href="mailto:contact@cardsurgery.com" className="text-sm text-accent hover:underline break-words block mb-3">
+              contact@cardsurgery.com
             </a>
             <div className="flex gap-2 justify-center md:justify-start">
               <Button variant="outline" size="icon" asChild>
-                <a href="mailto:contact@card_surgery.com" aria-label="Email"><Mail className="w-4 h-4" /></a>
+                <a href="mailto:contact@cardsurgery.com" aria-label="Email"><Mail className="w-4 h-4" /></a>
               </Button>
               <Button variant="outline" size="icon" asChild>
                 <a href="https://instagram.com/card_surgery" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
