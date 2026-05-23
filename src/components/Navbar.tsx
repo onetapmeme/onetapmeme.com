@@ -168,7 +168,36 @@ const Navbar = () => {
                     </Link>
                   ))}
                   <div className="pt-3 mt-2 border-t border-border">
-                    <LanguageSwitcher inline />
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 px-1">
+                      Language
+                    </p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {[
+                        { code: "fr", flag: "🇫🇷", label: "FR" },
+                        { code: "en", flag: "🇬🇧", label: "EN" },
+                        { code: "de", flag: "🇩🇪", label: "DE" },
+                      ].map((l) => {
+                        const active = i18n.language === l.code;
+                        return (
+                          <button
+                            key={l.code}
+                            onClick={() => i18n.changeLanguage(l.code)}
+                            className={`h-11 rounded-full border flex items-center justify-center gap-1.5 text-sm font-semibold tracking-wider transition-all ${
+                              active
+                                ? "border-accent/60 bg-accent/10 text-foreground ring-1 ring-accent/40"
+                                : "border-border/70 text-foreground/80 hover:border-accent/40 hover:text-foreground"
+                            }`}
+                            aria-pressed={active}
+                          >
+                            <span className="text-base leading-none">{l.flag}</span>
+                            <span>{l.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="mt-2">
+                      <LanguageSwitcher inline />
+                    </div>
                   </div>
                   {user ? (
                     <>
