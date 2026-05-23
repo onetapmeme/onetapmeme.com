@@ -27,7 +27,7 @@ export const copy = {
   heroEyebrow: {
     fr: "Restauration professionnelle de cartes de collection",
     en: "Professional collectible card restoration",
-    de: "Professional collectible card restoration",
+    de: "Professionelle Restaurierung von Sammelkarten",
     es: "Restauración profesional de cartas coleccionables",
     ru: "Профессиональная реставрация коллекционных карт",
     zh: "专业收藏卡牌修复",
@@ -35,7 +35,7 @@ export const copy = {
   heroTitle: {
     fr: "L'art de la chirurgie appliqué à vos cartes.",
     en: "The art of surgery applied to your cards.",
-    de: "The art of surgery applied to your cards.",
+    de: "Die Kunst der Chirurgie – auf Ihre Karten angewandt.",
     es: "El arte de la cirugía aplicado a tus cartas.",
     ru: "Искусство хирургии для ваших карт.",
     zh: "以外科精准之艺，呵护每一张珍藏。",
@@ -43,7 +43,7 @@ export const copy = {
   heroSubtitle: {
     fr: "Redonnez vie à vos cartes en un seul geste maîtrisé. Pokémon, One Piece, Magic, Yu-Gi-Oh et autres TCG.",
     en: "Bring your cards back to life with a single expert touch. Pokémon, One Piece, Magic, Yu-Gi-Oh and other TCGs.",
-    de: "Bring your cards back to life with a single expert touch. Pokémon, One Piece, Magic, Yu-Gi-Oh and other TCGs.",
+    de: "Erwecken Sie Ihre Karten mit einem einzigen, präzisen Eingriff zu neuem Leben. Pokémon, One Piece, Magic, Yu-Gi-Oh und weitere TCGs.",
     es: "Devuelve la vida a tus cartas con un solo gesto experto. Pokémon, One Piece, Magic, Yu-Gi-Oh y otros TCG.",
     ru: "Верните карты к жизни одним выверенным движением. Pokémon, One Piece, Magic, Yu-Gi-Oh и другие ККИ.",
     zh: "一次精准的处理，让卡牌焕然一新。涵盖 Pokémon、One Piece、Magic、Yu-Gi-Oh 等集换式卡牌。",
@@ -51,7 +51,7 @@ export const copy = {
   heroTagline: {
     fr: "La précision chirurgicale dont vos précieuses cartes ont besoin.",
     en: "The surgical precision your precious cards deserve.",
-    de: "The surgical precision your precious cards deserve.",
+    de: "Die chirurgische Präzision, die Ihre wertvollen Karten verdienen.",
     es: "La precisión quirúrgica que tus preciadas cartas merecen.",
     ru: "Хирургическая точность, которой заслуживают ваши драгоценные карты.",
     zh: "为您珍贵卡牌应得的外科级精准。",
@@ -67,7 +67,7 @@ export const copy = {
   heroCtaPrimary: {
     fr: "Débuter une opération de restauration",
     en: "Start a restoration operation",
-    de: "Start a restoration operation",
+    de: "Restaurierung starten",
     es: "Iniciar una operación de restauración",
     ru: "Начать операцию реставрации",
     zh: "开始修复操作",
@@ -75,7 +75,7 @@ export const copy = {
   heroCtaSecondary: {
     fr: "Débuter une opération de restauration",
     en: "Start a restoration operation",
-    de: "Start a restoration operation",
+    de: "Unsere Leistungen entdecken",
     es: "Iniciar una operación de restauración",
     ru: "Начать операцию реставрации",
     zh: "开始修复操作",
@@ -109,7 +109,7 @@ export const copy = {
   aboutTitle: {
     fr: "Qui sommes-nous",
     en: "About us",
-    de: "About us",
+    de: "Über uns",
     es: "Quiénes somos",
     ru: "О нас",
     zh: "关于我们",
@@ -117,7 +117,7 @@ export const copy = {
   aboutP1: {
     fr: "CardSurgery est né de la passion d'Hugo, collectionneur exigeant de cartes Pokémon et One Piece haut de gamme. Chaque carte est une pièce de patrimoine — un souvenir, une émotion, une valeur — qui mérite d'être préservée avec la rigueur d'une œuvre d'art.",
     en: "CardSurgery was born from the passion of Hugo, a discerning collector of high-end Pokémon and One Piece cards. Every card is a piece of heritage — a memory, an emotion, a value — that deserves to be preserved with the rigor of a work of art.",
-    de: "CardSurgery was born from the passion of Hugo, a discerning collector of high-end Pokémon and One Piece cards. Every card is a piece of heritage — a memory, an emotion, a value — that deserves to be preserved with the rigor of a work of art.",
+    de: "CardSurgery entstand aus der Leidenschaft von Hugo, einem anspruchsvollen Sammler hochwertiger Pokémon- und One-Piece-Karten. Jede Karte ist ein Stück Vermächtnis – eine Erinnerung, ein Gefühl, ein Wert – das mit der Sorgfalt eines Kunstwerks bewahrt werden sollte.",
     es: "CardSurgery nace de la pasión de Hugo, coleccionista exigente de cartas Pokémon y One Piece de alta gama. Cada carta es una pieza de patrimonio — un recuerdo, una emoción, un valor — que merece preservarse con el rigor de una obra de arte.",
     ru: "CardSurgery родился из страсти Hugo — взыскательного коллекционера премиальных карт Pokémon и One Piece. Каждая карта — часть наследия: воспоминание, эмоция, ценность, которую следует сохранить с тщательностью произведения искусства.",
     zh: "CardSurgery 源自 Hugo 的热爱——他是 Pokémon 与 One Piece 高端卡牌的资深收藏家。每一张卡都是一份珍贵的传承：一段记忆、一份情感、一份价值，值得以艺术品般的严谨加以守护。",
@@ -125,7 +125,7 @@ export const copy = {
   aboutP2: {
     fr: "Hugo est infirmier en service de chirurgie. Précision millimétrique, dextérité méticuleuse, rigueur absolue : les standards qu'il applique chaque jour à l'hôpital sont exactement ceux qu'il transpose à la restauration et à la préservation de vos cartes. Vos pièces de collection sont traitées avec l'exigence d'un patient.",
     en: "Hugo is a Nurse in a Surgical Department. Millimetric precision, meticulous dexterity, absolute rigor: the standards he applies daily in the hospital are exactly those he transposes to the restoration and preservation of your cards. Your collectibles are treated with the rigor reserved for a patient.",
-    de: "Hugo is a Nurse in a Surgical Department. Millimetric precision, meticulous dexterity, absolute rigor: the standards he applies daily in the hospital are exactly those he transposes to the restoration and preservation of your cards. Your collectibles are treated with the rigor reserved for a patient.",
+    de: "Hugo ist OP-Pfleger in einer chirurgischen Abteilung. Millimetergenaue Präzision, akribische Geschicklichkeit, absolute Strenge: Die Standards, die er täglich im Krankenhaus anwendet, überträgt er exakt auf die Restaurierung und Bewahrung Ihrer Karten. Ihre Sammlerstücke werden mit der Sorgfalt eines Patienten behandelt.",
     es: "Hugo es enfermero en un servicio de cirugía. Precisión milimétrica, destreza meticulosa, rigor absoluto: los estándares que aplica a diario en el hospital son exactamente los que traslada a la restauración y preservación de tus cartas. Tus piezas de colección reciben el rigor reservado a un paciente.",
     ru: "Hugo — медсестра хирургического отделения. Миллиметровая точность, скрупулёзная ловкость, абсолютная строгость: стандарты, которые он применяет ежедневно в больнице, в точности переносятся на реставрацию и сохранение ваших карт. С вашими коллекционными ценностями обращаются как с пациентом.",
     zh: "Hugo 是外科病房的护士。毫米级精度、精细手法、绝对严谨——他每日在医院遵循的标准，正是他用于您卡牌修复与保存的标准。您的藏品将得到如同病人般的对待。",
@@ -136,7 +136,7 @@ export const copy = {
   servicesTitle: {
     fr: "Nos services de restauration",
     en: "Our restoration services",
-    de: "Our restoration services",
+    de: "Unsere Restaurierungsleistungen",
     es: "Nuestros servicios de restauración",
     ru: "Наши услуги реставрации",
     zh: "我们的修复服务",
@@ -144,7 +144,7 @@ export const copy = {
   servicesSubtitle: {
     fr: "Quatre interventions artisanales, calibrées pour chaque type de défaut.",
     en: "Four artisan interventions, calibrated for every type of flaw.",
-    de: "Four artisan interventions, calibrated for every type of flaw.",
+    de: "Vier handwerkliche Eingriffe, kalibriert für jede Art von Defekt.",
     es: "Cuatro intervenciones artesanales, calibradas para cada tipo de defecto.",
     ru: "Четыре авторские процедуры, рассчитанные под каждый тип дефекта.",
     zh: "四种匠心工艺，针对不同瑕疵精准应对。",
@@ -152,7 +152,7 @@ export const copy = {
   servicesFlow: {
     fr: "Parcours sécurisé : vous expédiez votre carte en colis assuré et suivi → diagnostic en laboratoire → restauration → option grading partenaire (PCA, CCC, Collect Aura) si choisie → retour chez vous en colis assuré et suivi de bout en bout.",
     en: "Secure journey: you ship your card in an insured tracked parcel → lab diagnosis → restoration → optional partner grading (PCA, CCC, Collect Aura) if selected → return to you via fully insured tracked parcel.",
-    de: "Secure journey: you ship your card in an insured tracked parcel → lab diagnosis → restoration → optional partner grading (PCA, CCC, Collect Aura) if selected → return to you via fully insured tracked parcel.",
+    de: "Sicherer Ablauf: Sie versenden Ihre Karte als versichertes, nachverfolgbares Paket → Labordiagnose → Restaurierung → optionales Partner-Grading (PCA, CCC, Collect Aura) → versicherter und nachverfolgter Rückversand.",
     es: "Trayecto seguro: envías tu carta en un paquete asegurado y rastreado → diagnóstico en laboratorio → restauración → grading opcional con socio (PCA, CCC, Collect Aura) si lo eliges → devolución a tu domicilio en paquete asegurado y rastreado.",
     ru: "Безопасный маршрут: вы отправляете карту застрахованной отслеживаемой посылкой → диагностика в лаборатории → реставрация → опциональный грейдинг у партнёра (PCA, CCC, Collect Aura) → возврат застрахованной отслеживаемой посылкой.",
     zh: "安全流程：您以保价并可追踪的包裹寄出卡牌 → 实验室诊断 → 修复 → 可选合作机构评级（PCA、CCC、Collect Aura）→ 全程保价追踪寄回。",
@@ -161,7 +161,7 @@ export const copy = {
   service1Title: {
     fr: "Nettoyage de surface",
     en: "Surface cleaning",
-    de: "Surface cleaning",
+    de: "Oberflächenreinigung",
     es: "Limpieza de superficie",
     ru: "Очистка поверхности",
     zh: "表面清洁",
@@ -169,7 +169,7 @@ export const copy = {
   service1Desc: {
     fr: "Élimination des impuretés sans altérer la brillance d'origine de la carte.",
     en: "Removal of impurities without altering the card's original gloss.",
-    de: "Removal of impurities without altering the card's original gloss.",
+    de: "Entfernung von Verunreinigungen, ohne den ursprünglichen Glanz der Karte zu beeinträchtigen.",
     es: "Eliminación de impurezas sin alterar el brillo original de la carta.",
     ru: "Удаление загрязнений без изменения исходного блеска карты.",
     zh: "去除杂质，不损伤卡面原有光泽。",
@@ -178,7 +178,7 @@ export const copy = {
   service2Title: {
     fr: "Correction des bords (Whitening)",
     en: "Edge correction (Whitening)",
-    de: "Edge correction (Whitening)",
+    de: "Kantenkorrektur (Whitening)",
     es: "Corrección de bordes (Whitening)",
     ru: "Коррекция краёв (Whitening)",
     zh: "边缘修整（去白边）",
@@ -186,7 +186,7 @@ export const copy = {
   service2Desc: {
     fr: "Atténuation des traces d'usure blanches sur les arêtes pour retrouver un cadre net.",
     en: "Reduction of whitened wear marks along the edges for a clean, sharp frame.",
-    de: "Reduction of whitened wear marks along the edges for a clean, sharp frame.",
+    de: "Reduktion weißer Abnutzungsspuren an den Kanten für einen sauberen, scharfen Rahmen.",
     es: "Atenuación de las marcas blancas de desgaste en los bordes para recuperar un marco nítido.",
     ru: "Уменьшение белых потёртостей по краям ради чёткой, аккуратной рамки.",
     zh: "淡化边缘磨损白痕，恢复整齐锐利的卡框。",
@@ -195,7 +195,7 @@ export const copy = {
   service3Title: {
     fr: "Redressage (De-curving)",
     en: "Flattening (De-curving)",
-    de: "Flattening (De-curving)",
+    de: "Glättung (De-curving)",
     es: "Aplanado (De-curving)",
     ru: "Выпрямление (De-curving)",
     zh: "去弯整平（De-curving）",
@@ -203,7 +203,7 @@ export const copy = {
   service3Desc: {
     fr: "Correction des cartes courbées par l'humidité pour retrouver une planéité parfaite.",
     en: "Correction of cards warped by humidity to restore perfect flatness.",
-    de: "Correction of cards warped by humidity to restore perfect flatness.",
+    de: "Korrektur durch Feuchtigkeit verzogener Karten zur perfekten Planheit.",
     es: "Corrección de cartas curvadas por la humedad para recuperar una planitud perfecta.",
     ru: "Восстановление карт, изогнутых от влажности, до идеальной плоскости.",
     zh: "矫正因受潮而弯曲的卡牌，恢复完美平整。",
@@ -212,7 +212,7 @@ export const copy = {
   service4Title: {
     fr: "Pressage de précision",
     en: "Precision pressing",
-    de: "Precision pressing",
+    de: "Präzisionspressung",
     es: "Prensado de precisión",
     ru: "Прецизионное прессование",
     zh: "精密压平",
@@ -220,7 +220,7 @@ export const copy = {
   service4Desc: {
     fr: "Réduction des micro-pliures et des imperfections de surface au micron près.",
     en: "Reduction of micro-creases and surface imperfections down to the micron.",
-    de: "Reduction of micro-creases and surface imperfections down to the micron.",
+    de: "Reduktion von Mikroknicken und Oberflächendefekten bis auf den Mikrometer.",
     es: "Reducción de microdobleces e imperfecciones de superficie con precisión micrométrica.",
     ru: "Устранение микрозаломов и поверхностных дефектов с точностью до микрона.",
     zh: "以微米级精度消除微折与表面瑕疵。",
@@ -230,7 +230,7 @@ export const copy = {
   processTitle: {
     fr: "Notre processus en 4 étapes",
     en: "Our 4-step process",
-    de: "Our 4-step process",
+    de: "Unser Prozess in 4 Schritten",
     es: "Nuestro proceso en 4 pasos",
     ru: "Наш процесс из 4 шагов",
     zh: "四步专业流程",
@@ -238,7 +238,7 @@ export const copy = {
   processSubtitle: {
     fr: "De votre boîte aux lettres à votre vitrine, votre carte est entre des mains expertes.",
     en: "From your mailbox to your display case, your card is in expert hands.",
-    de: "From your mailbox to your display case, your card is in expert hands.",
+    de: "Vom Briefkasten bis zur Vitrine – Ihre Karte ist in Expertenhänden.",
     es: "Desde tu buzón hasta tu vitrina, tu carta está en manos expertas.",
     ru: "От вашего почтового ящика до витрины — карта в руках экспертов.",
     zh: "从邮箱到展柜，您的卡牌全程由专家把关。",
@@ -247,7 +247,7 @@ export const copy = {
   step1Title: {
     fr: "Analyse au microscope 🔬",
     en: "Microscope analysis 🔬",
-    de: "Microscope analysis 🔬",
+    de: "Mikroskopische Analyse 🔬",
     es: "Análisis al microscopio 🔬",
     ru: "Анализ под микроскопом 🔬",
     zh: "显微镜分析 🔬",
@@ -255,7 +255,7 @@ export const copy = {
   step1Desc: {
     fr: "Diagnostic complet sous microscope optique haute résolution : cartographie des micro-rayures, défauts d'impression, courbure et état des coins.",
     en: "Full diagnosis under high-resolution optical microscope: mapping of micro-scratches, print defects, warping and corner condition.",
-    de: "Full diagnosis under high-resolution optical microscope: mapping of micro-scratches, print defects, warping and corner condition.",
+    de: "Vollständige Diagnose unter hochauflösendem optischem Mikroskop: Kartierung von Mikrokratzern, Druckfehlern, Verformungen und Eckenzustand.",
     es: "Diagnóstico completo bajo microscopio óptico de alta resolución: mapeo de microarañazos, defectos de impresión, curvatura y estado de las esquinas.",
     ru: "Полная диагностика под оптическим микроскопом высокого разрешения: картирование микроцарапин, дефектов печати, изгиба и состояния углов.",
     zh: "在高分辨率光学显微镜下完成全面诊断：微划痕、印刷瑕疵、卡片弯曲及四角状态的全面映射。",
@@ -264,7 +264,7 @@ export const copy = {
   step2Title: {
     fr: "Nettoyage en profondeur",
     en: "Deep cleaning",
-    de: "Deep cleaning",
+    de: "Tiefenreinigung",
     es: "Limpieza profunda",
     ru: "Глубокая очистка",
     zh: "深度清洁",
@@ -272,7 +272,7 @@ export const copy = {
   step2Desc: {
     fr: "Nettoyage de précision du recto et du verso à l'aide de solutions non invasives, sans solvants agressifs ni altération du vernis ou de l'holofoil.",
     en: "Precision cleaning of front and back using non-invasive solutions, no aggressive solvents and no alteration of varnish or holofoil.",
-    de: "Precision cleaning of front and back using non-invasive solutions, no aggressive solvents and no alteration of varnish or holofoil.",
+    de: "Präzisionsreinigung von Vorder- und Rückseite mit nicht-invasiven Lösungen, ohne aggressive Lösemittel und ohne Beeinträchtigung von Lack oder Holofoil.",
     es: "Limpieza de precisión del anverso y reverso con soluciones no invasivas, sin disolventes agresivos ni alteración del barniz o del holofoil.",
     ru: "Прецизионная очистка лицевой и обратной стороны с использованием неинвазивных растворов, без агрессивных растворителей и без повреждения лака или голограммы.",
     zh: "采用非侵入式清洁液对卡牌正反面进行精细清洁，不使用强力溶剂，不损伤光油层或镭射层。",
@@ -432,7 +432,7 @@ export const copy = {
   ctaTitle: {
     fr: "Prêt à redonner vie à votre collection ?",
     en: "Ready to bring your collection back to life?",
-    de: "Ready to bring your collection back to life?",
+    de: "Bereit, Ihren Karten neues Leben zu schenken?",
     es: "¿Listo para devolver la vida a tu colección?",
     ru: "Готовы вернуть коллекции жизнь?",
     zh: "准备好让你的收藏焕新了吗？",
@@ -440,7 +440,7 @@ export const copy = {
   ctaDesc: {
     fr: "Demandez votre diagnostic CardSurgery gratuit. Réponse sous 24 h ouvrées.",
     en: "Request your free CardSurgery diagnosis. Reply within 24 working hours.",
-    de: "Request your free CardSurgery diagnosis. Reply within 24 working hours.",
+    de: "Starten Sie noch heute Ihre maßgeschneiderte Restaurierungsoperation.",
     es: "Solicita tu diagnóstico CardSurgery gratuito. Respuesta en 24 h laborables.",
     ru: "Запросите бесплатную диагностику CardSurgery. Ответ в течение 24 рабочих часов.",
     zh: "立即获取免费 CardSurgery 诊断，24 个工作小时内回复。",
@@ -448,7 +448,7 @@ export const copy = {
   ctaButton: {
     fr: "Débuter une opération de restauration",
     en: "Start a restoration operation",
-    de: "Start a restoration operation",
+    de: "Eine Restaurierung beginnen",
     es: "Iniciar una operación de restauración",
     ru: "Начать операцию реставрации",
     zh: "开始修复操作",
@@ -456,25 +456,25 @@ export const copy = {
   ctaContact: {
     fr: "Ou écrivez-nous à",
     en: "Or write to us at",
-    de: "Or write to us at",
+    de: "Oder schreiben Sie uns an",
     es: "O escríbenos a",
     ru: "Или напишите нам на",
     zh: "或写信至",
   } satisfies C,
 
   // Section anchors / nav
-  navServices: { fr: "Services", en: "Services", de: "Services", es: "Servicios", ru: "Услуги", zh: "服务" } satisfies C,
-  navProcess: { fr: "Processus", en: "Process", de: "Process", es: "Proceso", ru: "Процесс", zh: "流程" } satisfies C,
-  navWhy: { fr: "Qui sommes-nous", en: "About us", de: "About us", es: "Quiénes somos", ru: "О нас", zh: "关于我们" } satisfies C,
+  navServices: { fr: "Services", en: "Services", de: "Leistungen", es: "Servicios", ru: "Услуги", zh: "服务" } satisfies C,
+  navProcess: { fr: "Processus", en: "Process", de: "Ablauf", es: "Proceso", ru: "Процесс", zh: "流程" } satisfies C,
+  navWhy: { fr: "Qui sommes-nous", en: "About us", de: "Über uns", es: "Quiénes somos", ru: "О нас", zh: "关于我们" } satisfies C,
   navFaq: { fr: "FAQ", en: "FAQ", de: "FAQ", es: "FAQ", ru: "FAQ", zh: "常见问题" } satisfies C,
-  navContact: { fr: "Contact", en: "Contact", de: "Contact", es: "Contacto", ru: "Контакты", zh: "联系" } satisfies C,
-  login: { fr: "Connexion", en: "Login", de: "Login", es: "Acceder", ru: "Войти", zh: "登录" } satisfies C,
+  navContact: { fr: "Contact", en: "Contact", de: "Kontakt", es: "Contacto", ru: "Контакты", zh: "联系" } satisfies C,
+  login: { fr: "Connexion", en: "Login", de: "Anmelden", es: "Acceder", ru: "Войти", zh: "登录" } satisfies C,
 
   // Footer
   footerTagline: {
     fr: "Restauration artisanale de cartes Pokémon, One Piece et autres TCG. Précision, transparence, discrétion.",
     en: "Artisan restoration of Pokémon, One Piece and other TCG cards. Precision, transparency, discretion.",
-    de: "Artisan restoration of Pokémon, One Piece and other TCG cards. Precision, transparency, discretion.",
+    de: "Handwerkliche Restaurierung von Pokémon-, One-Piece- und weiteren TCG-Karten. Präzision, Transparenz, Diskretion.",
     es: "Restauración artesanal de cartas Pokémon, One Piece y otros TCG. Precisión, transparencia, discreción.",
     ru: "Авторская реставрация карт Pokémon, One Piece и других ККИ. Точность, прозрачность, конфиденциальность.",
     zh: "Pokémon、One Piece 等 TCG 卡牌的匠心修复服务。精准、透明、保密。",
@@ -482,7 +482,7 @@ export const copy = {
   footerRights: {
     fr: "Tous droits réservés.",
     en: "All rights reserved.",
-    de: "All rights reserved.",
+    de: "Alle Rechte vorbehalten.",
     es: "Todos los derechos reservados.",
     ru: "Все права защищены.",
     zh: "保留所有权利。",
@@ -490,7 +490,7 @@ export const copy = {
   footerLegal: {
     fr: "Légal",
     en: "Legal",
-    de: "Legal",
+    de: "Rechtliches",
     es: "Legal",
     ru: "Юридическое",
     zh: "法律",
@@ -498,7 +498,7 @@ export const copy = {
   footerLinks: {
     fr: "Liens utiles",
     en: "Useful links",
-    de: "Useful links",
+    de: "Nützliche Links",
     es: "Enlaces útiles",
     ru: "Полезные ссылки",
     zh: "实用链接",
@@ -506,7 +506,7 @@ export const copy = {
   footerContact: {
     fr: "Contact",
     en: "Contact",
-    de: "Contact",
+    de: "Kontakt",
     es: "Contacto",
     ru: "Контакты",
     zh: "联系我们",
@@ -516,7 +516,7 @@ export const copy = {
   faqTitle: {
     fr: "Questions fréquentes",
     en: "Frequently asked questions",
-    de: "Frequently asked questions",
+    de: "Häufig gestellte Fragen",
     es: "Preguntas frecuentes",
     ru: "Частые вопросы",
     zh: "常见问题",
@@ -524,7 +524,7 @@ export const copy = {
   faq1Q: {
     fr: "Quels jeux de cartes acceptez-vous ?",
     en: "Which card games do you accept?",
-    de: "Which card games do you accept?",
+    de: "Welche Kartenspiele akzeptieren Sie?",
     es: "¿Qué juegos de cartas aceptan?",
     ru: "С какими ККИ вы работаете?",
     zh: "你们接受哪些卡牌游戏？",
@@ -532,7 +532,7 @@ export const copy = {
   faq1A: {
     fr: "Pokémon, One Piece, Magic: The Gathering, Yu-Gi-Oh!, Lorcana et la plupart des TCG modernes ou vintage.",
     en: "Pokémon, One Piece, Magic: The Gathering, Yu-Gi-Oh!, Lorcana and most modern or vintage TCGs.",
-    de: "Pokémon, One Piece, Magic: The Gathering, Yu-Gi-Oh!, Lorcana and most modern or vintage TCGs.",
+    de: "Pokémon, One Piece, Magic: The Gathering, Yu-Gi-Oh!, Lorcana und die meisten modernen oder Vintage-TCGs.",
     es: "Pokémon, One Piece, Magic: The Gathering, Yu-Gi-Oh!, Lorcana y la mayoría de TCG modernos o vintage.",
     ru: "Pokémon, One Piece, Magic: The Gathering, Yu-Gi-Oh!, Lorcana и большинство современных и винтажных ККИ.",
     zh: "Pokémon、One Piece、万智牌、游戏王、Lorcana 以及大多数现代或老版 TCG。",
@@ -540,7 +540,7 @@ export const copy = {
   faq2Q: {
     fr: "La restauration affecte-t-elle le grade PSA / BGS ?",
     en: "Does restoration affect PSA / BGS grading?",
-    de: "Does restoration affect PSA / BGS grading?",
+    de: "Beeinflusst die Restaurierung das PSA/BGS-Grading?",
     es: "¿La restauración afecta al grade PSA / BGS?",
     ru: "Влияет ли реставрация на оценку PSA / BGS?",
     zh: "修复会影响 PSA / BGS 评级吗？",
@@ -548,7 +548,7 @@ export const copy = {
   faq2A: {
     fr: "Nos interventions sont non-invasives : nettoyage, redressage et pressage. Elles ne sont pas considérées comme des altérations chimiques. Nous vous conseillons toutefois selon le grading visé.",
     en: "Our interventions are non-invasive: cleaning, flattening, pressing. They are not considered chemical alterations. We will still advise you depending on the grading you target.",
-    de: "Our interventions are non-invasive: cleaning, flattening, pressing. They are not considered chemical alterations. We will still advise you depending on the grading you target.",
+    de: "Unsere Eingriffe sind nicht-invasiv: Reinigung, Glättung, Pressung. Sie gelten nicht als chemische Veränderung. Wir beraten Sie dennoch je nach gewünschtem Grading.",
     es: "Nuestras intervenciones son no invasivas: limpieza, aplanado y prensado. No se consideran alteraciones químicas. Aun así te asesoramos según el grading objetivo.",
     ru: "Наши процедуры неинвазивны: очистка, выпрямление, прессование. Они не считаются химическим вмешательством. При этом мы консультируем с учётом нужного грейдинга.",
     zh: "我们的工艺为非侵入式：清洁、整平与压平，不属于化学改造。我们仍会根据您目标的评级提供建议。",
@@ -556,7 +556,7 @@ export const copy = {
   faq3Q: {
     fr: "Combien de temps prend une restauration ?",
     en: "How long does a restoration take?",
-    de: "How long does a restoration take?",
+    de: "Wie lange dauert eine Restaurierung?",
     es: "¿Cuánto tarda una restauración?",
     ru: "Сколько занимает реставрация?",
     zh: "一次修复需要多久？",
@@ -564,7 +564,7 @@ export const copy = {
   faq3A: {
     fr: "Comptez 5 à 10 jours ouvrés à compter de la réception de votre colis, hors délai de transport.",
     en: "Plan for 5 to 10 working days from the moment we receive your parcel, excluding shipping time.",
-    de: "Plan for 5 to 10 working days from the moment we receive your parcel, excluding shipping time.",
+    de: "Rechnen Sie mit 5 bis 10 Werktagen ab Eingang Ihres Pakets, exklusive Versandzeit.",
     es: "Calcula entre 5 y 10 días laborables desde la recepción de tu paquete, sin contar el envío.",
     ru: "Планируйте 5–10 рабочих дней с момента получения посылки, без учёта доставки.",
     zh: "自我们收件起约 5 至 10 个工作日，不含运输时间。",
@@ -572,7 +572,7 @@ export const copy = {
   faq4Q: {
     fr: "Comment se déroule le paiement ?",
     en: "How does payment work?",
-    de: "How does payment work?",
+    de: "Wie funktioniert die Zahlung?",
     es: "¿Cómo funciona el pago?",
     ru: "Как происходит оплата?",
     zh: "付款方式是怎样的？",
@@ -580,7 +580,7 @@ export const copy = {
   faq4A: {
     fr: "Devis envoyé après diagnostic. Paiement par carte, virement ou PayPal une fois le devis validé. Aucun prélèvement avant votre accord.",
     en: "Quote sent after diagnosis. Payment by card, bank transfer or PayPal once you approve the quote. Nothing is charged before your agreement.",
-    de: "Quote sent after diagnosis. Payment by card, bank transfer or PayPal once you approve the quote. Nothing is charged before your agreement.",
+    de: "Kostenvoranschlag nach Diagnose. Zahlung per Karte, Überweisung oder PayPal nach Ihrer Bestätigung. Vor Ihrer Zustimmung wird nichts berechnet.",
     es: "Presupuesto tras el diagnóstico. Pago con tarjeta, transferencia o PayPal cuando lo apruebas. No se cobra nada antes de tu confirmación.",
     ru: "Смета после диагностики. Оплата картой, переводом или PayPal после её утверждения. До согласия с вас ничего не списывается.",
     zh: "诊断后提供报价。报价确认后可用信用卡、银行转账或 PayPal 付款，确认前不收取任何费用。",
