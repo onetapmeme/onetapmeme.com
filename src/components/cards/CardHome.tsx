@@ -193,10 +193,10 @@ const CardHome = () => {
 
 
 
-      <section id="process" className="py-20 md:py-32 px-4">
+      <section id="process" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("processTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("processTitle")}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t("processSubtitle")}
             </p>
