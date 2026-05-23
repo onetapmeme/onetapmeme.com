@@ -283,11 +283,11 @@ const CardHome = () => {
 
 
       {/* TRUST */}
-      <section id="trust" className="py-20 md:py-32 px-4">
+      <section id="trust" className="py-20 md:py-32 section-x">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <ShieldCheck className="w-14 h-14 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t("trustTitle")}</h2>
+            <h2 className="h2-fluid font-bold mb-4">{t("trustTitle")}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {trust.map((line, i) => (
