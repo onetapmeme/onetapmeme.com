@@ -587,11 +587,86 @@ export const copy = {
   } satisfies C,
 
   // Navigation labels
-  navGallery: { fr: "Galerie", en: "Gallery", de: "Gallery", es: "Galería", ru: "Галерея", zh: "画廊" } satisfies C,
-  navDiagnostic: { fr: "Diagnostic", en: "Diagnosis", de: "Diagnosis", es: "Diagnóstico", ru: "Диагностика", zh: "诊断" } satisfies C,
-  navBooking: { fr: "Réservation", en: "Booking", de: "Booking", es: "Reserva", ru: "Запись", zh: "预约" } satisfies C,
-  navTracking: { fr: "Suivi", en: "Tracking", de: "Tracking", es: "Seguimiento", ru: "Отслеживание", zh: "跟踪" } satisfies C,
-  stepLabel: { fr: "Étape", en: "Step", de: "Step", es: "Paso", ru: "Шаг", zh: "步骤" } satisfies C,
+  navGallery: { fr: "Galerie", en: "Gallery", de: "Galerie", es: "Galería", ru: "Галерея", zh: "画廊" } satisfies C,
+  navDiagnostic: { fr: "Diagnostic", en: "Diagnosis", de: "Diagnose", es: "Diagnóstico", ru: "Диагностика", zh: "诊断" } satisfies C,
+  navBooking: { fr: "Réservation", en: "Booking", de: "Buchung", es: "Reserva", ru: "Запись", zh: "预约" } satisfies C,
+  navTracking: { fr: "Suivi", en: "Tracking", de: "Sendungsverfolgung", es: "Seguimiento", ru: "Отслеживание", zh: "跟踪" } satisfies C,
+  stepLabel: { fr: "Étape", en: "Step", de: "Schritt", es: "Paso", ru: "Шаг", zh: "步骤" } satisfies C,
+
+  // Lugia Légende #113 — clinical case study
+  lugiaCaseTitle: {
+    fr: "Restauration Clinique : Étude de cas N°113 (Lugia Légende)",
+    en: "Clinical Restoration: Case Study N°113 (Lugia Legend)",
+    de: "Klinische Wiederherstellung: Fallstudie Nr. 113 (Lugia Legende)",
+    es: "Restauración Clínica: Estudio de caso N.º 113 (Lugia Leyenda)",
+    ru: "Клиническая реставрация: пример № 113 (Lugia Легенда)",
+    zh: "临床修复案例 N°113（Lugia 传说）",
+  } satisfies C,
+  lugiaIntro: {
+    fr: "Ce dossier traite une Lugia Légende (113/106) présentant une usure sévère sur sa surface holographique. Notre intervention chirurgicale a ciblé deux points critiques :",
+    en: "This case addresses a Lugia Legend (113/106) showing severe wear on its holographic surface. Our surgical intervention targeted two critical points:",
+    de: "Dieser Fall behandelt eine Lugia Legende (113/106) mit starker Abnutzung der holografischen Oberfläche. Unser chirurgischer Eingriff zielte auf zwei kritische Punkte:",
+    es: "Este caso aborda una Lugia Leyenda (113/106) con un desgaste severo en su superficie holográfica. Nuestra intervención quirúrgica se centró en dos puntos críticos:",
+    ru: "В этом случае рассматривается Lugia Легенда (113/106) с сильным износом голографической поверхности. Хирургическое вмешательство было направлено на две ключевые зоны:",
+    zh: "本案例处理一张表面镭射层严重磨损的 Lugia 传说（113/106）。我们的精密干预聚焦于两个关键部位：",
+  } satisfies C,
+  lugiaStep1Label: {
+    fr: "Nettoyage Micro-Précis :",
+    en: "Micro-Precision Cleaning:",
+    de: "Mikropräzise Reinigung:",
+    es: "Limpieza Micro-Precisa:",
+    ru: "Микроточная очистка:",
+    zh: "微精度清洁：",
+  } satisfies C,
+  lugiaStep1Desc: {
+    fr: "Élimination des dépôts de surface sans altérer les micro-pigments de l'illustration.",
+    en: "Removal of surface deposits without altering the artwork's micro-pigments.",
+    de: "Entfernung von Oberflächenablagerungen ohne Beeinträchtigung der Mikropigmente der Illustration.",
+    es: "Eliminación de depósitos superficiales sin alterar los micropigmentos de la ilustración.",
+    ru: "Удаление поверхностных отложений без воздействия на микропигменты иллюстрации.",
+    zh: "清除表面沉积物，同时不损伤画面微观色素。",
+  } satisfies C,
+  lugiaStep2Label: {
+    fr: "Polissage de la Zone Éclairée :",
+    en: "Highlighted Holo Area Polishing:",
+    de: "Polieren des holografischen Glanzbereichs:",
+    es: "Pulido de la Zona Iluminada:",
+    ru: "Полировка освещённой зоны:",
+    zh: "高亮镭射区域抛光：",
+  } satisfies C,
+  lugiaStep2Desc: {
+    fr: "Un polissage technique a été appliqué sur la zone centrale impactée par le halo lumineux, effaçant les micro-rayures et les frottements pour redonner une clarté et une brillance maximales au foil.",
+    en: "Technical polishing was applied to the central area impacted by the light halo, erasing micro-scratches and abrasions to restore maximum clarity and brilliance to the foil.",
+    de: "Eine technische Politur wurde im zentralen Bereich des Lichthalos angewandt, um Mikrokratzer und Reibspuren zu entfernen und der Folie maximale Klarheit und Brillanz zurückzugeben.",
+    es: "Se aplicó un pulido técnico en la zona central afectada por el halo de luz, eliminando microarañazos y rozaduras para devolver al foil máxima claridad y brillo.",
+    ru: "К центральной зоне светового ореола применена техническая полировка, устраняющая микроцарапины и потёртости и возвращающая фольге максимальную прозрачность и блеск.",
+    zh: "对受光晕影响的中心区域施以技术抛光，消除微划痕与摩擦痕迹，让镭射层恢复极致通透与亮度。",
+  } satisfies C,
+  lugiaCaptionFR: {
+    fr: "Nettoyage Micro-Précis et Polissage de la zone éclairée centrale.",
+    en: "Micro-Precision Cleaning and Technical Polishing of the central highlighted holo area.",
+    de: "Mikropräzise Reinigung und technisches Polieren des zentralen holografischen Glanzbereichs.",
+    es: "Limpieza Micro-Precisa y Pulido Técnico de la zona holográfica central iluminada.",
+    ru: "Микроточная очистка и техническая полировка центральной освещённой голографической зоны.",
+    zh: "对中央高亮镭射区域进行微精度清洁与技术抛光。",
+  } satisfies C,
+  lugiaSlideHint: {
+    fr: "Glissez pour observer la résurrection de la clarté sur la zone holographique centrale.",
+    en: "Slide to witness the resurrection of clarity on the central holographic area.",
+    de: "Ziehen Sie den Regler, um die Wiederbelebung der Klarheit im zentralen holografischen Bereich zu beobachten.",
+    es: "Desliza para ver la resurrección de la claridad en la zona holográfica central.",
+    ru: "Сдвиньте, чтобы увидеть возрождение прозрачности центральной голографической зоны.",
+    zh: "滑动观察中央镭射区域焕然重生的清澈感。",
+  } satisfies C,
+
+  beforeAfterTitle: {
+    fr: "Avant / Après",
+    en: "Before / After",
+    de: "Vorher / Nachher",
+    es: "Antes / Después",
+    ru: "До / После",
+    zh: "修复前 / 修复后",
+  } satisfies C,
 } as const;
 
 export type CopyKey = keyof typeof copy;
