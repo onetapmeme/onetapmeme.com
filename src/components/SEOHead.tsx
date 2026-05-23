@@ -14,8 +14,8 @@ const SEOHead = () => {
     existingLinks.forEach(link => link.remove());
 
     // Add hreflang links for all supported languages
-    const languages = ['en', 'fr', 'es', 'ru', 'zh'];
-    const baseUrl = 'https://onetapmeme.com';
+    const languages = ['en', 'fr', 'de', 'es', 'ru', 'zh'];
+    const baseUrl = 'https://cardsurgery.com';
     
     languages.forEach(lang => {
       const link = document.createElement('link');
