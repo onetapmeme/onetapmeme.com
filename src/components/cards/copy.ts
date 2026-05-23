@@ -21,7 +21,7 @@ export function pickLang(raw: string | undefined): Lang {
 type C = Record<Lang, string>;
 
 export const copy = {
-  brand: { fr: "CardSurgery", en: "CardSurgery", de: "CardSurgery", de: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
+  brand: { fr: "CardSurgery", en: "CardSurgery", de: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
 
   // Hero
   heroEyebrow: {
