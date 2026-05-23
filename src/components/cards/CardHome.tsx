@@ -308,10 +308,10 @@ const CardHome = () => {
 
 
       {/* BEFORE / AFTER DEMO */}
-      <section id="before-after" className="py-20 md:py-32 px-4 overflow-hidden">
+      <section id="before-after" className="py-20 md:py-32 section-x overflow-hidden">
         <div className="container mx-auto max-w-3xl w-full">
-          <div className="text-center mb-10 px-2">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Avant / Après</h2>
+          <div className="text-center mb-10">
+            <h2 className="h2-fluid font-bold mb-4">Avant / Après</h2>
           </div>
 
           <div className="mx-auto w-full max-w-md sm:max-w-lg md:max-w-xl overflow-hidden">
