@@ -151,14 +151,14 @@ const SocialProof = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-effect border border-primary/20 mb-4">
             <Instagram className="w-4 h-4 text-accent" />
             <span className="text-xs font-semibold tracking-wider uppercase">
-              CardSurgery sur les réseaux
+              {t("instagramEyebrow")}
             </span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-3">
-            Le Lab sur Instagram
+            {t("instagramTitle")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Coulisses, restaurations live et avant/après. Suivez{" "}
+            {t("instagramSub")}{" "}
             <a
               href="https://instagram.com/card_surgery"
               target="_blank"
