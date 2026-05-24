@@ -28,14 +28,14 @@ import logo from "@/assets/cardsurgery-logo.png";
 import lugiaAvant from "@/assets/lugia-avant.jpeg";
 import lugiaApres from "@/assets/lugia-apres.jpeg";
 import heroBg from "@/assets/hero-bg.png";
-import { copy, pickLang } from "./copy";
+import { copy, pickLang, tr } from "./copy";
 import SocialProof from "./SocialProof";
 import { useSavedCardsCounter } from "@/hooks/useSavedCardsCounter";
 
 const CardHome = () => {
   const { i18n } = useTranslation();
   const lang = pickLang(i18n.language);
-  const t = (k: keyof typeof copy) => copy[k][lang];
+  const t = (k: keyof typeof copy) => tr(copy[k], lang);
   const savedCount = useSavedCardsCounter();
 
 
