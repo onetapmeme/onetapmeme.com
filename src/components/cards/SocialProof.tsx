@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Instagram, Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { copy, pickLang, tr } from "@/components/cards/copy";
 
 // Decorative SVG placeholders so the IG grid renders without external assets.
 const tile = (label: string, c1: string, c2: string) =>
