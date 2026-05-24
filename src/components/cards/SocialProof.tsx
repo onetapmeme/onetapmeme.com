@@ -83,10 +83,10 @@ const SocialProof = () => {
           className="text-center mb-14"
         >
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-3">
-            Ils nous ont confié leurs cartes
+            {t("testimonialsTitle")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Avis vérifiés de collectionneurs après restauration.
+            {t("testimonialsSub")}
           </p>
         </motion.div>
 
