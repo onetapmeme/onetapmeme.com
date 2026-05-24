@@ -1,6 +1,7 @@
 // IP Geolocation utility for language detection.
-// Policy: FR-speaking → FR. DE-speaking (DE, AT, LI) → DE. Everywhere else → EN.
-// Manual user choice (saved in localStorage) ALWAYS overrides auto-detection.
+// Policy:
+//   FR-speaking → FR. DE-speaking (DE, AT, LI) → DE. PT-speaking → PT. JP → JA.
+//   Everywhere else → EN. Manual user choice (localStorage) ALWAYS overrides auto-detection.
 
 export interface GeolocationData {
   country_code: string;
@@ -9,29 +10,26 @@ export interface GeolocationData {
   timezone?: string;
 }
 
-const SUPPORTED_LANGS = ['en', 'fr', 'de', 'es', 'ru', 'zh'] as const;
+const SUPPORTED_LANGS = ['en', 'fr', 'de', 'es', 'ru', 'zh', 'pt', 'ja'] as const;
 const STORAGE_KEY = '1tap-language';
 
-// Francophone countries / regions.
 const FRENCH_COUNTRIES = new Set([
   'FR', 'BE', 'LU', 'MC',
-  'CA', // Canada (FR-CA fallback)
+  'CA',
   'GP', 'MQ', 'GF', 'RE', 'YT', 'PM', 'NC', 'PF', 'WF', 'BL', 'MF',
   'CI', 'SN', 'CM', 'CD', 'CG', 'GA', 'BJ', 'BF', 'ML', 'NE', 'TG', 'MG', 'TN', 'DZ', 'MA', 'HT',
 ]);
 
-// German-speaking countries — auto-default to DE.
-const GERMAN_COUNTRIES = new Set([
-  'DE', // Germany
-  'AT', // Austria
-  'LI', // Liechtenstein
-]);
+const GERMAN_COUNTRIES = new Set(['DE', 'AT', 'LI']);
 
-// Switzerland is multilingual — default to DE (largest linguistic group) unless
-// browser language hints French.
+// Portuguese-speaking countries.
+const PORTUGUESE_COUNTRIES = new Set(['PT', 'BR', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL']);
+
+const JAPANESE_COUNTRIES = new Set(['JP']);
+
 const SWISS = 'CH';
 
-type AutoLang = 'fr' | 'en' | 'de';
+type AutoLang = 'fr' | 'en' | 'de' | 'pt' | 'ja';
 
 const browserHintsFrench = (): boolean => (navigator.language || '').toLowerCase().startsWith('fr');
 
@@ -51,6 +49,8 @@ export const detectLanguageFromIP = async (): Promise<AutoLang | null> => {
     let lang: AutoLang = 'en';
     if (FRENCH_COUNTRIES.has(country)) lang = 'fr';
     else if (GERMAN_COUNTRIES.has(country)) lang = 'de';
+    else if (PORTUGUESE_COUNTRIES.has(country)) lang = 'pt';
+    else if (JAPANESE_COUNTRIES.has(country)) lang = 'ja';
     else if (country === SWISS) lang = browserHintsFrench() ? 'fr' : 'de';
 
     console.log(`IP geolocation: ${country || 'unknown'} → ${lang}`);
@@ -65,21 +65,20 @@ const browserFallback = (): AutoLang => {
   const browserLang = (navigator.language || 'en').toLowerCase();
   if (browserLang.startsWith('fr')) return 'fr';
   if (browserLang.startsWith('de')) return 'de';
+  if (browserLang.startsWith('pt')) return 'pt';
+  if (browserLang.startsWith('ja')) return 'ja';
   return 'en';
 };
 
 export const getLanguageWithGeolocation = async (): Promise<string> => {
-  // 1. Manual override always wins.
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved && (SUPPORTED_LANGS as readonly string[]).includes(saved)) {
     console.log(`Using saved language preference: ${saved}`);
     return saved;
   }
 
-  // 2. IP-based auto-detect (FR / DE / EN).
   const ipLang = await detectLanguageFromIP();
   if (ipLang) return ipLang;
 
-  // 3. Browser fallback.
   return browserFallback();
 };
