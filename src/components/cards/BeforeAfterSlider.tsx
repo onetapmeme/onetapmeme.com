@@ -94,11 +94,11 @@ const BeforeAfterSlider = ({ before, after, alt = "Avant / Après restauration" 
             style={{ width: `${(100 / Math.max(pos, 0.0001)) * 100}%`, maxWidth: "none" }}
           />
           <span className="absolute top-3 left-3 glass-effect uppercase tracking-[0.18em] text-[10px] font-bold px-2.5 py-1 rounded-full text-foreground/90 border border-border/60">
-            Avant
+            {beforeLabel}
           </span>
         </div>
         <span className="absolute top-3 right-3 uppercase tracking-[0.18em] text-[10px] font-bold px-2.5 py-1 rounded-full bg-accent/90 text-accent-foreground border border-accent/40 backdrop-blur-md shadow-[0_4px_14px_-4px_hsla(22,55%,40%,0.45)]">
-          Après
+          {afterLabel}
         </span>
 
         {loaded && (
