@@ -206,7 +206,7 @@ const SocialProof = () => {
               rel="noopener noreferrer"
             >
               <Instagram className="w-4 h-4 mr-2" />
-              Suivre @card_surgery
+              {t("instagramFollow")}
             </a>
           </Button>
         </div>
