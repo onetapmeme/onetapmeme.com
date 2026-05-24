@@ -36,7 +36,9 @@ const getInitialLanguage = async () => {
         de: { translation: de },
         es: { translation: es },
         ru: { translation: ru },
-        zh: { translation: zh }
+        zh: { translation: zh },
+        pt: { translation: pt },
+        ja: { translation: ja }
       },
       lng: initialLang,
       // Priority fallback chain: missing keys fall back to EN, then FR.
