@@ -909,7 +909,7 @@ export const copy = {
     pt: "Legal e contacto",
     ja: "規約と総合連絡先",
   } satisfies C,
-  footerTagline: {
+  footerBrandTagline: {
     fr: "« La précision chirurgicale dont vos précieuses cartes ont besoin. »",
     en: "\"The surgical precision your precious cards deserve.\"",
     de: "„Die chirurgische Präzision, die Ihre wertvollen Karten verdienen.\"",
