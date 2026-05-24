@@ -9,16 +9,22 @@
 // Priority languages: FR / EN / DE (German auto-detected for DE/AT/LI/CH-DE).
 // ES / RU / ZH are kept as fallback locales — surfaced in the "More languages" group.
 
-export type Lang = "fr" | "en" | "de" | "es" | "ru" | "zh";
+export type Lang = "fr" | "en" | "de" | "es" | "ru" | "zh" | "pt" | "ja";
 
-export const SUPPORTED: Lang[] = ["fr", "en", "de", "es", "ru", "zh"];
+export const SUPPORTED: Lang[] = ["fr", "en", "de", "es", "ru", "zh", "pt", "ja"];
 
 export function pickLang(raw: string | undefined): Lang {
   const code = (raw || "fr").slice(0, 2).toLowerCase() as Lang;
   return (SUPPORTED as string[]).includes(code) ? code : "fr";
 }
 
-type C = Record<Lang, string>;
+// Translation entries — fr/en always provided, other locales optional (resolver falls back lang → en → fr).
+type C = Partial<Record<Lang, string>> & { fr: string; en: string };
+
+/** Resolve a copy entry to a string for the active lang with EN→FR fallback. */
+export function tr(entry: C, lang: Lang): string {
+  return entry[lang] ?? entry.en ?? entry.fr;
+}
 
 export const copy = {
   brand: { fr: "CardSurgery", en: "CardSurgery", de: "CardSurgery", es: "CardSurgery", ru: "CardSurgery", zh: "CardSurgery" } satisfies C,
