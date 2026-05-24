@@ -6,7 +6,7 @@ import { Menu, ShieldCheck, User as UserIcon, LogOut, FolderOpen } from "lucide-
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import logo from "@/assets/cardsurgery-logo.png";
-import { copy, pickLang } from "@/components/cards/copy";
+import { copy, pickLang, tr } from "@/components/cards/copy";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -16,7 +16,7 @@ const Navbar = () => {
   const location = useLocation();
   const { i18n } = useTranslation();
   const lang = pickLang(i18n.language);
-  const t = (k: keyof typeof copy) => copy[k][lang];
+  const t = (k: keyof typeof copy) => tr(copy[k], lang);
   const { user, isAdmin } = useAuth();
 
   const NAV_ITEMS = [
