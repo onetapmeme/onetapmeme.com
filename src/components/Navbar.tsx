@@ -6,7 +6,7 @@ import { Menu, ShieldCheck, User as UserIcon, LogOut, FolderOpen } from "lucide-
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import logo from "@/assets/cardsurgery-logo.png";
-import { copy, pickLang } from "@/components/cards/copy";
+import { copy, pickLang, tr } from "@/components/cards/copy";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -16,7 +16,7 @@ const Navbar = () => {
   const location = useLocation();
   const { i18n } = useTranslation();
   const lang = pickLang(i18n.language);
-  const t = (k: keyof typeof copy) => copy[k][lang];
+  const t = (k: keyof typeof copy) => tr(copy[k], lang);
   const { user, isAdmin } = useAuth();
 
   const NAV_ITEMS = [
@@ -111,16 +111,16 @@ const Navbar = () => {
                   <DropdownMenuLabel className="truncate">{user.email}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => navigate("/my-dossiers")}>
-                    <FolderOpen className="w-4 h-4 mr-2" /> Mes dossiers
+                    <FolderOpen className="w-4 h-4 mr-2" /> {t("navMyDossiers")}
                   </DropdownMenuItem>
                   {isAdmin && (
                     <DropdownMenuItem onClick={() => navigate("/admin")}>
-                      <ShieldCheck className="w-4 h-4 mr-2 text-accent" /> Admin
+                      <ShieldCheck className="w-4 h-4 mr-2 text-accent" /> {t("navAdmin")}
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleSignOut}>
-                    <LogOut className="w-4 h-4 mr-2" /> Déconnexion
+                    <LogOut className="w-4 h-4 mr-2" /> {t("navLogout")}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -132,7 +132,7 @@ const Navbar = () => {
                 onClick={() => navigate("/auth")}
               >
                 <UserIcon className="w-4 h-4 sm:mr-1.5" />
-                <span className="hidden md:inline">Connexion</span>
+                <span className="hidden md:inline">{t("navConnexion")}</span>
               </Button>
             )}
             <Button
@@ -169,7 +169,7 @@ const Navbar = () => {
                   ))}
                   <div className="pt-3 mt-2 border-t border-border">
                     <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 px-1">
-                      Language
+                      {t("navLanguageLabel")}
                     </p>
                     <div className="grid grid-cols-3 gap-2">
                       {[
@@ -202,20 +202,20 @@ const Navbar = () => {
                   {user ? (
                     <>
                       <Link to="/my-dossiers" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
-                        <FolderOpen className="w-4 h-4" /> Mes dossiers
+                        <FolderOpen className="w-4 h-4" /> {t("navMyDossiers")}
                       </Link>
                       {isAdmin && (
                         <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-accent py-2 flex items-center gap-2">
-                          <ShieldCheck className="w-4 h-4" /> Admin
+                          <ShieldCheck className="w-4 h-4" /> {t("navAdmin")}
                         </Link>
                       )}
                       <button onClick={() => { setIsMobileMenuOpen(false); handleSignOut(); }} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2 text-left">
-                        <LogOut className="w-4 h-4" /> Déconnexion
+                        <LogOut className="w-4 h-4" /> {t("navLogout")}
                       </button>
                     </>
                   ) : (
                     <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
-                      <UserIcon className="w-4 h-4" /> Connexion
+                      <UserIcon className="w-4 h-4" /> {t("navConnexion")}
                     </Link>
                   )}
                   <Button

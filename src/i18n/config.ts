@@ -6,12 +6,14 @@ import de from './locales/de.json';
 import es from './locales/es.json';
 import ru from './locales/ru.json';
 import zh from './locales/zh.json';
+import pt from './locales/pt.json';
+import ja from './locales/ja.json';
 import { getLanguageWithGeolocation } from '@/utils/ipGeolocation';
 
 // Get browser language or default to 'en'
 const getBrowserLanguage = () => {
   const browserLang = navigator.language.split('-')[0];
-  const supportedLangs = ['en', 'fr', 'de', 'es', 'ru', 'zh'];
+  const supportedLangs = ['en', 'fr', 'de', 'es', 'ru', 'zh', 'pt', 'ja'];
   return supportedLangs.includes(browserLang) ? browserLang : 'en';
 };
 
@@ -34,7 +36,9 @@ const getInitialLanguage = async () => {
         de: { translation: de },
         es: { translation: es },
         ru: { translation: ru },
-        zh: { translation: zh }
+        zh: { translation: zh },
+        pt: { translation: pt },
+        ja: { translation: ja }
       },
       lng: initialLang,
       // Priority fallback chain: missing keys fall back to EN, then FR.

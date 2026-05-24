@@ -28,14 +28,14 @@ import logo from "@/assets/cardsurgery-logo.png";
 import lugiaAvant from "@/assets/lugia-avant.jpeg";
 import lugiaApres from "@/assets/lugia-apres.jpeg";
 import heroBg from "@/assets/hero-bg.png";
-import { copy, pickLang } from "./copy";
+import { copy, pickLang, tr } from "./copy";
 import SocialProof from "./SocialProof";
 import { useSavedCardsCounter } from "@/hooks/useSavedCardsCounter";
 
 const CardHome = () => {
   const { i18n } = useTranslation();
   const lang = pickLang(i18n.language);
-  const t = (k: keyof typeof copy) => copy[k][lang];
+  const t = (k: keyof typeof copy) => tr(copy[k], lang);
   const savedCount = useSavedCardsCounter();
 
 
@@ -252,13 +252,13 @@ const CardHome = () => {
               className="glass-effect rounded-2xl border border-primary/20 p-5 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 group block"
             >
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
-                Produits référencés
+                {t("productsRefEyebrow")}
               </p>
               <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                Solutions Kurt's Card Care Recovery →
+                {t("productsRefCta")}
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                Gamme professionnelle utilisée par notre laboratoire.
+                {t("productsRefSub")}
               </p>
             </a>
             <a
@@ -268,13 +268,13 @@ const CardHome = () => {
               className="glass-effect rounded-2xl border border-accent/30 p-5 hover:border-accent/60 hover:bg-accent/5 transition-all duration-300 group block"
             >
               <p className="text-xs uppercase tracking-widest text-accent mb-1">
-                Certifications & formations
+                {t("certTrainingEyebrow")}
               </p>
               <p className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">
-                Maîtrise validée par Rocket Collect →
+                {t("certTrainingTitle")}
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                Formations premium et certifications professionnelles.
+                {t("certTrainingSub")}
               </p>
             </a>
           </div>

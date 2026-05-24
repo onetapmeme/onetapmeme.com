@@ -1,128 +1,61 @@
-## Objectif
-1. Réparer le sélecteur de langue dans le sidebar mobile.
-2. Ajouter **DE** comme langue prioritaire (FR/EN/DE en avant, ES/RU/ZH conservés en fallback).
-3. Auto-détection IP + persistance, SEO synchro.
-4. Révision copy premium FR/EN/DE (homepage, nav, footer, Lugia #113, dashboard admin, emails transactionnels).
-5. Aucune régression visuelle, lockout `overflow-x: clip`.
+# Full 8-Language Localization Pass (FR/EN/DE/ES/RU/ZH/PT/JA)
 
----
+## 1. Engine — add PT + JA
 
-## 1. Bug fix — Mobile sidebar language switcher
+- **`src/i18n/locales/pt.json`** + **`src/i18n/locales/ja.json`** (new): mirror `en.json` structure with the provided translations injected for all keys touched below; remaining keys fall back to EN via i18next.
+- **`src/i18n/config.ts`**: import `pt` + `ja`, register in `resources`, extend `supportedLangs` to `['fr','en','de','es','ru','zh','pt','ja']`.
+- **`src/utils/ipGeolocation.ts`**: add detection — PT/BR/AO/MZ → `pt`; JP → `ja`. Existing FR/DE logic preserved.
+- **`src/components/LanguageSwitcher.tsx`**: add `{pt, 🇵🇹, Português}` + `{ja, 🇯🇵, 日本語}` to SECONDARY list (or promote per spec). Keep PRIMARY = FR/EN/DE.
+- **`src/components/Navbar.tsx`** mobile pill grid: keep FR/EN/DE pills; the `<LanguageSwitcher inline />` below already exposes the other 5.
 
-**Fichier :** `src/components/Navbar.tsx` + `src/components/LanguageSwitcher.tsx`
+## 2. Footer — fully dynamic (`src/components/Footer.tsx`)
 
-Problème : le `DropdownMenu` Radix dans le `SheetContent` est tronqué / mal aligné sur mobile (z-index, container du portail, hit target trop petit).
+Replace every hardcoded FR string with `t()` keys. New namespace `footer.*`:
 
-Correctifs :
-- Dans le bloc mobile du `Sheet`, remplacer le `LanguageSwitcher` actuel par une rangée de **boutons-pills** (FR / EN / DE + un sous-menu "Autres") avec drapeau + code, full-width, hauteur ≥ 44 px (Apple HIG touch target).
-- Variante : si on garde le dropdown, forcer `DropdownMenuContent` avec `sideOffset={8}`, `align="start"`, `className="z-[110] w-[calc(100vw-3rem)]"` pour qu'il ne soit ni rogné ni derrière le sheet.
-- Style cohérent avec la version desktop (border `border-accent/40`, `rounded-full`, hover `bg-accent/10`, `tracking-[0.08em]`).
-- Active state = anneau copper + bullet point.
+- `footer.cols.services` / `cols.brand` / `cols.legal` — column headers
+- `footer.tagline` — brand italic line
+- `footer.subTagline` — line below
+- `footer.services.pricing|gallery|diagnostic|booking|tracking`
+- `footer.company.about|process|faq|contact`
+- `footer.legal.notice|terms|privacy|disclaimer`
+- `footer.copyright` — with `{{year}}` interpolation
 
----
+All 8 languages populated using the exact strings from the brief.
 
-## 2. Architecture localisation FR/EN/DE (avec fallback ES/RU/ZH)
+## 3. Navbar / Account / CTA
 
-### 2.1 `src/i18n/locales/de.json`
-- Création d'un fichier `de.json` complet à partir de `en.json` (~942 lignes) traduit en allemand premium (ton : *Chirurgische Präzision, Werterhalt, Absolute Zuverlässigkeit*).
-- Vocabulaire : *Kartenrestaurierung, Mikropräzise Reinigung, Holografischer Glanzbereich, Sammlerwert, Klinische Wiederherstellung*.
+- **`src/components/Navbar.tsx`**: replace hardcoded `"Connexion"`, `"Mes dossiers"`, `"Admin"`, `"Déconnexion"`, `"Language"` with `t('nav.account.*')` keys. Add 8-lang values.
+- **Final CTA block** (locate in `src/components/cards/CardHome.tsx` — likely `ctaFinalTitle` / `ctaFinalSub` in `copy.ts`): extend `copy.ts` `Lang` type to include `pt|ja`, add translations for the final CTA heading + subtext, plus all other keys (fallback = EN string where not specified by user).
 
-### 2.2 `src/i18n/config.ts`
-- Importer `de` et l'ajouter aux `resources`.
-- Ordre : FR/EN/DE prioritaires, ES/RU/ZH en fallback secondaire.
+## 4. Mid-page content (`src/components/cards/CardHome.tsx` + `copy.ts`)
 
-### 2.3 `src/utils/ipGeolocation.ts`
-- Étendre la détection : ajouter `GERMAN_COUNTRIES = { DE, AT, LI, CH (zones DE) }`.
-- Logique : FR-zone → `fr` ; DE-zone → `de` ; sinon `en`.
-- Persistance `localStorage['1tap-language']` inchangée — override manuel prioritaire.
-- Type retour : `'fr' | 'en' | 'de' | null`.
+Add/replace keys with full 8-lang coverage (EN fallback for unspecified langs):
 
-### 2.4 `src/components/cards/copy.ts`
-- Élargir `Lang` à `"fr" | "en" | "de" | "es" | "ru" | "zh"`.
-- `SUPPORTED` ordre : `["fr","en","de","es","ru","zh"]`.
-- Ajouter clé `de` sur **chaque** entrée du `copy` object (~110 clés). Ton premium allemand.
+- `productsRefTitle` — "PRODUITS RÉFÉRENCÉS" → 8 langs
+- `certTrainingTitle` — "CERTIFICATIONS & FORMATIONS"
+- `productsRefSub` — "Gamme professionnelle…"
+- `certTrainingSub` — "Maîtrise validée par Rocket Collect"
+- `testimonialsTitle` — "Ils nous ont confié leurs cartes"
+- `testimonialsSub` — "Avis vérifiés…"
+- `instagramTitle` — "Le Lab sur Instagram"
+- `beforeAfterLabel` — "Avant / Après"
 
-### 2.5 `src/components/LanguageSwitcher.tsx`
-- Ajouter `{ code:'de', flag:'🇩🇪', name:'Deutsch' }` dans la liste, positionné en 3ᵉ après FR/EN.
-- Mettre FR/EN/DE en haut, séparateur, puis ES/RU/ZH en bas (groupe "More languages").
+## 5. Before/After Slider Badges (`src/components/cards/BeforeAfterSlider.tsx`)
 
-### 2.6 `src/components/SEOHead.tsx`
-- Ajouter `de` aux `languages` du `hreflang`.
-- Ajouter titres et descriptions DE :
-  - Title : `CardSurgery – Chirurgische Kartenrestaurierung`
-  - Description : `CardSurgery restauriert Sammlerkarten mit chirurgischer Präzision. Werterhalt für Premium-Sammler, absolute Zuverlässigkeit.`
-- Map `og:locale` : `de` → `de_DE`.
-- HTML `lang` attribute déjà géré via `i18n.on('languageChanged')`.
+- Replace hardcoded "AVANT" / "APRÈS" with `t('slider.before')` / `t('slider.after')`.
+- 8 languages per spec (BEFORE/AFTER, VORHER/NACHHER, ANTES/DESPUÉS, ДО/ПОСЛЕ, 修复前/修复后, ANTES/DEPOIS, 修復前/修復後).
+- Preserve Lugia #113 mapping: File 1 = AFTER (right), File 2 = AVANT (left). No logic change, only label source.
 
-### 2.7 `src/components/RouteSEO.tsx`
-- Vérifier que les titres par route sont traduits via i18n (passer en clés `t('seo.home.title')` etc., avec fallback EN).
+## 6. Visual lockout
 
----
+- Verify `src/index.css` still has `html, body, #root { overflow-x: clip; max-width: 100vw }`.
+- Test long DE/RU strings in footer columns — add `break-words` / `hyphens-auto` on column headers if needed.
 
-## 3. Copy review premium
+## Files touched
 
-### 3.1 Lugia Légende #113
-Mise à jour dans le composant qui contient la description (à localiser via `rg "Lugia"`), exposé via 3 clés :
-- `lugiaCaption.fr` : *Nettoyage Micro-Précis et Polissage de la zone éclairée centrale.*
-- `lugiaCaption.en` : *Micro-Precision Cleaning and Technical Polishing of the central highlighted holo area.*
-- `lugiaCaption.de` : *Mikropräzise Reinigung und technisches Polieren des zentralen holografischen Glanzbereichs.*
+NEW: `src/i18n/locales/pt.json`, `src/i18n/locales/ja.json`
+EDIT: `src/i18n/config.ts`, `src/utils/ipGeolocation.ts`, `src/components/LanguageSwitcher.tsx`, `src/components/Footer.tsx`, `src/components/Navbar.tsx`, `src/components/cards/copy.ts`, `src/components/cards/CardHome.tsx`, `src/components/cards/BeforeAfterSlider.tsx`, `src/i18n/locales/{fr,en,de,es,ru,zh}.json` (add `footer.*` + `nav.account.*` namespaces).
 
-Mapping AVANT/APRÈS préservé (Fichier 2 = AVANT à gauche, Fichier 1 = APRÈS à droite). Aucun changement de logique du slider.
+## Out of scope (will use EN fallback)
 
-### 3.2 Passe rédactionnelle
-Cibles, par ordre de priorité :
-1. **copy.ts** — FR/EN/DE : Hero, About, Process, Pricing, Footer, CTA. Élimination des tournures littérales, alignement sur le ton brand.
-2. **locales JSON** — `fr.json`, `en.json`, `de.json` : nav, formulaires, toasts, erreurs.
-3. **Dashboard admin** — `src/pages/Admin*.tsx`, labels et toasts (vérifier que rien n'est en dur).
-4. **Emails transactionnels** — `supabase/functions/send-dossier-email/`, templates HTML : ajouter détection langue (FR/EN/DE) via param `lang` et 3 versions du sujet + corps. Si pas de templates React Email scaffold, on garde le HTML inline mais on l'internationalise.
-
-### 3.3 Glossaire FR / EN / DE
-Aligné dans un commentaire en tête de `copy.ts` :
-
-| FR | EN | DE |
-|---|---|---|
-| Restauration clinique | Clinical restoration | Klinische Wiederherstellung |
-| Précision chirurgicale | Surgical precision | Chirurgische Präzision |
-| Préservation de la valeur | Asset preservation | Werterhalt |
-| Infirmier en chirurgie | Surgical nurse | OP-Pfleger |
-| Polissage technique | Technical polishing | Technisches Polieren |
-
----
-
-## 4. Visual lockout
-- Vérifier que `html, body, #root { overflow-x: clip; max-width: 100vw }` est toujours en place dans `index.css` (posé à la passe précédente).
-- Tester sur 390×844 et 414×896 : pas de scroll horizontal, switcher mobile centré, dropdown visible en entier.
-
----
-
-## 5. Vérification
-- Démarrer le preview, basculer FR → EN → DE depuis le sidebar mobile, vérifier que les copys changent partout.
-- Recharger : la langue choisie persiste.
-- Screenshot mobile du sidebar ouvert avec dropdown actif.
-- `console.log` IP geolocation : afficher la langue détectée.
-
----
-
-## Fichiers touchés (estimation)
-
-```text
-NEW   src/i18n/locales/de.json
-EDIT  src/i18n/config.ts
-EDIT  src/utils/ipGeolocation.ts
-EDIT  src/components/cards/copy.ts            (+ DE sur toutes les clés)
-EDIT  src/components/LanguageSwitcher.tsx     (réordo + DE)
-EDIT  src/components/Navbar.tsx               (fix mobile switcher)
-EDIT  src/components/SEOHead.tsx              (DE titles/desc/hreflang)
-EDIT  src/components/RouteSEO.tsx             (i18n des titres)
-EDIT  composant Lugia                         (3 captions)
-EDIT  supabase/functions/send-dossier-email/  (i18n DE)
-```
-
-## Détails techniques
-
-- **Type Lang** : étendu mais `pickLang` continue à fallback vers `fr` si code inconnu.
-- **i18next** : `fallbackLng: ['en','fr']` pour que DE manquant retombe sur EN.
-- **Persistance** : clé `localStorage['1tap-language']`, override absolu sur géoloc.
-- **Touch target mobile** : min 44×44 px (`h-11`), espacement `gap-2`.
-- **Z-index** : `DropdownMenuContent` à `z-[110]` (au-dessus du `SheetContent` à `z-[100]`).
-- **Aucun changement DB**, aucune migration.
+Strings in admin dashboards, edge function emails, and ancillary pages not listed in the brief. i18next fallback chain (EN → FR) keeps them readable until a future pass.

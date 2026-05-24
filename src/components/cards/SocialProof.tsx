@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Instagram, Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { copy, pickLang, tr } from "@/components/cards/copy";
 
 // Decorative SVG placeholders so the IG grid renders without external assets.
 const tile = (label: string, c1: string, c2: string) =>
@@ -55,6 +57,9 @@ const TESTIMONIALS = [
 ];
 
 const SocialProof = () => {
+  const { i18n } = useTranslation();
+  const lang = pickLang(i18n.language);
+  const t = (k: keyof typeof copy) => tr(copy[k], lang);
   const [idx, setIdx] = useState(0);
   const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
   const prev = () => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
@@ -78,10 +83,10 @@ const SocialProof = () => {
           className="text-center mb-14"
         >
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-3">
-            Ils nous ont confié leurs cartes
+            {t("testimonialsTitle")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Avis vérifiés de collectionneurs après restauration.
+            {t("testimonialsSub")}
           </p>
         </motion.div>
 
@@ -146,14 +151,14 @@ const SocialProof = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-effect border border-primary/20 mb-4">
             <Instagram className="w-4 h-4 text-accent" />
             <span className="text-xs font-semibold tracking-wider uppercase">
-              CardSurgery sur les réseaux
+              {t("instagramEyebrow")}
             </span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-3">
-            Le Lab sur Instagram
+            {t("instagramTitle")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Coulisses, restaurations live et avant/après. Suivez{" "}
+            {t("instagramSub")}{" "}
             <a
               href="https://instagram.com/card_surgery"
               target="_blank"
@@ -201,7 +206,7 @@ const SocialProof = () => {
               rel="noopener noreferrer"
             >
               <Instagram className="w-4 h-4 mr-2" />
-              Suivre @card_surgery
+              {t("instagramFollow")}
             </a>
           </Button>
         </div>
