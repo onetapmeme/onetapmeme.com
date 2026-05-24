@@ -19,6 +19,8 @@ const PRIMARY: LangDef[] = [
   { code: 'de', flag: '🇩🇪', name: 'Deutsch' },
 ];
 const SECONDARY: LangDef[] = [
+  { code: 'pt', flag: '🇵🇹', name: 'Português' },
+  { code: 'ja', flag: '🇯🇵', name: '日本語' },
   { code: 'es', flag: '🇪🇸', name: 'Español' },
   { code: 'ru', flag: '🇷🇺', name: 'Русский' },
   { code: 'zh', flag: '🇨🇳', name: '中文' },
