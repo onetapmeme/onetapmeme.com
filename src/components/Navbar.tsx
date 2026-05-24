@@ -111,16 +111,16 @@ const Navbar = () => {
                   <DropdownMenuLabel className="truncate">{user.email}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => navigate("/my-dossiers")}>
-                    <FolderOpen className="w-4 h-4 mr-2" /> Mes dossiers
+                    <FolderOpen className="w-4 h-4 mr-2" /> {t("navMyDossiers")}
                   </DropdownMenuItem>
                   {isAdmin && (
                     <DropdownMenuItem onClick={() => navigate("/admin")}>
-                      <ShieldCheck className="w-4 h-4 mr-2 text-accent" /> Admin
+                      <ShieldCheck className="w-4 h-4 mr-2 text-accent" /> {t("navAdmin")}
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleSignOut}>
-                    <LogOut className="w-4 h-4 mr-2" /> Déconnexion
+                    <LogOut className="w-4 h-4 mr-2" /> {t("navLogout")}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -132,7 +132,7 @@ const Navbar = () => {
                 onClick={() => navigate("/auth")}
               >
                 <UserIcon className="w-4 h-4 sm:mr-1.5" />
-                <span className="hidden md:inline">Connexion</span>
+                <span className="hidden md:inline">{t("navConnexion")}</span>
               </Button>
             )}
             <Button
