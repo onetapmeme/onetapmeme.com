@@ -202,20 +202,20 @@ const Navbar = () => {
                   {user ? (
                     <>
                       <Link to="/my-dossiers" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
-                        <FolderOpen className="w-4 h-4" /> Mes dossiers
+                        <FolderOpen className="w-4 h-4" /> {t("navMyDossiers")}
                       </Link>
                       {isAdmin && (
                         <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-accent py-2 flex items-center gap-2">
-                          <ShieldCheck className="w-4 h-4" /> Admin
+                          <ShieldCheck className="w-4 h-4" /> {t("navAdmin")}
                         </Link>
                       )}
                       <button onClick={() => { setIsMobileMenuOpen(false); handleSignOut(); }} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2 text-left">
-                        <LogOut className="w-4 h-4" /> Déconnexion
+                        <LogOut className="w-4 h-4" /> {t("navLogout")}
                       </button>
                     </>
                   ) : (
                     <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
-                      <UserIcon className="w-4 h-4" /> Connexion
+                      <UserIcon className="w-4 h-4" /> {t("navConnexion")}
                     </Link>
                   )}
                   <Button
