@@ -57,6 +57,9 @@ const TESTIMONIALS = [
 ];
 
 const SocialProof = () => {
+  const { i18n } = useTranslation();
+  const lang = pickLang(i18n.language);
+  const t = (k: keyof typeof copy) => tr(copy[k], lang);
   const [idx, setIdx] = useState(0);
   const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
   const prev = () => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
