@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { GripVertical, Loader2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { copy, pickLang, tr } from "@/components/cards/copy";
 
 interface Props {
   before: string;
@@ -8,6 +10,10 @@ interface Props {
 }
 
 const BeforeAfterSlider = ({ before, after, alt = "Avant / Après restauration" }: Props) => {
+  const { i18n } = useTranslation();
+  const lang = pickLang(i18n.language);
+  const beforeLabel = tr(copy.sliderBefore, lang);
+  const afterLabel = tr(copy.sliderAfter, lang);
   const containerRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState(50);
   const [loaded, setLoaded] = useState(false);
