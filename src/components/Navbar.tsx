@@ -169,7 +169,7 @@ const Navbar = () => {
                   ))}
                   <div className="pt-3 mt-2 border-t border-border">
                     <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 px-1">
-                      Language
+                      {t("navLanguageLabel")}
                     </p>
                     <div className="grid grid-cols-3 gap-2">
                       {[
