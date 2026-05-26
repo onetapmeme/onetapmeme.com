@@ -19,8 +19,10 @@ import {
   uploadDossierPhoto,
   createDossierRemote,
   sendDossierEmail,
+  notifyAdminNewDossier,
   type DossierPhoto,
 } from "@/lib/dossiers";
+
 import {
   MAX_INSURED_VALUE,
   INSURANCE_TIERS,
