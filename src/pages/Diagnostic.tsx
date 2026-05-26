@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,8 +19,10 @@ import {
   uploadDossierPhoto,
   createDossierRemote,
   sendDossierEmail,
+  notifyAdminNewDossier,
   type DossierPhoto,
 } from "@/lib/dossiers";
+
 import {
   MAX_INSURED_VALUE,
   INSURANCE_TIERS,
@@ -53,39 +55,54 @@ const CARES = [
 const STEPS = ["Forfait", "Photos", "Carte", "Soins", "Contact"] as const;
 
 const PhotoSlot = ({
-  label, value, onChange,
-}: { label: string; value?: File; onChange: (f?: File) => void }) => (
-  <label className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-lg p-4 cursor-pointer hover:border-accent transition aspect-[3/4] bg-muted/40">
-    {value ? (
-      <>
-        <img src={URL.createObjectURL(value)} alt={label} className="w-full h-full object-cover rounded" />
-        <span className="text-xs mt-2 text-muted-foreground">{label} ✓</span>
-      </>
-    ) : (
-      <>
-        <FileImage className="w-8 h-8 text-muted-foreground mb-2" />
-        <span className="text-sm font-medium text-foreground">{label}</span>
-        <span className="text-xs text-muted-foreground mt-1">Cliquer pour ajouter</span>
-      </>
-    )}
-    <input
-      type="file"
-      accept="image/png,image/jpeg,image/jpg,image/webp"
-      className="hidden"
-      onChange={(e) => {
-        const f = e.target.files?.[0];
-        if (!f) return onChange(undefined);
-        const err = validateImage(f);
-        if (err) {
-          toast({ title: "Image refusée", description: err, variant: "destructive" });
-          e.target.value = "";
-          return;
-        }
-        onChange(f);
-      }}
-    />
-  </label>
-);
+  label, value, onChange, slotId,
+}: { label: string; value?: File; onChange: (f?: File) => void; slotId: string }) => {
+  const galleryId = `photo-gallery-${slotId}`;
+  const cameraId = `photo-camera-${slotId}`;
+  const handle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0];
+    if (!f) return onChange(undefined);
+    const err = validateImage(f);
+    if (err) {
+      toast({ title: "Image refusée", description: err, variant: "destructive" });
+      e.target.value = "";
+      return;
+    }
+    onChange(f);
+  };
+  return (
+    <div className="flex flex-col items-center border-2 border-dashed border-border rounded-lg p-3 aspect-[3/4] bg-muted/40 relative overflow-hidden">
+      {value ? (
+        <>
+          <img src={URL.createObjectURL(value)} alt={label} className="w-full flex-1 object-cover rounded" />
+          <span className="text-xs mt-2 text-muted-foreground">{label} ✓</span>
+        </>
+      ) : (
+        <>
+          <FileImage className="w-7 h-7 text-muted-foreground mb-1" />
+          <span className="text-sm font-medium text-foreground">{label}</span>
+          <div className="flex flex-col gap-1.5 mt-2 w-full">
+            <label
+              htmlFor={galleryId}
+              className="text-[11px] text-center px-2 py-1.5 rounded border border-border hover:border-accent cursor-pointer bg-background"
+            >
+              📁 Galerie
+            </label>
+            <label
+              htmlFor={cameraId}
+              className="text-[11px] text-center px-2 py-1.5 rounded border border-border hover:border-accent cursor-pointer bg-background"
+            >
+              📷 Appareil
+            </label>
+          </div>
+        </>
+      )}
+      <input id={galleryId} type="file" accept="image/*" className="hidden" onChange={handle} />
+      <input id={cameraId} type="file" accept="image/*" capture="environment" className="hidden" onChange={handle} />
+    </div>
+  );
+};
+
 
 const Diagnostic = () => {
   const [params] = useSearchParams();
@@ -113,10 +130,19 @@ const Diagnostic = () => {
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [createdRef, setCreatedRef] = useState<string | null>(null);
+  const wizardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (initialPack) setPack(initialPack);
   }, [initialPack]);
+
+  // Scroll to top of wizard whenever the step changes (fixes mobile scroll bug)
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      wizardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [step]);
+
 
   const toggleCare = (id: string) =>
     setCares((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
@@ -181,11 +207,13 @@ const Diagnostic = () => {
         shippingCarrier,
       });
 
-      // 3) Trigger confirmation email (non-blocking)
+      // 3) Trigger confirmation emails (non-blocking)
       sendDossierEmail(ref, "received");
+      notifyAdminNewDossier(ref);
 
       incrementSavedCards(1);
       setCreatedRef(ref);
+
     } catch (err: any) {
       toast({
         title: "Envoi impossible",
@@ -267,7 +295,7 @@ const Diagnostic = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-28 pb-16 px-4">
-        <div className="container mx-auto max-w-3xl">
+        <div ref={wizardRef} className="container mx-auto max-w-3xl scroll-mt-24">
           <header className="text-center mb-8">
             <h1 className="text-4xl font-bold mb-2 text-foreground">
               Formulaire de <span className="text-accent">diagnostic</span>
@@ -338,10 +366,11 @@ const Diagnostic = () => {
                 <h2 className="text-xl font-bold mb-2">Photos de votre carte</h2>
                 <p className="text-sm text-muted-foreground mb-4">Lumière naturelle de préférence, sans flash direct.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <PhotoSlot label="Recto" value={photos.recto} onChange={(f) => setPhotos({ ...photos, recto: f })} />
-                  <PhotoSlot label="Verso" value={photos.verso} onChange={(f) => setPhotos({ ...photos, verso: f })} />
-                  <PhotoSlot label="Coins" value={photos.corners} onChange={(f) => setPhotos({ ...photos, corners: f })} />
+                  <PhotoSlot slotId="recto" label="Recto" value={photos.recto} onChange={(f) => setPhotos({ ...photos, recto: f })} />
+                  <PhotoSlot slotId="verso" label="Verso" value={photos.verso} onChange={(f) => setPhotos({ ...photos, verso: f })} />
+                  <PhotoSlot slotId="corners" label="Coins" value={photos.corners} onChange={(f) => setPhotos({ ...photos, corners: f })} />
                 </div>
+
               </div>
             )}
 
