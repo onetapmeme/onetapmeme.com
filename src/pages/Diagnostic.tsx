@@ -295,7 +295,7 @@ const Diagnostic = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-28 pb-16 px-4">
-        <div className="container mx-auto max-w-3xl">
+        <div ref={wizardRef} className="container mx-auto max-w-3xl scroll-mt-24">
           <header className="text-center mb-8">
             <h1 className="text-4xl font-bold mb-2 text-foreground">
               Formulaire de <span className="text-accent">diagnostic</span>
