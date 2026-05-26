@@ -130,10 +130,19 @@ const Diagnostic = () => {
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [createdRef, setCreatedRef] = useState<string | null>(null);
+  const wizardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (initialPack) setPack(initialPack);
   }, [initialPack]);
+
+  // Scroll to top of wizard whenever the step changes (fixes mobile scroll bug)
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      wizardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [step]);
+
 
   const toggleCare = (id: string) =>
     setCares((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
