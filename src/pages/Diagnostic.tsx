@@ -207,11 +207,13 @@ const Diagnostic = () => {
         shippingCarrier,
       });
 
-      // 3) Trigger confirmation email (non-blocking)
+      // 3) Trigger confirmation emails (non-blocking)
       sendDossierEmail(ref, "received");
+      notifyAdminNewDossier(ref);
 
       incrementSavedCards(1);
       setCreatedRef(ref);
+
     } catch (err: any) {
       toast({
         title: "Envoi impossible",
