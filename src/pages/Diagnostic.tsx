@@ -55,39 +55,54 @@ const CARES = [
 const STEPS = ["Forfait", "Photos", "Carte", "Soins", "Contact"] as const;
 
 const PhotoSlot = ({
-  label, value, onChange,
-}: { label: string; value?: File; onChange: (f?: File) => void }) => (
-  <label className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-lg p-4 cursor-pointer hover:border-accent transition aspect-[3/4] bg-muted/40">
-    {value ? (
-      <>
-        <img src={URL.createObjectURL(value)} alt={label} className="w-full h-full object-cover rounded" />
-        <span className="text-xs mt-2 text-muted-foreground">{label} ✓</span>
-      </>
-    ) : (
-      <>
-        <FileImage className="w-8 h-8 text-muted-foreground mb-2" />
-        <span className="text-sm font-medium text-foreground">{label}</span>
-        <span className="text-xs text-muted-foreground mt-1">Cliquer pour ajouter</span>
-      </>
-    )}
-    <input
-      type="file"
-      accept="image/png,image/jpeg,image/jpg,image/webp"
-      className="hidden"
-      onChange={(e) => {
-        const f = e.target.files?.[0];
-        if (!f) return onChange(undefined);
-        const err = validateImage(f);
-        if (err) {
-          toast({ title: "Image refusée", description: err, variant: "destructive" });
-          e.target.value = "";
-          return;
-        }
-        onChange(f);
-      }}
-    />
-  </label>
-);
+  label, value, onChange, slotId,
+}: { label: string; value?: File; onChange: (f?: File) => void; slotId: string }) => {
+  const galleryId = `photo-gallery-${slotId}`;
+  const cameraId = `photo-camera-${slotId}`;
+  const handle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0];
+    if (!f) return onChange(undefined);
+    const err = validateImage(f);
+    if (err) {
+      toast({ title: "Image refusée", description: err, variant: "destructive" });
+      e.target.value = "";
+      return;
+    }
+    onChange(f);
+  };
+  return (
+    <div className="flex flex-col items-center border-2 border-dashed border-border rounded-lg p-3 aspect-[3/4] bg-muted/40 relative overflow-hidden">
+      {value ? (
+        <>
+          <img src={URL.createObjectURL(value)} alt={label} className="w-full flex-1 object-cover rounded" />
+          <span className="text-xs mt-2 text-muted-foreground">{label} ✓</span>
+        </>
+      ) : (
+        <>
+          <FileImage className="w-7 h-7 text-muted-foreground mb-1" />
+          <span className="text-sm font-medium text-foreground">{label}</span>
+          <div className="flex flex-col gap-1.5 mt-2 w-full">
+            <label
+              htmlFor={galleryId}
+              className="text-[11px] text-center px-2 py-1.5 rounded border border-border hover:border-accent cursor-pointer bg-background"
+            >
+              📁 Galerie
+            </label>
+            <label
+              htmlFor={cameraId}
+              className="text-[11px] text-center px-2 py-1.5 rounded border border-border hover:border-accent cursor-pointer bg-background"
+            >
+              📷 Appareil
+            </label>
+          </div>
+        </>
+      )}
+      <input id={galleryId} type="file" accept="image/*" className="hidden" onChange={handle} />
+      <input id={cameraId} type="file" accept="image/*" capture="environment" className="hidden" onChange={handle} />
+    </div>
+  );
+};
+
 
 const Diagnostic = () => {
   const [params] = useSearchParams();
