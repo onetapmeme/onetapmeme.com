@@ -355,10 +355,11 @@ const Diagnostic = () => {
                 <h2 className="text-xl font-bold mb-2">Photos de votre carte</h2>
                 <p className="text-sm text-muted-foreground mb-4">Lumière naturelle de préférence, sans flash direct.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <PhotoSlot label="Recto" value={photos.recto} onChange={(f) => setPhotos({ ...photos, recto: f })} />
-                  <PhotoSlot label="Verso" value={photos.verso} onChange={(f) => setPhotos({ ...photos, verso: f })} />
-                  <PhotoSlot label="Coins" value={photos.corners} onChange={(f) => setPhotos({ ...photos, corners: f })} />
+                  <PhotoSlot slotId="recto" label="Recto" value={photos.recto} onChange={(f) => setPhotos({ ...photos, recto: f })} />
+                  <PhotoSlot slotId="verso" label="Verso" value={photos.verso} onChange={(f) => setPhotos({ ...photos, verso: f })} />
+                  <PhotoSlot slotId="corners" label="Coins" value={photos.corners} onChange={(f) => setPhotos({ ...photos, corners: f })} />
                 </div>
+
               </div>
             )}
 
