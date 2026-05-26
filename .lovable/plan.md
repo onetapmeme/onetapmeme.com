@@ -1,61 +1,72 @@
-# Full 8-Language Localization Pass (FR/EN/DE/ES/RU/ZH/PT/JA)
+## Architecture Audit — Onboarding, Diagnostic & Email Flows
 
-## 1. Engine — add PT + JA
+### 1. Functional vs Mockup Status
 
-- **`src/i18n/locales/pt.json`** + **`src/i18n/locales/ja.json`** (new): mirror `en.json` structure with the provided translations injected for all keys touched below; remaining keys fall back to EN via i18next.
-- **`src/i18n/config.ts`**: import `pt` + `ja`, register in `resources`, extend `supportedLangs` to `['fr','en','de','es','ru','zh','pt','ja']`.
-- **`src/utils/ipGeolocation.ts`**: add detection — PT/BR/AO/MZ → `pt`; JP → `ja`. Existing FR/DE logic preserved.
-- **`src/components/LanguageSwitcher.tsx`**: add `{pt, 🇵🇹, Português}` + `{ja, 🇯🇵, 日本語}` to SECONDARY list (or promote per spec). Keep PRIMARY = FR/EN/DE.
-- **`src/components/Navbar.tsx`** mobile pill grid: keep FR/EN/DE pills; the `<LanguageSwitcher inline />` below already exposes the other 5.
+| Component | Status | Tech / Missing Bridges |
+| :--- | :--- | :--- |
+| Database Record Creation | 100% Functional | Supabase RPC `create_dossier` → table `dossiers`. Generates `CS-YYYY-XXXX` ref, RLS + rate-limit OK. |
+| User Case Tracking UI | 100% Functional | `MyDossiers.tsx` + `Tracking.tsx` read `dossiers` via `listMyDossiers` / `get_dossier_by_ref`. Timeline reflects DB status. |
+| Customer Email Dispatches | Partially Wired (broken in prod) | Edge fn `send-dossier-email` exists, called from `Diagnostic.tsx:185`, `Payment.tsx:57`, `AdminDossiers.tsx`. Uses **Resend `onboarding@resend.dev` in sandbox** → 400 unless recipient = `contactonetapmeme@gmail.com`. No verified domain. |
+| Admin Notification Emails | Visual Mockup Only | No code path emails the lab inbox on insert. `send-dossier-email` only sends to `dossier.email` (the customer). No DB webhook, no second `to:` on creation. |
+| Mobile Gallery Image Upload | Partially Wired | `Diagnostic.tsx:73` has `accept="image/..."` but no `capture` attribute and the upload tile may swallow the click. Native picker works on most devices but lacks an explicit "Photo Library" path on iOS/Android. |
+| Mobile Wizard Scroll | Bug | `next()`/`prev()` mutate `step` without scrolling — the new step renders below the previous (taller) one, so the viewport stays at the bottom of the form. No `scrollTo` on step change. |
 
-## 2. Footer — fully dynamic (`src/components/Footer.tsx`)
+---
 
-Replace every hardcoded FR string with `t()` keys. New namespace `footer.*`:
+### 2. Fix Plan
 
-- `footer.cols.services` / `cols.brand` / `cols.legal` — column headers
-- `footer.tagline` — brand italic line
-- `footer.subTagline` — line below
-- `footer.services.pricing|gallery|diagnostic|booking|tracking`
-- `footer.company.about|process|faq|contact`
-- `footer.legal.notice|terms|privacy|disclaimer`
-- `footer.copyright` — with `{{year}}` interpolation
+#### A. Email system — migrate to Lovable Emails (recommended)
 
-All 8 languages populated using the exact strings from the brief.
+Resend is blocked by sandbox. Rather than ask the user to buy/verify a domain on Resend, switch to the built-in Lovable Emails infrastructure (uses a delegated `notify.cardsurgery.com` subdomain, no external account, automatic queue + retries).
 
-## 3. Navbar / Account / CTA
+Steps the agent will perform once approved:
+1. Check current email-domain status; if none configured, open the email-domain setup dialog so the user delegates DNS once.
+2. Run `setup_email_infra` then `scaffold_transactional_email` (creates queue tables, `send-transactional-email` edge fn, unsubscribe + suppression).
+3. Create 6 React-Email templates under `supabase/functions/_shared/transactional-email-templates/`:
+   - `dossier-received` (customer)
+   - `dossier-approved` (customer + payment link)
+   - `dossier-rejected` (customer)
+   - `dossier-paid` (customer + shipping instructions)
+   - `dossier-shipped` (customer + return tracking)
+   - `admin-new-dossier` (lab inbox — new submission alert with photos URLs + ref)
+4. Register them in `registry.ts`; deploy.
+5. Replace `sendDossierEmail` in `src/lib/dossiers.ts` so it invokes `send-transactional-email` with the right `templateName` + `templateData` + idempotent key `dossier-<kind>-<ref>`.
+6. In `Diagnostic.tsx` after `createDossierRemote`, fire **two** invocations: customer `dossier-received` AND `admin-new-dossier` (recipient = `ADMIN_NOTIFICATION_EMAIL` constant, default `contact@cardsurgery.com`).
+7. Keep the old `send-dossier-email` edge fn in repo for one cycle but unused (safe rollback). Remove after confirmation.
 
-- **`src/components/Navbar.tsx`**: replace hardcoded `"Connexion"`, `"Mes dossiers"`, `"Admin"`, `"Déconnexion"`, `"Language"` with `t('nav.account.*')` keys. Add 8-lang values.
-- **Final CTA block** (locate in `src/components/cards/CardHome.tsx` — likely `ctaFinalTitle` / `ctaFinalSub` in `copy.ts`): extend `copy.ts` `Lang` type to include `pt|ja`, add translations for the final CTA heading + subtext, plus all other keys (fallback = EN string where not specified by user).
+Localized subjects/body in FR/EN/DE (other 5 languages fall back to EN) using the existing `tr()` helper pattern.
 
-## 4. Mid-page content (`src/components/cards/CardHome.tsx` + `copy.ts`)
+#### B. Mobile scroll-to-top in wizard
 
-Add/replace keys with full 8-lang coverage (EN fallback for unspecified langs):
+Edit `src/pages/Diagnostic.tsx`:
+- Add `const formRef = useRef<HTMLDivElement>(null)` on the wizard card.
+- In a `useEffect([step])`, call `formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })` with a small `requestAnimationFrame` to wait for the new step's DOM.
 
-- `productsRefTitle` — "PRODUITS RÉFÉRENCÉS" → 8 langs
-- `certTrainingTitle` — "CERTIFICATIONS & FORMATIONS"
-- `productsRefSub` — "Gamme professionnelle…"
-- `certTrainingSub` — "Maîtrise validée par Rocket Collect"
-- `testimonialsTitle` — "Ils nous ont confié leurs cartes"
-- `testimonialsSub` — "Avis vérifiés…"
-- `instagramTitle` — "Le Lab sur Instagram"
-- `beforeAfterLabel` — "Avant / Après"
+#### C. Native photo library on mobile
 
-## 5. Before/After Slider Badges (`src/components/cards/BeforeAfterSlider.tsx`)
+In the photo-upload tile (`Diagnostic.tsx` step 3, around line 73):
+- Keep `accept="image/*"` (broaden from the current explicit MIME list — iOS Safari is picky).
+- Do NOT set `capture` globally (that forces the camera on Android). Instead provide two buttons:
+  - "Prendre une photo" → input with `capture="environment"`
+  - "Choisir depuis la galerie" → input with `accept="image/*"` only
+- Ensure the hidden `<input>` is not wrapped in a `<button>` (prevents double-click cancel on iOS) — use a `<label htmlFor>` pattern.
 
-- Replace hardcoded "AVANT" / "APRÈS" with `t('slider.before')` / `t('slider.after')`.
-- 8 languages per spec (BEFORE/AFTER, VORHER/NACHHER, ANTES/DESPUÉS, ДО/ПОСЛЕ, 修复前/修复后, ANTES/DEPOIS, 修復前/修復後).
-- Preserve Lugia #113 mapping: File 1 = AFTER (right), File 2 = AVANT (left). No logic change, only label source.
+---
 
-## 6. Visual lockout
+### 3. Files Touched
 
-- Verify `src/index.css` still has `html, body, #root { overflow-x: clip; max-width: 100vw }`.
-- Test long DE/RU strings in footer columns — add `break-words` / `hyphens-auto` on column headers if needed.
+- NEW: `supabase/functions/_shared/transactional-email-templates/{dossier-received,dossier-approved,dossier-rejected,dossier-paid,dossier-shipped,admin-new-dossier}.tsx` + updated `registry.ts`
+- EDIT: `src/lib/dossiers.ts` — rewrite `sendDossierEmail` to call `send-transactional-email`; add `notifyAdminNewDossier(ref)` helper
+- EDIT: `src/pages/Diagnostic.tsx` — admin notify on create, scroll-to-top on step change, dual photo input (camera vs gallery)
+- DEPLOY: `send-transactional-email`, `handle-email-unsubscribe`, `handle-email-suppression`, `process-email-queue`
+- Old `supabase/functions/send-dossier-email/index.ts` — left in place, unused
 
-## Files touched
+---
 
-NEW: `src/i18n/locales/pt.json`, `src/i18n/locales/ja.json`
-EDIT: `src/i18n/config.ts`, `src/utils/ipGeolocation.ts`, `src/components/LanguageSwitcher.tsx`, `src/components/Footer.tsx`, `src/components/Navbar.tsx`, `src/components/cards/copy.ts`, `src/components/cards/CardHome.tsx`, `src/components/cards/BeforeAfterSlider.tsx`, `src/i18n/locales/{fr,en,de,es,ru,zh}.json` (add `footer.*` + `nav.account.*` namespaces).
+### 4. Out of Scope (this pass)
 
-## Out of scope (will use EN fallback)
+- Stripe webhook hardening
+- Admin dashboard UI refactor
+- Migrating already-localized non-email surfaces
 
-Strings in admin dashboards, edge function emails, and ancillary pages not listed in the brief. i18next fallback chain (EN → FR) keeps them readable until a future pass.
+After approval I'll run the email-domain status check first; if no domain exists I'll surface the setup dialog before proceeding to scaffolding and code edits.
