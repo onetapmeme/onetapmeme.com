@@ -83,13 +83,18 @@ All colors MUST be HSL.
   /* Ultra-smooth scroll with momentum */
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+    scroll-padding-top: var(--nav-h, 5.5rem);
   }
-  
+
+  :root {
+    --nav-h: 5rem;
+  }
+  @media (min-width: 640px) {
+    :root { --nav-h: 6rem; }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   }
 
   html, body {
@@ -136,7 +141,7 @@ All colors MUST be HSL.
   }
 
   /* Anchor offset for fixed navbar */
-  [id] { scroll-margin-top: 6rem; }
+  [id] { scroll-margin-top: var(--nav-h, 5.5rem); }
 
   /* Subtle film grain overlay (Apple-like texture) */
   .grain-overlay {
@@ -165,15 +170,13 @@ All colors MUST be HSL.
     @apply px-4 sm:px-6 lg:px-8;
   }
   
-  /* Mobile spacing optimization */
+  /* Uniform vertical rhythm across sections */
+  section {
+    @apply py-12 md:py-16;
+  }
+
   @media (max-width: 768px) {
-    section {
-      @apply py-10;
-    }
-    
-    .container {
-      @apply px-3;
-    }
+    .container { @apply px-4; }
   }
 
   /* Cinematic parallax */

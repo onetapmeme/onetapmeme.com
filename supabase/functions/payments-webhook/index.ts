@@ -13,6 +13,44 @@ function getSupabase() {
   return _sb;
 }
 
+async function sendPaidEmail(dossierRef: string, sessionId: string) {
+  const sb = getSupabase();
+  // Read dossier row to populate template props (mirrors src/lib/dossiers.ts mapping).
+  const { data: row, error } = await sb
+    .from("dossiers")
+    .select("ref, name, email, pack, pack_label, pack_price, card_name, admin_notes, return_carrier, return_tracking_number")
+    .eq("ref", dossierRef)
+    .maybeSingle();
+  if (error || !row?.email) {
+    console.warn("sendPaidEmail: dossier lookup failed", dossierRef, error?.message);
+    return;
+  }
+  const templateData = {
+    name: row.name,
+    ref: row.ref,
+    packLabel: row.pack_label,
+    packPrice: row.pack_price,
+    cardName: row.card_name ?? "",
+    adminNotes: row.admin_notes ?? "",
+    carrier: row.return_carrier ?? "",
+    tracking: row.return_tracking_number ?? "",
+  };
+  try {
+    const { error: invokeErr } = await sb.functions.invoke("send-transactional-email", {
+      body: {
+        templateName: "dossier-paid",
+        recipientEmail: row.email,
+        // Idempotent on (ref, sessionId) so duplicate webhook deliveries don't double-send.
+        idempotencyKey: `dossier-paid-${row.ref}-${sessionId}`,
+        templateData,
+      },
+    });
+    if (invokeErr) console.warn("dossier-paid email invoke error:", invokeErr.message);
+  } catch (e: any) {
+    console.warn("dossier-paid email invoke threw:", e?.message);
+  }
+}
+
 async function handleCheckoutCompleted(session: any) {
   const dossierRef = session?.metadata?.dossierRef;
   const sessionId = session?.id;
@@ -35,6 +73,9 @@ async function handleCheckoutCompleted(session: any) {
     throw error;
   }
   console.log("Dossier confirmed paid:", dossierRef, "session:", sessionId, "row:", (data as any)?.ref);
+
+  // Fire-and-forget customer "Paiement reçu" email. Failures are logged but never block the 200.
+  await sendPaidEmail(dossierRef, sessionId);
 }
 
 Deno.serve(async (req) => {
