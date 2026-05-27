@@ -36,6 +36,7 @@ import AdminPricing from "./pages/AdminPricing";
 import AdminGrading from "./pages/AdminGrading";
 import MyDossiers from "./pages/MyDossiers";
 import RequireAuth from "./components/RequireAuth";
+import Unsubscribe from "./pages/Unsubscribe";
 
 const queryClient = new QueryClient();
 
