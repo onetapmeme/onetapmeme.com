@@ -4,9 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
 import { CreditCard, Truck, MapPin, ShieldCheck, Package, ArrowLeft, Check, Info } from "lucide-react";
-import { getDossierRemote, confirmPayment, sendDossierEmail, type Dossier } from "@/lib/dossiers";
+import { getDossierRemote, type Dossier } from "@/lib/dossiers";
 import { StripeDossierCheckout } from "@/components/StripeDossierCheckout";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 
@@ -29,7 +28,6 @@ const Payment = () => {
   const [params] = useSearchParams();
   const refParam = params.get("ref") || "";
   const [dossier, setDossier] = useState<Dossier | null>(null);
-  const [paying, setPaying] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -39,29 +37,6 @@ const Payment = () => {
       }
     })();
   }, [refParam]);
-
-  const fakePay = async () => {
-    if (!dossier) return;
-    if (dossier.status !== "approved") {
-      toast({
-        title: "Paiement indisponible",
-        description: "Le diagnostic doit être validé avant tout paiement.",
-        variant: "destructive",
-      });
-      return;
-    }
-    setPaying(true);
-    try {
-      const u = await confirmPayment(dossier.ref);
-      setDossier(u);
-      sendDossierEmail(u.ref, "paid");
-      toast({ title: "Paiement confirmé ✓", description: "Vous pouvez maintenant expédier votre carte." });
-    } catch (e: any) {
-      toast({ title: "Échec du paiement", description: e?.message || "Réessayez.", variant: "destructive" });
-    } finally {
-      setPaying(false);
-    }
-  };
 
   if (!refParam || !dossier) {
     return (
