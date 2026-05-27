@@ -78,6 +78,7 @@ const App = () => (
           <Route path="/payment" element={<Payment />} />
           <Route path="/checkout/return" element={<CheckoutReturn />} />
           <Route path="/receipt" element={<Receipt />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>
