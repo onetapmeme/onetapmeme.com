@@ -4,12 +4,21 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, ShieldCheck, User as UserIcon, LogOut, FolderOpen } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import logo from "@/assets/cardsurgery-logo.png";
 import { copy, pickLang, tr } from "@/components/cards/copy";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+
+const SIDEBAR_LOCALES = ["fr", "en", "de", "es", "ru", "zh", "pt", "ja"] as const;
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -52,13 +61,16 @@ const Navbar = () => {
       }}
       className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full ${
         isScrolled
-          ? "h-14 sm:h-16 bg-background/65 backdrop-blur-2xl backdrop-saturate-150 border border-border/60 w-[94%] max-w-5xl shadow-[0_8px_30px_-12px_hsla(20,35%,16%,0.18)]"
-          : "h-16 sm:h-20 bg-background/80 backdrop-blur-xl backdrop-saturate-150 border border-border/70 w-[96%] max-w-6xl shadow-[0_4px_20px_-12px_hsla(20,35%,16%,0.12)]"
+          ? "h-14 sm:h-16 bg-background/65 backdrop-blur-2xl backdrop-saturate-150 border border-border/60 w-[94%] max-w-6xl shadow-[0_8px_30px_-12px_hsla(20,35%,16%,0.18)]"
+          : "h-16 sm:h-20 bg-background/80 backdrop-blur-xl backdrop-saturate-150 border border-border/70 w-[96%] max-w-7xl shadow-[0_4px_20px_-12px_hsla(20,35%,16%,0.12)]"
       }`}
     >
       <div className="mx-auto h-full px-3 sm:px-6">
-        <nav className="flex items-center justify-between h-full gap-2">
-          <Link to="/home" className="flex items-center gap-2 group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full">
+        <nav className="flex items-center justify-between h-full gap-2 lg:grid lg:grid-cols-[auto_1fr_auto] lg:gap-6">
+          <Link
+            to="/home"
+            className="flex items-center gap-2 group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full"
+          >
             <img
               src={logo}
               alt="CardSurgery"
@@ -72,7 +84,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <div className="hidden xl:flex items-center gap-1 flex-1 justify-center">
+          <div className="hidden lg:flex items-center justify-center gap-1">
             {NAV_ITEMS.map((item) => {
               const isActive = location.pathname === item.to;
               return (
@@ -95,12 +107,17 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center justify-end gap-2 shrink-0">
             <LanguageSwitcher inline />
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button size="sm" variant="outline" className="border-accent/40 rounded-full px-2.5 gap-2 hidden sm:inline-flex" aria-label="Mon compte">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="border-accent/40 rounded-full px-2.5 gap-2 hidden sm:inline-flex"
+                    aria-label="Mon compte"
+                  >
                     <span className="w-6 h-6 rounded-full bg-accent text-accent-foreground text-xs font-semibold flex items-center justify-center">
                       {initial}
                     </span>
@@ -135,11 +152,12 @@ const Navbar = () => {
                 <span className="hidden md:inline">{t("navConnexion")}</span>
               </Button>
             )}
+
             <Button
               size="sm"
               tabIndex={isScrolled ? -1 : 0}
               aria-hidden={isScrolled}
-              className={`hidden 2xl:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap transition-all duration-500 ease-in-out origin-right ${
+              className={`hidden lg:inline-flex glossy-btn text-accent-foreground border-0 whitespace-nowrap rounded-full transition-all duration-500 ease-in-out origin-right ${
                 isScrolled
                   ? "opacity-0 scale-90 -translate-x-2 pointer-events-none w-0 px-0 ml-0 overflow-hidden"
                   : "opacity-100 scale-100 translate-x-0"
@@ -151,7 +169,7 @@ const Navbar = () => {
 
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Menu">
+                <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Menu">
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
@@ -167,59 +185,74 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ))}
-                  <div className="pt-3 mt-2 border-t border-border">
+
+                  <div className="pt-4 mt-2 border-t border-border">
                     <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 px-1">
                       {t("navLanguageLabel")}
                     </p>
-                    <div className="grid grid-cols-3 gap-2">
-                      {[
-                        { code: "fr", flag: "🇫🇷", label: "FR" },
-                        { code: "en", flag: "🇬🇧", label: "EN" },
-                        { code: "de", flag: "🇩🇪", label: "DE" },
-                      ].map((l) => {
-                        const active = i18n.language === l.code;
+                    <div className="grid grid-cols-4 gap-1.5">
+                      {SIDEBAR_LOCALES.map((code) => {
+                        const active = i18n.language === code;
                         return (
                           <button
-                            key={l.code}
-                            onClick={() => i18n.changeLanguage(l.code)}
-                            className={`h-11 rounded-full border flex items-center justify-center gap-1.5 text-sm font-semibold tracking-wider transition-all ${
-                              active
-                                ? "border-accent/60 bg-accent/10 text-foreground ring-1 ring-accent/40"
-                                : "border-border/70 text-foreground/80 hover:border-accent/40 hover:text-foreground"
-                            }`}
+                            key={code}
+                            onClick={() => {
+                              i18n.changeLanguage(code);
+                              setIsMobileMenuOpen(false);
+                            }}
                             aria-pressed={active}
+                            className={`h-10 rounded-full text-xs font-semibold tracking-[0.12em] uppercase transition-all duration-300 ease-in-out ${
+                              active
+                                ? "bg-accent text-accent-foreground shadow-[0_4px_14px_-4px_hsla(22,55%,40%,0.45)]"
+                                : "border border-border/70 text-foreground/80 hover:border-accent/40 hover:text-foreground"
+                            }`}
                           >
-                            <span className="text-base leading-none">{l.flag}</span>
-                            <span>{l.label}</span>
+                            {code}
                           </button>
                         );
                       })}
                     </div>
-                    <div className="mt-2">
-                      <LanguageSwitcher inline />
-                    </div>
                   </div>
+
                   {user ? (
                     <>
-                      <Link to="/my-dossiers" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
+                      <Link
+                        to="/my-dossiers"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2"
+                      >
                         <FolderOpen className="w-4 h-4" /> {t("navMyDossiers")}
                       </Link>
                       {isAdmin && (
-                        <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-accent py-2 flex items-center gap-2">
+                        <Link
+                          to="/admin"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-base text-accent py-2 flex items-center gap-2"
+                        >
                           <ShieldCheck className="w-4 h-4" /> {t("navAdmin")}
                         </Link>
                       )}
-                      <button onClick={() => { setIsMobileMenuOpen(false); handleSignOut(); }} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2 text-left">
+                      <button
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          handleSignOut();
+                        }}
+                        className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2 text-left"
+                      >
                         <LogOut className="w-4 h-4" /> {t("navLogout")}
                       </button>
                     </>
                   ) : (
-                    <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)} className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2">
+                    <Link
+                      to="/auth"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-base text-foreground hover:text-accent py-2 flex items-center gap-2"
+                    >
                       <UserIcon className="w-4 h-4" /> {t("navConnexion")}
                     </Link>
                   )}
                   <Button
-                    className="mt-4 glossy-btn text-accent-foreground border-0"
+                    className="mt-4 glossy-btn text-accent-foreground border-0 rounded-full"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       navigate("/pricing");
