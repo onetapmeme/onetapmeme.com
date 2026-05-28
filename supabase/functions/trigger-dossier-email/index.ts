@@ -118,7 +118,7 @@ Deno.serve(async (req) => {
     const { data: row, error } = await sb
       .from("dossiers")
       .select(
-        "ref, name, email, pack_label, pack_price, card_name, tcg, estimated_value, cares, defects, photos, admin_notes, return_carrier, return_tracking_number",
+        "ref, name, email, pack_label, pack_price, card_name, tcg, estimated_value, cares, defects, photos, admin_notes, return_carrier, return_tracking_number, created_at",
       )
       .eq("ref", String(ref).toUpperCase().trim())
       .maybeSingle();
@@ -128,6 +128,31 @@ Deno.serve(async (req) => {
         status: 404,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
+    }
+
+    // admin-new: lock down without requiring admin JWT (called from public
+    // anon dossier submission). Only allow within 5 min of dossier creation
+    // and only one notification per ref.
+    if (kind === "admin-new") {
+      const createdAtMs = row.created_at ? Date.parse(row.created_at) : 0;
+      if (!createdAtMs || Date.now() - createdAtMs > ADMIN_NEW_FRESHNESS_MS) {
+        return new Response(JSON.stringify({ error: "Forbidden" }), {
+          status: 403,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      // GC expired dedupe entries.
+      const now = Date.now();
+      for (const [k, ts] of adminNewSent) {
+        if (now - ts > ADMIN_NEW_DEDUPE_TTL_MS) adminNewSent.delete(k);
+      }
+      if (adminNewSent.has(row.ref)) {
+        return new Response(JSON.stringify({ ok: true, deduped: true }), {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      adminNewSent.set(row.ref, now);
     }
 
     let templateName: string;
