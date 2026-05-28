@@ -1,120 +1,100 @@
-## Part A — Payment & Case-Handling Architecture Audit
+## Scope clarifications (please confirm)
 
-### Current blueprint (what is actually deployed)
+A few items in the brief don't map cleanly to the current code. I want to flag them before touching files:
 
-```
-Diagnostic (anonymous OK)
-  └─► RPC create_dossier  →  dossiers row, status = pending_review
-                              ref = CS-YYYY-XXXX
-                              email "dossier-received" + admin alert sent
+1. **`/` is already a splash (`src/pages/Enter.tsx`)** — a manual click-to-enter screen that plays `/sounds/enter.wav` then navigates to `/home`. Chantier 0 asks for an **auto-dismissing** splash with a 2200 ms timer + fade/slide-out. I will refactor `Enter.tsx` into the described auto-dismiss overlay (no double splash). The "bind sound to first interaction" rule will be respected: we'll attempt `audio.play()` once, and if the browser blocks it, attach a one-shot `pointerdown` listener — no console errors either way.
 
-Admin validates dossier
-  └─► RPC admin_validate_dossier → status = approved
-                                   (pack_price, insurance_cents stored)
+2. **`src/components/Hero.tsx` is the legacy 1TAP token hero** with a saturated blue CTA. It is **not rendered on `/home`** — `/home` uses `src/components/cards/CardHome.tsx` (already on the copper/bronze `glossy-btn`). So Chantier 1 on the active home is essentially already done. I'll:
+   - Audit `CardHome.tsx` + `Navbar.tsx` mobile CTAs and confirm every primary action uses `glossy-btn` (copper/bronze gradient).
+   - Leave `Hero.tsx` alone (it's dead on the production routes) unless you want it cleaned up too — say the word and I'll do it.
 
-User account / Tracking screen ("Diagnostic validé – paiement requis")
-  └─► /payment?ref=CS-…  →  src/pages/Payment.tsx
-        └─► <StripeDossierCheckout>  (embedded iframe)
-              └─► edge fn create-dossier-checkout
-                    • Resolves Stripe price via lookup_keys
-                      (pack_clean | pack_pro | pack_full +
-                       insurance_tier_1…5)
-                    • Builds line_items server-side from dossier row
-                    • stripe.checkout.sessions.create
-                        ui_mode:"embedded_page"
-                        metadata:{ dossierRef, insuranceTierIndex, qty }
-                    • Returns clientSecret
+3. **Sidebar locale grid is already 4×2 with all 8 locales** (`fr en de es ru zh pt ja`). Chantier 5 asks for a horizontal text array with dividers — I'll convert the existing grid to that single-row `FR | EN | DE | …` strip.
 
-User pays inside iframe → Stripe → return_url
-  └─► /checkout/return?ref=…&session_id=…
-        • Polls dossier every 2 s up to 30 s
-        • Stripe sends webhook in parallel
+4. **⚠️ Regression to fix from the previous security pass** — the recent hardening made `trigger-dossier-email` require an **admin JWT** for the `admin-new` kind. But `notifyAdminNewDossier()` is called from the **public, anonymous** diagnostic submission flow, so admin notifications now 401-fail. Fix: keep `admin-new` callable without a JWT, but lock it down by requiring the dossier to be < 5 minutes old (single-shot post-creation notification) and per-ref dedupe — no admin spoofing possible. Customer-status kinds (`approved/rejected/paid/shipped`) stay admin-only.
 
-Stripe webhook (verified, HMAC SHA-256)
-  └─► edge fn payments-webhook?env=sandbox|live
-        • checkout.session.completed / async_payment_succeeded
-        • Reads metadata.dossierRef
-        • RPC confirm_dossier_payment(ref, session_id)
-             status → paid, paid_at = now, stripe_session_id stored
-             idempotent on session_id
-```
-
-### Operational status matrix
-
-| Component | Status | Stack |
-| --- | --- | --- |
-| Secure payment gateway connection | 100 % production ready (sandbox today, live keys auto-on at publish) | Stripe via Lovable connector gateway, `_shared/stripe.ts`, embedded checkout, `STRIPE_SANDBOX_API_KEY` / `STRIPE_LIVE_API_KEY` secrets present |
-| Dynamic order total passing | 100 % — **server-authoritative** | Edge fn re-reads dossier-derived lookup_keys (`pack_*`, `insurance_tier_*`); amounts come from Stripe Prices, never from the client |
-| Real-time payment validation | 100 % (sandbox) | `checkout.session.completed` + `payment_status === "paid"` gate |
-| Secure webhook for state updates | 100 % | `payments-webhook` deployed, `verify_jwt=false`, HMAC-verified against `PAYMENTS_SANDBOX_WEBHOOK_SECRET` / `PAYMENTS_LIVE_WEBHOOK_SECRET`, env routed via `?env=` |
-| Post-payment DB record update | 100 % | SECURITY DEFINER `confirm_dossier_payment(ref, session_id)` flips `approved/received → paid`, idempotent |
-| Post-payment email notification | **Partially wired — bug** | Customer "Paiement reçu" template exists (`dossier-paid.tsx`) but the **webhook never sends it**. Only the dev-only `fakePay()` button triggers `sendDossierEmail(ref,"paid")`. Real Stripe payments leave the customer without a paid-confirmation email. |
-| Stripe products in dashboard | **Unknown — must verify** | Code expects 8 lookup_keys: `pack_clean`, `pack_pro`, `pack_full`, `insurance_tier_1..5`. If any are missing the edge fn throws `"Pack price not found in Stripe"`. |
-
-### Required to go live
-
-1. Verify all 8 Stripe products/prices exist with the exact `lookup_key` values above. If not, create them via `payments--batch_create_product` (one-time, sandbox; auto-mirrored to live at publish).
-2. Add the missing **paid-email dispatch inside the webhook** (single insert into the queue). No frontend change needed.
-3. Add `dossier-received` admin/customer fallback inside the webhook for `async_payment_succeeded` paths (already covered, just confirm logs).
-4. `RESEND_API_KEY` is set ✓; `STRIPE_*_WEBHOOK_SECRET` set ✓; webhook URL is auto-registered by Lovable Payments — nothing to configure manually.
-5. At publish, Lovable swaps to `pk_live_*` + `STRIPE_LIVE_API_KEY` automatically.
-
-### Build-mode fixes (Part A)
-
-1. **`supabase/functions/payments-webhook/index.ts`** — after the successful `confirm_dossier_payment` RPC, enqueue the customer `dossier-paid` email (idempotency key `dossier-paid-<ref>-<sessionId>`) by inserting into `pgmq` via the `enqueue_email` RPC. No retries needed — the queue + suppression handles delivery.
-2. **`src/pages/Payment.tsx`** — keep the embedded checkout, remove the dead `fakePay()` button path (it was only used as a sandbox shortcut and now competes with the real flow).
-3. **One-time script (build mode)** — call `payments--batch_create_product` to ensure `pack_clean / pack_pro / pack_full / insurance_tier_1..5` exist with the correct EUR amounts (pull amounts from `service_pricing` + `grading_pricing` tables already in DB). Tax code `txcd_20030000` (physical services) for packs, `txcd_99999999` for insurance lines.
+If any of the above is wrong, tell me before I implement.
 
 ---
 
-## Part B — UI/UX optimization pass (5 chantiers)
+## Implementation plan
 
-### Chantier 1 — Footer: mobile compact accordion + 2-col fallback
-- File: `src/components/Footer.tsx`.
-- Below `md`, render the three link blocks (Services / CardSurgery / Légal & Contact) as a Radix `Accordion` (single-collapse, `+` icon rotates to `×`).
-- Above `md`, keep the current 4-column grid.
-- Move the brand/tagline above the accordion on mobile, contact + socials in a permanent (non-accordion) block.
-- Copyright + non-affiliation line: `mt-8 pt-6 border-t text-[11px] opacity-60`.
+### Chantier 0 — Auto-dismissing splash on `/`
+- **File:** `src/pages/Enter.tsx` (refactor existing splash, do NOT add a second overlay).
+- Replace click-to-enter with a programmatic overlay: `fixed inset-0 z-[9999] bg-[#FDFBF7]`.
+- Logo: opacity 0→1, scale 0.95→1, 1400 ms `cubic-bezier(0.16,1,0.3,1)`.
+- At 2200 ms: attempt to play `/sounds/enter.wav` (volume 0.5). If `play()` rejects (autoplay policy), attach a one-shot `pointerdown`/`keydown` listener and silently drop the error so the console stays clean.
+- Fade-out: opacity→0 + `translate-y-[-20px]` over 800 ms, then `navigate('/home', { replace: true })`.
+- Lock `body.overflow = 'hidden'` during the animation, restore on unmount.
+- Respect `prefers-reduced-motion`: skip animation, navigate after 400 ms.
 
-### Chantier 2 — Spacing harmonization + safe-scroll
-- File: `src/index.css`.
-  - Replace the `section { @apply py-10 }` mobile override with a unified token: `section { @apply py-12 md:py-16; }`.
-  - Add `:root { --nav-h: 5rem; }` and bump to `5.5rem` when scrolled.
-  - Update `[id] { scroll-margin-top: var(--nav-h); }` and `html { scroll-padding-top: var(--nav-h); }`.
-- Files with hero/title wrappers (`Hero.tsx`, page `<main>` wrappers in `Pricing.tsx`, `Diagnostic.tsx`, `Booking.tsx`, `Tracking.tsx`, `FAQ.tsx`, `Gallery.tsx`): replace ad-hoc `pt-28` / `pt-32` with `pt-[calc(var(--nav-h)+1.5rem)]`.
+### Chantier 1 — Kill saturated blue on active home CTAs
+- Audit `src/components/cards/CardHome.tsx` for any non-`glossy-btn` primaries → swap to `glossy-btn`.
+- Sweep `Navbar.tsx` mobile menu CTA: already `glossy-btn`, verify text contrast.
+- Skip `src/components/Hero.tsx` (legacy 1TAP, not mounted on `/home`).
 
-### Chantier 3 — Slider badges + Instagram tiles
-- `src/components/cards/BeforeAfterSlider.tsx`:
-  - Both badges → `glass-effect bg-black/35 backdrop-blur-md text-white border border-white/15 shadow-[0_2px_10px_rgba(0,0,0,0.35)]`, keep tracking and size.
-  - Keep accent ring on the AFTER badge via a thin `ring-1 ring-accent/40`.
-- `src/components/MediaSection.tsx` (Instagram grid):
-  - Each tile: `rounded-2xl ring-1 ring-border/60 shadow-[0_6px_18px_-10px_hsla(20,35%,16%,0.25)] overflow-hidden transition-transform duration-300 hover:scale-[1.02]`.
-  - Empty/skeleton tiles get a faint diagonal gradient + 1 px inset border instead of flat gray.
+### Chantier 2 — Floating capsule navbar + desktop scroll recovery
+- **File:** `src/components/Navbar.tsx`
+  - Tighten the desktop (`lg:`) layout to the exact 3-column floating capsule: `fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 bg-background/80 backdrop-blur-md border border-accent/10 shadow-lg rounded-full px-8 py-3` (mapped to design tokens — no raw `#FDFBF7` / `#A3704C`).
+  - Symmetric grid: `lg:grid-cols-[1fr_auto_1fr]` so logo (left), nav links (centered), CTA + lang + avatar (right) are perfectly balanced.
+  - Keep the existing scroll-shrink behavior on the same capsule.
+- **File:** `src/index.css`
+  - Audit `html, body, #root` rules. `overflow-x: hidden` is set globally (fine for horizontal lockout). Add a `@media (min-width:1024px) { html, body { overflow-y: auto; touch-action: auto; } }` guard to make sure no library or theme accidentally clamps desktop vertical scroll, and verify nothing sets `overflow: hidden` on `<html>`/`<body>` at desktop widths.
 
-### Chantier 4 — Mobile sidebar language router cleanup
-- File: `src/components/Navbar.tsx` (Sheet content).
-- Delete the 3-flag mini-grid AND the separate `<LanguageSwitcher inline />` from the sidebar.
-- Replace with a single 4×2 grid of text-only locale buttons: `FR · EN · DE · ES · RU · ZH · PT · JA`.
-- Active state: filled accent, others outlined. On click → `i18n.changeLanguage(code)` and close the sheet. (i18next-browser-languagedetector already persists to localStorage.)
-- The desktop `<LanguageSwitcher inline />` in the header stays untouched.
+### Chantier 3 — Mobile footer compactness
+- **File:** `src/components/Footer.tsx`
+  - Mobile already uses Radix accordions (good). Polish:
+    - Convert the always-visible mobile contact/socials block into a clean separated row with `border-t border-border/40 mt-4 pt-4`.
+    - Bottom legal/copyright: `mt-8 pt-6 border-t border-border text-center text-xs opacity-60 font-light tracking-wide` (already close — finalize spacing).
+  - Optionally add a compact 2-col grid fallback for very small viewports where users prefer no accordions — keep accordions as the default per existing pattern unless you want the grid swap.
 
-### Chantier 5 — Desktop floating navbar + mouse-wheel fix
-- File: `src/index.css`.
-  - The only `overflow-y: hidden` rules are scoped to `html, body { overflow-x: hidden }` (X only) and the `.glossy-btn { overflow: hidden }` inside the button — neither blocks wheel scroll. The likely culprit is page-level wrappers using `h-screen overflow-hidden`. Audit `Index.tsx`, `Hero.tsx`, `LoadingScreen.tsx`, `LoadingScreenV2.tsx` and remove any persistent `overflow-hidden` on the outermost desktop wrapper. Confirm `body { overscroll-behavior-y: none }` stays (it does NOT block wheel scroll, only rubber-band).
-- File: `src/components/Navbar.tsx`.
-  - Desktop (`lg` and up): keep the floating capsule shape, but restructure into a strict 3-column grid `[logo | nav | cta+lang]` so the centre nav stays perfectly centred regardless of CTA width:
-    - Left: logo + word-mark.
-    - Centre: NAV_ITEMS (`Services · Galerie · Diagnostic · Réservation · Suivi · FAQ`), gap-1, pill hover.
-    - Right: `LanguageSwitcher` (compact) + gradient CTA "Débuter une opération de restauration" (`glossy-btn rounded-full`).
-  - Reveal the CTA at `lg+` (not only `2xl`) — current `hidden 2xl:inline-flex` is what makes the bar look empty/decentered on most desktops.
-  - Capsule background: `bg-background/65 backdrop-blur-2xl border border-border/60 rounded-full shadow-[0_8px_30px_-12px_hsla(20,35%,16%,0.18)]`.
+### Chantier 4 — Slider badges + Instagram tiles refinement
+- **File:** `src/components/cards/BeforeAfterSlider.tsx`
+  - Replace existing AVANT/APRÈS badges with: `bg-black/35 backdrop-blur-[6px] border border-white/15 text-white tracking-widest text-xs px-3 py-1.5 rounded-md font-medium shadow-md`.
+- **File:** `src/components/cards/SocialProof.tsx`
+  - IG tiles: add `ring-1 ring-inset ring-white/10` + `shadow-[0_6px_20px_-12px_hsla(20,35%,16%,0.35)]` + already has `hover:scale-[1.02] transition-transform duration-300`. Confirm and tighten.
 
-### Cross-cutting guarantees
-- `max-width: 100vw; overflow-x: hidden` already present on `html, body, #root` — keep.
-- All animated transitions use the existing `cubic-bezier(0.22, 1, 0.36, 1)` token (`.ease-apple`) at `duration-300`.
+### Chantier 5 — Mobile drawer language router
+- **File:** `src/components/Navbar.tsx`
+  - Replace the 4×2 locale grid with a single horizontal strip pinned to the bottom of the `SheetContent`:
+    ```
+    <div className="mt-auto pt-6 border-t border-border/60">
+      <div className="flex items-center justify-center gap-0 text-[11px] uppercase tracking-[0.2em] font-semibold">
+        {SIDEBAR_LOCALES.map((code, i) => (
+          <>
+            <button … className={active ? 'text-accent' : 'text-foreground/60 hover:text-foreground'}>{code}</button>
+            {i < last && <span className="px-2 text-border">|</span>}
+          </>
+        ))}
+      </div>
+    </div>
+    ```
+  - Convert `SheetContent` children to `flex flex-col h-full` so `mt-auto` pins the language strip to the bottom.
+  - Remove any leftover flag/`LanguageSwitcher` instances inside the sheet (none currently — confirm during edit).
 
-### Technical notes (non-user-facing)
-- No DB migration needed; only an optional one-time Stripe product sync via `payments--batch_create_product`.
-- No new edge functions; modify `payments-webhook` only.
-- No new translation keys for the navbar language grid (locale codes are universal); existing keys cover footer accordion headers.
-- Out of scope: receipt PDF redesign, Stripe go-live KYC walkthrough, swapping Stripe for another PSP.
+### Extra architecture
+- `[id] { scroll-margin-top: var(--nav-h) }` is already in `index.css` — verify `--nav-h` matches the new capsule height (top offset 24 px + capsule ~64 px → set `--nav-h: 6.5rem` on `lg`).
+- `max-width: 100vw` + `overflow-x: hidden` already enforced on `html, body, #root` — no change needed.
+- Section vertical rhythm: `section { @apply py-12 md:py-16 }` already standardized. Keep.
+
+### Security regression fix (admin-new email)
+- **File:** `supabase/functions/trigger-dossier-email/index.ts`
+  - Remove `admin-new` from `ADMIN_ONLY_KINDS`.
+  - Add a guard: for `kind === 'admin-new'`, fetch the dossier and require `created_at > now() - 5 minutes` AND no prior admin-new send (track via an in-memory per-ref dedupe with a 1-hour TTL, plus the existing per-IP rate limit). Anyone forging it later or repeatedly is blocked.
+  - Customer kinds (`approved/rejected/paid/shipped`) remain admin-JWT only.
+- Redeploy `trigger-dossier-email`.
+
+### Verification
+1. Submit a dossier from the public diagnostic flow as an anonymous visitor.
+2. Confirm in `email_send_log` two rows appear: `dossier-received` (customer) and `admin-new-dossier` (admin).
+3. Re-attempt `admin-new` from outside the 5-minute window → expect 403.
+4. Re-attempt `approved` without an admin JWT → expect 401/403.
+5. Manually scroll the desktop preview with mousewheel/trackpad to confirm Chantier 2 scroll recovery.
+6. Inspect splash on `/` in a fresh tab: animation timing, console clean of autoplay errors, body scroll restored after unmount.
+
+---
+
+## Technical notes (for reference)
+
+- All raw hex literals from the brief (`#FDFBF7`, `#A3704C`) will be mapped to existing HSL tokens (`background`, `accent/10`) to keep theming consistent — no inline hex in components.
+- No new dependencies. No schema changes. No migration needed for the email-trigger fix (logic-only inside the edge function).
+- Files touched: `src/pages/Enter.tsx`, `src/components/Navbar.tsx`, `src/components/Footer.tsx`, `src/components/cards/CardHome.tsx`, `src/components/cards/BeforeAfterSlider.tsx`, `src/components/cards/SocialProof.tsx`, `src/index.css`, `supabase/functions/trigger-dossier-email/index.ts`.
