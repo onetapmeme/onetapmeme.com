@@ -19,17 +19,24 @@ const ALLOWED_KINDS = new Set([
   "admin-new",
 ]);
 
-// Kinds that send customer-facing status updates or notify admins.
-// These require an authenticated admin caller — only "received" remains
-// open so the anonymous diagnostic submission flow can send the initial
-// confirmation right after dossier creation.
+// Customer-facing status updates — must be admin-only to prevent spoofing.
+// "admin-new" is intentionally NOT in this set: it's triggered by the public
+// (anonymous) diagnostic submission flow right after the dossier is created.
+// It's secured separately below by (a) a 5-minute freshness window on the
+// dossier row and (b) per-ref single-shot dedupe — so it cannot be replayed
+// or used to spam the admin inbox.
 const ADMIN_ONLY_KINDS = new Set([
   "approved",
   "rejected",
   "paid",
   "shipped",
-  "admin-new",
 ]);
+
+// admin-new freshness window: dossier must have been created within 5 min.
+const ADMIN_NEW_FRESHNESS_MS = 5 * 60 * 1000;
+// Per-ref dedupe for admin-new (one admin notification per dossier).
+const adminNewSent = new Map<string, number>();
+const ADMIN_NEW_DEDUPE_TTL_MS = 60 * 60 * 1000;
 
 // Per-IP rate limit to prevent abusive email flooding.
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
@@ -111,7 +118,7 @@ Deno.serve(async (req) => {
     const { data: row, error } = await sb
       .from("dossiers")
       .select(
-        "ref, name, email, pack_label, pack_price, card_name, tcg, estimated_value, cares, defects, photos, admin_notes, return_carrier, return_tracking_number",
+        "ref, name, email, pack_label, pack_price, card_name, tcg, estimated_value, cares, defects, photos, admin_notes, return_carrier, return_tracking_number, created_at",
       )
       .eq("ref", String(ref).toUpperCase().trim())
       .maybeSingle();
@@ -121,6 +128,31 @@ Deno.serve(async (req) => {
         status: 404,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
+    }
+
+    // admin-new: lock down without requiring admin JWT (called from public
+    // anon dossier submission). Only allow within 5 min of dossier creation
+    // and only one notification per ref.
+    if (kind === "admin-new") {
+      const createdAtMs = row.created_at ? Date.parse(row.created_at) : 0;
+      if (!createdAtMs || Date.now() - createdAtMs > ADMIN_NEW_FRESHNESS_MS) {
+        return new Response(JSON.stringify({ error: "Forbidden" }), {
+          status: 403,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      // GC expired dedupe entries.
+      const now = Date.now();
+      for (const [k, ts] of adminNewSent) {
+        if (now - ts > ADMIN_NEW_DEDUPE_TTL_MS) adminNewSent.delete(k);
+      }
+      if (adminNewSent.has(row.ref)) {
+        return new Response(JSON.stringify({ ok: true, deduped: true }), {
+          status: 200,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      adminNewSent.set(row.ref, now);
     }
 
     let templateName: string;

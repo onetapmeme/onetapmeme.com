@@ -1,111 +1,118 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import logoImage from "@/assets/cardsurgery-logo.png";
-import { Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { copy, pickLang } from "@/components/cards/copy";
+
+const PREFERS_REDUCED_MOTION =
+  typeof window !== "undefined" &&
+  window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 const Enter = () => {
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
-  const lang = pickLang(i18n.language);
-  const t = (k: keyof typeof copy) => copy[k][lang];
-  const [isClicked, setIsClicked] = useState(false);
+  const [phase, setPhase] = useState<"in" | "out">("in");
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playedRef = useRef(false);
 
   useEffect(() => {
+    // Lock body scroll while overlay is visible.
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Preload chime; bind to first user interaction if autoplay is blocked.
     audioRef.current = new Audio("/sounds/enter.wav");
     audioRef.current.preload = "auto";
-    // Reduce default audio volume by 50% (was full → 0.5) on first activation
     audioRef.current.volume = 0.5;
-  }, []);
 
-  const handleClick = () => {
-    if (isClicked) return;
-    setIsClicked(true);
-    if (audioRef.current) {
+    const tryPlay = () => {
+      if (playedRef.current || !audioRef.current) return;
+      playedRef.current = true;
       audioRef.current.currentTime = 0;
-      audioRef.current.volume = 0.5;
-      audioRef.current.play().catch(() => {});
+      audioRef.current.play().catch(() => {
+        /* autoplay blocked — silently ignore */
+      });
+    };
+
+    const onFirstInteract = () => tryPlay();
+    window.addEventListener("pointerdown", onFirstInteract, { once: true });
+    window.addEventListener("keydown", onFirstInteract, { once: true });
+
+    if (PREFERS_REDUCED_MOTION) {
+      const t = window.setTimeout(() => navigate("/home", { replace: true }), 400);
+      return () => {
+        window.clearTimeout(t);
+        document.body.style.overflow = prevOverflow;
+        window.removeEventListener("pointerdown", onFirstInteract);
+        window.removeEventListener("keydown", onFirstInteract);
+      };
     }
-    setTimeout(() => navigate("/home"), 600);
-  };
+
+    const chimeTimer = window.setTimeout(tryPlay, 2200);
+    const fadeTimer = window.setTimeout(() => setPhase("out"), 2200);
+    const navTimer = window.setTimeout(
+      () => navigate("/home", { replace: true }),
+      2200 + 800,
+    );
+
+    return () => {
+      window.clearTimeout(chimeTimer);
+      window.clearTimeout(fadeTimer);
+      window.clearTimeout(navTimer);
+      window.removeEventListener("pointerdown", onFirstInteract);
+      window.removeEventListener("keydown", onFirstInteract);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      <div className="language-switcher">
-        <LanguageSwitcher />
+    <div
+      aria-hidden={phase === "out"}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
+      style={{
+        transition:
+          "opacity 800ms cubic-bezier(0.16,1,0.3,1), transform 800ms cubic-bezier(0.16,1,0.3,1)",
+        opacity: phase === "out" ? 0 : 1,
+        transform: phase === "out" ? "translateY(-20px)" : "translateY(0)",
+        pointerEvents: phase === "out" ? "none" : "auto",
+      }}
+    >
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-accent/15 rounded-full blur-[200px] opacity-60" />
+        <div className="absolute -top-32 left-1/3 w-[800px] h-[600px] bg-primary/10 rounded-full blur-[180px] opacity-50" />
       </div>
 
       <div
-        onClick={handleClick}
-        className={`min-h-screen relative cursor-pointer transition-all duration-500 ${
-          isClicked ? "opacity-0 scale-110" : ""
-        }`}
+        className="relative flex flex-col items-center"
+        style={{
+          transition:
+            "opacity 1400ms cubic-bezier(0.16,1,0.3,1), transform 1400ms cubic-bezier(0.16,1,0.3,1)",
+          opacity: phase === "in" ? 1 : 1,
+          transform: "scale(1)",
+          animation: PREFERS_REDUCED_MOTION
+            ? undefined
+            : "splash-logo-in 1400ms cubic-bezier(0.16,1,0.3,1) both",
+        }}
       >
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[1400px] h-[700px] bg-primary/20 rounded-full blur-[200px] opacity-50" />
-          <div className="absolute top-1/4 left-1/3 w-[800px] h-[600px] bg-primary/15 rounded-full blur-[180px] opacity-40" />
+        <div className="relative">
+          <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full" />
+          <img
+            src={logoImage}
+            alt="CardSurgery"
+            className="relative w-32 h-32 md:w-44 md:h-44 object-contain drop-shadow-[0_0_40px_hsla(22,55%,55%,0.55)]"
+          />
         </div>
-
-        <div className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 border-t-4 border-l-4 border-primary/30 animate-pulse z-10" />
-        <div
-          className="absolute bottom-0 right-0 w-32 h-32 md:w-48 md:h-48 border-b-4 border-r-4 border-primary/30 animate-pulse z-10"
-          style={{ animationDelay: "0.5s" }}
-        />
-
-        <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 pt-20 pb-32">
-          <div className="relative mb-8">
-            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse" />
-            <img
-              src={logoImage}
-              alt="CardSurgery"
-              className="relative w-32 h-32 md:w-44 md:h-44 object-contain drop-shadow-[0_0_40px_hsla(210,100%,55%,0.8)]"
-            />
-          </div>
-
-          <div className="text-center max-w-2xl">
-            <p className="uppercase tracking-widest text-xs md:text-sm text-primary mb-4 font-semibold">
-              {t("heroEyebrow")}
-            </p>
-            <h1
-              className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6"
-              style={{
-                background:
-                  "linear-gradient(90deg, hsl(210,100%,55%) 0%, hsl(25,100%,55%) 50%, hsl(210,100%,55%) 100%)",
-                backgroundSize: "300% 100%",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "gradient-flow 10s linear infinite",
-              }}
-            >
-              {t("heroTitle")}
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground">
-              {t("heroSubtitle")}
-            </p>
-          </div>
-        </div>
-
-        <div className="fixed bottom-8 left-0 right-0 z-30 flex justify-center px-4">
-          <div className="w-full max-w-md mx-auto">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto text-base sm:text-lg md:text-xl py-4 sm:py-6 px-6 sm:px-12 rounded-full font-bold animate-pulse whitespace-normal h-auto leading-tight text-center"
-              style={{
-                background:
-                  "linear-gradient(135deg, hsl(210,100%,60%), hsl(210,100%,50%))",
-                boxShadow: "0 0 50px hsla(210,100%,55%,0.5)",
-              }}
-            >
-              <Sparkles className="w-5 h-5 mr-2 shrink-0" />
-              {t("heroCtaPrimary")}
-            </Button>
-          </div>
-        </div>
+        <p
+          className="mt-6 text-xs md:text-sm uppercase font-semibold text-accent"
+          style={{ letterSpacing: "0.28em" }}
+        >
+          Card<span className="text-foreground">Surgery</span>
+        </p>
       </div>
+
+      <style>{`
+        @keyframes splash-logo-in {
+          from { opacity: 0; transform: scale(0.95); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
     </div>
   );
 };
