@@ -92,7 +92,9 @@ Deno.serve(async (req) => {
       throw new Error("Invalid dossierRef");
     }
     if (environment !== "sandbox" && environment !== "live") throw new Error("Invalid environment");
-    if (!returnUrl || typeof returnUrl !== "string") throw new Error("Invalid returnUrl");
+    if (!returnUrl || typeof returnUrl !== "string" || !isAllowedReturnUrl(returnUrl)) {
+      throw new Error("Invalid returnUrl");
+    }
 
     const env: StripeEnv = environment;
     const stripe = createStripeClient(env);
