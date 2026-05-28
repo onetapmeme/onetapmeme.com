@@ -38,3 +38,10 @@ verify_jwt = false
 [functions.handle-email-suppression]
 verify_jwt = false
 
+[functions.trigger-dossier-email]
+verify_jwt = false
+
+[functions.send-push-notification]
+verify_jwt = true
+
+
