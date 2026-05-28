@@ -66,7 +66,7 @@ const Navbar = () => {
       }`}
     >
       <div className="mx-auto h-full px-3 sm:px-6">
-        <nav className="flex items-center justify-between h-full gap-2 lg:grid lg:grid-cols-[auto_1fr_auto] lg:gap-6">
+        <nav className="flex items-center justify-between h-full gap-2 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
           <Link
             to="/home"
             className="flex items-center gap-2 group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full"
@@ -173,8 +173,8 @@ const Navbar = () => {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-background border-border z-[100]">
-                <div className="flex flex-col gap-2 mt-8">
+              <SheetContent className="bg-background border-border z-[100] flex flex-col h-full">
+                <div className="flex flex-col gap-2 mt-8 flex-1">
                   {NAV_ITEMS.map((item) => (
                     <Link
                       key={item.to}
@@ -185,34 +185,6 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ))}
-
-                  <div className="pt-4 mt-2 border-t border-border">
-                    <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 px-1">
-                      {t("navLanguageLabel")}
-                    </p>
-                    <div className="grid grid-cols-4 gap-1.5">
-                      {SIDEBAR_LOCALES.map((code) => {
-                        const active = i18n.language === code;
-                        return (
-                          <button
-                            key={code}
-                            onClick={() => {
-                              i18n.changeLanguage(code);
-                              setIsMobileMenuOpen(false);
-                            }}
-                            aria-pressed={active}
-                            className={`h-10 rounded-full text-xs font-semibold tracking-[0.12em] uppercase transition-all duration-300 ease-in-out ${
-                              active
-                                ? "bg-accent text-accent-foreground shadow-[0_4px_14px_-4px_hsla(22,55%,40%,0.45)]"
-                                : "border border-border/70 text-foreground/80 hover:border-accent/40 hover:text-foreground"
-                            }`}
-                          >
-                            {code}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
 
                   {user ? (
                     <>
@@ -260,6 +232,41 @@ const Navbar = () => {
                   >
                     {t("heroCtaPrimary")}
                   </Button>
+                </div>
+
+                {/* Language strip — pinned to bottom of drawer */}
+                <div className="mt-auto pt-6 border-t border-border/60">
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3 text-center">
+                    {t("navLanguageLabel")}
+                  </p>
+                  <div className="flex items-center justify-center flex-wrap text-[11px] uppercase font-semibold tracking-[0.2em]">
+                    {SIDEBAR_LOCALES.map((code, i) => {
+                      const active = i18n.language === code;
+                      return (
+                        <div key={code} className="flex items-center">
+                          {i > 0 && (
+                            <span aria-hidden className="px-2 text-border select-none">
+                              |
+                            </span>
+                          )}
+                          <button
+                            onClick={() => {
+                              i18n.changeLanguage(code);
+                              setIsMobileMenuOpen(false);
+                            }}
+                            aria-pressed={active}
+                            className={`py-1 transition-colors duration-300 ease-in-out ${
+                              active
+                                ? "text-accent"
+                                : "text-foreground/60 hover:text-foreground"
+                            }`}
+                          >
+                            {code}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
