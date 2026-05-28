@@ -19,6 +19,18 @@ const ALLOWED_KINDS = new Set([
   "admin-new",
 ]);
 
+// Kinds that send customer-facing status updates or notify admins.
+// These require an authenticated admin caller — only "received" remains
+// open so the anonymous diagnostic submission flow can send the initial
+// confirmation right after dossier creation.
+const ADMIN_ONLY_KINDS = new Set([
+  "approved",
+  "rejected",
+  "paid",
+  "shipped",
+  "admin-new",
+]);
+
 // Per-IP rate limit to prevent abusive email flooding.
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RL_MAX = 20;
@@ -61,6 +73,40 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     );
+
+    // Admin-only kinds: require a valid JWT belonging to a user with the
+    // `admin` role. Without this, anyone knowing a dossier ref could spoof
+    // status updates (approved/rejected/shipped/paid) to customers.
+    if (ADMIN_ONLY_KINDS.has(kind)) {
+      const authHeader = req.headers.get("Authorization") || "";
+      const token = authHeader.startsWith("Bearer ")
+        ? authHeader.slice(7)
+        : "";
+      if (!token) {
+        return new Response(JSON.stringify({ error: "Unauthorized" }), {
+          status: 401,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const { data: userRes, error: userErr } = await sb.auth.getUser(token);
+      const uid = userRes?.user?.id;
+      if (userErr || !uid) {
+        return new Response(JSON.stringify({ error: "Unauthorized" }), {
+          status: 401,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const { data: isAdmin, error: roleErr } = await sb.rpc("has_role", {
+        _user_id: uid,
+        _role: "admin",
+      });
+      if (roleErr || !isAdmin) {
+        return new Response(JSON.stringify({ error: "Forbidden" }), {
+          status: 403,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
 
     const { data: row, error } = await sb
       .from("dossiers")
