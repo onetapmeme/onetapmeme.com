@@ -34,6 +34,22 @@ Concis, expert, rassurant. Tutoiement professionnel. Utilise du **markdown** (gr
 ## Disclaimer obligatoire
 Si la question concerne une promesse de note PCA/CCC/Collect Aura, rappelle que CardSurgery optimise la carte mais que la note finale reste à la seule discrétion de l'organisme tiers.`;
 
+// Per-IP rate limit to protect AI gateway credits from abuse.
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const RL_MAX = 20;
+const RL_WINDOW_MS = 60_000;
+function allow(ip: string): boolean {
+  const now = Date.now();
+  const r = rateLimit.get(ip);
+  if (!r || now > r.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + RL_WINDOW_MS });
+    return true;
+  }
+  if (r.count >= RL_MAX) return false;
+  r.count++;
+  return true;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   if (req.method !== "POST") {
@@ -42,6 +58,15 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
+
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!allow(ip)) {
+    return new Response(JSON.stringify({ error: "Trop de requêtes, réessayez dans un instant." }), {
+      status: 429,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
 
   try {
     const { messages } = await req.json();

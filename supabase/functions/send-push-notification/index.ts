@@ -54,6 +54,26 @@ serve(async (req) => {
     return new Response("ok", { headers: corsHeaders });
   }
 
+  // Restrict to service_role callers. Anyone with the anon key would otherwise
+  // be able to broadcast arbitrary push notifications to all subscribers.
+  const authHeader = req.headers.get("Authorization");
+  let role: string | null = null;
+  if (authHeader?.startsWith("Bearer ")) {
+    try {
+      const payload = JSON.parse(
+        atob(authHeader.slice(7).split(".")[1].replace(/-/g, "+").replace(/_/g, "/")),
+      );
+      role = payload?.role ?? null;
+    } catch { /* ignore */ }
+  }
+  if (role !== "service_role") {
+    return new Response(JSON.stringify({ error: "Forbidden" }), {
+      status: 403,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+
   try {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;

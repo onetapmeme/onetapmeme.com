@@ -18,11 +18,62 @@ const INSURANCE_LOOKUPS: Record<number, string> = {
   5: "insurance_tier_5",
 };
 
+// Allow-list of origins permitted as Stripe return_url destinations. Prevents
+// an attacker-supplied returnUrl from turning a successful payment into an
+// open redirect to a phishing page.
+const ALLOWED_RETURN_ORIGINS = [
+  "https://cardsurgery.com",
+  "https://www.cardsurgery.com",
+  "https://cardsurgery.lovable.app",
+  "https://id-preview--e486c79e-94e6-41dc-adb7-6b234d6fbfab.lovable.app",
+  "http://localhost:5173",
+  "http://localhost:8080",
+];
+
+function isAllowedReturnUrl(url: string): boolean {
+  try {
+    const u = new URL(url);
+    const origin = `${u.protocol}//${u.host}`;
+    if (ALLOWED_RETURN_ORIGINS.includes(origin)) return true;
+    // Allow lovable preview subdomains for this project.
+    if (u.host.endsWith(".lovable.app") || u.host.endsWith(".lovableproject.com")) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+// Per-IP rate limit so attackers can't flood Stripe API quotas via this
+// public endpoint.
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const RL_MAX = 10;
+const RL_WINDOW_MS = 60_000;
+function allow(ip: string): boolean {
+  const now = Date.now();
+  const r = rateLimit.get(ip);
+  if (!r || now > r.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + RL_WINDOW_MS });
+    return true;
+  }
+  if (r.count >= RL_MAX) return false;
+  r.count++;
+  return true;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405, headers: corsHeaders });
   }
+
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!allow(ip)) {
+    return new Response(JSON.stringify({ error: "Rate limited" }), {
+      status: 429,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
 
   try {
     const body = await req.json();
@@ -41,7 +92,9 @@ Deno.serve(async (req) => {
       throw new Error("Invalid dossierRef");
     }
     if (environment !== "sandbox" && environment !== "live") throw new Error("Invalid environment");
-    if (!returnUrl || typeof returnUrl !== "string") throw new Error("Invalid returnUrl");
+    if (!returnUrl || typeof returnUrl !== "string" || !isAllowedReturnUrl(returnUrl)) {
+      throw new Error("Invalid returnUrl");
+    }
 
     const env: StripeEnv = environment;
     const stripe = createStripeClient(env);
