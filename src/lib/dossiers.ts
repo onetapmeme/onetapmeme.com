@@ -172,26 +172,10 @@ export async function sendDossierEmail(
   kind: "received" | "approved" | "rejected" | "paid" | "shipped",
 ) {
   try {
-    const d = await getDossierRemote(ref);
-    if (!d) return;
-    const templateName = `dossier-${kind}`;
-    const templateData: Record<string, unknown> = {
-      name: d.name,
-      ref: d.ref,
-      packLabel: d.packLabel,
-      packPrice: d.packPrice,
-      cardName: d.cardName ?? "",
-      adminNotes: d.adminNotes ?? "",
-      carrier: d.returnCarrier ?? "",
-      tracking: d.returnTrackingNumber ?? "",
-    };
-    await supabase.functions.invoke("send-transactional-email", {
-      body: {
-        templateName,
-        recipientEmail: d.email,
-        idempotencyKey: `${templateName}-${d.ref}`,
-        templateData,
-      },
+    // Recipient + template data are resolved server-side from the dossier row,
+    // so the browser cannot inject arbitrary recipients or template fields.
+    await supabase.functions.invoke("trigger-dossier-email", {
+      body: { ref, kind },
     });
   } catch (e) {
     console.warn("sendDossierEmail failed", e);
@@ -200,27 +184,8 @@ export async function sendDossierEmail(
 
 export async function notifyAdminNewDossier(ref: string) {
   try {
-    const d = await getDossierRemote(ref);
-    if (!d) return;
-    await supabase.functions.invoke("send-transactional-email", {
-      body: {
-        templateName: "admin-new-dossier",
-        // recipient is hard-coded in the template via `to`, but include for safety
-        recipientEmail: "contact@cardsurgery.com",
-        idempotencyKey: `admin-new-dossier-${d.ref}`,
-        templateData: {
-          ref: d.ref,
-          customerName: d.name,
-          customerEmail: d.email,
-          packLabel: d.packLabel,
-          cardName: d.cardName ?? "",
-          tcg: d.tcg ?? "",
-          declaredValue: d.estimatedValue ?? "",
-          cares: d.cares ?? [],
-          defects: d.defects ?? "",
-          photosCount: d.photos?.length ?? 0,
-        },
-      },
+    await supabase.functions.invoke("trigger-dossier-email", {
+      body: { ref, kind: "admin-new" },
     });
   } catch (e) {
     console.warn("notifyAdminNewDossier failed", e);
