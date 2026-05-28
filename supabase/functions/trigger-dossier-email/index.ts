@@ -19,6 +19,18 @@ const ALLOWED_KINDS = new Set([
   "admin-new",
 ]);
 
+// Kinds that send customer-facing status updates or notify admins.
+// These require an authenticated admin caller — only "received" remains
+// open so the anonymous diagnostic submission flow can send the initial
+// confirmation right after dossier creation.
+const ADMIN_ONLY_KINDS = new Set([
+  "approved",
+  "rejected",
+  "paid",
+  "shipped",
+  "admin-new",
+]);
+
 // Per-IP rate limit to prevent abusive email flooding.
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 const RL_MAX = 20;
