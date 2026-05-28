@@ -74,6 +74,40 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     );
 
+    // Admin-only kinds: require a valid JWT belonging to a user with the
+    // `admin` role. Without this, anyone knowing a dossier ref could spoof
+    // status updates (approved/rejected/shipped/paid) to customers.
+    if (ADMIN_ONLY_KINDS.has(kind)) {
+      const authHeader = req.headers.get("Authorization") || "";
+      const token = authHeader.startsWith("Bearer ")
+        ? authHeader.slice(7)
+        : "";
+      if (!token) {
+        return new Response(JSON.stringify({ error: "Unauthorized" }), {
+          status: 401,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const { data: userRes, error: userErr } = await sb.auth.getUser(token);
+      const uid = userRes?.user?.id;
+      if (userErr || !uid) {
+        return new Response(JSON.stringify({ error: "Unauthorized" }), {
+          status: 401,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const { data: isAdmin, error: roleErr } = await sb.rpc("has_role", {
+        _user_id: uid,
+        _role: "admin",
+      });
+      if (roleErr || !isAdmin) {
+        return new Response(JSON.stringify({ error: "Forbidden" }), {
+          status: 403,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
     const { data: row, error } = await sb
       .from("dossiers")
       .select(
