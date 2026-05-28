@@ -182,7 +182,7 @@ const SocialProof = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.05 }}
-              className="relative aspect-square overflow-hidden rounded-2xl ring-1 ring-border/60 shadow-[0_6px_18px_-10px_hsla(20,35%,16%,0.25)] bg-gradient-to-br from-muted/40 via-background/30 to-muted/60 group transition-transform duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_10px_28px_-12px_hsla(20,35%,16%,0.35)]"
+              className="relative aspect-square overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10 outline outline-1 outline-border/60 shadow-[0_6px_20px_-12px_hsla(20,35%,16%,0.35)] bg-gradient-to-br from-muted/40 via-background/30 to-muted/60 group transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_12px_30px_-12px_hsla(20,35%,16%,0.42)]"
               aria-label={`Voir ${t.tag} sur Instagram`}
             >
               <img

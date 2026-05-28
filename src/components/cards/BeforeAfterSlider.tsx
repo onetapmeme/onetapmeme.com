@@ -93,13 +93,13 @@ const BeforeAfterSlider = ({ before, after, alt = "Avant / Après restauration" 
             className={`absolute inset-0 h-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
             style={{ width: `${(100 / Math.max(pos, 0.0001)) * 100}%`, maxWidth: "none" }}
           />
-          <span className="absolute top-3 left-3 uppercase tracking-[0.18em] text-[10px] font-bold px-2.5 py-1 rounded-full text-white bg-black/35 backdrop-blur-md border border-white/15 shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+          <span className="absolute top-3 left-3 uppercase tracking-widest text-xs font-medium px-3 py-1.5 rounded-md text-white bg-black/35 backdrop-blur-[6px] border border-white/15 shadow-md">
             {beforeLabel}
           </span>
         </div>
-        <span className="absolute top-3 right-3 uppercase tracking-[0.18em] text-[10px] font-bold px-2.5 py-1 rounded-full text-white bg-black/35 backdrop-blur-md border border-white/15 ring-1 ring-accent/40 shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
-          {afterLabel}
-        </span>
+        <span className="absolute top-3 right-3 uppercase tracking-widest text-xs font-medium px-3 py-1.5 rounded-md text-white bg-black/35 backdrop-blur-[6px] border border-white/15 shadow-md">
+            {afterLabel}
+          </span>
 
         {loaded && (
           <div
