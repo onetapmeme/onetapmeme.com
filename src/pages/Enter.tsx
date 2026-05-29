@@ -13,10 +13,6 @@ const Enter = () => {
   const playedRef = useRef(false);
 
   useEffect(() => {
-    // Lock body scroll while overlay is visible.
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
     // Preload chime; bind to first user interaction if autoplay is blocked.
     audioRef.current = new Audio("/sounds/enter.wav");
     audioRef.current.preload = "auto";
@@ -39,7 +35,6 @@ const Enter = () => {
       const t = window.setTimeout(() => navigate("/home", { replace: true }), 400);
       return () => {
         window.clearTimeout(t);
-        document.body.style.overflow = prevOverflow;
         window.removeEventListener("pointerdown", onFirstInteract);
         window.removeEventListener("keydown", onFirstInteract);
       };
@@ -58,7 +53,6 @@ const Enter = () => {
       window.clearTimeout(navTimer);
       window.removeEventListener("pointerdown", onFirstInteract);
       window.removeEventListener("keydown", onFirstInteract);
-      document.body.style.overflow = prevOverflow;
     };
   }, [navigate]);
 
