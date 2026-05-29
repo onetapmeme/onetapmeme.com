@@ -97,18 +97,9 @@ All colors MUST be HSL.
     html { scroll-behavior: smooth; }
   }
 
-  html, body {
-    overflow-x: hidden;
+  body {
+    overflow-x: clip;
     max-width: 100vw;
-  }
-
-  /* Desktop scroll recovery — guarantee mousewheel/trackpad vertical scroll
-     is never accidentally locked by a global rule or library at lg+. */
-  @media (min-width: 1024px) {
-    html, body {
-      overflow-y: auto;
-      touch-action: auto;
-    }
   }
 
   body {
