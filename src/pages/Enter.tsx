@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/cardsurgery-logo.png";
 
@@ -9,50 +9,20 @@ const PREFERS_REDUCED_MOTION =
 const Enter = () => {
   const navigate = useNavigate();
   const [phase, setPhase] = useState<"in" | "out">("in");
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const playedRef = useRef(false);
 
   useEffect(() => {
-    // Preload chime; bind to first user interaction if autoplay is blocked.
-    audioRef.current = new Audio("/sounds/enter.wav");
-    audioRef.current.preload = "auto";
-    audioRef.current.volume = 0.5;
-
-    const tryPlay = () => {
-      if (playedRef.current || !audioRef.current) return;
-      playedRef.current = true;
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {
-        /* autoplay blocked — silently ignore */
-      });
-    };
-
-    const onFirstInteract = () => tryPlay();
-    window.addEventListener("pointerdown", onFirstInteract, { once: true });
-    window.addEventListener("keydown", onFirstInteract, { once: true });
-
     if (PREFERS_REDUCED_MOTION) {
       const t = window.setTimeout(() => navigate("/home", { replace: true }), 400);
-      return () => {
-        window.clearTimeout(t);
-        window.removeEventListener("pointerdown", onFirstInteract);
-        window.removeEventListener("keydown", onFirstInteract);
-      };
+      return () => window.clearTimeout(t);
     }
-
-    const chimeTimer = window.setTimeout(tryPlay, 2200);
     const fadeTimer = window.setTimeout(() => setPhase("out"), 2200);
     const navTimer = window.setTimeout(
       () => navigate("/home", { replace: true }),
       2200 + 800,
     );
-
     return () => {
-      window.clearTimeout(chimeTimer);
       window.clearTimeout(fadeTimer);
       window.clearTimeout(navTimer);
-      window.removeEventListener("pointerdown", onFirstInteract);
-      window.removeEventListener("keydown", onFirstInteract);
     };
   }, [navigate]);
 
