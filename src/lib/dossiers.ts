@@ -4,13 +4,17 @@
 import { supabase } from "@/integrations/supabase/client";
 
 export type DossierStatus =
-  | "pending_review"
-  | "approved"
-  | "rejected"
-  | "paid"
+  | "requested"
   | "received"
+  | "payment_required"
+  | "paid"
   | "in_surgery"
-  | "shipped";
+  | "quality_control"
+  | "shipped"
+  | "rejected"
+  // Legacy enum values kept for backward compatibility on already-migrated rows.
+  | "pending_review"
+  | "approved";
 
 export interface DossierPhoto { slot: string; url: string; }
 
