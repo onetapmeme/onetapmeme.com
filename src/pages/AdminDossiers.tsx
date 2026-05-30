@@ -300,14 +300,14 @@ export default function AdminDossiers() {
 
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     <Button
-                      onClick={() => act("approved", "approved")}
-                      disabled={acting || selected.status === "approved"}
-                      className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                      onClick={() => act("payment_required")}
+                      disabled={acting || selected.status === "payment_required" || selected.status === "approved"}
+                      className="glossy-btn text-accent-foreground border-0"
                     >
                       <Check className="w-4 h-4 mr-1" /> Approuver
                     </Button>
                     <Button
-                      onClick={() => act("rejected", "rejected")}
+                      onClick={() => act("rejected")}
                       disabled={acting || selected.status === "rejected"}
                       variant="destructive"
                     >
@@ -315,6 +315,8 @@ export default function AdminDossiers() {
                     </Button>
                     <Button onClick={() => act("received")} disabled={acting} variant="outline">Colis reçu</Button>
                     <Button onClick={() => act("in_surgery")} disabled={acting} variant="outline">En chirurgie</Button>
+                    <Button onClick={() => act("quality_control")} disabled={acting} variant="outline">Contrôle qualité</Button>
+                    <Button onClick={() => act("paid")} disabled={acting} variant="outline">Marquer payé</Button>
                   </div>
 
                   {/* Manual price override (custom cases) */}
