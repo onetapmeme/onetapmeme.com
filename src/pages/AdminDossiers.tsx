@@ -96,11 +96,12 @@ export default function AdminDossiers() {
 
   useEffect(() => { if (isAdmin) load(); /* eslint-disable-next-line */ }, [isAdmin, filter]);
 
-  const act = async (status: DossierStatus, emailKind?: "approved" | "rejected" | "shipped") => {
+  const act = async (status: DossierStatus) => {
     if (!selected) return;
     setActing(true);
     try {
       const updated = await adminUpdateStatus(selected.ref, status, notes || undefined);
+      const emailKind = STATUS_TO_EMAIL[status];
       if (emailKind) sendDossierEmail(updated.ref, emailKind);
       toast({ title: "Dossier mis à jour", description: `${updated.ref} → ${STATUS_LABEL[status]}` });
       setSelected(updated);
