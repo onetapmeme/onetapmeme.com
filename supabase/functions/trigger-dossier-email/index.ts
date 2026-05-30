@@ -11,26 +11,43 @@ const corsHeaders: Record<string, string> = {
 };
 
 const ALLOWED_KINDS = new Set([
+  "requested",
   "received",
-  "approved",
+  "payment-required",
+  "approved", // legacy alias → mapped to payment-required template below
   "rejected",
   "paid",
+  "in-surgery",
+  "quality-control",
   "shipped",
   "admin-new",
 ]);
 
-// Customer-facing status updates — must be admin-only to prevent spoofing.
-// "admin-new" is intentionally NOT in this set: it's triggered by the public
-// (anonymous) diagnostic submission flow right after the dossier is created.
-// It's secured separately below by (a) a 5-minute freshness window on the
-// dossier row and (b) per-ref single-shot dedupe — so it cannot be replayed
-// or used to spam the admin inbox.
+// Customer-facing status updates — admin-only to prevent spoofing.
+// "requested" and "admin-new" are the only kinds the public diagnostic flow may fire.
 const ADMIN_ONLY_KINDS = new Set([
+  "received",
+  "payment-required",
   "approved",
   "rejected",
   "paid",
+  "in-surgery",
+  "quality-control",
   "shipped",
 ]);
+
+// Map email kind → template name in the registry.
+const KIND_TO_TEMPLATE: Record<string, string> = {
+  "requested": "dossier-requested",
+  "received": "dossier-received",
+  "payment-required": "dossier-payment-required",
+  "approved": "dossier-payment-required", // legacy alias
+  "rejected": "dossier-rejected",
+  "paid": "dossier-paid",
+  "in-surgery": "dossier-in-surgery",
+  "quality-control": "dossier-quality-control",
+  "shipped": "dossier-shipped",
+};
 
 // admin-new freshness window: dossier must have been created within 5 min.
 const ADMIN_NEW_FRESHNESS_MS = 5 * 60 * 1000;
