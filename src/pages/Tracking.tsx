@@ -7,21 +7,31 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
-  PackageCheck, Stethoscope, Scissors, Sparkles, Truck, Check, Hourglass,
-  CreditCard, XCircle, Loader2,
+  FileText, PackageCheck, CreditCard, Scissors, ShieldCheck, Truck,
+  Check, XCircle, Loader2, Sparkles,
 } from "lucide-react";
 import { getDossierRemote, type Dossier, type DossierStatus } from "@/lib/dossiers";
+import { supabase } from "@/integrations/supabase/client";
 
-const STAGES: { id: DossierStatus; label: string; icon: typeof PackageCheck; desc: string }[] = [
-  { id: "pending_review", label: "Diagnostic en évaluation", icon: Hourglass, desc: "Nos chirurgiens analysent vos photos et établissent un devis." },
-  { id: "approved", label: "Diagnostic validé — paiement requis", icon: CreditCard, desc: "Le forfait a été confirmé. Procédez au paiement pour activer la prise en charge." },
-  { id: "paid", label: "Paiement reçu — en attente d'envoi", icon: Truck, desc: "Expédiez votre carte selon les instructions sécurisées fournies." },
-  { id: "received", label: "Reçu en atelier", icon: PackageCheck, desc: "Colis réceptionné, carte vérifiée et photographiée." },
-  { id: "in_surgery", label: "Chirurgie en cours", icon: Scissors, desc: "Intervention CardSurgery par notre restaurateur expert." },
-  { id: "shipped", label: "Expédié", icon: Sparkles, desc: "Renvoi en colis blindé et assuré." },
+const STAGES: { id: DossierStatus; label: string; icon: typeof FileText; desc: string }[] = [
+  { id: "requested",        label: "Demande envoyée",                icon: FileText,     desc: "Votre formulaire et vos photos sont en cours d'analyse par nos chirurgiens." },
+  { id: "received",         label: "Cartes reçues au laboratoire",   icon: PackageCheck, desc: "Vos cartes ont été réceptionnées et photographiées. Diagnostic en cours." },
+  { id: "payment_required", label: "Diagnostic validé — paiement requis", icon: CreditCard, desc: "Procédez au paiement sécurisé pour planifier l'intervention." },
+  { id: "paid",             label: "Paiement reçu",                  icon: ShieldCheck,  desc: "Paiement validé. Votre dossier est en file d'attente opératoire." },
+  { id: "in_surgery",       label: "Chirurgie en cours",             icon: Scissors,     desc: "Intervention sous hotte à flux laminaire par notre restaurateur expert." },
+  { id: "quality_control",  label: "Contrôle qualité final",         icon: Sparkles,     desc: "Vérifications finales et mise sous protection avant expédition." },
+  { id: "shipped",          label: "Colis expédié",                  icon: Truck,        desc: "Renvoi sécurisé et assuré. Numéro de suivi transporteur fourni." },
 ];
 
-const statusOrder: DossierStatus[] = ["pending_review", "approved", "paid", "received", "in_surgery", "shipped"];
+const STAGE_INDEX: Record<string, number> = {
+  requested: 0, pending_review: 0,
+  received: 1,
+  payment_required: 2, approved: 2,
+  paid: 3,
+  in_surgery: 4,
+  quality_control: 5,
+  shipped: 6,
+};
 
 const Tracking = () => {
   const [params] = useSearchParams();
@@ -50,8 +60,26 @@ const Tracking = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const stageIndex = dossier ? statusOrder.indexOf(dossier.status) : -1;
+  // Realtime: subscribe to UPDATE events on this dossier so the stepper refreshes
+  // the instant an admin advances the status.
+  useEffect(() => {
+    if (!dossier?.ref) return;
+    const channel = supabase
+      .channel(`dossier-${dossier.ref}`)
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "dossiers", filter: `ref=eq.${dossier.ref}` },
+        () => { lookup(dossier.ref); },
+      )
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dossier?.ref]);
+
+  const stageIndex = dossier ? (STAGE_INDEX[dossier.status] ?? -1) : -1;
   const isRejected = dossier?.status === "rejected";
+  const isPaymentRequired = dossier?.status === "payment_required" || dossier?.status === "approved";
+  const isRequested = dossier?.status === "requested" || dossier?.status === "pending_review";
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,7 +91,7 @@ const Tracking = () => {
               Suivi de <span className="text-accent">dossier</span>
             </h1>
             <p className="text-muted-foreground">
-              Saisissez votre numéro de dossier pour suivre l'évaluation, procéder au paiement et expédier votre carte.
+              Saisissez votre numéro de dossier pour suivre chaque étape — réception, diagnostic, opération et expédition.
             </p>
           </header>
 
@@ -78,7 +106,7 @@ const Tracking = () => {
                   onKeyDown={(e) => e.key === "Enter" && lookup()}
                 />
               </div>
-              <Button onClick={() => lookup()} disabled={loading} className="bg-accent hover:bg-accent/90 text-accent-foreground">
+              <Button onClick={() => lookup()} disabled={loading} className="glossy-btn text-accent-foreground border-0">
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Rechercher"}
               </Button>
             </div>
@@ -104,11 +132,11 @@ const Tracking = () => {
                 <div><p className="text-xs text-muted-foreground">Forfait</p><p className="font-bold">{dossier.packLabel} <span className="text-accent">({dossier.packPrice})</span></p></div>
               </div>
 
-              {dossier.status === "pending_review" && (
+              {isRequested && (
                 <div className="mb-6 p-4 rounded-lg bg-primary/10 border border-primary/30 flex gap-3">
-                  <Hourglass className="w-5 h-5 text-primary flex-shrink-0 mt-0.5 animate-pulse" />
+                  <FileText className="w-5 h-5 text-primary flex-shrink-0 mt-0.5 animate-pulse" />
                   <div>
-                    <p className="font-bold text-foreground">Diagnostic en cours d'évaluation</p>
+                    <p className="font-bold text-foreground">Demande envoyée — diagnostic en cours d'évaluation</p>
                     <p className="text-sm text-muted-foreground">
                       Notre équipe analyse vos photos sous 24 h ouvrées et vous adressera la validation par e-mail.
                       Le paiement ne sera proposé qu'après approbation du diagnostic.
@@ -117,7 +145,7 @@ const Tracking = () => {
                 </div>
               )}
 
-              {dossier.status === "approved" && (
+              {isPaymentRequired && (
                 <div className="mb-6 p-4 rounded-lg bg-accent/10 border-2 border-accent flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                   <div className="flex gap-3">
                     <CreditCard className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -140,15 +168,25 @@ const Tracking = () => {
               {dossier.status === "paid" && (
                 <div className="mb-6 p-4 rounded-lg bg-accent/10 border border-accent/40 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                   <div className="flex gap-3">
-                    <Truck className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                    <ShieldCheck className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-bold text-foreground">Paiement reçu — préparez votre envoi</p>
-                      <p className="text-sm text-muted-foreground">Consultez les instructions d'expédition sécurisées.</p>
+                      <p className="font-bold text-foreground">Paiement reçu — intervention programmée</p>
+                      <p className="text-sm text-muted-foreground">Vos cartes sont en file d'attente opératoire. Vous serez notifié au démarrage de la chirurgie.</p>
                     </div>
                   </div>
-                  <Button asChild variant="outline" className="whitespace-nowrap">
-                    <Link to={`/payment?ref=${dossier.ref}`}>Voir les instructions d'envoi</Link>
-                  </Button>
+                </div>
+              )}
+
+              {dossier.status === "shipped" && dossier.returnTrackingNumber && (
+                <div className="mb-6 p-4 rounded-lg bg-accent/10 border border-accent/40 flex gap-3">
+                  <Truck className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                  <div className="text-sm">
+                    <p className="font-bold text-foreground">Colis expédié</p>
+                    <p className="text-muted-foreground">
+                      Transporteur : <strong>{dossier.returnCarrier || "—"}</strong> · Suivi :{" "}
+                      <strong className="font-mono">{dossier.returnTrackingNumber}</strong>
+                    </p>
+                  </div>
                 </div>
               )}
 
