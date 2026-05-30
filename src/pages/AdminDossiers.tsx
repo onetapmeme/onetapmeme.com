@@ -138,7 +138,7 @@ export default function AdminDossiers() {
         overridePackPrice: overridePrice.trim() || undefined,
         overrideInsuranceCents: insCents,
       });
-      sendDossierEmail(updated.ref, "approved");
+      sendDossierEmail(updated.ref, "payment-required");
       toast({ title: "Tarifs enregistrés", description: `${updated.ref} validé avec les nouveaux montants.` });
       setSelected(updated);
       await load();
