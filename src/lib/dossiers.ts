@@ -4,13 +4,17 @@
 import { supabase } from "@/integrations/supabase/client";
 
 export type DossierStatus =
-  | "pending_review"
-  | "approved"
-  | "rejected"
-  | "paid"
+  | "requested"
   | "received"
+  | "payment_required"
+  | "paid"
   | "in_surgery"
-  | "shipped";
+  | "quality_control"
+  | "shipped"
+  | "rejected"
+  // Legacy enum values kept for backward compatibility on already-migrated rows.
+  | "pending_review"
+  | "approved";
 
 export interface DossierPhoto { slot: string; url: string; }
 
@@ -167,10 +171,18 @@ export async function confirmPayment(ref: string): Promise<Dossier> {
   return mapRow(data);
 }
 
-export async function sendDossierEmail(
-  ref: string,
-  kind: "received" | "approved" | "rejected" | "paid" | "shipped",
-) {
+export type DossierEmailKind =
+  | "requested"
+  | "received"
+  | "payment-required"
+  | "paid"
+  | "in-surgery"
+  | "quality-control"
+  | "shipped"
+  | "approved" // legacy alias kept for callers; trigger maps it to payment-required
+  | "rejected";
+
+export async function sendDossierEmail(ref: string, kind: DossierEmailKind) {
   try {
     // Recipient + template data are resolved server-side from the dossier row,
     // so the browser cannot inject arbitrary recipients or template fields.
@@ -227,30 +239,39 @@ export async function adminMarkShipped(
 }
 
 export const STATUS_LABEL_FR: Record<DossierStatus, string> = {
-  pending_review: "Demande envoyée",
-  received: "Diagnostic en cours",
-  approved: "Prêt pour paiement",
+  requested: "Demande envoyée",
+  received: "Cartes reçues au laboratoire",
+  payment_required: "Diagnostic validé — paiement requis",
   paid: "Paiement reçu",
   in_surgery: "Chirurgie en cours",
-  shipped: "Expédiée",
+  quality_control: "Contrôle qualité final",
+  shipped: "Colis expédié",
   rejected: "Refusée",
+  // Legacy aliases (display only)
+  pending_review: "Demande envoyée",
+  approved: "Diagnostic validé — paiement requis",
 };
 
 export const STATUS_STEP_INDEX: Record<DossierStatus, number> = {
-  pending_review: 0,
+  requested: 0,
   received: 1,
-  approved: 2,
+  payment_required: 2,
   paid: 3,
-  in_surgery: 3,
-  shipped: 4,
+  in_surgery: 4,
+  quality_control: 5,
+  shipped: 6,
   rejected: -1,
+  pending_review: 0,
+  approved: 2,
 };
 
 export const WORKFLOW_STEPS = [
   "Demande envoyée",
-  "Diagnostic en cours",
-  "Prêt pour paiement",
+  "Cartes reçues",
+  "Paiement requis",
+  "Paiement reçu",
   "Chirurgie en cours",
+  "Contrôle qualité",
   "Expédiée",
 ];
 

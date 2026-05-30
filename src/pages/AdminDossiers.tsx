@@ -17,27 +17,45 @@ import { Loader2, ShieldAlert, Check, X, Eye, RefreshCcw, Save, Truck } from "lu
 import {
   adminListDossiers, adminUpdateStatus, sendDossierEmail,
   adminValidateDossier, adminMarkShipped,
-  type Dossier, type DossierStatus,
+  type Dossier, type DossierStatus, type DossierEmailKind,
 } from "@/lib/dossiers";
 
 const STATUS_LABEL: Record<DossierStatus, string> = {
-  pending_review: "En évaluation",
-  approved: "Validé",
-  rejected: "Refusé",
+  requested: "Demande envoyée",
+  received: "Cartes reçues",
+  payment_required: "Paiement requis",
   paid: "Payé",
-  received: "Reçu atelier",
   in_surgery: "En chirurgie",
+  quality_control: "Contrôle qualité",
   shipped: "Expédié",
+  rejected: "Refusé",
+  pending_review: "Demande envoyée",
+  approved: "Paiement requis",
 };
 
 const STATUS_COLOR: Record<DossierStatus, string> = {
-  pending_review: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300",
+  requested: "bg-yellow-500/15 text-yellow-700 dark:text-yellow-300",
+  received: "bg-accent/10 text-accent",
+  payment_required: "bg-accent/20 text-accent",
+  paid: "bg-accent/15 text-accent",
+  in_surgery: "bg-accent/25 text-accent",
+  quality_control: "bg-accent/30 text-accent",
+  shipped: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+  rejected: "bg-destructive/15 text-destructive",
+  pending_review: "bg-yellow-500/15 text-yellow-700 dark:text-yellow-300",
   approved: "bg-accent/20 text-accent",
-  rejected: "bg-destructive/20 text-destructive",
-  paid: "bg-blue-500/20 text-blue-700 dark:text-blue-300",
-  received: "bg-purple-500/20 text-purple-700 dark:text-purple-300",
-  in_surgery: "bg-orange-500/20 text-orange-700 dark:text-orange-300",
-  shipped: "bg-green-500/20 text-green-700 dark:text-green-300",
+};
+
+// Map a status transition to the customer email kind that should fire.
+const STATUS_TO_EMAIL: Partial<Record<DossierStatus, DossierEmailKind>> = {
+  requested: "requested",
+  received: "received",
+  payment_required: "payment-required",
+  paid: "paid",
+  in_surgery: "in-surgery",
+  quality_control: "quality-control",
+  shipped: "shipped",
+  rejected: "rejected",
 };
 
 export default function AdminDossiers() {
@@ -78,11 +96,12 @@ export default function AdminDossiers() {
 
   useEffect(() => { if (isAdmin) load(); /* eslint-disable-next-line */ }, [isAdmin, filter]);
 
-  const act = async (status: DossierStatus, emailKind?: "approved" | "rejected" | "shipped") => {
+  const act = async (status: DossierStatus) => {
     if (!selected) return;
     setActing(true);
     try {
       const updated = await adminUpdateStatus(selected.ref, status, notes || undefined);
+      const emailKind = STATUS_TO_EMAIL[status];
       if (emailKind) sendDossierEmail(updated.ref, emailKind);
       toast({ title: "Dossier mis à jour", description: `${updated.ref} → ${STATUS_LABEL[status]}` });
       setSelected(updated);
@@ -119,7 +138,7 @@ export default function AdminDossiers() {
         overridePackPrice: overridePrice.trim() || undefined,
         overrideInsuranceCents: insCents,
       });
-      sendDossierEmail(updated.ref, "approved");
+      sendDossierEmail(updated.ref, "payment-required");
       toast({ title: "Tarifs enregistrés", description: `${updated.ref} validé avec les nouveaux montants.` });
       setSelected(updated);
       await load();
@@ -281,14 +300,14 @@ export default function AdminDossiers() {
 
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     <Button
-                      onClick={() => act("approved", "approved")}
-                      disabled={acting || selected.status === "approved"}
-                      className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                      onClick={() => act("payment_required")}
+                      disabled={acting || selected.status === "payment_required" || selected.status === "approved"}
+                      className="glossy-btn text-accent-foreground border-0"
                     >
                       <Check className="w-4 h-4 mr-1" /> Approuver
                     </Button>
                     <Button
-                      onClick={() => act("rejected", "rejected")}
+                      onClick={() => act("rejected")}
                       disabled={acting || selected.status === "rejected"}
                       variant="destructive"
                     >
@@ -296,6 +315,8 @@ export default function AdminDossiers() {
                     </Button>
                     <Button onClick={() => act("received")} disabled={acting} variant="outline">Colis reçu</Button>
                     <Button onClick={() => act("in_surgery")} disabled={acting} variant="outline">En chirurgie</Button>
+                    <Button onClick={() => act("quality_control")} disabled={acting} variant="outline">Contrôle qualité</Button>
+                    <Button onClick={() => act("paid")} disabled={acting} variant="outline">Marquer payé</Button>
                   </div>
 
                   {/* Manual price override (custom cases) */}

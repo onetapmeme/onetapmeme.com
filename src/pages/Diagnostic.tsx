@@ -208,7 +208,7 @@ const Diagnostic = () => {
       });
 
       // 3) Trigger confirmation emails (non-blocking)
-      sendDossierEmail(ref, "received");
+      sendDossierEmail(ref, "requested");
       notifyAdminNewDossier(ref);
 
       incrementSavedCards(1);
