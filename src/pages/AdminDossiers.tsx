@@ -17,27 +17,45 @@ import { Loader2, ShieldAlert, Check, X, Eye, RefreshCcw, Save, Truck } from "lu
 import {
   adminListDossiers, adminUpdateStatus, sendDossierEmail,
   adminValidateDossier, adminMarkShipped,
-  type Dossier, type DossierStatus,
+  type Dossier, type DossierStatus, type DossierEmailKind,
 } from "@/lib/dossiers";
 
 const STATUS_LABEL: Record<DossierStatus, string> = {
-  pending_review: "En évaluation",
-  approved: "Validé",
-  rejected: "Refusé",
+  requested: "Demande envoyée",
+  received: "Cartes reçues",
+  payment_required: "Paiement requis",
   paid: "Payé",
-  received: "Reçu atelier",
   in_surgery: "En chirurgie",
+  quality_control: "Contrôle qualité",
   shipped: "Expédié",
+  rejected: "Refusé",
+  pending_review: "Demande envoyée",
+  approved: "Paiement requis",
 };
 
 const STATUS_COLOR: Record<DossierStatus, string> = {
-  pending_review: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300",
+  requested: "bg-yellow-500/15 text-yellow-700 dark:text-yellow-300",
+  received: "bg-accent/10 text-accent",
+  payment_required: "bg-accent/20 text-accent",
+  paid: "bg-accent/15 text-accent",
+  in_surgery: "bg-accent/25 text-accent",
+  quality_control: "bg-accent/30 text-accent",
+  shipped: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+  rejected: "bg-destructive/15 text-destructive",
+  pending_review: "bg-yellow-500/15 text-yellow-700 dark:text-yellow-300",
   approved: "bg-accent/20 text-accent",
-  rejected: "bg-destructive/20 text-destructive",
-  paid: "bg-blue-500/20 text-blue-700 dark:text-blue-300",
-  received: "bg-purple-500/20 text-purple-700 dark:text-purple-300",
-  in_surgery: "bg-orange-500/20 text-orange-700 dark:text-orange-300",
-  shipped: "bg-green-500/20 text-green-700 dark:text-green-300",
+};
+
+// Map a status transition to the customer email kind that should fire.
+const STATUS_TO_EMAIL: Partial<Record<DossierStatus, DossierEmailKind>> = {
+  requested: "requested",
+  received: "received",
+  payment_required: "payment-required",
+  paid: "paid",
+  in_surgery: "in-surgery",
+  quality_control: "quality-control",
+  shipped: "shipped",
+  rejected: "rejected",
 };
 
 export default function AdminDossiers() {
