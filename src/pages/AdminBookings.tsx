@@ -19,7 +19,7 @@ const STATUS_LABEL: Record<string, string> = {
   cancelled: "Annulé",
 };
 const STATUS_COLOR: Record<string, string> = {
-  confirmed: "bg-blue-500/20 text-blue-700 dark:text-blue-300",
+  confirmed: "bg-accent/15 text-accent",
   honored: "bg-green-500/20 text-green-700 dark:text-green-300",
   no_show: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300",
   cancelled: "bg-destructive/20 text-destructive",
