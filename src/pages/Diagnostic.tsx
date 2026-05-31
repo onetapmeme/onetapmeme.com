@@ -461,17 +461,26 @@ const Diagnostic = () => {
                   })()}
                 </div>
                 <div>
-                  <Label>Transporteur préféré</Label>
+                  <Label>Logistique préférée</Label>
                   <Select value={shippingCarrier} onValueChange={setShippingCarrier}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="colissimo">La Poste — Colissimo Ad Valorem</SelectItem>
-                      <SelectItem value="chronopost">Chronopost Ad Valorem</SelectItem>
-                      <SelectItem value="recommande">Lettre recommandée R2 / R3</SelectItem>
-                      <SelectItem value="mondial-relay">Mondial Relay assuré</SelectItem>
+                      {SHIPPING_OPTIONS.map((opt) => (
+                        <SelectItem key={opt.id} value={opt.id}>{opt.label}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
+                  {isHandDelivery(shippingCarrier) && (
+                    <p className="text-[11px] text-accent mt-2 flex items-start gap-1.5">
+                      <ShieldCheck className="w-3 h-3 flex-shrink-0 mt-0.5" />
+                      <span>
+                        Aucun frais de port — rendez-vous fixé par e-mail après paiement à
+                        l'atelier de Strasbourg.
+                      </span>
+                    </p>
+                  )}
                 </div>
+
               </div>
             )}
 
