@@ -113,6 +113,7 @@ export async function createDossierRemote(input: {
   insuranceCapCents?: number | null;
   insuranceMultiLeg?: boolean;
   shippingCarrier?: string | null;
+  locale?: string | null;
 }): Promise<string> {
   const p = PACKS[input.pack];
   const { data, error } = await supabase.rpc("create_dossier", {
@@ -133,10 +134,12 @@ export async function createDossierRemote(input: {
     insurance_cap_cents_param: input.insuranceCapCents ?? null,
     insurance_multi_leg_param: input.insuranceMultiLeg ?? false,
     shipping_carrier_param: input.shippingCarrier ?? null,
+    locale_param: input.locale ?? "fr",
   } as any);
   if (error) throw error;
   return data as string;
 }
+
 
 export async function getDossierRemote(ref: string): Promise<Dossier | null> {
   const { data, error } = await supabase.rpc("get_dossier_by_ref", {

@@ -85,6 +85,7 @@ Deno.serve(async (req) => {
       customerEmail,
       returnUrl,
       environment,
+      shippingCarrier,
     } = body ?? {};
 
     if (!ALLOWED_PACKS.has(packPriceId)) throw new Error("Invalid packPriceId");
@@ -135,21 +136,31 @@ Deno.serve(async (req) => {
       }
     }
 
+    // Chantier 3: tag hand-delivery (Strasbourg) sessions so the post-paid
+    // email + admin tooling can branch on the delivery type. No physical
+    // shipping fee is added — the option is free by design.
+    const isHandDelivery = shippingCarrier === "hand_delivery_strasbourg";
+    const sharedMetadata: Record<string, string> = {
+      dossierRef,
+      insuranceTierIndex: String(insuranceTierIndex ?? ""),
+      insuranceQuantity: String(insuranceQuantity ?? 1),
+      shippingCarrier: typeof shippingCarrier === "string" ? shippingCarrier : "",
+      deliveryType: isHandDelivery ? "hand_delivery_strasbourg" : "shipping",
+      ...(isHandDelivery && { area: "Strasbourg" }),
+    };
+
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
       ui_mode: "embedded_page",
       return_url: returnUrl,
       ...(customerId && { customer: customerId }),
-      metadata: {
-        dossierRef,
-        insuranceTierIndex: String(insuranceTierIndex ?? ""),
-        insuranceQuantity: String(insuranceQuantity ?? 1),
-      },
+      metadata: sharedMetadata,
       payment_intent_data: {
-        metadata: { dossierRef },
+        metadata: sharedMetadata,
       },
     });
+
 
     return new Response(
       JSON.stringify({ clientSecret: session.client_secret }),

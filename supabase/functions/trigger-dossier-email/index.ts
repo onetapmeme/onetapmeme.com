@@ -135,7 +135,7 @@ Deno.serve(async (req) => {
     const { data: row, error } = await sb
       .from("dossiers")
       .select(
-        "ref, name, email, pack_label, pack_price, card_name, tcg, estimated_value, cares, defects, photos, admin_notes, return_carrier, return_tracking_number, created_at",
+        "ref, name, email, locale, pack_label, pack_price, card_name, tcg, estimated_value, cares, defects, photos, admin_notes, return_carrier, return_tracking_number, shipping_carrier, created_at",
       )
       .eq("ref", String(ref).toUpperCase().trim())
       .maybeSingle();
@@ -192,19 +192,27 @@ Deno.serve(async (req) => {
         photosCount: Array.isArray(row.photos) ? row.photos.length : 0,
       };
     } else {
-      templateName = `dossier-${kind}`;
+      // Chantier 1: resolve template via KIND_TO_TEMPLATE map (not string concat),
+      // so kinds like "payment-required" / "in-surgery" / "quality-control"
+      // route to their real template files.
+      const resolved = KIND_TO_TEMPLATE[kind];
+      if (!resolved) throw new Error(`No template mapped for kind: ${kind}`);
+      templateName = resolved;
       recipientEmail = row.email;
       templateData = {
         name: row.name,
         ref: row.ref,
+        locale: row.locale ?? "fr",
         packLabel: row.pack_label,
         packPrice: row.pack_price,
         cardName: row.card_name ?? "",
         adminNotes: row.admin_notes ?? "",
         carrier: row.return_carrier ?? "",
         tracking: row.return_tracking_number ?? "",
+        deliveryType: row.shipping_carrier ?? "",
       };
     }
+
 
     const { error: invokeErr } = await sb.functions.invoke("send-transactional-email", {
       body: {

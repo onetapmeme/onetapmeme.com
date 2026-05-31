@@ -22,6 +22,8 @@ import {
   notifyAdminNewDossier,
   type DossierPhoto,
 } from "@/lib/dossiers";
+import { SHIPPING_OPTIONS, isHandDelivery } from "@/lib/shipping";
+import { useTranslation } from "react-i18next";
 
 import {
   MAX_INSURED_VALUE,
@@ -34,6 +36,7 @@ import { Slider } from "@/components/ui/slider";
 import { ShieldCheck } from "lucide-react";
 import { InsuranceTierSelector } from "@/components/InsuranceTierSelector";
 import { supabase } from "@/integrations/supabase/client";
+
 
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
 const MAX_SIZE = 5 * 1024 * 1024;
@@ -107,6 +110,8 @@ const PhotoSlot = ({
 const Diagnostic = () => {
   const [params] = useSearchParams();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
+
   const initialPack = params.get("pack") && PACKS[params.get("pack")!] ? params.get("pack")! : "";
 
   const initialDeclared = (() => {
@@ -205,7 +210,11 @@ const Diagnostic = () => {
         insuranceCapCents: ins ? eurosToCents(ins.tier.capEuros) : null,
         insuranceMultiLeg: ins?.multiLeg ?? false,
         shippingCarrier,
+        // Chantier 2: persist active UI language so every downstream e-mail
+        // (requested → shipped) renders in the customer's chosen language.
+        locale: (i18n.language || "fr").slice(0, 2).toLowerCase(),
       });
+
 
       // 3) Trigger confirmation emails (non-blocking)
       sendDossierEmail(ref, "requested");
@@ -452,17 +461,26 @@ const Diagnostic = () => {
                   })()}
                 </div>
                 <div>
-                  <Label>Transporteur préféré</Label>
+                  <Label>Logistique préférée</Label>
                   <Select value={shippingCarrier} onValueChange={setShippingCarrier}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="colissimo">La Poste — Colissimo Ad Valorem</SelectItem>
-                      <SelectItem value="chronopost">Chronopost Ad Valorem</SelectItem>
-                      <SelectItem value="recommande">Lettre recommandée R2 / R3</SelectItem>
-                      <SelectItem value="mondial-relay">Mondial Relay assuré</SelectItem>
+                      {SHIPPING_OPTIONS.map((opt) => (
+                        <SelectItem key={opt.id} value={opt.id}>{opt.label}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
+                  {isHandDelivery(shippingCarrier) && (
+                    <p className="text-[11px] text-accent mt-2 flex items-start gap-1.5">
+                      <ShieldCheck className="w-3 h-3 flex-shrink-0 mt-0.5" />
+                      <span>
+                        Aucun frais de port — rendez-vous fixé par e-mail après paiement à
+                        l'atelier de Strasbourg.
+                      </span>
+                    </p>
+                  )}
                 </div>
+
               </div>
             )}
 

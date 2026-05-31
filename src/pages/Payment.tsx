@@ -176,8 +176,10 @@ const Payment = () => {
                         insuranceQuantity={qty}
                         dossierRef={dossier.ref}
                         customerEmail={dossier.email}
+                        shippingCarrier={dossier.shippingCarrier ?? undefined}
                         returnUrl={`${window.location.origin}/checkout/return?ref=${dossier.ref}&session_id={CHECKOUT_SESSION_ID}`}
                       />
+
                     );
                   })()}
                 </div>
