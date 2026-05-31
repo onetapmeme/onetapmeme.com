@@ -210,7 +210,11 @@ const Diagnostic = () => {
         insuranceCapCents: ins ? eurosToCents(ins.tier.capEuros) : null,
         insuranceMultiLeg: ins?.multiLeg ?? false,
         shippingCarrier,
+        // Chantier 2: persist active UI language so every downstream e-mail
+        // (requested → shipped) renders in the customer's chosen language.
+        locale: (i18n.language || "fr").slice(0, 2).toLowerCase(),
       });
+
 
       // 3) Trigger confirmation emails (non-blocking)
       sendDossierEmail(ref, "requested");
