@@ -22,6 +22,8 @@ import {
   notifyAdminNewDossier,
   type DossierPhoto,
 } from "@/lib/dossiers";
+import { SHIPPING_OPTIONS, isHandDelivery } from "@/lib/shipping";
+import { useTranslation } from "react-i18next";
 
 import {
   MAX_INSURED_VALUE,
@@ -34,6 +36,7 @@ import { Slider } from "@/components/ui/slider";
 import { ShieldCheck } from "lucide-react";
 import { InsuranceTierSelector } from "@/components/InsuranceTierSelector";
 import { supabase } from "@/integrations/supabase/client";
+
 
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
 const MAX_SIZE = 5 * 1024 * 1024;
@@ -107,6 +110,8 @@ const PhotoSlot = ({
 const Diagnostic = () => {
   const [params] = useSearchParams();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
+
   const initialPack = params.get("pack") && PACKS[params.get("pack")!] ? params.get("pack")! : "";
 
   const initialDeclared = (() => {
