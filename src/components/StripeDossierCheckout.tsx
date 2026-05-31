@@ -9,6 +9,7 @@ interface Props {
   dossierRef: string;
   customerEmail?: string;
   returnUrl: string;
+  shippingCarrier?: string;
 }
 
 export function StripeDossierCheckout(props: Props) {
@@ -22,6 +23,7 @@ export function StripeDossierCheckout(props: Props) {
         customerEmail: props.customerEmail,
         returnUrl: props.returnUrl,
         environment: getStripeEnvironment(),
+        shippingCarrier: props.shippingCarrier,
       },
     });
     if (error || !data?.clientSecret) {
@@ -29,6 +31,7 @@ export function StripeDossierCheckout(props: Props) {
     }
     return data.clientSecret as string;
   };
+
 
   return (
     <div id="checkout" className="w-full">
